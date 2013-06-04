@@ -142,3 +142,9 @@ In some cases, you really want your code run for effect. In these cases having y
 I frequently make my `%rebol.r` file an unnamed module because I want to have more control over what it exports and how. Plus, since it's done for effect and doesn't need to be reloaded or upgraded there's no point in giving it a name.
 
 No need for a code example, your earlier ones will act this way.
+
+Notes
+-----
+
+Pull in anything useful from stackoverflow chat [discussion](http://chat.stackoverflow.com/transcript/message/9809846#9809846)
+
