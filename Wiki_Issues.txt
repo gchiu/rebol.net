@@ -5,7 +5,7 @@ them here.
 Recommendations
 ~~~~~~~~~~~~~~~
 
-See link:Wiki Recommendations[Wiki Recommendations]
+See link:Wiki_Recommendations[Wiki Recommendations]
 
 
 Experimenting

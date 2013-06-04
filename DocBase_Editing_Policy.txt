@@ -20,7 +20,7 @@ Where to Add
 
 If you're adding a new page, it may fit into one of several sections.
 
-See link:About Cookbooks[About Cookbooks] to read about if your page
+See link:About_Cookbooks[About Cookbooks] to read about if your page
 fits there.
 
 
@@ -72,4 +72,4 @@ When encountering a page without an author
 License
 ~~~~~~~
 
-link:DocBase Wiki Content License[DocBase Wiki Content License]
+link:DocBase_Wiki_Content_License[DocBase Wiki Content License]

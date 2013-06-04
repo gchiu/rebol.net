@@ -8,7 +8,7 @@ but only on enter and exit.
 
 As standard, the on-over sets the face/state/mode to 'over or 'up and
 then draws the face. This is useful, during
-*link:The Face Object Field - Actors - on-draw[on-draw]* to set a face
+*link:The_Face_Object_Field_-_Actors_-_on-draw[on-draw]* to set a face
 appearance on face/state/mode.
 
 An input argument would be the offset or NONE.
@@ -16,7 +16,7 @@ An input argument would be the offset or NONE.
 A return value is not necessary.
 
 It is invoked just after the
-*link:The Face Object Field - Actors - on-move[on-move]* event.
+*link:The_Face_Object_Field_-_Actors_-_on-move[on-move]* event.
 
 
 Examples

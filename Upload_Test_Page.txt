@@ -5,7 +5,7 @@ Introduction
 Wiki Tools is a very small, but pretty powerful dialect for
 communicating with a MediaWiki (MW) server, to remotely manipulate the
 contents of a MW page or a series of pages. Wiki Tools has specifically
-been created for use in link:Main Page[REBOL 3 DocBase], but can be used
+been created for use in link:Main_Page[REBOL 3 DocBase], but can be used
 generally for MW sites.
 
 Wiki Tools can:

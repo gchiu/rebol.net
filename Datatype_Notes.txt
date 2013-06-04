@@ -25,11 +25,11 @@ Datatype Notes
 
 * Special datatype sections:
 ** link:datatypes[List of datatypes]
-** link:Datatypes in Transition[Datatypes in Transition]
-** link:Datatype math compatibility tables[Datatype math compatibility
+** link:Datatypes_in_Transition[Datatypes in Transition]
+** link:Datatype_math_compatibility_tables[Datatype math compatibility
 tables] - draft (currently)
-** link:Datatype string conversion table[Datatype string conversion
+** link:Datatype_string_conversion_table[Datatype string conversion
 table] - draft
-** link:Datatype conversion matrix[Datatype conversion matrix] - draft
+** link:Datatype_conversion_matrix[Datatype conversion matrix] - draft
 
 *Typesets, Sets Of Datatypes*

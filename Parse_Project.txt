@@ -28,12 +28,12 @@ Guidelines
 
 _Discussion of these proposals should be posted in REBOL 3 chat, under
 the R3/Parse heading (#28). If you want to contribute to this page,
-start there. Membership is open: Anyone with link:R3 Alpha[REBOL 3] can
+start there. Membership is open: Anyone with link:R3_Alpha[REBOL 3] can
 join in._
 
 There will be factors that affect these proposals that will be specific
 to changes in REBOL 3. Some of these changes are already in the
-link:R3 Alpha[R3 public alpha releases], and some are still being
+link:R3_Alpha[R3 public alpha releases], and some are still being
 planned. The best approach is to test your code against the public
 alphas and ask for clarification in R3 chat. People who know and make
 the plans are in R3 chat almost every day, including Carl.
@@ -1361,7 +1361,7 @@ rule fails as if there were a link:#FAIL[FAIL] there.
 
 Previously you had to do something like this:
 
-` <nowiki>(cont: unless condition `link:end skip[`end`
+` <nowiki>(cont: unless condition `link:end_skip[`end`
 `skip`]`) cont</nowiki>`
 
 Examples:

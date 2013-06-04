@@ -11,14 +11,14 @@ http://www.rebol.net/r3blogs/0169.html[in this R3 blog entry].
 Discussion
 ~~~~~~~~~~
 
-Discussion of this project is in R3 chat. Download the link:R3 Alpha[R3
+Discussion of this project is in R3 chat. Download the link:R3_Alpha[R3
 Alpha] and join in!
 
 
 Guidelines
 ~~~~~~~~~~
 
-We get to be more informal here than in the link:Parse Project[Parse
+We get to be more informal here than in the link:Parse_Project[Parse
 Project] because any new functions we suggest here will be REBOL code:
 They may be accepted as R3 mezzanines or standard library functions (not
 the same thing in R3, more later). Code samples are encouraged, test

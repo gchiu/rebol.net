@@ -43,7 +43,7 @@ It's important to have testing priorities. After all, if the basic R3
 system doesn't work, or the datatypes don't work, or the control
 functions don't work, then how can any of the tests work properly?
 
-So, the *link:R3 Alpha Test Priorities[R3 Alpha Test Priorities]*
+So, the *link:R3_Alpha_Test_Priorities[R3 Alpha Test Priorities]*
 provides the current list.
 
 

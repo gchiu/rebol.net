@@ -1,4 +1,4 @@
-This example will open an link:R3 GUI[R3 GUI] window with a title
+This example will open an link:R3_GUI[R3 GUI] window with a title
 message and a close button.
 
 

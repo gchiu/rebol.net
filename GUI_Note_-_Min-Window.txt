@@ -1,5 +1,5 @@
 Use this approach to isolate bugs in the graphics system, below the
-link:R3 GUI[R3 GUI].
+link:R3_GUI[R3 GUI].
 
 
 Purpose

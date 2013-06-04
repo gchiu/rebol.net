@@ -110,7 +110,7 @@ Characteristic: symmetric, non-transitive (approximate equality)
 Ignores: datatype differences, binding (words), alias distinctions,
 character case differences
 
-link:EQUAL? tests[EQUAL? tests]
+link:EQUAL?_tests[EQUAL? tests]
 
 
 EQUIV?
@@ -125,7 +125,7 @@ Observes: binding (words)
 
 Added precision in DECIMAL! comparison.
 
-link:EQUIV? tests[EQUIV? tests]
+link:EQUIV?_tests[EQUIV? tests]
 
 
 STRICT-EQUAL?
@@ -136,7 +136,7 @@ Characteristic: finer than the previous method
 Observes: datatype differences, binding (words), alias distinctions,
 character case differences
 
-link:STRICT-EQUAL? tests[STRICT-EQUAL? tests]
+link:STRICT-EQUAL?_tests[STRICT-EQUAL? tests]
 
 
 SAME?
@@ -146,4 +146,4 @@ Characteristic: the finest comparison, bit by bit equivalence
 
 Useful especially for mutable datatypes.
 
-link:SAME? tests[SAME? tests]
+link:SAME?_tests[SAME? tests]

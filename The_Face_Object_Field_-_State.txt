@@ -6,7 +6,7 @@ State
 part of the face/state object.
 
 These fields are used to state information, not attributes or
-properties. See link:GUI Faces[GUI Faces] for details.
+properties. See link:GUI_Faces[GUI Faces] for details.
 
 '''''
 

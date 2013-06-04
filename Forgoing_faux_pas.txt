@@ -10,7 +10,7 @@ class="plainlinks">http://rebol.net/w/index.php?title=Forgoing_faux_pas&action=e
 it here. &lowast;_Please start each topic with wikitext
 <nowiki>==topic==</nowiki> two equal sign headings._
 
-See &bull; link:Handy Idioms[Handy Idioms] &bull; for some nice and
+See &bull; link:Handy_Idioms[Handy Idioms] &bull; for some nice and
 positive REBOL tips and tricks.
 
 

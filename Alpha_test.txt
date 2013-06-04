@@ -30,7 +30,7 @@ Focus of Testing
 
 During alpha testing stages, it is really important to focus on specific
 parts of the systems. *This is described and managed by a separate
-document, link:R3 Alpha Test Priorities[R3 Alpha Test Priorities].* We
+document, link:R3_Alpha_Test_Priorities[R3 Alpha Test Priorities].* We
 will update this as we make progress, so please read it.
 
 

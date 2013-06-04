@@ -4,7 +4,7 @@ _Know a good idiom? Please <span
 class="plainlinks">http://rebol.net/w/index.php?title=Handy_Idioms&action=edit&section=new[add]</span>
 it here._
 
-See &bull; link:Forgoing faux pas[Forgoing faux pas] &bull; to avoid
+See &bull; link:Forgoing_faux_pas[Forgoing faux pas] &bull; to avoid
 some common mistakes.
 
 

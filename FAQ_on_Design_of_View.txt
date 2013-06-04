@@ -5,7 +5,7 @@ living document and will expand.
 Quick Overview
 ~~~~~~~~~~~~~~
 
-Information about the view system can be found on link:View System[View
+Information about the view system can be found on link:View_System[View
 System]. So, please check there first.
 
 *You can post new questions at the bottom, then bring it to my attention
@@ -34,7 +34,7 @@ By comparison /custom means to add custom behavior to a function. That
 word is not as good as /options.
 
 Also, I describe the main reason for /options in
-link:Specifying Larger Options[Specifying Larger Options].
+link:Specifying_Larger_Options[Specifying Larger Options].
 
 
 Why uses modes word in /options block?
@@ -125,7 +125,7 @@ for me? Also, how do I know the names of the options?
 _VIEW is a complex function by its very nature._ If you look at similar
 functions in an OS, you will find dozens of special options. And, we
 will be adding several more options to VIEW as well (e.g. dialog modes,
-etc.) The page link:Specifying Larger Options[Specifying Larger Options]
+etc.) The page link:Specifying_Larger_Options[Specifying Larger Options]
 discusses this issue, so be sure to read that.
 
 How is a user expected to deal with all this?
@@ -156,7 +156,7 @@ Closing the window closes the console
 *Q:* When I VIEW a window, then close it, the console closes.
 
 *A:* It depends on how you started it. This is covered in detail in the
-doc link:New behavior for QUIT[New behavior for QUIT].
+doc link:New_behavior_for_QUIT[New behavior for QUIT].
 
 
 Should GOBs use only set words?

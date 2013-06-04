@@ -1,13 +1,13 @@
-* link:GUI Note - For Alpha Testers[ Alpha Quick Start]
-* link:GUI Note - Shapes in DRAW Blocks[Shapes in DRAW Blocks]
-* link:GUI Note - Skin Depths[Skin Depths]
-* link:GUI Note - Scrolling[Scrolling|How Scrollbars Work]
-* link:GUI Note - Requestors[ How Modal Dialogs Work]
-* link:GUI Note - Min-Window[Lower-level Testing]
-* link:Download GUI Source[Download GUI Source]
+* link:GUI_Note_-_For_Alpha_Testers[ Alpha Quick Start]
+* link:GUI_Note_-_Shapes_in_DRAW_Blocks[Shapes in DRAW Blocks]
+* link:GUI_Note_-_Skin_Depths[Skin Depths]
+* link:GUI_Note_-_Scrolling[Scrolling|How Scrollbars Work]
+* link:GUI_Note_-_Requestors[ How Modal Dialogs Work]
+* link:GUI_Note_-_Min-Window[Lower-level Testing]
+* link:Download_GUI_Source[Download GUI Source]
 * link:ReBrowse[ViewTop's Replacement]
-* link:Wait in Wait[Wait in Wait]
-* link:Document Vault[Document Vault]
+* link:Wait_in_Wait[Wait in Wait]
+* link:Document_Vault[Document Vault]
 
 '''''
 

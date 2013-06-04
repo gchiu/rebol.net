@@ -22,7 +22,7 @@ For example, this case returns a block that contains the variables. If
 after the function returns, you try to access (in this case DO) the
 variables, you get into trouble:
 
-`  >> add2: func [c d] `link:c + d[`c` `+` `d`] +
+`  >> add2: func [c d] `link:c_+_d[`c` `+` `d`] +
 `  >> do add2 1 2` +
 `  ** Script error: c word is not bound to a context`
 
@@ -32,7 +32,7 @@ the function is evaluating. They have no meaning outside the function.
 
 A *closure* function solves this problem. With a closure you can write:
 
-`  >> add2: closure [c d] `link:c + d[`c` `+` `d`] +
+`  >> add2: closure [c d] `link:c_+_d[`c` `+` `d`] +
 `  >> do add2 1 2` +
 `  == 3`
 

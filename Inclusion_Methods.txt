@@ -346,7 +346,7 @@ etc.
 *Include*
 ^^^^^^^^^
 
-See the link:INCLUDE documentation[INCLUDE documentation].
+See the link:INCLUDE_documentation[INCLUDE documentation].
 
 The *include* method is a significant extension of PREBOL created by
 Ladislav Mecir.
@@ -382,7 +382,7 @@ How it satisfies the needs
 3.  Builds distributable programs.
 4.  Tests distributable programs.
 5.  The approach described in
-link:INCLUDE documentation#Context_encapsulation[INCLUDE
+link:INCLUDE_documentation#Context_encapsulation[INCLUDE
 documentation#Context_encapsulation] can be used.
 6.  Uses a search path, which may contain directories as well as URLs.
 7.  Supports on-demand strippable comments.

@@ -1,2 +1,2 @@
-1.  REDIRECT link:Preliminary Rebol 3.0 Manual Home/ja[Preliminary Rebol
+1.  REDIRECT link:Preliminary_Rebol_3.0_Manual_Home/ja[Preliminary Rebol
 3.0 Manual Home/ja]

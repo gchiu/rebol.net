@@ -130,7 +130,7 @@ If you've done one of the following:
 * Changed the title for a cookbook or a recipe
 * Moved a recipe to a different cookbook
 
-Please add those changes to the link:Cookbook Changes[Cookbook Changes]
+Please add those changes to the link:Cookbook_Changes[Cookbook Changes]
 page in the format shown on that page, as well as updating the
 link:Cookbooks[Cookbook List]. This helps users to keep track of major
 changes to the cookbook list.
@@ -144,7 +144,7 @@ Requesting a Cookbook Recipe
 
 If you are in doubt of how to perform a specific procedure that fits
 with a Cookbook recipe, you can add it to the list of requested
-cookbooks link:Requested Cookbooks[here].
+cookbooks link:Requested_Cookbooks[here].
 
 
 Updating the Cookbook List

@@ -5,6 +5,6 @@ Vault. Often, the issues described here have been duplicated in other
 works. Whats placed in the vault and what is not is often determined by
 the order of the issues reviewed. </TD></TR></TABLE>
 
-* link:GUI Example - Hello World[Hello World]
-* link:Partial, Incomplete, Old or Obsolete Pages[Partial, Incomplete,
+* link:GUI_Example_-_Hello_World[Hello World]
+* link:Partial,_Incomplete,_Old_or_Obsolete_Pages[Partial, Incomplete,
 Old or Obsolete Pages]

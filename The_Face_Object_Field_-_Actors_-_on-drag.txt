@@ -2,16 +2,16 @@
 is moving inside the face in which the drag object was created.
 
 on-drag usually comes after
-*link:The Face Object Field - Actors - on-click[on-click]* and ceases to
+*link:The_Face_Object_Field_-_Actors_-_on-click[on-click]* and ceases to
 be used when the drag object is destroyed, which happens right after
-*link:The Face Object Field - Actors - on-drop[on-drop]*.
+*link:The_Face_Object_Field_-_Actors_-_on-drop[on-drop]*.
 
 The drag object the input argument to the on-drag actor. No return value
 is necessary.
 
 When a drag object exists, the
-*link:The Face Object Field - Actors - on-move[on-move]* and
-*link:The Face Object Field - Actors - on-over[on-over]* actors are not
+*link:The_Face_Object_Field_-_Actors_-_on-move[on-move]* and
+*link:The_Face_Object_Field_-_Actors_-_on-over[on-over]* actors are not
 called.
 
 

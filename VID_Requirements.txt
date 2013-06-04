@@ -1,6 +1,6 @@
 *This is a high level, internal specification document.* It is intended
 only for the development team at this time. Please do not publicize it
-or publish links to it. See also link:VID Implementation Notes[VID
+or publish links to it. See also link:VID_Implementation_Notes[VID
 Implementation Notes].
 
 

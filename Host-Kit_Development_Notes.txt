@@ -30,7 +30,7 @@ function slots for future expansion, but with no performance overhead.
 For A103 (Released)
 ~~~~~~~~~~~~~~~~~~~
 
-* Adds *link:External Callbacks[External Callbacks]*.
+* Adds *link:External_Callbacks[External Callbacks]*.
 * Added to reb-ext-lib.h for use in C++ includes (from RMA:Robert):
 
 `#ifdef __cplusplus` +

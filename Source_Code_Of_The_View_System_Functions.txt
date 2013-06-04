@@ -161,22 +161,22 @@ Already initialized? if system/view/event-port [exit]
 <TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=30%> *Getting
 Started With R3*
 
-* link:R3 Alpha[R3 Alpha]
-* link:R3 GUI[R3 GUI]
-* link:R3 Commands vs. R2 Commands[R3 Commands vs. R2 Commands]
-* link:Datatypes, Functions, Graphic &amp; Special Notes[Datatypes &
+* link:R3_Alpha[R3 Alpha]
+* link:R3_GUI[R3 GUI]
+* link:R3_Commands_vs._R2_Commands[R3 Commands vs. R2 Commands]
+* link:Datatypes,_Functions,_Graphic_&amp;_Special_Notes[Datatypes &
 Functions,]
-* link:Cookbooks, Dictionary, Glossary &amp; Other Resources[Resources]
+* link:Cookbooks,_Dictionary,_Glossary_&amp;_Other_Resources[Resources]
 
 </TD><TD ALIGN=LEFT VALIGN=TOP WIDTH=30%>
 
 </TD><TD> *R3 Gui/ Graphical User Interface Pages:*
 
-* link:GUI Faces[GUI Faces] - The Basic GUI Element
-* link:GUI Basics[GUI Basics] - Introuction To The GUI
-* link:GUI Styles[GUI Styles] - Defining Attributes And Behaviors
-* link:GUI Events[GUI Events] - How Events Are Handled
-* link:GUI Reactors[GUI Reactors] - Causing Common Actions
+* link:GUI_Faces[GUI Faces] - The Basic GUI Element
+* link:GUI_Basics[GUI Basics] - Introuction To The GUI
+* link:GUI_Styles[GUI Styles] - Defining Attributes And Behaviors
+* link:GUI_Events[GUI Events] - How Events Are Handled
+* link:GUI_Reactors[GUI Reactors] - Causing Common Actions
 * link:View_System[View System] - Displaying The GUI
 
 </TD></TR></TABLE>

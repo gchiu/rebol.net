@@ -1,6 +1,6 @@
 *on-move* is invoked every time the mouse moves, but is not performing
 dragging. It is invoked just prior to the
-*link:The Face Object Field - Actors - on-over[on-over]* event.
+*link:The_Face_Object_Field_-_Actors_-_on-over[on-over]* event.
 
 The input argument is the event object.
 

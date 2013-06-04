@@ -26,7 +26,7 @@ button was pressed or released.
 on-click is also the precursor to dragging (holding down a mouse button,
 while moving the mouse), so you can create a drag object in on-click
 using the INIT-DRAG function. If you then return the drag object, the
-actor *link:The Face Object Field - Actors - on-drag[on-drag]* will be
+actor *link:The_Face_Object_Field_-_Actors_-_on-drag[on-drag]* will be
 invoked. The INIT-DRAG function returns the drag object.
 
 `on-click: [` +

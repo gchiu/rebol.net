@@ -1,1 +1,1 @@
-1.  REDIRECT link:GUI Styles[GUI Styles]
+1.  REDIRECT link:GUI_Styles[GUI Styles]

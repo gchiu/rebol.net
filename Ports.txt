@@ -17,9 +17,9 @@ interface, to access databases, and more.
 
 This document will describe the basic concepts of ports and how they are
 used. A range of working examples can be found in
-link:Port Examples[Port Examples]. And, more advanced concepts related
+link:Port_Examples[Port Examples]. And, more advanced concepts related
 to ports are covered in a separate document,
-link:Port Implementation[Port Implementation]. It describes how to
+link:Port_Implementation[Port Implementation]. It describes how to
 construct your own special types of ports.
 
 Most ports are implemented at the OS layer using Devices and are not
@@ -364,7 +364,7 @@ be built-in, can be loaded separately, or can even be user defined
 within a script.
 
 A lot more about schemes can be found in the
-link:Port Implementation[Port Implementation] section.
+link:Port_Implementation[Port Implementation] section.
 
 
 Making Ports
@@ -475,7 +475,7 @@ access (block!) </pre>
 All of the port actions are provided with the port (or spec in the case
 of implicit port usage) as their first argument.
 
-See the link:Port Examples[Port Examples] section for various examples
+See the link:Port_Examples[Port Examples] section for various examples
 of how to use port actions.
 
 
@@ -507,7 +507,7 @@ synchronous manner, when so desired. But, it is not possible to operate
 a synchronous port in an asynchronous manner. (To do so, you must use a
 REBOL task as an asynchronous thread.)
 
-See the link:Port Examples[Port Examples] page for examples of both
+See the link:Port_Examples[Port Examples] page for examples of both
 modes of operation.
 
 
@@ -555,9 +555,9 @@ complicated. _(And more work is needed here.)_
 Special Notes
 ~~~~~~~~~~~~~
 
-link:Port Examples[Port Examples] - examples of how to use ports
+link:Port_Examples[Port Examples] - examples of how to use ports
 
-link:TCP Port Open Issue[TCP Port Open Issue] - a design decision that
+link:TCP_Port_Open_Issue[TCP Port Open Issue] - a design decision that
 must be pointed out
 
 Ports: Synchronous and Asynchronous Operations[Ports: Synchronous and
@@ -565,4 +565,4 @@ Asynchronous Operations]
 
 Ports: Error Handling[Ports: Error Handling]
 
-link:TCP Port Details[TCP Port Details]
+link:TCP_Port_Details[TCP Port Details]

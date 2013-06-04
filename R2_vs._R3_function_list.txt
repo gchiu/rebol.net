@@ -26,7 +26,7 @@ separate text files (these files will probably be large)
 * Another script that assembles all four text files in two two-column
 table (one for help docs, one for mezz sources) (or use the first script
 with special arguments, whatever you want)
-* Use link:Wiki Tools[Wiki Tools] if you like
+* Use link:Wiki_Tools[Wiki Tools] if you like
 * Script must run under R2 and R3 without changes
 * We must be able to run this again and again after each new R2 and R3
 release.

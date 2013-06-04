@@ -2,8 +2,8 @@
 GUI Examples
 ~~~~~~~~~~~~
 
-* link:GUI Example - View all styles[View all styles]
-* link:GUI Example - Text file browser[Text file browser]
+* link:GUI_Example_-_View_all_styles[View all styles]
+* link:GUI_Example_-_Text_file_browser[Text file browser]
 
 '''''
 

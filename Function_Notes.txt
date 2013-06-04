@@ -8,4 +8,4 @@ Function notes
 * Trace - program evaluation tracing
 * Take - a useful new series action
 * Transcode - special method of loading code
-* link:Port Functions[Port Functions] - open, read, write, etc.
+* link:Port_Functions[Port Functions] - open, read, write, etc.

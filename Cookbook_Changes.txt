@@ -17,14 +17,14 @@ in R3 from the IEEE standard. It can be seen link:Decimals-64[here].
 
 Explains the structure of the bug tracker in AltME for helping with
 writing scripts that take advantage of the bug tracker. It can be seen
-link:AltME Bug Tracker Structure[here].
+link:AltME_Bug_Tracker_Structure[here].
 
 
 1-May-2008: TCP Port Details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 New recipe for describing the R3 TCP Port in detail in R3. It can be
-seen link:TCP Port Details[here].
+seen link:TCP_Port_Details[here].
 
 
 18-Apr-2008: R2 vs. R3 Contexts
@@ -32,21 +32,21 @@ seen link:TCP Port Details[here].
 
 New recipe for describing the difference between R2 and R3 contexts as
 well as explaining R3 closures. It can be seen
-link:R2 vs. R3 Contexts[here].
+link:R2_vs._R3_Contexts[here].
 
 
 1-Feb-2008: Mandatory Reading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 New recipe for REBOL Technologies employees and R3 alpha developers. It
-can be seen link:Mandatory Reading[here].
+can be seen link:Mandatory_Reading[here].
 
 
 1-Feb-2008: Release Process
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This document has been changed into a cookbook recipe. It can be seen
-link:Release Process[here].
+link:Release_Process[here].
 
 
 1-Feb-2008: R2 vs. R3 Function List
@@ -55,7 +55,7 @@ link:Release Process[here].
 An auto-generated list of changes between R2 and R3 function by
 function. The page has been created, but no list has been generated yet,
 since the script does not yet exist. Please read
-link:R2 vs. R3 function list[here] for further instructions on how this
+link:R2_vs._R3_function_list[here] for further instructions on how this
 script should be built.
 
 
@@ -64,7 +64,7 @@ script should be built.
 
 A list of the major changes between R2 and R3 along with a list of
 affected function for each change. It can be seen
-link:Changes between R2 and R3[here].
+link:Changes_between_R2_and_R3[here].
 
 
 10-Jan-2008: FAQ on Design of View
@@ -72,7 +72,7 @@ link:Changes between R2 and R3[here].
 
 A collection of questions regarding the design of View for REBOL 3 has
 been made from a plain page into a cookbook recipe. It can be seen
-link:FAQ on Design of View[here].
+link:FAQ_on_Design_of_View[here].
 
 
 10-Jan-2008: Porting R3 to other OSes
@@ -80,7 +80,7 @@ link:FAQ on Design of View[here].
 
 A collection of notes on how to port REBOL 3 to a new operating system
 has been made from a plain page into a cookbook recipe. It can be seen
-link:Porting Recipe[here].
+link:Porting_Recipe[here].
 
 
 10-Jan-2008: How to do things the new Rebol 3 way
@@ -88,7 +88,7 @@ link:Porting Recipe[here].
 
 A description of how we did things in REBOL 2 and how we now do those
 same things in REBOL 3. Converted from a plain page to a cookbook
-recipe. Can be found link:How to do things the new Rebol 3 way[here].
+recipe. Can be found link:How_to_do_things_the_new_Rebol_3_way[here].
 
 
 Changed Recipes

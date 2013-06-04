@@ -1,2 +1,2 @@
-1.  REDIRECT link:GUI Panels, Groups &amp; Layouts - An Overview[GUI
+1.  REDIRECT link:GUI_Panels,_Groups_&amp;_Layouts_-_An_Overview[GUI
 Panels, Groups &amp; Layouts - An Overview]

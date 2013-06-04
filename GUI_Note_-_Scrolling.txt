@@ -1,4 +1,4 @@
-This describes the main details about scrolling in the link:R3 GUI[R3
+This describes the main details about scrolling in the link:R3_GUI[R3
 GUI].
 
 

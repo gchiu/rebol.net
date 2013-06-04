@@ -1,5 +1,5 @@
 This document describes ReBrowse, the project codename for the top level
-default link:R3 GUI[R3 GUI] shell.
+default link:R3_GUI[R3 GUI] shell.
 
 
 Definition

@@ -1,6 +1,6 @@
 *on-attach* is invoked when this face gets attached to another face,
 which usually happens during
-*link:The Face Object Field - Actors - on-init[on-init]* for the other
+*link:The_Face_Object_Field_-_Actors_-_on-init[on-init]* for the other
 face.
 
 The input is the face requesting attachment. No return value is
@@ -20,7 +20,7 @@ Attaching a SCROLLER to the style:
 
 For the SCROLLER, the code to attach adds a SCROLL reactor to the target
 style through its
-*link:The Face Object Field - Actors - on-init[on-init]*:
+*link:The_Face_Object_Field_-_Actors_-_on-init[on-init]*:
 
 `on-init: [` +
 `  ; Find a prior face to attach the scroll bar to:` +

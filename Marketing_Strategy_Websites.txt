@@ -64,7 +64,7 @@ strengths that will help people understand it? Which rallying cries and
 memorable mantras should be repeated? Is it time to shift the limelight
 away from the size of the binary to the non-embedded market?
 
-* link:Marketing slogans[Marketing slogans]
+* link:Marketing_slogans[Marketing slogans]
 
 
 REBOL logo

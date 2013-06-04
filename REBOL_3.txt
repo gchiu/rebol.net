@@ -9,7 +9,7 @@ insights we've gained over the last decade of REBOL exploration and
 usage.
 
 * '''http://www.rebol.com/rebol3/index.html[R3 Home Page]
-* *link:Table Of Contents[R3 Table of Contents]*
-* *link:R3 Releases[R3 Releases]* (Log of changes)
-* *link:R3 Index[R3 Index]*
+* *link:Table_Of_Contents[R3 Table of Contents]*
+* *link:R3_Releases[R3 Releases]* (Log of changes)
+* *link:R3_Index[R3 Index]*
 * *http://www.rebol.com/r3/docs[R3 User Guide and Reference]*

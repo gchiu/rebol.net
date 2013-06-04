@@ -3,8 +3,8 @@ Name
 ^^^^
 
 *Style/name* is the name of the style as a word. This word is used to
-refer to the style in a GUI dialect block as used by link:GUI Panels[ a
-panel or group]. Every link:GUI Faces[ face] includes a reference to
+refer to the style in a GUI dialect block as used by link:GUI_Panels[ a
+panel or group]. Every link:GUI_Faces[ face] includes a reference to
 this style name in order to access the attributes and behaviors of the
 face.
 
@@ -38,5 +38,5 @@ defined:
 
 In cases where it is necessary to open a new name-space, for example in
 unrelated sub-panels, this can be done with the style/facet/names field.
-See the link:GUI Panels[GUI Panels] document for more information.
+See the link:GUI_Panels[GUI Panels] document for more information.
 </TD></TR></TABLE>

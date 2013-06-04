@@ -18,7 +18,7 @@ can refer to REBOL values.::
 
 Context: REBOL contexts are sets of REBOL words assigning meaning to
 their member words. +
-Context: There is a REBOL function link:words context[context] which is
+Context: There is a REBOL function link:words_context[context] which is
 a short form for <tt>make object!</tt>.::
 
 <span id="D"></span>
@@ -54,7 +54,7 @@ Dialect).::
 <span id="E"></span> <span id="F"></span>
 
 Face: A REBOL object serving as a VID element. A higher level than the
-link:words gob![gob!] datatype.::
+link:words_gob![gob!] datatype.::
 
 Function: One of the main building blocks for REBOL evaluation.
 Functions perform computations on zero or more arguments and result in a

@@ -47,7 +47,7 @@ width="30%">Description</th></tr>
 <tr><td><tt>view/new</tt></td><td><tt>view/no-wait</tt></td><td>Creates
 a new window and returns immediately</td></tr> </table>
 
-* '''link:How to do things the new Rebol 3 way[How to do things the new
+* '''link:How_to_do_things_the_new_Rebol_3_way[How to do things the new
 Rebol 3 way] '''
 
 '''''

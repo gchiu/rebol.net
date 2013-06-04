@@ -144,7 +144,7 @@ http://www.python.org/dev/peps/pep-0020/[The Zen of Python], which says
 things like: "Explicit is better than implicit.", "Readability counts.",
 "Flat is better than nested."
 
-So what is link:The Zen of Rebol[The Zen of Rebol]? How many premises
+So what is link:The_Zen_of_Rebol[The Zen of Rebol]? How many premises
 from other languages can be said to apply equally well to Rebol, if not
 better? Which are contentious with the Rebol worldview? And which are
 completely new? Each motto should be backed up by some code samples

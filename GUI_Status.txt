@@ -49,11 +49,11 @@ it. It is likely we have different goals. Discussion is required.
 Contributions
 ~~~~~~~~~~~~~
 
-Right now, we are focused on the link:R3 GUI[R3 GUI], and we can use
+Right now, we are focused on the link:R3_GUI[R3 GUI], and we can use
 your help.
 
 For example, people like Henrik have jumped in and offered many good
 features and added nice artistic elements. We are thankful for that, and
 want to get more people involved.
 
-Please read *link:Source Code Contributions[Source Code Contributions]*.
+Please read *link:Source_Code_Contributions[Source Code Contributions]*.

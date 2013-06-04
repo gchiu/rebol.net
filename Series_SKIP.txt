@@ -30,18 +30,18 @@ blk: [11 22 33 44 55] print skip blk 3 </pre></code>
 Categories
 ++++++++++
 
-link:Categories series[series] � Operations on series, including blocks
-and strings.<br> link:Categories string[string] � Operations for string
+link:Categories_series[series] � Operations on series, including blocks
+and strings.<br> link:Categories_string[string] � Operations for string
 series.<br>
 
 
 See also
 ++++++++
 
-link:Words at[at] � Returns the series at the specified index.<br>
-link:Words index?[index?] � Returns the index number of the current
-position in the series.<br> link:Words next[next] � Returns the series
-at its next position.<br> link:Words back[back] � Returns the series at
+link:Words_at[at] � Returns the series at the specified index.<br>
+link:Words_index?[index?] � Returns the index number of the current
+position in the series.<br> link:Words_next[next] � Returns the series
+at its next position.<br> link:Words_back[back] � Returns the series at
 its previous position.<br>
 
 

@@ -843,7 +843,7 @@ subblocks of the given block. Implementation:
 
 Analogy to #539
 
-<pre>loop 1 [do-all link:break/return 1[break/return 1] 2]
+<pre>loop 1 [do-all link:break/return_1[break/return 1] 2]
 
 == 2 (1 is expected)</pre>::
 

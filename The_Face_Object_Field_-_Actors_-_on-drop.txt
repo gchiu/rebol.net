@@ -1,5 +1,5 @@
 *on-drop* can be invoked after
-*link:The Face Object Field - Actors - on-click[on-click]*, if a drag
+*link:The_Face_Object_Field_-_Actors_-_on-click[on-click]*, if a drag
 object exists and a mouse up event for either left, middle or right
 button happens.
 

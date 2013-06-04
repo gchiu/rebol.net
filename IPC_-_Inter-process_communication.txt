@@ -19,7 +19,7 @@ challenges does a daemon pose? Can the implementation be such that if
 the endpoints are local, it can use something like a memory mapped file,
 and only require the daemon if remote endpoints are used?
 
-See also: link:IPC - Inter-process communication#Threading[Threading]
+See also: link:IPC_-_Inter-process_communication#Threading[Threading]
 
 
 Endpoints

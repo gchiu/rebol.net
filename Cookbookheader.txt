@@ -1,1 +1,1 @@
-1.  REDIRECT link:Cookbook Header[Cookbook Header]
+1.  REDIRECT link:Cookbook_Header[Cookbook Header]

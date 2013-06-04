@@ -15,47 +15,47 @@ reference to a facet is made via special access functions.
 
 *Typical actors are:* <TABLE><TR><TD WIDTH=50% VALIGN=TOP>
 
-* *link:The Face Object Field - Actors - on-make[on-make]* - when face
+* *link:The_Face_Object_Field_-_Actors_-_on-make[on-make]* - when face
 is first created to initialize special values
-* *link:The Face Object Field - Actors - on-click[on-click]* - when
+* *link:The_Face_Object_Field_-_Actors_-_on-click[on-click]* - when
 mouse button clicked on face
-* *link:The Face Object Field - Actors - on-drag[on-drag]* - when
+* *link:The_Face_Object_Field_-_Actors_-_on-drag[on-drag]* - when
 dragging inside a face
-* *link:The Face Object Field - Actors - on-drag-over[on-drag-over]* -
+* *link:The_Face_Object_Field_-_Actors_-_on-drag-over[on-drag-over]* -
 when dragging and are over a target face
-* *link:The Face Object Field - Actors - on-drop[on-drop]* - when drag
+* *link:The_Face_Object_Field_-_Actors_-_on-drop[on-drop]* - when drag
 has stopped or when a file is dropped
-* *link:The Face Object Field - Actors - on-focus[on-focus]* - when we
+* *link:The_Face_Object_Field_-_Actors_-_on-focus[on-focus]* - when we
 have been given or are losing focus
-* *link:The Face Object Field - Actors - on-get[on-get]* - to fetch
+* *link:The_Face_Object_Field_-_Actors_-_on-get[on-get]* - to fetch
 state values
-* *link:The Face Object Field - Actors - on-set[on-set]* - when state
+* *link:The_Face_Object_Field_-_Actors_-_on-set[on-set]* - when state
 values are set
-* *link:The Face Object Field - Actors - on-clear[on-clear]* - when the
+* *link:The_Face_Object_Field_-_Actors_-_on-clear[on-clear]* - when the
 state values are cleared
-* *link:The Face Object Field - Actors - on-key[on-key]* - when key has
+* *link:The_Face_Object_Field_-_Actors_-_on-key[on-key]* - when key has
 been pressed (for our focus)
 
 </TD><TD VALIGN=TOP>
 
-* *link:The Face Object Field - Actors - on-move[on-move]* - when mouse
+* *link:The_Face_Object_Field_-_Actors_-_on-move[on-move]* - when mouse
 has moved
-* *link:The Face Object Field - Actors - on-over[on-over]* - when mouse
+* *link:The_Face_Object_Field_-_Actors_-_on-over[on-over]* - when mouse
 passes over or away
-* *link:The Face Object Field - Actors - on-reset[on-reset]* - when
+* *link:The_Face_Object_Field_-_Actors_-_on-reset[on-reset]* - when
 reset is needed
-* *link:The Face Object Field - Actors - on-resize[on-resize]* - when
+* *link:The_Face_Object_Field_-_Actors_-_on-resize[on-resize]* - when
 size values have changed
-* *link:The Face Object Field - Actors - on-draw[on-draw]* - when system
+* *link:The_Face_Object_Field_-_Actors_-_on-draw[on-draw]* - when system
 starts to draw the face (create DRAW block)
-* *link:The Face Object Field - Actors - on-scroll[on-scroll]* - when
+* *link:The_Face_Object_Field_-_Actors_-_on-scroll[on-scroll]* - when
 scrolling is needed
 *
-*link:The Face Object Field - Actors - on-scroll-event[on-scroll-event]*
+*link:The_Face_Object_Field_-_Actors_-_on-scroll-event[on-scroll-event]*
 - when the mouse wheel is used
-* *link:The Face Object Field - Actors - on-init[on-init]* - when face
+* *link:The_Face_Object_Field_-_Actors_-_on-init[on-init]* - when face
 and its parent pane are ready (including initial sizing)
-* *link:The Face Object Field - Actors - on-attach[on-attach]* - when a
+* *link:The_Face_Object_Field_-_Actors_-_on-attach[on-attach]* - when a
 face is attached to another face
 
 </TD></TR></TABLE> There is no need to define actors that are not

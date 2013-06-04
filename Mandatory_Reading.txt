@@ -8,13 +8,13 @@ tools for REBOL development.
 management tool that we use internally to keep track of your uploaded
 changes to various REBOL sources, such as R3, Devbase itself, small
 tools, etc.
-* link:Release Process[Release Process] - A cookbook recipe on how the
+* link:Release_Process[Release Process] - A cookbook recipe on how the
 release process for REBOL 3 works.
 
 If you are going to be involved in DocBase writing, these make for a
 good read:
 
-* link:About Cookbooks[About Cookbooks] - The principle behind cookbooks
+* link:About_Cookbooks[About Cookbooks] - The principle behind cookbooks
 and how to add new cookbooks and recipes.
 
 

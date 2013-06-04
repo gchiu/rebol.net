@@ -1,7 +1,7 @@
 R3 provides two methods for implementing dialects. These two methods
 have different goals.
 
-1.  link:Internal dialects[Internal dialects] where the dialect
+1.  link:Internal_dialects[Internal dialects] where the dialect
 implementaiton is done on the C level
 2.  Normal REBOL based dialects using PARSE and REBOL code for
 implementation

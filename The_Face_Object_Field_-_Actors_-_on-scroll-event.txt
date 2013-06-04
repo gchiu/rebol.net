@@ -4,7 +4,7 @@ face to scroll up or down, but not for clicking.
 The argument and the return value is the event object.
 
 Do not confuse this with
-*link:The Face Object Field - Actors - on-scroll[on-scroll]* which is
+*link:The_Face_Object_Field_-_Actors_-_on-scroll[on-scroll]* which is
 used to scroll a face using a SCROLLER style.
 
 

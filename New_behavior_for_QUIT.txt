@@ -2,7 +2,7 @@ This document describes a new behavior for making QUIT work better with
 loaded scripts.
 
 This is just a summary of the method. See
-link:Defining a better QUIT[Defining a better QUIT] for a full
+link:Defining_a_better_QUIT[Defining a better QUIT] for a full
 discussion of the theory.
 
 

@@ -144,7 +144,7 @@ Head bar
 
 At the top of the page, the head bar contains the standard elements:
 
-* link:REBOL logo[REBOL logo]
+* link:REBOL_logo[REBOL logo]
 * Main menu bar
 * Search box
 

@@ -22,7 +22,7 @@ Quick Start
 ^^^^^^^^^^^
 
 Want to quickly find out how to use it? See
-link:RebDev Quick Start[RebDev Quick Start].
+link:RebDev_Quick_Start[RebDev Quick Start].
 
 
 Requirements
@@ -240,7 +240,7 @@ Advanced commands are listed below.
 Example session
 ^^^^^^^^^^^^^^^
 
-Goto link:RebDev Quick Start[RebDev Quick Start]
+Goto link:RebDev_Quick_Start[RebDev Quick Start]
 
 
 Command Ranks

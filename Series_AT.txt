@@ -32,18 +32,18 @@ remove at words 2 insert at words 3 [super] probe words </pre></code>
 Categories
 ++++++++++
 
-link:Categories series[series] � Operations on series, including blocks
-and strings.<br> link:Categories string[string] � Operations for string
+link:Categories_series[series] � Operations on series, including blocks
+and strings.<br> link:Categories_string[string] � Operations for string
 series.<br>
 
 
 See also
 ++++++++
 
-link:Words skip[skip] � Returns the series forward or backward from the
-current position.<br> link:Words pick[pick] � Returns the value at the
-specified position in a series.<br> link:Words head[head] � Returns the
-series at its head.<br> link:Words tail[tail] � Returns the series at
+link:Words_skip[skip] � Returns the series forward or backward from the
+current position.<br> link:Words_pick[pick] � Returns the value at the
+specified position in a series.<br> link:Words_head[head] � Returns the
+series at its head.<br> link:Words_tail[tail] � Returns the series at
 the position after the last value.<br>
 
 

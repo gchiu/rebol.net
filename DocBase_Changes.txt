@@ -2,7 +2,7 @@
 Searches
 ~~~~~~~~
 
-Added link:Special Searches[Special Searches] for one-click searches for
+Added link:Special_Searches[Special Searches] for one-click searches for
 pages that are under construction, are nearly complete, need more
 content or are marked for deletion.
 

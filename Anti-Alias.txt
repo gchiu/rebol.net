@@ -101,16 +101,16 @@ size=1>
 
 <TD ALIGN=LEFT VALIGN=TOP width=25%> Chapters <font size=1>
 
-* link:R3 Introduction[R3 Introduction]
-* link:Getting Started With R3[Getting Started With R3]
-* link:The Graphical User Interface[The Graphical User Interface]
-* link:Script Writing With The Visual Interface Dialect[Script Writing
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
 With The VID Dialect]
 * *Script Writing With Draw*
-* link:The Graphic Object[The Graphic Object]</font></TD>
+* link:The_Graphic_Object[The Graphic Object]</font></TD>
 
 <TD ALIGN=LEFT VALIGN=TOP > <font size=1>
 
-* link:Table Of Contents[Table Of Contents]
+* link:Table_Of_Contents[Table Of Contents]
 
 </font></TD> </TR></TABLE>

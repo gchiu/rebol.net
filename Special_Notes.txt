@@ -2,18 +2,18 @@
 Special Notes, Issues
 ~~~~~~~~~~~~~~~~~~~~~
 
-* link:Boot Info[Boot Info] - system/options and other info
-* link:Boot options[Boot options] - summary of currently active options
-* link:Forgoing faux pas[Forgoing faux pas] - some idiosyncrasies for
+* link:Boot_Info[Boot Info] - system/options and other info
+* link:Boot_options[Boot options] - summary of currently active options
+* link:Forgoing_faux_pas[Forgoing faux pas] - some idiosyncrasies for
 the uninitiated
-* link:Handy Idioms[Handy Idioms] - useful little code snippets
+* link:Handy_Idioms[Handy Idioms] - useful little code snippets
 * Profiler - a starting point
-* link:Porting Recipe[Porting Recipe] - porting to other systems
-* link:New behavior for QUIT[New behavior for QUIT] - making QUIT work
+* link:Porting_Recipe[Porting Recipe] - porting to other systems
+* link:New_behavior_for_QUIT[New behavior for QUIT] - making QUIT work
 better
 * Schemes - also completely revised and simplified
 * Scheme: HTTP[Scheme: HTTP] - new web networking handler
-* link:Specifying Larger Options[Specifying Larger Options] - a
+* link:Specifying_Larger_Options[Specifying Larger Options] - a
 principle
-* link:TCP Port Examples[TCP Port Examples] - example of minimal TCP
+* link:TCP_Port_Examples[TCP Port Examples] - example of minimal TCP
 server and client

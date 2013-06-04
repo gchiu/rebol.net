@@ -1,4 +1,4 @@
-In the link:R3 GUI[R3 GUI], styles depend on link:Draw[DRAW blocks] for
+In the link:R3_GUI[R3 GUI], styles depend on link:Draw[DRAW blocks] for
 specifying graphical rendering.
 
 The GUI Draw-Face function optimizes the draw by reducing the DRAW block

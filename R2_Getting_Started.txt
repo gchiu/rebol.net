@@ -30,7 +30,7 @@ following documentation.
 http://www.rebol.com/docs/setup.html
 
 Getting started with Linux is slightly different see:
-link:Setting up in Linux[Setting up in Linux] .
+link:Setting_up_in_Linux[Setting up in Linux] .
 
 
 Examples

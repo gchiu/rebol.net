@@ -1,9 +1,9 @@
 *on-init* is invoked after
-*link:The Face Object Field - Actors - on-resize[on-resize]*, first on
+*link:The_Face_Object_Field_-_Actors_-_on-resize[on-resize]*, first on
 regular faces and then on trigger faces. At this state the face is
 completely ready for use, and you can for example reset it to a default
 value with the
-*link:The Face Object Field - Actors - on-reset[on-reset]* actor.
+*link:The_Face_Object_Field_-_Actors_-_on-reset[on-reset]* actor.
 
 
 Examples

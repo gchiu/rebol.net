@@ -9,7 +9,7 @@ compound style, using the MAKE-PANEL2 function.
 There is no input argument or return value.
 
 The event that follows on-make is
-*link:The Face Object Field - Actors - on-resize[on-resize]*.
+*link:The_Face_Object_Field_-_Actors_-_on-resize[on-resize]*.
 
 
 Examples

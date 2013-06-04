@@ -1,4 +1,4 @@
-This describes the requestor mechanism in the link:R3 GUI[R3 GUI].
+This describes the requestor mechanism in the link:R3_GUI[R3 GUI].
 
 
 Basics

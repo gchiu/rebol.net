@@ -7,7 +7,7 @@ The argument is the scroller face.
 The actor returns TRUE, if the face was scrolled.
 
 Do not confuse this with
-*link:The Face Object Field - Actors - on-scroll-event[on-scroll-event]*,
+*link:The_Face_Object_Field_-_Actors_-_on-scroll-event[on-scroll-event]*,
 which is for receiving scroll events from the mouse wheel.
 
 

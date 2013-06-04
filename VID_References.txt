@@ -1,2 +1,2 @@
-* link:Script Writing The GUI[Script Writing The GUI]
-* link:VID Reference List[VID Reference List]
+* link:Script_Writing_The_GUI[Script Writing The GUI]
+* link:VID_Reference_List[VID Reference List]

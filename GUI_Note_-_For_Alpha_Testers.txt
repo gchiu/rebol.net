@@ -1,4 +1,4 @@
-These are notes for link:R3 GUI[R3 GUI] alpha testers.
+These are notes for link:R3_GUI[R3 GUI] alpha testers.
 
 
 It Works, but...
@@ -89,20 +89,20 @@ To browse built-in GUI styles, run: *tests/t-styles.r*
 Contributions
 ~~~~~~~~~~~~~
 
-Right now, we are focused on the link:R3 GUI[R3 GUI], and we can use
+Right now, we are focused on the link:R3_GUI[R3 GUI], and we can use
 your help.
 
 For example, people like Henrik have jumped in and offered many good
 features and added nice artistic elements. We are thankful for that, and
 want to get more people involved.
 
-Please read *link:Source Code Contributions[Source Code Contributions]*.
+Please read *link:Source_Code_Contributions[Source Code Contributions]*.
 
 
 Notes
 ~~~~~
 
-1.  Various docs are in link:R3 GUI[R3 GUI] area in this wiki.
+1.  Various docs are in link:R3_GUI[R3 GUI] area in this wiki.
 2.  Some styles still need work, including TEXT
 3.  Layout and resizing may still have glitches
 4.  Remember to *download updates* as they are posted - because they do

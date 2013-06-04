@@ -1,4 +1,4 @@
-The link:R3 GUI[R3 GUI] defines three depths (levels) of skinning:
+The link:R3_GUI[R3 GUI] defines three depths (levels) of skinning:
 
 thin-skin: These are lightweight changes made only to the attributes
 (facets) of GUI elements. These are sometimes called _color schemes_.
