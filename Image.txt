@@ -1,0 +1,85 @@
+
+IMAGE
+~~~~~
+
+Draws an image, with optional scaling, borders, and color keying.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|image |[image!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|upper-left-point |[pair!] |Optional |[multiblock cell omitted]
+
+|upper-right-point |[pair!] |Optional; this is the lower-right point if
+only two points are provided |[multiblock cell omitted]
+
+|lower-left-point |[pair!] |Optional |[multiblock cell omitted]
+
+|lower-right-point |[pair!] |Optional |[multiblock cell omitted]
+
+|key-color |[tuple!] |Optional; color to be rendered as transparent
+|[multiblock cell omitted]
+
+|border |[word!] |Optional; must be the word *border*
+|[multiblock cell omitted]
+
+|pattern-mode |[word!] |Optional |can be *reflect* or *repeat*
+
+|pattern-x |[integer!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|pattern-y |[integer!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|pattern-w |[integer!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|pattern-h |[integer!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples* <p>A normal image:</p> <code><pre> image
+logo.gif </pre></code> image:IMAGE-1.png[IMAGE example 1]
+
+<br> <p>An image at a specific location:</p> <code><pre> image logo.gif
+100x100 </pre></code> image:IMAGE-2.png[IMAGE example 2]
+
+<br> <p>An scaled image at a specific location:</p> <code><pre> image
+logo.gif 100x100 300x200 </pre></code> image:IMAGE-3.png[IMAGE example
+3]
+
+<br> <p>An image with a border using line attributes.</p> <code><pre>
+pen yellow line-width 5 line-pattern red 5 5 image logo.gif 100x100
+border </pre></code> image:IMAGE-4.png[IMAGE example 4]
+
+<br> <p>An image with a patterened border and a key color.</p>
+<code><pre> pen yellow line-width 5 line-pattern red 5 5 image logo.gif
+100x100 254.254.254 border </pre></code> image:IMAGE-5.png[IMAGE example
+5]
+
+<br> <p>An image used as pattern fill in REPEAT mode. The first two
+integers are offset of the pattern the next two defines virtual pattern
+width and height.</p> <p>(In this case the logo.gif image has size
+100x24 pixels so given the specified virtual pattern width and height it
+will be rendered in 6 rows and 5 columns.)</p> <code><pre> line-width 3
+pen yellow image logo.gif 100x100 300x300 border repeat 0 0 500 144
+</pre></code> image:IMAGE-6.png[IMAGE example 6]
+
+<br> <p>The same pattern fill but with shifted offset.</p> <code><pre>
+line-width 3 pen yellow image logo.gif 100x100 300x300 border repeat 50
+12 500 144 </pre></code> image:IMAGE-7.png[IMAGE example 7]
+
+<br> <p>The same pattern fill but in REFLECT mode.</p> <code><pre>
+line-width 3 pen yellow image logo.gif 100x100 300x300 border reflect 0
+0 500 144 </pre></code> image:IMAGE-8.png[IMAGE example 8]
+
+<br> <p>If you provide four points, the image will be scaled to fit
+those positions. This can be use to create perspective images or other
+simple distortions:</p> <code><pre> image logo.gif 50x100 400x00 400x400
+50x200
+
+image logo.gif 10x10 350x200 250x300 50x300 </pre></code>
+image:IMAGE-9.png[IMAGE example 9]
+
+<br>

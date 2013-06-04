@@ -1,0 +1,17 @@
+Micro-VID is a very simple dialect that can be used to create windows
+without having to fiddle with GOBs directly.
+
+It looks like VID although it's much simpler and uses the new fast
+dialect method. Current available dialect words and styles are: _return,
+at, size, button, h1, h2, text, image, slider_. Text styles can take a
+string of text or a block of rich text dialect. A second block (or the
+first block if you use a string for the text) can be used for the
+action. Sizes currently need to be specified manually. (_return_ does
+not do much either.)
+
+Note that Micro-VID is here just for testing. Do not take it too
+seriously. But I'm sure you'll find it useful.
+
+
+VID References
+~~~~~~~~~~~~~~

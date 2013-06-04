@@ -1,0 +1,3 @@
+*History of 3.0 development releases.*
+
+Log has moved to http://www.rebol.com/r3/changes.html["R3 Changes"]

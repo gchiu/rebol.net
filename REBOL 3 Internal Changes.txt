@@ -1,0 +1,31 @@
+
+DLL A-83
+~~~~~~~~
+
+Adds Module related functions and proper datatype handling. Adds
+handling of LOAD, DO, and IMPORT for modules. *This release may be a bit
+unstable and needs testing.*
+
+
+DLL A-82
+~~~~~~~~
+
+
+System, native:
+^^^^^^^^^^^^^^^
+
+* Recycle message is off by default, but is debug option (conjure
+'watch-recycle)
+* Watching object parent copy is debug option (conjure 'watch-obj-copy)
+* Print, Mold, Form allow ANY-TYPE.
+
+
+Mezzanine, user contributed (DevBase):
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* MOVE new - Move a value or span of values in a series
+* IN-DIR new - evaluates a block while in a directory
+* LIST-DIR, CD improvements/fixes
+* CLEAN-PATH/dir option added
+* PROBE allows ANY-TYPE.
+* Intrinsic/BEGIN - fixes bug when file not found

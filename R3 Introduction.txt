@@ -1,0 +1,18 @@
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=70%> The DocBase
+Wiki is a compendium of developer-oriented, articles, notes, specs, etc.
+- of all things of interest to the R3 community!
+
+Contributions are welcome. New content does not have to conform to
+existing format.
+
+As seen below, the navigation system can be found at the bottom of each
+page.
+
+The Docbase Wiki is constantly evolving, not many pages should be
+considered to be completed. It is possible then, that errors may occur
+from time to time. </TD><TD ALIGN=LEFT VALIGN=TOP width=30%>
+</TD></TR></TABLE>
+
+'''''
+
+Category:R3_Introduction

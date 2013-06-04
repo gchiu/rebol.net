@@ -1,0 +1,16 @@
+This is a summary of R3 boot options that are currently implemented:
+
+* *-h* - force halt at end of script - handy if you don't want the
+console to close in such cases.
+* *-q* - keep as quiet as possible, no splash either (still a few minor
+lines).
+* *-t* - trace from host mezz boot point - lots of output - (maybe we
+should move this to after mezz boot?)
+* *-w* - no console window - print output is ignored unless you use ECHO
+function. Also, the primary interactive input loop is bypassed.
+
+The full word versions of those should also be working.
+
+In addition, a script file name can be provided on the command line.
+
+Other options, not covered, probably do not work at this time.

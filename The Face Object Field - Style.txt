@@ -1,0 +1,16 @@
+
+Style
+^^^^^
+
+<TABLE CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=50% VALIGN=TOP>
+*Face/style* is the name of the style, not the style object. It's
+implemented this way mainly for debugging reasons: if you print the
+face, you don't have to see the entire style specification, which can be
+fairly long. </TD><TD VALIGN=TOP> For example, a button object would
+have:
+
+` style: 'button`
+
+The map between style names and their definitions is stored in the main
+module object for the GUI system. New styles can be added to this map as
+needed. </TD></TR></TABLE>

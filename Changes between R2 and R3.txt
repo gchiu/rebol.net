@@ -1,0 +1,92 @@
+This is a new document that is intended to describe the primary changes
+between R2 and R3.
+
+*This document must remain accurate. If you want to add items here,
+please do not "guess" at changes because what appears as a change may be
+a bug or oversight, not the way we really want it.*
+
+
+Data Set (collections) Comparison Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*The set functions only work on blocks, strings, and bitset datatypes.*
+
+Functions affected: DIFFERENCE, EXCLUDE, INTERSECT, UNION, UNIQUE
+
+These functions work on the BLOCK!, STRING!, and BITSET! datatypes but
+no other series types. If you find this is a problem, please notify RT.
+
+Note also that these functions should operate somewhat faster than in
+R2. No speed comparisons have yet been made.
+
+
+HASH datatype replaced with MAP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*The HASH datatype has been removed and replaced with the MAP datatype.*
+
+Functions affected: all datatype action functions related to HASH.
+
+The MAP datatype works like a normal dictionary (associative array)
+type. Key values will be hashed (as necessary), but data values will
+not. In addition, key values that do not exist will return NONE and are
+not considered exceptions. See the *map datatype* for full details.
+
+
+PARSE of String removed INTEGER!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*INTEGER! is no longer supported for PARSE of STRING value.*
+
+I don't think anyone uses it (but maybe I am wrong? Let me know.) It is
+equivalent to:
+
+` intchars: charset "0123456789"`
+
+So, that's a better approach anyway. (And we should make some default
+charsets like that defined from boot.)
+
+
+64 bit INTEGER!
+~~~~~~~~~~~~~~~
+
+The change from 32 bit to 64 bit integer! influences:
+
+
+TO-HEX
+^^^^^^
+
+Care must be taken with any code that assumes the length of the ISSUE!
+data returned by to-hex.
+
+REBOL2::
+
+`>> to-hex 80` +
+`== #00000050`
+
+REBOL3::
+
+`>> to-hex 80` +
+`== #0000000000000050`
+
+See http://www.rebol.net/cgi-bin/r3blog.r?view=0031[R3 Blog article] for
+options and information on the <span style="background-color:yellow;
+color:black;">new</span> */size* refinement.
+
+
+Much More
+~~~~~~~~~
+
+There are many other changes. We will post them here.
+
+
+References
+~~~~~~~~~~
+
+References to other documents describing differences between R2 and R3.
+
+* link:R2 vs. R3 Contexts[R2 vs. R3 Contexts]
+
+
+Cookbook References
+~~~~~~~~~~~~~~~~~~~

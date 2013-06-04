@@ -1,0 +1,419 @@
+Traditionally, languages operate on the concept of names and
+http://en.wikipedia.org/wiki/Scope_(programming)[scopes] which are
+rigidly enforced by the constructs of the language. Rebol has a more
+flexible architecture that allows you to build your own scoping rules
+and constructs.
+
+Default scoping behavior in Rebol is geared toward memory and execution
+efficiency. This choice has historically led some to the incorrect
+conclusion that everything in Rebol is a
+http://en.wikipedia.org/wiki/Global_variable[global variable]. What _is_
+true is that to begin to understand scoping in Rebol, it is essential to
+have a grasp on how reading and writing "variables" is <i>fundamentally
+different</i>.
+
+
+SET-WORD! vs Traditional Assignment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Assigning a variable in most languages involves something like:
+
+<pre> foo = 10; </pre>
+
+This is generally parsed into an abstract syntax tree as three elements.
+Those are:
+
+* The assignment operation (=)
+** Its left hand argument (the variable to assign to)
+** Its right hand argument (the quantity to give it)
+
+Some languages require you to declare the variable in advance of
+assigning a value to it, while others do not. But it is always
+understood that the presence of such a statement in a codebase implies
+that there is (or will be) a variable called "foo" with associated
+memory allocated for it.
+
+A typical assignment in Rebol looks deceptively similar:
+
+<pre> foo: 10 </pre>
+
+But let us do a careful study of what _actually_ happens during an
+assignment.
+
+<pre> ; When you first start the interpreter, Foo has no value
+
+>> foo
+
+* ** Script error: foo has no value
+
+`   ; Create a block containing code that will assign 10 to Foo when it is run`
+
+>> code: [foo: 10] == ...
+
+`   ; Though Code has a value now, we haven't run it (thus no value for Foo...yet)`
+
+>> foo
+
+* ** Script error: foo has no value
+
+`   ; How many items are in the Code block?`
+
+>> length? code == 2
+
+`   ; That's only two.  The first is of type SET-WORD!`
+
+>> type? first code == set-word!
+
+`   ; The second is of type INTEGER!`
+
+>> type? second code == integer!
+
+`   ; Now let us DO the Code`
+
+>> do code == ...
+
+`   ; Foo now evaluates to the quantity 10`
+
+>> foo == 10 </pre>
+
+SET-WORD! is an abstract symbol type, that the parser ascribes to any
+legal word identifier which has a colon at the end. While the DO dialect
+has chosen to interpret a SET-WORD! followed by an expression as an
+assignment, other dialects can ascribe arbitrary meaning to such tokens.
+
+As a fairly realistic example, if you were making a dialect for people
+writing plays it might be natural to use SET-WORD! for characters in
+lines of dialogue...
+
+<pre> dialogue: [ Polonius: "What is the matter, my lord?" Hamlet:
+"Between who?" Polonius: "I mean, the matter that you read, my lord."
+Hamlet: \{Slanders, sir; for the satirical rogue says here that old men
+have grey beards, that their faces are wrinkled, their eyes purging
+thick amber and plum-tree gum, and that they have a plentiful lack of
+wit, together with most weak hams; all which, sir, though I most
+powerfully and potently believe, yet I hold it not honesty to have it
+thus set down, for yourself, sir, shall grow old as I am, if like a crab
+you could go backward.} Polonius: ("Aside") "Though this be madness, yet
+there is method in't." ] </pre>
+
+Although this block contains SET-WORD! elements, if you refrain from
+using DO on it then you can handle them however you like. To get a list
+of unique characters in the above dialogue, we can use COLLECT-WORDS:
+
+<pre> >> collect-words/set dialogue == [Polonius Hamlet] </pre>
+
+Clearly this is not something that represents a series of assignments.
+So merely entering a SET-WORD! in the source does not allocate memory
+for a "Hamlet" variable or a "Polonious" variable. We must look at the
+context in which an expression appears to know its semantics, and that
+applies equally to all Rebol constructs.
+
+Yet still, the DO dialect was able to set and retrieve a value for Foo
+in the earlier example. If Rebol doesn't have "variables" per se, then
+how was this achieved?
+
+
+Words in Context
+~~~~~~~~~~~~~~~~
+
+There is runtime notion of a "context" which is simply understood as an
+object which maps from words to values. Every word can be bound to at
+most one contextual object...and it is possible to programmatically
+unbind and rebind a word into any context you like.
+
+A simple example can demonstrate the principle in action.
+
+<pre> ; Assign "foo" to the someWord in the global context
+
+>> someWord: "foo" == "foo"
+
+`   ; Make a context called scopeA in which someWord is mapped to "bar"`
+
+>> scopeBar: object [someWord: "bar"] == ...
+
+`    ; Make a context called scopeMumble in which someWord is mapped to "mumble"` +
+`    ; Also map PRINT to a function that reverses its argument`
+
+>> scopeMumble: object [ someWord: "mumble" print: func [str] [reverse
+str] ] == ...
+
+`   ; Create some code to print out the value that someWord is mapped to`
+
+>> code: [print someWord] == [print someWord]
+
+`   ; Run the code, and by default we will fetch from the global context`
+
+>> do code foo
+
+`   ; Rebind the words in the code block to scopeBar.` +
+`   ; (print is not rebound since scopeBar does not contain print:)`
+
+>> bind code scopeBar == ...
+
+`   ; Now run the code and we see someWord was rebound to scopeBar's value`
+
+>> do code bar
+
+`   ; Do another rebind, this time to scopeMumble` +
+`   ; (print is rebound this time as well, since we redefined it)`
+
+>> bind code scopeMumble == ...
+
+`   ; This time we don't print "mumble", we reverse it instead!`
+
+>> do code == "elbmum"
+
+`   ; Rebinding print inside of Code won't affect new instances`
+
+>> print "Hello World" Hello World </pre>
+
+You can imagine that this flexibility affords significant power,
+although the potential for redefining the interpreter in a way that
+could seriously confuse things. The self-modifying character is
+something like a game of http://en.wikipedia.org/wiki/Nomic[Nomic], and
+much like in Nomic there are tools to help make parts of the system
+immutable. (See for instance PROTECT.)
+
+::
+  _Note: If you want to jump into the deep end, there is a detailed
+  document describing Rebol's so-called "Bindology"._
+
+
+MAKE OBJECT! vs. CONTEXT vs. OBJECT vs. CONSTRUCT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There is no difference between a context and an object in Rebol,
+although idiomatically the functions used to construct them are applied
+to slightly different cases. MAKE OBJECT! is the basic one, it collects
+all set-words in the top-level code block and makes an object out of
+them, then executes the code in the block, which can have side effects.
+
+<pre> make-employee: func [name id] [ employee: make object! compose [
+name: (name) id: (id) ] return employee ]
+
+e1: make-employee "Alice" 100 e2: make-employee "Bob" 101 </pre>
+
+CONTEXT is just a shortcut for MAKE OBJECT!. CONTEXT is typically used
+in situations where some code contains assignments that are not supposed
+to contaminate the enclosing context. In the example below, the presence
+of a context means that an inner loop index can be given the same name
+as the outer loop index, while not overwriting it:
+
+<pre> fill-terminal-screen: func [letter [char!]] [ for index 1 25 1 [ ;
+'index is local to for context [ index: 0 while [++ index < 80] [ ;
+'index is not local to while prin letter ] ] assert [index <= 25] ;
+would throw an error if 'index was overridden above ] ] </pre>
+
+OBJECT is basically the same as CONTEXT, except the value NONE is is
+appended to the end of the code block so that assignment at the end of
+the code block won't just throw an error, it will assign the NONE as a
+default value.
+
+<pre> ; Put an object specification block into Objspec
+
+>> objspec: [a: 10 b:] == [a: 10 b:]
+
+`   ; A trailing SET-WORD! with no value is unacceptable for CONTEXT!`
+
+>> context objspec
+
+* ** Script error: b: needs a value
+** Where: make context
+** Near: make object! blk
+
+`   ; Note that CONTEXT did not modify the object specification`
+
+>> probe objspec [a: 10 b:] == [a: 10 b:]
+
+`   ; The trailing SET-WORD! with no value is tolerated by OBJECT`
+
+>> foo: object objspec == make object! [ a: 10 b: none ]
+
+`    ; But the specification block itself has been modified`
+
+>> probe objspec [a: 10 b: none] == [a: 10 b: none]
+
+`    ; You can generate another object from the spec`
+
+>> bar: object objspec == make object! [ a: 10 b: none ]
+
+`    ; ...but it will add another none to the end of the spec block`
+
+>> probe objspec [a: 10 b: none none] == [a: 10 b: none none] </pre>
+
+::
+  _Note: Since this can leak if you have a static specification that you
+  reuse several times in the same function, the behavior is under
+  reconsideration for R3. See the Talk:Scoping in Rebol[Talk Page]_
+
+The original code block is modified rather than a copy made to save on
+block copy overhead. OBJECT is typically used to create object
+prototypes, where the object is only created once and all that matters
+is that the right fields are included, and the code block is not reused.
+This happens quite often in GUI systems.
+
+CONSTRUCT is different though: It doesn't do any evaluation, it just
+creates the object and assigns literal values. By default though,
+CONSTRUCT does some tricks:
+
+* The standard words for the logic values - 'true, 'false, 'on, 'off,
+(R3 only: 'yes, 'no) - are converted to their associated logic values.
+The word 'none is also converted to the NONE value.
+* Lit-words are converted to words.
+* Lit-paths are converted to paths.
+* R3 only: Unset values are converted to NONE.
+
+These are all of the rules that are needed to make it easier to use
+CONSTRUCT for its primary purpose: To create objects from script or
+module header blocks. For instance, LOAD in R3 uses CONSTRUCT
+internally.
+
+CONSTRUCT is very forgiving of errors as well, and won't complain if the
+spec block doesn't follow the set-word, value pairs list model.
+CONSTRUCT only takes the immediate symbol after each SET-WORD! and
+throws the rest away, like this:
+
+<pre> >> construct [ a: 10 + 20 print "Hello" b: 30 + 40 ] == make
+object! [ a: 10 b: 30 ] </pre>
+
+If you don't want CONSTRUCT to do those tricks and want to just assign
+the literals as-is, and are lucky enough to be using R3, then use
+CONSTRUCT/only. The /only option means only assign the values, no
+translation. CONSTRUCT/only will even assign unset or error values; that
+kind of thing would throw an error if you used CONTEXT. CONSTRUCT/only
+is typically used to construct objects from spec blocks that are
+generated by other code.
+
+The /only option here is used in the standard REBOL manner: Do the
+"nice" thing by default, and do the more tricky, exact thing with /only.
+As always, /only is the best friend of the experienced REBOL programmer
+doing advanced code.
+
+
+FUNC vs. FUNCT
+~~~~~~~~~~~~~~
+
+The most popular way of defining functions in Rebol historically has
+been using FUNC. In order to allow the programmer to carefully control
+the declaration, it requires you to specifically list which words are to
+be used as local variables.
+
+<pre> ; Initialize foo and bar to be strings with "global" in their
+names
+
+>> foo: "global foo" == "global foo"
+
+>> bar: "global bar" == "global bar"
+
+`   ; Define a test function that calls out foo as a local, but not bar`
+
+>> test: func [/local foo] [ print ["BEFORE(foo):" foo] print
+["BEFORE(bar):" bar]
+
+`   foo: "local foo"` +
+`   bar: "local bar"`
+
+`   print ["AFTER(foo):" foo]` +
+`   print ["AFTER(bar):" bar]` `]` `== ...`
+
+`   ; Run test and see that the global foo is hidden, but not the global bar`
+
+>> test BEFORE(foo): none BEFORE(bar): global bar AFTER(foo): local foo
+AFTER(bar): local bar
+
+`   ; See that the global foo was unchanged`
+
+>> print foo global foo
+
+`   ; But bar was overwritten by the function!`
+
+>> print bar local bar </pre>
+
+It is relatively easy to add a new SET-WORD! to the body of a function
+that one intends to be local and forget to add it to the /LOCAL list.
+It's also easy to forget to remove a local after a SET-WORD! has been
+deleted or renamed.
+
+Yet there is an efficiency gain by coding in this way, because when the
+function object is being constructed there is no need to scan the body
+for SET-WORD! instances. By providing the list of locals the programmer
+assists the interpreter, reducing the time it takes to create the
+function instance (though it does not affect the time it takes to _call_
+the function after the creation).
+
+Savvy Rebolers have known it's possible to scan the body of the function
+for SET-WORD! and make them local by default. As of
+http://www.rebol.com/article/0447.html[Rebol 2.7.7] this has shipped
+with the interpreter as something called FUNCT.
+
+<pre> ; Initialize foo and bar to be strings with "global" in their
+names
+
+>> foo: "global foo" == "global foo"
+
+>> bar: "global bar" == "global bar"
+
+`   ; Define a test function that automatically makes SET-WORD! local by default`
+
+>> test: funct [] [ print ["BEFORE(foo):" foo] print ["BEFORE(bar):"
+bar]
+
+`   foo: "local foo"` +
+`   bar: "local bar"`
+
+`   print ["AFTER(foo):" foo]` +
+`   print ["AFTER(bar):" bar]` `]` `== ...`
+
+`   ; Run test and see that the global foo and bar are hidden`
+
+>> test BEFORE(foo): none BEFORE(bar): none AFTER(foo): local foo
+AFTER(bar): local bar
+
+`   ; See that the global foo was unchanged`
+
+>> print foo global foo
+
+`   ; And the global bar was also left alone!`
+
+>> print bar global bar </pre>
+
+Though it's only one "T" of difference, it has a significant
+effect&mdash;and will likely become the preferred option for those
+writing functions where you don't need more exact control over which
+words are declared as local variables. Sometimes you don't want to
+collect all of the set-words in a function, such as in functions that
+build objects. You can also specify locals directly with functions
+created with FUNCT if you need to, which happens when you assign local
+variables using methods other than with set-words, such as with certain
+PARSE actions. FUNC also does less work at creation time, so it's
+faster.
+
+FUNCT also lets you bind words to a local object when you use the /with
+option. These words effectively act like what those familiar with
+languages like C would call static local variables. The /with option
+takes an extra argument that can either be an initialization block, a
+map value to convert to an object, or an existing object to bind too.
+That last one can be used to implement what the C++ people call "friend
+functions". FUNCT/with can be a very powerful and flexible tool.
+
+
+Why "FUNCT"
+^^^^^^^^^^^
+
+The name "FUNCT" doesn't mean anything, so why did we pick it? The
+reason is that there isn't another function in any other language that
+does everything that FUNCT does, so noone has come up with a name for
+the concept. The names "function", "functor" and even "lambda" have
+specific meanings, and FUNCT isn't any one of those.
+
+We used to have a FUNCTOR function (that wasn't used) and there was a
+proposal to change the function to another meaning that would get wider
+use, but that proposal was rejected because then the function would no
+longer be a functor. Instead the proposed behavior was added to FUNCT as
+the /with option, and FUNCTOR was removed due to lack of use.
+
+When you have a new concept you have to give it a name, and we chose a
+short name because the function was going to get a _lot_ of use. In
+general we don't like abbreviated names, but we make exceptions for
+cases like this where there is no exact English word for the concept.
+Thus, FUNCT.

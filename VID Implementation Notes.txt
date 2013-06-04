@@ -1,0 +1,554 @@
+Currently various non-organized notes.
+
+
+Reference links
+~~~~~~~~~~~~~~~
+
+
+FACE object
+~~~~~~~~~~~
+
+`   gob: ; reference to the main gob used to render the face.` +
+`   feel: ; object containing the feel functions` +
+`         ; they handle events (from user and from app)` +
+`         ; they produce events (eg. lower level event can produce higher level one)` +
+`         ; they should never change the gobs directly` +
+`   look: ; object containing the look functions` +
+`         ; they handle the gobs that render the face` +
+`      none` +
+`   style: 'face ; not sure if useful` +
+`   action: none ; action function - receives higher level events` +
+`                ; maybe it should be a block of functions?` +
+`                ; or we can have lower level listeners block and action` +
+`                ; only gets higher level events that are not consumed by listeners` +
+`   parent: none ; container face (?)` +
+`   pane: [ ] ; contained faces` +
+`   size: stretch: shrink: 0x0` +
+`   spec: none ; spec object (style arguments)` +
+`   attached: [ ] ; list of attached faces - faces that receive action events from this face` +
+`   ; other style specific fields`
+
+
+FEEL object
+~~~~~~~~~~~
+
+* high granularity (many small functions)
+* change face state, then call look functions to update rendering
+* functions will most likely get block of events instead of just a
+single event. more on this soon.
+
+`   ; from user` +
+`   on-click: func [face event offset] [` +
+`       ; click events` +
+`       ; event/type one of: up down alt-up alt-down aux-up aux-down (?)` +
+`       ; offset within main gob? or should we pass gob and offset?` +
+`   ]` +
+`   ; on-double-click ??` +
+`   on-move: func [face event offset] [` +
+`       ; move events` +
+`       ; mouse is being moved over one of the face gobs` +
+`       ; i think it should probably get it too if mouse was inside and is moved outside` +
+`   ]` +
+`   ; from app` +
+`   on-init: func [face specs] [` +
+`       ; initialize face state based on VID specs` +
+`   ]` +
+`   on-update: func [face new-specs] [` +
+`       ; update face data` +
+`       ; new-specs is like on-init specs` +
+`       ; eg change face text or state etc.` +
+`   ]` +
+`   ; from other ui elements` +
+`   on-action: func [face event] [` +
+`       ; event is a block` +
+`       ; [word! ...] event/1 is the type of event` +
+`       ; common types: [hit] [value <x>] [scroll <offset>]` +
+`       ; [scroll-change <offset> <area-size> <visible-size>]` +
+`   ]`
+
+
+LOOK object
+~~~~~~~~~~~
+
+Render face or update face rendering based on face data/state, or events
+from other faces
+
+`   ; from app` +
+`   on-init: func [face specs] [` +
+`       ; initialize (render gobs for the first time)` +
+`       ; size usually unknown at this time, will get resize later` +
+`       ; must set face/size, face/shrink and face/stretch appropriately` +
+`   ]` +
+`   ; from feel or apps` +
+`   on-update: func [face new-specs] [` +
+`       ; face state changed, or new specs (new-specs can be none)` +
+`       ; may call on-child-resize on parent if size, shrink or stretch changed` +
+`       ; parent will call on-resize if necessary` +
+`   ]` +
+`   on-resize: func [face size] [` +
+`       ; face size changed` +
+`       ; should try to be as fast as possible` +
+`   ]` +
+`   ; from other UI code` +
+`   on-scroll: func [face offset] [` +
+`       ; scroll by offset` +
+`       ; eg scroll event from a scroller` +
+`   ]` +
+`   on-child-resize: func [face min-size max-size] [` +
+`       ; for container styles` +
+`       ; one of the contained faces' size,shrink,stretch changed (after an update - eg new label text)` +
+`       ; may send same event to parent` +
+`   ]` +
+`   ; etc - need to think about this. maybe just one function instead of many.`
+
+
+Attaching faces
+~~~~~~~~~~~~~~~
+
+Face can be attached to another face; doing that means that it will send
+action events to the attached face. Eg. you can attach a scroller to a
+scrollable area.
+
+
+Drag and drop
+~~~~~~~~~~~~~
+
+feel/on-click can return a gob! or a block! with [gob! opt [pair!
+pair!]]. The returned object will be dragged when mouse is moved. If two
+pairs are returned (min-offset and max-offset), the gob is constrained
+in that area (example: dragging the knob of a slider or scroller); also
+the gob is assumed to be already shown (ie added to a window etc.), and
+the system will only change its offset, and send call face/feel/on-drag
+on the face that was clicked. Dragging ends when on-click returns none
+(ie on mouse up). If only a gob is returned, it is added to the window
+gob (but only at the first mouse move - not immediately after the click)
+and the user can drag it freely (future: will be its own window and be
+draggable outside of the face's window). While user is dragging, faces
+under the cursor get face/feel/on-drag-over, which can return a logic!
+to indicate if it accepts a drop or not (cursor image will change based
+on this in the future). Dragging ends on any event that would cause
+on-click to be called; in this case, face/feel/on-drop is called on the
+face under the mouse at the time of the drop, with gob/data as argument.
+
+
+Panels
+~~~~~~
+
+A panel is a container, it holds one face (usually one column table) and
+may render a box with text around it, add a scrollbar, and so on.
+
+
+Groups
+~~~~~~
+
+A group establishes a relationship between faces. It can group panels
+together to form a tab panel; it can group faces together (eg mutually
+exclusive radio buttons); or it can just create a table that holds the
+contained faces. How to best implement all this not decided yet.
+
+
+Layout process
+~~~~~~~~~~~~~~
+
+Layout starts with a one column table. Styles (including groups and
+panels) are added to it. Then, the table is initialized. The table's
+on-init will call on-init on all subfaces. It computes the min and max
+sizes for itself and returns that. So, a size for the layout is
+determined, and the table's on-resize is called. The table computes the
+offset and size of each subface and calls on-resize on them.
+
+
+Containers
+~~~~~~~~~~
+
+Since all the layout is done by the containers, they become important
+styles. Containers should be able to not only justify their contents,
+but also left, center or right align them, in both directions.
+
+
+Dialect Evaluation
+~~~~~~~~~~~~~~~~~~
+
+Here are a few notes on VID dialect evaluation.
+
+VID, like the draw, text, and effect dialects is keyword driven with
+position independent, datatype-based argument specification. That is,
+arguments of different datatypes can appear *in any order and all
+arguments are optional*. This characteristic is important because it
+removes the requirement that users memorize argument order - a virtual
+impossibility given the number of styles multiplied by the number of
+arguments.
+
+The valid keywords for VID span several contexts:
+
+* *command words* (like ORIGIN or RETURN)
+* *master style names*
+* *local style names*
+* *special keywords* (like BOLD or CENTER)
+* *normal script variables and paths*
+
+In addition, style value variables must be handled (set words).
+
+
+Using DELECT
+^^^^^^^^^^^^
+
+One possible way to efficiently parse the VID dialect is to use the
+DELECT function - the same function that is used to parse draw, text,
+and effect blocks. However, we will want to make a few small changes to
+make VID a bit easier to process.
+
+
+Multiple Contexts
+^^^^^^^^^^^^^^^^^
+
+The general method would be to specify the commands, styles, and
+keywords to allow DELECT to recognize them and validate their argument
+values. However, currently DELECT can only handle a single context, so
+that *must be expanded to allow multiple contexts*. This allows us to
+keep the commands, master styles, and local styles as separate blocks
+and eliminate a lot of garbage during the the parse.
+
+`   delect/multi dialect [commands master-styles local-styles ...]`
+
+
+Argument Spec and Map
+^^^^^^^^^^^^^^^^^^^^^
+
+In addition, it would be good to specify arguments by name and allow
+access by name. This can be done *either by mapping argument values to
+an object or by applying a function*. The former gives us a single
+"spec" object that we can save, but the latter gives us a direct access
+method, eliminating the need to use paths to access the values.
+
+For example a keyword entry (here as a style) for the DELECT dialect
+would become:
+
+<pre> button: context [ name: string! size: pair! width: integer! color:
+tuple! alt-color: tuple! action: block! alt-action: block! ] </pre>
+
+After the button style is parsed, the object can be cloned with the
+argument values mapped as provided.
+
+Or an alternate method would be to use the same syntax as function
+definitions:
+
+<pre> button: [ name [string!] size [pair!] width [integer!] color
+[tuple!] alt-color [tuple!] action [block!] alt-action [block!] ] </pre>
+
+Then call a function (via APPLY) that would accept those arguments.
+
+
+Callback Function
+^^^^^^^^^^^^^^^^^
+
+And finally, DELECT currently parses the entire dialect and returns a
+block of blocks, one for each command. However, in the interest of
+saving memory, it would be possible to *allow DELECT to evaluate a
+callback function for each command/style*. The advantage here is that
+the argument block can be reused each time (just as it is in the native
+draw, text, and effect dialects).
+
+
+Do not forget...
+~~~~~~~~~~~~~~~~
+
+* Accessibility
+* Disabled state
+* Keyboard
+* Tooltips
+* Data validation and constraints
+
+
+We need...
+~~~~~~~~~~
+
+* window options (eg min-size)
+
+
+Open questions
+~~~~~~~~~~~~~~
+
+
+1) Should face/gob be allowed to be a block of gobs?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It can have a gob/pane of gobs, but it is not a block of gobs.
+User:Carl[Carl] 15:03, 28 June 2007 (EDT)
+
+The reason is, if the "main" gob is completely transparent and is just
+used to hold the subgobs, would it not be better to NOT adding it to the
+hierarchy? User:Gabriele[Gabriele] 14:59, 28 June 2007 (EDT)
+
+Is there such a case of a collection of that type? Do you mean like a
+text box with scroll bar as an example? Perhaps. For me, the one that
+comes to mind is a panel or group, but you still want it in the
+hierarchy so it can be handled as a group. User:Carl[Carl] 16:07, 28
+June 2007 (EDT)
+
+A simple example could be even a radio or check button with label (like
+R2 check-line) - you might have just two gobs (one that renders the
+button plus one that renders the text) for example (i know this could
+probably be done with draw on a single gob, but let's pretend that's not
+the case :), and the "container" gob would then just be a container.
+Maybe this can always be avoided in practice by having the main gob do
+something useful, so I don't know, it just seems something to keep in
+mind. User:Gabriele[Gabriele] 03:11, 29 June 2007 (EDT)
+
+Having one main gob that holds sub-gobs for a style make it easier to
+render 'disabled' or 'selected' state of that style.
+--User:Rebolek[rebolek] 04:53, 29 June 2007 (EDT)
+
+Rebolek, that is not necessarily true. First of all, such kind of
+rendering is to be handled by the look object, that will know every
+details of the gobs, and may be able to do any optimization - external
+code should never care about what's inside face/gob.
+User:Gabriele[Gabriele] 16:08, 29 June 2007 (EDT)
+
+Yes Gabriele, I'm not talking about external code - it would be easier
+for the look object when for example setting the disabled look to apply
+effect let say [luma -50 blur] on main gob than on every gob. Also you
+need to call SHOW on one gob instead a block of gobs (which may be
+faster, but I'm not sure on that). It will make style coding a bit
+easier I think. --User:Rebolek[rebolek] 12:49, 2 July 2007 (EDT)
+
+Except that if the main gob is already is use you can't set an /effect
+for it, and even if it's not in use I don't think /effect would apply to
+contained gobs. So, there is no much difference. It's possible that the
+block of gobs is not necessary because the main gob can always be used
+to something, but I don't know yet. User:Gabriele[Gabriele] 15:52, 2
+July 2007 (EDT)
+
+
+2) Panel is a style, while group seems more like a dialect command. What
+do you think?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is quite possible. As you implement it, you will be able to tell if
+that is true. The advantage of it being a style is that it can be
+accessed and operated on like a style. For instance: moved, scrolled,
+disabled, "get-contents", etc. User:Carl[Carl] 15:04, 28 June 2007 (EDT)
+
+Agreed - I'd say it's a command that generates a style, but the
+generated style changes with context. I'm still not sure if there are
+cases where an actual face should not be generated.
+User:Gabriele[Gabriele] 14:59, 28 June 2007 (EDT)
+
+Ah, now I understand your point. I always considered that it would
+create panel, not just change the layout. So, it would always be a face.
+- User:Carl[Carl] 16:03, 28 June 2007 (EDT)
+
+
+3) What happens if you put something that is not a panel in a tabbed
+group?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A good question. It can give an error, or in some cases there may be
+another use. But, perhaps we can ask that question of any group, such as
+radio buttons: what if there is a field in there too? Seems ok?
+User:Carl[Carl] 15:07, 28 June 2007 (EDT)
+
+I think field in radio group would be ok (basically field gets ignored,
+or more specifically, it would ignore the events coming from the radio
+buttons). Not sure what should happen if there are other
+mutually-exclusive styles though. We may need to see what happens in
+practice... User:Gabriele[Gabriele] 15:15, 28 June 2007 (EDT)
+
+It seems useful to allow it. For example, you can have radio "A" and
+radio "B" then some text (or even a field or image), then radio "C". For
+example, the text may just be additional comments on the option.
+User:Carl[Carl] 15:56, 28 June 2007 (EDT)
+
+
+4) Dynamic resizing of all styles?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The layout method allows it to be dynamic as well, correct? So if
+someone resizes a window or inner panel, the styles know what to do?
+User:Carl[Carl] 15:04, 28 June 2007 (EDT)
+
+Exactly - the same process happens during resize, except all the
+initialization has been done already so it should be much faster.
+Basically layout of content is delegated to container, so you can have
+different kinds of containers that work in different ways. (This is the
+way MUI etc. work, it is the "traditional" way of doing GUIs ;)
+User:Gabriele[Gabriele] 15:15, 28 June 2007 (EDT)
+
+Yes, but it is a bit tricky to determine priorities. For example, I
+might have a list that says it is 50% wide next to something that has no
+specified size. Anyway, I assume we can get this all figured out, as did
+MUI and so many others over the years. (Remember Sun "News" GUI? From
+Gosling. Now there was a spec. ;) User:Carl[Carl] 15:59, 28 June 2007
+(EDT)
+
+Normally, it should be the container to determine the sizes, not the
+faces; the faces only determine how much they can stretch and shrink. (A
+model that may be interesting to use, instead of the "traditional" one,
+would be the one used by TeX of size, shrink and stretch. It is very
+flexible.) So, the 50% would be a weight not a size - how much does the
+face shrink or stretch when the container shrinks or stretches.
+User:Gabriele[Gabriele] 03:16, 29 June 2007 (EDT)
+
+
+5) Do we want a face/spec object?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To answer, let me define it this way: the face/spec would hold the
+attributes provided by the user to specify the look and feel of the
+face.
+
+Generally, the spec is static and is not needed once the interface has
+been created. But, there are two reasons to keep the spec:
+
+1.  Reflection - to be able to output the spec, in terms of a layout.
+This is useful for GUI building tools, but for most app GUI's it is not
+important information.
+2.  Errors - to be able to generate a meaningful error message. The main
+thing: the error may want to refer to the name of the style. If we can
+do that some other way, then keeping the rest of the spec may not
+contribute that much to error messages.
+
+Those are my current thoughts on the question. User:Carl[Carl] 11:51, 9
+July 2007 (EDT)
+
+
+6) (Related to previous one) How do we handle specs?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+DELECT will handle arguments by datatype (mainly). For different styles,
+they may be mapped to different things; how do we refer to them? DELECT
+will give us a block, and we could refer to them by position; however,
+this means that we need to change the code whenever we decide to change
+those positions for any reason. If we make an object out of the argument
+block, so that we refer to them by name, what names do we use? Something
+like specs/first-tuple, specs/second-tuple and so on? specs/color1,
+specs/color2? specs/first-block etc. or specs/action, specs/alt-action
+etc? For panels, specs/action would actually be the contents of the
+panel, so it would be confusing... I'm still not sure how to make this
+work well. User:Gabriele[Gabriele] 03:09, 2 July 2007 (EDT)
+
+I can never give a perfect answer, because I find the perfect answer
+during the coding process. However, what we use for the graphics engine
+in R3 is to refer to the args by position, but as you point out, it is
+unfriendly at higher levels. A better method would be to map it quickly
+to an intermediate object by using SET (eliminating normal object
+creation overhead). Then, what you must maintain is the 1to1 map between
+the DELECT and the object words. (Of course, you are right that the
+names may vary, such as action word above.) You could even make an
+object that is the definition that creates the DELECT block and the
+object name block. That would be a good method I think. And of course,
+the other approach may be to modify DELECT to collect the same datatypes
+into blocks. So, you would have all the INTEGERS, TUPLES, PAIRS, etc. We
+would need to think more about how to best do that to avoid a lot of GC.
+User:Carl[Carl] 12:13, 9 July 2007 (EDT)
+
+So, after some chat on AltME, a possible solution is (also answers
+previous question):
+
+`   text-style/spec: [` +
+`       text: string!` +
+`       color: tuple!` +
+`       color-back: tuple!` +
+`       text-rich: block!` +
+`       action: block!` +
+`       ; ...` +
+`   ]` +
+`   delect-object: context [` +
+`       ; ...` +
+`       text: get text-style/spec` +
+`       ; ...` +
+`   ]` +
+`   ; ...` +
+`   ; result from DELECT` +
+`   set style/spec next delect-block` +
+`   ; ...`
+
+-User:Gabriele[Gabriele] 01:36, 10 July 2007 (EDT)
+
+
+7) Do we want to use the size, shrink, stretch model for resizing?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is an interesting model used by TeX when doing justification.
+Applied to faces, it would be like this: a face has a "normal" size,
+that is considered the "best" size for that face. Then, it has an amount
+of "shrinkability" - how much smaller than that it can get. If size is
+100 and shrink is 10, then it can go as low as 90, but not lower. Then,
+it has an amount of "stretchability" - how fast it can grow in size; the
+difference with the shrinkability is that stretchability is not limited:
+if size is 100 and stretch is 10, it can still go to 120. Faces with
+higher stretch grow faster than faces with lower stretch. TeX also
+introduce "infinite" stretchability, that is the ability of a face to
+take over all the space so that the other faces do not stretch at all.
+TeX has actually four levels of infinity, so that a higher level
+infinity takes over all the space of lower level infinities. At the same
+level they share the space. The computation for the resizing would be as
+follows:
+
+`   ; assume face/size, face/shrink, and face/stretch` +
+`   ; assume a sum-of function that is basically a foreach that does a sum,` +
+`   ; just to avoid cluttering the example` +
+`   ; let's pretend we are working on one axis only (which is mostly true in practice)` +
+`   container/size: sum-of face container/pane [face/size]` +
+`   container/shrink: sum-of face container/pane [face/shrink]` +
+`   container/stretch: sum-of face container/pane [face/stretch]` +
+`   ; note, they don't need to be recomputed at each resize unless they change (update event)` +
+`   either container/size > available-size [` +
+`       ; must shrink` +
+`       ratio: available-size - container/size / container/shrink` +
+`       ; ratio should never be < -1. we assume available-size has been constrained already` +
+`       ; by the container's shrinkability` +
+`       foreach face container/pane [face/actual-size: face/shrink * ratio + face/size]` +
+`   ] [` +
+`       ; must stretch` +
+`       ratio: available-size - container/size / container/stretch` +
+`       ; ratio can be > 1` +
+`       foreach face container/pane [face/actual-size: face/stretch * ratio + face/size]` +
+`   ]`
+
+I will make an example of how to handle infinity levels if you are
+interested (it gets a bit more complicated, but not much).
+User:Gabriele[Gabriele] 03:35, 29 June 2007 (EDT)
+
+The metric is: will average web-page authors be able to understand it?
+They know how HTML tables work - so if we can be close to that model
+(but more powerful), the more they will understand it. I want to be sure
+that most people can use VID. So, the best way to make decisions like
+this: we must write some examples and try it out. We will quickly draw
+conclusions and go from there. User:Carl[Carl] 14:19, 9 July 2007 (EDT)
+
+
+8) Do we want faces to have their own margins and padding?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After doing proto 1, I think it's probably a good idea to have at least
+per-face margins. Padding is probably not necessary (any padding can be
+done by the look object and does not influence the layout process). One
+big reason is that when you have a scrollable area and a scroller you
+usually don't want any space between them. What do you think?
+User:Gabriele[Gabriele] 03:36, 16 July 2007 (EDT)
+
+
+9) Do we want a "spacer" style that just eats space?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It probably does not need to be accessible as a face by users (although
+there may be uses for it...), mainly a way for the container to remember
+when resizing something like PAD command has been used in the dialect.
+But we can also make it a real style, then PAD command (etc) is not
+necessary anymore. User:Gabriele[Gabriele] 04:14, 29 June 2007 (EDT)
+
+That may be fine, especially if faces are efficient and minimized for
+such cases. User:Carl[Carl] 14:22, 9 July 2007 (EDT)
+
+
+10) How to call "spacer" styles?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the current implementation, we have three different spacer styles:
+skip, space and filler. skip just skips the current cell, and it does
+not take space. space takes a small space and. filler is greedy and
+takes as much space as possible (not too much in the current
+implementation - we can change that), normally used to push things to
+the left or to the right and so on. User:Gabriele[Gabriele] 14:28, 14
+July 2007 (EDT)

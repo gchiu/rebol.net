@@ -1,0 +1,109 @@
+*え～、質よりもまずは量をという方針でのんびりやってます。ご了承ください。*
+
+
+What's NEW!
+~~~~~~~~~~~
+
+* link:Why-rebol/ja[Why REBOL?を訳](2010-Aug-11)
+* link:Rebol-intro/ja[How is REBOL Different?を訳](2010-Aug-11)
+* link:What_is_Rebol(Jpn)[What is
+REBOLを]、元版の改定に従い再訳(2010-Aug-10)
+* 間をすっ飛ばしてlink:REBOL-Core_User_Manual_Chap15/ja[Chapter 15.
+Parsing](R2.x)を訳(2010-Feb-18)
+* link:REBOL-Core_User_Manual_Chap6/ja[Chapter 6.
+Series](未完。セクション1のみ)(2010-Jan-16)
+* link:Characteristics_of_REBOL/ja[REBOLの特徴をアップ](2010-Jan-16)
+* link:What_is_Rebol(Jpn)[What is Rebol](ver.
+0.5)を12-Sep-2009版に合わせたのと、出だしの1パラグラフがおかしかったので再訳(16-Sep-2009)
+*
+link:PreRebol30ManualGuideWritingCodeCodeDefiningFunctions/ja[Preliminary
+REBOL 3 Guide: Code: Defining functionsを追加](11-Sep-2009(
+* link:What_is_Rebol(Jpn)[What is Rebolを]6-Sep-2009版に合わせて再訳
+* link:PreRebol30ManualGuideWritingCodeCodeRepeatedEvaluation/ja[REBOL 3
+Guide: Code: Repeated evaluation (loops)] (01-Sep-2009)
+* キーワード辞書に"series"追加 (26-Aug.-2009)
+* Preliminary REBOL 3 Manual: Guide: Code: Conditional evaluation
+(30-July-2009)
+* Preliminary REBOL 3 Manual: Guide: Code: How code is evaluated
+(21-July-2009)
+* REBOL/Core User Manual (V 2.3.0) Chap. 5 Scripts (16-July-2009)
+
+
+For New Users
+~~~~~~~~~~~~~
+
+
+What is REBOL
+^^^^^^^^^^^^^
+
+* link:What_is_Rebol(Jpn)[What is REBOL]
+* link:Rebol-intro/ja[How is REBOL Different?]
+* link:Why-rebol/ja[Why REBOL?]
+
+
+REBOL Tutorials and Examples
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+To Get Start
+++++++++++++
+
+
+REBOL Quick Start
+
+* link:REBOL_Quick_Start_Part1/ja[REBOL Quick Start Part1]
+* link:REBOL_Quick_Start_Part2/ja[REBOL Quick Start Part2]
+* link:REBOL_Quick_Start_Part3/ja[REBOL Quick Start Part3]
+* link:REBOL_Quick_Start_Part4/ja[REBOL Quick Start Part4]
+* link:REBOL_Quick_Start_Part5/ja[REBOL Quick Start Part5]
+
+
+Just One Line
+
+* link:Just_One_Line/ja[Just One Line]
+
+
+New REBOL FAQ
+
+* link:New_REBOL_FAQ/ja[New REBOL FAQ]
+
+
+For General Programming
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+REBOL/Core User Manual (V 2.3.0)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* link:REBOL-Core_User_Manual_Chap1/ja[Chapter 1. Introduction]:
+REBOL/Coreの紹介、マニュアルに関しての情報、テクニカルサポートに関しての情報、それからコメントの送り先。
+* link:REBOL-Core_User_Manual_Chap2/ja[Chapter 2. Operation]:
+インストール、取り掛かり、そしてREBOLセッションの終了。REBOLコンソールの利用。REBOLからのヘルプ情報の取得。エラーメッセージ。REBOLのアップグレード。
+* link:REBOL-Core_User_Manual_Chap3/ja[Chapter 3. Quick Tour]:
+値、ワード、ブロック、変数、評価、関数、パス、オブジェクト、スクリプト、ファイル、そしてネットワーキングの簡単な紹介。
+* link:REBOL-Core_User_Manual_Chap4/ja[Chapter 4. Expressions]:
+ブロックや値、ワードがどのように評価されるか。条件、繰り返し、選択式。評価の停止。エラーからの回復。
+* link:REBOL-Core_User_Manual_Chap5/ja[Cahpter 5. Scripts]:
+スクリプトヘッダ。スクリプトへのコマンドラインからの引数。スクリプトの読み込み、セーブ、コメント付け。いかに良いスクリプトを書くかについてのスタイルガイド。
+* link:REBOL-Core_User_Manual_Chap6/ja[Chapter 6. Series]:
+SeriesはREBOLの基礎だ。series関数とデータ型について述べる。seriesの作成とコピー。Seriesの繰り返し。seriesのサーチとソート。データセットとしてのseries。(未完。セクション1のみ)
+* link:REBOL-Core_User_Manual_Chap15/ja[Chapter 15. Parsing]:
+文字列の分割。文法ルール。入力のスキップ。型のマッチ。再帰と評価。
+
+
+Preliminary REBOL 3.0 Manual
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* link:Preliminary_Rebol_3.0_Manual_Home/ja[Preliminary REBOL 3.0 Manual
+Home]
+
+
+Special Contents for Japanese Version Documents
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* link:Key_Words_Dictionary_for/ja[キーワード辞書]
+* link:Characteristics_of_REBOL/ja[REBOLの特徴]
+
+<div style="background-color:#f0e090; border:thin solid black;"> test
+
+test </div>

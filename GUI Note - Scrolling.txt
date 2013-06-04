@@ -1,0 +1,74 @@
+This describes the main details about scrolling in the link:R3 GUI[R3
+GUI].
+
+
+Basics
+~~~~~~
+
+If you plan on building custom styles that require scrolling, then you
+will need to understand how scrolling works. Although a lot of work was
+done to keep the design as simple as possible, there are still several
+details that you will need to know in order to build scrollable styles.
+
+
+Methods of Scrolling
+^^^^^^^^^^^^^^^^^^^^
+
+In general, scrolling is done with:
+
+* *Scrollbars* - clicking or dragging scroll bars will scroll the
+content.
+* *Scroll events* - input from special devices, such as scroll wheels.
+* *Content* - moving or changing content that causes scrolling. For
+example, moving cursor keys within text.
+* *API* - functions that scroll content programmatically.
+
+Each of these will be explained in detail below.
+
+
+What can be scrolled?
+^^^^^^^^^^^^^^^^^^^^^
+
+*Any style that provides an ON-SCROLL actor can be scrolled.* Several
+such styles are provided in the standard system for scrolling panels,
+text, lists, and images. To set-up scrolling for those styles is simple
+and does not require any special knowledge.
+
+It should be noted that scrolling is an action of the style and is not
+dependent on the existence of a scrollbar. It is possible to have
+scrollable content that has no scrollbars. In such cases, other methods
+of input are available, such as a scroll wheel or arrow buttons.
+
+For most styles the ON-SCROLL actor will change the offset of a _content
+GOB_ to move it relative to a _display or clipping GOB_. However, that
+is only one approach. A style can perform any action for ON-SCROLL. For
+example, a 3D style may perform a zoom action for an ON-SCROLL action.
+
+
+Todo
+~~~~
+
+Scrollbar - state values: value and delta as percentages.
+
+Scrollbar are state, so get/set-face. Content style uses facet as
+property, therefore get/set-facet (not state).
+
+Auto attachment. The common case.
+
+Named attachement. For special purposes.
+
+Face initialization sequence for auto scrolling.
+
+Hover scrolling.
+
+Changing content from scrollbar.
+
+Changing scrollbars from content.
+
+The actors:
+
+on-scroll
+
+on-scroll-event (wheel)
+
+on-delta

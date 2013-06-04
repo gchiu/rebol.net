@@ -1,0 +1,22 @@
+R3 provides two methods for implementing dialects. These two methods
+have different goals.
+
+1.  link:Internal dialects[Internal dialects] where the dialect
+implementaiton is done on the C level
+2.  Normal REBOL based dialects using PARSE and REBOL code for
+implementation
+
+
+Why two different approaches?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Carl, mentioned the origin for the two different concepts:
+
+1.  PARSE provides a full range of dialects.
+2.  Most dialects don't require that much power.
+3.  Dialects like DRAW, EFFECT, REBCODE are small subsets
+4.  A faster technique (than parse) can be used for such dialects.
+5.  That technique was used for DRAW, etc. (native evaluated)
+6.  I decided might as well allow it to be REBOL level too.
+
+DELECT is also performing JIB (Just in time binding).

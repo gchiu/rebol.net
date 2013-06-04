@@ -1,0 +1,51 @@
+This page explains what we mean by an "alpha test".
+
+
+What's an Alpha?
+~~~~~~~~~~~~~~~~
+
+If you've never tested an alpha release before, then there are a few
+important things to know:
+
+* *It runs, but it will have range of problems.*
+* *Some parts of the design are still missing.*
+* *The final design is not cast in stone.*
+* *It's better to get it out now rather than wait.*
+
+How well does the Alpha run? We know we can read files, run scripts,
+read/write TCP networks, and quite a lot more. However, it is not stable
+enough yet for any serious applications, or even most of other scripts.
+
+Also, it is important to know:
+
+* *The alpha has no security checking or sandbox yet.*
+* *It is running with module-mode disabled (global context).*
+* *Do not use it for running any real applications.*
+* *It is capable of corrupting or destroying data.* So don't use it to
+write important files.
+
+
+Focus of Testing
+~~~~~~~~~~~~~~~~
+
+During alpha testing stages, it is really important to focus on specific
+parts of the systems. *This is described and managed by a separate
+document, link:R3 Alpha Test Priorities[R3 Alpha Test Priorities].* We
+will update this as we make progress, so please read it.
+
+
+Bug Reporting
+~~~~~~~~~~~~~
+
+'''You have been invited to use the alpha release because we need your
+help and input. '''
+
+As an alpha tester, we ask that you keep a careful watch for bugs. When
+you find a bug, there is a natural tendency of good coders to work
+around it, but please don't. Tell us about the bug so we can fix it. We
+know that takes time and effort, but we need that information.
+
+As you get started, you're going to find dozens of problems and bugs.
+But, recognize that not all bugs are equal. Some bugs are show-stoppers
+that need to get fixed immediately (within hours). Other bugs can be
+noted and addressed later.

@@ -1,0 +1,350 @@
+<b>All about the MONEY datatype - high-precision arithmetic for
+financial and scientific applications.</b>
+
+
+Overview
+~~~~~~~~
+
+The money datatype now uses a coded decimal representation, allowing
+accurate number representation up to 26 decimal digits in length. Due to
+its accuracy, this datatype is useful for financial, banking,
+commercial, transactional, and even some types of scientific
+applications.
+
+
+Format
+~~~~~~
+
+
+External
+^^^^^^^^
+
+Externally, money is represented as it was on R2. Within code and data,
+a $ indicates that datatype is being specified:
+
+` $1.23` +
+` -$1.23`
+
+Unlike in R2, money remains accurate up to 26 digits:
+
+`>> $123456789012345678901234.56 + $0.01` +
+`== $123456789012345678901234.57`
+
+Compare this with what happens when using Rebol decimal! (64-bit IEEE754
+binary floating point) values:
+
+`>> 123456789012345678901234.56 + 0.01` +
+`== 1.2345678901234569E+23`
+
+Many digits are lost in the original number, and the 0.01 addition is
+completely lost in rounding.
+
+The difference can be seen even "sooner", as the following example
+shows:
+
+`>> $0.30 - $0.20 - $0.10` +
+`== $0`
+
+While using the Rebol decimal! datype we obtain:
+
+`>> 0.30 - 0.20 - 0.10` +
+`== -2.77555756156289E-17`
+
+The reason behind this is that numbers like 0.30, 0.20 or 0.10 can be
+exactly represented by the money! datatype, while they cannot be
+represented exactly by Rebol decimal! (64-bit IEEE754 binary floating
+point) datatype.
+
+(This property is why the money datatype is useful for financial and
+transactional applications where accuracy is required.)
+
+Additionally it is possible to use it when doing some integer arithmetic
+needing up to 26 decimal digits like in this example (exactly computing
+2 ** 64, which cannot be done in Rebol integer format):
+
+`>> a: $1 loop 64 [a: a * $2]` +
+`== $18446744073709551616`
+
+The accurate result can be obtained for up to 2 ** 86, 2 ** 87 is the
+first power of two needing more than 26 decimal digits.
+
+
+Range of values
++++++++++++++++
+
+See the link:Datatypes#money.21[range] table.
+
+
+Internal
+^^^^^^^^
+
+The money datatype uses a variation of arbitrary-precision arithmetic
+(also called bignum arithmetic), using a more efficient implementation
+than typical BCD (binary coded decimal).
+
+Space efficiency comparison: while the BCD is defined to use 4 bits to
+represent one decimal digit, i.e. 104 bits for 26 decimal digits, the
+money datatype uses just 87 bits for that purpose.
+
+Primarily, the datatype is designed to take advantage of the
+high-performance 32 bit integer operations found on all modern CPUs. In
+addition, the datatype is optimized for storage directly in REBOL's 128
+bit processing engine, eliminating the overhead of memory allocation and
+GC from standard numeric computations.
+
+The representation of money numbers uses a sign, unsigned significand
+(also coefficient/mantissa) in Little Endian order with 26 decimal
+digits and an unbiased signed decimal exponent in range between -128 to
++127.
+
+The 96 bit binary representation consists of:
+
+* 87 bits for unsigned significand (also coefficient/mantissa)
+* 1 bit sign
+* 8 bits for unbiased signed decimal exponent
+
+
+Speed
+^^^^^
+
+The BCD representation using four bits per decimal digit is notorious
+for being very fast to convert to string representation and to shift
+decimally. Other operations are quite slow. As opposed to that, the
+representation picked for the money datatype is supposed to be faster
+for the usual arithmetic operations.
+
+
+Actions
+~~~~~~~
+
+These actions are supported by the money datatype:
+
+* add
+* subtract
+* multiply
+* divide
+* remainder
+* negate
+* absolute
+* round
+
+* same?
+* equal?
+* strict-equal?
+* not-equal?
+* strict-not-equal?
+* greater?
+* lesser?
+* greater-or-equal?
+* lesser-or-equal?
+
+* negative?
+* positive?
+* zero?
+
+* minimum
+* maximum
+
+In addition, all of the corresponding infix operators are supported.
+
+
+Conversions
+~~~~~~~~~~~
+
+These conversions are supported:
+
+* string to money
+* money to string
+* integer to money
+* money to integer
+* decimal to money
+* money to decimal
+* binary to decimal
+* decimal to binary
+
+Auto conversion also occurs when the money type is mixed in functions
+with other numeric datatypes. Money is considered the "stronger type" --
+producing the datatype of the result:
+
+`>> $1 + 1` +
+`== $2` +
+`>> $1 + 1.0` +
+`== $2` +
+`>> 1 + $1` +
+`== $2` +
+`>> 1.0 + $1` +
+`== $2` +
+`>> 1.2 > $1` +
+`== true`
+
+
+Precision
+~~~~~~~~~
+
+* Money values are designed to keep precision (they are not normalized).
+Example:
+
+`>> a: $10` +
+`== $10` +
+`>> b: $10.00` +
+`== $10.00`
+
+
+Conversions
+^^^^^^^^^^^
+
+
+String to money
++++++++++++++++
+
+As mentioned above, the money! datatype is a highly precise datatype.
+The conversions from string to money are exact, keeping the suggested
+precision, as was shown above. A loss of accuracy might occur only when
+supplying more than 26 decimal digits for a money value.
+
+
+Money to string
++++++++++++++++
+
+The conversions from money to string are exact.
+
+
+Integer to money
+++++++++++++++++
+
+The conversions from integer to money are exact, the money datatype can
+exactly represent every 64-bit integer.
+
+
+Money to integer
+++++++++++++++++
+
+The conversions from money to integer are exact for an integral value,
+that fits into the range of 64-bit integers. Example:
+
+`>> to integer! $100` +
+`== 100`
+
+If the value does not fit into the integer range, an overflow occurs.
+Example:
+
+`>> to integer! $9'999'999'999'999'999'999` +
+`** Math error: math or number overflow` +
+`** Where: to` +
+`** Near: to integer! $9999999999999999999`
+
+If the money value isn't integral, it is truncated. Example:
+
+`>> to integer! $1.50` +
+`== 1`
+
+
+Decimal to money
+++++++++++++++++
+
+The conversions from decimal to money are usually exact, since the money
+datatype is more precise than the decimal datatype. To make sure the
+decimal value is represented exactly (i.e. that it is uniquely
+determined), the conversion uses 17 decimal digits. Example:
+
+`>> a: 0.1` +
+`== 0.10000000000000001` +
+`>> b: to money! a` +
+`== $0.10000000000000001` +
+`>> same? a to decimal! b` +
+`== true`
+
+An overflow may occur, though, since the range of the decimal!
+datatatype is larger than the range of the money! datatype. When
+converting tiny decimal! values, a loss of precision (underflow)
+yielding $0 may occur too, when the decimal exponent is lower than -128.
+
+
+Money to decimal
+
+Neither overflow nor underflow may occur, but the decimal values cannot
+exactly represent some money values. Example:
+
+`>> a: $0.01` +
+`== $0.01` +
+`>> b: to decimal! a` +
+`== 0.10000000000000001` +
+`>> to money! b` +
+`== $0.10000000000000001` +
+`>> same? a to money! b` +
+`== false`
+
+
+Rounding
+^^^^^^^^
+
+When needing a different precision, we may use the ROUND action.
+Example:
+
+`>> round/to $1.000 $0.01` +
+`== $1.00`
+
+In the above example we rounded the number to a lower precision (cents).
+We can use the ROUND action to yield a higher precision, if we wish so:
+
+`>> round/to $1.1 $0.01` +
+`== $1.10`
+
+In the above example we rounded the number to obtain a higher precision
+(cents).
+
+
+Note
+++++
+
+It is not advisable to give the SCALE argument as a decimal value, since
+we frequently don't obtain an accurate result. Example:
+
+`>> round/to $1.15 0.1` +
+`== $1.10000000000000011`
+
+, which is most probably not what we wanted to get. If we use an
+accurate SCALE given as a money value, we obtain:
+
+>> round/to $1.15 $0.10 == $1.20
+
+Note also, that it may make sense to use $0.10 as a scale, instead of
+$0.1!
+
+
+Addition and multiplication
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Multiplication and addition use the precision of their operands.
+Example:
+
+`>> $10 + $10.50` +
+`== $20.50`
+
+`>> $2 * $1.10` +
+`== $2.20`
+
+In case a different precision is needed, we can use the ROUND action as
+usual.
+
+Similarly as with rounding scales, it is not advisable to use decimal
+values as coefficients. It is better to use money values as coefficients
+when possible, since it has the advantage of higher accuracy.
+
+
+Division
+^^^^^^^^
+
+As opposed to the above, division always generates all 26 digits to
+offer the full precision available. The idea is, that when dividing
+monetary values, we usually have to round the result according to some
+standard (which may depend on the circumstances). The result contains so
+many digits, that it is no problem to round it according to any standard
+currently in use and the ROUND action has many refinements available to
+suit user's needs.
+
+`>> $2 / $3` +
+`== $0.66666666666666666666666667`
+
+`>> $3 / 1.5` +
+`== $2.0000000000000000000000000`

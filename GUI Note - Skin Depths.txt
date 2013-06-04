@@ -1,0 +1,42 @@
+The link:R3 GUI[R3 GUI] defines three depths (levels) of skinning:
+
+thin-skin: These are lightweight changes made only to the attributes
+(facets) of GUI elements. These are sometimes called _color schemes_.
+For example changing the default background colors for panels, buttons,
+fields is a thin-skin change.::
+
+medium-skin: These are changes made to the DRAW block specifications of
+GUI elements (within styles). These provide a greater level of graphical
+detail, but they are also more difficult to make (they are scalar vector
+graphic changes). Since they include thin-skins, these are often called
+_themes_. They change the appearance of visual elements, but not their
+positions (beyond size changes).::
+
+thick-skin: These are changes to the layout of panels (other than those
+due to sizing) but may include changes to style actors (the interactor
+functions). For example, a panel includes special action icons along the
+right side, but a person wants a new skin that moves them to the top.::
+
+All of these are achievable in the R3 GUI, but they require different
+levels of skill.
+
+* *Thin skinning* can be done via master style-sheets that can be
+accessed by name within the styles themselves. (This is how we handle
+fonts attributes as well.) An application can even allow users to make
+simple changes to their color schemes without any knowledge of the
+graphics system. A simple control panel, such as that used for Display
+Properties on Windows works quite well.
+
+* *Medium skinning* changes a style's DRAW block. It requires an
+understanding of vector graphics and how commands and attributes are
+combined to achieve the desired effects. These kinds of skins will need
+to be done by GUI programmers or artists. To install such changes, new
+styles are defined with the newly created DRAW blocks.
+
+* *Thick skinning* changes panel layouts. Layouts are not inherently
+difficult, but various special requirements in a design often lead to
+unusual exceptions that require deeper thought and greater
+experimentation. For well designed programs, changes to layouts should
+not be difficult; However, thick skin changes to style actors
+(interactors) are similar to style creation, and for all but the
+simplest cases will require a knowledgeable programmer.

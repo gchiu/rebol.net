@@ -1,0 +1,22 @@
+*on-get* returns values that are stored inside the face and can be
+invoked with GET-FACE.
+
+The input argument should not be needed when using GET-FACE, but it can
+be allowed. The return value should be the value that GET-FACE should
+return.
+
+
+Examples
+^^^^^^^^
+
+Simply return the internal value of the face:
+
+`on-get: [` +
+`  face/state/value` +
+`]`
+
+Returns the color value from a face that stores a color:
+
+`on-get: [` +
+`   face/facets/colors` +
+`]`

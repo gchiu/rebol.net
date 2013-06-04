@@ -1,0 +1,16 @@
+This page contains links to special searches, such as searches for the
+existence of specific templates on specific pages. When clicking the
+link, you will get the search results directly.
+
+*
+[http://www.rebol.net/wiki/Special:Search?search=%7B%7B%3AUnderconstruction%7D%7D&go=Go|
+Pages under construction]
+*
+[http://www.rebol.net/wiki/Special:Search?search=%7B%7B%3AMore%7D%7D&go=Go|
+Pages that need more content]
+*
+[http://www.rebol.net/wiki/Special:Search?search=%7B%7B%3ADemolition%7D%7D&go=Go|
+Pages marked for deletion]
+*
+[http://www.rebol.net/wiki/Special:Search?search=%7B%7B%3AConstructed%7D%7D&go=Go|
+Pages that are nearly complete]

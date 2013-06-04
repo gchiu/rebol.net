@@ -1,0 +1,50 @@
+
+LINE-PATTERN
+~~~~~~~~~~~~
+
+Set the line pattern. The line pattern will remain in effect until it is
+set to a new value or disabled using *off*.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|dash-color |[tuple!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|stroke-size |[decimal!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|dash-size |[decimal!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|stroke-size |[decimal!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|dash-size |[decimal!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|... |[decimal!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples* <p>Set it to 5 of yellow and 5 of red.</p>
+<code><pre> anti-alias off pen yellow line-pattern red 5 5 line-width 3
+box 20x20 200x200 </pre></code> image:LINE-PATTERN-1.png[LINE-PATTERN
+example 1]
+
+<br> <p>To draw a dashed line, with a transparent pen, the *off* pen
+color must come first.</p> <p>To clear the current line pattern, set it
+to *off*.</p> <code><pre> anti-alias off pen off line-width 4
+line-pattern yellow 7 2 box 20x20 200x200 line-pattern off box 40x40
+240x240 pen blue box 60x60 260x260 </pre></code>
+image:LINE-PATTERN-2.png[LINE-PATTERN example 2]
+
+<br> <p>Complex patterns can be specified by repeating values for stroke
+and dash sizes</p> <code><pre> anti-alias off line-width 4 pen blue
+line-pattern red 7 2 4 4 3 6 box 20x20 380x380 pen red line-pattern
+yellow 1 5 box 40x40 360x360 line-pattern off box 60x60 340x340
+line-pattern blue 10 20 40 80 box 80x80 320x320 line-pattern green 1 4 4
+4 box 100x100 300x300 line-pattern yellow 4 8 12 16 box 120x120 280x280
+line-pattern yellow 4 4 box 140x140 260x260 </pre></code>
+image:LINE-PATTERN-3.png[LINE-PATTERN example 3]
+
+<br>

@@ -1,0 +1,7 @@
+
+About
+^^^^^
+
+*Style/about* is a string that gives users a simple way to describe the
+main purpose of their style for use in the HELP function during
+interactive debugging sessions.

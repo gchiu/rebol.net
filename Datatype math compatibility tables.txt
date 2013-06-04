@@ -1,0 +1,1684 @@
+`           <em>Note:</em> <br>`
+
+`           The SAME? table applies to all equality tests. <br>`
+
+`           The GREATER? table applies to all comparison tests. <br>`
+
+`           The MINIMUM table also applies to MAXIMUM. <br>`
+
+`       <h3> add </h3> ` `<table class="wikitable"> ` `<tr> `
+`<th> </th> ` `<th> none! </th> ` `<th> logic! </th> `
+`<th> integer! </th> ` `<th> decimal! </th> ` `<th> percent! </th> `
+`<th> money! </th> ` `<th> char! </th> ` `<th> pair! </th> `
+`<th> tuple! </th> ` `<th> time! </th> ` `<th> date! </th> `
+`<th> string! </th> ` `<th> binary! </th> ` `<th> file! </th> `
+`<th> email! </th> ` `<th> url! </th> ` `<th> tag! </th> `
+`<th> issue! </th> ` `<th> bitset! </th> ` `<th> unicode! </th> `
+`<th> vector! </th> ` `<th> image! </th> ` `<th> block! </th> `
+`<th> paren! </th> ` `<th> path! </th> ` `<th> set-path! </th> `
+`<th> get-path! </th> ` `<th> lit-path! </th> ` `<th> datatype! </th> `
+`<th> typeset! </th> ` `<th> word! </th> ` `<th> set-word! </th> `
+`<th> get-word! </th> ` `<th> lit-word! </th> `
+`<th> refinement! </th> ` `<th> native! </th> ` `<th> action! </th> `
+`<th> routine! </th> ` `<th> rebcode! </th> ` `<th> op! </th> `
+`<th> closure! </th> ` `<th> function! </th> ` `<th> frame! </th> `
+`<th> object! </th> ` `<th> module! </th> ` `<th> error! </th> `
+`<th> task! </th> ` `<th> port! </th> ` `<th> gob! </th> `
+`<th> event! </th> ` `<th> handle! </th> ` `<th> struct! </th> `
+`<th> library! </th> ` `<th> utype! </th> ` `</tr> ` `<tr> `
+`<th> integer! </th> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> decimal! </th> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> percent! </th> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> money! </th> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> char! </th> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> pair! </th> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> tuple! </th> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> time! </th> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> date! </th> ` `<td> - </td> ` `<td> - </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> string! </th> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> binary! </th> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> file! </th> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> email! </th> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> url! </th> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `<tr> `
+`<th> tag! </th> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> OK </td> ` `<td> OK </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> OK </td> ` `<td> - </td> ` `<td> OK </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> OK </td> ` `<td> - </td> ` `<td> - </td> `
+`<td> - </td> ` `<td> - </td> ` `<td> - </td> ` `</tr> ` `</table> `
+`<br> `
+
+<h3> subtract </h3> <table class="wikitable"> <tr> <th> </th> <th>
+integer! </th> <th> decimal! </th> <th> percent! </th> <th> money! </th>
+<th> char! </th> <th> pair! </th> <th> tuple! </th> <th> time! </th>
+<th> date! </th> </tr> <tr> <th> integer! </th> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> OK </td> <td> OK </td> </tr> <tr> <th> decimal! </th> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> percent!
+</th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> money! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> char! </th> <td> OK </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> pair! </th> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> tuple! </th> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> - </td> </tr> <tr> <th> time! </th> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> </tr> <tr> <th> date! </th> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> OK </td> </tr> </table> <br>
+
+<h3> multiply </h3> <table class="wikitable"> <tr> <th> </th> <th>
+integer! </th> <th> decimal! </th> <th> percent! </th> <th> money! </th>
+<th> char! </th> <th> pair! </th> <th> tuple! </th> <th> time! </th>
+</tr> <tr> <th> integer! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+</tr> <tr> <th> decimal! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td>
+</tr> <tr> <th> percent! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> - </td>
+</tr> <tr> <th> money! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> char! </th> <td> OK </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> pair! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> OK </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+tuple! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td>
+- </td> <td> - </td> <td> OK </td> <td> - </td> </tr> <tr> <th> time!
+</th> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> </table> <br>
+
+<h3> divide </h3> <table class="wikitable"> <tr> <th> </th> <th>
+integer! </th> <th> decimal! </th> <th> percent! </th> <th> money! </th>
+<th> char! </th> <th> pair! </th> <th> tuple! </th> <th> time! </th>
+</tr> <tr> <th> integer! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+</tr> <tr> <th> decimal! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> percent! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> money! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> char! </th> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+pair! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td>
+- </td> <td> OK </td> <td> - </td> <td> - </td> </tr> <tr> <th> tuple!
+</th> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> time! </th>
+<td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> OK </td> </tr> </table> <br>
+
+<h3> remainder </h3> <table class="wikitable"> <tr> <th> </th> <th>
+integer! </th> <th> decimal! </th> <th> percent! </th> <th> money! </th>
+<th> char! </th> <th> pair! </th> <th> tuple! </th> <th> time! </th>
+</tr> <tr> <th> integer! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> </tr>
+<tr> <th> decimal! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> percent! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> money! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+char! </th> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> pair!
+</th> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> </tr> <tr> <th> tuple! </th>
+<td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> </tr> <tr> <th> time! </th> <td> OK
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> OK </td> </tr> </table> <br>
+
+<h3> power </h3> <table class="wikitable"> <tr> <th> </th> <th> integer!
+</th> <th> decimal! </th> </tr> <tr> <th> integer! </th> <td> OK </td>
+<td> OK </td> </tr> <tr> <th> decimal! </th> <td> OK </td> <td> OK </td>
+</tr> </table> <br>
+
+<h3> and~ </h3> <table class="wikitable"> <tr> <th> </th> <th> logic!
+</th> <th> integer! </th> <th> char! </th> <th> tuple! </th> <th>
+binary! </th> <th> string! </th> <th> image! </th> </tr> <tr> <th>
+logic! </th> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> integer! </th> <td> -
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> char! </th> <td> - </td> <td> OK </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> tuple! </th> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> binary! </th>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+OK </td> <td> - </td> </tr> <tr> <th> string! </th> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> - </td>
+</tr> <tr> <th> image! </th> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> OK </td> </tr> </table> <br>
+
+<h3> or~ </h3> <table class="wikitable"> <tr> <th> </th> <th> logic!
+</th> <th> integer! </th> <th> char! </th> <th> tuple! </th> <th>
+binary! </th> <th> string! </th> <th> image! </th> </tr> <tr> <th>
+logic! </th> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> integer! </th> <td> -
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> char! </th> <td> - </td> <td> OK </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> tuple! </th> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> binary! </th>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+OK </td> <td> - </td> </tr> <tr> <th> string! </th> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> - </td>
+</tr> <tr> <th> image! </th> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> OK </td> </tr> </table> <br>
+
+<h3> xor~ </h3> <table class="wikitable"> <tr> <th> </th> <th> logic!
+</th> <th> integer! </th> <th> char! </th> <th> tuple! </th> <th>
+binary! </th> <th> string! </th> <th> image! </th> </tr> <tr> <th>
+logic! </th> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> integer! </th> <td> -
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> char! </th> <td> - </td> <td> OK </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> tuple! </th> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> binary! </th>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+OK </td> <td> - </td> </tr> <tr> <th> string! </th> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> - </td>
+</tr> <tr> <th> image! </th> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> OK </td> </tr> </table> <br>
+
+<h3> same? </h3> <table class="wikitable"> <tr> <th> </th> <th> none!
+</th> <th> logic! </th> <th> integer! </th> <th> decimal! </th> <th>
+percent! </th> <th> money! </th> <th> char! </th> <th> pair! </th> <th>
+tuple! </th> <th> time! </th> <th> date! </th> <th> string! </th> <th>
+binary! </th> <th> file! </th> <th> email! </th> <th> url! </th> <th>
+tag! </th> <th> issue! </th> <th> bitset! </th> <th> unicode! </th> <th>
+vector! </th> <th> image! </th> <th> block! </th> <th> paren! </th> <th>
+path! </th> <th> set-path! </th> <th> get-path! </th> <th> lit-path!
+</th> <th> datatype! </th> <th> typeset! </th> <th> word! </th> <th>
+set-word! </th> <th> get-word! </th> <th> lit-word! </th> <th>
+refinement! </th> <th> native! </th> <th> action! </th> <th> routine!
+</th> <th> rebcode! </th> <th> op! </th> <th> closure! </th> <th>
+function! </th> <th> frame! </th> <th> object! </th> <th> module! </th>
+<th> error! </th> <th> task! </th> <th> port! </th> <th> gob! </th> <th>
+event! </th> <th> handle! </th> <th> struct! </th> <th> library! </th>
+<th> utype! </th> </tr> <tr> <th> none! </th> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> logic! </th> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+- </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> integer! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+decimal! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> percent!
+</th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> money!
+</th> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> char! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> pair! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> tuple!
+</th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> time! </th>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> date! </th> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> string! </th> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> binary! </th> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> file! </th> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> email! </th> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> url! </th> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+- </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> - </td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+- </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> tag! </th> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> issue! </th> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+- </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> bitset! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+unicode! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> vector! </th> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> image! </th> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> block! </th> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+- </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> paren! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+path! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> set-path! </th> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> get-path! </th> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> lit-path! </th>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> </tr> <tr> <th> datatype!
+</th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> typeset!
+</th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> word! </th>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> set-word! </th> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+get-word! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> lit-word!
+</th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> refinement!
+</th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> native!
+</th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> action! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+routine! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> rebcode! </th> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> op! </th> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td>
+OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> closure! </th> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> function! </th> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> frame!
+</th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> object! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+module! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> error! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> task! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> port! </th> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> gob! </th> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> event! </th> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> handle! </th> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> struct!
+</th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> library! </th> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> utype! </th> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> </table> <br>
+
+<h3> greater? </h3> <table class="wikitable"> <tr> <th> </th> <th> none!
+</th> <th> logic! </th> <th> integer! </th> <th> decimal! </th> <th>
+percent! </th> <th> money! </th> <th> char! </th> <th> pair! </th> <th>
+tuple! </th> <th> time! </th> <th> date! </th> <th> string! </th> <th>
+binary! </th> <th> file! </th> <th> email! </th> <th> url! </th> <th>
+tag! </th> <th> issue! </th> <th> bitset! </th> <th> unicode! </th> <th>
+vector! </th> <th> image! </th> <th> block! </th> <th> paren! </th> <th>
+path! </th> <th> set-path! </th> <th> get-path! </th> <th> lit-path!
+</th> <th> datatype! </th> <th> typeset! </th> <th> word! </th> <th>
+set-word! </th> <th> get-word! </th> <th> lit-word! </th> <th>
+refinement! </th> <th> native! </th> <th> action! </th> <th> routine!
+</th> <th> rebcode! </th> <th> op! </th> <th> closure! </th> <th>
+function! </th> <th> frame! </th> <th> object! </th> <th> module! </th>
+<th> error! </th> <th> task! </th> <th> port! </th> <th> gob! </th> <th>
+event! </th> <th> handle! </th> <th> struct! </th> <th> library! </th>
+<th> utype! </th> </tr> <tr> <th> none! </th> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> logic! </th> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+integer! </th> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> decimal! </th> <td> - </td> <td> - </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> percent! </th>
+<td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> money! </th> <td> - </td> <td> - </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> char! </th> <td> - </td> <td> - </td> <td>
+OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> pair! </th> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> tuple!
+</th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> time! </th> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> date! </th> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> string! </th> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> binary!
+</th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> file! </th> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> email! </th> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> url! </th> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> tag! </th> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+issue! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> bitset! </th> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> unicode! </th> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> vector! </th>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> image! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> block! </th> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> paren! </th> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> path! </th> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+set-path! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> get-path! </th> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> lit-path! </th> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> </tr> <tr> <th>
+datatype! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> typeset! </th> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> word! </th> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> set-word! </th> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+get-word! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> lit-word! </th> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td>
+- </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> refinement! </th> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> OK </td> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> OK </td> <td> OK
+</td> <td> OK </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td>
+- </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> native! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> action! </th> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> routine! </th> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> rebcode!
+</th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> op! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> closure! </th> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> function! </th> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> frame!
+</th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> object! </th> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> module! </th> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> error! </th> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+task! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> port! </th> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> gob! </th> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> event! </th> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> handle! </th>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> struct! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> library! </th> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> utype! </th> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> </table> <br>
+
+<h3> minimum </h3> <table class="wikitable"> <tr> <th> </th> <th>
+integer! </th> <th> decimal! </th> <th> percent! </th> <th> money! </th>
+<th> char! </th> <th> pair! </th> <th> tuple! </th> <th> time! </th>
+<th> date! </th> <th> string! </th> <th> binary! </th> <th> file! </th>
+<th> email! </th> <th> url! </th> <th> tag! </th> <th> issue! </th> <th>
+bitset! </th> <th> unicode! </th> <th> vector! </th> <th> image! </th>
+<th> block! </th> <th> paren! </th> <th> path! </th> <th> set-path!
+</th> <th> get-path! </th> <th> lit-path! </th> </tr> <tr> <th> integer!
+</th> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> decimal! </th> <td> OK </td> <td> OK </td> <td> OK </td> <td>
+OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> percent! </th> <td> OK </td> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> money! </th> <td> OK </td>
+<td> OK </td> <td> OK </td> <td> OK </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> char! </th> <td>
+OK </td> <td> OK </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+pair! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> tuple! </th> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> time! </th> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> </tr> <tr> <th> date! </th> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> string! </th> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> binary! </th> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> file! </th>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+email! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>
+<tr> <th> url! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> tag! </th> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> issue! </th> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> OK </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> bitset! </th> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> </tr> <tr> <th> unicode! </th> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> vector!
+</th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr>
+<th> image! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+</tr> <tr> <th> block! </th> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> OK </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> </tr> <tr> <th> paren! </th> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> </tr> <tr> <th> path! </th> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> </tr> <tr> <th> set-path! </th> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th> get-path! </th>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr> <tr> <th>
+lit-path! </th> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td>
+- </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> -
+</td> <td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> - </td>
+<td> - </td> <td> - </td> <td> - </td> <td> - </td> <td> OK </td> </tr>
+<tr> </tr> </table> <br>

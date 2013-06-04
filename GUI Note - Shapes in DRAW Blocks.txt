@@ -1,0 +1,45 @@
+In the link:R3 GUI[R3 GUI], styles depend on link:Draw[DRAW blocks] for
+specifying graphical rendering.
+
+The GUI Draw-Face function optimizes the draw by reducing the DRAW block
+prior to its usage. This is done to cache the final DRAW block for
+rendering. Subsequent refreshes of the same face can use the cached
+block, rather than rebuilding it again from the style and face
+definitions.
+
+Note, however, that *only the draw block itself is reduced in advance*.
+Any sub-blocks of the DRAW block are not reduced (hence are not copied
+when cached). They are used by reference.
+
+This is important for the SHAPE command which uses a block as an
+argument. The block holds the shape's definition. *It is assumed that
+the shape is context independent.* It is a static shape definition, such
+as an icon description, arrow graphic, etc. If necessary, it is allowed
+to contain shape-relative facets, but *it should not contain
+face-relative facets*, such as a size or area-size.
+
+Of course, you can transform the shape as necessary, such as rescaling
+or rotating it, by defining a transformation matrix or one of the
+transformation commands.
+
+Normally, if you need a face-based graphical shape, you can use DRAW
+commands directly. You do not need to use the SHAPE command.
+
+If you require the rendering of a fully independent SVG, such as an icon
+or other image, you can use a SHAPE to reference it.
+
+Should you decide that you absolutely need to use a SHAPE definition
+that contains face-relative facets, you can do so by building the shape
+during face initialization. You will need to reduce all face-based
+facets in the final block. Then, you can provide the SHAPE block itself
+as a facet variable within the DRAW block.
+
+For example, within the style:
+
+<pre> draw: [ pen red box shape shape-box ] </pre>
+
+Where shape-box is a reduced block built by your ON-MAKE function.
+
+Note that if you can fully reduce the block (eliminate all variable
+lookups) your shape will be rendered more quickly because the lookups
+are not happening during rendering.

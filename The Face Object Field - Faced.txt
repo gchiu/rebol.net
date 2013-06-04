@@ -1,0 +1,14 @@
+
+Faced
+^^^^^
+
+*Style/faced* is a prototype object that defines the fields that will be
+part of the face/facets object. These are the facets that are unique to
+every face instance.
+
+This object is used to tell the system which variables are local to the
+face and can be modified, versus those that are part of the style and
+should remain static.
+
+Note that if a style/faced field is also included in style/facets, the
+facets value will be copied when the face is made.

@@ -1,0 +1,21 @@
+*on-focus* is invoked every time the face is gaining focus using the
+FOCUS or NEXT-FOCUS function or losing focus with the UNFOCUS function.
+
+Nothing is called after on-focus, so if the face is changing appearance,
+a SHOW-LATER should be added in the actor.
+
+The argument is TRUE for focus and NONE for unfocus.
+
+No return value is necessary.
+
+
+Examples
+^^^^^^^^
+
+Make the background color 'yello when the face is in focus. Make it
+'white, when the face is unfocused.
+
+`on-focus: [` +
+`  face/facets/back-color: pick reduce [yello white] arg` +
+`  show-later face` +
+`]`

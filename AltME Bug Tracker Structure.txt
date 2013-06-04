@@ -1,0 +1,83 @@
+This document describes the structure of the data file for the AltME bug
+tracker available to R3 developers. It may be useful for scripts where
+we need to extract information from the tracker for display in other
+ways than normally available.
+
+
+Track.set File
+~~~~~~~~~~~~~~
+
+The *track.set* file contains all bug reports for the r3-alpha world.
+It's available in your AltME directory under
+*worlds/r3-alpha/track/track.set*.
+
+If your script is located in a directory relative to where track.set
+resides, you can always CHANGE-DIR to the track directory relatively and
+then use this line to load the track.set file into your script:
+
+` tracker-data: load/all %track.set`
+
+Then to read each bug report, start from the second element in
+TRACKER-DATA:
+
+` foreach report next tracker-data [` +
+`   ; parse report` +
+` ]`
+
+
+Report Structure
+~~~~~~~~~~~~~~~~
+
+If you were to PARSE a single report, the structure is like this:
+
+` parse report [` +
+`   set bug-number      integer!   ; Bug Number` +
+`   set bug-modified    date!      ; Bug Modification Date` +
+`                       integer!   ; Unknown` +
+`                       into [` +
+`                         integer! ; Unknown` +
+`   set bug-status        integer! ; Status` +
+`   set bug-severity      integer! ; Severity` +
+`   set bug-difficulty    integer! ; Difficulty` +
+`   set bug-priority      integer! ; Priority` +
+`                       ]` +
+`                       into [` +
+`   set bug-project       integer! ; Project` +
+`   set bug-version       string!  ; Version` +
+`   set bug-platform      integer! ; Platform` +
+`   set bug-area          string!  ; Area` +
+`                       ]` +
+`                       into [` +
+`   set bug-subject       string!  ; Bug Subject` +
+`   set bug-description   string!  ; Bug Description` +
+`   set bug-response      string!  ; Bug Response` +
+`                       ]` +
+`                       into [` +
+`   set bug-poster        string!  ; Bug Poster` +
+`   set bug-created       date!    ; Bug Posting Date` +
+`                         word!    ; Unknown` +
+`                       ]` +
+`                       into [` +
+`                         string!  ; Unknown` +
+`                         integer! ; Unknown` +
+`                       ]` +
+` ]`
+
+
+Word Blocks
+~~~~~~~~~~~
+
+Some integers in the parse block above are representing values in the
+following blocks:
+
+` types:     [Bug Wish Issue Note Nuts]` +
+` statuses:  [Submitted Reviewed Problem Waiting Deferred Dismissed Pending Built Tested Complete]` +
+` projects:  ["AltME" "AltServe" "WNS Server" "User Guide" "Website" "Other Code"]` +
+` platforms: ["All" "N/A" "Windows" "Mac OSX" "Linux x86 libc6" "FreeBSD x86"]`
+
+You can copy this structure into your own script for easy parsing of a
+bug report.
+
+
+Cookbook References
+~~~~~~~~~~~~~~~~~~~

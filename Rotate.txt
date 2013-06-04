@@ -1,0 +1,20 @@
+
+ROTATE
+~~~~~~
+
+Sets the clockwise rotation, in degrees, for drawing commands.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|angle |[decimal!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples* <p>Negative numbers can be used for
+counter-clockwise rotation.</p> <code><pre> fill-pen blue box 100x100
+300x300 rotate 30 fill-pen red box 100x100 300x300 rotate -60 fill-pen
+yellow box 100x100 300x300 </pre></code> image:ROTATE-1.png[ROTATE
+example 1]
+
+<br> <p>See also:
+http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>

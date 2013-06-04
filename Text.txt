@@ -1,0 +1,50 @@
+
+TEXT
+~~~~
+
+Draws a string of text.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|offset |[pair!] |optional |[multiblock cell omitted]
+
+|size |[pair!] |optional |[multiblock cell omitted]
+
+|render-mode |[word!] |How text will be rendered |*vectorial* - Can be
+transformed with stroke/dashes, filled with fill-pens, etc.
+
+|rich-text-block |[block!] |block containing valid richtext dialect
+syntax |[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples* <p>To run some of these tests, you'll need to
+define the following font objects:</p> <code> bold20: make
+system/standard/font [style: 'bold size: 20 color: white] bold36: make
+system/standard/font [style: 'bold size: 36 color: white] </code>
+<p>Basic text isn't too exciting to look at.</p> <code><pre> text 10x15
+[white "This is a string of raster aliased text"] text 10x40 [white
+anti-alias on "This is a string of raster anti-aliased text"] pen off
+fill-pen red text vectorial 10x60 ["This is a string of vectorial text"]
+
+text 10x90 [anti-alias off font bold20 "Font Size 20 - raster"]
+
+text 10x120 [anti-alias on font bold20 "Font Size 20 - raster AA"] pen
+yellow fill-pen blue text 10x150 vectorial [font bold20 "Font Size 20 -
+vectorial"]
+
+</pre></code> image:TEXT-1.png[TEXT example 1]
+
+<br> <p>Vectorial text supports the *pen*, *fill-pen*, *line-width*, and
+*line-pattern* settings.</p>
+
+Note: Once a color in richtext dialect block is defined text color is
+switched under control of the richtext dialect pens.
+
+<code><pre> pen yellow line-width 2 grad-pen 50x180 0 450 [255.0.0
+255.255.0 0.255.0 0.255.255] text 0x15 vectorial [font bold36 "Font Size
+36 - vectorial"] grad-pen off line-pattern red 5 5 text vectorial 0x60
+[font bold36 "Patterned Text"] </pre></code> image:TEXT-2.png[TEXT
+example 2]
+
+<br>

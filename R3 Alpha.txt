@@ -1,0 +1,5 @@
+Page has moved to http://www.rebol.com/r3/alpha-intro.html[here].
+
+'''''
+
+Category:Getting_Started

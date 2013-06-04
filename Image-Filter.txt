@@ -1,0 +1,36 @@
+
+IMAGE-FILTER
+~~~~~~~~~~~~
+
+Specifies type of algorithm used when an image is scaled.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|filter-type |[word!] |Filter algorithm |*nearest* - Uses 'nearest
+neighbour' algorithm to scale image *bilinear* - Uses bilinear filter'
+for scaling *bicubic* - Uses bicubic filter for scaling *gaussian* -
+Uses gaussian filter for scaling
+
+|filter-mode |[word!] |Optional. Filter mode used for slower but
+hi-quality output |*resample*
+
+|blur-amount |[decimal!] |Optional. Used only in *resample* mode
+|[multiblock cell omitted]
+|=======================================================================
+
+*Need a good stock bitmap for these examples.*
+
+_Show examples for NEAREST NEIGHBOR here._
+
+_Show examples for BILINEAR here._
+
+_Show examples for BICUBIC here._
+
+_Show examples for RESAMPLE here._
+
+_Also there is no mention of up- or downscaling effects for each type,
+to for example allow the best performing algorithm for a specific job,
+e.g. thumbnail downscaling or full-screen upscaling._
+
+--User:Henrikmk[Henrikmk] 06:19, 26 August 2007 (EDT)

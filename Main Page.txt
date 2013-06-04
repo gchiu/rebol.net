@@ -1,0 +1,58 @@
+__NOTOC__ <big>*Welcome to REBOL Wiki, "DocBase"*</big>
+
+This wiki provides a community supported server for posting and
+commenting on design documentation, suggestions, draft concepts,
+preliminary specifications.
+
+_Are you new to this wiki? link:What is DocBase?[ Read these brief
+notes.]_
+
+
+Recent Activity
+~~~~~~~~~~~~~~~
+
+* *link:Index of Japanese Documents[Index of Japanese Documents]* -
+expanding document base
+* *Advocacy* - community ideas for promoting REBOL
+* *link:Module Design Details[Module Design Details]* - new ideas,
+discussions
+* *link:External Callbacks[External Callbacks]* - to be provided in
+extensions
+* *link:IPC - Inter-process communication[IPC - Inter-process
+communication]* - collecting requirements
+* *link:INCLUDE documentation[INCLUDE documentation]* - a method of
+constructing programs
+* *link:Reference Card Ideas[Reference Card Ideas]* - community
+suggestions
+* Sidebar navigation links updated
+* Added link:DocBase Wiki Content License[DocBase Wiki Content License]
+
+
+REBOL 3 Related
+~~~~~~~~~~~~~~~
+
+If you are interested in REBOL 3.0, we welcome your comments and
+participation.
+
+* *link:Table Of Contents[ R3 Table of Contents]* - for this wiki
+* *http://www.rebol.com/r3/changes.html[R3 Releases]* - change log
+* *http://www.rebol.com/r3/docs/index.html[R3 Documentation]* - user
+guide and reference
+* *http://www.rebol.com/r3/downloads.html[R3 Downloads]* - only test
+releases
+
+_Warning: Some of the information in this wiki may be out-of-date._
+
+
+REBOL 2 Related
+~~~~~~~~~~~~~~~
+
+Other links of interest about REBOL:
+
+* *link:REBOL 2[ R2 Wiki Directory]* - community organized directory
+(older)
+* *http://www.rebol.com/docs.html[REBOL Documentation]* - for all
+versions/products
+* *link:R2 projects[R2 projects]* - links to various projects/products
+* *DocBase:Community Portal[DocBase:Community Portal]* - useful links
+and resources

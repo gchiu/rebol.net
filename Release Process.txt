@@ -1,0 +1,198 @@
+REBOL Technologies wants to have a standardized release process.
+Currently this is shaping up for the first Alpha release of REBOL 3 and
+is necessary to make future releases go as smoothly as possibly. This
+document is intended for people unfamiliar with the release process and
+want to understand it.
+
+*For developers, who must participate in this process, this document is
+mandatory reading.*
+
+
+Schedules
+~~~~~~~~~
+
+No schedules are maintained other than *work as quickly as possible
+toward a release*. It is currently decided on a review of R3's status
+and whether there are no difficult bugs to solve, whether it's time to
+make a release. When it becomes time for that, the release process
+begins.
+
+
+Getting into the Release Process
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There is no formal way to entering the release process other than having
+access on the R3-alpha AltME world. If you want to, you can participate
+immediately, provided that you read this document in its entirety first.
+
+
+DevBase
+~~~~~~~
+
+DevBase holds all the open parts of the source code to REBOL 3 and is
+the only method to update source code to REBOL 3 prior to release. To
+read more about how to use DevBase, click link:DevBase[here].
+
+
+Files
+~~~~~
+
+All files are held in the R3-alpha world on AltME. If you have access to
+this world, then you should be able to browse the files of all versions
+of the public alpha releases and be able to download them for study and
+testing. Here's a quick overview of the structure:
+
+::
+  *Releases*
+  +
+  ;;
+    Dev
+    +
+    ::
+      R30-A01
+      +
+      ;;
+        _Distribution files_
+      +
+      R30-A02
+      +
+      ;;
+        _Distribution files_
+      +
+      ...
+    +
+    Test
+    +
+    ::
+      R30-A01
+      +
+      ;;
+        _Distribution files_
+      +
+      R30-A02
+      +
+      ;;
+        _Distribution files_
+      +
+      ...
+    +
+    Release
+    +
+    ::
+      R30-A01
+      +
+      ;;
+        _Distribution files_
+      +
+      ...
+
+
+Dev, Test and Release Directories
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The directories named *Dev*, *Test* and *Release*, each represent a
+different stage in the release process. Files are copied to another
+stage, when they progress in development. When a file from
+/Releases/Dev/R30-A01/ is ready for testing, it is copied to
+/Releases/Test/R30-A01/ and so forth.
+
+
+1. Development Stage (Dev)
+++++++++++++++++++++++++++
+
+This stage is the first where the bleeding edge version of R3 is stored
+along with other distribution files. The R3 version here is built
+directly from the sources in DevBase, while examples and text files are
+uploaded or "born" in this directory. The content may therefore not be
+stable. When it is time for a release, the content is copied to the
+*Test* directory for last minute testing. Any developer, even those not
+assigned to the release process, can work in this directory.
+
+
+2. Testing Stage (Test)
++++++++++++++++++++++++
+
+Just prior to release, an intense amount of testing is done straight out
+of the *Test* directory. From this directory, developers assigned to the
+release process are asked to test every single file for outstanding
+bugs. If any bugs or typos are present in an example or in the text
+files, the developer goes back to the *Dev* directory, correct the bug
+and notify the release manager, so he can upload it to the *Test*
+directory.
+
+
+3. Release Stage (Release)
+++++++++++++++++++++++++++
+
+When the files from the *Test* directory show no outstanding bugs, they
+are copied in here. Here, you are not allowed to tamper with the files
+as they must match the release version. The files are then compressed
+into a zip archive and that archive is published on a public location on
+http://www.rebol.net/ and a public announcement is made by Carl
+Sassenrath on his website.
+
+
+Distribution Files
+^^^^^^^^^^^^^^^^^^
+
+Right now, the distribution is made up of the following files:
+
+Rebhost.exe::
+  This is the main executable. It requires Rebol.dll in order to run.
+  Just click on this file to run REBOL 3.
+Rebol.dll::
+  This is the core of REBOL 3. Currently REBOL 3 is delivered in this
+  format for easier updating of the core.
+Readme.txt::
+  This is a makedoc2 formatted file that contains information about this
+  release of the distribution.
+Readme.html::
+  This is an HTML version of Readme.txt.
+graphics directory::
+  This directory contains images used in Readme.html
+Examples directory::
+  This contains examples made by various developers on the REBOL 3 team.
+
+
+Who is Releasing REBOL 3?
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The release process is managed by Maarten Koopmans. He delegates work
+and oversees what needs to be done in order to complete the process of
+releasing a version of REBOL 3.
+
+Contributions and Examples:::
+
+::
+  All REBOL 3 developers
+
+Quality testing:::
+
+::
+  Anton Rolls
+  +
+  Petr Krenzelok
+  +
+  Carl Sassenrath
+
+Documentation of the release process:::
+
+::
+  Henrik Mikael Kristensen
+  +
+  Brian Tiffin
+  +
+  Maarten Koopmans
+
+Final release approval:::
+
+::
+  Carl Sassenrath
+  +
+  Maarten Koopmans
+
+_Please add yourself to this list, if you are not here._
+
+
+Cookbook References
+~~~~~~~~~~~~~~~~~~~

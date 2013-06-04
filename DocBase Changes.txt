@@ -1,0 +1,22 @@
+
+Searches
+~~~~~~~~
+
+Added link:Special Searches[Special Searches] for one-click searches for
+pages that are under construction, are nearly complete, need more
+content or are marked for deletion.
+
+
+News Section
+~~~~~~~~~~~~
+
+New News section to collect all news related to all REBOL Technologies
+related products, both internal and public. See link:REBOL_3[here].
+
+
+Templates
+~~~~~~~~~
+
+<span class="plainlinks">List of available
+[http://rebol.net/w/index.php?title=Special%3AAllpages&from=&namespace=10
+DocBase Templates]</span>

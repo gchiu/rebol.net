@@ -1,0 +1,102 @@
+
+ELLIPSE
+~~~~~~~
+
+Draws an ellipse
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|upper-left-point |[pair!] |The upper-left-point of the ellipse bounding
+box |[multiblock cell omitted]
+
+|diameter |[pair!] |X and Y diameter is specified by a *pair!* which is
+different than the CIRCLE command |[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples* <p>Three overlapping ellipses</p> <code><pre>
+fill-pen red ellipse 50x25 100x200 fill-pen white ellipse 100x100
+200x200 fill-pen blue ellipse 175x250 200x100 </pre></code>
+image:ELLIPSE-1.png[ELLIPSE example 1]
+
+<br>
+
+'''''
+
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%> Pages <font
+size=1>
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP width=30%> Chapters <font size=1>
+
+* link:R3 Introduction[R3 Introduction]
+* link:Getting Started With R3[Getting Started With R3]
+* link:The Graphical User Interface[The Graphical User Interface]
+* link:Script Writing With The Visual Interface Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With The Draw Dialect*
+* link:The Graphic Object[The Graphic Object]</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%> <font size=1>
+
+* link:Table Of Contents[Table Of Contents]
+
+</font></TD> </TR></TABLE>

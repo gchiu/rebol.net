@@ -1,0 +1,116 @@
+This page explains how we want to manage testing R3.
+
+
+Top Level
+~~~~~~~~~
+
+*Testing a language is difficult.* If you were to enumerate the total
+number of tests required to fully test R3, it would likely be over one
+hundred thousand, if not more.
+
+So what does that really mean? Well, time has taught us these important
+lessons:
+
+1.  No one person is going to write all the tests.
+2.  Testing takes a lot of thought -- to figure out what and how to
+test.
+3.  Testers get tired quickly -- both from quantity (number of tests)
+and from quality (thinking about how to test).
+4.  New testers must be able to understand the prior tests.
+5.  It should be easy to understand how to contribute new tests.
+
+That has lead us to where we are today. We know from experience:
+
+1.  There must be a *standard system* of managing tests.
+2.  All tests must abide by a *standard format*.
+3.  All tests should be *clean, simple, specific, and self-contained*.
+
+Also, we know that we want the test system to be:
+
+1.  *Fast to access*. There needs to be zero overhead in adding a test,
+after all many tests come from an "ah-ha let's test that" so anything
+that slows it down will stop it.
+2.  *Accessible to all*. A user who needs decimals to work right might
+only want to contribute decimal tests. Don't block that desire!
+3.  *Always online*. The R3 community is worldwide. While we sleep,
+others are contributing.
+
+
+Testing Priorities
+~~~~~~~~~~~~~~~~~~
+
+It's important to have testing priorities. After all, if the basic R3
+system doesn't work, or the datatypes don't work, or the control
+functions don't work, then how can any of the tests work properly?
+
+So, the *link:R3 Alpha Test Priorities[R3 Alpha Test Priorities]*
+provides the current list.
+
+
+Current Situation
+~~~~~~~~~~~~~~~~~
+
+*Currently, there are a variety of tests, written in a variety of
+methods, over a variety of files.* Some of these test files date back
+more than 8 years.
+
+While such tests can prove quite useful, over the long run they are
+problematic -- because the person who wrote a test yesterday is not
+likely to be the person who wants to improve on that same test next
+year.
+
+*So, a system is required.* It does not have to be complex. In fact, it
+should be simple enough that all users can understand and contribute if
+they so desire.
+
+
+The Test System
+~~~~~~~~~~~~~~~
+
+The VID2 story.
+
+Main structure: management, engine, tests.
+
+
+Test management
+~~~~~~~~~~~~~~~
+
+Essentially everyone should be allowed to contribute a new test vector,
+approval is needed for a contributed test vector to be included into the
+"official test suite".
+
+
+Test data
+~~~~~~~~~
+
+These types of data are expected:
+
+* Submission data
+** submitted test vectors (in a database)
+* Test file, used
+** to import preapproved test vectors to the database
+** to export test vectors from the database
+** to run tests
+
+
+Test Vectors
+~~~~~~~~~~~~
+
+Most of the time, one liners.
+
+Requirements:
+
+* It looks impractical to require every test vector to be in a file of
+its own, if we use several thousands of tests.
+* Loadability of the test vector code is a subject to testing too,
+therefore it is not good to assume, that the code is loadable.
+
+These requirements can be fulfilled either by using a string to
+represent the test code, or by using a special parser not assuming
+loadability.
+
+
+Pending Notes
+~~~~~~~~~~~~~
+
+system overview test files test sections test vectors shared db

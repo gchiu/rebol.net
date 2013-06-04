@@ -1,0 +1,4 @@
+This is the *REBOL Run-Time Environment*. It is the core REBOL
+interpreter and primary datatypes, and it is implemented as an isolated,
+independent closed-source DLL. It is highly optimized in design for both
+memory and execution.

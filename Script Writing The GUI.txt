@@ -1,0 +1,287 @@
+<TABLE CELLPADDING=20 CELLSPACING=10 WIDTH=70%><TR><TD VALIGN=TOP
+WIDTH=50%> Domain Specific Dialecting. Doctors express their ideas in
+medical terms, stockbrokers in trade terms, and quarterbacks in football
+terms. Why? Because it's more efficient and productive. That's the
+benefit of dialecting. Dialecting is the ability to create sub-languages
+that provide you with extra leverage and productivity by expressing your
+solutions in terms that are best suited to your purpose.
+
+VID is REBOL's Visual Interface Dialect. A dialect is an extension of
+the REBOL language that makes it easier to express or describe
+information, actions, or interfaces. VID is a dialect that provides a
+powerful method of describing user interfaces. </TD></TR></TABLE>
+
+
+General Syntax Of The Visual Interface Dialect
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<TABLE style="color:green; background-color:#ffffcc;" cellpadding="20"
+cellspacing="0" border="1" width=100%><TR> <TD WIDTH=65%> GUI's are
+created by specifying a series of faces and their attributes. The script
+to the right illustrates the general syntax of a face written with the
+VID dialect: </TD><TD> _variable: face inline-options_ OPTIONS _options_
+'' actions'' </TD></TR> </TABLE> <TABLE style="color:green;
+cellpadding="20" cellspacing="0" border="0" width=100%> <TR><TD>
+
+* *variable* - used to refer to the face
+* *face* - the type of the face to create (field, button, ...)
+* *inline-options* - options, distinguished by datatype, listed in any
+order. What options are specified by what datatype is dependend on how
+the style parse the inline-options. And, it's not possible to have two
+inline-options with the same datatype while keeping inline-options
+positional independent.
+
+</TD><TD VALIGN=TOP>
+
+* *options* - a block of less common options
+* *actions* - specify special actions using keywords with data options
+
+</TD></TR> <TR><TD COLSPAN=2 VALIGN=TOP> The full syntax is not always
+required. A variable name does not always have to be specified for
+example. </TD></TR> </TABLE> Here are some examples to illustrate how
+the syntax may be applied: <TABLE style="color:green;
+background-color:#ffffcc;" cellpadding="20" cellspacing="0" border="1"
+width=100%> <TR><TD WIDTH=50%>
+
+::
+  field
+  +
+  field "Enter Data"
+  +
+  field "Enter Data" options [area-color: sky]
+  +
+  field submit main-url
+  +
+  Customer-Address: field
+  +
+  Customer-Address: field "Enter Data" options [area-color: sky]
+
+</TD><TD VALIGN=TOP><FONT COLOR=BLACK> "field" is an inbuilt *face*,
+(_'field_ is it's style)<BR> "Enter Data", the field text as an *inline
+option*<BR> "[area-color: sky]", field color as an *options block*<BR>
+"submit main-url" is the *action*<BR> "Customer-Address" is the face
+variable<BR> *variable, face, inline option, options block*</FONT>
+</TD></TR></TABLE>
+
+*Note:* _The images shown here with a temporary, prototype skin designed
+for development purposes only._
+
+
+Begin with Buttons
+~~~~~~~~~~~~~~~~~~
+
+Just to provide a simple starting point, here's a GUI that consists of
+two buttons: <TABLE style="color:green; background-color:#ffffcc;"
+cellpadding="20" cellspacing="0" border="1" width=100%><TR> <TD
+WIDTH=50%> Image:gui-basics-buttons.jpg
+
+REBOL [ ]
+
+::
+  load-gui
+  +
+  view [
+  +
+  ;;
+    button "REBOL" browse http://www.rebol.com
+    +
+    button "Close" close
+  +
+  ]
+
+`  </TD>` +
+`  <TD align=center valign=MIDDLE>`
+
+<TABLE CELLPADDING=10 CELLSPACING=0><TR><TD WIDTH=90% VALIGN=TOP
+ALIGN=LEFT BGCOLOR=#ffffcc>
+
+1.  *view* is a function that is given a block that constructs a *panel*
+and displays it in a window.
+2.  *button* is an in-built REBOL face.
+3.  The buttons' text "REBOL" & "Close", are _inline options_ of the 2
+faces.
+4.  *browse* and *close* are the buttons' actions.
+
+</TD><TD VALIGN=TOP ALIGN=LEFT BGCOLOR=#ffffcc> </TD></TR></TABLE>
+
+</TD> </TR></TABLE> <TABLE CELLSPACING=10 CELLPADDING=10><TR><TD
+WIDTH=50% VALIGN=TOP> REBOL scripts must have the header REBOL [ ].
+
+If using the R3 alpha version, _load-gui_ must also be included in the
+script to ensure the latest version will be downloaded and used.
+</TD><TD VALIGN=TOP>
+
+To run a script, copy and paste the examples into a text file headed
+with *REBOL [ ]*, include the load-gui function, and save this file with
+a ".r" extension. Then either from the console type: do %example.r, or
+drag the script file icon onto the REBOL file icon. </TD></TR><TR><TD
+VALIGN=TOP> It should be noted that the *view* function is one of
+several ways to construct GUIs. In addition to *view*, R3 will also
+allow you to evaluate _GUI code directly_, similar to an HTML page.
+Therefore, to make this document simpler, we could just write the
+contents of the panel. For example, </TD><TD VALIGN=TOP> <TABLE
+style="color:green; background-color:#ffffcc;" cellpadding="20"
+cellspacing="0" border="1" width=100%> <TR><TD>
+
+::
+  button "REBOL" browse http://www.rebol.com
+  +
+  button "Quit" quit
+
+</TD></TR></TABLE> More on this later. </TD></TR></TABLE>
+
+
+Adding Faces
+~~~~~~~~~~~~
+
+For the sake of illustration, let's toss in a few more faces and their
+styles to the example:
+
+<TABLE style="color:green; background-color:#ffffcc;" cellpadding="20"
+cellspacing="0" border="1" width=100%><TR> <TD WIDTH=50%>
+
+::
+  REBOL [ ]
+  +
+  load-gui
+  +
+  view [
+  +
+  ;;
+    title "Opinion Survey"
+    +
+    text "Do you want programs to be easy to build?"
+    +
+    panel 2 [
+    +
+    ::
+      label "Name:"
+      +
+      field
+      +
+      label "Comment:"
+      +
+      area
+    +
+    ]
+    +
+    group [
+    +
+    ::
+      radio "Agree"
+      +
+      radio "Disagree"
+      +
+      radio "Not sure"
+    +
+    ]
+    +
+    check "Send me the results."
+    +
+    group [
+    +
+    ::
+      button "Submit" submit http://www.rebol.net/cgi/submit.r
+      +
+      button "Reset" reset
+      +
+      button "Cancel" close
+    +
+    ]
+  +
+  ]
+
+`  </TD>` +
+`  <TD align=center valign=MIDDLE>`Image:gui-basics-survey2.jpg[`216px`
+`221px`]
+
+<TABLE CELLPADDING=10 CELLSPACING=0><TR><TD WIDTH=50% VALIGN=TOP
+ALIGN=LEFT BGCOLOR=#ffffcc> 1. Several more faces (title, text, panel,
+etc.) along with their options have been added.<BR><BR> 2. Panels and
+*groups* have been used to define the layout. A _group_ creates a
+sub-panel within a panel.<BR><BR> 3. No size information had to be added
+to the script to display the faces. </TD><TD VALIGN=TOP ALIGN=LEFT
+BGCOLOR=#ffffcc> 4. The radio buttons automatically know how to exclude
+each other when one is selected in the GUI. <BR><BR>5. And, when
+clicked, the new _Submit_ and _Reset_ buttons respectively submit or
+reset the text of the input fields <u>of the panel</u> to their initial
+values. </TD></TR></TABLE>
+
+</TD> </TR></TABLE>
+
+
+Another example
+~~~~~~~~~~~~~~~
+
+<TABLE style="color:green; background-color:#ffffcc;" cellpadding="20"
+cellspacing="0" border="1" width=100%><TR> <TD WIDTH=50%> REBOL [ ]
+load-gui view [
+
+::
+  group 1 [
+  +
+  ;;
+    sbar: scroller attach 'prog
+    +
+    prog: progress
+  +
+  ]
+  +
+  panel 80.200.180.80 [
+  +
+  ;;
+    text "These attached faces SET the above scroller:"
+    +
+    slider attach 'sbar
+    +
+    scroller attach 'sbar
+  +
+  ]
+  +
+  group 3 [
+  +
+  ;;
+    radio "Delta 10%" on set 'sbar 'delta 10%
+    +
+    radio "Delta 50%" set 'sbar 'delta 50%
+    +
+    radio "Delta 100%" set 'sbar 'delta 100%
+    +
+    button "Set 0%" set 'sbar 0%
+    +
+    button "Set 10%" set 'sbar 10%
+    +
+    button "Set 50%" set 'sbar 50%
+    +
+    button "Set 90%" set 'sbar 90%
+    +
+    button "Set 100%" set 'sbar 100%
+    +
+    button "Set 150%" set 'sbar 150%
+  +
+  ]
+  +
+  group 2 [
+  +
+  ;;
+    bc: box-cross
+    +
+    scroller attach 'bc 'valy
+    +
+    scroller attach 'bc 'valx
+  +
+  ] options [spacer: -3x-3]
+
+] </TD> <TD align=center
+valign=MIDDLE>Image:gui-basics-test-panel2.jpg[298px 393px]
+
+<TABLE CELLPADDING=10 CELLSPACING=0><TR><TD WIDTH=90% VALIGN=TOP
+ALIGN=LEFT BGCOLOR=#ffffcc>
+
+Here is another example that we use for the R3 GUI test program. It
+tests the features of a scroll-bar, both on input from the user as well
+as from other GUI objects.
+
+It shows that a small amount of GUI code can make a useful panel.
+</TD><TD VALIGN=TOP ALIGN=LEFT BGCOLOR=#ffffcc> </TD></TR></TABLE> </TD>
+</TR></TABLE>

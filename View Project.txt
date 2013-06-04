@@ -1,0 +1,86 @@
+The purpose is to make improvements to the View system, comprising all
+low-level graphics engine parts.
+
+
+Priorities
+~~~~~~~~~~
+
+As there might be many requests, we should create the priority list
+
+* [ ] link:#Unicode_display_support[Unicode display support]
+* [x] link:#Better_default_timers[Better default timers]
+* [ ] link:#Top_window_transparency[Top Window transparency]
+
+
+View
+~~~~
+
+Improvements to View engine itself here ...
+
+
+Top window transparency
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Suggested by: -pekr-
+
+There is a long time request to add support for adjustable top-window
+transparency, which would enable us to have free-shaped kind of windows,
+which is good for various widgets. Some time ago (2003) Cyphre did
+http://www.rebol.org/ml-display-message.r?m=rmlVPMQ[two cool demos], to
+show it is rather easy addition, at least under Windows.
+
+Of course we have to keep in mind, that maybe not all target OSes allow
+such features, and hence provide this feature so that it does not harm
+cross platform usage ...
+
+(feel free to edit any of my wrong comments :-)
+
+
+Better default timers
+^^^^^^^^^^^^^^^^^^^^^
+
+Suggested by: -pekr-
+
+If we use "standard" Win 32 timers, we might be unnecessarily degrading
+overal performance we could otherwise get by using different kind of
+timers.
+http://www.codeproject.com/KB/system/timers_intro.aspx[Codeproject's
+article] nicely explains difference between Windows type timers, and
+suggests using
+http://www.codeproject.com/KB/system/timers_intro.aspx#QueueTimers[Queue
+Timers] instead.
+
+There are also some other hints on
+http://blogs.msdn.com/larryosterman/archive/2005/09/08/462477.aspx[Larry
+Osterman's weblog], as well as on
+http://developer.nvidia.com/object/timer_function_performance.html[nVidia's
+site].
+
+Note: This info was put together based upon some older chat in R3-alpha
+world. It seems R3 internals changed since then, as Carl now
+http://curecode.org/rebol3/ticket.rsp?id=1312&cursor=3[claims] R3 has
+maybe even better timer code than in the above mentioned CodeProject
+article. We should do some tests, once Host code is released. Until
+then, the request can be regarded being dismissed/closed.
+
+
+DRAW
+~~~~
+
+Improvements to draw commands here.
+
+
+Fonts
+~~~~~
+
+Improvements to anti-aliasing with fonts.
+
+
+Unicode display support
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Suggested by: everyone
+
+What are most users waiting for in conjunction with R3/View, is the
+ability to properly display Unicode charsets. This is must have feature
+for initial release, or we will disappoint many users.

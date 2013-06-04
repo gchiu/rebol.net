@@ -1,0 +1,22 @@
+
+Gob
+^^^
+
+<TABLE CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=50% VALIGN=TOP>
+*Face/gob* holds the graphical object that implements face rendering. It
+is normally a DRAW type of GOB, but for text that requires no background
+or borders, it is optimized to be a TEXT GOB (richtext).
+
+The face/gob/data field contains a reference back to the face object
+itself. This allows the display and event sub-systems to process gobs
+efficiently, but allow access back to the face fields when necessary.
+</TD><TD VALIGN=TOP> Some faces will use a face/gob/pane to holds
+sub-gobs to implement various parts of their display. For example, a
+scroll bar contains several such sub-gobs for its various components.
+
+It should be noted that the gob/offset and gob/size fields are only
+approximations of the actual graphic image area. This is due to the
+anti-aliased graphics engine which requires that the gob be large enough
+to include pixels that are part of the anti-aliased edges of the
+face.(This is why the facet/size and facet/area-size have slightly
+different values.) </TD></TR></TABLE>

@@ -1,0 +1,156 @@
+*Post your favorite R3 PARSE blocks here.* (Note, these will not work in
+R2 PARSE.)
+
+
+Links to PARSE Pages
+~~~~~~~~~~~~~~~~~~~~
+
+The examples shown below are meant for and tested with R3 only. Here are
+a few links to related documents:
+
+* http://www.rebol.com/r3/docs/concepts/parsing.html[R3 Parse Concepts
+Section]
+* http://www.rebol.com/r3/docs/concepts/parsing-summary.html[Summary of
+R3 Parsing Operations]
+* http://www.rebol.com/r3/docs/functions/parse.html[R3 Parse Function]
+
+
+Remove Extra Lines
+~~~~~~~~~~~~~~~~~~
+
+Removes all extra lines from a text file (that is, allow only one empty
+line between paragraphs.)
+
+`parse text [some [thru lf [lf some remove lf | none]]]`
+
+Explanation:
+
+* *some* - loops on the block while its result is true
+** *thru lf* - advances just past the next *lf*
+*** _new block_ - is used with *| none* to make an optional match
+*** *lf* - matches to a second *lf* (extra line) or not (none)
+*** *some* - loops on the *remove* while it matches *lf*
+*** *remove* - removes if a match to *lf* is made
+*** *| none* - makes the block optional (always true)
+
+Note that this code does not work properly if the text contains a CR.
+Therefore in R3 use *deline* on text or binary to convert the CRs
+quickly and properly.
+
+
+Remove Extra Spaces
+~~~~~~~~~~~~~~~~~~~
+
+Removes extra spaces from all text.
+
+`parse text [some [thru space remove any space]]`
+
+Note that space indented lines still include a single space at head of
+the lines.
+
+Explanation:
+
+* *some* - loops on the block while its result is true
+** *thru space* - advances just past the next space
+** *remove* - if what follows is true, remove what matched
+** *any* - loops zero or more times on matching what follows
+** *space* - matches against space character
+
+In R3 space is defined as #" " (space char). You can modify this code to
+match on spaces and tabs with:
+
+`wspace: charset " ^-"  ; space and tab char` +
+`parse text [some [thru wspace remove any wspace]]`
+
+However, for most text files, it's better to first convert tabs to
+spaces with *detab*.
+
+`parse detab text [some [thru space remove any space]]`
+
+
+Unwrap paragraphs
+~~~~~~~~~~~~~~~~~
+
+Makes a sequence of adjacent lines into a single long line:
+
+`parse doc [` +
+`    some [` +
+`        not lf thru lf` +
+`        some [s: not lf (change back s #" ") thru lf]` +
+`    |` +
+`        thru lf` +
+`    ]` +
+`]`
+
+_(If you have a better way, feel free to modify the above.)_
+
+Explanation:
+
+* *some* - loops on the block while its result is true
+** *not lf* - true if the next char is not an lf
+** *thru lf* - advance just past the next lf
+** *some* - loops on the block while its result is true
+*** *s:* - save the current parse position
+*** *not lf* - true if the next char is not an lf
+*** _(code)_ - evaluate the expression in parens
+*** *thru lf* - advance just past the next lf
+** *| thru lf* - if above failed, advance past next lf
+
+Note that this code does not work properly if the text contains CRs. See
+notes above.
+
+Also, if you put this in a function, make *s* a local variable.
+
+
+Unwrap paragraphs, but leave indented sections
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Same as above, but leaves space-indented sections (like code examples)
+as-is:
+
+`parse doc [` +
+`    some [ ` +
+`        some space       ; indented, leave alone` +
+`        thru lf ` +
+`    |` +
+`        not lf           ; not an empty line` +
+`        thru lf` +
+`        some [s: not lf (change back s space) thru lf]` +
+`    |` +
+`        thru lf` +
+`    ]` +
+`]`
+
+Explanation:
+
+* *some* - loops on the block while its result is true
+** *some space* - match 1 or more spaces (indentation)
+** *thru lf* - advance past next lf
+** *|* - if above failed, try alternative
+** *not lf* - true if the next char is not an lf
+** *thru lf* - advance just past the next lf
+** *some* - loops on the block while its result is true
+*** *s:* - save the current parse position
+*** *not lf* - true if the next char is not an lf
+*** _(code)_ - evaluate the expression in parens
+*** *thru lf* - advance just past the next lf
+** *| thru lf* - if above failed, advance past next lf
+
+Note that this code does not work properly if the text contains CRs. See
+notes above.
+
+Also, if you put this in a function, make *s* a local variable.
+
+
+Match XML Opening and Closing Tags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`   open-tag: none` +
+`   close-tag: none` +
+`   rules: [` +
+`       copy open-tag tag! (close-tag: to-tag append "/" to-string body-open-tag)` +
+`       thru close-tag` +
+`   ]`
+
+This can be extended to match to arbitrary depth using a stack for the
+open/close tag pairs.

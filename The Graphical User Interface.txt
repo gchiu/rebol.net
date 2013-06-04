@@ -1,0 +1,3 @@
+*GUI pages have been replaced. Go to
+http://www.rebol.com/r3/docs/gui/gui.html R3 GUI[http://www.rebol.com/r3/docs/gui/gui.html
+R3 GUI]*

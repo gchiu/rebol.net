@@ -1,0 +1,97 @@
+Rebol View provides a desktop GUI - the viewtop. The viewtop provides a
+vital first impression, a chance to showcase the potential of the Rebol
+language. The viewtop does quite well as a convenient method of writing
+and organizing scripts.
+
+Can a revised viewtop better illustrate the flexibility of Rebol as a
+language and how Rebol might be used as a platform for distributed
+computer communication?
+
+Consider the task of skinning the viewtop as an example of Rebol
+flexibility. How many skins have been put forward? One - titled
+"Desktop", the file %active-viewtop.r, entered to the script library
+2005-08-31 and authored by "RT & Ingo Hohmann. As Rebol is indeed an
+extremely flexible and elegant language, perhaps there are more
+viewtops.
+
+The source code of the viewtop has been made available (and can also be
+gained by typing mold ctx-viewtop at the console).
+
+The collection of Rebsites is an interesting conglomeration - but it may
+also be useful to build a more focused network, or provide an example of
+business or scientific networks to demonstrate Rebol's distributed
+computing capabilities.
+
+This first viewtop skin illustrated below is an incomplete work, a bad
+hack at best, but it does provide a starting point or perhaps an
+incentive for others to do better. I hope that they may post their
+viewtops below this one and that in time a consensus of what a better
+viewtop ought to be may develop.
+
+Image:screen.png
+
+This viewtop includes major services like the Cheyenne web server and
+the Altme messaging application.
+
+From the top bar one may currently set preferences, change to the
+console mode, and open the editor. A provision for the Cheyenne web
+server and Altme have also been made but as yet are not functional. Both
+Cheyenne and Altme can be opened from the list of scripts and
+applications in the main body of the layout.
+
+Changes to the original script include:
+
+\1. To simplify the layout, only one icon was chosen to represent files
+and folders, applications and scripts. The data of the icon image
+provides the text for each item. Currently, new items and edits to
+existing items are done with the editor - but a script could be written
+for this.
+
+\2. Some items were given new names that may be more descriptive,
+hopefully making the reading of the script a bit easier.
+
+\3. The initialization of items was removed. This viewtop script runs
+from the user.r file.
+
+\4. Images not used were removed from the script.
+
+\5. The earth image used instead is from NASA, a USA government image.
+
+The script for the illustrated viewtop will be presented here in the
+near future.
+********************************************************************************************
+
+The version of Rebol that includes GUI libraries has been historically
+called "REBOL/View". Included in the distribution is a function called
+<tt>viewtop</tt>, which starts a simple browser application that lets
+you run sample Rebol programs from some trusted network locations.
+
+
+Index
+^^^^^
+
+The viewtop is able to get its index of demos from any file or URL,
+however the default is:
+
+<pre> >> viewtop http://rebol.com/index.r </pre>
+
+By using an
+http://stackoverflow.com/questions/1544974/rebol-and-unset-optional-parameter[unset!
+optional parameter], it is possible to subvert Rebol's usual requirement
+that a function take a fixed number of parameters and merely type:
+
+<pre> >> viewtop </pre>
+
+::
+  _Note that this trick can only be used on the last operation in a
+  series of commands, and is intended only for functions designed for
+  usage in interactive mode!_
+
+
+Security
+^^^^^^^^
+
+::
+  TODO: Talk about the security issues related to running these scripts
+  off the network, and how to check to make sure security is set and
+  working.

@@ -1,0 +1,11 @@
+
+INVERT-MATRIX
+~~~~~~~~~~~~~
+
+Applies an algebraic matrix inversion operation on the current
+transformation matrix.
+
+This command has no arguments.
+
+_Show example here._ --User:Henrikmk[Henrikmk] 06:29, 26 August 2007
+(EDT)

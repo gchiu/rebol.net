@@ -1,0 +1,2 @@
+A *reblet* is a small application written in REBOL. The concept is
+similar to an _applet_, such as those written languages.

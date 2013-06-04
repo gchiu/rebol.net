@@ -1,0 +1,116 @@
+<TABLE WIDTH=100%><TR> <TD ALIGN=RIGHT WIDTH=75%>Next Page:
+*Arc*</TD><TD ALIGN=CENTER>Return To *Draw Contents*</TD> </TR></TABLE>
+
+Turns anti-aliasing on or off; it is on by default
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|active |[logic!] |The new value for anti-aliasing behavior
+|[multiblock cell omitted]
+|=======================================================================
+
+*Anti-Alias On* <TABLE style="color:green; background-color:#fffffcc;"
+cellpadding="20" cellspacing="0" border="1" width=100%><TR> <TD
+WIDTH=60%> anti-alias on line-width 10 circle 200x200 100 </TD> <TD
+align=center valign=MIDDLE>image:ANTI-ALIAS-2.png[200px 200px]</TD>
+</TR></TABLE>
+
+*Anti-Alias Off* <TABLE style="color:green; background-color:#fffffcc;"
+cellpadding="20" cellspacing="0" border="1" width=100%><TR> <TD
+WIDTH=60%> anti-alias off line-width 10 circle 200x200 100 </TD> <TD
+align=center valign=MIDDLE>image:ANTI-ALIAS-1.png[200px 200px]</TD>
+</TR></TABLE>
+
+The ANTI-ALIAS command can be used multiple times in DRAW block to
+easily switch between rendering modes. <TABLE style="color:green;
+background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1"
+width=100%><TR> <TD WIDTH=60%> anti-alias off line-width 10 circle
+150x150 100 anti-alias on line-width 10 circle 250x250 100 </TD> <TD
+align=center valign=MIDDLE>image:ANTI-ALIAS-3.png[200px 200px]</TD>
+</TR></TABLE>
+
+'''''
+
+<TABLE WIDTH=100%><TR> <TD ALIGN=RIGHT WIDTH=75%>Next Page:
+*Arc*</TD><TD ALIGN=CENTER>Return To *Draw Contents*</TD> </TR></TABLE>
+
+'''''
+
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%> Pages <font
+size=1>
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP width=25%> Chapters <font size=1>
+
+* link:R3 Introduction[R3 Introduction]
+* link:Getting Started With R3[Getting Started With R3]
+* link:The Graphical User Interface[The Graphical User Interface]
+* link:Script Writing With The Visual Interface Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With Draw*
+* link:The Graphic Object[The Graphic Object]</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP > <font size=1>
+
+* link:Table Of Contents[Table Of Contents]
+
+</font></TD> </TR></TABLE>

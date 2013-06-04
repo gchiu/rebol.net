@@ -1,0 +1,141 @@
+A few tests...
+
+
+wiki-function-list
+~~~~~~~~~~~~~~~~~~
+
+<code>>> wiki-function-list [now parse load]</code>
+
+Returns:
+
+
+NOW
+^^^
+
+Returns the current local date and time. NOW is a native value.
+
+
+Refinements
++++++++++++
+
+::
+  */year* -- Returns the year only.
+  +
+  */month* -- Returns the month only.
+  +
+  */day* -- Returns the day of the month only.
+  +
+  */time* -- Returns the time only.
+  +
+  */zone* -- Returns the time zone offset from GMT only.
+  +
+  */date* -- Returns date only.
+  +
+  */weekday* -- Returns day of the week as integer (Monday is day 1).
+  +
+  */yearday* -- Returns day of the year (Julian)
+  +
+  */precise* -- Use nanosecond precision
+
+
+PARSE
+^^^^^
+
+Parses a series according to rules. PARSE is a native value.
+
+
+Arguments
++++++++++
+
+::
+  *input* -- Input series to parse (Type: series)
+  +
+  *rules* -- Rules to parse by (Type: block string none)
+
+
+Refinements
++++++++++++
+
+::
+  */all* -- Parses all chars including spaces.
+  +
+  */case* -- Uses case-sensitive comparison.
+
+
+LOAD
+^^^^
+
+Loads a file, URL, or string. Binds words to global context. LOAD is a
+native value.
+
+
+Arguments
++++++++++
+
+::
+  *source* -- (Type: file url string any-block binary)
+
+
+Refinements
++++++++++++
+
+::
+  */header* -- Includes REBOL header object if present.
+  +
+  */next* -- Load the next value only. Return block with value and new
+  position.
+  +
+  */library* -- Force file to be a dynamic library. (Command version)
+  +
+  */markup* -- Convert HTML and XML to a block of tags and strings.
+  +
+  */all* -- Load all values. Does not evaluate REBOL header.
+
+
+wiki-table
+~~~~~~~~~~
+
+<code>>> wiki-table/header [[Luke Skywalker][Darth Vader][Han Solo]]
+["First Name" "Last Name"]</code>
+
+Returns:
+
+[cols=",,,",options="header",]
+|=======================
+|First |Name |Last |Name
+|Luke |Skywalker
+|Darth |Vader
+|Han |Solo
+|=======================
+
+
+wiki-link-table
+~~~~~~~~~~~~~~~
+
+<code>>> wiki-link-table [[word1 word2 word3 word4 word5][word6 word7
+word8 word9 word10]]</code>
+
+Returns:
+
+[cols=",,,,",]
+|=======================================================================
+|word1 |word2 |word3 |word4 |word5
+
+|word6 |word7 |word8 |word9 |word10
+|=======================================================================
+
+
+wiki-dump-obj
+~~~~~~~~~~~~~
+
+<code>>> wiki-dump-obj make object! [a: 5 b: 8 c: "stuff"]</code>
+
+Returns:
+
+[cols=",",options="header",]
+|=================
+|Word |Description
+|*a* |5
+|*b* |8
+|*c* |"stuff"
+|=================

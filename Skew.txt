@@ -1,0 +1,51 @@
+
+SKEW
+~~~~
+
+Sets a coordinate system skewed from the original by the given number of
+degrees.
+
+[cols=",,,",options="header",]
+|=====================================================================
+|Arg |Type |Description |Values
+|val |[decimal!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=====================================================================
+
+<br>*Notes and Examples* <p>Positive numbers skew to the right; negative
+numbers skew to the left.</p> <p>Note: Currently the skewing
+transformation has effect on the line width in case *fixed* is not
+specified</p> <code><pre> line-width 1 fixed pen white
+
+`   fill-pen blue` +
+`   box 120x20 220x120` +
+`   ` +
+`   skew 15` +
+`   fill-pen red` +
+`   box 120x125 220x225`
+
+`   reset-matrix`
+
+`   skew -15` +
+`   fill-pen yellow` +
+`   box 120x230 220x330` `</pre></code>` image:SKEW-1.png[`SKEW`
+`example` `1`]
+
+<br> <p>Another way to reset the skew is to use the PUSH command:</p>
+<code><pre> line-width 1 fixed pen white
+
+`   fill-pen blue` +
+`   box 120x20 220x120`
+
+`   push [  ` +
+`       skew 15` +
+`       fill-pen red` +
+`       box 120x125 220x225` +
+`   ]`
+
+`   skew -15` +
+`   fill-pen yellow` +
+`   box 120x230 220x330` `</pre></code>` image:SKEW-2.png[`SKEW`
+`example` `2`]
+
+<br> <p>See also:
+http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>

@@ -1,0 +1,32 @@
+
+R3 Development Discussions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* link:Things that must be doc'd[Things that must be doc'd] - reminder
+list
+* link:R3 Alpha Test Priorities[R3 Alpha Test Priorities] - what to
+focus on
+* link:Primary Issues[Primary Issues] - need to be resolved
+* link:TCP Port Open Issue[TCP Port Open Issue] - that needs to be
+described
+* link:Parse Project[Parse Project] - proposals for extensions to PARSE
+* link:DLL Interface[DLL Interface] - proposals and single point of
+information for R3 DLL interface
+* Replacement - proposals for composition via replacement/substitution
+* link:Inclusion Methods[Inclusion Methods] - discussion about use of
+PREBOL, INCLUDE, DO, IMPORT, etc.
+* link:GUI Face Sizing[GUI Face Sizing] - finalizing the algorithm
+* Comparisons - how comparisons should work
+* link:Copy Semantics[Copy Semantics] - defining what copy does
+* link:Builder Functions[Builder Functions] - The /INTO option
+* Exceptions - RETURN, EXIT, CATCH, THROW, QUIT, BREAK, CONTINUE,
+triggered errors
+* link:Exception proposals[Exception proposals] - dynamic or
+definitional?
+* link:R3 GUI terminology[R3 GUI terminology] - terminology unification
+* link:Mathematical model of REBOL series[ Indexing] - discussion of
+indexing in R2 vs. indexing in R3, vs. other possible alternatives
+
+'''''
+
+Category:Community

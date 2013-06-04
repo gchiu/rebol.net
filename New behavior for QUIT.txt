@@ -1,0 +1,85 @@
+This document describes a new behavior for making QUIT work better with
+loaded scripts.
+
+This is just a summary of the method. See
+link:Defining a better QUIT[Defining a better QUIT] for a full
+discussion of the theory.
+
+
+Summary
+~~~~~~~
+
+The behavior of QUIT has changed to depend on how it is used. QUIT can
+either quit the entire REBOL system, or just exit the current script
+being evaluated.
+
+
+Example
+~~~~~~~
+
+It's easiest to show an example.
+
+Take the REBOL script quit.r below:
+
+`REBOL []` +
+`print "hello"` +
+`quit` +
+`print "end"`
+
+If you start REBOL with that script (on the command line or from an
+icon), the script will print hello, exit, and REBOL will terminate.
+
+However, if you start REBOL and type from the console, the script will
+return to the console when the QUIT is evaluated:
+
+`>> do %quit.r` +
+`hello` +
+`>>`
+
+Notice that "end" is not printed.
+
+
+QUIT/return
+~~~~~~~~~~~
+
+If you want the script above to return a value:
+
+`REBOL []` +
+`print "hello"` +
+`quit/return "done"`
+
+Now you can see that result:
+
+`>> do %quit.r` +
+`hello` +
+`== "done"`
+
+
+QUIT/now
+~~~~~~~~
+
+There may be a few places within the code where QUIT must terminate the
+REBOL system immediately. For example, a looping error situation may
+want to force such a QUIT after the second recursion.
+
+This is done with:
+
+` QUIT/now`
+
+The REBOL system will terminate immediately.
+
+
+QUIT in Console
+~~~~~~~~~~~~~~~
+
+If you use QUIT within the console, it will quit normally, just as
+before.
+
+
+How it Works
+~~~~~~~~~~~~
+
+If you look at the source for system/intrinsic/do, you will see that the
+script is evaluated using CATCH with a /quit refinement. This is a
+special variation of CATCH that is capable of catching the QUIT when it
+is thrown. (The QUIT throw is identical to the method used by HALT.)

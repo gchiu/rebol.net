@@ -1,0 +1,19 @@
+If you have problems or comments about how to use this wiki, please post
+them here.
+
+
+Recommendations
+~~~~~~~~~~~~~~~
+
+See link:Wiki Recommendations[Wiki Recommendations]
+
+
+Experimenting
+~~~~~~~~~~~~~
+
+If you have a DocBase account, you also have a Special:Mypage[ User
+page]. Along with this User page is a Special:Mypage/Sandbox[ Sandbox]
+that is intended for experimenting with wikitext. The Sandbox is a great
+place to try out wikitext features without worry.
+
+Category: Issues[Category: Issues]

@@ -1,0 +1,31 @@
+*on-attach* is invoked when this face gets attached to another face,
+which usually happens during
+*link:The Face Object Field - Actors - on-init[on-init]* for the other
+face.
+
+The input is the face requesting attachment. No return value is
+necessary.
+
+
+Examples
+^^^^^^^^
+
+Attaching a SCROLLER to the style:
+
+`on-attach: [ ; arg: scroller` +
+`  ; Called when scroll bar auto attaches:` +
+`  extend-face face 'attached arg` +
+`  update-scrollers face sub-gob? face` +
+`]`
+
+For the SCROLLER, the code to attach adds a SCROLL reactor to the target
+style through its
+*link:The Face Object Field - Actors - on-init[on-init]*:
+
+`on-init: [` +
+`  ; Find a prior face to attach the scroll bar to:` +
+`  if target: find-face-actor/reverse face 'on-scroll [` +
+`    append-face-act face reduce ['scroll target]` +
+`    do-style target 'on-attach face` +
+`  ]` +
+`]`

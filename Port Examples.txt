@@ -1,0 +1,420 @@
+*This section provides a variety of working port examples.*
+
+See the Ports document for a detailed description of ports.
+
+
+Small File Examples
+~~~~~~~~~~~~~~~~~~~
+
+As described in Ports, small files can be easily transferred using
+simple port actions.
+
+_So, what qualifies as a small file?_
+
+Generally, we consider files less than 100KB to be small. But, it really
+depends on your application. Two factors become important:
+
+1.  *The memory used.* For example, to read a 10MB file will require
+10MB of memory.
+2.  *The time required.* Larger files take more time. If you read a 10MB
+file, and you also have a GUI running, the GUI may pause for a second
+(or more) while the large file gets read.
+
+How do you solve these problems? You can use some of the large file
+techniques described below.
+
+
+Read a small file
+^^^^^^^^^^^^^^^^^
+
+To read a small file, such as a photo, into memory:
+
+`   data: read %photo.jpg`
+
+Note that the JPEG data is not decoded. It remains as binary. (If you
+want to load it as an image datatype, you use the *load* function.)
+
+
+Write a small file
+^^^^^^^^^^^^^^^^^^
+
+To write a small file, such as the one read above:
+
+`   write %photo1.jpg data`
+
+The data must be binary (as it would be from the above *read* example.)
+
+
+Copy a small file
+^^^^^^^^^^^^^^^^^
+
+Here is an example that copies a file using a *read* and *write*:
+
+`   write %photo2.jpg read %photo1.jpg`
+
+Notes:
+
+1.  This works for jpg, because in R3, both read and write are binary
+transfers, not strings. Note that this example is problematic if you do
+it in R2, because it defaults to string mode.
+
+
+Large File Examples
+~~~~~~~~~~~~~~~~~~~
+
+
+Read all of large file
+^^^^^^^^^^^^^^^^^^^^^^
+
+For large files, such as movies, you will want to break a file read into
+chunks. Here's how:
+
+`   file: open %movie.mpg` +
+`   while [not empty? data: read/part file 32000] [` +
+`       ;process data` +
+`   ]` +
+`   close file`
+
+The /part refinement tells *read* to only read 32000 bytes at a time.
+
+
+Copy a large file
+^^^^^^^^^^^^^^^^^
+
+Building on the above example, here's a function that shows how to copy
+a large file without using a lot of memory:
+
+`   copy-file: func [` +
+`       "Copy a large file"` +
+`       from-file to-file` +
+`       /local file1 file2 data` +
+`   ] [` +
+`       file1: open from-file` +
+`       file2: open/new to-file` +
+`       while [not empty? data: read/part file1 32000] [` +
+`           write file2 data` +
+`       ]` +
+`       close file1` +
+`       close file2` +
+`   ]`
+
+Of course, in most applications, you would also want to check for
+possible errors.
+
+
+Read parts of a large file
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to only read specific parts of a large file, you can do that
+also.
+
+First, we define a table of chunk positions and sizes:
+
+`   parts: [` +
+`   ; position size` +
+`        10000 30000` +
+`       123000 40000` +
+`       254000 20000` +
+`   ]`
+
+Using that table:
+
+`   file: open/seek %movie.mpg` +
+`   foreach [pos size] parts [` +
+`       data: read/seek/part file pos size` +
+`       if not empty? data [print checksum data]` +
+`   ]` +
+`   close file`
+
+Here we use the /seek refinement for *open* as a hint to tell the
+operating system we will be doing non-sequential file access. That helps
+it optimize its buffers.
+
+The /seek in *read* indicates what position the read should begin at.
+
+
+Writing parts of a large file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can use the same method as shown above for read. Of course, you
+would change the line:
+
+`       data: read/seek/part file pos size`
+
+to
+
+`       write/seek/part file data pos size`
+
+
+Appending to a large file
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For writing logs and journals, you will often want to append to the end
+of a large file. Here's how.
+
+`   file: open/seek %log.dat` +
+`   write/append file data` +
+`   close file`
+
+There is also a handy shortcut for this common action:
+
+`   write/append %log.dat data`
+
+
+Other File Operations
+~~~~~~~~~~~~~~~~~~~~~
+
+
+Query file info
+^^^^^^^^^^^^^^^
+
+For files, the port *query* function returns an object that provides
+information about the file. It can be used a file name:
+
+<pre> >> probe query %core.exe make object! [ name: %core.exe size:
+220720 date: 24-Apr-2008/22:03:14.29 type: 'file ] </pre>
+
+or with an open file port:
+
+<pre> >> port: open %core.exe >> probe query port make object! [ name:
+%core.exe size: 220720 date: 24-Apr-2008/22:03:14.29 type: 'file ] >>
+close port </pre>
+
+
+Delete a file
+^^^^^^^^^^^^^
+
+pending
+
+
+Rename a file
+^^^^^^^^^^^^^
+
+pending
+
+
+TCP Network Examples
+~~~~~~~~~~~~~~~~~~~~
+
+
+Read a web page
+^^^^^^^^^^^^^^^
+
+To read a web page, you would normally type:
+
+`   page: read `http://www.rebol.net[`http://www.rebol.net`]
+
+Easy, but not very educational. So, take a look at the next example.
+
+
+Use TCP to read a page
+^^^^^^^^^^^^^^^^^^^^^^
+
+This example uses TCP to read a web page.
+
+Note that this example reads the page at a low level, just for the
+purpose of showing how to use TCP ports. Things like redirection or
+errors are not handled.
+
+The example shows how to use asynchronous TCP to perform the transfer.
+
+<pre> REBOL [Title: "Simple Async HTTP"]
+
+send-http-request: func [port] [ write port to-binary ajoin [ "GET "
+port/spec/path " HTTP/1.0" crlf "Host: " port/spec/host crlf crlf ] ]
+
+read-http: func [ "Async HTTP reader" url [url!] /local spec port ][
+spec: probe decode-url url spec/2: to-lit-word 'tcp port: open spec
+
+`   port/awake: func [event] [` +
+`       ;print ["Awake-event:" event/type]` +
+`       switch/default event/type [` +
+`           lookup [open event/port]` +
+`           connect [send-http-request event/port]` +
+`           wrote [read event/port]` +
+`           read  [` +
+`               print ["Read" length? event/port/data "bytes"]` +
+`               read event/port` +
+`           ]` +
+`           close [return true]` +
+`       ] [` +
+`           print ["Unexpected event:" event/type]` +
+`           close event/port` +
+`           return true` +
+`       ]` +
+`       false ; returned` +
+`   ]` +
+`   port` `]`
+
+print "reading..." rp: read-http http://www.rebol.net/ wait [rp 10]
+close rp print to-string rp/data
+
+data: copy/part find/tail rp/data #\{0d0a0d0a} tail rp/data
+
+write %rebol-net.html data browse %rebol-net.html </pre>
+
+The web page will be read, then it will be written to a local file and
+opened in the web browser.
+
+Notes:
+
+1.  There is a 10 second timeout, specified in the *wait* block. You can
+modify that timeout if you find it necessary.
+2.  After the file is read, we copy just the body of it, not the HTTP
+header to the output file.
+
+
+TCP ping pong messages
+^^^^^^^^^^^^^^^^^^^^^^
+
+Here is an example of a server and a client that send a small message
+back and forth. Both the sides use asynchronous I/O.
+
+
+Pong Server
++++++++++++
+
+Here is the TCP server. It accepts connections and waits for a ping
+packet. Then, it responds with a pong packet.
+
+<pre> print "Ping pong server"
+
+server: open tcp://:8080
+
+server/awake: func [event /local port] [ if event/type = 'accept [ port:
+first event/port port/awake: func [event] [ ;probe event/type switch
+event/type [ read [ print ["Client said:" to-string event/port/data]
+clear event/port/data write event/port to-binary "pong!" ] wrote [ print
+"Server sent pong to client" read event/port ] close [ close event/port
+return true ] ] false ] read port ] false ]
+
+wait [server 30] close server </pre>
+
+
+Ping Client
++++++++++++
+
+Here is the client. It sends a ping to the server, then waits to get a
+pong reply back. When it does, it sends another ping. The ping-pong
+repeats several times, then stops.
+
+Here, it pings 50 times, but feel free to try larger numbers. One person
+verified he actually let it go to 100 million pings. Be sure to change
+the timeout if you use a large number!
+
+<pre> print "Ping pong client"
+
+ping-count: 0
+
+client: open tcp://127.0.0.1:8080
+
+client/awake: func [event] [ ;probe event/type switch event/type [
+lookup [open event/port] connect [write event/port to-binary "ping!"]
+wrote [ print "Client sent ping to server" read event/port ] read [
+print ["Server said:" to-string event/port/data] if (++ ping-count) > 50
+[return true] clear event/port/data write event/port to-binary "ping!" ]
+] false ]
+
+wait [client 10] ; timeout after 10 seconds close client wait 2 </pre>
+
+To try the example, run the server first. Then run the client to see the
+ping-pongs fly!
+
+
+Transfer a large file
+^^^^^^^^^^^^^^^^^^^^^
+
+Now we can combine the large file read example and the network example
+to create code to transfer a large file. It transfers a segment of the
+file at a time, so a file of any size can be transferred.
+
+Both the server and the client are asynchronous and use an awake
+function to handle their events during the transfer.
+
+We will also add a little command dialect to transfer the file name and
+the file size. This information will be passed before the transfer
+begins.
+
+
+Server
+++++++
+
+The server waits for the client to send a REBOL block that provides the
+file name and size. It then responds with either a 'go or a 'no to tell
+the client what to do.
+
+<pre> REBOL []
+
+dir: %temp/ make-dir dir
+
+do-command: func [port /local cmd] [ cmd: attempt [load port/data] if
+all [cmd parse cmd [file! integer!]] [ do in port/locals [ name: first
+cmd size: second cmd file: open/new dir/:name ] return true ] false ]
+
+transfer: func [port] [ port/locals: context [name: size: file: none
+total: 0] port/awake: func [event /locals port locs len] [ print
+['subport event/type] port: event/port locs: port/locals switch
+event/type [ read [ ; If the file is open, transfer next chunk: either
+locs/file [ len: length? port/data locs/total: locs/total + len write
+locs/file port/data clear port/data print ["len:" len "total:"
+locs/total "of" locs/size] read port ][ ; Otherwise, process the startup
+command: either do-command port [ write port to-binary "go" ][ read port
+; get rest of start command ] ] ] wrote [read port] close [ if locs/file
+[close locs/file] close port return true ] ] false ] read port ; wait
+for client to speak ]
+
+server: open tcp://:8080 server/awake: func [event /local port] [ print
+['server event/type] if event/type = 'accept [ transfer first event/port
+] false ] wait [server 10] ; Note: increase the timeout for large files
+close server </pre>
+
+We've left in some of the debugging information so you can see what's
+going on. Note that the _read_ event can occur even when the data is
+less than what we expect. That's ok, we just keep reading until the
+client closes the port. This is similar to HTTP 1.0.
+
+Notice that we keep all of our information in a port/locals object. In
+this way, we keep that data with the port and its use in the awake
+function. Be sure _not to use global or function variables_ (e.g. in the
+transfer function) to store that information!
+
+Also, if for some reason we fail to get the startup command from the
+client (a block that has the file name and size), then the transfer
+never starts.
+
+
+Client
+++++++
+
+The client gets the file name and file size, and sends it to the server.
+It then waits for a 'go to begin. If it gets a 'no, it closes the
+connection.
+
+<pre> REBOL []
+
+file-name: %data.dat
+
+info: query file-name size: info/size file: none
+
+client: open tcp://127.0.0.1:8080
+
+send-chunk: func [port file /local data] [ data: read/part file 20000 if
+empty? data [return false] print ["send:" length? data "bytes"] write
+port data true ]
+
+client/awake: func [event /local port result] [ probe event/type port:
+event/port switch event/type [ read [ ; What did the server tell us?
+result: load port/data clear port/data print ["Server says:" result]
+either result = 'go [ file: open file-name send-chunk port file ][ close
+port ] ] wrote [ ; Ready for next chunk: either file [ unless send-chunk
+port file [ close port ; finished! return true ] ][ ; Ask for server
+reply: read port ] ] close [ if file [close file] close port return true
+] lookup [open port] connect [ write port to-binary remold [file-name
+size] ] ] false ]
+
+wait [client 10] ; timeout after 10 seconds if file [close file] ; to be
+sure close client </pre>
+
+The client sends chunks of the file to the server without waiting for
+any kind of reply. After it has sent all of the data, it closes the port
+to indicate it has finished sending.

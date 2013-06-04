@@ -1,0 +1,18 @@
+
+Components
+^^^^^^^^^^
+
+Rebol version 3.0 transitioned to open source for its library code,
+a.k.a. the "Mezzanine".
+
+(link?)
+
+
+Notable Open Source Rebol Projects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* http://cheyenne-server.org/[Cheyenne Web Server] (BSD license)
+* http://softinnov.org/rebol/uniserve.shtml[Uniserve Asynchronous
+Framework] (BSD license)
+
+(etc, expand list)

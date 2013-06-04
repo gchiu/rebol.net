@@ -1,0 +1,11 @@
+
+Function notes
+~~~~~~~~~~~~~~
+
+* Apply - apply a function to block of arguments - New
+* Foreach - a few changes to know about
+* Delect - special dialect parsing
+* Trace - program evaluation tracing
+* Take - a useful new series action
+* Transcode - special method of loading code
+* link:Port Functions[Port Functions] - open, read, write, etc.

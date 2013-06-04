@@ -1,0 +1,26 @@
+<!-- The REBOL people wiki page -->
+
+[cols="",]
+|=========================
+|__TOC__
+|=========================
+
+<span id="0"></span> <span id="1"></span> <span id="2"></span> <span
+id="3"></span> <span id="4"></span> <span id="5"></span> <span
+id="6"></span> <span id="7"></span> <span id="8"></span> <span
+id="9"></span> <span id="A"></span> <span id="B"></span>
+
+
+Brian Tiffin
+~~~~~~~~~~~~
+
+Self employed REBOL developer. Cheerleader.
+
+<span id="C"></span> <span id="D"></span> <span id="E"></span> <span
+id="F"></span> <span id="G"></span> <span id="H"></span> <span
+id="I"></span> <span id="J"></span> <span id="K"></span> <span
+id="L"></span> <span id="M"></span> <span id="N"></span> <span
+id="O"></span> <span id="P"></span> <span id="Q"></span> <span
+id="R"></span> <span id="S"></span> <span id="T"></span> <span
+id="U"></span> <span id="V"></span> <span id="W"></span> <span
+id="X"></span> <span id="Y"></span> <span id="Z"></span>

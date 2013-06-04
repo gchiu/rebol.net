@@ -1,0 +1,321 @@
+*This document is for community ideas and suggestions related to
+promoting REBOL.*
+
+It would be nice to have a matrix or priority ranking, so we can see
+what our targets are, and how important each is.
+
+See also: Marketing_Strategy_Websites
+
+
+What is the intended use?
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+http://www.rebol.com/rebol3/motivation.html#section-2
+
+While the above link goes to "The Target Market", there is really no
+target market defined. There is a broad intended use laid out:
+lightweight distributed applications. It's important to read the actual
+description for that as RT defines it, because your interpretation may
+differ. For example, 'distributed' does not have anything to do with
+distributed computing and 'applications' means small, single-purpose
+tools. It says larger apps are just frameworks to hold many smaller
+apps, but it doesn't say if REBOL is intended to be used to build those
+larger apps/frameworks.
+
+
+Who is the audience?
+~~~~~~~~~~~~~~~~~~~~
+
+A key question is who we are advocating REBOL to. In order to appeal to
+an audience, REBOL has to have something to offer. It may be a feature
+of the language itself, something to do with its licensing or promise of
+future support, the ability to integrate with another tool or system, or
+the community surrounding it.
+
+
+What do we need in order to advocate REBOL?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section can be a simple list of target audiences and what is needed
+to market to them. There will be generalities, links, and overlap of
+course. For example, appealing to Python programmers may require that
+REBOL be Open Source. Open Source developers being a separate audience
+with their own wants and needs.
+
+
+Take care in how you say it
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*This is an important point to understand:* Over the years, many of us
+think very highly of REBOL; however, programmers tend to get upset if
+you blatantly state "language A is better than language B," _especially
+if it's on their forum or wiki_.
+
+It becomes even worse if they don't understand how REBOL works and just
+compare REBOL with what they know about their language -- a shallow
+comparison that does not consider semantics, symbolics, size, complexity
+management, or expressive power. For example, Ruby programmers will tell
+you that Ruby does everything that REBOL does (they don't understand the
+full depth of REBOL, because they've never experienced it.) So, don't be
+harsh, because it will just backfire. It's better to use more of a "have
+you ever considered" type of attitude.
+
+
+REBOL is not Lisp
+~~~~~~~~~~~~~~~~~
+
+When promoting REBOL, *I wouldn't take the strategy of saying it's like
+Lisp*, because actually, it's not that much like Lisp, _especially to a
+Lisper_. Certainly, it has many of the characteristics of Lisp, like
+taking a functional and symbolic language approach, but under the hood,
+there's actually nothing implementationally in common between the
+languages (at the core, Lisp is _node-based_ and REBOL is
+_vector-based_). Saying REBOL is like Lisp may scare away more
+perspective users (who had bad experiences with Lisp) than it will add.
+And, quite frankly, you won't make any converts out of Lispers. They
+tend to be very well rooted in their methods.
+
+Also, don't be tempted to get into the "vectors are better than nodes"
+debate. Although vectors are better suited toward modern high-speed
+parallel processing architectures, nodes have a clear win in the domain
+of list insertion and removal costs.
+
+
+A good place to start
+~~~~~~~~~~~~~~~~~~~~~
+
+There are many websites that serve as a survey of programming languages
+or an archive of useful code clips or tips. Most of them do not mention
+REBOL. Why? I've found that REBOL is not intentionally left out, they
+simply did not know about. They did not see it on other websites or in
+other language collections.
+
+Many of these websites are good places to promote REBOL or at least add
+it to the list along with other languages.
+
+
+Website Lists
+~~~~~~~~~~~~~
+
+
+Sites that mention REBOL
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+list of URLs where REBOL is mentioned
+
+
+Sites that should mention REBOL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+list of URLs where REBOL should be added
+
+
+Sites that probably should not mention REBOL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+list of URLs where REBOL should not be listed for one reason or another
+(because it's not the right fit for the viewers of that site).
+
+
+Audiences and their needs
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Open Source advocates
+^^^^^^^^^^^^^^^^^^^^^
+
+
+Large corporations
+^^^^^^^^^^^^^^^^^^
+
+
+Small businesses
+^^^^^^^^^^^^^^^^
+
+
+Consultants, custom solution developers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Shareware authors
+^^^^^^^^^^^^^^^^^
+
+
+Freeware Authors
+^^^^^^^^^^^^^^^^
+
+
+Hobbyists
+^^^^^^^^^
+
+
+Education
+^^^^^^^^^
+
+
+Non-profits
+^^^^^^^^^^^
+
+
+Government
+^^^^^^^^^^
+
+
+Commercial application developers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Windows
++++++++
+
+
+OS X
+++++
+
+
+Linux
++++++
+
+
+Programmers coming from other languages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+C, C++
+++++++
+
+
+Flash
++++++
+
+
+Java
+++++
+
+
+Lisp, Scheme, Haskell, Caml
++++++++++++++++++++++++++++
+
+Lispers talk a lot about building their own languages, which is what
+REBOL is all about too. Would it make sense to do a REBOL-in-REBOL
+example, like lisp-in-lisp is sometimes done? Or show them how to make
+REBOL look like Lisp?
+
+`   defun: func ['word 'args [paren!] 'body [paren!]] [` +
+`       set word func to block! args to block! body` +
+`   ]`
+
+`   defun dbl (n) (n * 2)`
+
+
+Logo, Forth, other "specialized" languages
+++++++++++++++++++++++++++++++++++++++++++
+
+
+.NET (C#, VB)
++++++++++++++
+
+
+Perl
+++++
+
+
+PHP
++++
+
+
+Python
+++++++
+
+
+REBOL (existing community)
+++++++++++++++++++++++++++
+
+
+Ruby, Rails
++++++++++++
+
+
+Smalltalk
++++++++++
+
+
+Web developers (CGI, HTML, CSS, JS, XML, JSON)
+++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Other groups
+^^^^^^^^^^^^
+
+
+*nix geeks and admins
++++++++++++++++++++++
+
+
+Agile and TDD developers
+++++++++++++++++++++++++
+
+
+Q&A
+~~~
+
+We should build an exhaustive list of high and low-level questions (with
+answers, of course) regarding the language which will server to better
+identify what is different about Rebol and many of its different and
+fundamental idioms.
+
+Some of these might simply be useful as a historic reference to pointy
+decisions which had to be taken that might seem odd to newcomers to the
+language or even as a reminder to experts.
+
+
+The language itself
+^^^^^^^^^^^^^^^^^^^
+
+Q: What are the main features of Rebol?
+
+* Human readable syntax
+* Its expressiveness, via many native datatypes
+* Transparent network & device messaging
+* Dialects (our term for DSLs, Domain Specific Languages)
+* Simplicity in creating GUIs
+* Parsing
+
+Q: What other languages inspired Rebol?
+
+Q: is Rebol an Object Oriented language?
+
+Q: Is Rebol a Functional Language?
+
+Q: why doesn't Rebol use parentheses on function calls?
+
+Q: Why does Rebol have so many Datatypes?
+
+
+The platform
+^^^^^^^^^^^^
+
+Q: Does Rebol have an official IDE (Integrated Development Environment)?
+No, though it is easily integrated into any modern text Editor which
+provides most the essential requirements of an IDE like syntax
+highlighting, script execution, word completion, etc. Some commercial
+and open source editors even have a REBOL setup built-in.
+
+Q: Does Rebol require me to learn a large framework in order to leverage
+it full potential?
+
+A: No, though it has a lot of built-in data manipulation functions which
+are as close to a framework as you'll get.
+
+Rebol/View, the GUI engine, is understandably more structured, but is
+easy to use without any prior programming skills.
+
+
+Odds & Ends
+^^^^^^^^^^^
+
+Q: How Old is Rebol?
+
+Q: Who is the lead designer/architect of the language?
+
+Carl Sassenrath

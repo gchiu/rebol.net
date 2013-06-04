@@ -1,0 +1,10 @@
+
+Parent
+^^^^^^
+
+*Style/parent* is the parent style and is a word when a style is derived
+from some other style. Otherwise, if it has no parent, it is set to
+NONE.
+
+This field is important because styles often inherit (cascade) their
+definitions from base parent styles.

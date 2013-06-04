@@ -1,0 +1,126 @@
+This is a collection of notes from a discussion of an attempt at design
+of a common printing system for REBOL3.
+
+For REBOL2, there are scattered attempts at some form of simple printing
+system. Such examples are John Niclasen's postscript.r dialect, which
+allows direct printing to a few postscript printers.
+
+However, it does not take any advantage of the OS that REBOL2 resides on
+for printing, which means no access do official OS print dialogs and
+worse, no access to the printer driver.
+
+It is therefore, sadly, a process that requires great effort to print
+simple things in REBOL2.
+
+*This must change for REBOL3 in an effort to bring true, easy printing
+to REBOL3.*
+
+
+Some goals
+~~~~~~~~~~
+
+1.  Printing should work natively on Windows, Linux and MacOSX. This
+means accessing OS printer drivers and use the native printer dialog in
+the same way as REBOL is capable of using the native file requester.
+2.  A finished REBOL3 should be able to access the printer system for
+its respective platform out of the box.
+3.  If the printing system for a specific platform is not available,
+REBOL3 should still be able to function without it.
+4.  *What we can draw should be printable.*
+
+
+WYSIWYG
+~~~~~~~
+
+Having WYSIWYG for DRAW would be a great asset, not only for simple
+desktop publishing, but for any kind of printing that requires just a
+bit more than text, such as straight lines. Since most drawing
+operations are done with DRAW (some are limited effects constructed with
+GOBs), it makes sense to start with DRAW and work from there.
+
+
+Using DRAW
+^^^^^^^^^^
+
+DRAW is optimized for the screen, and in order to print, the same
+dialect should be used for a printable output. This is considered the
+easiest way to print what we can see on screen. A print dialect would
+also have additional features for printer friendly output, such as
+setting margins and paper sizes in a friendly and recognizable way.
+
+*It should be possible to take a DRAW block and feed it to the printer
+dialect without problems.*
+
+
+The Print Dialect
+^^^^^^^^^^^^^^^^^
+
+The Print Dialect is output specific. On Windows it would output one
+dataset, suitable for Windows printer driver systems. On MacOSX, it
+would use a different set. Generic printing systems like Postscript and
+PCL should be supported as well. These are necessary in cases where you
+may want to access the printer directly or that the OS does not have
+printer support.
+
+
+Platform Specific Printing
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+That printing is a platform specific task is unavoidable, but we can do
+some things to reduce the dependability, by using common code right out
+to the printer driver. From the OS, platform specific code is necessary
+to take care of this task. It is expected that all code that is needed,
+will be possible to make in the open part of REBOL3, so the whole
+printing system is open source.
+
+
+Printing on Windows
+^^^^^^^^^^^^^^^^^^^
+
+There are many types of printing systems available for Windows. It's
+worth considering which ones are useful (i.e. most compatible) and which
+ones are not.
+
+GDI : This is the most common form of printing in Windows for legacy
+applications. It's a C compatible API that goes back to 16-bit Windows.
+C++ is not required. +
+GDI+ : This system was introduced in Windows XP and 2003, with runtimes
+available for Windows NT 4.0 SP6, 98, 98SE, Me and 2000. This provides
+some more capabilities and a simpler, C++ API. Windows 95, and Windows
+NT prior to 4.0 SP6 are not supported. This is probably our best bet for
+native printing on Windows, though extensive wrapping will likely be
+required. +
+XPS : This system is new for Windows Vista. It uses .NET 3.0 and is not
+fully supported on platforms older than Vista. On Windows XP or 2003
+with .NET 3.0 installed, XPS is supported through a print-to-file
+driver. Windows 2000 or earlier is not supported. It is not recommended
+that REBOL use this system at this time.::
+
+Find other systems worth mentioning here.
+
+
+Printing on MacOSX
+^^^^^^^^^^^^^^^^^^
+
+Write something about using NSView.
+
+NSView is used for both printing and showing the native printer dialog.
+For MacOSX, it's usually encouraged to make the printer dialog as a
+sheet attached to the current window, rather than a dialog. This depends
+on how REBOL3 will be implemented for MacOSX. We're not that far yet.
+
+Read more about the printing system here:
+http://developer.apple.com/documentation/Printing/Conceptual/About_MacOSX_Printing/index.html#//apple_ref/doc/uid/20001017[1].
+
+
+Printing on Linux and other platforms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Write something about postscript.
+
+Since Linux doesn't itself have a native printing requester, one must
+access either the one for a specific desktop, if there is one .
+
+For REBOL2, file dialogs currently use the built-in file requester,
+instead of attempting to use a native one. This may be necessary here as
+well.

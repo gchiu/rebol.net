@@ -1,0 +1,22 @@
+If you are a REBOL Technologies employee or a developer closely attached
+to REBOL Technologies and therefore R3 alpha development, here are some
+documents residing in DocBase, that we consider mandatory reading. If
+you read these documents, we hope you will be able to use our basic
+tools for REBOL development.
+
+* http://www.rebol.com/r3/devbase/index.html[DevBase] - The source
+management tool that we use internally to keep track of your uploaded
+changes to various REBOL sources, such as R3, Devbase itself, small
+tools, etc.
+* link:Release Process[Release Process] - A cookbook recipe on how the
+release process for REBOL 3 works.
+
+If you are going to be involved in DocBase writing, these make for a
+good read:
+
+* link:About Cookbooks[About Cookbooks] - The principle behind cookbooks
+and how to add new cookbooks and recipes.
+
+
+Cookbook References
+~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,346 @@
+DELECT stands for DEcode diaLECT. It is used to implement REBOL's
+internal dialects such as DRAW, EFFECT, rich TEXT, SECURE, and VID, but
+its function is available to all users.
+
+
+Basics
+~~~~~~
+
+Unlike PARSE, DELECT handles unordered dialects (grammars) such as DRAW
+and VID. In such dialects the order of arguments is less important than
+their type, making them more human friendly because users don't need to
+remember the detailed order of arguments (only a rough order).
+
+DELECT is implemented as a native function because an unordered parse
+can be computationally intensive. Doing it with PARSE would be even more
+intensive due to the large number of backtrack states that naturally
+occur.
+
+The basic function form of DELECT is:
+
+<pre>USAGE: DELECT dialect input output
+
+DESCRIPTION: Parses a common form of dialects. Returns updated input
+block. DELECT is a native value.
+
+ARGUMENTS: dialect -- Describes the words and datatypes of the dialect
+(Type: object!) input -- Input stream to parse (Type: block!) output --
+Resulting values, ordered as defined (Type: block!)
+
+REFINEMENTS: /in -- Search for var words in specific objects (contexts)
+where -- Block of objects to search (non objects ignored) (block!)
+</pre>
+
+
+Input Block
+^^^^^^^^^^^
+
+The DELECT function parses an input block according to a specified
+dialect object. The resulting arguments are placed in the output block.
+The input block position is updated and returned as the result of
+DELECT. Note that words in the input block may be rebound (if they are
+keywords of the dialect).
+
+
+Output Block
+^^^^^^^^^^^^
+
+The output block must be preallocated before passing it to DELECT. This
+is done to allow the user to more carefully manage memory during the
+parse. Keep in mind that if you reuse the output block, but you also
+want to store the results, you must COPY the block otherwise it will be
+changed.
+
+DELECT itself uses no memory, but it will expand the output block if
+necessary. So, it is not a problem if it is too short.
+
+
+Return Value
+^^^^^^^^^^^^
+
+DELECT returns the continuation position for the next iteration of the
+parse. This is normally the position of the next command, otherwise it
+is a default (non command) or an error.
+
+DELECT will return NONE when there is nothing more to parse.
+
+
+In-Context Words
+^^^^^^^^^^^^^^^^
+
+In order to help reduce the need to use paths in more complex
+environments, you can specify the lookup path for words. For example, a
+graphics system may have multiple layers of variables that are used for
+DRAW rendering.
+
+Example usage:
+
+` c: context [data: 10]` +
+` result: delect/in dialect [cmd data] output [c]`
+
+This line will look for the data word in the C context before looking
+elsewhere.
+
+If there are multiple contexts in the block, each is scanned until the
+word is found.
+
+
+Example Usage
+~~~~~~~~~~~~~
+
+Here is an example of using DELECT to handle a very simple dialect.
+
+<pre> dialect: context [ default: [tuple!] single: [string!] double:
+[integer! string!] ]
+
+inp: [1.2.3 single "test" double "test" 123] out: make block! 4 ; (any
+initial size works)
+
+while [inp: delect dialect inp out] [ ?? out ?? inp ] </pre>
+
+The results will be:
+
+<pre> out: [default 1.2.3] inp: [single "test" double "test" 123]
+
+out: [single "test"] inp: [double "test" 123]
+
+out: [double 123 "test"] inp: [] </pre>
+
+Of course, this is a very trivial case, but it gives you the idea.
+
+
+Dialect Definition
+~~~~~~~~~~~~~~~~~~
+
+A DELECT dialect is defined as an object. Here is an example that shows
+various cases:
+
+<pre>dil: context [ default: [pair! binary!] empty: [] single:
+[integer!] double: [integer! string!] multi: [* pair!] multa: [tuple! *
+pair!] types: [series!] types2: reduce [series! block!] word: [word!]
+refine: [integer! ref pair!] refine2: [integer! ref pair! integer! str
+string!] keyword: none ref: none str: none ] </pre>
+
+The words of the object define the keywords of the grammar. Words
+defined as blocks are commands. Words set to NONE are special keywords
+that can be used as flag words inside of commands).
+
+The first word is special. It defines the datatypes that will be
+accepted without commands. These values can appear any place a command
+is allowed. However, these types are not delimiters (if they can act as
+an argument to a command, that is of higher precedence.) Set it to NONE
+if no types are expected. Also note that you can use any word for this
+slot, not just 'default. However, the word is considered a command and
+it will be returned in the output block. See below.
+
+Words defined as blocks are commands. They will accept the datatypes
+specified. The datatypes can be specified as words or as actual datatype
+values (reduced words). Typesets are also allowed.
+
+Repeated datatypes can be specified with * followed by the datatype.
+This should only be used if several or an unlimited number of such a
+type is allowed. Currently, it is suggested to put the * types at the
+end of the block.
+
+Keywords that act as optional sections (like function refinements) are
+allowed as well. However, they are currently a problem because they must
+appear in the order specified. They cannot be unordered like the
+datatypes. Also, the keywords provide a window for the datatypes that
+follow. Those specified before the keywords will no longer be filled.
+
+After the parse, the output block holds a series of values, one for each
+datatype specified. For example, if the command is:
+
+`   double: [integer! string!]`
+
+then its result will always be
+
+`   [double value1 value2]`
+
+even if no integer or string is provided (in which case NONE is the
+value).
+
+Here are examples of all combinations of arguments to double and what it
+returns:
+
+`   double => double none none` +
+`   double 1 => double 1 none` +
+`   double "abc" => double none "abc"` +
+`   double 1 "abc" => double 1 "abc"` +
+`   double "abc" 1 => double 1 "abc"`
+
+
+Numeric Type Conversion
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Note that integers and decimal values will satisfy each other's type. If
+a decimal is provided for an integer:
+
+`   double 1.2 => double 1 none`
+
+And, an integer can be used for a decimal. Keep that in mind.
+
+
+NONE on Input
+~~~~~~~~~~~~~
+
+Note: During the parse, NONE values in the input stream will be ignored.
+This is allowed because NONE is the value returned for missing
+arguments. For example:
+
+`   double none => double none none` +
+`   double "abc" none => double none "abc"` +
+`   double none 1 => double 1 none`
+
+This is useful when preprocessing dialect input streams.
+
+
+Variables, Paths, Parens
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Within the input stream, variables, paths, and parens are allowed:
+
+`   double n - where n is integer` +
+`   double obj/size - where size is integer in obj` +
+`   double (1 + 2)`
+
+Note that functional paths are not allowed and will cause an error.
+
+
+Repeating Values
+~~~~~~~~~~~~~~~~
+
+As noted above, a * will indicate when a value is repeated.
+
+For example:
+
+`   multi: [* pair!]`
+
+will accept and return:
+
+`   multi` +
+`   multi 1x2` +
+`   multi 1x2 3x4` +
+`   multi 1x2 3x4 5x6 ...`
+
+Any number of pairs can be provided.
+
+Currently, it is suggested to put the * types at the end of the block.
+It is better to write:
+
+`   line: [tuple! * pair!]`
+
+rather than:
+
+`   line: [* pair! tuple!]`
+
+
+Literal Commands
+~~~~~~~~~~~~~~~~
+
+Literal commands are allowed as a variation of a normal command. This is
+used in special dialects such as DRAW, where a shape can be specified
+either absolute or relative. The relative shapes use literal words. No
+other processing of literals is done.
+
+So, for example:
+
+`   double 1 "a" => double 1 "a"` +
+`   'double 1 "a" => 'double 1 "a"`
+
+
+Default Types
+~~~~~~~~~~~~~
+
+As noted above, the first word of the dialect can specify types that
+need no command keyword.
+
+For example, in the rich text dialect, you can write:
+
+`  [red "This text is red"]`
+
+This is allowed because both the red value (a tuple) and the string are
+defined as default types. Example may be:
+
+`  default: [tuple! string!]`
+
+When the above input is parsed, the result will be:
+
+`  [default 255.0.0 default "This text is red"]`
+
+Each default value is identified by the default word and each value is
+returned separately.
+
+Be sure to watch out for this potential problem:
+
+<pre> dialect: context [ default: [string!] cmd: [string!] ] </pre>
+
+This is a valid dialect, but if you input [cmd "test"] the result will
+always be to cmd, never to default. However, [cmd "test" "this"] will
+work fine.
+
+
+Binding
+~~~~~~~
+
+DELECT prefers to have its input block bound to the dialect. In that
+case, DELECT can operate faster because it can immediately recognize the
+commands and other keywords. For high performance dialects that use
+static inputs, the bind action is advised.
+
+When an input block is not bound (with BIND) to the dialect, DELECT will
+perform the bind operation during the parse (using just-in-time
+binding). The input block is modified with all keywords values rebound.
+
+
+Optimizing Dialects
+~~~~~~~~~~~~~~~~~~~
+
+The order of keywords and the datatypes within command blocks is
+important for performance. The difference in parse overhead can be _an
+order of magnitude_ different for some parse combinations.
+
+The general rules are:
+
+1.  List command keywords by frequency. High frequency words should be
+near the top. This will speed up JIT binding (but not advance binding).
+
+1.  Put the most common datatypes toward the head of the type block.
+This will speed-up the argument matching process.
+
+For example, write:
+
+`   play: [integer! pair! string!]` +
+`   stop: [word!]`
+
+if you expect play more often than stop, and you expect play integers
+more often than play strings.
+
+
+Preparsing a Dialect
+^^^^^^^^^^^^^^^^^^^^
+
+For dialects where input blocks may be built by the user, and the
+arguments may be out of order, there is a benefit to preparsing the
+input.
+
+When you preparse, you are checking the input for errors while at the
+same time looking up static variables that are not going to change
+before usage. The output of DELECT is then saved in a cache to be used
+as the input for the final DRAW or other dialected function. The order
+of the arguments in the output is now optimized, because it will appear
+in the dialect's specified order.
+
+This is especially useful if you think that you will be reusing the same
+dialect input multiple times, such as in graphics or a GUI.
+
+
+Errors
+~~~~~~
+
+Currently, an error in a dialect will cause an error to be thrown. Code
+can catch this error, and the argument value shows where the error
+occurred.
+
+Note: we need to provide more detailed error messages for these types of
+errors.

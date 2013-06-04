@@ -1,0 +1,114 @@
+The TAKE function removes values from a series and returns them as a
+result.
+
+
+Concept
+~~~~~~~
+
+A common pattern found in queues and stacks is to remove a value,
+returning the value as a result:
+
+`   value: first series` +
+`   remove series`
+
+This code would return the value, and also remove it from the series.
+
+The pattern is so common that R3 adds a new function, TAKE, that can be
+used on all series datatypes. Using TAKE, the above example would be
+reduced to just:
+
+`   value: take series`
+
+and, the result is the same as above.
+
+
+Quick examples
+~~~~~~~~~~~~~~
+
+TAKE can be used with INSERT or APPEND to implement a number of stack
+and queue methods. For example, a queue can be implemented as:
+
+`   append stack value1` +
+`   ...` +
+`   value2: take stack`
+
+And, with the TAKE/last refinement, a stack is implemented with:
+
+`   append stack value1` +
+`   ...` +
+`   value2: take/last stack`
+
+
+Usage
+~~~~~
+
+Help returns this information about TAKE:
+
+<pre> USAGE: TAKE value /part length /deep /last
+
+DESCRIPTION: Copies and removes from series. (Modifies) TAKE is an
+action value.
+
+ARGUMENTS: value -- (Type: series! gob! port! none!)
+
+REFINEMENTS: /part -- Limits to a given length or position length --
+(Type: number! series! port! pair!) /deep -- Also copies series values
+within the block /last -- Take it from the tail end </pre>
+
+Note that TAKE works anywhere within a series, not just at the head and
+tail.
+
+For example:
+
+`   value: take at series 10`
+
+will remove the value at series position 10 and return it.
+
+So, the TAKE/last refinement is also roughly equivalent to:
+
+`   value: take back tail series`
+
+
+Take/part refinement
+~~~~~~~~~~~~~~~~~~~~
+
+take/part works like the copy/part, with a few differences.
+
+`   >> take/part [1 2 3 4 5] 1` +
+`   == [1]`
+
+`   >> take/part [1 2 3 4 5] 2` +
+`   == [1 2]`
+
+Copy/part returns [] in the case of an empty series. Take/part returns
+none, just as it does without the /part refinement.
+
+`   >> take []` +
+`   == none`
+
+`   >> take/part [] 2` +
+`   == none `
+
+Take/part/last works it's way backwards.
+
+`   >> take/last/part [1 2 3 4 5] 2` +
+`   == [4 5]`
+
+With /last, /part is negated. Using a negative value for the length,
+combined with /last, takes values going forward.
+
+`   >> take/last/part [1 2 3 4 5] -2` +
+`   == none`
+
+`   >> take/part at [1 2 3 4 5] 3 -2` +
+`   == [1 2]`
+
+`   >> take/last/part at [1 2 3 4 5] 3 -2` +
+`   == [4 5]`
+
+???
+
+`   >> take/part [1 2 3 4 5] -2` +
+`   == [1 2 3 4 5]`
+
+TBD - mention /deep for copying subseries values

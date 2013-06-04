@@ -1,0 +1,22 @@
+
+Graphics notes
+~~~~~~~~~~~~~~
+
+* link:graphics[Graphics] - a more efficient design
+* GOB datatype - low level graphical objects
+* link:Event System[Event System] - low level event system
+* link:R3 GUI[R3 GUI] - newer GUI prototype design
+
+Special graphics dialects:
+
+* link:richtext[Richtext] dialect - new dialect for drawing text
+* Draw dialect - drawing scalar vector graphics
+* Shape dialect - complex vector shapes
+* Effect dialect - for image effects
+
+Older VID GUI prototype docs:
+
+* link:View System[View System] - changes to VIEW functions
+* link:VID References[VID] - a new _Visual Interface Dialect_
+* Make_GOBs - for quick graphics
+* link:GUI Events[GUI Events] - GUI event system

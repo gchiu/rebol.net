@@ -1,0 +1,207 @@
+Rebol is a fusion and "sweet spot" sought by a careful blend of features
+tuned for over a decade, so it is hard to capture that in a single
+sentence (or several). Yet choosing these carefully and using them
+purposefully is good because it helps people quickly understand what
+tasks the language shines at. It also gives quotable guidance when
+helping give feedback to new users who might not have grasped the "Zen".
+
+
+Marketing Slogans
+-----------------
+
+In this context, a marketing slogan is a higher-level capture of the
+philosophy. It's something you're unlikely to invoke in dialogue when
+giving feedback on someone's code. It's better to have only a few of
+these.
+
+
+From The Past
+~~~~~~~~~~~~~
+
+
+REBOL rebels against software complexity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* very solid and rings true with what Rebol is
+* is punchier as this simple statement rather than phrasing "Rebelling
+against large, expensive, complex software"
+
+
+Do it in 1MB, not 200MB.
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* true that small size correlates with good factoring, but perhaps saved
+for the right time (the download page?)
+* at some level, focusing on the size of the interpreter+libraries isn't
+all that relevant outside of embedded or multiprocessing server markets,
+though in-memory size matters more
+* management of complexity at source level is more important than the
+size of the object file (e.g. turning on compiler optimizations
+http://www.rebol.net/r3blogs/0297.html[makes the executable
+bigger]...should they be off?)
+
+
+Building the future
+^^^^^^^^^^^^^^^^^^^
+
+* Current R3 blog tagline
+* Does not seem to carry much information
+
+
+Smarter, Smaller, Better
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* was originally used with Web 3.0 Starts Here Slogan, but could as well
+be used separately
+* it feels like giving a world a clear and short message of what REBOL
+is
+
+
+Make IT Simple
+^^^^^^^^^^^^^^
+
+* Not all software developers label themselves to be "IT people" (e.g.
+http://ask.slashdot.org/story/09/11/28/2353241/Do-You-Hate-Being-Called-an-IT-Guy[this
+article])
+* Made Rebol sound like it might be a sysadmin tool or some kind of
+virtual web host control panel
+
+
+Web 3.0 Starts Here
+^^^^^^^^^^^^^^^^^^^
+
+* people who would rally and use term "Web 3.0" would never agree Rebol
+is suited to be called this
+* people who understand what this is supposed to mean likely wouldn't
+use the term "Web 3.0"
+
+
+Vive la REBOLution
+^^^^^^^^^^^^^^^^^^
+
+* a little too goofy to use without a smiley after it :)
+
+
+Relative Expression Based Object Language
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* a solid meaning behind word "Rebol"
+* unclear if presenting this to users early on causes more confusion
+than good
+* naming with acronyms and all caps not currently in vogue
+
+
+The lightweight platform for Internet applications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* "lightweight" has some positive and negative connotations
+* today's expectations of claiming "platform" for "Internet
+applications" is beyond just language scope (Rails, Django, Pylons,
+WebObjects)
+* better to sharpen focus on "*Internet Included"? _(e.g. how many other
+languages can effectively #include libraries via http address)_
+
+
+Brainstorm New Marketing Slogans
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Rebol is the rebellion against software complexity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Same sentiment as before but scans better than _REBOL rebels
+against..._
+* _"It's not just *a* rebellion, it's *the* rebellion"_
+
+
+Version 3: It's Rebol. Rebooted.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* suggests a massive change instead of just a continuation of Rebol 2
+with Unicode
+* much of this massive change would be about perspective, not just
+technology
+* clear communication of an open source story and community contract
+* a lot of these things are in the works but just not visible yet
+
+
+The next generation of the old school
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* reword of ‘We are of the old school but of the next generation.’
+http://www.rebol.com/cgi-bin/blog.r?view=0374#comments[proposed as motto
+here]
+* true that it's tough to grasp Rebol unless you've clocked some time in
+software
+
+
+Mottos
+------
+
+Mottos are something you can have an unlimited number of, if they ring
+true and are useful. There's a 20 line summary called
+http://www.python.org/dev/peps/pep-0020/[The Zen of Python], which says
+things like: "Explicit is better than implicit.", "Readability counts.",
+"Flat is better than nested."
+
+So what is link:The Zen of Rebol[The Zen of Rebol]? How many premises
+from other languages can be said to apply equally well to Rebol, if not
+better? Which are contentious with the Rebol worldview? And which are
+completely new? Each motto should be backed up by some code samples
+instead of just being abstract. If someone asks what a motto means, just
+link to that page.
+
+
+From The Past
+~~~~~~~~~~~~~
+
+
+There Are No Keywords
+^^^^^^^^^^^^^^^^^^^^^
+
+* Has this "sold" people and do they like hearing it?
+* Might be better to stress layering and levels of
+mutability/immutability, like, say,
+http://en.wikipedia.org/wiki/Nomic[Nomic]?
+* _you can build your own variant of the language_ may sound better than
+something that sounds like _we didn't build a language, so you'll have
+to_
+
+
+Brainstorm New Mottos
+~~~~~~~~~~~~~~~~~~~~~
+
+There's room for dry mottos, as well as colorful ones that call up
+associations and metaphors (which would lend some more unique
+personality and perhaps some memorable fun/humor.)
+
+
+Turtles all the way down
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Well known concept from a
+http://en.wikipedia.org/wiki/Turtles_all_the_way_down[funny story]
+* Emphasizes code as data and the structural coherence in Rebol
+* Catchy and quotable, might get people to think about how to use source
+reflection
+
+
+Inspired by theory, driven by practice
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Lifted this from a note in the
+http://www.rebol.net/wiki/Parse_Project#Theory_of_PARSE[parse project
+wiki]
+* Useful for pointing out any time someone complains that Rebol deviated
+from theory
+** Should be supplemented with the practical use cases
+
+
+Some assembly required
+^^^^^^^^^^^^^^^^^^^^^^
+
+* Could be extended to _Batteries included, but some assembly required_
+* Emphasizes need for an efficiency-oriented mindset, both when
+programming and understanding design tradeoffs
+* If this is going to be cited often, cases must be found which resonate
+with target markets

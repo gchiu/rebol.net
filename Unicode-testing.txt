@@ -1,0 +1,62 @@
+*This is a private page for early R3 Unicode testers only.* This page
+will be deleted after completion of early test phase.
+
+
+Test Distribution
+~~~~~~~~~~~~~~~~~
+
+*First prototype release:* 25-Feb-2008
+
+*Current release:* core004
+
+Current test distribution contains only the kernel ("core") of R3.
+
+*It includes:* all datatypes, native functions, mezz functions,
+compression, checksums and hashes, PARSE, help strings, and system
+object.
+
+*Not included:* networking, CGI, graphics, view.
+
+Current Zip download size for R3 is: 141 KB.
+
+Notes:
+
+1.  *Scripts must be UTF-8 encoded.*
+2.  *You may need to enable the correct fonts for the CMD console.*
+3.  *Some internal debug messages may still be printed. You can ignore
+them.*
+
+
+Areas to Try
+~~~~~~~~~~~~
+
+* Console - can you type any char into REBOL as a string or as a word?
+
+* REBOL internals - there are more than 100 different parts of REBOL
+changed to allow Unicode. So, for example, create a string and try
+inserting Unicode chars.
+
+* OS command line - e.g. can you pass any file name to REBOL?
+
+* OS function API - things like WHAT-DIR and system/options, do those
+look correct?
+
+* OS file system API - can you open, read, and write a file using
+unicoded chars?
+
+
+Not Yet Supported
+~~~~~~~~~~~~~~~~~
+
+* Item: UTF-16 formats.
+* Plan: Will be supported via refinements.
+
+* Item: IO is binary only. For now, use TO-STRING READ %file.txt
+* Plan: Will be supported via refinements.
+
+* Item: Collation/sort and search.
+* Plan: We will provide some level of collation and search. But, for
+full localization, users will need to load special tables.
+
+* Item: Surrogates.
+* Plan: no plan at this time.

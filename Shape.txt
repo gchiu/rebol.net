@@ -1,0 +1,392 @@
+
+SHAPE
+~~~~~
+
+Draws shapes using the SHAPE sub-dialect
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|shape-cmd-block |[block!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples* <p>For examples of specific SHAPE commands see
+<u>link:shape[HERE]</u></p>
+
+
+ARC
+~~~
+
+Draws an elliptical arc from the current point. <TABLE WIDTH=100%
+CELLSPACING=10><TR> <TD WIDTH=45% VALIGN=TOP>
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|end-point |[pair!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|radius-x |[decimal!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|radius-y |[decimal!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|angle |[decimal!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|sweep |[word!] |"positive angle" arc |*sweep*
+
+|large |[word!] |large arc sweep |*large*
+|=======================================================================
+
+</TD><TD WIDTH=25% VALIGN=MIDDLE> pen yellow line-width 3 shape [ move
+100x200 arc 300x200 120 50 0 ] </TD><TD WIDTH=30% VALIGN=MIDDLE
+ALIGN=CENTER> image:SARC-1.png[200px] </TD></TR></TABLE>
+
+<p>Set SWEEP to draw arcs in a "positive-angle" direction:</p>
+<code><pre> pen yellow line-width 3 shape [ move 100x200 arc 300x200 120
+50 0 sweep ] </pre></code> image:SARC-2.png[200px]
+
+<br> <p>Set LARGE for arc sweeps greater than 180°:</p> <code><pre> pen
+yellow line-width 3 shape [ move 100x200 arc 300x200 120 50 0 sweep
+large ] </pre></code> image:SARC-3.png[ARC example 3]
+
+<br>
+
+<p>More complex usage of *arc*:</p> <code><pre> pen yellow line-width 3
+shape [ move 0x399 line 42x357 arc 84x315 25 20 -45 sweep line 126x273
+arc 168x231 25 40 -45 sweep line 210x189 arc 252x147 25 60 -45 sweep
+line 294x105 arc 336x63 25 80 -45 sweep line 399x0 move 0x0 ]
+</pre></code> image:SARC-4.png[ARC example 4]
+
+<br> <p>Same complex example but with relative positioning commands:</p>
+<code><pre> pen red line-width 3 translate 0x399 shape [ move 0x0 'line
+42x-42 'arc 42x-42 25 20 -45 sweep 'line 42x-42 'arc 42x-42 25 40 -45
+sweep 'line 42x-42 'arc 42x-42 25 60 -45 sweep 'line 42x-42 'arc 42x-42
+25 80 -45 sweep 'line 63x-63 move 0x0 ] </pre></code>
+image:SARC-5.png[ARC example 5]
+
+<br>
+
+
+CLOSE
+~~~~~
+
+Closes previously defined set of lines in the SHAPE block.
+
+This command has no arguments. <br>*Notes and Examples*
+
+<p>In some case it is easier to use the CLOSE command as a shortcut
+instead of calculating the closing lines.</p>
+
+<p>This is without CLOSE commands:</p> <code><pre> line-width 3 pen
+yellow shape [ move 100x100 hline 50 arc 100x50 50 50 0 large move 75x75
+vline 25 arc 25x75 50 50 0 move 0x160 line 200x160 200x0 0x0 ]
+</pre></code> image:CLOSE-1.png[CLOSE example 1]
+
+<br> <p>And here with CLOSE commands:</p> <code><pre> line-width 3 pen
+yellow shape [ move 100x100 hline 50 arc 100x50 50 50 0 large close move
+75x75 vline 25 arc 25x75 50 50 0 close move 0x160 line 200x160 200x0 0x0
+] </pre></code> image:CLOSE-2.png[CLOSE example 2]
+
+<br>
+
+
+CURV
+~~~~
+
+Smooth *CURVE* command shortcut.
+
+[cols=",,,",options="header",]
+|=====================================================================
+|Arg |Type |Description |Values
+|point1 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point2 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point1 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|... |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=====================================================================
+
+<br>*Notes and Examples* <p>From
+http://www.w3.org/TR/SVG11/paths.html:</p> <p>"The first control point
+is assumed to be the reflection of the second control point on the
+previous command relative to the current point. (If there is no previous
+curve command, the first control point is the current point.)"</p>
+
+<p>Simple example:</p> <code><pre> line-width 3 pen yellow shape [ move
+100x50 vline 150 curv 300x150 300x50 move 0x0 ] </pre></code>
+image:CURV-1.png[CURV example 1]
+
+<br> <p>Same example but with relative positioning commands:</p>
+<code><pre> line-width 3 pen red shape [ 'move 100x50 'vline 100 'curv
+200x0 200x-100 move 0x0 ] </pre></code> image:CURV-2.png[CURV example 2]
+
+<br>
+
+
+CURVE
+~~~~~
+
+Draws a cubic Bézier curve.
+
+[cols=",,,",options="header",]
+|=====================================================================
+|Arg |Type |Description |Values
+|point1 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point2 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point3 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point4 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|... |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=====================================================================
+
+<br>*Notes and Examples* <p>A cubic Bézier curve is defined by a start
+point, an end point, and two control points.</p>
+
+<code><pre> line-width 3 pen yellow shape [ move 100x50 curve 100x150
+300x150 300x50 move 0x0 ] </pre></code> image:SCURVE-1.png[CURVE example
+1]
+
+<br> <p>Same example but with relative positioning commands:</p>
+<code><pre> line-width 3 pen red shape [ move 100x50 'curve 0x100
+200x100 200x0 move 0x0 ] </pre></code> image:SCURVE-2.png[CURVE example
+2]
+
+<br>
+
+
+HLINE
+~~~~~
+
+Draws a horizontal line from the current point.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|end-x |[decimal!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples* <p>Using absolute coordinates:</p> <code><pre>
+pen yellow line-width 4 shape [ move 100x100 hline 300 move 100x150
+hline 250 move 100x200 hline 200 ] </pre></code> image:HLINE-1.png[HLINE
+example 1]
+
+<br> <p>Using relative coordinates:</p> <code><pre> pen red line-width 4
+shape [ move 100x100 'hline 200 'move -200x50 'hline 150 'move -150x50
+'hline 100 ] </pre></code> image:HLINE-2.png[HLINE example 2]
+
+<br>
+
+
+LINE
+~~~~
+
+Draws a line from the current point through the given points, the last
+of which becomes the new current point.
+
+[cols=",,,",options="header",]
+|=====================================================================
+|Arg |Type |Description |Values
+|point1 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point2 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point3 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point4 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|... |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=====================================================================
+
+<br>*Notes and Examples* <p>Using absolute coordinates:</p> <code><pre>
+pen yellow line-width 4 shape [ move 50x50 line 300x120 50x120 300x50
+move 0x0 ] </pre></code> image:SLINE-1.png[LINE example 1]
+
+<br> <p>Using relative coordinates:</p> <code><pre> pen red line-width 4
+shape [ move 50x50 move 50x50 'line 250x70 -250x0 250x-70 move 0x0 ]
+</pre></code> image:SLINE-2.png[LINE example 2]
+
+<br>
+
+
+MOVE
+~~~~
+
+Set's the starting point for a new path without drawing anything.
+
+[cols=",,,",options="header",]
+|=====================================================================
+|Arg |Type |Description |Values
+|point1 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=====================================================================
+
+<br>*Notes and Examples*
+
+<p>The effect is as if the "pen" were lifted and moved to a new
+location.</p> <p>Used at the end of a SHAPE command, MOVE prevents the
+shape from being drawn as a closed polygon.</p>
+
+<p>Note: Every path defined in SHAPE block is automatically closed. To
+disable the auto-close feature just put at the end of the SHAPE block:
+*move 0x0*</p> <code><pre> line-width 4 pen red shape [ move 100x100
+line 20x20 150x50 move 0x0 ] pen blue shape [ move 100x200 line 20x120
+150x150 ] </pre></code> image:MOVE-1.png[MOVE example 1]
+
+<br> <p>Using relative coordinates for the second shape:</p> <code><pre>
+line-width 4 pen red shape [ move 100x100 line 20x20 150x50 move 0x0 ]
+pen blue shape [ move 100x100 'move 0x100 'line -80x-80 130x30 'move 0x0
+] </pre></code> image:MOVE-2.png[MOVE example 2]
+
+<br>
+
+
+QCURV
+~~~~~
+
+Smooth *QCURVE* command shortcut.
+
+[cols=",,,",options="header",]
+|=====================================================================
+|Arg |Type |Description |Values
+|point1 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=====================================================================
+
+<br>*Notes and Examples* <p>Draws a cubic Bézier curve from the current
+point to point1.</p> <p>See: http://www.w3.org/TR/SVG11/paths.html and
+CURV</p>
+
+<p>Using absolute coordinates:</p> <code><pre> pen yellow line-width 4
+shape [ move 0x150 qcurve 100x250 200x150 qcurv 400x150 move 0x0 ]
+</pre></code> image:QCURV-1.png[QCURV example 1]
+
+<br> <p>Using relative coordinates:</p> <code><pre> pen red line-width 4
+shape [ move 0x150 'qcurve 100x100 200x0 'qcurv 200x0 move 0x0 ]
+</pre></code> image:QCURV-2.png[QCURV example 2]
+
+<br>
+
+
+QCURVE
+~~~~~~
+
+Draws quadratic Bézier curve.
+
+[cols=",,,",options="header",]
+|=====================================================================
+|Arg |Type |Description |Values
+|point1 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point2 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|point3 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|... |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=====================================================================
+
+<br>*Notes and Examples* <p>A quadratic Bézier curve is defined by a
+start point, an end point, and one control point.</p>
+
+<p>Using absolute coordinates:</p> <code><pre> pen yellow line-width 4
+shape [ move 100x50 qcurve 200x150 300x50 move 0x0 ] </pre></code>
+image:QCURVE-1.png[QCURVE example 1]
+
+<br> <p>Using relative coordinates:</p> <code><pre> pen red line-width 4
+shape [ move 100x50 'qcurve 100x100 200x0 move 0x0 ] </pre></code>
+image:QCURVE-2.png[QCURVE example 2]
+
+<br>
+
+
+VLINE
+~~~~~
+
+Draws a vertical line from the current point.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|end-y |[decimal!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples* <p>Using absolute coordinates:</p> <code><pre>
+pen yellow line-width 4 shape [ move 100x100 vline 300 move 150x100
+vline 250 move 200x100 vline 200 ] </pre></code> image:VLINE-1.png[VLINE
+example 1]
+
+<br> <p>Using relative coordinates:</p> <code><pre> pen red line-width 4
+shape [ move 100x100 'vline 200 'move 50x-200 'vline 150 'move 50x-150
+'vline 100 ] </pre></code> image:VLINE-2.png[VLINE example 2]
+
+<br>
+
+'''''
+
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%> Pages <font
+size=1>
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP width=30%> Chapters <font size=1>
+
+* link:R3 Introduction[R3 Introduction]
+* link:Getting Started With R3[Getting Started With R3]
+* link:The Graphical User Interface[The Graphical User Interface]
+* link:Script Writing With The Visual Interface Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With The Draw Dialect*
+* link:The Graphic Object[The Graphic Object]</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%> <font size=1>
+
+* link:Table Of Contents[Table Of Contents]
+
+</font></TD> </TR></TABLE>

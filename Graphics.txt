@@ -1,0 +1,62 @@
+The REBOL 3 graphics system has been redesigned in a major way to
+provide greater performance while at the same time requiring
+substantially fewer resources (memory and CPU time).
+
+
+Requirements
+~~~~~~~~~~~~
+
+
+Overall Requirements
+^^^^^^^^^^^^^^^^^^^^
+
+* Lightweight - very lean, but powerful new design
+* High-speed - for multimedia and video games
+* Easy - to learn, debug, understand, and improve
+
+
+Functional Requirements
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* Windows - opening and controlling windows on the native OS
+* Compositing - layering large numbers of graphical objects with
+transparency (alpha channel)
+* Draw - supporting a wide range of SVG-style drawing functions
+* Effects - providing raster operations like earlier versions
+* Text - adding better rich-text and font support
+* Events - optimized GUI event handling
+
+
+Special Requirements
+^^^^^^^^^^^^^^^^^^^^
+
+* Emulate faces - ability to support FACE object for compatibility
+(mezzanine)
+* Virtual windows - rendering graphics into an image
+* Timing - event timestamps, animation sync, timers
+* Mouse shape - ability to change mouse shape as needed
+* Hover focus - focusing events to the context related to the mouse
+location
+* Embedability - allowing the window system to run within other
+applications
+* Embedded operations - such as running video in a window
+* OpenGL - ability to easily support OpenGL operations later
+
+
+Architecture
+~~~~~~~~~~~~
+
+image:Graphics-system.jpg
+
+
+Graphical Objects: GOBs
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The new system is based on a new graphical object structure called a
+GOB.
+
+GOBs are implemented as a native REBOL datatype, but with highly
+optimized internal structure to minimize memory requirements. With the
+new design, it should be possible to create graphical displays and
+interfaces that contain thousands of objects, but with much less impact
+on memory than in prior versions.

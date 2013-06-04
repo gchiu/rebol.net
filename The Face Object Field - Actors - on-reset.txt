@@ -1,0 +1,12 @@
+*on-reset* can be invoked when the face needs to be reset. It is the
+actor used, when using the *reset* reactor.
+
+There are no arguments or return values needed.
+
+
+Examples
+^^^^^^^^
+
+`on-reset: [` +
+`  do-style face 'on-set 0` +
+`]`

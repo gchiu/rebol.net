@@ -1,0 +1,20 @@
+The DECOMPRESS function accepts normally compressed binary data from
+within REBOL itself, compressed with the COMPRESS function.
+
+If you are feeding it data from an external compressor, write something
+about that.
+
+It looks that REBOL can decompress any ZLIB data. It just requires to
+append known length of uncompressed data in binary little-endian
+representation.
+
+` zlib-decompress: func [` +
+`     zlibData [binary!]` +
+`     length [integer!] "known uncompressed zlib data length"` +
+` ][` +
+`     decompress head insert tail zlibData third make struct! [value [integer!]] reduce [length]` +
+` ]`
+
+
+Cookbook References
+~~~~~~~~~~~~~~~~~~~

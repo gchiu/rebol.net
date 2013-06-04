@@ -1,0 +1,9 @@
+
+Upgrading REBOL 2 source code to REBOL 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This article will attempt to consolidate some of the common efforts
+required in upgrading REBOL 2 source code to *REBOL Release 3*.
+
+Keep on eye on the link:Changes_between_R2_and_R3[Changes] and
+link:How_to_do_things_the_new_Rebol_3_way[The REBOL 3 Way] articles.

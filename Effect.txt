@@ -1,0 +1,65 @@
+[cols=",,",options="header",]
+|=======================================================================
+|Command |arguments |Description
+|ADD |image! image! |[multiblock cell omitted]
+
+|ALPHAMUL |image! integer! |[multiblock cell omitted]
+
+|ASPECT |image! word! word! decimal! |[multiblock cell omitted]
+
+|BLUR |image! |[multiblock cell omitted]
+
+|COLORIZE |image! tuple! integer! |[multiblock cell omitted]
+
+|CONVOLVE |image! block! decimal! integer! logic!
+|[multiblock cell omitted]
+
+|CONTRAST |image! integer! |[multiblock cell omitted]
+
+|CROP |image! pair! pair! |[multiblock cell omitted]
+
+|DIFFERENCE |image! image! tuple! |[multiblock cell omitted]
+
+|EMBOSS |image! |[multiblock cell omitted]
+
+|EXTEND |image! pair! pair! |[multiblock cell omitted]
+
+|FIT |image! word! word! decimal! |[multiblock cell omitted]
+
+|FLIP |image! pair! |[multiblock cell omitted]
+
+|GRADCOL |image! pair! tuple! tuple! |[multiblock cell omitted]
+
+|GRADIENT |image! pair! tuple! tuple! |[multiblock cell omitted]
+
+|GRADMUL |image! pair! tuple! tuple! |[multiblock cell omitted]
+
+|GRAYSCALE |image! |[multiblock cell omitted]
+
+|HSV |image! tuple! |[multiblock cell omitted]
+
+|INVERT |image! |[multiblock cell omitted]
+
+|KEY |image! tuple! |[multiblock cell omitted]
+
+|LUMA |image! integer! |[multiblock cell omitted]
+
+|MIX |image! image! |[multiblock cell omitted]
+
+|MULTIPLY |image! image! tuple! integer! |[multiblock cell omitted]
+
+|REFLECT |image! pair! |[multiblock cell omitted]
+
+|ROTATE |image! integer! |[multiblock cell omitted]
+
+|SHADOW |image! pair! pair! tuple! decimal! word!
+|[multiblock cell omitted]
+
+|SHARPEN |image! |[multiblock cell omitted]
+
+|TILE |image! pair! |[multiblock cell omitted]
+
+|TILE-VIEW |image! |[multiblock cell omitted]
+
+|TINT |image! integer! |[multiblock cell omitted]
+|=======================================================================

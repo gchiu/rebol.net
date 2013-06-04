@@ -1,0 +1,115 @@
+
+Clip
+~~~~
+
+*Return To Draw Contents*
+
+Specifies a clipping region; drawing will only occur inside the region.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|upper-left-point |[pair!] |The upper-left point of the bounding box
+defining the clipping region. |[multiblock cell omitted]
+
+|lower-right-point |[pair!] |The lower-right point of the bounding box
+defining the clipping region. |[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples*
+
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20"
+cellspacing="0" border="1" width=100%><TR> <TD WIDTH=60%> line-width 2
+pen yellow fill-pen blue clip 10x10 70x90 box 20x20 200x200 </TD> <TD
+align=center valign=MIDDLE>image:CLIP-1b.png<BR> The box would go to
+200x200, but we <b><tt>clip</tt></b> it.</TD> </TR><TR>
+
+<TD WIDTH=60%> pen yellow fill-pen red clip 50x50 125x200 circle 50x50
+100 </TD> <TD align=center valign=MIDDLE>image:CLIP-2b.png <BR> Clipping
+other shapes can produce interesting effects.</TD> </TR><TR>
+
+<TD WIDTH=60%> pen yellow fill-pen red clip 50x50 125x200 circle 50x50
+100 pen green fill-pen blue clip off circle 125x75 50 </TD> <TD
+align=center valign=MIDDLE>image:CLIP-3b.png <br> To turn clipping off,
+use <b><tt>off</tt></b> as the argument to <b><tt>clip</tt></b>.</TD>
+</TR> </TABLE>
+
+'''''
+
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%> Pages <font
+size=1>
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP width=30%> Chapters <font size=1>
+
+* link:R3 Introduction[R3 Introduction]
+* link:Getting Started With R3[Getting Started With R3]
+* link:The Graphical User Interface[The Graphical User Interface]
+* link:Script Writing With The Visual Interface Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With The Draw Dialect*
+* link:The Graphic Object[The Graphic Object]</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%> <font size=1>
+
+* link:Table Of Contents[Table Of Contents]
+
+</font></TD> </TR></TABLE>

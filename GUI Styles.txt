@@ -1,0 +1,6 @@
+*Documentation about GUI styles can now be found here:
+http://www.rebol.com/r3/docs/gui/styles.html["R3 GUI Styles"]*
+
+'''''
+
+Category:GUI

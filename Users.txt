@@ -1,0 +1,20 @@
+* User:Carl[Carl Sassenrath] _on DocBase_,
+http://en.wikipedia.org/wiki/Carl_Sassenrath[Carl] _on Wikipedia_.
+*REBOL Creator*. Also see http://www.sassenrath.com[SassenRanch], Carl's
+homepage.
+
+
+REBOL Internal Developers
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+REBOL External Collaborators
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* User:Gabriele[Gabriele Santilli]
+* User:Richard[Richard Smolak]
+* User:BrianH[Brian Hawley]
+* User:Anton[Anton Rolls]
+* User:Giuseppe[Giuseppe Chillemi] (Rebol2 WikiPage Maintainer)
+* User:Henrikmk[Henrik Mikael Kristensen]
+* User:Ashley[Ashley G Trüter]

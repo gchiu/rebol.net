@@ -1,0 +1,114 @@
+
+CIRCLE
+~~~~~~
+
+Draws a circle or ellipse
+
+*Return To Draw Contents*
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|center |[Pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|radius-x |[decimal!] |Used for both X and Y radii if *radius-y* isn't
+provided |[multiblock cell omitted]
+
+|radius-y |[decimal!] |Optional. Used to create an ellipse
+|[multiblock cell omitted]
+|=======================================================================
+
+<br>*Notes and Examples*
+
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20"
+cellspacing="0" border="1" width=100%><TR> <TD WIDTH=60%> pen yellow
+line-width 5 circle 200x200 150 </TD> <TD align=center
+valign=MIDDLE>image:CIRCLE-1b.png</TD> </TR><TR>
+
+<TD WIDTH=60%> pen logo.gif circle 200x200 150 </TD> <TD align=center
+valign=MIDDLE>image:CIRCLE-2b.png <BR> A circle using an image as the
+pen.</TD> </TR><TR>
+
+<TD WIDTH=60%> line-width 2 pen yellow fill-pen logo.gif circle 200x200
+150 </TD> <TD align=center valign=MIDDLE>image:CIRCLE-3b.png <br> Circle
+using an image as the fill-pen.</p> </TD> </TR> </TABLE>
+
+'''''
+
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%> Pages <font
+size=1>
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+
+<font size=1>
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP width=30%> Chapters <font size=1>
+
+* link:R3 Introduction[R3 Introduction]
+* link:Getting Started With R3[Getting Started With R3]
+* link:The Graphical User Interface[The Graphical User Interface]
+* link:Script Writing With The Visual Interface Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With The Draw Dialect*
+* link:The Graphic Object[The Graphic Object]</font></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%> <font size=1>
+
+* link:Table Of Contents[Table Of Contents]
+
+</font></TD> </TR></TABLE>

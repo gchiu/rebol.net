@@ -1,0 +1,59 @@
+__NOTOC__
+
+Getting started with REBOL is really simple.
+
+
+Download REBOL 2 for your platform
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Free downloads for students, educators, hobbyists, and small
+organizations:<P>
+
+*REBOL/View 2.7 for Graphical Applications*
+http://www.rebol.com/view-platforms.html <BR> Designed for graphical
+applications on end-user systems. <BR><BR>
+
+*REBOL/Core 2.7 for Server Applications*
+http://www.rebol.com/platforms.html<BR> Don't need graphics? Download
+REBOL/Core <BR><BR>
+
+Advanced commercial REBOL programming applications and services are at
+http://www.rebol.com/products.html>
+
+
+Setup
+~~~~~
+
+REBOL installation is quite easy but we suggest you to read the
+following documentation.
+
+http://www.rebol.com/docs/setup.html
+
+Getting started with Linux is slightly different see:
+link:Setting up in Linux[Setting up in Linux] .
+
+
+Examples
+~~~~~~~~
+
+In the REBOL desktop click on the REBOL icon at the top, select DEMOS
+and choose one. With left mouse click you start the demo. With right
+mouse click you see the notes and if you click on the EDIT button the
+source of the demo will open.
+
+You will be amazed of how small are all REBOL applications.
+
+
+Documentation
+~~~~~~~~~~~~~
+
+The main documentation source page is:
+link:R2_Documentation[Documentation]<BR><BR>
+http://www.rebol.com/docs/quick-start.html[Quick Start] By Carl
+Sassenrath. <BR> http://www.rebol.com/docs/quick-start2.html[Quick Start
+Part 2] By Carl Sassenrath. <BR>
+http://musiclessonz.com/rebol_tutorial.html[REBOL Programming For The
+Absolute Beginner] By Nick Antonaccio.
+
+<BR> Rebol2:TenMinutesGuide[Ten minutes with REBOL 2] A short
+introduction. <BR>

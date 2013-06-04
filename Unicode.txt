@@ -1,0 +1,277 @@
+*Note: this document is in the process of being updated. User:Carl[Carl]
+13:36, 25 February 2008 (EST)*
+
+
+Basic Concepts
+~~~~~~~~~~~~~~
+
+*R3 supports Unicode character strings.* Unicode provides the ability to
+handle text from all languages, worldwide.
+
+For REBOL 3.0, Unicode is limited mainly to basic operations and does
+not support the full range of conditions and variations of the Unicode
+standard. However, what is supported will go far toward helping your
+programs handle text from around the world.
+
+It's important to know a few basic rules about Unicode, because they may
+effect your programs. Here is a very short summary to get you started:
+
+1.  If your code, data, and OS are always ANSI (ASCII 7 bits), then you
+can ignore most of the special Unicode rules. R3 will keep ANSI strings
+optimized to conserve memory.
+2.  If any of your code, data, and OS are Latin-1 (ISO-8859-1), then the
+main thing you need to know is that your files should be UTF8 encoded.
+All other operations should work as in #1 above.
+3.  If your code and data are ANSI or Latin-1, but your OS runs in
+Unicode mode, things should also work fine. R3 will use the necessary
+Unicode interfaces (wide char or UTF8 APIs) to your OS for things like
+directories and files.
+4.  If your code is ANSI or Latin-1, but your data could include
+Unicode, there are a small number of rules that you will need to know.
+Mainly, you should know that that strings in R3 automatically handle
+Unicode, and when doing file or network transfers, binary data is not
+equivalent to string data; it must be converted. Also, there can be some
+details related to search and sort to know. See more below.
+5.  If your code, data, and OS are Unicode, then R3 will handle that.
+For example, a string is still as string, even if it contains Unicode
+characters. But, you will need to know the above rule and a few more
+rules about encodings.
+6.  Finally, if you use a non-Unicode OS, but you use Unicode code or
+data, the script should still operate correctly; however, your console
+may display odd characters that are not supported by your OS or console
+font.
+
+In addition, if you are accustomed to using codepages (upper-half of
+8-bit chars) for character encoding, R3 supports those as conversions
+during read and write, but internal storage does not use codepage
+techniques. Internally, storage is Unicode, or Latin-1, the low order
+8-bit subset of Unicode. Of course, you don't need to know any of that,
+but it does provide memory optimizations compared to other programming
+languages.
+
+
+Basic Examples
+~~~~~~~~~~~~~~
+
+A few examples will help you quickly understand the general idea of
+Unicode in REBOL.
+
+Here we use the Greek character alpha (&alpha;), which you can see in
+this
+http://en.wikibooks.org/wiki/Windows_Programming/Unicode/Character_reference/0000-0FFF>[handy
+Unicode table] is character U+03B1, or 945 as integer. We use this
+character for the example because it is far beyond the Latin-1 8-bit
+range.
+
+<pre> >> #"^(3B1)" ; char as a hex encoded literal == #"α"
+
+>> to-char #3b1 == #"α"
+
+>> to-char 945 == #"α"
+
+>> "testα" == "testα"
+
+>> "test^(3b1)" ; string containing hex char literal == "testα"
+
+>> str: append "test" to-char 945 == "testα"
+
+>> length? str == 5
+
+>> last str == #"α"
+
+>> to-binary str == #\{74657374CEB1} ; note, it is UTF-8 encoded!
+
+>> to-string to-binary str ; to UTF-8 and back again == "testα"
+
+>> uppercase str == "TESTΑ"
+
+>> testα: 10 == 10
+
+>> testα == 10
+
+>> write %testα.txt "example" == port!
+
+>> read %. == [%abc.r %testα.txt] </pre>
+
+Of course, if we use an eastern character, what I see in my console is
+just a box; no character is rendered because it's not available in the
+current font. However, if I cut and paste it here:
+
+<pre> >> #"^(905)" == #"अ" </pre>
+
+You will see the character in the browser (if your current browser font
+supports it). So it's correct value is being preserved, even if it does
+not display properly.
+
+
+EDIT MARKER - OLD STARTS HERE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Text below not yet updated.
+
+
+Source Code Encoding
+~~~~~~~~~~~~~~~~~~~~
+
+*The default R3 source code encoding is UTF-8.*
+
+Other encodings such as the popular Latin-1 (ISO-8859-1) are supported,
+but such encodings must be specified in the script header, as an
+argument to the LOAD function, or as a command line argument in REBOL.
+
+
+Header specification of encoding
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Script headers can specify the encoding of the script. For example:
+
+<pre> REBOL [ encoding: latin-1 ] </pre>
+
+
+UTF-16 Encoding
+^^^^^^^^^^^^^^^
+
+R3 will also support UTF-16 encoding in both big and little endian byte
+orders.
+
+For loading, the specific UTF-16 encoding will be detected by the
+presence of a BOM (byte order marker) or by the ordering of the word
+REBOL as represented in 16 bit characters (note: requires proper
+starting alignment).
+
+
+String Related Datatypes
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+REBOL has two primary string datatype classes: *binary!* and *string!*
+(including several string related datatypes such as file!, email!, url!,
+tag!, and issue!).
+
+In R3, when you read a stream of bytes from a file, network, or other
+device, they are treated as binary. Binary is defined simply as a stream
+of bytes. These bytes may encode text, images, sounds, video, or other
+media. In general, you can transfer these bytes to and from memory
+without knowing how the bytes are encoded.
+
+However, once you need to interpret or manipulate _what the binary
+represents_, you must decode the binary into its corresponding datatype.
+It becomes a string! or an image!, etc.
+
+For text character (string) datatypes, you must know how the binary is
+encoded in order to decode it into a string that can be processed by
+REBOL.
+
+By default, R3 assumes that the binary is UTF-8 encoded. So, if you
+convert a binary to a string, the UTF-8 decoding method will be used.
+So, in this case:
+
+`  str: to string! read %file.txt`
+
+The READ returns binary that is assumed to be UTF-8 encoded. The TO
+function will decode the binary into a unicode string.
+
+Note that UTF-8 perfectly handles the default ASCII (ANSI) characters
+with values less than 128. That means that most existing REBOL scripts
+(written in English) will decode properly. They are already in UTF-8
+format.
+
+
+String Conversions
+^^^^^^^^^^^^^^^^^^
+
+Other encodings may be specified for the conversion of binary to string.
+For example binary encoded as iso8859-2 can also be converted to a
+string. (Probably by providing TO/with refinement, but yet to be
+specified.)
+
+
+Unicode Test Releases
+~~~~~~~~~~~~~~~~~~~~~
+
+
+2.99.4 - UTF8 Source Code
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This release should properly handle UTF8 encoded scripts. This is the
+new standard (and default) encoding for scripts in R3.
+
+*Really important notes:*
+
+* This release *does not include the Unicode! datatype or any other
+special unicode handling or APIs*. It only implements the UTF8 load of
+scripts.
+* This means that words within your code can contain *any valid unicode
+characters*, upper and lower case, and the correct word handling should
+happen.
+* If your scripts are ASCII (do not use chars > 127) then they are UTF8
+valid, and no changes are needed.
+* If your scripts use chars > 127 (e.g. accents, circumflex) then they
+must be UTF8 encoded. *Do not try to run scripts that are latin (or any
+other charset page) encoded.*
+* If your UTF8 script uses a BOM (a 3 byte signature), *you must strip
+it prior to loading or doing the script*. We plan to handle this
+automatically, but for now, you must remove it or your script may not
+load properly. For example: If you are using MS Notepad (and other
+products) in UTF8 encoding, be aware that the BOM will be prepended to
+your text.
+* Scripts that are UTF16 encoded are not supported in this release, but
+we plan to handle UTF16 auto-conversion later.
+
+
+General Effects of Unicode on REBOL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Unicode affects the REBOL language in several major ways:
+
+* *source encoding* - R3 assumes that source code is UTF8 encoded. This
+means that REBOL words and quoted strings are also UTF8 encoded by
+default. If source is UTF16 encoded, it will be converted to UTF8
+automatically.
+* *string encoding* - Strings are assumed to be UTF8 encoded; however,
+most of the string datatype actions are byte oriented, not character
+oriented. (We need to think about this more deeply.)
+* *unicode datatype* - The new UNICODE! datatype supports actions on
+code-points, providing an easier way to manipulate unicode than dealing
+with UTF8 encoding.
+* *unicode OS API* - Calls to various OS API functions must use the
+native unicode character encoding. For example on Win32, "wide
+character" functions are supported.
+* *unicode fonts* - When displaying fonts in R3 graphics, support for
+unicode characters is needed. This has yet to be defined, and it is
+likely to be implemented in separate stages.
+* *unicode input* - User input from various devices requires unicode.
+
+Note that ASCII encoding (chars below 128) is a valid subset of UTF8. If
+your code only consists of ASCII characters, then everything is the same
+as in R2. However, if you use characters of 128 or more, they must be
+UTF8 encoded.
+
+
+Detailed Effects of Unicode on REBOL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some detailed decisions are required:
+
+* casing rules - most REBOL string ops are case-insensitive.
+* comparison - by default do we want to compare code-points (or bytes?)
+* other strings types - how are other string datatypes handled
+(internally)?
+* hashing - most of our hash methods are byte-oriented, does that work
+ok?
+* encryption - same question as hashing.
+* LOAD conversions - load converts to what internal encoding?
+* FORM conversions - forming converts to what external encoding?
+* TO-* conversions - for example, to-string! of binary or to-binary! of
+unicoded string
+* alternative encodings - should we find ways to support other char set
+pages such as latin-1?
+
+
+References
+~~~~~~~~~~
+
+http://www.unicode.org[Unicode home page] - full specification and
+details
+
+http://www.jorendorff.com/articles/unicode/index.html[Unicode for
+Programmers] - a nice short summary

@@ -1,0 +1,21 @@
+_An attempt was made to evaluate an *undefined word*_
+
+This is a *script* error.
+
+Within the current context, REBOL could find no value for the given
+word.
+
+'''''
+
+All the juicy details about this kind of error go here.
+
+The community can contribute to it too and provide examples with deeper
+explanations.
+
+We will probably want some kind of standard format for these.
+
+Also, I wrote a pile of explanations for them a while back on REBOL.com.
+I will provide those as a starting point.
+
+And finally... I'm not so sure mediawiki is the very best way to handle
+them... but it is a start.

@@ -1,0 +1,48 @@
+
+Suggested conventions for documenting REBOL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[cols=",,",options="header",]
+|=======================================================================
+|Category |Style |How to do it in WikiText
+|emphasized text |_emphasized text_ |<nowiki> _emphasized text_</nowiki>
+(double apostrophe)
+
+|REBOL words |*_bold-and-italic_* |<nowiki>*_bold-and-italic_*</nowiki>
+(quintuple apostrophe)
+
+|values of REBOL variables |*bold* |<nowiki>*bold*</nowiki> (triple
+apostrophe)
+
+|embedded REBOL expression |<tt>typewriter text</tt>
+|&lt;tt&gt;typewriter text&lt;/tt&gt;
+|=======================================================================
+
+Note: REBOL variables are REBOL words that are bound to a context,
+unbound words don't have values.
+
+Use:
+
+1.  *do* to represent the value of the *_do_* variable - in a fresh
+console this is a native that does not have a serialized form
+2.  *none* to represent the value of the *_none_* variable - in a fresh
+console this is the value that can be literally represented as
+<tt>#[none]</tt> or <tt>#[none!]</tt>
+3.  *true* to represent the value of the *_true_* variable - in a fresh
+console this is the value that can be literally represented as
+<tt>#[true]</tt>
+4.  *unset!* to represent the value of the *_unset!_* variable - in a
+fresh console this is the value that can be literally represented as
+<tt>#[datatype! unset!]</tt>
+5.  *unset* to represent the value of the *_unset_* variable - in a
+fresh console this is a native that does not have a serialized form
+
+, etc.
+
+The above rules mean, that the <tt>#[unset!]</tt> value should be
+represented using neither of *_unset_* (the word), *unset* (the native),
+*_unset!_* (the word), *unset!* (the datatype).
+
+
+Cookbook References
+~~~~~~~~~~~~~~~~~~~

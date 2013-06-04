@@ -1,0 +1,101 @@
+[cols=",",options="header",]
+|=======================================================================
+|Math Functions |Mathematical operations.
+|[multiblock cell omitted] |Returns the first value multiplied by the
+second.
+
+|[multiblock cell omitted] |Returns the first number raised to the
+second number.
+
+|&plus;]] |Returns the result of adding two values.
+
+|-]] |Returns the second value subtracted from the first.
+
+|/]] |Returns the first value divided by the second.
+
+|//]] |Returns the remainder of first value divided by second.
+
+|abs]] |Returns the absolute value.
+
+|absolute]] |Returns the absolute value.
+
+|add]] |Returns the result of adding two values.
+
+|and]] |Returns the first value ANDed with the second.
+
+|arccosine]] |Returns the trigonometric arccosine in degrees.
+
+|arcsine]] |Returns the trigonometric arcsine in degrees.
+
+|arctangent]] |Returns the trigonometric arctangent in degrees.
+
+|complement]] |Returns the one's complement value.
+
+|cosine]] |Returns the trigonometric cosine in degrees.
+
+|divide]] |Returns the first value divided by the second.
+
+|even?]] |Returns TRUE if the number is even.
+
+|exp]] |Raises E (natural number) to the power specified.
+
+|log-10]] |Returns the base-10 logarithm.
+
+|log-2]] |Return the base-2 logarithm.
+
+|log-e]] |Returns the base-E (natural number) logarithm.
+
+|max]] |Returns the greater of the two values.
+
+|maximum]] |Returns the greater of the two values.
+
+|maximum-of]] |Finds the largest value in a series
+
+|min]] |Returns the lesser of the two values.
+
+|minimum]] |Returns the lesser of the two values.
+
+|minimum-of]] |Finds the smallest value in a series
+
+|mod]] |Compute a nonnegative remainder of A divided by B.
+
+|modulo]] |Wrapper for MOD that handles errors like REMAINDER.
+Negligible values (compared to A and B) are rounded to zero.
+
+|multiply]] |Returns the first value multiplied by the second.
+
+|negate]] |Changes the sign of a number.
+
+|negative?]] |Returns TRUE if the number is negative.
+
+|not]] |Returns the logic complement.
+
+|odd?]] |Returns TRUE if the number is odd.
+
+|or]] |Returns the first value ORed with the second.
+
+|positive?]] |Returns TRUE if the value is positive.
+
+|power]] |Returns the first number raised to the second number.
+
+|random]] |Returns a random value of the same datatype.
+
+|remainder]] |Returns the remainder of first value divided by second.
+
+|round]] |Returns the nearest integer. Halves round up (away from zero)
+by default.
+
+|sign?]] |Returns sign of number as 1, 0, or -1 (to use as multiplier).
+
+|sine]] |Returns the trigonometric sine in degrees.
+
+|square-root]] |Returns the square root of a number.
+
+|subtract]] |Returns the second value subtracted from the first.
+
+|tangent]] |Returns the trigonometric tangent in degrees.
+
+|xor]] |Returns the first value exclusive ORed with the second.
+
+|zero?]] |Returns TRUE if the number is zero.
+|=======================================================================

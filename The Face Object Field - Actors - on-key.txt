@@ -1,0 +1,26 @@
+*on-key* is invoked when a face has focus, and a key is pressed.
+
+The input argument and the return value is the event object.
+
+
+Examples
+^^^^^^^^
+
+Simple keyboard navigation in a street map face:
+
+`on-key: [` +
+`  dx: dy: 0` +
+`  ` +
+`  if arg/key = 'right [dx: 1]` +
+`  if arg/key = 'left  [dx: -1]` +
+`  if arg/key = 'up    [dy: 1]` +
+`  if arg/key = 'down  [dy: -1]` +
+`  ` +
+`  if find arg/flags 'shift [` +
+`    dx: dx * 3` +
+`    dy: dy * 3` +
+`  ]` +
+`  ` +
+`  move-map as-pair dx dy` +
+`  arg` +
+`]`

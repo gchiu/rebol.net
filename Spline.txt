@@ -1,0 +1,37 @@
+
+SPLINE
+~~~~~~
+
+The spline command lets you draw a curve through any number of points.
+The smoothness of the curve will be determined by the segment factor
+that you specify.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|segmentation |[integer!] |Optional. Number of segments between each
+point; default is 1. |[multiblock cell omitted]
+
+|closed |[word!] |Optional. 'closed will cause the path to be closed
+between the start and end points. |[multiblock cell omitted]
+
+|point1 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|point2 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|... |[pair!] |[multiblock cell omitted] |none
+|=======================================================================
+
+<br>*Notes and Examples* <code><pre> spline 20x20 200x70 150x200 50x230
+50x300 80x300 200x200 </pre></code> image:SPLINE-1.png[SPLINE example 1]
+
+<br> <code><pre> spline 3 20x20 200x70 150x200 50x230 50x300 80x300
+200x200 </pre></code> image:SPLINE-2.png[SPLINE example 2]
+
+<br> <code><pre> spline 10 20x20 200x70 150x200 50x230 50x300 80x300
+200x200 </pre></code> image:SPLINE-3.png[SPLINE example 3]
+
+<br> <code><pre> spline 10 closed 20x20 200x70 150x200 50x230 50x300
+80x300 200x200 </pre></code> image:SPLINE-4.png[SPLINE example 4]
+
+<br>

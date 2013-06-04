@@ -1,0 +1,112 @@
+To setup or control some items often requires more than just a few
+refinements or keyword options (in the case of a dialect).
+
+
+Example: MOLD
+~~~~~~~~~~~~~
+
+For example, MOLD currently has /all, /flat, and /only, but there are
+potentially another dozen refinements such as binary-base,
+decimal-precision, decimal-point (as dot or comma), dates with slashes,
+tight (no extra spaces or lines), wrap sizes, and more.
+
+Rather than add a pile of refinements, a better approach may be to pass
+a specification object that provides the necessary parameters. The
+benefit of this approach is that for many programs, a single spec object
+can be used for most cases. For example:
+
+`   mold/options data mold-opts`
+
+where mold opts may be:
+
+`   mold-opts: context [` +
+`        binary-base: 64` +
+`        decimal-precision: 12` +
+`        decimal-point: comma` +
+`        tight: on` +
+`        wrap-at: 100` +
+`        flat: on` +
+`   ]`
+
+We will still keep the most important options as refinements, but the
+bulk of options will be available from the object.
+
+
+History: OPEN
+~~~~~~~~~~~~~
+
+*We actually learned a lesson about this in R2 for the Open function.*
+Open has all these refinements:
+
+`    /binary -- Preserves contents exactly.` +
+`    /string -- Translates all line terminators.` +
+`    /direct -- Opens the port without buffering.` +
+`    /seek -- Opens port in seek mode without buffering.` +
+`    /new -- Creates a file. (Need not already exist.)` +
+`    /read -- Read only. Disables write operations.` +
+`    /write -- Write only.  Disables read operations.` +
+`    /no-wait -- Returns immediately without waiting if no data.` +
+`    /lines -- Handles data as lines.` +
+`    /with -- Specifies alternate line termination.` +
+`        end-of-line -- (Type: char string)` +
+`    /allow -- Specifies the protection attributes when created.` +
+`        access -- (Type: block)` +
+`    /mode -- Block of above refinements.` +
+`        args -- (Type: block)` +
+`    /custom -- Allows special refinements.` +
+`        params -- (Type: block)` +
+`    /skip -- Skips a number of bytes.` +
+`        length -- (Type: number)`
+
+The result is that calling open is much slower and it takes a lot of
+stack space, *even when the refinements are not used.* It became
+problematic to deal with this many refinements, so we ended up adding
+/mode and also /custom to allow passing the arguments in a block.
+
+
+In Ports
+~~~~~~~~
+
+If you think about it, a similar problem occurred in ports. We write the
+URL for shorthand:
+
+`   port: open `http://luke@www.rebol.com/file.html[`http://luke@www.rebol.com/file.html`]
+
+but internally, this is converted to a spec object (and that's what we
+call it, a spec), that is:
+
+`   make port! [` +
+`       scheme: 'http` +
+`       host: "www.rebol.com"` +
+`       path: %file.html` +
+`       user: "luke"` +
+`   ]`
+
+So, there can also be various other options within that port spec
+object.
+
+
+In VID
+~~~~~~
+
+And finally, this case is going to be true for the VID GUI as well.
+There are some styles (GUI gadgets) that can have a number of options.
+Henrik recently noted that for a meter style, you might want:
+
+`   value: decimal!` +
+`   size: pair!` +
+`   type: word!` +
+`   range: block!` +
+`   divisions: integer!` +
+`   sub-divisions: integer!` +
+`   colors: block!` +
+`   start-point: decimal!`
+
+But, here again, rather than add all those keywords to the VID dialect,
+it may be more manageable (and also faster to parse) to specify them as
+an object, then simply the expression can be:
+
+`   meter options meter-opts`
+
+I'd suggest that we only add the most common keywords to the VID dialect
+itself, and leave all of the rare keywords in objects like this.

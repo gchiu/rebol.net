@@ -1,0 +1,188 @@
+Here you will find listed REBOL project covering variuous areas of the
+programming world.
+
+[cols=",",options="header",]
+|=======================================================================
+|Project |Description
+|Cheyenne]] |A web server written in REBOL
+
+|http://www.rebol.net/docs/makedoc.html[Makedoc<BR>Document Generator]
+|MakeDoc is the standard used for all REBOL documentation, including
+REBOL websites, manuals, notes, blogs, and more.
+
+|http://www.robertmuench.de/projects/mdp/[Makedoc Pro] |Makedoc Pro is
+an advanced version of makedoc but on steroids
+
+|http://home.tiscali.dk/john.niclasen/nicomdoc/[NicomDoc2] |MakeDoc
+Variation: Nicomdoc allows for TeX quality math expressions in your
+documentation (among it's many other features).
+
+|http://www.robertmuench.de/projects/make-site/[Make Site] |The
+make-site project can generate complete web-sites from simple text input
+files
+
+|http://www.pointillistic.com/open-REBOL/moa/steel/index.html[Steel
+Project] |Steel is a collection of tools/libraries for REBOL written by
+Maxim Olivier-Adlhoch
+
+|http://www.dobeash.com/RebGUI/[RebGUI] |An ADVANCED gui system for
+REBOL. Look at it !
+
+|http://www.robertmuench.de/[RebGUI Fork by<br>Robert Muench] |This is a
+RebGUI with a set of modifications. It is only avalable from author.
+
+|http://www.hmkdesign.dk/rebol/page0/page0.html[View and<br>REBOL
+Addins] |Henrik Mikael Kristensen addins to REBOL.<br> LISTVIEW: a
+complete listview system for REBOL/view<br> TOOLBAR: a Firefox Stile
+Toolbar for REBOL<br>RELATIONS ENGINE: an engine to maintain relations
+between entities<br> and some other
+
+|http://www.dobeash.com/it/rebdb/[RebDB] |Pseudo relational database
+written in REBOL
+
+|http://www.fys.ku.dk/~niclasen/nicomdb/index.html[Nicom DB] |New
+database engine written in REBOL and released under GPL.
+
+|http://www.dobeash.com/sqlite.html[SQLLite Driver] |A powerful protocol
+to access the SQL Lite DLL on windows. A must for professional DB
+developers !
+
+|http://rebol.softinnov.org/mysql[MySQL Driver] |MySQL Driver compatible
+up to MySQL 5 for REBOL written by DocKimbel
+
+|http://softinnov.org/rebol/pgsql.shtml[PGSQL Driver] |It's a scheme for
+/Core that will allow you to connect to a PostgreSQL database server
+
+|http://www.tretbase.com/[TRETBASE] |New database written in REBOL and
+supporting REBOL data
+
+|http://www.robertmuench.de/projects/rfm/[Rebol Framework] |The Rebol
+Framework
+
+|http://www.ross-gill.com/QM/[QuaterMaster framework] |QuarterMaster is
+a Web Framework based on the ‘Model-View-Controller’ application pattern
+
+|http://softinnov.org/rebol/ldap.shtml[LDAP Scheme] |LDAP support for
+REBOL/Core by implementing the LDAP protocol using REBOL schemes
+
+|http://www.robertmuench.de/projects/data-sync/[Data-Sync Dialect] |The
+data-sync dialect implements a dialect which lets you write xpeers
+applications that need to handle & sync databases and record.<BR>Ask it
+directly to the author.
+
+|http://www.robertmuench.de/projects/commercial/[GIST Register] |This
+application is an xpeers.net platform application that handles special
+deases information for a web of medical doctors.
+
+|http://www.robertmuench.de/projects/data-form/[Data Form Dialect] |The
+data-form dialect was designed to let you create data-form screen
+layouts in a fast and easy way
+
+|http://www.pointillistic.com/open-REBOL/moa/steel/retools/remark/index.html[REMARK!
+HTLM Dialect] |Remark allows you to create and manage a complete web
+site by creating static web pages which are built up from html tags
+which you define (plus any normal html, of course).
+
+|http://www.fys.ku.dk/~niclasen/rebol/libs/gfx/[TARGA and IFF image
+loaders] |Loaders for the TARGA and IFF image formats]
+
+|http://www.fys.ku.dk/~niclasen/rebol/OpenGL/[OpenGL Client] |OpenGL
+client solution for Windows and MacOS
+
+|http://home.tiscali.dk/john.niclasen/postscript/postscript.r[Postscript
+Dialect]
+|http://home.tiscali.dk/john.niclasen/postscript/postscript.html[Postscript
+Dialect Documenation], a dialect to produce postscript pages from REBOL
+
+|http://home.tiscali.dk/john.niclasen/rebxml/[RebXML] |RebXML is a REBOL
+representation of an XML document. The idea behind XML is very good with
+an interchange format, that is strictly build on the hierarchical
+datamodel.
+
+|http://softinnov.org/rebol/captcha.shtml[CAPTCHA Generator] |Visual
+captcha generation system for REBOL web application
+
+|http://softinnov.org/rebol/acall.shtml[ASYNC Call protocol] |This is an
+asynchronous CALL function implementation. That means that it does the
+same job as the native CALL command, but allows you to retrieve output
+data without blocking your REBOL session.
+
+|http://softinnov.org/rebol/ntlm.shtml[NT Lan Manager<br>scheme] |NTLM
+(NT Lan Manager) authentication scheme over a Windows LAN
+
+|http://softinnov.org/rebol/nt-services.shtml[NT Services] |This REBOL
+library offers the support for the Windows Services (also known as NT
+Services). It allows accessing/controling services definition and
+provides a way to run REBOL encapped applications as Windows Service
+
+|http://softinnov.org/rebol/uniserve.shtml[Uniserve] |UniServe is a
+client/server network programming framework for REBOL
+
+|http://www.reboltech.com/library/scripts/q-plot.r[Histogram dialect]
+|REBOL Dialect for producing histograms and curves
+
+|http://web.tiscalinet.it/rebol/pdf-maker.r[PDF Maker Dialect] |REBOL
+Dialect for generating http://en.wikipedia.org/wiki/Pdf[PDF] documents
+from REBOL
+
+|http://hmkdesign.dk/rebol/files/303a60cc3d66c8c4c23bc5a2106ef63a-118.html[HTLM
+Dialect for Rebol] |First alpha release of the HTML dialect written for
+REBOL. Also includes documentation
+
+|http://box.lebeda.ws/~hmm/rswf/[Rebol Flash Dialect] |REBOL Dialect for
+generating http://en.wikipedia.org/wiki/Swf[SWF] (Flash) files from
+REBOL
+
+|http://www.cs.unm.edu/~whip/[Library interface to Berkeley db 1.85]
+|REBOL Library to interface REBOL/View Pro and REBOL/Command to Berkeley
+db 1.85
+
+|http://earl.strain.at/space/rebXR[XML-RPC protocol implementation]
+|rebRX is an implementation of the XML-RPC protocol
+
+|http://sourceforge.net/projects/r-sharp[R# programming language] |R# is
+a programming language based on REBOL
+
+|http://rebol-unit.sourceforge.net/[RUn (REBOL Unit)] |RUn (REBOL Unit)
+is a programming framework to test "eXtreme Programming"
+
+|http://vvn.net/reboldap/[ReboLDAP] |ReboLDAP: LDAP project for REBOL
+
+|http://anton.wildit.net.au/rebol/os/windows/COMLib/[COM Wrapper]
+|COMLib is an interface library that allows a licensed REBOL to talk to
+applications using COM on the Windows platform
+
+|http://sourceforge.net/projects/rapid[RAPID: (REBOL API DocumenTor)]
+|RAPID: (REBOL API DocumenTor) Utility Written in REBOL to generate
+documentation starting from REBOL Scripts
+
+|http://detective.surfnet.nl/[SURFnet Detective] |SURFnet Detective:
+Research utility for IP4 and IP6 written in REBOL
+
+|http://www.robertmuench.de/projects/excel/[Excel Dialect] |The Excel
+Remote Controling Dialect
+
+|http://www.xpeers.net/[XPeers] |XPeers Communication and collaboration
+suite
+
+|http://www.compkarori.com/cerebrus/[Cerebrus Email Guardian] |Cerebrus
+Email Guardian: Mailbox Analizer (POP3, HOTMAIL and YAHOO) to detect
+spam
+
+|http://www.Qtask.com/[Qtask.com] |Enterprise web-based collaborative
+solution (Calendar, Email, Files)
+|=======================================================================
+
+
+GAMES
++++++
+
+[cols=",",options="header",]
+|=======================================================================
+|Game |Description
+|http://softinnov.org/rebol/rebox.shtml[REBOX] |This game is the REBOL
+port of famous BoxWorld! game
+
+|http://rebol.mustard.co.nz/projects.htm[Games and Projects] |Many games
+and projects written in REBOL
+|=======================================================================

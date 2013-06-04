@@ -1,0 +1,70 @@
+__NOTOC__ Note: Please add new R3 content links to this directory.
+
+WARNING: _Various pages in this wiki may be obsolete._ Your help is
+needed to clean it up. -User:Carl[Carl] 10 August 2010 (EDT)
+
+
+R3 Introduction
+^^^^^^^^^^^^^^^
+
+* link:R3 Introduction[R3 Introduction]
+* link:Features &amp; Objectives[Features &amp; Objectives]
+
+
+Communicate
+^^^^^^^^^^^
+
+* Communicate
+* http://www.rebol.com/r3/devbase/index.html[R3 DevBase Forum] - "R3
+Chat"
+* CureCode R3 bug reporting & tracking
+* link:News &amp; Changes[News &amp; Changes]
+* link:R3 Development Discussions[R3 Development Discussions]
+* link:Marketing_Strategy_Websites[Marketing, Strategy, Websites]
+
+
+Getting Started With R3
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* link:Getting Started With R3[Getting Started With R3]
+* link:R3 Alpha[Alpha Release & Downloads]
+* link:R3 Commands vs. R2 Commands[R3 Commands vs. R2 Commands]
+* link:Datatypes, Functions, Graphic &amp; Special Notes[Datatypes,
+Functions, Graphic &amp; Special Notes]
+* link:Cookbooks, Dictionary, Glossary &amp; Other Resources[Cookbooks,
+Dictionary, Glossary &amp; Other Resources]
+
+
+Graphics and GUI
+^^^^^^^^^^^^^^^^
+
+* http://www.rebol.com/r3/docs/gui/gui.html[Graphics and GUI
+Documentation (on REBOL.com)]
+
+
+Other Sections
+^^^^^^^^^^^^^^
+
+* Port_Implementation
+* Schemes - used for protocols
+* Devices - native lower-level I/O
+* link:TCP_Port_Details[TCP Ports] - details
+* link:TCP_Port_Examples[TCP Port Examples]
+* Ports:_Synchronous_and_Asynchronous_Operations
+* Event_System - used by all ports
+
+
+Community Proposals for Enhancements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* link:Host-Kit Development Notes[Host-Kit Development Notes]
+* link:Parse Project[Parse Project]
+* link:Common Parse Patterns[Common Parse Patterns]
+* link:Objects enhancements[Objects enhancements]
+* link:Pair enhancements[Pair enhancements]
+* link:Module Design Details[Module Design Details]
+* link:External Callbacks[External Callbacks]
+* link:IPC - Inter-process communication[IPC - Inter-process
+communication]
+* link:Custom Gobs[Custom Gobs]
+* Advocacy

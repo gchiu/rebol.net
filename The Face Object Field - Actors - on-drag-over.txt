@@ -1,0 +1,19 @@
+*on-drag-over* is invoked when the mouse is moving, a drag object exists
+and the face in which dragging was started is not the same as this face.
+
+The input argument is a block consisting of:
+
+* offset
+* yes/no
+* drag/face
+* drag/gob/data/1
+
+Return value is not necessary.
+
+
+Examples
+^^^^^^^^
+
+`on-drag-over: [` +
+`  ; write this example` +
+`]`

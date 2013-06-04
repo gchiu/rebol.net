@@ -1,0 +1,64 @@
+
+Options
+^^^^^^^
+
+*Style/options* specify the optional attributes that can be supplied as
+arguments in the GUI dialect block. Each option can specify one or more
+valid datatypes. When a GUI block is parsed, any valid options are set
+in the face/options and face/facets objects.
+
+This block is very important to users because it defines the usage of
+the style to the user.
+
+For example, a BUTTON style allows these options:
+
+`   options: [` +
+`       text-body: [string! block!]` +
+`       area-color: [tuple!]` +
+`       size: [pair!]` +
+`       wide: [percent!]` +
+`   ]`
+
+Within the GUI dialect, usage might be:
+
+`   button "Example" blue` +
+`   button green "Go"` +
+`   button "Stop" 100x100 red`
+
+On initialization, each option value will appear within the face/options
+object and also within the face/facets object, where it can be used by
+the draw block and by the style actor functions.
+
+_Note that the options block is not inherited from a parent style._ This
+is done to make it very clear what user options are allowed for the
+style.
+
+'''''
+
+
+Options
+^^^^^^^
+
+<TABLE CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=50% VALIGN=TOP>
+*Face/options* is an object that holds any optional attributes that were
+provided to the face when it was defined. For example, the text label of
+a button would be put here.
+
+The names and types of values stored in the face/options object is
+defined by the options field of the style. This field is used to parse
+and type check the options and then create this face/options object.
+</TD><TD VALIGN=TOP> For example:
+
+` button "Submit" submit site-url`
+
+Would create an options object:
+
+` text-body: "Submit"`
+
+Note that face actions are not stored in this options object. They are
+parsed separately and stored in the optional face/actions block.
+
+The face/options object can also be used to reset a face back to its
+initial value. If a style requires this ability, it should always COPY
+its option series values, in order to be able to restore them later.
+</TD></TR></TABLE>

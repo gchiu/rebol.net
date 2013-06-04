@@ -1,0 +1,37 @@
+*on-scroll* is invoked when a scrollbar is asked to scroll the face this
+actor belongs to. This actor should exist if you want to attach a
+SCROLLER style to this style.
+
+The argument is the scroller face.
+
+The actor returns TRUE, if the face was scrolled.
+
+Do not confuse this with
+*link:The Face Object Field - Actors - on-scroll-event[on-scroll-event]*,
+which is for receiving scroll events from the mouse wheel.
+
+
+Examples
+^^^^^^^^
+
+Scroll a text area face:
+
+`on-scroll: [ ; arg: scroller` +
+`  gob: sub-gob? face` +
+`  ` +
+`  ; subtract view area size from total text size:` +
+`  size: negate max 0x0 gob/size - face/gob/size` +
+`  ` +
+`  ; multiply by scroll amount:` +
+`  offset: size * arg/state/value` +
+`  ` +
+`  ; change only the axis` +
+`  axis: face-axis? arg` +
+`  xy: gob/offset` +
+`  xy/:axis: offset/:axis` +
+`  gob/offset: xy` +
+`  ` +
+`  show-later face` +
+`  ` +
+`  true ; we got it` +
+`]`

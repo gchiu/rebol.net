@@ -1,0 +1,36 @@
+
+REBOL 3 Documentation
+~~~~~~~~~~~~~~~~~~~~~
+
+
+Sections
+^^^^^^^^
+
+* link:PreliminaryRebol30ManualGuide[Guide] - a short practical
+introduction
+* link:PreliminaryRebol30ManualConcepts[Concepts] - deeper descriptions
+and theory
+* link:PreliminaryRebol30ManualFunctions[Functions] - standard functions
+(dictionary)
+* link:PreliminaryRebol30ManualDataTypes[Datatypes] - built-in datatypes
+* link:PreliminaryRebol30ManualErrors[Errors] - catalog of messages
+* link:PreliminaryRebol30ManualToc[TOC] - the full table of contents
+
+
+In Development
+^^^^^^^^^^^^^^
+
+* System| - system object (pending)
+* Protocols - (different for R3)
+* Graphics - and GUI system
+
+
+News and Links
+^^^^^^^^^^^^^^
+
+* REBOL Modules: New information for A40 release
+* Recent changes: What's new in the docs
+* About the structure: Organization of this document system.
+* New doc engine goes beta: Summary of the release
+
+'''''

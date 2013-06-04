@@ -1,0 +1,25 @@
+Internal dialects such as DRAW, EFFECT, TEXT (richtext), and SECURE use
+a new mixed-code method where the dialect itself is defined in REBOL,
+but the dialect evaluation is implemented in C code.
+
+Many of the dialects used in REBOL are keyword-based command languages.
+These dialects are not defined by sophisticated grammars, but rather by
+simple command sequences followed by a number of optional arguments.
+They are not intended to be anything more than that.
+
+In prior versions of REBOL, internal dialects such as DRAW, EFFECT, and
+others were implemented entirely in C code within the REBOL interpreter.
+Hence, it was not possible to change the dialect without having access
+to the C source code.
+
+However, in 3.0, it is easier to define and refine these kinds of
+dialects using REBOL itself.
+
+*For this purpose a new function is available: Delect*
+
+DELECT converts a keyword command dialect with optional arguments (like
+View layout) into separate command blocks with fixed argument lists, the
+missing optional arguments being replaced with NONE values.
+
+A few of the special dialects used by REBOL are defined in the
+system/dialects object. (But, not all dialects are defined in this way.)

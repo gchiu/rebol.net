@@ -1,0 +1,35 @@
+
+Datatype Notes
+~~~~~~~~~~~~~~
+
+<TABLE><TR><TD VALIGN=TOP>
+
+* Bitsets - major changes to know about
+* Closures - a special type of function
+* Errors - changes in error datatype
+* GOB - low level graphical objects
+* Map - associative name-values (hashes, dictionaries)
+* Module - components and namespaces
+* Decimals-64 - binary floating point numbers
+* Money - high precision numbers
+
+</TD><TD VALIGN=TOP>
+
+* Paths - access and refinement paths
+* Percent - numeric percentage
+* Ports - completely redesigned
+* Unicode - unicode (pending)
+* Vectors - efficient arrays
+
+</TD></TR></TABLE>
+
+* Special datatype sections:
+** link:datatypes[List of datatypes]
+** link:Datatypes in Transition[Datatypes in Transition]
+** link:Datatype math compatibility tables[Datatype math compatibility
+tables] - draft (currently)
+** link:Datatype string conversion table[Datatype string conversion
+table] - draft
+** link:Datatype conversion matrix[Datatype conversion matrix] - draft
+
+*Typesets, Sets Of Datatypes*

@@ -1,0 +1,458 @@
+*RebDev* is the developmental project name for the *DevBase* forum
+system.
+
+
+Overview
+~~~~~~~~
+
+In a nutshell, *RebDev* is a fast, efficient communication system aimed
+at accelerating REBOL development and focusing discussions.
+
+It supports messages, topics, alerts, threads, banners, comments,
+submissions, and also includes user ranking and private messages. A wide
+range of client programs allow access from any environment, including
+shells, GUIs, web browsers, cell phones, and email.
+
+Note that _RebDev_ is just our project name for it. Once it is
+integrated with DevBase (file sharing and source management), it will
+just be called DevBase, and this page will be renamed.
+
+
+Quick Start
+^^^^^^^^^^^
+
+Want to quickly find out how to use it? See
+link:RebDev Quick Start[RebDev Quick Start].
+
+
+Requirements
+~~~~~~~~~~~~
+
+Why did we build RebDev? The requirements of the system were documented
+in http://www.rebol.com/article/0378.html[Better Developer
+Communications] on 20-Nov-2008.
+
+To meet these requirements, the system was designed with the features
+below.
+
+
+Multi-cliented
+^^^^^^^^^^^^^^
+
+We want users to be able to access the message system from anywhere.
+That includes:
+
+* REBOL CLI - command line interface - so even users on remote server
+shells can see messages.
+* REBOL GUI - graphical user interface - the easiest to use.
+* Web - as a normal HTML web page - so people anywhere can view it, and
+also find it in Google.
+* Web Mobile - light-styled for cell phones - for rebolers-on-the-go.
+* Email - as a subscription/publication list - for people who find email
+convenient.
+
+
+Sectioned
+^^^^^^^^^
+
+Headings provide the main structure for postings and navigation by
+subject.
+
+New headings at any level can be added as needed.
+
+
+Threaded
+^^^^^^^^
+
+Messages can be attached to anything, not just headings.
+
+For example, a message can be attached to a file submission so users can
+discuss issues related to the submission and keep them within the
+context of the file itself.
+
+Another example: a messages can be attached to an alert, for example to
+provide additional information or conditions.
+
+In the future, messages will be allowed for projects, tasks, calendar
+events, and more (all using the same general mechanism).
+
+
+Alerts and Banners
+^^^^^^^^^^^^^^^^^^
+
+Alerts and banners are special messages designed to get the attention of
+users.
+
+An alert is a message of urgent importance and will "popup" to be sure
+that the user sees it. In the CLI client, it will be shown
+automatically.
+
+A banner is a message that labels or defines a section, such as a
+heading. It's main purpose is to help keep a discussion on a defined
+topic. For example, a heading called "Button Shapes" in a GUI section
+may have a banner that says "This section explains how to make different
+button shapes."
+
+
+Private messages
+^^^^^^^^^^^^^^^^
+
+Private messages are those that can be read only by specific users.
+
+Note that *private messages can be posted in any discussion thread*,
+even in public discussions. This allows users to make comments to other
+users, but keep them within the context of the discussion.
+
+For example, in the Button Shapes discussion above, Mario might
+privately tell Luke: "I prefer to make buttons with rounded corners."
+Only Mario and Luke will see that message.
+
+
+Tagging
+^^^^^^^
+
+Special tags can be attached to messages.
+
+Tags are often used to indicate messages that are important in some way.
+Maybe they need a resolution, an expert reply, or an official decision.
+
+With tags, the message base is easily searched for those important
+messages.
+
+Also, a message can have any number of tags, tags also include the user
+who issued the tag, and the date it was issued.
+
+
+What's new?
+^^^^^^^^^^^
+
+The ability to see _all new messages_ regardless of heading or type.
+
+This provides a simple way to say, "show me everything that's been
+posted recently". You will see not only messages, but new headings, new
+users, new alerts, new files, etc.
+
+Selecting an item (message or heading) from the list will automatically
+locate you to that context directly (under the relevant headings.)
+
+
+Reference numbers
+^^^^^^^^^^^^^^^^^
+
+Any message, heading, alert, and everything else is referenced by a
+unique number.
+
+For example, you can tell a user to "please read message #1020" or "go
+to heading #320".
+
+In addition, these numbers provide each entry a unique URL address,
+allowing it to be referenced throughout the Internet.
+
+
+User ranking
+^^^^^^^^^^^^
+
+This is a _trust mechanism_ to help reduce chaos and limit abuse.
+
+For example, not every new user can create a heading or post an alert.
+Doing so requires specific ranks.
+
+All users begin with low rank (untrusted) and advance via higher other
+ranked users.
+
+
+Technology Requirements
+^^^^^^^^^^^^^^^^^^^^^^^
+
+In addition to the above features, there were also a few technology
+requirements:
+
+* *HTTP Gateway* - to allow access even from subnets that restrict
+direct port connections (due to bandwidth or security concerns).
+* *Lightweight DB* - use of a very lightweight homogeneous database
+model that can associate via tagging any record with any other record.
+* *Super-lean server* - requires only an HTTP server running CGI (as a
+proxy). No other special packages, modules, or databases are necessary.
+* *Server logs* - server logs all events and actions, and auto-generates
+user-viewable messages for primary events like user creation.
+* *REBOL-based technology* - drink our own wine.
+
+
+RebDev CLI Commands
+~~~~~~~~~~~~~~~~~~~
+
+Note: RebDev is a fast and flexible system. The ease of which code
+modifications can be made, means that changes could be frequent;
+especially during early usage as optimization patterns emerge.
+
+
+Basic ideas
+^^^^^^^^^^^
+
+* Messages are posted under headings.
+* Headings can have sub-headings.
+* Every message and heading has a unique id number.
+* The prompt indicates current user and heading.
+
+
+Basic usage
+^^^^^^^^^^^
+
+* Type *new-user* to add an account.
+* Type *h* to see all headings.
+* Type *n* to update new messages from the server.
+* Enter the *number* of the heading you want to view.
+* Press *enter* to view next message.
+
+
+Main commands
+^^^^^^^^^^^^^
+
+Here are some of the main commands. (Subject to change)
+
+?: General help information. +
+??: Show all commands and their parse rules. +
+c: Check for changes. In V0.1 you must do this or n (below) in order to
+fetch new messages from the server. +
+n _integer_: Show newest messages. This is a quick way to see what's
+happened recently. You can also ask to see just the N more recent
+messages. +
+l: List messages in the current heading section. The current heading is
+set by entering the number of the heading or the number of a message in
+that heading. +
+h: Show all headings. This is a master list of all headings and
+subheadings. The dates indicate last posting for each heading. +
+a: Show all alerts. Alerts are urgent messages that you need to read. +
+users: Show all users. The date indicates when the user was last
+active. +
+who: Show users who have logged in recently. +
+t: Show all tags. Tags are special markers for messages. See document. +
+p: Post a message into the current heading. You can write short messages
+as a string, or enter line edit mode. +
+pp: Post a private message that can only be seen by a specific user. +
+b: Go back to parent header. +
+f _string_: Search all messages and headers for the given string. +
+g: Goto embedded #msg or browse to embedded URL.::
+
+Advanced commands are listed below.
+
+
+Example session
+^^^^^^^^^^^^^^^
+
+Goto link:RebDev Quick Start[RebDev Quick Start]
+
+
+Command Ranks
+~~~~~~~~~~~~~
+
+Default ranks for specific server commands (roughly similar to the
+client commands, but not identical). Some exceptions exist for
+modification commands if user did not post the original message.
+
+<table border=1 cellpadding=4 cellspacing=0> <tr> <td> info: </td> <td>
+1 </td> </tr> <tr> <td> get: </td> <td> 5 </td> </tr> <tr> <td> users:
+</td> <td> 5 </td> </tr> <tr> <td> logout: </td> <td> 1 </td> </tr> <tr>
+<td> pass: </td> <td> 1 </td> </tr> <tr> <td> post: </td> <td> 10 </td>
+</tr> <tr> <td> head: </td> <td> 50 </td> </tr> <tr> <td> banner: </td>
+<td> 50 </td> </tr> <tr> <td> alert: </td> <td> 65 </td> </tr> <tr> <td>
+move: </td> <td> 10 </td> </tr> <tr> <td> remove: </td> <td> 10 </td>
+</tr> <tr> <td> tag: </td> <td> 50 </td> </tr> <tr> <td> name: </td>
+<td> 50 </td> </tr> <tr> <td> rename: </td> <td> 50 </td> </tr> <tr>
+<td> submit: </td> <td> 20 </td> </tr> <tr> <td> accept: </td> <td> 70
+</td> </tr> <tr> <td> deny: </td> <td> 70 </td> </tr> <tr> <td> rank:
+</td> <td> 50 </td> </tr> <tr> <td> log: </td> <td> 50 </td> </tr> <tr>
+<td> stats: </td> <td> 30 </td> </tr> <tr> <td> quit: </td> <td> admin
+</td> </tr> <tr> <td> sessions: </td> <td> admin </td> </tr> <tr> <td>
+errors: </td> <td> admin </td> </tr> </table>
+
+
+File Sharing
+~~~~~~~~~~~~
+
+This section describes the design of file sharing.
+
+*Note that these features are under development, and are not released
+yet.*
+
+
+Organization of files
+^^^^^^^^^^^^^^^^^^^^^
+
+Just like messages, files are stored to headings. This keeps files and
+their related discussion messages together.
+
+For example, the official file collection for the REBOL 3.0 mezzanine
+functions is in r3/mezzanines. That's where you'll find mezz-funcs.r and
+mezz-help.r, etc.
+
+However, during development, you may want to work on files outside of
+the primary file collections. For example, if you and others are working
+together on LOAD, you would want to share your changes in
+r3/mezzanines/load until you've concluded your work, tested it, and are
+ready to submit it back to r3/mezzanines as a contributed improvement to
+the system.
+
+Here is the example structure:
+
+`r3/  <-- don't put files here` +
+`    mezzanines/ <-- for official mezzanine files (releases)` +
+`        load/   <-- for development work, experiments, etc.` +
+`        save/   <-- for development work, experiments, etc.`
+
+*To reduce the load on the submissions acceptance process, it is advised
+that you develop code like this.* It also takes less space and network
+bandwidth.
+
+
+Mechanism of submission
+^^^^^^^^^^^^^^^^^^^^^^^
+
+File sharing uses a name, submit, status mechanism.
+
+* *Name* is a file name. It is not a file; it has no contents, it is
+only a label to which one or more file submissions are attached.
+* *Submit* is the file contents. It is attached to a name, as its
+"parent". As changes to a file are made, they are submitted to the same
+name. This is how versioning is done.
+* *Status* tags that a previous submit was accepted or denied. It is
+only a tag, attached to a submit (as it's parent), and should include a
+comment (a reason for it).
+
+Note that all names, submissions, and status records are marked with a
+date, user id, and comment field.
+
+
+File commands
+^^^^^^^^^^^^^
+
+File listing commands:
+
+`new-files (nf): list all new file changes (similar to n for messages)` +
+`list-files (lf): list files in current heading (detailed format)` +
+`ls: list just the file names (short format)`
+
+Most other file commands use the id number for the file. Use of the id
+avoids problems when there are multiple versions of the same filename.
+However, some commands, such as get and put will also accept a file name
+or * (for all files).
+
+`get: fetch files in current heading` +
+`put: submit one or more files with a comment` +
+`more: view contents of a file` +
+`edit: open editor with given file (external app)` +
+`diff, df: show differences in file (uses external app)`
+
+These commands currently require very high ranking:
+
+`accept: accepts a submission, requires comment` +
+`deny: deny a submission, requires comment` +
+`rename: rename a file (note: changes name, not location)`
+
+
+Examples
+^^^^^^^^
+
+
+Listing files
++++++++++++++
+
+First, goto a topic section that has files.
+
+` >> 26` +
+` R3/Mezzanines:`
+
+Now type:
+
+` ls`
+
+To list files in column view, or:
+
+` lf`
+
+To list files in detail, showing the status of each submission and
+comment. *Note that a single file can have multiple entries in the list,
+one for each change submitted.*
+
+Use commands like:
+
+` lf submit` +
+` lf accept` +
+` lf deny`
+
+To see files with specific status.
+
+
+Fetching files
+++++++++++++++
+
+To download all the files for a topic section into a work dir. Go to the
+topic section, then
+
+` get *`
+
+The files will download into a directory that matches the path name of
+the section. So, r3/mezzanine files are in a different location than
+r2/mezzanine files.
+
+To get just the most recently accepted files:
+
+` get * accept`
+
+To download a specific file submission, use:
+
+` get 2345`
+
+Or you can get it by name, but it's always the most recent submission
+(accepted or not):
+
+` get mezz-help.r`
+
+Once files have been downloaded you can use:
+
+` ll`
+
+to view the local listing.
+
+
+Submitting files
+++++++++++++++++
+
+You can submit a specific file from your work dir:
+
+` put mezz-help.r`
+
+Or you can open a requestor to select a file:
+
+` put`
+
+To submit an entire directory (but with care!):
+
+` put *`
+
+The files will be listed first, and you can add a comment for all of
+them.
+
+
+Open work folder
+++++++++++++++++
+
+To open the current topic work folder (on your local system):
+
+` open-dir`
+
+or just
+
+` od`
+
+
+To diff a file
+++++++++++++++
+
+To see file differences between a given submission (accepted or not) and
+change you've made in your local work dir:
+
+` diff 2345`
+
+The first time, you will be requested to specify the diff application
+(for example WinMerge).

@@ -1,0 +1,68 @@
+(Description needed here)
+
+
+Standard Options
+^^^^^^^^^^^^^^^^
+
+
+/INTO buffer - Have series builder functions act like INSERT (original
+proposal)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Builder functions create a new series based on a spec and/or a template.
+This allows the template to be reusable, but adds series creation
+overhead. Because of this, when optimizing many builder functions tend
+to get replaced with a buffer and several chained modifier functions,
+usually variants of INSERT.
+
+The /INTO option would provide a buffer that the builder would build
+into, instead of creating a new series. This buffer could then be
+reused, added to and so on, leading to much lower overhead. Another
+advantage would be to specify a buffer of another datatype than the
+template, saving conversion overhead. /INTO would be an option for
+advanced users when optimizing, and could reduce the overhead of
+mezzanine and library functions.
+
+INSERT semantics are used instead of APPEND semantics because it is more
+general. You can recreate APPEND with INSERT by wrapping it in a couple
+functions (HEAD and TAIL), but you can't create INSERT with APPEND
+without an additional buffer. Most /INTO uses will be to insert at the
+tail of a cleared buffer, but not all. It may be possible to have /ONTO
+for append.
+
+Behavior with /INTO:
+
+* The generated series data is inserted into the buffer at the position
+specified by the buffer reference, rather than a new series.
+
+* The buffer is returned at the position after the inserted series data,
+rather than the head of the new series. This is critical for chaining.
+
+Since you already have a reference to the buffer's insert position (you
+passed it), and you can get the HEAD and TAIL positions, the only
+position you can't know without it being returned is the position after
+the insert. This is why INSERT and CHANGE return that position, and why
+/INTO does.
+
+Examples (as of the current REBOL versions):
+
+* Has /INTO:
+** http://curecode.org/rebol3/ticket.rsp?id=506[REDUCE] (in R3 only)
+** http://curecode.org/rebol3/ticket.rsp?id=506[COMPOSE] (in R3 only)
+** http://curecode.org/rebol3/ticket.rsp?id=621[COLLECT]
+** http://curecode.org/rebol3/ticket.rsp?id=620[EXTRACT]
+** REWORD (work in process)
+* Could use /INTO:
+** (RE)MOLD
+** (RE)FORM
+** http://curecode.org/rebol3/ticket.rsp?id=623[READ]
+** http://curecode.org/rebol3/ticket.rsp?id=709[MAP-EACH]
+* Don't add /INTO:
+** JOIN
+** REJOIN (use INSERT)
+** ARRAY (use INSERT/DUP)
+* Uses /INTO differently:
+** SPLIT (work in process)
+
+The low-level TO-* functions and MAKE don't need /INTO. Modifying
+functions like CHANGE and REPLACE already insert, no option needed.
