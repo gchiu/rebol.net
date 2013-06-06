@@ -1,13 +1,9 @@
 Writing a network scheme for Rebol 3
 ====================================
-Graham Chiu 
-Version 1.4, 1 April 2013
-Writing a Rebol 3 Network Scheme
-================================
 
 :author: Graham Chiu
 :date: 26-March-2013
-:revision: 0.2
+:revision: 1.5
 :email: <moc.liamg@irorakpmoc>
 
 This document is a distillation of what I have read and understood regarding networking and URI schemes as defined for Rebol 3. The sources are the Rebol websites along with info obtained in chatting with other Rebol users.  Any incorrect information contained herein is entirely due to my own misunderstandings.  As an illustration I will talk about creating a basic *Scripting Layer For Android* (SL4A) scheme from the ground up.
