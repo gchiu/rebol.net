@@ -1,0 +1,124 @@
+
+CURVE
+~~~~~
+
+Next Page:
+*Ellipse*Return To *Draw Contents*
+
+
+Draws a smooth Bezier curve to fit the points provided.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|point1 |[pair!] |End point A |[multiblock cell omitted]
+
+|point2 |[pair!] |Control point A |[multiblock cell omitted]
+
+|point3 |[pair!] |End point B, or control point B
+|[multiblock cell omitted]
+
+|point4 |[pair!] |End point B |[multiblock cell omitted]
+|=======================================================================
+
+Either three or more points should be specified. Three points
+determines a cubic Bezier curve with two endpoints and one control
+point. Four points provides two control points. Additional points are
+needed for complicated curves like circular and elliptical arcs.
+
+ curve 20x150
+60x250 200x50 image:CURVE-1b.png Curve With One Control
+Point curve 20x20 80x300 140x20 200x300
+image:CURVE-2b.png Curve With
+Two Control Points
+
+ pen yellow line-pattern red 5 5 line-width 4 curve 20x150
+60x250 200x50 image:CURVE-3b.png Thick Curve With Patterned
+Line
+
+ pen yellow line-pattern red 5 5 line-width 4 fill-pen
+blue curve 20x20 80x300 140x20 200x300 image:CURVE-4b.png With Fill Pen
+
+'''''
+
+Next Page:
+*Ellipse*Return To *Draw Contents*
+
+
+'''''
+
+ Pages 
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+
+
+
+
+
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+
+
+
+
+
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+
+
+
+
+
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+
+
+ Chapters 
+
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With The Draw Dialect*
+* link:The_Graphic_Object[The Graphic Object]
+
+
+
+* link:Table_Of_Contents[Table Of Contents]
+

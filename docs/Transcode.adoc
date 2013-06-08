@@ -1,0 +1,24 @@
+The TRANSCODE function translates strings to values one "token" at a
+time.
+
+
+Purpose
+~~~~~~~
+
+In R3, the LOAD function is a mezzanine. This creates a problem for
+LOAD/next, which is a native operation. To solve the problem, TRANSCODE
+was added. This is a low level source-to-value translator.
+
+Note that normal translation of source code is performed in LOAD by TO
+BLOCK!, not by TRANSCODE.
+
+
+Usage
+~~~~~
+
+ USAGE: TRANSCODE source
+
+DESCRIPTION: Translates code/data from string into value. Returns [value
+next-source]. TRANSCODE is a native value.
+
+ARGUMENTS: source -- (Type: string!) 

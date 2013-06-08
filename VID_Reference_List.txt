@@ -1,9 +1,0 @@
-.VID Reference Page
-[cols=",",options="header",]
-|======================================
-|<big>Class</big> |<big>Documents</big>
-|Usage |[multiblock cell omitted]
-|Technical |[multiblock cell omitted]
-|Background |[multiblock cell omitted]
-|See Also |[multiblock cell omitted]
-|======================================

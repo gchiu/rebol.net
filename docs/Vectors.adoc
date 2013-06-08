@@ -1,0 +1,9 @@
+The vector! datatype is new in REBOL 3. The implementation described
+below takes effect in Alpha V22. Prior versions will not work.
+
+
+Definition
+~~~~~~~~~~
+
+The vector datatype provides greater efficiency for numeric
+arrays.

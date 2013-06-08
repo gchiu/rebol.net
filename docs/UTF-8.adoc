@@ -1,0 +1,37 @@
+*In a nutshell, UTF-8 encodes unicode strings into a sequence of bytes.
+A single codepoint ("char") may be encoded as a single byte, two bytes,
+or up to as many as six bytes.*
+
+
+General Benefits
+~~~~~~~~~~~~~~~~
+
+* UTF-8 is the most common unicode standard and is widely supported by
+most systems, servers, tools, editors, and other utilities.
+* When treated as a stream of bytes, UTF-8 strings can be handled even
+by systems that do not know of their encoding. (For example, C-libs that
+use zero as a terminating character.)
+* UTF-8 also has the advantage that existing ASCII (ANSI) strings that
+use chars with values less than 128 remain as they are. This allows many
+existing REBOL script to be run exactly as they are now, without
+modification or specification of their encoding.
+* All unicode codepoints can be represented in UTF-8 (even those outside
+of a 16 bit range).
+
+R3 will support a range of conversions to and from UTF-8 and the popular
+character encodings.
+
+See the Unicode page for details.
+
+
+Encoding Example
+~~~~~~~~~~~~~~~~
+
+Here is an example of how the word préfére would be encoded as UTF-8:
+
+ 1
+ 2  3  4  5  6  7  8  9 
+pr
+&eacute;f&eacute;re
+ 70  72  C3  A9 
+ 66  C3  A9  72  65 

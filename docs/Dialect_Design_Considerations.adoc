@@ -1,0 +1,119 @@
+::
+  _This article is geared toward providing best-practices guidance for
+  those designing a dialect._
+
+
+Don't Implement Strings As Blocks Of Words
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Rebol words don't require any quote marks around them. This makes them
+very attractive notationally, and it may be tempting to use them to
+build arbitrary text strings.
+
+For instance, let's imagine you start to write a Twitter dialect. You
+might think it's "cleaner" to use WORD!s in a BLOCK! instead of a
+STRING!:
+
+ ; Make a Tweet function that just PRINTs the result of a FORM for
+now...
+
+>> tweet: func [blk [block!]] [ print form blk ] == ...
+
+`   ; Try it and it appears to work`
+
+>> tweet [Looks like it's dinner time!] Looks like it's dinner time!
+
+
+Note that it _appeared_ to work pretty well. Even though TIME! is
+defined in the DO dialect, it is perfectly acceptable to repurpose it in
+your own. And "it's" is a legal identifier in Rebol.
+
+But there are problems:
+
+ ; Whitespace is collapsed
+
+>> tweet [Looks like it's dinner time!] Looks like it's dinner time!
+
+`    ; Many tokens valid in strings can cause parser errors`
+
+>> tweet [LOL :)]
+
+* ** Syntax error: invalid "word-get" -- ":"
+** Near: (line 1) tweet [LOL :)]
+
+>> tweet [4Chan is down.]
+
+* ** Syntax error: invalid "integer" -- "4Chan"
+** Near: (line 1) tweet [4Chan is down.]
+
+
+
+An additional issue is the technical limit on the number of unique words
+that the interpreter can support. This number
+http://stackoverflow.com/questions/1658062/in-rebol-is-it-possible-to-clean-up-some-global-words-from-memory[has
+been steadily growing] in successive versions of Rebol, but treating a
+large body of text and names as words could exhaust the space.
+
+
+Question Use Of Boilerplate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are used to building domain-specific notations in systems like
+XML or JSON, you will probably gravitate toward dialects which have the
+user call out structure explicitly. For instance, if you were
+implementing a dialect for plays your first approach might be:
+
+ structuredDialogue: [ [ character: "Polonius" action: none text:
+"What is the matter, my lord?" ] [ character: "Hamlet" action: none
+text: "Between who?" ] [ character: "Polonius" action: none text: "I
+mean, the matter that you read, my lord." ] [ character: "Hamlet"
+action: none text: \{Slanders, sir; for the satirical rogue says here
+that old men have grey beards, that their faces are wrinkled, their eyes
+purging thick amber and plum-tree gum, and that they have a plentiful
+lack of wit, together with most weak hams; all which, sir, though I most
+powerfully and potently believe, yet I hold it not honesty to have it
+thus set down, for yourself, sir, shall grow old as I am, if like a crab
+you could go backward.} ] [ character: "Polonius" action: "Aside" text:
+"Though this be madness, yet there is method in't." ] ] 
+
+Technically speaking, there is nothing _wrong_ with this. It allows the
+usual inspection that people have come to expect from structured data.
+
+ ; Count the number of lines in the dialogue
+
+>> length? structuredDialogue == 5
+
+`   ; See which character spoke the second line of dialogue`
+
+>> structuredDialogue/2/character == "Hamlet" 
+
+But Rebol allows alternatives which liberate the dialect user from
+writing things that are quite so unnatural. The following is also
+legitimate Rebol, and far more inviting to type in and read:
+
+ dialogue: [ Polonius: "What is the matter, my lord?" Hamlet:
+"Between who?" Polonius: "I mean, the matter that you read, my lord."
+Hamlet: \{Slanders, sir; for the satirical rogue says here that old men
+have grey beards, that their faces are wrinkled, their eyes purging
+thick amber and plum-tree gum, and that they have a plentiful lack of
+wit, together with most weak hams; all which, sir, though I most
+powerfully and potently believe, yet I hold it not honesty to have it
+thus set down, for yourself, sir, shall grow old as I am, if like a crab
+you could go backward.} Polonius: ("Aside") "Though this be madness, yet
+there is method in't." ] 
+
+Here we see SET-WORD! being used to indicate the character who is about
+to speak. If there is a character action, that is put inside of a PAREN!
+group.
+
+Note that it is still structured data, but the structure is more
+"loose". You can use Rebol's PARSE function to answer questions about
+the data, including the question of whether it is well-formed. You can
+even use it to easily turn the second notation into the first:
+
+Issues will arise. For instance if you have a character named "KING
+CLAUDIUS" his name can't use a space in a SET-WORD! So you might have to
+use dashes and convert them to spaces in certain output contexts:
+
+ dialogue: [ King-Claudius: "We doubt it nothing: heartily
+farewell." ] 

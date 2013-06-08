@@ -1,0 +1,97 @@
+
+Turning Text Styles On & Off
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*Turn On Bold, Italic, Underline & Color Styles*
+
+`  `*`bold`*` "This text is bold"` +
+`  `*`italic`*` "This text is italic"` +
+`  `*`underline`*` "This text is underlined"` +
+`  `*`255.0.0`*` "This text is red"`
+
+*Turn Off Or Drop Styles*
+
+*Off* turns off one text style. bold "This text is bold" bold
+*off* "This text is normal" 
+
+More text styles can be removed with *Drop* and an integer argument.
+
+`   bold "This text is bold" italic " and italic." `*`drop`
+`2`*` "This text is normal"`
+`Without the integer argument, only one style is dropped.`
+
+
+Setting Fonts & Font Attributes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\1. prepare font in Rebol:
+
+fixed-font: make system/standard/font [name: "Courier
+new"]
+
+\2. now you can use that font in rich-text dialect
+
+font fixed-font "This text is in Courier New"
+
+This is standard font object in system/standard/font:
+
+ SYSTEM/STANDARD/FONT is an object of value: name string!
+"arial" style none! none size integer! 12 color tuple! 0.0.0 offset
+pair! 2x2 space pair! 0x0 align word! center valign word! center shadow
+none! none 
+
+Note, that you don't have to create new font if you want to just change
+size or color of the text:
+
+`   view [text [red "this is default size red text^/" size 20 blue "and this is blue big text"]]`
+
+
+Setting Paragraph Attributes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Usage of paragraphs is similar to fonts.
+
+\1. prepare para in Rebol:
+
+nowrap-para: make system/standard/para [wrap?:
+no]
+
+\2. use it in rich-text:
+
+para nowrap-para "This text won't wrap"
+
+It seems that para supports 'wrap? only, setting 'origin, 'margin,
+'indent or 'scroll seems to have no effect.
+
+
+Setting Text Position
+~~~~~~~~~~~~~~~~~~~~~
+
+You can set position of text using 'scroll command
+
+scroll 0x50
+
+_(NOTE: This position is a pixel offset - not a text character offset)_
+
+*IMPORTANT:* The 'scroll command must be before the first line of actual
+text in the rich-text dialect block.
+
+For example the following is valid:
+
+ para my-para font big-font scroll 50x50 "Hello World"
+newline "Welcome to RichText" 
+
+This is invalid (and scroll will be ignored):
+
+ para my-para font big-font "Hello World" newline scroll
+50x50 "Welcome to RichText" 
+
+
+Notes
+~~~~~
+
+'newline keyword is also supported.
+
+'anti-alias may also be used to specify aliasing of text.
+
+ scroll 50x20 font big-font anti-alias "Hello World"

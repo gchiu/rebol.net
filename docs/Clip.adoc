@@ -1,0 +1,110 @@
+
+Clip
+~~~~
+
+*Return To Draw Contents*
+
+Specifies a clipping region; drawing will only occur inside the region.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|upper-left-point |[pair!] |The upper-left point of the bounding box
+defining the clipping region. |[multiblock cell omitted]
+
+|lower-right-point |[pair!] |The lower-right point of the bounding box
+defining the clipping region. |[multiblock cell omitted]
+|=======================================================================
+
+*Notes and Examples*
+
+ line-width 2
+pen yellow fill-pen blue clip 10x10 70x90 box 20x20 200x200 image:CLIP-1b.png The box would go to
+200x200, but we clip it.
+
+ pen yellow fill-pen red clip 50x50 125x200 circle 50x50
+100 image:CLIP-2b.png  Clipping
+other shapes can produce interesting effects.
+
+ pen yellow fill-pen red clip 50x50 125x200 circle 50x50
+100 pen green fill-pen blue clip off circle 125x75 50 image:CLIP-3b.png  To turn clipping off,
+use off as the argument to clip.
+
+
+'''''
+
+ Pages 
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+
+
+
+
+
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+
+
+
+
+
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+
+
+
+
+
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+
+
+ Chapters 
+
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With The Draw Dialect*
+* link:The_Graphic_Object[The Graphic Object]
+
+
+
+* link:Table_Of_Contents[Table Of Contents]
+

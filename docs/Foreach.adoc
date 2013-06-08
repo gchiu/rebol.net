@@ -1,0 +1,21 @@
+The FOREACH function now allows you to access the series, not just the
+values of the series. In other words, it blends the best of FORALL and
+FOREACH.
+
+This change also affects REMOVE-EACH and the new MAP function.
+
+To refer to the series itself, you use a set word in the variables
+block. This becomes a series reference. (The set-word notation is
+consistent with that used in the parse dialect for a similar purpose.)
+
+For example:
+
+`>> data: [1 2 3 4]` +
+`>> foreach [where: value] data [change where value + 1]` +
+`>> data` +
+`== [2 3 4 5]`
+
+Here the WHERE: variable refers to the series, so the CHANGE modifies
+the actual series block.
+
+Note that the series reference does not advance the series index.

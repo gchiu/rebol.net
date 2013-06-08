@@ -1,0 +1,94 @@
+This is the readme file from the release distribution.
+
+
+Introduction
+~~~~~~~~~~~~
+
+
+What is it?
+^^^^^^^^^^^
+
+This is an alpha release of REBOL 3.0.
+
+An alpha release is an unfinished prototype. It contains many of the
+features of the final product, but it is not final, and it is not a
+product.
+
+This is not a general release.
+
+It is limited and we know that. So, please do not use it to control a
+space station, power plant, or assembly line. This release is just for
+you. It is not for re-distribution, not for review, nor for end users or
+customers.
+
+
+What is R3?
+^^^^^^^^^^^
+
+R3 has a long list of objectives, and here are a few of the main ones...
+
+* multi-host environment model (with REBOL-in-a-DLL)
+* open implementation of interfaces and subsystems
+* module architecture (namespaces, multi-global contexts)
+* unicode support (source encoding, string internals)
+* plugin extension model (dynamic addition of natives)
+* multitasking (isolated threading, system level sharing)
+* 64 bit integers and functions
+* arbitrary precision decimal (for money datatype)
+* new graphical subsystem based on scalar vector graphics core (SVG)
+* new port (I/O) model (async, streamlined, high performance)
+* new evaluation and memory internals/methods
+
+
+License
+^^^^^^^
+
+This release is licensed to you for testing purposes only. Please
+note:
+
+* Use at your own risk. There are no warranties of any kind.
+* You can make copies for your own usage, but do not publish or
+
+distribute this software to other users.
+
+* Be aware that all components and features are subject to change.
+* Always upgrade to the most recent alpha release.
+* This license expires upon newer release.
+
+
+Usage
+~~~~~
+
+
+Files
+^^^^^
+
+This distribution includes:
+
+::
+  readme.txt (.html) - you're reading it
+
+::
+  rebhost.exe - the REBOL host environment (graphics, devices, etc.)
+
+::
+  rebol.dll - the REBOL 3.0 run time kernel (must be in same dir as
+  rebhost.exe)
+
+::
+  examples/ - scripts contributed by developers and testers that show or
+  test various features of R3.
+
+
+Running Scripts
+^^^^^^^^^^^^^^^
+
+You can run scripts in severals ways:
+
+* drag and drop a script onto the rebhost.exe file (recommended)
+* run the rebhost.exe in a command line and provide the script file
+* DO the script from the R3 console
+
+Notes:
+
+1.  this release has no security or sandbox

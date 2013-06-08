@@ -1,0 +1,2 @@
+All about the MONEY datatype - high-precision arithmetic for
+financial and scientific applications.

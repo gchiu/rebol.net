@@ -1,0 +1,1194 @@
+
+Overview
+~~~~~~~~
+
+Rebcode is a new REBOL dialect that implements a virtual machine (VM)
+allowing programmers to create high performance lower-level functions in
+a manner that is consistent with the design principles of REBOL.
+
+
+The Problem
+^^^^^^^^^^^
+
+For most types of programs, and especially scripts, REBOL's normal
+execution methods provide excellent performance and all of the code can
+be written with higher level functions. However, there are special cases
+and specific operations, such as looping mathematical computations and
+large series manipulation (e.g. generating images), that require greater
+performance. Those cases can benefit from an optimized execution method,
+even if the code is more difficult to write and maintain than normal
+REBOL.
+
+
+The Solution
+^^^^^^^^^^^^
+
+For cases where high performance computation is necessary, REBOL
+provides a different method of evaluation based on the idea of a virtual
+machine (VM). It is called rebcode.
+
+Rebcode is a dialect of REBOL (a block of words and values), using a
+concept similar to that of bytecode used in languages like Java, and
+long before that, Pascal and Lisp. The result is that specific functions
+can be written in an optimized manner to execute ten times faster, on
+average, and up to thirty times faster in special cases. Cases where
+rebcode is useful include: special graphics routines, math operations,
+unique search methods, and more.
+
+The concept of rebcode is consistent with the design principles of
+REBOL. Rebcode is expressed in block format and is encapsulated by a
+function interface. Rebcode allows access to normal REBOL variables,
+including those bound to other contexts, objects, and globals. In
+addition, rebcode is machine independent and will run identically on all
+processors.
+
+
+Feature Summary
+^^^^^^^^^^^^^^^
+
+* High speed execution, on average ten times faster for specific
+integer, decimal, logic, series, and looping algorithms.
+* Integrated with REBOL as a new functional datatype (rebcode!).
+* Access to normal REBOL variables with proper scoping (binding as
+locals, functions, objects, globals).
+* Built from normal REBOL blocks, allowing loading and molding, as well
+as dynamic construction of rebcode dialect code using parse, compose,
+reduce, and other techniques.
+* Supports embedded comments and doc-strings, similar to other REBOL
+functions, compatible with the help function.
+* Opcodes for executing integer, decimal (floating point), and series
+(strings, blocks, images, etc.) datatypes.
+* Direct execution of standard math functions such as sine, cosine,
+tangent, log, and others.
+* Able to evaluate any arbitrary REBOL expression within a block (using
+the do opcode).
+* Provides block-based control flow for conditional (if, either) and
+looping (while, until, loop, repeat) functions.
+* Assembler fixup of branch labels and support for special rewriting
+rules.
+
+
+Special Notes
+^^^^^^^^^^^^^
+
+* Rebcode is designed for experts; it is not intended for beginners.
+Compared to normal REBOL, it is easy to make mistakes when writing
+rebcode.
+* Rebcode was added to REBOL primarily to provide greater performance
+for algorithms that require such. Because of that, rebcode opcodes are
+lower-level and they remove most of the type checks and datatype
+polymorphism found in normal REBOL.
+* Rebcode is much less readable than normal REBOL; programmers should
+not create rebcode functions until they know for certain that
+optimization is needed, and that it cannot be done with normal REBOL
+functions, even with the special use of refinements. For example, if you
+decide to write a string search or parser using rebcode, you should
+first exhaust the range of solutions provided by the parse function and
+its dialect, and possibly find/match.
+* High level code, such as the outer blocks and functions of your
+program, should never be written in rebcode; doing so provides no
+advantage. Use rebcode only for optimizing specific, well defined,
+lower-level functions.
+* In some cases, it is better to generate rebcode using higher level
+expressions that are compiled. You can use the internal rebcode
+rewriting assembler or create your own special dialects that are
+compiled with the parse function.
+
+
+Current Test Versions
+^^^^^^^^^^^^^^^^^^^^^
+
+The current test versions of REBOL with Rebcode can be found in the
+REBOL Test Releases area.
+
+The current Windows beta release is
+http://www.rebol.net/builds/031/rebview1361031.exe[rebview1361031.exe"].
+The current Linux beta release is
+http://www.rebol.net/builds/042/rebview1350042.tar.gz[rebview1350042.tar.gz"].
+
+
+More Information and Examples
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We will be posting links to more information and examples here soon.
+
+
+Creating and Using Rebcode
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+What is Rebcode?
+^^^^^^^^^^^^^^^^
+
+Rebcode is a dialect of REBOL. It is a sequence of words and values that
+is interpreted in an extremely efficient manner, similar to how
+instructions are executed on an actual processor. (This is the reason
+why rebcode is said to be processed by a "virtual machine".)
+
+Rebcode is written in a block, just like normal REBOL code. However,
+unlike REBOL code that gets evaluated as a series of functions, rebcode
+consists of a sequence of opcodes. Each opcode performs a small,
+low-level action on a fixed set of arguments. For example, an opcode may
+do nothing more than add two integers. If you are familiar with the
+concept of assembly code, rebcode is very similar.
+
+Here is an example rebcode block:
+
+`[` +
+`   div.i val 2` +
+`   add.i val num` +
+`   mul.i val 100` +
+`   div.i val 50` +
+`]`
+
+The words *div.i*, *add.i*, and *mul.i* are opcodes; they are low level
+functions that perform integer math operations. Each opcode is followed
+by two arguments that are used in the operation, and the result is
+stored back into the first argument (val). Thus, rebcode is implemented
+in what is known as the "two-address" model of computation. This
+technique permits optimal performance within the virtual machine.
+
+Rebcode is a statement-based language, not an expression-based language
+like REBOL. Opcodes perform actions, but do not return results.
+
+There are many different opcodes supported by the rebcode virtual
+machine. A summary list is provided below, and a complete description of
+each opcode is provided in the RebCode Reference documentation.
+
+
+Rebcode Functions
+^^^^^^^^^^^^^^^^^
+
+All rebcode must be written within a special type of function, called a
+rebcode function. These functions are created like REBOL user-defined
+functions.
+
+Here is a simple example that makes a rebcode function:
+
+`md32: rebcode [` +
+`   "Returns two integers multiplied then divided by 32."` +
+`   a [integer!]` +
+`   b [integer!]` +
+`][` +
+`   mul.i a b` +
+`   div.i a 32` +
+`   return a` +
+`]`
+
+The rebcode function works just like the func function. It accepts an
+interface specification and a function body, and returns a rebcode!
+datatype. Like func, the rebcode function is shorthand for:
+
+`make rebcode! args body`
+
+The args block is the interface specification. It can contain embedded
+comments, formal argument words, and optional datatype restrictions.
+
+The body block holds opcodes and their arguments. They must be written
+in specific order as defined by the rebcode dialect. In addition, before
+the rebcode block can be executed, it must be processed by an assembler
+that performs actions such as doing relative branch fixups and more. See
+below for details.
+
+Once defined, a rebcode function can be evaluated like all other REBOL
+functions. You can evaluate it and set its result to a variable:
+
+`result: md32 5 30`
+
+or pass the result to other functions:
+
+`print md32 3 60`
+
+or use it along with other functions:
+
+`print md32 random 10 now/month`
+
+Just keep in mind that rebcode is not a normal function. It is evaluated
+by a special interpreter that is very fast, but also very strict about
+the format of the rebcode block.
+
+
+Rebcode Format
+^^^^^^^^^^^^^^
+
+The general form of rebcode is:
+
+`opcode argument1 argument2`
+
+A rebcode block contains one or more such opcodes:
+
+`add.i val 10` +
+`mul.i val 100` +
+`randz val`
+
+As with all REBOL dialects, line breaks are not relevant to the meaning
+of the code.
+
+Some opcodes may take only one argument, others may require more. Most
+opcodes require that the first argument be a REBOL variable--it can be a
+function local, global, or object variable-- and allow the second
+argument to be a variable or a literal (integer, decimal, string, file,
+etc.)
+
+There are three types of opcodes:
+
+Compute : performs an operation between the arguments and stores the
+result into the first argument. +
+Compare : performs a comparison operation between the arguments, and
+sets or clears the T flag. +
+Control : conditionally performs an operation depending on the state of
+the T flag.::
+
+The compute opcodes perform an operation and store the result into the
+variable that is provided by the first argument. Here are examples:
+
+`set   count 0` +
+`add.i count 1` +
+`sqrt  num` +
+`length? len string`
+
+The *count*, *num*, and *len* variables are all modified by these
+compute-type opcodes to hold the result.
+
+The compare opcodes perform an operation but do not store the result
+into a variable. Instead they affect an internal flag called the T flag.
+If the comparison is true the T flag is set to true, otherwise it is
+false. The T flag is then tested by a number of other opcodes that can
+act on it. Here are examples of the opcodes:
+
+`eq.i  count 100` +
+`gte.d num 5.8` +
+`head? ages`
+
+To be useful these opcodes must be followed by a control opcode that
+checks the T flag. Here are examples that show the typical combinations
+of compare and control opcodes:
+
+`gteq.i count 100` +
+`ift [set.i count 0]` +
+ +
+`gteq.d num 5.8` +
+`brat   reset-num` +
+ +
+`until [` +
+`   pick  num ages 1` +
+`   add.i total num` +
+`   tail? ages` +
+`]`
+
+Other opcodes can appear between the comparison and the control opcode,
+as long as they do not affect the T flag. For example:
+
+`geq.i count 100` +
+`add.i count 1` +
+`ift   [set.i count 0]`
+
+A complete list of rebcode opcodes and their interface specifications
+can be obtained directly from REBOL with the following line:
+
+`print system/internal/rebcodes`
+
+
+Variable Usage
+^^^^^^^^^^^^^^
+
+Part of the power of rebcode comes from the fact that normal REBOL
+variables can be used directly. Variables obey the same binding
+(scoping) rules as they do throughout REBOL. The variable can be local
+to the function, part of another function or object, or global. However,
+because rebcode is highly optimized, there are a few important rules
+about variables that you should know.
+
+Rule 1: Always initialize your local variables. When you define a local
+variable, it is set to none by default. You must set it to the correct
+datatype before using it.
+
+In this code:
+
+`code: rebcode [arg /local sum] [` +
+`   set   sum 0` +
+`   add.i sum arg` +
+`   ...` +
+`]`
+
+The sum variable is set to an integer value before it is used with the
+add.i opcode - an integer operation. If you forget this step, the
+variable will become a corrupt datatype. It may act like an integer in
+rebcode, but it will print as none.
+
+Rule 2: Force variables to be of the correct datatype in the function
+interface. The code above is better written like this:
+
+`code: rebcode [arg [integer!] /local sum] [` +
+`   set   sum 0` +
+`   add.i sum arg` +
+`   ...` +
+`]`
+
+Now the arg variable is guaranteed to be an integer when it is used with
+the add.i opcode.
+
+Rule 3: Beware of opcodes that may modify the datatype of a variable.
+Some opcodes will set a variable's datatype as well as its value. The
+general rule is this: if an opcode provides an argument that is only for
+holding the result (not for passing values to the opcode), then its
+datatype will be set according to the results of the opcode.
+
+Here is an example:
+
+`block: [123 "name" 1.2]` +
+ +
+`code: rebcode [arg series /local sum] [` +
+`   set   sum 0` +
+`   add.i sum arg` +
+`   ...` +
+`   pick  arg block 2` +
+`]`
+
+The pick opcode will modify the arg variable to make it a string
+datatype. It is no longer an integer, and should not be used as such.
+This type of reuse of variables is common for larger functions because
+it reduces the number of local variables that are needed within the
+function.
+
+Rule 4: For high performance code, use opcodes that are datatype
+specific. For example:
+
+`code: rebcode [arg1 [integer!] arg2 [decimal!]] [` +
+`   ...` +
+`   set.i arg1 2` +
+`   add.i arg1 count` +
+`   ...` +
+`   set.d arg2 1.0` +
+`   add.d arg2 value` +
+`]`
+
+Here the set.i, add.i, set.d, and add.d opcodes only modify the values
+of their variables. They do not set the datatype. You should only use
+these opcodes when you know that the datatype is correct. This rule
+applies to many of opcodes within rebcode.
+
+You may have figured out that opcodes ending in .i are integer opcodes
+and .d are decimal opcodes. This is only a naming convention; it doesn't
+mean you can add .i or . to the end of any opcode name to make it type
+specific. There is no compiler behind the scenes for basid rebcode. What
+you see is what you execute.
+
+You may also have noticed that logic opcodes and some math opcodes don't
+have any type suffix on them; that's because there shouldn't be any
+confusion about what datatypes they operate against.
+
+
+Returning Results
+^^^^^^^^^^^^^^^^^
+
+Rebcode functions do not return a result by default. This behavior is
+different from normal REBOL functions. In rebcode a value can only be
+returned with the return opcode.
+
+Here is an example of a normal REBOL function. The result is returned
+automatically:
+
+`f1: func [a [integer!] b [integer!]] [` +
+`   max a b` +
+`]`
+
+However, written in rebcode, the result must be returned explicitly:
+
+`f2: rebcode [a [integer!] b [integer!]] [` +
+`   max.i  a b` +
+`   return a` +
+`]`
+
+To exit a function without returning a result, use the exit opcode. This
+is the same as normal REBOL functions.
+
+
+Nested Rebcode Blocks
+^^^^^^^^^^^^^^^^^^^^^
+
+One way that rebcode differs from most other virtual machine designs is
+that it often uses nested blocks to implement flow-of-control opcodes.
+
+For example, the ift and iff opcodes conditionally execute a block of
+rebcode depending on the state of the T flag (described earlier).
+
+`add.i  a 10` +
+`gteq.i a 100` +
+`ift    [set.i a 0]`
+
+Other functions such as while and until use the same method:
+
+`set a 0` +
+`while [lt.i a 100] [` +
+`   pick  n vals 1` +
+`   add.i a n` +
+`]`
+
+Note that the binding of rebcode remains the same in these types of
+control blocks. The opcodes are bound to the VM context. There is
+currently only one exception to this rule, the do opcode. See below for
+more.
+
+Branches are always local
+
+All of the branch opcodes (bra, brat, etc.) expect their target labels
+to be within the same block of code. The branches are always relative to
+the current block. You cannot branch to a target label outside the block
+where the branch occurs; doing so will produce erroneous results.
+
+
+The T Flag
+^^^^^^^^^^
+
+The T flag is set and checked by various opcodes; it acts as a temporary
+flag, so you don't have to allocate a word to hold the result of
+comparisons.
+
+If you've programmed in assembly language, you are no doubt familiar
+with CPU flags (e.g. the zero and carry flags). Rebcode doesn't require
+CPU emulation or need multiple flags or registers, but it does operate
+on similar principles; the T flag is one of those. The T in T flag
+stands for true.
+
+The opcodes listed in the summary section under Compare Opcodes alter
+the T flag. In addition, the value? and sett opcodes affect it.
+
+The following opcodes check the T flag and act accordingly.
+
+`braf` +
+`brat` +
+`breakf` +
+`breakt` +
+`either` +
+`iff` +
+`ift` +
+`until` +
+`while`
+
+The state of the T flag can also be set from or to a variable. The sett
+sets the T flag from a variable, and gett gets the T flag and puts it in
+a variable. This is useful if you need to combine the results of
+multiple comparisons (and using conditional branches alone is not
+enough).
+
+How to remember gett and sett. Read them as:
+
+`SET T flag from a variable` +
+`GET T flag and put it in a variable`
+
+These two opcodes will be a source of problems unless this rule is
+memorized. If you just remember SET T it will be enough. An easy way to
+remember it is this: SETT is the same as "SET T".
+
+Note that SETT sets false flag also for zero integer!
+
+
+Branches and Labels
+^^^^^^^^^^^^^^^^^^^
+
+Although the higher level control opcodes like ift, either, while,
+until, loop, repeat and others are easier to write, usually more
+readable, and often faster, there may be times when code can be
+optimized with the use of branch opcodes.
+
+Four branch opcodes are supported:
+
+`   bra unconditional branch` +
+`   brat    branch if T flag is true` +
+`   braf    branch if T flag is false` +
+`   brab    branch via an index into a block table`
+
+The argument to the branch opcodes is an integer value, representing how
+much of an offset you want the branch to perform. Branch offsets are
+always relative to the location after the branch opcode, not the
+absolute offset within the block. Positive values branch forward;
+negative, backward. The branch target must always fall within the
+current code block.
+
+To make it easier to write branch offsets, labels are allowed. A label
+is created with the label opcode. If the bra, brat, or braf opcodes are
+followed by a word, the word is assumed to be a label, and the assembler
+will compute the correct relative offset.
+
+Here is an example of branches and labels:
+
+`label top` +
+`add.i n 1` +
+`gt.i  n 100` +
+`brat  done` +
+`...` +
+`bra   top` +
+`label done`
+
+Notice that the label word is also an opcode; however, it performs no
+operation. The label is kept in the code block to support reflection
+(molding) of the block.
+
+The brab opcode allows you to branch to an offset selected at runtime by
+an index. The first argument to the opcode is normally a block, and the
+second is a zero-based index into that block. The value at that position
+is fetched and assumed to be the integer offset for the branch.
+
+Here is an example:
+
+`brab  [4 6 8] n` +
+`print "default"` +
+`bra   done` +
+`print 1` +
+`print 2` +
+`print 3` +
+`label done`
+
+Note that if the branch index is past the tail of the block, the brab
+will fall through to the next opcode. This allows you to create default
+cases without requiring prior testing of the index value.
+
+The contents of the branch block can also be labels, which will be
+converted to integer offsets by the assembler, similar to normal
+branches.
+
+`brab [lab1 lab2 lab3] num` +
+`bra  error-case`
+
+There is also a special case of operation. If the block argument to brab
+is an integer (created from a label), then the branch is made to that
+relative location plus the value of the index argument.
+
+
+Using APPLY to Call Functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Rebcode provides the apply opcode to call other functions. These include
+rebcode, natives, and user-defined functions.
+
+Note: apply cannot evaluate action or op functions at this time.
+
+The format of the apply opcode is:
+
+
+apply result function [args]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Result then refers to the value returned from the function. Function is
+the name of the function, and the args block holds the values that are
+passed as arguments to the function.
+
+
+Args must be reduced
+++++++++++++++++++++
+
+The args block must be fully reduced to a block of values and/or
+variable words. It cannot contain opcode expressions.
+
+Here is an example of rebcode that calls the checksum native:
+
+`apply num checksum [string]` +
+`mul.i num 10` +
+`...`
+
+Rebcode functions can be called in the same way. For instance, if you
+define the function:
+
+`add-mul: rebcode [a [integer!] b [integer!] c [integer!]] [` +
+`   add.i  a b` +
+`   mul.i  a c` +
+`   return a` +
+`]`
+
+It can be called from rebcode with a line such as:
+
+`apply num add-mul [n m 10]`
+
+If a function allows refinements, they can also be specified in the
+argument block. The position of the refinement arguments is that
+specified by the function interface. For example, if you ask for help on
+checksum, you see:
+
+`>> ? checksum` +
+`USAGE:` +
+`   CHECKSUM data /tcp /secure /hash size /method word /key key-value` +
+`To invoke the checksum function with the /secure refinement, you would write:`
+
+`apply num checksum [string none true]`
+
+This specifies the /secure refinement as being enabled, but not /tcp
+refinement.
+
+Note that all unsupplied arguments are set to none. In the examples
+above, the /hash, size, /method, word, and all other arguments will be
+set to none when the checksum function is called.
+
+
+Beware refinement order
++++++++++++++++++++++++
+
+In normal REBOL code, you are allowed to change the position of
+refinements within the interface specification of functions. In normal
+REBOL, this will have no affect on the functions when they are called.
+
+For instance, this function:
+
+`bub: func [val /normal /only] [...]`
+
+can be changed to:
+
+`bub: func [val /only /normal] [...]`
+
+Without affecting normal REBOL code. However, it will have an affect on
+rebcode that calls it, because the order of refinements in rebcode is
+specified by position, not by name.
+
+
+The DO Opcode
+^^^^^^^^^^^^^
+
+The do opcode is used to invoke the normal REBOL interpreter. This
+allows your rebcode to evaluate any REBOL expression from within your
+rebcode function. This is a useful "escape" when your code needs to
+perform more complicated actions or access functions or objects that are
+not easy to use directly in rebcode.
+
+`do plat [reduce [system/version/4 system/version/3]]`
+
+Note that do opcode does not bind the contents of its block to the VM
+context. This allows you to use normal REBOL code within the block.
+
+The do opcode escapes to REBOL, meaning it is much slower than the
+rebcode VM. If you use do inside a rebcode function, particularly inside
+a loop, consider whether you need to use rebcode at all. Using do will
+greatly impact the performance of rebcode.
+
+
+The Rebcode! Datatype
+^^^^^^^^^^^^^^^^^^^^^
+
+As described above, rebcode functions are created with rebcode function
+such as:
+
+`md32: rebcode [` +
+`   "Returns two integers multiplied then divided by 100."` +
+`   a [integer!]` +
+`   b [integer!]` +
+`][` +
+`   mul.i  a b` +
+`   div.i  a 100` +
+`   return a` +
+`]`
+
+The value of variable md32 is of the rebcode! datatype. This is a
+functional datatype, the same as function!, native!, action!, and
+others.
+
+REBOL datatype functions apply to rebcode. For example:
+
+`print type? :md32` +
+`rebcode!`
+
+To check if a value is rebcode, you can write:
+
+`if rebcode? :md32 [...]`
+
+Rebcode also satisfies the general function check:
+
+`if any-function? :md32 [...]`
+
+Like other functions, help can provide usage information for rebcode
+functions:
+
+`help md32` +
+`USAGE:` +
+`   md32 a b` +
+`DESCRIPTION:` +
+`    Returns two integers multiplied then divided by 100.` +
+`    md32 is a rebcode value.` +
+`ARGUMENTS:` +
+`    a -- (Type: integer)` +
+`    b -- (Type: integer)`
+
+To obtain the context words for a rebcode function:
+
+`first :md32` +
+`[a b]`
+
+To get the body block of a rebcode function:
+
+`second :md32` +
+`[` +
+`   mul.i  a b` +
+`   div.i  a 100` +
+`   return a` +
+`]`
+
+Note that the body may be different than that used for the creation of
+the function. The changes are the result of the rebcode assembly
+process.
+
+To get the function interface specification:
+
+`third :md32` +
+`[` +
+`   {Returns two integers multiplied then divided by 100.}` +
+`   a [integer!]` +
+`   b [integer!]` +
+`]`
+
+The mold, save, and source functions also work on rebcode. Here is an
+example of source:
+
+`source md32` +
+`md32: rebcode [` +
+`   {Returns two integers multiplied then divided by 100.}` +
+`   a [integer!]` +
+`   b [integer!]` +
+`][` +
+`   mul.i a b` +
+`   div.i a 100` +
+`   return a` +
+`]`
+
+The save/all function also creates a properly formed rebcode literal
+block.
+
+
+Embedded Comments
+^^^^^^^^^^^^^^^^^
+
+The comment opcode lets you embed comments into your code. They differ
+from normal ";" comments because they remain within the body of the code
+and will appear if the code is printed, molded, or saved.
+
+For example, to add a string comment to your code:
+
+`comment "This is a comment"`
+
+You can also use a comment to temporarily remove sections of code by
+putting it within a block:
+
+`comment [` +
+`   add.i n 1` +
+`   eq.i  n 10` +
+`   ift   [set n 0]` +
+`]`
+
+
+Debugging
+^^^^^^^^^
+
+It is more difficult to write rebcode than regular REBOL. Invalid
+expressions will crash the process; datatype mismatches may produce bad
+results without crashing.
+
+To help you write and test code, a few debugging opcodes have been
+provided. These opcodes are similar to their related functions in REBOL.
+You can insert them into your code to view values during debugging.
+
+?? variable : Print a variable name followed by its value. +
+probe : Print a molded value or a molded block of values. +
+print : Print a value or block of values. +
+escape : Check if escape key has been pressed.::
+
+Note that calling any of these instructions also lets you use the escape
+key on your keyboard to stop rebcode evaluation. Without that, a tight
+rebcode loop cannot be halted in the console.
+
+
+Assembler
+^^^^^^^^^
+
+The rebcode assembler is invoked each time a rebcode function is made
+(normally by calling the rebcode function). The main purpose of the
+assembler is to bind the opcodes to the VM context, and to create branch
+offsets from their target labels.
+
+The assembler may also include other features in the future. The current
+format and operation of these features is subject to change and may be
+modified in future test releases.
+
+The source code for the assembler can be viewed with:
+
+`probe system/internal`
+
+More information about the rebcode assembler will be added in future
+updates to this documentation.
+
+
+Errors
+^^^^^^
+
+There are three types of errors that can occur in rebcode:
+
+syntax : These errors occur at load time, the same way they do with all
+REBOL expressions. They are normally the result of improperly written
+REBOL values. +
+assembly : When you create a new rebcode function, it is parsed by the
+assembler (mentioned above). The opcodes and their datatypes will be
+verified during this operation; if they are invalid, an error message
+will be generated. +
+runtime : For performance reasons very little checking is done within
+opcodes. This is different from most REBOL function code. It is possible
+for errors to exist in your rebcode that can crash the REBOL process.
+Such errors are permitted, and must be eliminated by the programmer. It
+is also possible for errors to have no effect at all, or to produce
+invalid results.::
+
+Programmers must check their work carefully to be sure that no errors
+exist in their code. When in doubt, check your code again. Unlike normal
+REBOL code, errors in rebcode can crash the process.
+
+
+Examples
+~~~~~~~~
+
+
+Log-2
+^^^^^
+
+Produces the same result as the REBOL log-2 function.
+
+`log-2: rebcode [n [decimal!]] [` +
+`   log-e  n` +
+`   mul.d  n 1.44269504088896       ; 1.44... = 1 / log-e 2` +
+`   return n` +
+`]`
+
+
+Factorial
+^^^^^^^^^
+
+Here is a factorial function written in rebcode as an example. It's
+about 10 times faster than plain REBOL, but if you really need speed for
+a function like this, you may be better of with a memoization approach
+if that can be done.
+
+`factorial: rebcode [` +
+`   n [number!] ` +
+`   /local res d` +
+`] [` +
+`   set res 1.0` +
+`   set d   0.0` +
+`   to-int  n` +
+`   loop n [` +
+`       add.d d 1.0` +
+`       mul.d res d` +
+`   ]` +
+`   return res` +
+`]`
+
+
+Ackermann Function
+^^^^^^^^^^^^^^^^^^
+
+The Ackermann function is often used for benchmark tests. It is defined
+as:
+
+`ack: func [m n] [` +
+`   either zero? :m [:n + 1] [` +
+`       either zero? :n [ack (:m - 1) 1] [` +
+`           ack (:m - 1) ack :m (:n - 1)` +
+`       ]` +
+`   ]` +
+`]`
+
+Here it is written in rebcode:
+
+`ack-rc: rebcode [m [integer!] n [integer!] /local result] [` +
+`   eq.i m 0` +
+`   either [` +
+`       set result n` +
+`       add.i result 1` +
+`   ] [` +
+`       eq.i n 0` +
+`       either [` +
+`           sub.i m 1` +
+`           apply result ack-rc [m 1]` +
+`       ] [` +
+`           sub.i n 1` +
+`           apply result ack-rc [m n]` +
+`           sub.i m 1` +
+`           apply result ack-rc [m result]` +
+`       ]` +
+`   ]` +
+`   return result` +
+`]`
+
+
+Power (**)
+^^^^^^^^^^
+
+`power: rebcode [val [decimal!] exp [decimal!] "Exponent"] [` +
+`   log-e  val` +
+`   mul.d  val exp` +
+`   exp    val` +
+`   return val` +
+`]`
+
+
+Root
+^^^^
+
+`root: rebcode [val [decimal!] exp [decimal!] "Exponent"] [` +
+`   log-e  val` +
+`   div.d  val exp` +
+`   exp    val` +
+`   return val` +
+`]`
+
+
+Compound Comparisons
+^^^^^^^^^^^^^^^^^^^^
+
+Let's say you need to perform two comparisons and act on the result. For
+example:
+
+`(a = 1) and (b = 2):`
+
+This can be implemented by doing the comparisons in this manner:
+
+`eq.i  a 1` +
+`gett c1` +
+`eq.i  b 2` +
+`gett c2` +
+`and  c1 c2` +
+`ift  [...]`
+
+If the comparison is used for a loop, a faster method is:
+
+`eq.i a 1` +
+`brat here` +
+`eq.i b 2` +
+`brat here`
+
+Or, to exit the loop:
+
+`eq.i a 1` +
+`breakt` +
+`eq.i b 2` +
+`breakt`
+
+
+rgba-to-int
+^^^^^^^^^^^
+
+Here is a function that will convert separate RGBA components into a
+single RGBA integer value:
+
+`rgba-to-int: rebcode [` +
+`   r [integer!] g [integer!] b [integer!] a [integer!]` +
+`] [` +
+`   lsl a 24` +
+`   lsl r 16` +
+`   lsl g 8` +
+`   or  a r` +
+`   or  a g` +
+`   or  a b` +
+`   return a` +
+`]`
+
+
+bin-str-to-int
+^^^^^^^^^^^^^^
+
+Converts a string of binary digits, zeros or ones, to a signed integer
+value. The first digit represents the sign bit.
+
+`bin-str-to-int: rebcode [` +
+`   s "string of binary digits; up to 32 chars"` +
+`   /local len res dig bit` +
+`] [` +
+`   tail? s` +
+`   ift   [return 0]        ; bail if empty string` +
+`   length? len s` +
+`   gt.i  len 32` +
+`   ift   [return none] ; bail if s more than 32 chars` +
+ +
+`   set   res 0         ; this is our accumulator` +
+`   tail  s             ; we'll be walking the string backwards` +
+`   set   bit 1         ; which bit are we going to flip for 1's` +
+ +
+`   until [` +
+`       back s` +
+`       pick dig s 1` +
+`       eq.i dig 49     ; 49 = #"1"` +
+`       braf not-a-one  ; not a 1, skip bit flipping` +
+`       or   res bit    ; it's a 1; flip the bit` +
+ +
+`   label not-a-one` +
+`       lsl   bit 1     ; shift our bit so we flip the next one  ` +
+`                       ; on each pass.` +
+`       head? s         ; done when we hit the head` +
+`   ]` +
+ +
+`   return res` +
+`]`
+
+
+int-to-bin-str
+^^^^^^^^^^^^^^
+
+Converts a signed integer value to a string of binary digits; zeros or
+ones; the first digit represents the sign bit.
+
+`int-to-bin-str: rebcode [` +
+`   val [integer!]` +
+`   /local res tmp bit` +
+`] [` +
+`   copy res "00000000000000000000000000000000" -1` +
+ +
+`   tail res            ; we'll be walking the string backwards` +
+`   set bit 1           ; which bit are we going to flip for 1's` +
+`   set tmp 0           ; intialize datatype` +
+`   until [` +
+`       back   res` +
+`       set.i  tmp val` +
+`       and    tmp bit` +
+`       neq.i  tmp 0` +
+`       braf not-a-one  ; not a 1, skip digit setting` +
+`       poke res 1 49   ; 49 = #"1"`
+
+`   label not-a-one` +
+`       lsl   bit 1     ; shift our bit so we flip the next one  ` +
+`                       ; on each pass.` +
+`       head? res       ; done when we hit the head` +
+`   ]` +
+ +
+`   return res` +
+`]`
+
+
+Opcode Summary
+~~~~~~~~~~~~~~
+
+This section provides a summary of all rebcode opcodes. For more
+information about specific opcodes, see the Rebcode Reference document.
+
+
+Compute Opcodes
+^^^^^^^^^^^^^^^
+
+
+Integer Math
+++++++++++++
+
+`   abs.i   Changes the operand to its absolute value.` +
+`   add.i   Integer add; adds operand and value.` +
+`   div.i   Divides operand by value; the integral result goes in the operand.` +
+`   max.i   Sets the operand to the greater of the two values.` +
+`   min.i   Sets the operand to the lesser of the two values.` +
+`   mul.i   Multiplies operand by value.` +
+`   neg.i   Negate. Changes the sign of the operand.` +
+`   randz   Zero-based random number generator; sets operand to value from 0 to (value - 1).` +
+`   rem.i   Remainder. Divides operand by value; the integer remainder goes in the operand.` +
+`   sub.i   Subtracts value from operand.`
+
+
+Decimal Math
+++++++++++++
+
+`   abs.d   Changes the operand to its absolute value.` +
+`   acos    Arccosine.` +
+`   add.d   Decimal add; adds operand and value.` +
+`   asin    Arcsine.` +
+`   atan    Arctangent.` +
+`   cos Cosine.` +
+`   div.d   Divides operand by value.` +
+`   exp Exponential; raise a number to a power.` +
+`   log-10  Log base 10.` +
+`   log-e   Natural log.` +
+`   max.d   Sets the operand to the greater of the two values.` +
+`   min.d   Sets the operand to the lesser of the two values.` +
+`   mul.d   Multiplies operand by value; result goes in the operand.` +
+`   neg.d   Change sign` +
+`   sin Sine.` +
+`   sqrt    Square root.` +
+`   sub.d   Subtracts value from operand; result goes in the operand.` +
+`   tan Tangent.`
+
+
+Integer Logic / Bitwise Operations
+++++++++++++++++++++++++++++++++++
+
+`   and Bitwise AND of two integers; result goes in the operand.` +
+`   bswap   Byte swap. Converts integer endian-ness.` +
+`   compl   Bitwise complement.` +
+`   ext8    Sign extend; 8-bits to integer.` +
+`   ext16   Sign extend; 16-bits to integer.` +
+`   lsl Logical shift left; toward MSB.` +
+`   lsr Logical shift right; toward LSB.` +
+`   rotl    Rotate left; toward MSB.` +
+`   rotr    Rotate right; toward LSB.` +
+`   not Logic datatype complement` +
+`   or  Bitwise OR of two integers; result goes in operand.` +
+`   xor Bitwise XOR of two integers; result goes in operand.`
+
+
+Series Traversal
+++++++++++++++++
+
+`   back    Moves the current position of the series backward by one.` +
+`   head    Changes the current position of the series to its head.` +
+`   next    Moves the current position of the series forward by one.` +
+`   skip    Changes the current position of the series forward or backward.` +
+`   tail    Changes the current position of the series to its tail.`
+
+
+Series Modification
++++++++++++++++++++
+
+`   change  Changes count values at the specified position in a series.` +
+`   clear   Removes all values from current index to tail. Leaves reference at tail.` +
+`   copy    Copies count items from series. Operand modified.` +
+`   insert  Inserts one series into another and sets the operand to the series at the insert point.` +
+`   pick    Sets the operand to refer to the value at the specified position in a series.` +
+`   pickz   Zero-based pick. Operand modified.` +
+`   poke    Changes the value at the specified position in a series.` +
+`   pokez   Zero-based poke.` +
+`   remove  Remove count items from the series, at the current position.`
+
+
+Series Checks
++++++++++++++
+
+`   index?  Sets the operand to the index number of the current position in the series.` +
+`   length? Sets the operand to the length of the series from the current position.`
+
+See Also: Compare Opcodes/Series Comparisons
+
+
+Other Opcodes
++++++++++++++
+
+`   apply   Apply a function to arg block. Set operand to result.` +
+`   comment Includes a comment in the code` +
+`   do  Escape to normal evaluation. Set operand to result.` +
+`   gett    Get the TRUE flag and store in a variable. Operand modified.` +
+`   getw    Get the value of a word (indirect). Result modified.` +
+`   set Set a variable to any value. Operand modified.` +
+`   set.d   Set decimal variable only. Operand modified.` +
+`   set.i   Set integer variable only. Operand modified.` +
+`   sett    Set the TRUE flag from contents of a variable` +
+`   setw    Set the value of a word (indirect).` +
+`   to-dec  Convert integer to decimal. Operand modified.` +
+`   to-int  Convert decimal to integer. Operand modified.` +
+`   type?   Sets the operand to the value's datatype.` +
+`   value?  Set TRUE flag if the variable has a value.`
+
+
+Debugging Functions
++++++++++++++++++++
+
+`   ??  Works like ?? in REBOL.` +
+`   escape? Check if user pressed escape key. If so, halt to console.` +
+`   print   Works like print in REBOL.` +
+`   probe   Works like probe in REBOL.`
+
+
+Compare Opcodes
+^^^^^^^^^^^^^^^
+
+
+Integer Comparisons
++++++++++++++++++++
+
+`   eq.i    Sets the TRUE flag if the values are equal.` +
+`   glt.i   Sets the TRUE flag if: value1 

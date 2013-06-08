@@ -1,0 +1,104 @@
+
+FILL-RULE
+~~~~~~~~~
+
+Determines the algorithm used to determine what area to fill, if a path
+that intersects itself or one subpath encloses another. For
+non-intersecting paths, you shouldn't need to use this.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|mode |[word!] |Fill algorithm |*non-zero* - This rule determines the
+"insideness" of a point on the canvas by drawing a ray from that point
+to infinity in any direction and then examining the places where a
+segment of the shape crosses the ray. Starting with a count of zero, add
+one each time a path segment crosses the ray from left to right and
+subtract one each time a path segment crosses the ray from right to
+left. After counting the crossings, if the result is zero then the point
+is outside the path. Otherwise, it is inside. *even-odd* - This rule
+determines the "insideness" of a point on the canvas by drawing a ray
+from that point to infinity in any direction and counting the number of
+path segments from the given shape that the ray crosses. If this number
+is odd, the point is inside; if even, the point is outside.
+|=======================================================================
+
+*Notes and Examples* The following page has drawings that drawing
+illustrates the rules:
+http://www.w3.org/TR/SVG/painting.html#FillProperties
+
+'''''
+
+ Pages 
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+* Fill-Pen
+* Fill-Rule
+* Gamma
+
+ Pages 
+
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+
+ Pages 
+
+* Push
+* Reset-Matrix
+* Rotate
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+* Grad-Pen
+
+ Pages 
+
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+
+ Chapters 
+
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With The Draw Dialect*
+* link:The_Graphic_Object[The Graphic Object]
+
+
+
+* link:Table_Of_Contents[Table Of Contents]
+

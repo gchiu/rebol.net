@@ -1,0 +1,109 @@
+
+FILL-PEN
+~~~~~~~~
+
+Sets the color or image pattern for area filling. The *fill-pen* color
+will remain in effect until it is set again, disabled by *off* keyword
+or overriden by *grad-pen* command.
+
+[cols=",,,",options="header",]
+|=====================================================================
+|Arg |Type |Description |Values
+|color |[tuple!] |[multiblock cell omitted] |[multiblock cell omitted]
+|image |[image!] |Fill pattern |[multiblock cell omitted]
+|=====================================================================
+
+*Notes and Examples*
+
+Simple Color Fill  fill-pen blue box 100x100
+300x300 
+image:FILL-PEN-1b.png[FILL-PEN example 1] 
+
+'''''
+
+Image Pattern Fill  fill-pen logo.gif box
+100x100 300x300 
+image:FILL-PEN-2b.png[FILL-PEN example 2] 
+
+'''''
+
+Switching the *fill-pen* states  fill-pen blue box 100x100
+300x300 fill-pen logo.gif box 150x150 250x250 fill-pen off box 50x50
+350x350 
+image:FILL-PEN-3b.png[FILL-PEN example 3] 
+
+'''''
+
+ Pages 
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+* Fill-Pen
+* Fill-Rule
+* Gamma
+
+ Pages 
+
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+
+ Pages 
+
+* Push
+* Reset-Matrix
+* Rotate
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+* Grad-Pen
+
+ Pages 
+
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+
+ Chapters 
+
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With The Draw Dialect*
+* link:The_Graphic_Object[The Graphic Object]
+
+
+
+* link:Table_Of_Contents[Table Of Contents]
+

@@ -1,0 +1,109 @@
+
+CIRCLE
+~~~~~~
+
+Draws a circle or ellipse
+
+*Return To Draw Contents*
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|center |[Pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|radius-x |[decimal!] |Used for both X and Y radii if *radius-y* isn't
+provided |[multiblock cell omitted]
+
+|radius-y |[decimal!] |Optional. Used to create an ellipse
+|[multiblock cell omitted]
+|=======================================================================
+
+*Notes and Examples*
+
+ pen yellow
+line-width 5 circle 200x200 150 image:CIRCLE-1b.png
+
+ pen logo.gif circle 200x200 150 image:CIRCLE-2b.png  A circle using an image as the
+pen.
+
+ line-width 2 pen yellow fill-pen logo.gif circle 200x200
+150 image:CIRCLE-3b.png  Circle
+using an image as the fill-pen.
+
+'''''
+
+ Pages 
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+
+
+
+
+
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+
+
+
+
+
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+
+
+
+
+
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+
+
+ Chapters 
+
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With The Draw Dialect*
+* link:The_Graphic_Object[The Graphic Object]
+
+
+
+* link:Table_Of_Contents[Table Of Contents]
+

@@ -1,0 +1,17 @@
+
+RESET-MATRIX
+~~~~~~~~~~~~
+
+Resets the current transformation matrix to its default values.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|[multiblock cell omitted] |[] |[multiblock cell omitted]
+|[multiblock cell omitted]
+|=======================================================================
+
+*Notes and Examples* The default transformation matrix is a unit
+matrix. That is:|1 0 0| |0 1 0| |0 0 1|If you
+make changes with *scale*, *skew*, or *rotate*, this is how you would
+reset them.

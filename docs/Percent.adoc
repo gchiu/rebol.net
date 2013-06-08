@@ -1,0 +1,161 @@
+The *percent datatype* allows the expression and computation of
+percentages.
+
+
+Primary Motivation
+~~~~~~~~~~~~~~~~~~
+
+*Convenience of data representation is the main reason for adding the
+percent datatype.* Percent is a useful scaling factor for most numeric
+expressions, and also for the representation of relative values, such as
+graphical element sizes.
+
+Or, stated quite simply: HTML has percent. It has been proven useful,
+and it has a humanly simple meaning that can be handy in our scripts.
+
+
+It's Not All It Seems
+~~~~~~~~~~~~~~~~~~~~~
+
+Although we've added percent as a datatype, it's usefulness in
+mathematical expressions should be clearly understood: basically, it
+serves no improvement or extension from that of decimal values. In fact,
+percent internally is represented as a 64 bit floating point decimal
+number. 100% is simply 1.0.
+
+What this means is that you *should not expect fancy semantics* when
+using percent as a term in math computations.
+
+`  12.3 * 10% = 1.23`
+
+but:
+
+`  12.3 + 10% = 12.4`
+
+and it is not the same as:
+
+`  12.3 * 110% = 13.53`
+
+It is good to keep that in mind, and don't get too excited that you've
+thought up a great new semantic for using percent. Members of the REBOL
+community have tried that and deemed it to be quite problematic.
+
+
+Percent Defined
+~~~~~~~~~~~~~~~
+
+So, what is the full definition of percent?
+
+Well, we've kept it simple, but it is best described by what kinds of
+expressions you can write, and that is *defined by a test script*. The
+script is listed at the bottom of this page.
+
+
+How to Submit Bugs or Changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ok, here's what to do if you find a bug or want to change the percent
+datatype.
+
+1.  Talk it over with others in the REBOL community.
+2.  If they agree with your opinion, then add one or more lines to the
+test file (kept in the R3-alpha world in the test-cases folder).
+3.  Switch on the Batsignal.
+
+
+Percent Test File
+~~~~~~~~~~~~~~~~~
+
+This script defines the percent datatype. Each of these blocks evaluates
+TRUE.
+
+ [ 1.0 = 100%] [ 1.05 = 105%] [ 1.005 = 100.5%] [ 0.5 = 50%] [ 1.25
+= 125%] [-1.0 = -100%] [-2.25 = -225%]
+
+`   [1%  == to percent! "1"]` +
+`   [1%  == to percent! "1%"]` +
+`   [50% == to percent! "50"]`
+
+`   [100%   == to percent! 1]` +
+`   [100.5% == to percent! 1.005]` +
+`   [120%   == to percent! 1.2]` +
+`   [100%   == to percent! 1.0]` +
+`   [50%    == to percent! 0.5]`
+
+`   [100%  == to percent! true]` +
+`   [0%    == to percent! false]`
+
+`   [1.0   == to decimal! 100%]` +
+`   [1.25  == to decimal! 125%]` +
+`   [0.5   == to decimal! 50%]`
+
+`   [1    == to integer! 100%]` +
+`   [1    == to integer! 150%]` +
+`   [0    == to integer! 1%]` +
+`   [0    == to integer! 99%]`
+
+`   [true  = (100% = 1)]` +
+`   [true  = (100% = 1.0)]` +
+`   [false = ( 99% = 0)]` +
+`   [true  = (  1% = 0.01)]`
+
+`   [1     = (1%    * 100)] ; decimal result` +
+`   [1.0  == (1%    * 100.0)]` +
+`   [1.5  == (3%    * 50)] ; conversion to decimal` +
+`   [1.5  == (3%    * 50.0)]` +
+`   [1     = (100   * 1%)]` +
+`   [1.0  == (100.0 * 1%)]` +
+`   [1.5  == (50    * 3%)] ; conversion to decimal` +
+`   [1.5  == (50.0  * 3%)] ` +
+`   [1%   == (1%    * 100%)]` +
+`   [50%  == (100%  * 50%)]`
+
+`   [1.0  == (50%  / 50%)]` +
+`   [20.0 == (10   / 50%)]` +
+`   [0.05  = (50%  / 10)]` +
+`   [20.0 == (10.0 / 50%)]`
+
+`   [150% == (100% + 50%)]` +
+`   [50%  == (100% - 50%)]`
+
+`   [10.5  = ( 50% + 10)]` +
+`   [10.6  = (50%  + 10.1)]` +
+`   [1.01  = (1    + 1%)]` +
+`   [1.0  == (0    + 100%)]` +
+`   [100.5 = (100  + 50%)]` +
+`   [9.22337203685478E+18 = (9223372036854775807 + 100%)]`
+
+`   [1.0  == (1.01  - 1%)]` +
+`   [-9.5  = (50%  - 10)]` +
+`   [ 9.5  = (10   - 50%)]`
+
+`   [$10.5  = (50%  + $10)]` +
+`   [$10.6  = (50%  + $10.1)]` +
+`   [$1.01  = ($1.00 + 1%)]` +
+`   [$1.00 == ($1.01 - 1%)]` +
+`   [$1.0  == ($0   + 100%)]` +
+`   [$100.5 = ($100 + 50%)]` +
+`   [-$9.5  = (50%  - $10)]` +
+`   [ $9.5  = ($10  - 50%)]`
+
+`   [255.255.255 = (255.255.255 * 100%)]` +
+`   [255.255.255 = (255.255.255 * 150%)]` +
+`   [150.150.150 = (100.100.100 * 150%)]` +
+`   [101.101.101 = (100.100.100 + 150%)]`
+
+`   [127.127.127 = (255.255.255 * 50%)]` +
+`   [255.255.255 = (100% * 255.255.255)]` +
+`   [127.127.127 = (50%  * 255.255.255)]`
+
+`   [127.127.127 = (255.255.255 / 200%)]`
+
+`   ['a   = pick [a b c] 100%]` +
+`   ['b   = pick [a b c] 200%]` +
+`   [none = pick [a b c] 99%]`
+
+`   [101x101 = (100x100 + 100%)]` +
+`   [99x99   = (100x100 - 100%)]` +
+`   [100x100 = (100x100 * 100%)]` +
+`   [100x100 = (100x100 / 100%)]` +
+`   [50x50   = (100x100 * 50%)]` +
+`   [200x200 = (100x100 / 50%)]` `

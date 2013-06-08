@@ -1,0 +1,8 @@
+This example will open an link:R3_GUI[R3 GUI] window with a title
+message and a close button.
+
+
+Script
+~~~~~~
+
+ view [ title "Hello World" button "Close" close ] 

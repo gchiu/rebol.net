@@ -1,0 +1,327 @@
+List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook
+http://www.rebol.net/cookbook/[1]. Please add your own ideas!
+
+
+List of Cookbooks
+~~~~~~~~~~~~~~~~~
+
+
+Audio Cookbook
+^^^^^^^^^^^^^^
+
+* Playing a sound
+* Adjusting volume
+* Scrubbing in a sound file
+* Displaying a sound waveform
+* FFT analyzer
+
+
+Console Cookbook
+^^^^^^^^^^^^^^^^
+
+* Using a serial console on headless R3 host.
+* Write console output to disk
+* Knowing the user.r file
+* Getting Raw Keyboard Characters in the Console
+
+
+Data Processing Cookbook
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+* Convert Text File Formats (Line Terminators)
+* Search a File
+* Replace Text in a File
+* Create HTML Code
+* A Micro Database
+* Creating Text with Form, Mold, Join, etc.
+* Circular Series of Values
+* Reading Delimited Text Files (Like CSV)
+
+
+
+* Lowercase Clipboard
+* HTML Thumbnail Photo Directory Maker
+* Tiny HTML to Text Converter
+* REBOL Parser in 10 Lines (plus Pretty Printer)
+* One Line Network Port Checker
+* DNS and Reverse DNS Lookup
+* Simple TCP Port-Forwarder
+* link:How_to_feed_DECOMPRESS_with_correctly_compressed_data[How to feed
+DECOMPRESS with correctly compressed data]
+
+
+
+
+Dates and Times Cookbook
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+* Time and Date Stamps
+* Computing Time Differences
+* Last Modified Date/Time (Within a REBOL Script)
+
+
+
+* Calculate the age of a person
+* A Different Time(r)
+* Unix Date Format Converter
+
+
+
+
+Debugging Cookbook
+^^^^^^^^^^^^^^^^^^
+
+* Use TRACE properly
+* PROBE, ??
+* Good debugging techniques
+* Simple Unit Test Tool
+* Stepping through a script
+
+
+Documentation Cookbook
+^^^^^^^^^^^^^^^^^^^^^^
+
+* link:About_Cookbooks[About Cookbooks]
+* link:Typographical_Conventions[Typographical Conventions]
+
+
+Embedded Cookbook
+^^^^^^^^^^^^^^^^^
+
+* Restricting memory usage in your scripts
+
+
+Error Handling Cookbook
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* Trapping Errors
+* Create Errors
+* Create user friendly error requesters
+
+
+File Management Cookbook
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+* Get a Directory File List
+* Copy all Files in a Directory
+* Match File Extensions
+* Writing a Program File (Executable)
+
+
+
+* Retrieve Specific Lines from a File
+* Writing a Log File
+* Search a huge file
+
+
+
+
+Low- and Mid-Level Networking
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+* Fetch Web Pages (Web HTTP Files)
+* Write a Protocol
+* link:TCP_Port_Examples[TCP Port Examples]
+* Two Simple Scripts Talking Over TCP
+* Uploading a File with HTTP (Post)
+* Automated FTP Script
+* Creating a Server Port
+* Simple Web Site Monitor
+* Multiple Web Site Monitor with Email Alerts
+* Fetch All IP Addresses
+* Using HTTP Cookies
+
+
+
+* Tiny Web Server
+* Send Binary (Image) Using a TCP Socket
+* Raw HTTP Web Requests
+* Graphical Internet and Website Server Monitor
+* Telnet protocol
+* Streaming data
+* Simple Stock Ticker
+* Get Dictionary Entry
+* Google Search
+* link:TCP_Port_Details[TCP Port Details]
+
+
+
+
+REBOL/Services
+^^^^^^^^^^^^^^
+
+*Source* http://www.rebol.com/docs/services/source.html[2]
+
+* link:REBOL/Services_Tutorial[REBOL/Services Tutorial]
+* link:REBOL/Services_Security[REBOL/Services Security]
+* link:REBOL/Services_Benefits[REBOL/Services Benefits]
+
+
+Rebcode
+^^^^^^^
+
+
+
+* link:Rebcode_Overview[Rebcode Overview]
+* REBOL To Rebcode Conversion
+* Using Rebcode To Generate Bitmaps
+
+
+
+* Optimizing Rebcode
+* Mandelbrot Generator
+
+
+
+
+Low-Level Graphics Cookbook
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Using DRAW to create math graphs
+* Using DRAW to create 3D vector graphics
+* Simple Animation with View/Draw
+
+
+VID Cookbook
+^^^^^^^^^^^^
+
+
+
+* Create a dynamic user interface
+* Write a style
+* Simple Text Form Window
+* Open Two Windows
+* Changing Text Font Attributes
+* Get and Set Text Fields
+
+
+
+* Adding a Scrollbar to Text
+* Getting A Text List Value
+* Scrolling an Image
+* Scrolling a GUI Panel
+* Progress Bar
+* Mouse Move Events - Raw Over and Hover Events
+
+
+
+
+OpenGL Cookbook
+^^^^^^^^^^^^^^^
+
+* Creating a First Person View
+
+
+Security Cookbook
+^^^^^^^^^^^^^^^^^
+
+* Strong Authentication Method
+* Cloaking (Encrypting) Strings
+* RSA Key Encryption over TCP
+
+
+Scripting Cookbook
+^^^^^^^^^^^^^^^^^^
+
+* Running scripts from OS console (not REBOL console)
+* Running scripts from the Gnome desktop
+* Storing Image Files in a Script (Embedded Images)
+* REBOL Scripts Embedded Within Web Pages
+* Good REBOL script headers
+* link:INCLUDE_documentation[INCLUDE documentation]
+
+
+Plugin Cookbook
+^^^^^^^^^^^^^^^
+
+* Embed a script in a webpage
+* Use Plugin to navigate the DOM
+
+
+Modules Cookbook
+^^^^^^^^^^^^^^^^
+
+* Creating a Module
+
+
+Tasking Cookbook
+^^^^^^^^^^^^^^^^
+
+* Do's and Don'ts in tasking
+* Sending a Message to a Task
+
+
+REBOL Internals Cookbook
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* link:Decimals-64[64-bit Decimals]
+
+
+REBOL Language Cookbook
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* Increment / Decrement a word value
+* Passing Single Values and Blocks to Functions
+* CASE
+* Exploring the SYSTEM object
+* Creating a new datatype
+* link:R2_vs._R3_Contexts[R2 vs. R3 Contexts]
+
+
+Numbers and Math Cookbook
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Explaining Math Precision
+* Using the money! datatype
+
+
+Mediatypes Cookbook
+^^^^^^^^^^^^^^^^^^^
+
+* Creating a mediatype
+
+
+System Cookbook
+^^^^^^^^^^^^^^^
+
+* link:Porting_Recipe[Porting R3 to another OS]
+* Making a device driver
+* The REBOL boot process
+
+
+Windows Cookbook
+^^^^^^^^^^^^^^^^
+
+* Reading Windows Shortcuts
+* Placing windows on multiple screens
+* Vista compatibility
+* Windows 95/98 compatibility
+* Reading NTFS timestamps
+* Using Network Drives
+* Creating icons for encapsulated R3 scripts
+
+
+MacOSX Cookbook
+^^^^^^^^^^^^^^^
+
+
+
+* Using the menubar in your REBOL apps
+* Using LaunchD to make an R3 script into a daemon
+* Understanding Application Packages
+* Sending files to Trash properly
+
+
+
+* MacOSX Panther Compatibility
+* MacOSX Tiger Compatibility
+* MacOSX Leopard Compatibility
+

@@ -1,0 +1,9 @@
+
+Vid Script Examples
+~~~~~~~~~~~~~~~~~~~
+
+ image:Gui-test.png 
+
+Open R3 enter "Demo" and click the "Run Test" button.
+
+The "Source" button will display the source code of the layouts. 

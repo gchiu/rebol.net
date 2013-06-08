@@ -1,0 +1,333 @@
+*Describes a new way to easily create multiple, related gobs.*
+
+
+Purpose
+~~~~~~~
+
+In R3, graphical objects (gobs) are easy to create and display; however,
+most programs need to create a complex arrangement of such objects and
+fully specifying such "layouts" can get pretty complicated at times.
+
+The MAKE-GOBS function was designed to help ease that burden. It
+provides an quick way to specify any number of gobs, as well as the
+graphical relationships between those gobs.
+
+MAKE-GOBS can be used independently of the VID dialect (however, VID is
+based on this function).
+
+
+Make-gobs function
+~~~~~~~~~~~~~~~~~~
+
+The make-gobs function creates a number of gobs from a specification
+block.
+
+`   result: make-gobs spec-block`
+
+The spec-block is a dialect that describes what gobs you want created
+along with a range of constraints for them.
+
+The function returns a result object, which we'll explain more below.
+
+
+The MAKE-GOB dialect
+~~~~~~~~~~~~~~~~~~~~
+
+The MAKE-GOB dialect allows you to specify the different types of gobs
+(text, image, etc.) along with constraints that control how they are
+positioned relative to each other (e.g. centered).
+
+A dialect consists of commands and data that get parsed to perform
+specific actions. If you are new to the concept, see dialects for more
+information.
+
+
+Gob types
+~~~~~~~~~
+
+The gob types allowed in the dialect are:
+
+* *color* - area set to specific color (with alpha)
+* *draw* - draw a vector graphic image
+* *effect* - image processing effect (e.g. blur)
+* *image* - an image
+* *text* - text and rich text
+
+They are described in detail elsewhere.
+
+Examples of types:
+
+`   draw [fill-pen ... circle ...]` +
+`   image my-image` +
+`   text "Something"`
+
+
+Gob constraints
+~~~~~~~~~~~~~~~
+
+Before specifying a gob type, you can provide optional constraints to
+determine the offset and size of the gob.
+
+The constraints allowed in the dialect are:
+
+* Horizontally:
+** *left*
+** *center*
+** *right*
+* Vertically:
+** *top*
+** *middle*
+** *bottom*
+* Size as dimensions:
+** *width*
+** *height*
+* Direct specification:
+** *offset*
+** *size*
+
+These constraints require you to specify a value or expression. For
+example with left, you must specify the X offset of the gob. This can be
+done as a fixed value, such as:
+
+`   left 10`
+
+or when a block is given, as a computed expression:
+
+`   left [a + 10]`
+
+It is important to know that that offset will automatically be
+recomputed when a resize action occurs. More on that below.
+
+Here is a full example that defines a static sized red colored gob:
+
+`   left 10` +
+`   top 10` +
+`   width 30` +
+`   height 30` +
+`   color red`
+
+
+Dependent constraints
+~~~~~~~~~~~~~~~~~~~~~
+
+Normally, gobs are dependent only on the size of their parent. The
+right, bottom, center, and other constaints let you control that.
+
+However, the dialect also gives you a way to add dependencies between
+gobs. For example, you can specify that the left position of one gob
+relative to that of the previous gob.
+
+For example:
+
+`   left + 2`
+
+will position the left offset of the next gob two pixels (to the right).
+A negative value can also be specified:
+
+`   left - 4`
+
+In addition, you can specify that a gob "follows" the previous one. For
+example, it is to the right of the prior gob:
+
+`   left follow 2`
+
+This which means the gob is at the right side of the prior gob plus two
+pixels. (A two pixel space between them.)
+
+FOLLOW can be used with LEFT, RIGHT, TOP, BOTTOM and OFFSET; however, it
+cannot be used with WIDTH, HEIGHT, SIZE, CENTER or MIDDLE. Those will
+cause an error.
+
+
+Implied constraints
+~~~~~~~~~~~~~~~~~~~
+
+You only need to specify as much information as needed to determine
+position and size of a gob.
+
+Take this example:
+
+`   right 2` +
+`   width 10` +
+`   top 5` +
+`   bottom 6`
+
+Here the LEFT is not specified, but LEFT can be computed from RIGHT and
+WIDTH, so that will be done. The same is true about HEIGHT. It can be
+computed from TOP and BOTTOM.
+
+
+Size determined by content
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For TEXT and IMAGE types, the size of the gob can be obtained
+automatically from the content.
+
+* IMAGE gobs have a fixed size. It is the size of the image.
+
+* TEXT gobs will compute their width or height from the SIZE-TEXT
+function. For example, if you specify the width only, the height is
+determined using SIZE-TEXT.
+
+If you change the contents of an IMAGE or TEXT gob, the size is not
+currently recomputed (however, if the size is dynamic for other reasons
+in the case of text, then it may be recomputed with size-text).
+
+
+Changing the layering order
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The graphics system defines gobs as being rendered in the order that
+they are written. The first gob is on the bottom; the last is on the
+top.
+
+For example, if you provide a spec such as:
+
+`  [image ... color ... text ...]`
+
+The image is on the bottom and the text is on the top.
+
+Now, let's suppose you must specify that block in that order to get
+everything to align properly. But, what if you want the color to render
+first and then the image and text?
+
+This can be accomplished with the BEFORE command. The BEFORE command
+takes an integer that is used as the number of gobs to backup in the
+specification.
+
+You can write:
+
+`  [image ... before 1 color ... text ...]`
+
+Here, the color would then be positioned to render first, before the
+image.
+
+Keep in mind that the constraint dependency order is not changed by
+BEFORE. Only it's render order.
+
+In this spec:
+
+`  [` +
+`      left 10` +
+`      image photo1` +
+`      left + 2` +
+`      text "Description"` +
+`      before 1` +
+`      left + 2` +
+`      image photo2` +
+`  ]`
+
+The photo2 image will be 4 pixels to the right of the first image, but
+will be rendered before the text.
+
+
+The result object
+~~~~~~~~~~~~~~~~~
+
+The result object has these fields:
+
+* gob: a gob! that contains all the created gobs.
+* on-resize: a function that adjusts all gobs based on the specification
+dialect and the new size provided.
+
+
+Resizing
+~~~~~~~~
+
+To resize all of the gobs generated by MAKE-GOBS, you can call the
+ON-RESIZE function noted above.
+
+For example:
+
+`  gob-out: make-gobs specs` +
+`  ...` +
+`  gob-out/on-resize new-size`
+
+
+Examples
+~~~~~~~~
+
+
+Example 1
+^^^^^^^^^
+
+To create an icon consisting of an image with a text name under it:
+
+ icon: make image! 32x32 icon-text: "Icon name"
+
+`   icon: make-gobs [` +
+`       ; first gob:` +
+`       center 0` +
+`       top 4` +
+`       image icon` +
+`       ; second gob:` +
+`       left 2` +
+`       right 2` +
+`       top 36` +
+`       text [anti-alias on center icon-text]` +
+`   ]` ``
+
+Let's look at each gob separately.
+
+The first gob is:
+
+`   center 0` +
+`   top 4` +
+`   image icon`
+
+The size of the gob is determined by the image, so it is not specified.
+
+The CENTER command will center the image with respect to its parent gob.
+It is an a 0 offset from the center line.
+
+Since the size of the image is known, and we can give only center and
+top, and the offset of the gob can be computed automatically.
+
+Also, the image gob will be updated when the size of the parent gob
+changes (top stays 4, but the center changes when you change the size).
+
+The second gob is:
+
+`   left 2` +
+`   right 2` +
+`   top 36` +
+`   text [anti-alias on center icon-text]`
+
+We give a specific left and top so the offset of the gob is constant.
+
+The width of the gob is determined from both the left and right, so here
+it is the size of the parent gob minus 4 pixels.
+
+The height is computed automatically with the SIZE-TEXT (because this is
+a TEXT gob).
+
+Both width and height are recomputed during resize, so if the width
+changes, the result of SIZE-TEXT will change.
+
+
+Example 2
+^^^^^^^^^
+
+The next example creates an icon with some effects to highlight the
+selection:
+
+ selected-icon: make-gobs [ center 0 top 4 width (icon/size/x + 8)
+height (icon/size/y + 8) effect [shadow only icon 4x4 3.9 blue]
+
+`       left + 4` +
+`       top 8` +
+`       width icon/size/x` +
+`       height icon/size/y` +
+`       effect [contrast icon 10]`
+
+`       top 36` +
+`       left 2` +
+`       right 2` +
+`       text [anti-alias on center icon-text]`
+
+`       size + 2x2` +
+`       top - 2` +
+`       center 0` +
+`       before 1` +
+`       draw [pen blue fill-pen 0.0.255.200 box 0x0 bottom-right/0x0 5]` +
+`   ]` `

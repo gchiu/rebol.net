@@ -1,0 +1,88 @@
+This page specifies how function arguments are defined.
+
+
+General Form
+~~~~~~~~~~~~
+
+When defining a function, its _formal arguments_ are specified by a
+block of the form:
+
+`[arg [datatypes] "comment" ...]`
+
+The _arg_ is a word that provides the name of the argument. It can be
+one of several word possibilities, as listed below.
+
+The _datatypes_ specification block is optional. When not given, any
+datatype except UNSET! will be accepted. When provided, one or more
+datatypes can be specified in the block. Only valid datatype values
+(such as integer!) and typesets (such as series!) are allowed.
+
+The _comment_ is a string that describes the details about the argument.
+These comments help make your functions auto-documenting for HELP and
+other development tools.
+
+
+Word Variations
+~~~~~~~~~~~~~~~
+
+The argument word can be specified as:
+
+* *word* - pass the evaluated argument value in all cases
+* *'word* - pass unevaluated words and paths (see details below)
+* *:word* - pass the value as-is, no evaluation is done
+* *word:* - define special function attributes (pending implementation)
+* */word* - allow refinement to function
+
+For the 'word case above, the actual argument will determine how it is
+processed. These choices are supported:
+
+* *arg* - pass the word, unevaluated.
+* *:arg* - pass the value of the word
+* *'arg* - pass the literal word as is
+* *arg/path* - pass the path, unevaluated.
+* *:arg/path* - pass the path's value
+* *(expr)* - evaluate and pass results.
+
+For the :word case above, the actual argument does not matter. The next
+value in the input stream will be used, regardless of type.
+
+Note that both 'word and :word will accept unset! values only if those
+are specified as valid datatypes. For example:
+
+`sample: func [:arg [any-type!]] [probe :arg]` +
+`sample 10` +
+`10` +
+`do [sample]` +
+`unset!`
+
+Or, you can explicitly specify that unset! is allowed as a value:
+
+`sample: func [:arg [integer! unset!]] [probe :arg]`
+
+To help show how it works, here are examples of arg as a 'word. These
+are all true expressions.
+
+
+
+Arg as 'word:::
+
+f: func ['arg] [:arg] 1 = f 1 'word = f word 'path/word = f path/word 2
+= f (1 + 1) n: 3 3 = f :n
+
+Allows unset value:::
+
+f: func ['arg [integer! unset!]] [:arg] do [unset? f] 
+
+And, here are examples of arg as a :word. These are all true
+expressions.
+
+
+
+Arg as :word:::
+
+f: func [:arg] [:arg] 1 = f 1 word? f word 'path/word = f path/word
+paren? f (1 + 1) get-word? f :n
+
+Allows unset value:::
+
+f: func [:arg [integer! unset!]] [:arg] do [unset? f] 

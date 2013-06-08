@@ -1,0 +1,25 @@
+The purpose of this document is to define the general parameters of
+REBOL's run-time environment, and develop a better method of handling
+QUIT (and related functions).
+
+
+Environments Defined
+~~~~~~~~~~~~~~~~~~~~
+
+There are four general environments for running REBOL programs. It is
+best to clearly label them, so we can refer to them later:
+
+1.  *Application* - run by user, not for debugging purposes, but to
+achieve an end result
+2.  *Server* - run by a server, not for debugging purposes, but to
+achieve an end result
+3.  *Shell* - run by a user, using REBOL as a shell to run a variety of
+tasks that achieve an end result
+4.  *Development* - run by developer, for debugging, education, or
+experimentation by using the console.
+
+We will include running as a browser (or embedded app) plugin as the
+first case: an application. It is also possible that it may be run as a
+plugin in the second case too.
+
+In addition, we will define Console

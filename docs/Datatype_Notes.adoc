@@ -1,0 +1,23 @@
+
+Datatype Notes
+~~~~~~~~~~~~~~
+
+
+
+* Bitsets - major changes to know about
+* Closures - a special type of function
+* Errors - changes in error datatype
+* GOB - low level graphical objects
+* Map - associative name-values (hashes, dictionaries)
+* Module - components and namespaces
+* Decimals-64 - binary floating point numbers
+* Money - high precision numbers
+
+
+
+* Paths - access and refinement paths
+* Percent - numeric percentage
+* Ports - completely redesigned
+* Unicode - unicode (pending)
+* Vectors - efficient arrays
+

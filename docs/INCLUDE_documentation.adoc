@@ -1,0 +1,765 @@
+*Include* is a REBOL script processor. It is implemented as a function
+and works as a REBOL script loader, preprocessor and evaluator. It is
+not an "alternative module system", in fact, it is orthogonal to any
+such system, meaning that it can work together with such a system.
+
+
+Design features
+~~~~~~~~~~~~~~~
+
+1.  A comfortable REBOL script evaluator:
+1.  Can preprocess and evaluate any script (the script does not have to
+contain *prebol* directives).
+2.  Processes *prebol* directives facilitating SDK debugging.
+3.  During preprocessing errors are enhanced to inform in which file the
+error occurred to make debugging more comfortable.
+4.  Uses *include-ctx/path* which resembles paths of many operating
+systems to search for scripts.
+5.  *include-ctx/path* can contain URLs, not just local directories.
+6.  *include/check* prevents scripts from being re-included (included
+more than once).
+7.  Processes ordinary scripts with REBOL header.
+8.  Processes prefaced REBOL scripts, i.e., REBOL scripts with preface
+preceding REBOL header and embedded REBOL scripts (see
+http://www.rebol.com/docs/core23/rebolcore-5.html#section-1.2[1]).
+2.  An improved script loader:
+1.  *include/only* just loads and preprocesses a script yielding a REBOL
+block.
+2.  *include/link* loads a script, preprocesses it and saves the result
+to the specified file.
+3.  An improved preprocessor:
+1.  Processes all *prebol* directives and is compatible with SDK.
+2.  The #include-check directive is available as a "don't re-include"
+variant of the #include directive.
+3.  It is possible to include small parts of scripts like binary data,
+images or strings.
+4.  Context encapsulation is available using the make
+object! or the make module! method.
+5.  Users can define new directives.
+
+
+License
+~~~~~~~
+
+Licensed under the Apache License, Version 2.0 (the "License"). You may
+obtain a copy of the License at
+
+`       `http://www.apache.org/licenses/LICENSE-2.0[`http://www.apache.org/licenses/LICENSE-2.0`]
+
+
+Description
+~~~~~~~~~~~
+
+The preprocessing phase is used to build the script, i.e., to include
+the necessary parts. Moreover, it enables the user to evaluate any REBOL
+expression(s).
+
+
+Standard preprocessing directives
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+#include script
+++++++++++++++++++++++++++++
+
+Include a script (a file or URL) here. The script is preprocessed by
+*include*.
+
+
+#include-check script
+++++++++++++++++++++++++++++++++++
+
+The same as above, except that the script is not included if present in
+the *include-ctx/log*.
+
+
+#do block
+++++++++++++++++++++++
+
+Do the given code block during preprocessing including the result here
+without preprocessing it further.
+
+
+#include-string text-file
+++++++++++++++++++++++++++++++++++++++
+
+Include the given *text-file* as a string.
+
+
+#include-binary binary-file
+++++++++++++++++++++++++++++++++++++++++
+
+Include the given *binary-file* as a binary.
+
+
+#include-files dir file-list
++++++++++++++++++++++++++++++++++++++++++
+
+Include the files from the *file-list* looking for them in the given
+*dir* directory. The files are included as a block containing name and
+the binary contents of all files.
+
+
+COMMENT
+++++++++++++++++++++
+
+Leave out the COMMENT directive and its argument from the code. The
+comment is not left out if the *_keep-comments_* global variable is
+defined when the directive is processed.
+
+
+Conditional preprocessing directives
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+#if cond-block true-block
+++++++++++++++++++++++++++++++++++++++
+
+Conditionally include the given *then-block* if the *cond-block*
+evaluates *true*. The *then-block* is preprocessed when included.
+
+
+#either cond-block true-block false-block
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Conditionally include one of the two blocks depending on the result of
+evaluation of the given *cond-block*. The block being included is
+preprocessed.
+
+
+Global words used
+^^^^^^^^^^^^^^^^^
+
+
+*_include_*
++++++++++++
+
+The *_include_* word refers to the *include* function.
+
+
+*_include-ctx_*
++++++++++++++++
+
+The *_include-ctx_* word refers to the object containing important
+*include* variables and helper functions.
+
+
+*_script?_*
++++++++++++
+
+The implementation patches the *_script?_* function when needed.
+
+
+INCLUDE-CTX variables
+^^^^^^^^^^^^^^^^^^^^^
+
+
+*_path_*
+++++++++
+
+The *_path_* word refers to a block containing the paths where the
+*include* function shall look for the files.
+
+If the script file to include is specified with a non-empty path the
+script file is looked up only at its path. As opposed to that when the
+script file is specified without any path using only a file name
+*include* will use the *include-ctx/path* to look for the file.
+
+The *path* can be modified/set by users. See also the *include-ctx/push*
+and *include-ctx/pop* helper functions.
+
+
+Prioritization
+
+The directories (or URLs) that are first in the *include-path* are
+searched first. Consequently they are having priority during the file
+search.
+
+
+*_log_*
++++++++
+
+The *_log_* variable refers to a block containing the files (with
+complete paths) *include* function processed. It is used by the
+/check refinement and by the #include-check
+directive to check whether a specific file was already included. The
+default REBOL comparison (which is case-insensitive) is used and the
+paths are converted to lowercase.
+
+The user can save the *log* to a file to create a log file. The user can
+influence what will be considered as "already included", typically by
+clearing the contents of the *log* block when starting to link a new
+file. The files are appended to the *log* block as they are found by
+*include*, which means that the file found last will be the last one in
+the log.
+
+
+*_stack_*
++++++++++
+
+The stack used by the *push* and *pop* helper functions (see below).
+There is no need to use the variable directly.
+
+
+*_block-directive_*
++++++++++++++++++++
+
+Handling a subblock or paren.
+
+
+*_conditional-directives_*
+++++++++++++++++++++++++++
+
+The definitions of #if and #either conditional directives.
+
+
+*_standard-directives_*
++++++++++++++++++++++++
+
+The definitions of the standard directives (all except the block
+directive, conditional directives and special includes).
+
+
+*_special-includes_*
+++++++++++++++++++++
+
+The definitions of #include-binary, #include-string and #include-files
+directives.
+
+
+*_directives_*
+++++++++++++++
+
+The *_directives_* variable refers to the block containing the
+definitions of directives that are currently used by *include*. There is
+usually no need to handle this variable directly since
+*include-ctx/get-directives*, *include-ctx/set-directives* and
+*include-ctx/update-directives* take care of it.
+
+
+*_standard-header_*
++++++++++++++++++++
+
+The *_standard-header_* variable refers to the script header prototype
+object. Defined for compatibility between R2 and R3.
+
+
+*_file_*
+++++++++
+
+The *_file_* variable refers to the file processed by INCLUDE.
+
+
+INCLUDE-CTX functions
+^^^^^^^^^^^^^^^^^^^^^
+
+
+*_include-script_*
+++++++++++++++++++
+
+The function used by *include* and by directives to preprocess a script.
+
+
+*_include-block_*
++++++++++++++++++
+
+The function used by *include-script* and by directives to preprocess a
+block or a paren. Generated by the *set-directives* function.
+
+
+*_get-directives_*
+++++++++++++++++++
+
+Refers to a function returning the directives block used by *include*.
+The directives block is the block containing the definitions of all
+*include* directives.
+
+
+*_set-directives_*
+++++++++++++++++++
+
+Refers to a function setting the directives block used by *include*.
+
+
+*_update-directives_*
++++++++++++++++++++++
+
+Refers to a function updating the *directives* (not modifying the block,
+though) using the given *directives-to-update* block. If a directive
+contained in the *directives-to-update* block is already present in the
+*directives* block it is updated. Otherwise it is appended as a new
+directive.
+
+The usage of the *set-directives* function to update/add new *include*
+*directives* is not particularly comfortable. This function should be
+used as a more comfortable helper.
+
+
+*_push_*
+++++++++
+
+Sometimes it is desirable to be able to temporarily redefine the
+*_include-ctx/path_* while being able to restore its previous value
+after some time. The *push* function takes a *new-path* argument storing
+the current *_path_* contents to the *stack* and using the given
+*new-path* instead.
+
+
+*_pop_*
++++++++
+
+Restores the previous *path* value from the *stack*. It is the
+counterpart of the *push* function. If the *stack* is empty, an error is
+triggered.
+
+
+*_do-next_*
++++++++++++
+
+Do next expression, using the "R3 convention", compatible with R2 and
+R3.
+
+
+*_load-next_*
++++++++++++++
+
+Load the next value, compatible with R2 and R3.
+
+
+*_read-binary_*
++++++++++++++++
+
+Read a binary value from a source, compatible with R2 and R3.
+
+
+*_make-error_*
+++++++++++++++
+
+Make the error according to the given specifications, compatible with R2
+and R3, allows setting the NEAR and WHERE attributes even in R2.
+
+
+*_disarm-error_*
+++++++++++++++++
+
+Disarm the error, compatible with R2 and R3.
+
+
+*_redo-error_*
+++++++++++++++
+
+"enhance" (if needed) and redo the given error.
+
+
+*_include-error_*
++++++++++++++++++
+
+Create and trigger a new include-type error.
+
+
+*_split-path_*
+++++++++++++++
+
+Splits the given path.
+
+
+*_findpfile_*
++++++++++++++
+
+Find the given file using the given search path.
+
+
+*_find-file_*
++++++++++++++
+
+Find a file (using INCLUDE-CTX/PATH if desired).
+
+
+The INCLUDE error type
+^^^^^^^^^^^^^^^^^^^^^^
+
+A new INCLUDE error type is defined, with the following ids:
+
+
+ENHANCED
+++++++++
+
+This error represents an, otherwise "normal" error that occurred during
+code preprocessing. The error is "enhanced" to "know" the file in which
+it occurred.
+
+
+FILE-OR-URL-IN-PATH
++++++++++++++++++++
+
+A file or a URL was expected in the PATH.
+
+
+STACK-EMPTY
++++++++++++
+
+The POP function found the STACK to be empty.
+
+
+FILE-NOT-FOUND
+++++++++++++++
+
+The file to be included was not found.
+
+
+EXPECTED
+++++++++
+
+The directive expected an argument.
+
+
+INVALID-DIRECTIVE
++++++++++++++++++
+
+The UPDATE-DIRECTIVES function obtained an invalid directive
+specification in the DIRECTIVES-TO-UPDATE block.
+
+
+Usage examples
+~~~~~~~~~~~~~~
+
+A call equivalent to *prebol* processing %somefile.r and
+storing the result of the preprocessing to %outfile.r would
+look like:
+
+include/link %somefile.r %outfile.r
+
+To change the *include-ctx/path*:
+
+append include-ctx/path url-or-directory
+
+The *include* call corresponding to the #include-check
+directive is include/check, which preprocesses and runs the
+script only if it hasn't done so before:
+
+include/check %somefile.r
+
+The distinction between preprocessing directives and "normal" *include*
+usage is best described on simple examples:
+
+The first example uses *include*, but not the preprocessing directives:
+
+REBOL [ File: %script-builder.r ]
+
+create a new "standard" script from the script base::
+
+verbose: false
+
+use a clean LOG::
+
+clear include-ctx/log include/link %script-base.r %standard-script.r
+
+now create a verbose version::
+
+verbose: true clear include-ctx/log include/link %script-base.r
+%verbose-script.r
+
+To create the two versions of the script containing everything they need
+to run it is sufficient to do:
+
+include %script-builder.r
+
+, which takes care of creating both script versions.
+
+The %script-base.r file can look e.g. as follows:
+
+REBOL [ File: %script-base.r ]
+
+1.  either [verbose] [debug: :print] [debug: none]
+2.  include-check %part1.r
+3.  include-check %part2.r
+
+...
+
+
+Context encapsulation
+^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to encapsulate contexts as follows:
+
+REBOL [ Title: "my script" ]
+
+make object! [#include %your-script.r] make module! [[module spec goes
+here] [#include %his-script.r]]
+
+
+User-defined directives
+~~~~~~~~~~~~~~~~~~~~~~~
+
+New directives are defined using *set-directives* function or, more
+comfortably, using the *update-directives* function, which allows
+selective updating of *include directives*. The directives are written
+in the parse dialect. Even the standard directives are defined this way;
+it is possible to take their definition as an example.
+
+The *directives* block is bound to the *include-block* function context
+by the *set-directives* function. Furthermore, the user can bind his
+*directives* block to the *include-ctx* context if his directives use
+some of the *include-ctx* functions or variables.
+
+The locals of the *include-block* function are:
+
+
+pos1
+^^^^^^^^^^^^^^^^^
+
+In the definitions of the standard directives it is being used to hold
+the current position in the block (or paren) being included. This
+variable can be and frequently is redefined.
+
+
+pos2
+^^^^^^^^^^^^^^^^^
+
+In the definitions of the standard directives it is being used to hold
+the next position (the position following the currently processed
+directive part) in the block (or paren) being included.
+
+This variable can be and frequently is redefined.
+
+
+value1
+^^^^^^^^^^^^^^^^^^^
+
+In the definitions of the standard directives it is being used to hold
+the first argument value of the currently processed directive.
+
+This variable can be and frequently is redefined.
+
+
+value2
+^^^^^^^^^^^^^^^^^^^
+
+In the definitions of the standard directives it is being used to hold
+the second argument value of the currently processed directive.
+
+This variable can be and frequently is redefined.
+
+
+value3
+^^^^^^^^^^^^^^^^^^^
+
+In the definitions of the standard directives it is being used to hold
+the third argument value of the currently processed directive.
+
+This variable can be and frequently is redefined.
+
+
+The #print directive example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The #print directive is meant as the debug-print directive. It uses
+(potentially) the *_debug_* flag to "decide" whether to turn the
+directive into a *print* call, or simply leave it out from the code
+together with its argument.
+
+Usage:
+
+#print argument
+
+If the *_debug_* flag (global) is defined (set) when the #print
+directive is being processed the directive is turned into a *print*
+call; otherwise it is left out from the code.
+
+
+The definition of the #print directive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Rebol [ Title: "Debug-print" File: %debug-print.r Author: "Ladislav
+Mecir" Date: 21-Oct-2011/15:31:41+2:00 Purpose: \{Defines the #print
+directive} Notes: \{ uses the debug flag (global) if the debug flag is
+set, #print becomes print otherwise, #print and its argument are left
+out } ]
+
+include-ctx/update-directives [ #print set value1 skip ( if value?
+'debug [ append linked 'print append/only linked get/any 'value1 ] )
+]
+
+
+How to's
+~~~~~~~~
+
+
+*Include* and relative paths
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To be compatible with *do* *include* changes the working directory to
+that of the script it is processing. Note that relative paths are
+relative to the actual working directory, not to the directory that was
+actual when such paths were put into the *include-ctx/path* block.
+
+For example if we define:
+
+include-ctx/path: reduce [%. clean-path %.]
+
+at the first sight it seems that the two elements in the above
+*include-ctx/path* are equivalent, but that is not true. The first one
+is a relative path always referring to the current working directory
+while the second one refers to the directory that was current when the
+*include-ctx/path* was defined.
+
+
+How to evaluate an expression using a #do directive without including a
+value into the script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This directive evaluates an expression and includes its result 2 into
+the script:
+
+#do [1 + 1]
+
+while this one evaluates the expression as well including nothing:
+
+#do [1 + 1 []]
+
+
+How to write code detecting whether it has been preprocessed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When a script is running you may need to find out whether it has been
+preprocessed or not. Here is how:
+
+print either (#do [false]) ["this code wasn't preprocessed"]["this
+code was preprocessed"]
+
+
+How to write a part of a script that you don't want to be preprocessed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sometimes you want a part of the script to remain untouched by the
+preprocessor. This is a way how:
+
+#do [[ ; this part will not be preprocessed prin "part1: " print
+either (#do [false]) ["not preprocessed"] ["preprocessed"] ]]
+
+this part will be preprocessed::
+
+prin "part2: " print either (#do [false]) ["not preprocessed"]
+["preprocessed"]
+
+
+How to write a block you don't want to be preprocessed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using the above trick we can do it as follows:
+
+#do link:[ print mold #include[[ print mold #include]] 
+
+
+How to write code compatible with both *do* and *include*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The %include.r script may serve as an example of a script
+containing the preprocessor directives. Still you may want to write such
+a script so that its behaviour is the same whether it has been run by
+*do* or *include*.
+
+Combining the tricks from the previous sections:
+
+do if (#do [false]) [func [a b] [do first b]] #do
+; here we can put any code with preprocessor directives ; without worrying whether the user ran the script using DO or INCLUDE: print mold #include_;_etc.[;
+here we can put any code with preprocessor directives ; without worrying
+whether the user ran the script using DO or INCLUDE: print mold #include
+; etc.]
+
+Another alternative - this time it is a block that remains unprocessed
+no matter whether the script is processed by *do* or *include*:
+
+do either (#do [false])[func [a b] [b/1/1]] [func [a] [:a]] #do
+link:[ ; here I can put any code with or without preprocessor directives print mold #include[[
+; here I can put any code with or without preprocessor directives print
+mold #include]]
+
+
+How to create a Windows Explorer association for *include*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To create a Windows Explorer association so that you can right-click on
+a .r file to run it using *include*:
+
+* Download the %include.r script.
+* Create a script file including any script
+
+::
+  This is an example file (use your own directory paths):
+
+Rebol [ Title: "Incl.r3" File: %incl.r3 Author: "Ladislav Mecir"
+Date: 30-Sep-2011/10:23:03+2:00 Purpose: \{Includes the first argument
+file, works with R3} ]
+
+define the INCLUDE function::
+
+do %include.r
+
+---- R3 GUI::
+
+include %/d/ladislav/saphirion/trunk/r3-gui/loader/loader.r3
+
+include the argument script::
+
+include to-rebol-file system/script/args
+
+* Add a new association for .r files. (Actually, you can
+add more associations. For example, I have one called r2 to
+evaluate the script using *include* and Rebol 2 interpreter and one
+called r3 to evaluate the script using *include* and the
+Rebol 3 interpreter.)
+
+
+How to add the new association for .r files in Windows XP
+or older
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Run the Windows Explorer and click on Tools/Options in
+menu. Next click on the File Types tab and find the
+.r file type associations. Click on the
+Advanced button and add a new action. Call the new action
+r3 and the application associated with the new action may
+be e.g.:
+
+"D:\Rebol\r3.exe" d:\rebol\incl.r3 "%1"
+
+(Adjust your directory appropriately). Next you can decide whether to
+make the r3 action default. If you make it default you can
+just double-click (or left-click if you set your Explorer for one click
+as I did) on a .r file to include it. Otherwise you can
+right-click the file in Windows Explorer and pick the r3
+action from the quick menu.
+
+
+How to add a new association for .r files in Windows Vista,
+Windows 7 or Windows 8
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+1.  Run the regedit.exe program
+2.  Find the HKEY_CLASSES_ROOT\.r key
+3.  Examine its (Default) value, should be something like
+r_auto_file
+4.  Find (or create) the HKEY_CLASSES_ROOT\r_auto_file key
+5.  Find (or create) the
+HKEY_CLASSES_ROOT\r_auto_file\shell subkey
+6.  Under the shell key find (or create) a new
+open subkey and a new r3 subkey
+7.  Under the open key add a new command
+subkey
+8.  Change the (Default) value of the command
+key to something like "D:\Rebol\rebol.exe" d:\rebol\incl.r
+"%1" (do not forget to use your directory paths).
+9.  Under the r3 key add a new command subkey
+10. Change the (Default) value of the command
+key to something like "D:\Rebol\r3.exe" d:\rebol\incl.r3
+"%1" (do not forget to use your directory paths).
+
+Having added the association for the .r files left-clicking
+a .r file will run it in the rebol.exe
+interpreter while right-clicking a .r file in the Windows
+Explorer you will see new open and r3 options,
+being able to choose which interpreter you want to start.
+
+In the same way you can define the open association for
+.r3

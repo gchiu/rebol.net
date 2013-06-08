@@ -1,0 +1,64 @@
+__NOTOC__
+
+REBOL has many resources on the net and in different languages. Start
+here to find your preferred place of discussion.
+
+
+AltMe
+~~~~~
+
+AltMe is a decentralized messaging and collaboration program completely
+written in REBOL. Go to http://www.altme.com and download the client.
+Ask for an account to be created for you by posting to the REBOL Mailing
+list (see below) and then connect to the REBOL3 AltMe world to meet
+Rebolers. Once you are logged into this world, you can ask for
+additional accounts to be created for others by posting a request in the
+*Accounts* group. A weblog of the public discussions in the REBOL3
+(discussions include REBOL 2) world can be found at
+http://www.rebol.net/altweb/rebol3/
+
+
+REBOL 2 Forums and Mailing Lists
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Address |Type |Language |Description
+|http://www.rebol.com/discussion.html[REBOL Mailing List] |Mailing List
+|EN |[multiblock cell omitted]
+
+|http://www.reboltalk.com/[Reboltalk] |Forum |EN |Forum specialized in
+REBOL
+
+|http://groups.yahoo.com/group/Rebol_New[Yahoo REBOL] |Mailing List |EN
+|Mailing list talking about REBOL
+
+|http://www.digicamsoft.com/cgi-bin/rebelBB.cgi[Rebel BB] |Forum |FR
+|Bullettin Board for french speaking people, it is the core if the
+french REBOL movement
+|=======================================================================
+
+
+REBOL 2 Blogs
+^^^^^^^^^^^^^
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Name |Description |+ |http://www.rebol.com/cgi-bin/blog.r[Carl's Blog]
+|REBOL Founder Official Blog
+|=======================================================================
+
+
+REBOL EZines
+~~~~~~~~~~~~
+
+
+Various REBOL Sites
+~~~~~~~~~~~~~~~~~~~
+
+[cols=",",options="header",]
+|=======================================================================
+|Site |Description
+|http://www.codeconscious.com/rebol[Codeconscious] |Quote from the site:
+"The purpose of this site is to share information, programming tips,
+techniques and scripts I've found useful"

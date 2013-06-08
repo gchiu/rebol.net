@@ -1,0 +1,90 @@
+
+GRAD-PEN
+~~~~~~~~
+
+Sets the color gradient for area filling. The gradient can be defined by
+up to 256 colors. Each defined color can have specified color offset
+for creating gradients with asymmetric color ranges.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Argument |Type |Description |Values
+|grad-type |[word!] |The gradient type |*radial conic diamond linear
+diagonal cubic*
+
+|grad-mode |[word!] |The gradient rendering mode |*normal repeat
+reflect*
+
+|grad-offset |[pair!] |offset from where should the gradient be rendered
+|[multiblock cell omitted]
+
+|grad-start-rng |[decimal!] |beginning of the gradient range
+|[multiblock cell omitted]
+
+|grad-stop-rng |[decimal!] |end of the gradient range
+|[multiblock cell omitted]
+
+|grad-angle |[decimal!] |rotation of the gradient in degrees
+|[multiblock cell omitted]
+
+|grad-scale-x |[decimal!] |scale X factor |[multiblock cell omitted]
+
+|grad-scale-y |[decimal!] |scale Y factor |[multiblock cell omitted]
+
+|grad-colors |[block!] |block containing up to 256 gradient colors
+(optionally with color offsets) |block content can be either:
+[color1 [pair!] color2 [pair!] color3 [pair!] ...] or:  [color1
+[pair!] offset1 [decimal!] color2 [pair!] offset2 [decimal!] ...]
+*NOTE:* Currently color values inside the block are reduced. (in
+case *word!* references are used for colors)
+|=======================================================================
+
+*Notes and Examples*
+
+Simple linear gradient grad-pen linear 100x100 0 200
+[255.0.0 0.255.0 0.0.255] box 100x100 300x300 
+image:GRAD-PEN-1.png[GRAD-PEN example 1]
+
+Linear gradient with compressed range grad-pen
+linear 100x100 0 50 [255.0.0 0.255.0 0.0.255] box 100x100 300x300
+ image:GRAD-PEN-2.png[GRAD-PEN example 2]
+
+Linear gradient in *repeat* mode grad-pen linear
+repeat 100x100 0 50 [255.0.0 0.255.0 0.0.255] box 100x100 300x300
+ image:GRAD-PEN-3.png[GRAD-PEN example 3]
+
+Linear gradient in *reflect* mode grad-pen
+linear reflect 100x100 0 50 [255.0.0 0.255.0 0.0.255] box 100x100
+300x300  image:GRAD-PEN-4.png[GRAD-PEN example 4]
+
+Linear gradient with more colors grad-pen linear
+100x100 0 200 [255.0.0 255.255.0 0.255.0 0.255.255 0.0.255 255.0.255]
+box 100x100 300x300  image:GRAD-PEN-5.png[GRAD-PEN example
+5]
+
+Linear gradient with color offsets grad-pen
+linear 100x100 0 200 [255.0.0 0.1 255.255.0 0.2 0.255.0 0.4 0.255.255
+0.8 0.0.255 .9 255.0.255 1.0] box 100x100 300x300 
+image:GRAD-PEN-6.png[GRAD-PEN example 6]
+
+Simple radial gradient grad-pen radial 200x200 0
+100 [255.0.0 0.255.0 0.0.255] box 100x100 300x300 
+image:GRAD-PEN-7.png[GRAD-PEN example 7]
+
+Diamond gradient with applied rotation grad-pen
+diamond 200x200 0 100 30 [255.0.0 0.255.0 0.0.255] box 100x100 300x300
+ image:GRAD-PEN-8.png[GRAD-PEN example 8]
+
+Diamond gradient with applied rotation and scaling
+ grad-pen diamond 200x200 0 100 30 3.0 1.5 [255.0.0 0.255.0
+0.0.255] box 100x100 300x300  image:GRAD-PEN-9.png[GRAD-PEN
+example 9]
+
+
+
+To disable the *grad-pen*', set it to *off*. After that latest
+*fill-pen* state is used for filling the areas. fill-pen
+red grad-pen linear 100x100 0 200 [255.0.0 0.255.0 0.0.255] box 100x100
+300x300 grad-pen off box 150x150 250x250 
+image:GRAD-PEN-10.png[GRAD-PEN example 10]
+

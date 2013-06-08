@@ -1,0 +1,474 @@
+*Modules are isolated contexts (name and value spaces) that extend the
+run-time environment of REBOL in a convenient and modular way.*
+
+
+Introduction
+~~~~~~~~~~~~
+
+A module is similar to a script. It is loaded and evaluated. The
+difference is that a module is kept isolated within its own namespace.
+This allows multiple modules to be loaded without interference (between
+them or with your main program.) In this way larger scale programs can
+be developed by teams in a modular way, without concern over possible
+side effects that may occur.
+
+A module is allowed to export an API. It can make specific functions,
+objects, or other data directly accessible to your main program and to
+other modules.
+
+*Modules are intended to replace the commonly used method of wrapping a
+CONTEXT (object) around a section of code to isolate its variables.* The
+design of modules is equally lightweight (as using an object).
+
+
+Keeping It Simple
+~~~~~~~~~~~~~~~~~
+
+In a dynamic language like REBOL the concept of modules can be designed
+with many special features and "cool properties". However, in the normal
+course of programming, only a small number of features are actually
+useful.
+
+The balance in the design of the system is how do decide which new and
+interesting concepts have merit and which will rarely, if ever, be used.
+With that rule as a goal, the module system has been designed to be
+simple.
+
+We want programmers of all skill levels to be capable of
+understanding modules and of using them correctly.
+
+With this in mind, it is best to avoid adding features that may only
+appear in 1% of programs. When such cases arise, the program itself can
+provide for its own needs.
+
+
+Development Status
+~~~~~~~~~~~~~~~~~~
+
+First draft prototype released in A38. Some features may be missing.
+
+Important notes:
+
+1.  For this alpha release, the use of the import field within the
+specification block of a module is not supported. Whether this field is
+needed or not must be determined by user requirements. The IMPORT
+function does basically the same thing, so in that regard, the import
+field would be redundant.
+2.  Also, the NEEDS field of the specification is not implemented. This
+field would allow a module to specify its dependencies (as abstract
+names or specific file/url references and versions). Again, user
+requirements will help us to better define this feature, should we want
+it.
+
+
+Functions
+~~~~~~~~~
+
+These functions are used for modules:
+
+* make - low level module creation
+* module - shortcut for MAKE (like FUNC for functions)
+* load - loads modules as unbound blocks (no MAKE is done)
+* do - loads and makes according to module header spec
+* import - locates, loads, makes, and binds into current context
+
+
+Creating a Module
+~~~~~~~~~~~~~~~~~
+
+To create a module, you need to provide a specification block and
+a body block.
+
+The specification (spec) describes the properties of the module. Its
+format is identical to a standard script header object.
+
+The body is a block of code that is initialized when the module is
+created. It is used to create functions, data, objects and other values
+needed by the module.
+
+
+Example
+^^^^^^^
+
+Here is an example that shows a module spec and body:
+
+REBOL [ Name: stock-trade Title: "Stock Trading Module" Version:
+1.2.0 Type: module Export: [buy sell] ]
+
+buy: func [stock price] [...]
+
+sell: func [stock price] [...] 
+
+
+The Spec Block
+^^^^^^^^^^^^^^
+
+The spec block is a standard script header, and its fields are defined
+in system/standard/script. The example above only shows a few of the
+fields, but all of the other fields can be provided, and you can also
+add your own (just as with normal scripts).
+
+When a module is created, the spec block is converted to an object (like
+it is for scripts). The fields of the object are used to control the
+behavior of the module. The fields shown above are used in these ways:
+
+* Name - provides a name for the module. This is word that is
+useful for identifying the module within the system. This word is also
+used to identify the module and its default file name for the purposes
+of locating the module (done by the IMPORT function).
+
+* Title - the user friendly title of your module. This field is
+used for browsing, directories, libraries, user messages, etc.
+
+* Version - specifies the version of the module. Multiple
+versions are allowed to be loaded at the same time, and the IMPORT
+function can be used to request a specific version be used.
+
+* Type - indicates that the file is a module. This lets you to
+load it from disk or from the Internet, and it will be handled as a
+module. If you to not provide this field, the code will be loaded as a
+normal script.
+
+* Export - provides a list of words that are exported by the
+module to the system's standard export list. (Do not confuse export with
+public/private properties. More below.)
+
+Other fields of the spec block can be supplied and some also have
+special meaning. More details will be shown below.
+
+
+The Body Block
+^^^^^^^^^^^^^^
+
+The body block is identical to an object initialization block. It
+defines the functions and data of the module. Normally, the body block
+is evaluated when the module is created.
+
+In the example above, the buy and sell functions are defined and
+exported.
+
+
+Importing a Module
+~~~~~~~~~~~~~~~~~~
+
+Before a module can be used, it must be imported.
+
+Sometimes the word "loaded" is used for this action. In REBOL, this term
+is a misnomer because the module is not only loaded, but also
+initialized. However, the the term "load" is widely used in the world of
+languages.
+
+
+The IMPORT Function
+^^^^^^^^^^^^^^^^^^^
+
+If the above example were stored in a file called stock-trade.r, then
+the module is normally imported with a line such as:
+
+`   import %stock-trade.r`
+
+This will load the module from the current directory, initialize it, and
+make its export words available to the current program (the current
+context).
+
+An alternate way to import the module is:
+
+`   import 'stock-trade`
+
+The module will be loaded in the same way as above, but the IMPORT
+function will search for the module in a predefined set of directories,
+including web sites. Normally, the current directory will be searched
+first, so the stock-trade.r script will be found there.
+
+The IMPORT function accepts a range of other inputs, and it should be
+noted that there are other ways to import a module. More on this below.
+
+
+Module Sharing
+^^^^^^^^^^^^^^
+
+When a module is imported by name (by word), by default it is shared. If
+IMPORT is called a second time with the same name, the previously loaded
+instance of the module will be returned.
+
+For example:
+
+`  import 'stock-trade` +
+`  import 'stock-trade`
+
+only loads the module once. The second call will return a pointer to the
+same module, and it will also re-export the modules variables to the
+current context (see below).
+
+Q: _Should that also be supported for modules imported by file or url?_
+
+
+Importing a specific version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+At times, your code may require that a specific version of a module be
+used. This can be done with the IMPORT/version refinement. For example:
+
+`  import/version 'stock-trade 1.2.0`
+
+This specifies that _at least_ version 1.2.0 is required. In addition,
+the search mechanism within IMPORT will select the newest version if
+multiple choices exist.
+
+If you want to further qualify the version number, you can provide a
+block that uses a micro-dialect to specify the version:
+
+`  import/version 'stock-trade [1.2.0 - 3.0.0]`
+
+_Further improvements on is mechanism may be desired._
+
+
+Multiple and specific imports
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The IMPORT function provides a way to import specific words rather than
+all of the exported words of an entire module.
+
+To load the module and import only its 'buy function:
+
+`  import 'stock-trade/buy`
+
+You can also load multiple modules and specific functions:
+
+`  import [stock-trade/buy stock-ticker/watch stock-ticker/alert]`
+
+If the module has already been loaded, you must use the get form of the
+path to indicate reference to variable:
+
+`  import [:mod/buy stock-ticker/watch stock-ticker/alert]`
+
+Any number of modules and their words can be imported in this manner.
+
+_Currently IMPORT does not allow specification of version for multiple
+imports._
+
+
+Usage Notes
+~~~~~~~~~~~
+
+
+Effects on Programs
+^^^^^^^^^^^^^^^^^^^
+
+Once the module system is fully activated (during alpha release), it
+will affect some types of programs/scripts.
+
+Specifically, global variables are no longer truly global. A global
+variable within a script is global to the current user context only.
+This means that setting a global, such as a system function, only
+changes it within the context of the script. Other modules that use that
+function are not affected, because they use their own reference to the
+function.
+
+In addition, the use of the system/words object as a method of access to
+word definitions is highly depreciated. The words object has been
+supported for convenience during alpha development, but this method of
+reference is replaced by the system export list, the set of standard
+exported functions.
+
+
+Implicit vs explicit references
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There are two ways to reference a value of a module, as illustrated by
+this example:
+
+` mod: import 'stock-trade`
+
+` buy 'msft $10`
+
+` mod/buy 'msft $10`
+
+The first is an implicit reference. The word 'buy has meaning in your
+local context. This is part of the purpose of the IMPORT function.
+
+The second is an explicit reference. This is exactly the same method as
+used for paths on objects. The 'buy function is defined by the mod
+module.
+
+Explicit references are useful when you do not want to overload your
+global variable names with the exported words of module.
+
+Note that if you load a module with DO, you will normally use an
+explicit reference to its values unless you IMPORT the resulting module
+object.
+
+
+The default context for LOAD (and DO)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The LOAD function (and also DO because it uses LOAD) contains an implied
+binding context for all words that are loaded (however, note exception
+for module blocks below).
+
+In other words, if you write:
+
+`  data: load "print 10"`
+
+The PRINT word will have a useful default binding. It comes from the
+*current context*.
+
+The current context is determined by system/contexts/current and it is
+used as a default binding environment.
+
+Note that simply by evaluating a function within any module, you are not
+changing the "focus" of the current context. This allows modules to
+implement functions that preform LOAD and DO operations within the
+context of the current program, _not within their own context_.
+
+For example, if a module defines a function called LOAD-DATABASE, and
+that function loads some data into memory, the default bindings of that
+data belong to the current context. The bindings of the module are not
+relevant in this case.
+
+Of course, should the module need loaded code bound to its context, it
+can do so by adding its own bind action. In addition, if the code needs
+to be loaded without any bindings, load/unbound can be used.
+
+
+Export does not define public/private
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The export field of a module defines which words will be exported to the
+system's standard export list. That's all it does.
+
+This means that a module need not export any values, but those values
+can still be accessed by users of the module.
+
+For example, in the code above, if 'buy and 'sell were not in the export
+block, you could not do:
+
+`   sell 'msft $10`
+
+but you could still do this:
+
+`   mod/sell 'msft $10`
+
+In other words, explicit references to the values of a module are still
+valid.
+
+The requirement of which values within a module (or any context) remain
+private vs which are public is handled by a separate mechanism related
+to objects (and is not part of the current alpha release). This same
+mechanism will allow read-only fields, as well as datatype restricted
+fields. Modules will be allowed to define those parameters using special
+fields of the module spec object.
+
+
+The system export list
+^^^^^^^^^^^^^^^^^^^^^^
+
+During module initialization, when a module exports values, they are
+collected in a system export list. This list is nothing more than a
+context that holds all the standard words used by default for programs.
+
+This list can also be used by the help system or for programs to regain
+references to locally overridden values (e.g. your function defines /all
+as a refinement but you need the ALL native within it.)
+
+
+Un-named modules as temporaries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A module that has no name field is by convention a temporary module.
+Without a name, the module will not be stored within the system module
+list, nor will its words be added to the system export list.
+
+The advantage of such modules is that they can be garbage collected once
+there are no more active references to the words or contextual values
+(functions, objects) of the module.
+
+
+Form and mold on modules
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+A FORM of a module (such as PRINT) will return a constructed
+user-friendly string that identifies the module.
+
+A MOLD of a module will mold the spec and current context of the module.
+Like objects, the body of the module is no longer available.
+
+(It may be possible to store a reference to the body in the spec. But,
+that's a new discussion topic.)
+
+
+No implicit mixed contexts
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In general, modules do not allow mixing of contexts. For example, if you
+use the MODULE function to define a module, and its block contains
+bindings to other contexts, those bindings will be lost during module
+creation.
+
+For example:
+
+ x: 10
+
+`  mod: module [] [show: does [print x]]`
+
+`  mod/show` +
+`  ** Script error: x has no value` ``
+
+This default behavior is intentional to prevent accidental usage of
+variables and values that are not within the scope of the module. This
+is a feature, not a bug.
+
+_If we think it's useful to allow such implicit mixing, we should
+discuss it and figure out a good mechanism to do so._'
+
+
+Discovery of exports
+^^^^^^^^^^^^^^^^^^^^
+
+It is problematic if you load specific modules for use in your program
+without knowledge of the exported values of those modules.
+
+For example, if a module defines PRINT as an exported word, and you
+IMPORT that module, your reference to PRINT will use that defined by the
+module.
+
+Normally, you want that. It's a feature.
+
+However, there may be times when you want to examine the module's
+exported words first. This can be done by using DO on the module, then
+by inspection of its export field.
+
+If your script decides that it wants all the exports, it can IMPORT the
+entire module (the result of the DO).
+
+If only specific exports are desired, you can request the specific words
+by using paths for the IMPORT argument. (more to be defined)
+
+
+Special Methods
+~~~~~~~~~~~~~~~
+
+
+MAKE Module
+^^^^^^^^^^^
+
+You can MAKE a module in the same way you make any other datatype. The
+general form is:
+
+` mod: make module! [spec body]`
+
+The 'mod is a reference to the module object itself, and it can be used
+to refer to the fields of the module, to obtain its spec object, to call
+its functions, or to import all of its exports within the current
+context.
+
+This function is rarely used. Instead, a helper function is provided,
+similar to FUNC:
+
+` mod: module spec body`
+
+The module file example above could be written as:
+
+mod: module [ Name: stock-trade Title: "Stock Trading Module"
+Version: 1.2.0 Type: module Export: [buy sell] ][ buy: func [stock
+price] [...] sell: func [stock price] [...] ] 

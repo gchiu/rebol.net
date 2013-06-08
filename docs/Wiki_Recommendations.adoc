@@ -1,0 +1,49 @@
+
+These might be good ways to get the most from the wiki
+------------------------------------------------------
+
+
+Reference Card
+~~~~~~~~~~~~~~
+
+This is http://www.tinyurl.com/2ltqps[a good reference page for
+mediaWiki syntax]
+
+
+Use Categories
+~~~~~~~~~~~~~~
+
+Start to use Categories like the one at the bottom of this page to allow
+separation of a large number of pages
+
+
+DAL
+~~~
+
+Install the
+http://www.mediawiki.org/wiki/Extension:Dynamic_Article_List[DAL
+extension] which gives some good recent changes view within categories -
+it is the base for the
+http://en.wikipedia.org/wiki/Semantic_MediaWiki[Semantic Wiki]
+
+
+Use Templates
+~~~~~~~~~~~~~
+
+They are easy to do and get standardized and flexible format
+
+
+To Do in the wiki content
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+http://www.mediawiki.org/wiki/Extension:Todo_Tasks[this one] looks
+useful for ToDo items embedded in the documentation (but haven't tried
+it).
+
+
+Embedded Content Re-use
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Embedded pages work well - here is how to embed another article content
+- R3 Releases
+

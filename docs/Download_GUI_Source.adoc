@@ -1,0 +1,14 @@
+Here are the steps to obtain the current GUI source code:
+
+1.  Run R3
+2.  Type: chat
+3.  Login (if you need to)
+
+Now type this at the chat console:
+
+ >> 2586 R3/GUI/Source: ... >> get *
+
+`  >> 2656` +
+`  R3/GUI/Source/styles-proto` +
+`  ...` +
+`  >> get *` `

@@ -1,0 +1,32 @@
+Text-Lists::
+
+The style Text-Lists seems to have been revised a few years ago.
+Accessing facets  of the text-list may not be as they once were -
+but older scripts may largely run.
+
+
+http://www.codeconscious.com/rebol/vid-notes.html#TextListStyle[Text-Lists]
+Vid/View Notes by codeconscious.com
+
+- update data & the slider +
+- clearing a line in the text-list +
+- scroll to line & synchronize the slider::
+
+
+
+http://www.rebol.org/view-script.r?script=request-list-enhanced.r[Enhanced
+Text-List] Search List - Library Script 
+
+Lists::
+
+http://re-bol.com/rebol.html#section-9.14[Data Grids] 
+
+http://www.rebol.org/view-script.r?script=list-supply-how-to.r[Scrolling
+List With Supply] Alternate Colors In List - Library Script 
+[http://www.rebolforces.com/zine/rzine-1-03/#sect5. Iterated Face
+Discussion] Rebol/Zine Article 
+http://www.rebol.org/view-script.r?script=calendar.r[Script Related To
+Iterated Face Discussion] 
+http://www.rebol.org/view-script.r?script=vid-usage.r[VID Usage Tutorial
+with Runnable Examples] "List With Supplied Data" "Supply List With
+Scroll" Library Script 

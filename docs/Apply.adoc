@@ -1,0 +1,121 @@
+[cols="",]
+|=========================
+|__TOC__
+|=========================
+
+The APPLY function is new in R3.
+
+
+Concept
+~~~~~~~
+
+Normally, you evaluate a function by providing the function followed by
+its arguments. For example:
+
+` insert string "go"`
+
+Functions also allow options, provided as a refinement path to the
+function. For example, to refine the above example:
+
+` insert/part string "go" 2`
+
+This works just fine in most cases. But, what if you don't know in
+advance the refinements and arguments that are needed? How do you
+dynamically call a function with any arbitrary set of arguments and
+refinements?
+
+*That is the main purpose of APPLY. It applies a function to a set of
+arguments.*
+
+Note that it is also possible to dynamically construct a block of code
+for handling the above situation; however, APPLY is a more efficient
+tool for this specific situation of refinements and arguments.
+
+
+Usage
+~~~~~
+
+APPLY takes a function value and applies a block of arguments to that
+function. The above example can be applied as:
+
+`   apply :insert [string "go"]`
+
+Note these points:
+
+* The function is specified by its _function value_, not its variable
+name.
+* The arguments are passed as a block.
+* The argument block is reduced (by default, there is also a way not to
+do that).
+* APPLY returns the result of the function.
+
+
+Argument Order
+^^^^^^^^^^^^^^
+
+The order of the arguments in the block must match the function's formal
+argument order, including refinements. If you type:
+
+`  help insert`
+
+You will see the order of the arguments is:
+
+`  INSERT series value /part length /only /dup count`
+
+Note that unused arguments do not need to be provided and they will be
+set to NONE by default. For more on this, see
+link:Forgoing_faux_pas#apply_and_refinements[apply and refinements].
+
+
+Refinement Usage
+^^^^^^^^^^^^^^^^
+
+To apply a refinement, such as the /part option above:
+
+`   apply :insert [string "go" true 123]`
+
+The true value indicates that the refinement is in use and the 123 will
+be pasted for the length argument.
+
+If instead, the line was:
+
+`   apply :insert [string "go" false 123]`
+
+Even though the 123 was provided, it would not be passed because the
+refinement is not true.
+
+
+Reduced block
+~~~~~~~~~~~~~
+
+It is so common to pass final values to a function that a REDUCE is part
+of the APPLY function. Because REDUCE is integrated with APPLY, this is
+a lot more efficient than calling REDUCE separately.
+
+What this means is that you can write:
+
+`  apply :insert [string uppercase "go" get-ref n + 123]`
+
+In those cases where you do not want to reduce, just use the /only
+refinement:
+
+`  apply/only :insert ["there" "go" #[true] 123]`
+
+Now the values of the arg block are used directly as-is. Not even
+variables are evaluated. This is useful if you need to safely control
+what is being applied.
+
+
+Useful example: Reinsert
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+APPLY comes in handy when pre-processing arguments and refinements
+before passing them to other functions.
+
+For example, if we want to create a function that is exactly like INSERT
+but REDUCEs its value argument first and passes all refinements as
+needed, it could look something like this:
+
+ reinsert: func [ "Insert a reduced block into series" series value
+/part length /only /dup count ][ apply :insert [series reduce value part
+length only dup count] ] 

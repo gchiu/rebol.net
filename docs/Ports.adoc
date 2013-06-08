@@ -1,0 +1,473 @@
+[cols="",]
+|=========================
+|__TOC__
+|=========================
+
+*Ports are used to access external series such as files, networks,
+consoles, events, databases, and more.*
+
+
+Introduction
+~~~~~~~~~~~~
+
+*Ports are essential to all REBOL programs.* A port is used to transfer
+data to and from files, to communicate over networks, to output and
+input to the console, to detect events, such as mouse clicks on a user
+interface, to access databases, and more.
+
+This document will describe the basic concepts of ports and how they are
+used. A range of working examples can be found in
+link:Port_Examples[Port Examples]. And, more advanced concepts related
+to ports are covered in a separate document,
+link:Port_Implementation[Port Implementation]. It describes how to
+construct your own special types of ports.
+
+Most ports are implemented at the OS layer using Devices and are not
+necessary to your usage or understanding of ports in general.
+
+
+Motivation
+^^^^^^^^^^
+
+You may be asking yourself, "Why do I need to know this?" The answer is
+as simple as asking yourself, is a program useful without I/O (input and
+output)? In REBOL, it is through ports that all I/O happens.
+
+Yes, often the usage of a port will be hidden behind some other
+function. For example, when you use the *load* function to obtain code,
+such as a script, or data, such as a JPEG image, a port is being used at
+a lower level.
+
+So, although you may not need a deep knowledge of ports, at least some
+understanding of what's going on will be helpful in using REBOL.
+
+
+Changes from REBOL 2
+^^^^^^^^^^^^^^^^^^^^
+
+The REBOL 3 port system uses many of the same basic concepts as REBOL 2,
+_but its design is completely different_.
+
+Ports have been completely redesigned to make them simpler, faster, and
+easier to use. Substantial effort has been made to remove the complex
+and error prone mechanisms of R2, and replace them with a smarter,
+streamlined system.
+
+REBOL 2 ports were first introduced in the _REBOL/Core Users Guide_,
+http://www.rebol.com/docs/core23/rebolcore-14.html[Chapter 14 - Ports].
+A lot of these basic concepts still apply to REBOL 3. For example, the
+port functions such as open, close, read, and write still apply.
+However, many details have changed.
+
+The big changes are:
+
+* The port object is completely different. It has been optimized and
+structured to be more efficient.
+* The structure of a scheme is completely new and more defined.
+* Ports normally read and write binary, not strings. This change is
+mainly the result of Unicode which can be encoded in many different
+ways. Therefore, a string must be decoded using an appropriate method.
+* Many of the port action refinements have been removed, because they
+are no longer useful.
+* Asynchronous I/O works differently.
+
+What does this mean? In general, code written for ports that runs in
+REBOL 2 will not work in REBOL 3. You will need to rewrite your code, at
+least at the level of the port interfaces. If you need your code to work
+in REBOL 2 and 3, we suggest that you cleanly isolate your port
+functions within higher level functions. For well written code, you will
+find that the difference only amounts to a few lines of code, perhaps
+two or three pages maximum, for sophisticated applications.
+
+
+Basic Concepts
+~~~~~~~~~~~~~~
+
+As stated above, a port is used to transfer data. However, the basic
+port definition is a bit more general than that. A port is actually more
+like a _stream of data_ that undergoes some type of exchange,
+transformation, or effect.
+
+For example, a port is often used for I/O functions such as:
+
+* *console* input and output
+* *file* reading and writing
+* *directories* of files
+* *network* transferring of data
+* *event handling*, such as mouse clicks or keyboard input
+* *database access*
+
+But, a port can also be used for other types of functions:
+
+* *image conversion* - such as encoding or decoding a JPEG file.
+* *sound conversion* - such as encoding or decoding an audio file
+* *checksum computation* - keeping a running checksum
+* *compression and decompression* of data
+* *encryption and decryption* of data
+* *other codecs* for encoding and decoding data formats
+
+
+Related to Series
+^^^^^^^^^^^^^^^^^
+
+As you know, REBOL is built on the concept of a
+http://www.rebol.com/docs/core23/rebolcore-6.html[- Series].
+
+*A series is a set of values arranged in a specific order. It is a
+sequence.*
+
+A port is a special type of series. Not only is it a sequence, but it
+can also hold _state information_ like an object, and access
+link:devices[ external devices] for I/O or other high-speed operations,
+such as image conversion or encryption.
+
+In REBOL 2, ports were built on a pure series model. However, we found
+this approach to be problematic because ports are not pure series. They
+also embody state (information).
+
+For example, a file can be thought of as a stream of bytes. But, a file
+also has other important attributes such a file name, a location within
+a directory, creation and modification dates, permissions like read-only
+or allow execution, and ownership information. These attributes fall
+outside of a pure series model.
+
+
+New Definition
+^^^^^^^^^^^^^^
+
+REBOL 3 moves away from the pure series model of REBOL 2 and more toward
+an I/O stream model. Now it is closer to the concept found in other
+programming environments and languages.
+
+So, a port can be defined as:
+
+* *a series of values* - such as a sequence of bytes
+* *holds state information* - such as file attributes
+* can *access the external world* - network communication, for example
+* *can have side effects* - internal changes, such as compression
+
+The pure series model is gone. Ports are more pragmatic now, and this
+has resulted in a port system that is cleaner, smaller, faster, and more
+extensible than ever before.
+
+
+Main Components
+^^^^^^^^^^^^^^^
+
+A port consists of these main ideas:
+
+1.  *A name* that specifies the general type of port (scheme)
+2.  *An object* that holds information (state of port)
+3.  *A set of functions* that are applied to that object (actions)
+
+The name of a port is called a *'scheme*'. Example schemes are:
+
+* *console*
+* *file*
+* *dir* - file directory
+* *event* - gui events (mainly)
+* *TCP* - networking
+* *HTTP* - web connections
+* *clipboard* - cut and paste
+* *sound* - for audio output
+* *system* - system state changes
+
+Many other types of schemes can exist, and they are often built on top
+of lower level schemes. For example, FTP for file transfer is built on
+the TCP networking scheme.
+
+Here is an example. In this line:
+
+`   port: open tcp://www.rebol.net` +
+`   data: read `http://www.rebol.com[`http://www.rebol.com`]
+
+the first scheme is TCP; the second is HTTP. (Note that this is
+consistent with the definition of a URL.)
+
+The object holds information such as:
+
+* the type of the port (file, network, database, etc.)
+* the name and location (path) of a file
+* the URI of a network connection
+* a network host name and port number
+* a buffer of data being transferred
+* date and time info
+* structures used by external devices
+
+This object is of a specific REBOL _datatype_, called a _PORT!_
+
+Specific _action functions_ can be applied to a port. Some common
+actions are:
+
+* *make* - create a new port
+* *open* - initialize the port
+* *close* - finalize the port
+* *read* - read data from port
+* *write* - write data to port
+* *query* - get other information from port
+* *update* - detect external changes to the port
+
+But, there are many other actions as well, as generally defined by REBOL
+datatypes.
+
+
+Using Ports
+~~~~~~~~~~~
+
+
+Two Basic Methods
+^^^^^^^^^^^^^^^^^
+
+There are two basic methods to use a port: *implicit* and *explicit*.
+
+When you write code such as:
+
+`   write %index.html read `http://www.rebol.net[`http://www.rebol.net`]
+
+you are using *implicit* ports. This is a shortcut notation to keep
+simple code simple. You are only using a single port action, such as
+*read* or *write* and all the other details are hidden behind those
+functions.
+
+However, if you write code such as:
+
+`   file: open %data.dat` +
+`   write file data1` +
+`   write file data2` +
+`   ...` +
+`   close file`
+
+then you are using *explicit* ports. Here you specify each action
+separately. You *open* the port, then *read* and *write* to the port,
+and then *close* the port. Each action must be specified.
+
+
+Fast and Easy
+^^^^^^^^^^^^^
+
+Implicit ports are the fast and easy way to perform various I/O actions
+in REBOL.
+
+A few examples are:
+
+`   data: read %todo.dat` +
+`   write %plans.r data` +
+`   query %docs.txt` +
+`   page: read `http://www.rebol.net[`http://www.rebol.net`] +
+`   result: write `http://rebol.net/cgi/act.r[`http://rebol.net/cgi/act.r`]` data` +
+`   data: read `ftp://www.rebol.net/projects.dat[`ftp://www.rebol.net/projects.dat`] +
+`   host: read `dns://www.rebol.net[`dns://www.rebol.net`]
+
+This type of usage depends on the type of port (the scheme). The example
+above uses the file, http, ftp, and dns schemes. Those schemes have been
+designed to support implicit actions.
+
+Notice that for local files, the file datatype is used to indicate usage
+of the file scheme. The line:
+
+`   data: read `file://todo.dat[`file://todo.dat`]
+
+is equally valid. Think of the file datatype as an abbreviation for
+that. Both methods use the same file scheme to perform the I/O.
+
+Other schemes do not support implicit usage. For example:
+
+`   >> data: read tcp://www.rebol.com` +
+`   ** Access error: Port is not open: tcp://www.rebol.com` +
+`   ** Where: read` +
+`   ** Near: read tcp://www.rebol.com`
+
+This error occurs because TCP does not support an implicit *read*
+action. That's because TCP is a lower level scheme that requires a
+higher level protocol in order to be useful.
+
+
+Full Control
+^^^^^^^^^^^^
+
+Explicit ports give you full control over each I/O action. For example,
+let's say you want to read a large file in small 20000 byte chunks. You
+might use these steps:
+
+`   file: open %bigdata.dat` +
+`   while [not zero? data: read/part file 20000] [` +
+`       process data` +
+`   ]` +
+`   close file`
+
+This common method will be familiar to most programmers. The file is
+opened, reads are done, and the file is closed. Each action is done
+separately.
+
+This type of explicit I/O is common for large files that would consume a
+lot of memory if you read them with implicit I/O. For example, if the
+_bigdata.dat_ file is 10 GB, you would not be able to read it all into
+memory at one time.
+
+Explicit I/O is also used when you need strict control over each action.
+This is often done if you need to seek to different locations within a
+file or write your own network protocol.
+
+For example, let's say you need to read data from three different parts
+of a large file. In that case you would use read to seek to each part of
+the file to do the read:
+
+`   file: open %bigdata.dat` +
+`   da-head: read/part file 4000` +
+`   da-body: read/seek/part file 12000 10000` +
+`   da-tail: read/seek/part file 56000 4000` +
+`   close file`
+
+
+Port Details
+~~~~~~~~~~~~
+
+This section describes some of the important concepts you need to know
+about ports.
+
+
+Port Datatype
+^^^^^^^^^^^^^
+
+A port is a REBOL datatype. If you use explicit ports, you will need to
+use the port datatype as _a type of handle_ to access the port. If
+you've used handles before in other languages, that concept is probably
+familiar to you already.
+
+In REBOL a port is very similar to an object because it stores
+information in named fields. We often call these fields _the state_ of
+the port. When various actions are performed, the state will change,
+depending on the action. A port differs from an object in that it
+responds in a special way to specific datatype actions such as *open*,
+*read*, *write*, and several others.
+
+
+Port Schemes
+^^^^^^^^^^^^
+
+A _scheme_ is a type of port.
+
+You will use schemes to identify the type of port access you need as
+well as the protocol to use.
+
+For example, when you access a local file, you are using the *file*
+scheme. When you read a web page, you use the *http* scheme, which is a
+higher level protocol built on top of the *tcp* scheme.
+
+Each scheme has a unique name that is used to identify it. For example,
+*file*, *http*, and *tcp* are the scheme names shown above. A scheme
+name can be used as part of a URL, or separately, depending on
+requirements.
+
+The REBOL system manages a list of available schemes. These schemes can
+be built-in, can be loaded separately, or can even be user defined
+within a script.
+
+A lot more about schemes can be found in the
+link:Port_Implementation[Port Implementation] section.
+
+
+Making Ports
+^^^^^^^^^^^^
+
+All ports are made from a _spec_ -- a specification of the port's
+attributes. As you have seen above, the spec can be something quite
+simple, such as a file name or URL. But, a port spec can also be a block
+that includes many fields to indicate various options for the port.
+
+All of these can be used as port specs:
+
+`   %file.txt  ; a file name` +
+`   tcp://www.rebol.com ; a URL` +
+`   [scheme: 'tcp host: "www.rebol.net"] ; a block` +
+`   'tcp  ; just the port's scheme name` +
+`   object ; an object that specifies the port` +
+`   port ; a existing port`
+
+There are a couple ways to make a port, depending on your required level
+of control.
+
+One method is to use the *make* action, as you would for any datatype.
+The general form is:
+
+`   port: make port! spec`
+
+Where *port!* is the port datatype itself, and spec is the specification
+as described above.
+
+Here are some examples:
+
+`   port1: make port! %file.txt` +
+`   port2: make port! tcp://www.rebol.net` +
+`   port3: make port! [scheme: 'tcp host: "www.rebol.net"]`
+
+These examples will create a port object and initialize its various
+fields.
+
+One of the most common methods to create a port is with the *open*
+function. Unlike *make* the *open* function does not require a port!
+datatype. It knows that it is being provided with a spec. For example:
+
+`   port: open tcp://www.rebol.net`
+
+will create a new port and also perform initializations associated with
+the *open* action.
+
+More details about *open* are discussed later.
+
+
+Port Actions
+^^^^^^^^^^^^
+
+Port actions can be thought of as functions that act on ports.
+
+More precisely, port actions are _polymorphic datatype actions_ similar
+to those used on all other datatypes. If you're not sure what that
+means, don't worry about it here. Just think of ports like objects that
+have a well-defined set of methods that act on them.
+
+The actions defined for ports are:
+
+
+
+make: make a new port object +
+to: special (convert an object to a port) +
+open: initialize external operations +
+close: conclude external operations +
+write: transfer data to the port +
+read: transfer data from the port +
+query: get information about the port +
+update: update the port's state +
+create: create an external object of port type +
+delete: delete an external object of port type +
+rename: rename an external object of port type::
+
+
+
+Note that not all port actions can be used on all port schemes. For
+example, the *rename* action has no purpose when used on a _sound_ port
+scheme.
+
+Ports also allow basic equality comparisons:
+
+
+
+equal?: ports are the same object +
+not-equal?: ports are not the same object::
+
+
+
+For the exact usage of each action use REBOL's built-in help function.
+(In this way the action information is always accurate.)
+
+ >> ? open USAGE: OPEN spec /new /read /write /seek /allow access
+
+DESCRIPTION: Opens a port. Makes a new port from a specification, if
+necessary. OPEN is an action value.
+
+ARGUMENTS: spec (port! file! url! block!)
+
+REFINEMENTS: /new -- Create new file - if it exists, reset it (truncate)
+/read -- Open for read access /write -- Open for write access /seek --
+Optimize for random access /allow -- Specifies protection attributes
+access (block!) 

@@ -1,0 +1,67 @@
+*A place for developers to add notes related to the
+http://www.rebol.com/r3/docs/concepts/host-kit.html[R3 Host-Kit].*
+
+You can use four ~ to add your name and date to comments (optional).
+
+
+A107 10-September-2010
+~~~~~~~~~~~~~~~~~~~~~~
+
+* Depending on your toolchain, the makefile in the Linux A107 Host Kit
+may need a fix for A107 to build, as first noted by Andreas: add
+-ldl to LIBS in line 16.
+
+
+A104 26-August-2010
+~~~~~~~~~~~~~~~~~~~
+
+* The makefile needs a minor fix for A104 to build, as first noted by
+Adrian. See http://www.curecode.org/rebol3/ticket.rsp?id=1643[bug#1643]
+for a fix to work around this.
+
+
+A102 29-July-2010
+~~~~~~~~~~~~~~~~~
+
+* Andreas has the Linux host-kit build working now using the
+libr3-a102.so. -User:Carl[Carl] 13:49, 30 July 2010 (EDT)
+
+* You can download Cyphre's codeblocks project file (Windows) here:
+http://www.rebol.cz/r3/host-kit/r3.cbp
+
+* Adrian has contributed a solution file for Visual Studio 2010:
+http://www.rebol.cz/r3/host-kit/r3-host-kit-msbuild-a102.zip
+
+
+Building the Host Kit on Win32 using MinGW
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Download the
+http://sourceforge.net/projects/mingw/files/Automated%20MinGW%20Installer/MinGW%205.1.6/MinGW-5.1.6.exe/download[MinGW
+5.1.6 installer] and install _as admin_ (preferably to
+c:\mingw, but see the note below)
+* Add mingw\bin to the windows command path
+* Download the R3 A102 Host Kit for Windows and unpack
+* Open a normal Windows command prompt, change to the unpacked host kit
+directory
+* Copy mingw32-make.exe from mingw\bin to the host kit
+directory as make.exe
+* Run make
+* Test the r3.exe built by running r3 go.r
+
+_Note_: the default makefile supplied with the hostkit assumes that
+mingw is installed to c:\mingw. The directory path is at the
+top of the makefile so you can easily edit it there .. there's only one
+occurrence.
+
+
+Building the Host Kit using Code::Blocks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Download the
+http://prdownload.berlios.de/codeblocks/codeblocks-10.05mingw-setup.exe[Code::Blocks
+10.05 MingW installer] and install
+* Download the R3 A102 Host Kit for Windows and unpack
+* Download http://www.rebol.cz/r3/host-kit/r3.cbp[Cyphre's project file]
+and store it where you unpacked the host kit
+* Start the Code::Blocks IDE and open the r3.cbp

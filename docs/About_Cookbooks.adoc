@@ -1,0 +1,78 @@
+
+Why Cookbooks?
+~~~~~~~~~~~~~~
+
+It is highly recommended to take notes of any kind related to REBOL that
+are easily lost or forgotten and store it in DocBase. However, since
+DocBase is normally very strict with what is appropriate to put there,
+the Cookbooks section in DocBase is the place to put things that don't
+fit into the rest of DocBase. The criteria that makes for a Cookbook is
+loosely:
+
+* It should be a REBOL related topic that is hard to describe in a few
+words.
+* It should be important information that does not fit into the rest of
+DocBase, such as implementation notes for a protocol, scheme or
+algorithm or how to perform a lengthy procedure or things that are
+tricky to do in REBOL.
+* You can also discuss features about a particular product built in
+REBOL or produce a tutorial for it.
+
+The best example is really just to look at the current list of cookbook
+titles and see, if your documentation will fit.
+
+*Cookbooks are made to insure that such important information is not
+scattered or lost.* We've suffered in the past with many websites
+containing vital REBOL information that are moved or lost. This
+information becomes hard to find over time, so the Cookbook list is
+going to be the primary source of such information. You are highly
+encouraged to use it!
+
+
+Making a Cookbook
+~~~~~~~~~~~~~~~~~
+
+A Cookbook is a list of *recipes*. Cookbooks are divided into areas of
+interest, such as *Networking*, *Lowlevel Graphics*, *Highlevel
+Graphics* or *Data Processing*. More can be added as seen fit.
+
+The list of Cookbooks is avaliable link:Cookbooks[here].
+
+
+Making a Recipe
+~~~~~~~~~~~~~~~
+
+For a Cookbook recipe, simply create a page with any title in DocBase.
+Add the template  at the top of the document. Then add
+the document page name in the link:Cookbooks[Cookbook list] and then
+link to it from there.
+
+To initiate a new DocBase page, the easiest way is to type your
+preferred page title into the Search field of the DocBase Navigation
+section and press Go.
+
+While not totally necessary, cookbooks should start with the
+ template. This template accepts 4 parameters. A
+*title*, an *author*, a difficulty *level* and a *category*.
+
+* title does not need to be the same as the page title. Use something
+short and snappy. If not included a generic *REBOL Recipe* will be used.
+* author would be what ever credit you would like. If not included
+*Incognito* will be used.
+* level is a number from 1 to 3. 1 matches _Beginner_, 2 for
+_Intermediate_ and 3 for _Advanced_. *2* is default.
+* category should be Tip, Code, Networking, Data Processing etcetera.
+Defaults to *Code*.
+
+
+Example 1
+^^^^^^^^^
+
+
+
+Would produce
+
+
+Example 2
+^^^^^^^^^
+

@@ -1,0 +1,53 @@
+
+ABS
+^^^
+
+Returns the absolute value. ABS is an action value.
+
+
+Arguments
++++++++++
+
+::
+  *value* -- (Type: number! pair! money! time!)
+
+
+Description
++++++++++++
+
+Returns a positive value equal in magnitude.
+
+ print absolute -123
+
+print absolute -1:23 
+
+
+Categories
+++++++++++
+
+[cols=",",]
+|====================================================
+|math]] |Mathematical operations.
+|====================================================
+
+
+See also
+++++++++
+
+[cols=",",]
+|========================================================
+|-]] |Returns the second value subtracted from the first.
+|negate]] |Changes the sign of a number.
+|absolute]] |Returns the absolute value.
+|========================================================
+
+
+Comments
+++++++++
+
+
+
+[cols="",]
+|
+|
+

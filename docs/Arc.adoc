@@ -1,0 +1,162 @@
+
+ARC
+~~~
+
+Next Page:
+*Arrow*Return To *Draw Contents*
+
+
+The ARC command draws a partial section of an ellipse (or circle).
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|center |[pair!] |The center of the circle |[multiblock cell omitted]
+
+|radius |[pair!] |The radius of the circle |[multiblock cell omitted]
+
+|angle-begin |[decimal!] |The angle where the arc begins, in degrees
+|[multiblock cell omitted]
+
+|angle-length |[decimal!] |The length of the arc in degrees
+|[multiblock cell omitted]
+
+|closed |[word!] |Optional, must be the word *closed* |*closed* - close
+the arc
+|=======================================================================
+
+For angle-begin, 0° is to right of the center point,
+on the horizontal axis.Arcs are drawn in a clockwise direction
+from the angle-begin point.Simple open arcs,
+beginning at 0°.
+
+ arc 200x25
+100x100 0 90 arc 200x125 100x100 0 135 arc 200x250 100x100 0 180 
+image:ARC-1b.png
+
+Simple open arcs, beginning at different angles, but all with
+the same length.
+
+ arc 200x25
+100x100 0 120 arc 200x125 100x100 45 120 arc 200x250 100x100 90 120
+image:ARC-2b.png
+
+
+
+*Closed Arcs*
+
+A closed arc. The arcs is closed by drawing lines to the center point
+of the circle that defines the arc.
+
+ arc 100x100
+100x100 0 90 closed image:ARC-3b.png
+
+
+
+ fill-pen red
+arc 100x100 90x90 135 180 fill-pen green arc 300x100 90x90 225 180
+fill-pen blue arc 100x300 90x90 45 180 fill-pen yellow arc 300x300 90x90
+315 180 image:ARC-4b.png
+
+
+
+
+ fill-pen red
+arc 150x250 90x90 0 180 fill-pen green arc 150x150 90x90 90 180 fill-pen
+blue arc 250x150 90x90 180 180 fill-pen yellow arc 250x250 90x90 270 180
+image:ARC-5b.png
+
+
+
+Closed arcs are an easy way to draw wedges for pie charts.
+
+ fill-pen red
+arc 200x200 90x90 0 90 closed fill-pen green arc 200x200 90x90 90 90
+closed fill-pen blue arc 200x200 90x90 180 90 closed fill-pen yellow arc
+200x200 90x90 270 90 closed image:ARC-6b.png
+
+By changing the center point, you can draw exploded pie
+charts.
+
+ pen white
+line-width 2 fill-pen red arc 204x204 150x150 0 90 closed fill-pen green
+arc 196x204 150x150 90 30 closed fill-pen blue arc 180x190 150x150 120
+150 closed fill-pen yellow arc 204x196 150x150 270 90 closed image:ARC-7b.png
+
+'''''
+
+ Pages 
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+
+
+
+
+
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+
+
+
+
+
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+
+
+
+
+
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+
+
+ Chapters 
+
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
+With The VID Dialect]
+* '''Script Writing With Draw '''
+* link:The_Graphic_Object[The Graphic Object]
+
+
+
+* link:Table_Of_Contents[Table Of Contents]
+

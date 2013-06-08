@@ -1,0 +1,15 @@
+
+
+[cols="",]
+|=========================
+|__TOC__
+|=========================
+
+
+
+
+Brian Tiffin
+~~~~~~~~~~~~
+
+Self employed REBOL developer. Cheerleader.
+

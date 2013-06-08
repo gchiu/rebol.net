@@ -1,0 +1,283 @@
+
+R3 DLL Interface Open Questions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+List of topics we need to consider, decide on, work out further
+
+
+Where to put the main DLL interface?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Option 1: Rebol Dialect
++++++++++++++++++++++++
+
+It's all in REBOL code, just like it's done today in R2 (as a dialect
+that can interface with the DLL) with some enhancements to make life
+easier.
+
+Pros: It's like R2, so you already know it. The code can all be seen at
+the REBOL code level (nothing hidden below).::
+
+Cons: Has limitations regarding parts of the OS environment that are
+difficult to access via REBOL code, and it's not as fast as native
+code.::
+
+
+Option 2: Host-Lib
+++++++++++++++++++
+
+It's all in C code, and it defines its own native functions used in
+REBOL.
+
+Pros: The host level is written in C code and begins at the main program
+entry point. This allows full control over the environment, including
+window handles, threads, mutex, events, and other parts of the OS API
+(that are often not accessible via REBOL code directly).::
+
+Cons: Requires expert-level coding practices and debugging can be
+difficult. All of the code is hidden from the REBOL level except the
+native function names themselves. The natives are statically created
+(during host compile time), not dynamically.::
+
+
+Option 3: Hybrid Model
+++++++++++++++++++++++
+
+Robert: I see Option 1 like the R2 interface today. You create a DLL,
+export some functions, write the C level interface spec in Rebol.
+
+Option 2 is bringing your DLL into host-lib context (statically linked
+or dynamically loaded), maybe you add some helper functions to the DLL
+to call Rebol code etc.
+
+Option 3: Is a mix of both. You control the DLL integration from Rebol
+(for people like Petr) and include the DLL into the host-lib context.
+Option 2 is a C-level only approach, Rebol gets what's defined in the
+host-lib. Option 3 makes it possible to tweak this a bit from Rebol side
+using something like Gregg's DLL dialect.
+
+A way to specify some interface hints, interfaces, where to bring in
+function names in Rebol and a simple way to include a DLL into the host.
+
+Pros:::
+
+Cons:::
+
+
+Option 4: Plug-In Model
++++++++++++++++++++++++
+
+Similar to option 2, except that a REBOL script loads a plugin (which is
+a DLL that conforms to the REBOL plug-in standard). The plugin then
+defines natives, mezzanines, and data and can load other DLLs as part of
+its initialization.
+
+Pros: Provides a standard plugin model with C-level access to external
+DLLs and the OS API and environment (like option 1). Also allows dynamic
+adding of native functions into REBOL.::
+
+Cons: Requires that a plugin be made for any external DLL that is
+needed. Less flexible than option 1 (because C code must be compiled),
+but more flexible than option 2 (because it is dynamic).::
+
+It may be possible to write a "generalized" plugin method that can
+handle all external DLLs, but it would require a method to identify or
+input the function specifications for each DLL interface. This
+specification could be a simple declarative dialect if we carefully
+limit its capabilities to only handle simple C-like APIs, as with R2 -
+as long as we have the full plugin model to fall back on. This
+generalized plugin would be equivalent to option 1.
+
+It could also be possible to write plugins for different particular
+programming platforms that use the discovery and/or reflection
+capabilities specific to the platform. On Windows this would mean
+plugins for .NET, Java, ActiveX/COM, and maybe C++ or Delphi. These
+plugins could be community projects.
+
+
+How to handle DLL callbacks?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Support for mutlithreaded DLLs
+* Number and frequence of callbacks
+* How to deal with structure pointers as callback results? How to bring
+the pointed structure into Rebol?
+* Is using a queue which gets polled to collect results better?
+* Transfer results via sockets to enable network-transmitted callbacks?
+
+
+How to handle resource allocations?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The problem is: Everyone does it differently. Someone using the
+interface has to understand who cares about allocated resources when
+using and linking a DLL.
+
+Nevertheless, we should be possible to support all kind of patterns:
+
+1.  DLL does it all (Rebol needs to make a copy to be sure to have
+control over the data)
+2.  DLL doesn't do it (then Rebol should take over control and the GC
+must be able to deallocate stuff and this event needs a way into the DLL
+to execute some housekeeping functions)
+
+
+Things to take care about
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* There is a constant stream of data moving through the event system and
+the WAIT function. This includes high precision timers for keeping
+timing accurate. How to avoid that a DLL causes problems in this flow?
+
+* Synchron and asynchron DLL functions. Async could be done via Devices.
+Devices use a standard API entry (like main for a C program) and use
+event-driven results.
+
+* How to make the interface crash-proof? What happens if a DLL goes
+wild? Can we protect the rest of Rebol from it?
+
+* There can be a lot of different concepts used inside the DLL code. We
+want to be able to ~link~ with external binary code. We need to be able
+to deal with all these variants in an elegant way.
+
+* Used datastructures in DLLs: A way to traverse DLL datastructures or
+serialize them for Rebol.
+
+* No requirment to write wrapper code for DLLs or provide specific
+interfaces. The more requirements exists, the more complicated will it
+be to make DLLs available to Rebol scripts.
+
+* Create an interface (maybe this is not directly DLL related) so that
+Rebol can be used to create plug-ins for applications like iPhot,
+Filemanager, ...
+
+* Add support for interfaces that use special type castings as
+indication for special situations. Example: char* or NULL. Sending a
+char* to an empty string won't work here (the pointer is not zero in
+this case) instead a zero-pointer is required. Maybe it's a good idea to
+add a zero-pointer constant to Rebol that is of type any-type!
+
+
+R2 DLL Interface Feedback
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is a collection of feedback, ideas and proposals based on the R2
+DLL interface. It will help us to get an overview of problems, quirks
+etc. to finally design a good R3 DLL interface
+
+I (Ladislav) support the variant 1, i.e. the variant based on REBOL
+dialect, a.k.a. improved R2 DLL interface. Reason: this is the way how
+to "drink our own wine", helping REBOL popularity, although it may not
+be the way offering the highest speed.
+
+
+Structs are for interfacing with C
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Therefore, I think, that a definition like:
+
+a-struct: make struct! [ number [integer!] character [char!] ]
+none
+
+is actually an error. What is needed, is to be able to define structs
+containing C datatypes, like:
+
+a-struct: make struct! [ a-32-bit-integer [int] a-64-bit-integer
+[I64] a-float [float] a-double [double] a-character [char] ] none
+
+This change will make the interface less confusing, especially for
+newcomers.
+
+
+Nested structs aren't pointers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In C, it is possible to nest structs. This means, that it is possible to
+write something like:
+
+a-struct: make struct! [ innner-struct [struct! [i [int] c [char]]]
+] none
+
+having essentially the same meaning as:
+
+a-struct: make struct! [ i [int] c [char] ] none
+
+with the exception, that in the former case the items are seen as
+"grouped together", even though they occupy exactly the same places in
+the resulting structure.
+
+As opposed to that, the current (R2) behaviour is, that the former case
+is interpreted as a struct containing a pointer to struct, which should
+have been rather described as:
+
+a-struct: make struct! [ innner-struct [struct*! [i [int] c
+[char]]] ] none
+
+
+Structs can be returned from C
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This means, that we should be able to write:
+
+ret-struct: make routine! [ return: [struct! [x [float] y [float]]]
+] lib "ret_struct"
+
+Meaning, that the ret_struct function returns a structure, not a pointer
+to structure. Currently, there is no way how to circumvent this problem.
+
+When expecting a pointer to structure, we should write:
+
+ret-struct: make routine! [ return: [struct*! [a [int] b [float]]]
+] lib "ret_struct"
+
+
+Fixed length arrays
+^^^^^^^^^^^^^^^^^^^
+
+In C it is possible to define fixed length arrays in a structure. I
+suggest to support that using a syntax:
+
+a-struct: make struct! [ ca [char [10]] ] none
+
+Note: This is not the same as the current behaviour of the char-array
+construct in R2. Char-array actually inserts into the structure just a
+pointer, i.e. the current R2 construct:
+
+a-struct: make struct! [ ca [char-array 10] ] none
+
+Actually corresponds to the declaration below, which I propose as a more
+adequate replacement, having greater flexibility:
+
+a-struct: make struct! [ ca [struct*! [char [10]]] ] none
+
+
+C pointers
+^^^^^^^^^^
+
+I propose to use a new struct*! datatype to represent C pointers, i.e.
+to represent a C pointer like:
+
+void *p;
+
+I suggest to use the syntax:
+
+p [struct*!]
+
+The same holds for
+
+char *ptr;
+
+, which may be represented by
+
+ptr [struct*! [c [char]]]
+
+To be as user-friendly as possible we need to allow for struct*!
+conversions like:
+
+to string! ptr ; converts char* to REBOL string using the
+nul-character convention bp: to #[struct*! [char [10]]] p ; converts
+void *p to a pointer to array of 10 characters to binary! bp ; converts
+the pointer to REBOL binary! having length (10) op: to #[struct*! [x
+[float] y [float]]] p ; converts p to a pointer to a structure
+containing two floats

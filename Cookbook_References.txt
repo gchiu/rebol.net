@@ -1,8 +1,0 @@
-.Cookbook Reference Page
-[cols=",",options="header",]
-|======================================
-|<big>Class</big> |<big>Documents</big>
-|Usage |[multiblock cell omitted]
-|Authoring |[multiblock cell omitted]
-|See Also |[multiblock cell omitted]
-|======================================

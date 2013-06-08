@@ -1,0 +1,49 @@
+Il s'agit de la traduction française de la dernière version.
+
+Traduction réalisée par Jean-François "Jeffrey" Richard
+
+
+Qu'est-ce que c'est
+~~~~~~~~~~~~~~~~~~~
+
+C'est une version alpha de REBOL 3.0
+
+Une version alpha est un prototype non finalisé. Il contient la plupart
+des caractéristiques de la version finale, mais ce n'est pas cette
+dernière, et ce n'est pas un produit en tant que tel.
+
+ Ce n'est pas une version normale
+
+C'est une version limitée et nous savons cela. Ainsi, s'il vous plaît,
+ne l'utilisez pas pour contrôler une station spatiale, une centrale
+électrique, ou une chaîne de montage. Cette sortie est juste pour vous.
+Cette version n'est pas re-distribuable, n'est pas destinées à être
+évaluée, n'est pas destinée aux utilisateurs finaux ou aux clients.
+
+
+Qu'est-ce que R3?
+^^^^^^^^^^^^^^^^^
+
+R3 a une longue liste d'objectifs, et ci-dessous en sont énumérés
+quelques uns
+
+* Un modèle d'environnement multi-hôte (avec REBOL-dans-une-DLL)
+* Une implentation ouverte des interfaces et des sous-systèmes
+* Une architecture modulaire (espaces de noms, contextes multi-globaux)
+* Support de l'Unicode (source encodée, chaînes internes)
+* Modèle de plugin d'extension (addition dynamique de fonctions natives)
+* Multitâche (thread isolé, partage au niveau du système)
+* entiers et fonctions 64 bit
+* Précision arbitraire des nombres décimaux (pour le type de donnée
+money)
+* un nouveau sous-système graphique basé sur SVG (scalar vector graphics
+core)
+* Nouveau modèle de ports (E/S)
+* Nouveau mécanisme d'évaluation et de gestion de la mémoire
+
+
+Licence
+^^^^^^^
+
+ Cette version vous est licencié pour des besoins de tests
+seulement.

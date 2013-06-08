@@ -1,0 +1,68 @@
+
+Loops
+~~~~~
+
+
+repeat
+^^^^^^
+
+repeat i [a b c] [print i] |thing |description
+|================================================================
+
+--> [options="header"]
+|====
+|Rebol 2|Rebol 3|Description
+|repeat i [a b c] [print i]|foreach i [a b c] [print i]|Traverse a list of elements
+|====
+
+
+
+Series Operations
+~~~~~~~~~~~~~~~~~
+
+Mention reduce/only vs. delect.
+
+
+Datatypes
+~~~~~~~~~
+
+Mention hash! vs. map!
+
+
+Graphics
+~~~~~~~~
+
+
+unview
+^^^^^^
+
+[options="header"]
+|====
+|Rebol 2|Rebol 3|Description
+|unview/only window|unview window|Hide only the specified window
+|unview/all|unview 'all|Hide all windows
+|unview|unview none|Hide the last window opened
+|====
+
+
+
+set-face
+^^^^^^^^
+
+[options="header"]
+|====
+|Rebol 2|Rebol 3|Description
+|set-face/no-show face|set-face face|Sets a face without showing it
+|set-face|set-face/show|Sets a face and shows it
+|====
+
+
+
+view
+^^^^
+
+[options="header"]
+|====
+|Rebol 2|Rebol 3|Description
+|view/new|view/no-wait|Creates a new window and returns immediately
+|====

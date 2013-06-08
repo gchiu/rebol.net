@@ -1,0 +1,80 @@
+We invite developers to contribute to the R3 source code base.
+
+
+Invitation
+~~~~~~~~~~
+
+For R3 to improve, you are invited to contribute to its source code,
+documentation, tests, examples, and applications.
+
+We will make it easy for developers to obtain source code online and to
+upload new submissions. We don't want to hinder the flow of
+contributions with a complicated process.
+
+All code contributions will be freely published and distributed.
+Everyone can use this codebase for their projects and products, without
+restriction.
+
+As a developer, your submission must agree to this condition. And, like
+other languages, we will be creating a "legal entity" to protect the
+source code base.
+
+
+Standard Releases
+~~~~~~~~~~~~~~~~~
+
+For source code that is part of REBOL 3 itself, there will be a
+*standard version* that is integrated. This is the official source that
+will be supported.
+
+*Not everything that is contributed will be part of the standard*. But,
+that's ok. You can always download other code yourself, and even include
+it within your own applications. That's for you to decide.
+
+As for the official standard, we need to support it over a long period
+of time, so it must be something that can be supported over that time.
+In addition, we want to keep the standard system lean and mean. This is
+our no-bloat principle.
+
+
+The Main Problems
+~~~~~~~~~~~~~~~~~
+
+As with any open source project, it is important to recognize a few
+things that we will need to manage carefully:
+
+1.  *A developer may come and go*. Someone who adds a feature this
+month, may not be around next month to fix it or otherwise support it.
+That can lead to some big problems over time.
+2.  *A developer may not learn the model.* Some developers add features
+or concepts without understanding how the system really works. They may
+even duplicate features that already exist, or add a slightly different
+variation as a new element, rather than changing the prior one.
+3.  *A developer's code may be too complex.* A lot of developers do not
+spend time simplifying their code. Sometimes they just hack on it until
+it seems to work, then submit it.
+
+
+How to Avoid Them
+~~~~~~~~~~~~~~~~~
+
+What can be done about these problems? I think a lot of this is *related
+to educating developers*, and some of it will be how we decide to manage
+the code. In general, we need to make sure:
+
+1.  *Code is understandable* by more than just the one contributor.
+Sometimes this is related to code structure, and other times it is
+related to code commenting or documentation.
+2.  That *the design model is documented* well enough for developers to
+understand it. Now, not every developer likes to read such
+documentation, but all we can say is that if their code is too different
+from our model, their contribution will never become part of the
+standard design.
+3.  Code that is too complex *will not be accepted*. If a developer does
+not have the time to polish the code, then he (or we) can find someone
+else to help work on that.
+
+I think all of this can be summarized by this simple statement:
+
+ *We will not accept code that we believe to be
+unsupportable.* 

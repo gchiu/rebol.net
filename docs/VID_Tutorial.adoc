@@ -1,0 +1,301 @@
+[cols="",]
+|=========================
+|__TOC__
+|=========================
+
+Here is the quick shortcut for getting started using VID in REBOL 3.0.
+
+
+Basic Concepts
+~~~~~~~~~~~~~~
+
+*VID* stands for *Visual Interface Dialect*. It is a subsystem of REBOL
+for rapidly creating user interfaces.
+
+To understand VID you must understand these basic concepts:
+
+* *Functions*
+* *Styles*
+* *Commands*
+* *Groups*
+
+We will describe each of these below.
+
+
+Quick Example
+~~~~~~~~~~~~~
+
+Ok, try it out. Run REBOL 3, and at the prompt, enter this line:
+
+`view [button "Click Here" [unview none]]`
+
+This will open a window and display a single button. When you click on
+the button the window will close.
+
+This line helps show three of the above concepts:
+
+1.  The words *view* and *unview* are _functions_. They are normal REBOL
+functions. They are used to open and close a window on the screen.
+2.  The word *button* is a _style_. It is a way of specifying an
+clickable button, including how it looks and acts. Some systems call
+this a widget or gadget, but as you will find out, styles are actually
+more flexible, like the CSS used in HTML web pages.
+3.  The block [ ] that surrounds the button style is a _group_. You will
+build interfaces by using groups within groups to build a _layout_.
+We'll show you many more examples.
+
+The only thing missing from this example is a _command_. Commands are
+special words to control or specify other features of VID. We will say a
+lot more about them below.
+
+
+Make a Layout
+~~~~~~~~~~~~~
+
+When you create a user interface, you will want various components to be
+positioned within a window. This is called a _layout_.
+
+To help you learn the rules of layout, we will keep things simple by
+using only the BUTTON style below. But, keep in mind that these rules
+apply to all the other styles as well.
+
+Start with this line:
+
+`view [button "First"]`
+
+It will open a window with a single button. Notice that the button has a
+default width here. We will talk about that more later.
+
+Now try this:
+
+ view [ button "First" button "Second" button "Third" button
+"Fourth" ]  You will see a vertical layout of the buttons:
+
+Image:Vid-tutorial-buttons1.png[center]
+
+If instead you want horizontal buttons, you use _group_ such as this:
+ view [ group [ button "First" button "Second" button "Third"
+button "Fourth" ] ]  It will display:
+
+Image:Vid-tutorial-buttons2.png[center]
+
+Here, *group* is a special type of style that creates a panel in which
+the buttons are placed.
+
+You can also use groups to organize your layout into columns. Here we
+request two columns of buttons:
+
+ view [ group 2 [ button "First" button "Second" button "Third"
+button "Fourth" ] ]  It looks like &rarr;
+
+Image:Vid-tutorial-buttons3.png[center]
+
+This column-alignment feature is very useful for creating forms and many
+other page layouts.
+
+Now, if you want a group that is just vertical you can write:
+
+ view [ group 1 [ button "First" button "Second" button "Third"
+button "Fourth" ] ] 
+
+That makes sense. It is just one column.
+
+It will appear as &rarr;
+
+Image:Vid-tutorial-buttons1.png[center]
+
+*So, now you know the basics of layout.* Easy!
+
+
+A Range of Styles
+~~~~~~~~~~~~~~~~~
+
+A _style_ is a way of displaying and controlling elements of the user
+interface. Styles include text, images, fields, buttons, toggles, lists,
+tables, and a lot more.
+
+VID provides the most common styles, so you can just start creating user
+interfaces. And, if you need to create your own special styles, you can
+do that too.
+
+The fastest way to learn the basic styles is to show them! Here's a
+sample of styles:
+
+ view [ h1 "Style Examples"
+
+`   h2 "Buttons:"` +
+`   button "Button"` +
+`   toggle "Toggle"` +
+`   btn "Btn"` +
+`   tog "Tog"`
+
+`   h2 "Text:"` +
+`   text "Normal text here"` +
+`   label "Field label"`
+
+`   h2 "Slider bars:"` +
+`   slider 200x24` +
+`   scroller 200x24` +
+`   progress 33.33%`
+
+`   h2 "Text input:"` +
+`   field "Field"` +
+`   area "Text area"`
+
+`   h2 "Images:"` +
+`   image %city.jpg` +
+`   draw (need little drawing here)` +
+`]` ``
+
+They will display like this:
+
+-->  view [ h1 "Style Examples"
+
+`   h2 "Buttons:"` +
+`   group [button "Button" filler]` +
+`   group [btn "Btn" filler]` +
+`   group [toggle "Toggle" filler]` +
+`   group [tgl "Tgl" filler]`
+
+`   h2 "Text:"` +
+`   text "Normal text here"` +
+`   label "Field label"`
+
+`   h2 "Slider bars:"` +
+`   slider 200x24` +
+`   scroller 200x24` +
+`   progress 33.33%`
+
+`   h2 "Text input:"` +
+`   field "Field"` +
+`   area "Text area"`
+
+`   h2 "Images:"` +
+`   group [` +
+`       image %bay.jpg` +
+`       draw 192x144 [` +
+`           pen logo.gif` +
+`           circle 96x77 53` +
+`           pen black fill-pen red` +
+`           circle 96x77 15` +
+`       ]` +
+`   ]` `]` ``
+
+Displays as: Image:Vid-tutorial-style-examples.png[center]
+
+
+Styles Defined
+^^^^^^^^^^^^^^
+
+Above, the words like *h1* and *text* are style names. Here's what the
+above styles create:
+
+* *h1* - a text heading of level 1
+* *h2* - a text heading of level 2
+* *button* - an expandable button
+* *toggle* - an expandable toggle button
+* *btn* - a minimal button
+* *tog* - a minimal toggle
+* *text* - a line of text
+* *slider* - a sliding controller
+* *scroller* - a scrollbar
+* *field* - a text input field
+* *area* - a text input area
+* *image* - a bitmap image
+* *draw* - a scalar vector graphic
+
+
+Style Variations
+^^^^^^^^^^^^^^^^
+
+In addition to the above styles, you can create an endless number of
+variations on how they look and act.
+
+For example, to change the color of a button, just specify it. In the
+example below, the second button will be gold in color:
+
+`view [` +
+`    button "Normal"` +
+`    button gold "Special"` +
+`]`
+
+It looks like this:
+
+Image:vid-tutorial-style-variations1.png[center]
+
+For text, you can write:
+
+`   text "Hot text" [browse `http://www.rebol.com[`http://www.rebol.com`]`]` +
+`   text ["This text is " bold red "bold red!"]`
+
+The second line of text is an example of rich-text, where you can
+control precisely how text looks.
+
+The result is:
+
+Image:Vid-tutorial-style-variations2.png[center]
+
+To get even greater control over a style, you can specify precise
+_options_. Here's an example:
+
+ button "Button" options [rounding: 10] toggle "Toggle" options
+[rounding: 10] button "Button" options [material: 'sand] toggle "Toggle"
+options [material: 'sand led-colors: [red green]]
+
+`   field "Field" options [` +
+`       rounding: 0` +
+`       back-colors: [200.10.10 255.40.40]` +
+`       align: 'right` +
+`       font: make fonts/normal [` +
+`           name: "Verdana"` +
+`           style: 'bold` +
+`           color: yellow` +
+`       ]` +
+`   ]` ``
+
+Here, the _options_ block tells VID how to modify the style.
+
+It will look like this:
+
+Image:Vid-tutorial-style-variations3.png[center]
+
+
+Drawings
+^^^^^^^^
+
+Easy to create drawing...
+
+ view [ draw [ pen blue box pen red fill-pen gold circle ] ] 
+
+Image:Vid-tutorial-style-resize1.png[center]
+
+Now, resize the window.
+
+Image:Vid-tutorial-style-resize2.png[center]
+
+
+Combining Layouts and Styles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now that you know the main concepts for layouts and styles, it's time to
+combine them to create something useful: an input form.
+
+ view [ h2 "Account Information"
+
+`   text "Please enter your account details here."`
+
+`   group 2 [`
+
+`       label "First name" field` +
+`       label "Last name" field` +
+`       label "Email" field` +
+`       label "City" field`
+
+`       blank` +
+`       group [` +
+`           button gold "Submit"` +
+`           button sky "Cancel"` +
+`       ]`
+
+`   ]` +
+`]` `

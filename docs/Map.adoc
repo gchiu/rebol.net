@@ -1,0 +1,100 @@
+This document describes the new map datatype.
+
+
+Overview
+~~~~~~~~
+
+A map is a key-to-value associative array. It uses hashing for high
+performance. Sometimes this kind of association is also referred to as a
+dictionary.
+
+The map datatype replaces the R2 hash datatype. The motivation for this
+replacement was that some people in the user community felt the design
+of the older hash datatype was confusing, since it hashed both keys and
+their data. The new map datatype just hashes keys. Data is not hashed.
+
+
+Keys
+~~~~
+
+The map datatype lets you attach _keys_ to data values. It is more
+efficient than a block or object (when words as keys are unbound) once
+you have more than a couple dozen keys.
+
+A key can be any type of word or string. Other datatypes are not allowed
+at this time.
+
+Note that when a string is used for a key:
+
+* the dataype of the string is also part of the key. For example, the
+string "test" is not the same as the file name %test or the issue #test.
+* the string is copied into the map. It is not by reference. This
+prevents the problem where a string is modified after the association
+has been made.
+
+Map allows integers as keys. They are not indexes.
+
+`   >> m: make map! [x a 1 b 2 c 3 y]` +
+`   == make map! [x a 1 b 2 c 3 y]` +
+`   >> m/2` +
+`   == c`
+
+
+Values
+~~~~~~
+
+The value associated with a key can be any datatype. For example, you
+can associate a key that happens to be a word with a file name, a block,
+an object, or even a graphics object.
+
+Note that series and other complex datatype values are stored by
+reference. That means that they can be modified outside of the map
+structure.
+
+
+Actions
+~~~~~~~
+
+You can access a map using paths or action functions.
+
+The paths allowed are:
+
+* dict/word - get a value for that key (or return NONE if no such word)
+* dict/word: - set a value for that key, or creating it if necessary
+
+These action functions are currently supported:
+
+* make
+* to
+* pick
+* select (same as pick)
+* poke
+* length
+* equal?
+* not-equal?
+* append
+* insert (same as append)
+
+In addition TO-BLOCK, TO-OBJECT, FORM and MOLD will work for map types.
+
+
+General Usage
+~~~~~~~~~~~~~
+
+General usage has been kept very simple -- to be on par (or better) with
+what other scripting languages offer.
+
+Here is an example that shows the most common usage patterns:
+
+ d: make map! 1000
+
+`   d/test: 10` +
+`   print d/test` +
+`   10`
+
+`   print d/notest` +
+`   none`
+
+`   d/test: 20` +
+`   print d/test` +
+`   20` `

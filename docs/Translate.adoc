@@ -1,0 +1,108 @@
+
+TRANSLATE
+~~~~~~~~~
+
+Sets the origin for drawing commands.
+
+[cols=",,,",options="header",]
+|=====================================================================
+|Arg |Type |Description |Values
+|offset |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+|=====================================================================
+
+*Notes and Examples* Multiple translate commands will have a
+cumulative effect: fill-pen blue box 50x50 150x150
+translate 50x50 fill-pen red box 50x50 150x150 translate 50x50 fill-pen
+yellow box 50x50 150x150  image:TRANSLATE-1.png[TRANSLATE
+example 1]
+
+You can use RESET-MATRIX to avoid that if you want:
+ fill-pen blue box 50x50 150x150 translate 50x50 fill-pen red
+box 50x50 150x150 reset-matrix translate 50x50 fill-pen yellow box
+100x100 300x300  image:TRANSLATE-2.png[TRANSLATE example 2]
+
+Another way to reset the matrix is to use the PUSH command:
+ fill-pen blue box 50x50 150x150 push [translate 50x50
+fill-pen red box 50x50 150x150] translate 50x50 fill-pen yellow box
+100x100 300x300  image:TRANSLATE-3.png[TRANSLATE example 3]
+
+See also:
+http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace
+
+'''''
+
+ Pages 
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+
+
+
+
+
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+
+
+
+
+
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+
+
+
+
+
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+
+
+ Chapters 
+
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With Draw*
+* link:The_Graphic_Object[The Graphic Object]
+
+
+
+* link:Table_Of_Contents[Table Of Contents]
+

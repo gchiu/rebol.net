@@ -1,0 +1,60 @@
+
+Actors
+^^^^^^
+
+The *actors* field of the compound object of a face is a map of the
+functions that define the behavior of the face. Whenever an event or
+other action occurs, these are the functions that handle it. (In some
+GUI systems, these are called _interactors_.)
+
+If a style object is derived from a parent style, the parent actors are
+inherited from the parent object. But the derived actors are not bound
+to the parent. This allows the functions of the actor to be more
+efficiently reused in all instances of the face. Within an actor, a
+reference to a facet is made via special access functions.
+
+*Typical actors are:* 
+
+* *link:The_Face_Object_Field_-_Actors_-_on-make[on-make]* - when face
+is first created to initialize special values
+* *link:The_Face_Object_Field_-_Actors_-_on-click[on-click]* - when
+mouse button clicked on face
+* *link:The_Face_Object_Field_-_Actors_-_on-drag[on-drag]* - when
+dragging inside a face
+* *link:The_Face_Object_Field_-_Actors_-_on-drag-over[on-drag-over]* -
+when dragging and are over a target face
+* *link:The_Face_Object_Field_-_Actors_-_on-drop[on-drop]* - when drag
+has stopped or when a file is dropped
+* *link:The_Face_Object_Field_-_Actors_-_on-focus[on-focus]* - when we
+have been given or are losing focus
+* *link:The_Face_Object_Field_-_Actors_-_on-get[on-get]* - to fetch
+state values
+* *link:The_Face_Object_Field_-_Actors_-_on-set[on-set]* - when state
+values are set
+* *link:The_Face_Object_Field_-_Actors_-_on-clear[on-clear]* - when the
+state values are cleared
+* *link:The_Face_Object_Field_-_Actors_-_on-key[on-key]* - when key has
+been pressed (for our focus)
+
+
+
+* *link:The_Face_Object_Field_-_Actors_-_on-move[on-move]* - when mouse
+has moved
+* *link:The_Face_Object_Field_-_Actors_-_on-over[on-over]* - when mouse
+passes over or away
+* *link:The_Face_Object_Field_-_Actors_-_on-reset[on-reset]* - when
+reset is needed
+* *link:The_Face_Object_Field_-_Actors_-_on-resize[on-resize]* - when
+size values have changed
+* *link:The_Face_Object_Field_-_Actors_-_on-draw[on-draw]* - when system
+starts to draw the face (create DRAW block)
+* *link:The_Face_Object_Field_-_Actors_-_on-scroll[on-scroll]* - when
+scrolling is needed
+*
+*link:The_Face_Object_Field_-_Actors_-_on-scroll-event[on-scroll-event]*
+- when the mouse wheel is used
+* *link:The_Face_Object_Field_-_Actors_-_on-init[on-init]* - when face
+and its parent pane are ready (including initial sizing)
+* *link:The_Face_Object_Field_-_Actors_-_on-attach[on-attach]* - when a
+face is attached to another face
+

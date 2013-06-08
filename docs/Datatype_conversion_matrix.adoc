@@ -1,0 +1,129 @@
+
+Matrix of Datatype conversions
+------------------------------
+
+link:#action[action!] link:#binary[binary!]
+
+
+
+* action!
+
+[cols=",",options="header",]
+|=======================================================================
+|To |Notes
+|action! |no conversion required
+
+|binary! |string series of bytes
+
+|bitset! |set of bit flags
+
+|block! |series of values
+
+|char! |8bit and 16bit character
+
+|closure! |function with persistent local values (indefinite extent)
+
+|datatype! |datatype value
+
+|date! |day, month, year, time of day, and timezone
+
+|decimal! |64bit floating point number (IEEE standard)
+
+|email! |email address
+
+|end! |internal marker for end of block
+
+|error! |error value
+
+|event! |user interface event (efficiently sized)
+
+|file! |file name or path
+
+|frame! |internal context frame
+
+|function! |interpreted function (user-defined or mezzanine)
+
+|get-path! |the value of a path
+
+|get-word! |the value of a word (variable)
+
+|gob! |graphical object
+
+|handle! |arbitrary internal object or value
+
+|image! |RGB image with alpha channel
+
+|integer! |64 bit integer
+
+|issue! |identifying string or script marker
+
+|library! |external library reference
+
+|lit-path! |literal path value
+
+|lit-word! |literal word value
+
+|logic! |boolean true or false
+
+|map! |hashed name-value pairs
+
+|module! |loadable context of code and data
+
+|money! |arbitrary precision decimal numbers with optional denomination
+
+|native! |direct CPU evaluated function
+
+|none! |no value represented
+
+|object! |context of names with values
+
+|op! |infix operator (special evaluation exception)
+
+|pair! |two dimensional point or size
+
+|paren! |automatically evaluating block
+
+|path! |refinement path for functions, objects, files, etc.
+
+|percent! |special form of decimals (used mainly for layout)
+
+|port! |external series, an I/O channel
+
+|rebcode! |virtual machine function
+
+|refinement! |variation of meaning or location
+
+|routine! |external library function
+
+|set-path! |definition of a path's value
+
+|set-word! |definition of a word's value
+
+|string! |string series of characters
+
+|struct! |native structure definition
+
+|tag! |markup string (HTML or XML)
+
+|task! |evaluation environment
+
+|time! |time of day or duration
+
+|tuple! |sequence of small integers (used for colors, versions, IP
+addresses)
+
+|typeset! |set of datatypes
+
+|unicode! |string of unicoded characters
+
+|unset! |no value returned or set
+
+|url! |uniform resource locator or identifier
+
+|utype! |user defined datatype
+
+|vector! |multideminsional directly mapped arrays (of same datatype)
+
+|word! |word (symbol or variable)
+|=======================================================================
+

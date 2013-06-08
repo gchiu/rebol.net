@@ -1,0 +1,61 @@
+ String conversions [options="header"]
+|====
+|| to-string | form | mold | mold/all | format |
+| action! | add | add | #[action! add] | #[action! add] | add |
+| binary! ||| #\{} | #\{} ||
+| bitset! | make bitset! #\{} | make bitset! #\{} | make bitset! #\{} | #[bitset! #\{}] | make bitset! #\{} |
+| block! ||| [] | [] ||
+| char! | A | A | #"A" | #"A" | A |
+| closure! | make closure! [[a b][]] | make closure! [[a b][]] | make closure! [[a b][]] | #[closure! [[a b][]]] | make closure! [[a b][]] |
+| datatype! | action! | action! | action! | #[datatype! action!] | action! |
+| date! | 1-Jan-2000 | 1-Jan-2000 | 1-Jan-2000 | 1-Jan-2000 | 1-Jan-2000 |
+| decimal! | 1.5 | 1.5 | 1.5 | 1.5 | 1.5 |
+| dictionary! | NA | NA | NA | NA | NA |
+| email! | a@b.c | a@b.c | a@b.c | a@b.c | a@b.c |
+| end! | NA | NA | NA | NA | NA |
+| error! | ** User error: "" | ** User error: "" | make error! [ code: 800 type: 'User id: 'message arg1: "" arg2: none arg3: none near: none where: none ] | #[error! [ code: 800 type: User id: message arg1: "" arg2: #[none] arg3: #[none] near: #[none] where: #[none] ]] | ** User error: "" |
+| event! | NA | NA | NA | NA | NA |
+| file! ||| %"" | %"" ||
+| frame! | NA | NA | NA | NA | NA |
+| function! | make function! [[a b][]] | make function! [[a b][]] | make function! [[a b][]] | #[function! [[a b][]]] | make function! [[a b][]] |
+| get-path! | :a/b/c | :a/b/c | :a/b/c | :a/b/c | :a/b/c |
+| get-word! | test | test | :test | :test | test |
+| gob! | NA | NA | NA | NA | NA |
+| handle! | NA | NA | NA | NA | NA |
+| image! | make image! [1x1 #\{ 000000 }] | make image! [1x1 #\{ 000000 }] | make image! [1x1 #\{ 000000 }] | #[image! [1x1 #\{ 000000 }]] | make image! [1x1 #\{ 000000 }] |
+| integer! | 1 | 1 | 1 | 1 | 1 |
+| issue! | abc | abc | #abc | #abc | abc |
+| library! | NA | NA | NA | NA | NA |
+| lit-path! | 'a/b/c | 'a/b/c | 'a/b/c | 'a/b/c | 'a/b/c |
+| lit-word! | test | test | 'test | 'test | test |
+| logic! | false | false | false | #[false] | false |
+| module! | NA | NA | NA | NA | NA |
+| money! | 0.01 | 0.01 | $0.01 | $0.01 | 0.01 |
+| native! | NA | NA | NA | NA | NA |
+| none! | none | none | none | #[none] | none |
+| object! | a: none b: none |a: none b: none | make object! [ a: none b: none ] | #[object! [ a: none b: none ]] | a: none b: none |
+| op! | + | + | #[op! +] | #[op! +] | + |
+| pair! | 1x1 | 1x1 | 1x1 | 1x1 | 1x1 |
+| paren! ||| () | () ||
+| path! | a/b/c | a/b/c | a/b/c | a/b/c | a/b/c |
+| percent! | 1% | 1% | 1% | 1% | 1% |
+| port! | NA | NA | NA | NA | NA |
+| rebcode! | NA | NA | NA | NA | NA |
+| refinement! | test | test | /test | /test | test |
+| routine! | NA | NA | NA | NA | NA |
+| set-path! | a/b/c: | a/b/c: | a/b/c: | a/b/c: | a/b/c: |
+| set-word! | test | test | test: | test: | test |
+| string! | abc | abc | "abc" | "abc" | abc |
+| struct! | NA | NA | NA | NA | NA |
+| tag! | abc | &lt;abc&gt; | &lt;abc&gt; | &lt;abc&gt; | &lt;abc&gt; |
+| task! | NA | NA | NA | NA | NA |
+| time! | 0:00:01 | 0:00:01 | 0:00:01 | 0:00:01 | 0:00:01 |
+| tuple! | 0.0.1 | 0.0.1 | 0.0.1 | 0.0.1 | 0.0.1 |
+| typeset! | integer! decimal! percent! money! char! pair! tuple! time! tag! | integer! decimal! percent! money! char! pair! tuple! time! tag! | make typeset! [integer! decimal! percent! money! char! pair! tuple! time! tag!] | #[typeset! [integer! decimal! percent! money! char! pair! tuple! time! tag!]] | integer! decimal! percent! money! char! pair! tuple! time! tag! |
+| unicode! | NA | NA | NA | NA | NA |
+| unset! ||| make unset! none | #[unset!] ||
+| url! | http://abc | http://abc | http://abc | http://abc | http://abc |
+| utype! | NA | NA | NA | NA | NA |
+| vector! | NA | NA | NA | NA | NA |
+| word! | test | test | test | test | test |
+|====

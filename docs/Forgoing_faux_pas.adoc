@@ -1,0 +1,69 @@
+
+Some common missteps while learning REBOL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This page may help you avoid some of the idiosyncracies in the REBOL
+language
+
+If something tripped you up, please http://rebol.net/w/index.php?title=Forgoing_faux_pas&action=edit&section=new[add]
+it here. &lowast;_Please start each topic with wikitext
+==topic== two equal sign headings._
+
+See &bull; link:Handy_Idioms[Handy Idioms] &bull; for some nice and
+positive REBOL tips and tricks.
+
+
+none
+~~~~
+
+REBOL is a value-centric language. This can lead to some little
+confusion with certain values and certain types. *none* is one of those
+special cases.
+
+` >> a: none` +
+` == none` +
+` >> type? a` +
+` == none!`
+
+So far so good. The source text _none_ when evaluated is the value
+*none* and has a type of none!
+
+` >> b: [none]` +
+` == [none]` +
+` >> a: first b` +
+` == none` +
+` >> type? a` +
+` == word!`
+
+Huh? This time the source text _none_ hasn't been evaluated (due to the
+nature of how REBOL handles blocks ... the source has been loaded but
+not yet evaluated ... a subtle but critical difference) so it's still
+just a word, with a type of word!. There are few ways around this. All
+link:#yesno[(well almost all)] REBOL values have what is
+called a _lexical form_. These can be seen with *mold/all*. These
+_serialized_ formats are what REBOL detects as the *load*able forms.
+
+` >> a: none` +
+` == none` +
+` >> mold/all a` +
+` == "#[none]"` +
+` >> a: first [none]` +
+` == none` +
+` >> mold/all a` +
+` == "none"`
+
+This is a minor point, but the word _none_ (type word!) needs to be
+evaluated to become the value *none* (type none!). So if you edit a
+configuration file with a text editor and put in a _none_ thinking that
+*none* is a good default and then LOAD the file, what gets loaded is a
+_word!_. This word will test true inside an IF or EITHER expression,
+even though it looks like *none*, it isn't; not yet. One way is to
+evaluate the load with DO LOAD %file, but a safer REBOL way is to use
+the _lexical form_, and avoid the DO. Practice safe computing; only *DO* what you know to be
+good. The source text _#[none]_ is loaded by REBOL as the value
+*none* with a type of none!, no ambiguity involved, for human or
+computer.
+
+This is true of all REBOL words, values and types; but _none_ can be a
+little trickier when you are starting out.
+

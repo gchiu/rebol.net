@@ -1,0 +1,109 @@
+
+BOX
+~~~
+
+*Return To Draw Contents* 
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|upper-left-point |[pair!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|lower-right-point |[pair!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|corner-radius |[decimal!] |Rounds corners |[multiblock cell omitted]
+|=======================================================================
+
+ The BOX command provides a shortcut for a
+rectangular polygon. Only the upper-left and lower-right points are
+needed to draw the box. *Notes and Examples*
+
+ fill-pen blue
+box 20x20 200x200 image:BOX-1b.png
+
+ fill-pen logo.gif box 20x20 200x200 image:BOX-2b.png  Repititions of Small
+Image.
+
+ pen red line-pattern yellow 50 30 line-width 30 line-join
+round box 50x50 350x350 image:BOX-3b.png Line widths, patterns, joins are
+fully supported.
+
+'''''
+
+ Pages 
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+
+
+
+
+
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+
+
+
+
+
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+
+
+
+
+
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+
+
+ Chapters 
+
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
+With VID]
+* *Script Writing With Draw*
+* link:The_Graphic_Object[The Graphic Object]
+
+
+
+* link:Table_Of_Contents[Table Of Contents]
+

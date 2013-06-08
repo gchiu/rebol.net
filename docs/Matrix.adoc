@@ -1,0 +1,19 @@
+
+MATRIX
+~~~~~~
+
+Premultiply the current transformation matrix with the given block.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|matrix-setup |[block!] |[multiblock cell omitted] |content must be 6
+number!s
+|=======================================================================
+
+*Notes and Examples* MATRIX [a b
+c d e f]The block values are used internally for building
+following transformation matrix:
+|a c e| |b d f| |0 0 1|For more information
+about transformations see:
+http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace

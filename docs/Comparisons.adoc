@@ -1,0 +1,100 @@
+
+List of equality operators
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+EQUAL?, EQUIV?, STRICT-EQUAL?, and SAME? (proposed by BrianH as his list
+#2).
+
+
+General principles
+~~~~~~~~~~~~~~~~~~
+
+
+Domain
+^^^^^^
+
+To be comparable, all equality operators shall have the same domain,
+which means, that every test of the form:
+
+equal? error? try [equal? :a :b] error? try [compare :a :b]
+
+has to succeed (= yield TRUE).
+
+One of the simplest alternatives is, that the domain of every equality
+operator will consist of all REBOL values except for #[unset!]. In that
+case every test of the form:
+
+not all [ value? 'a value? 'b error? try [compare :a :b] ]
+
+has to succeed.
+
+
+Relational
+^^^^^^^^^^
+
+The equality operators are relational operators, i.e. they should yield
+a LOGIC! type value whenever the argument values are in the domain of
+the respective operator (i.e. whenever the operator evaluation doesn't
+cause error). This means, that every test of the form:
+
+any [ error? try [compare :a :b] logic? compare :a :b ]
+
+has to succeed (= yield TRUE) either because the arguments are "out of
+the domain", or because the result is of the LOGIC! type.
+
+
+Reflexivity
+^^^^^^^^^^^
+
+Every equality operator shall be reflexive. That means, that every test
+of the form:
+
+any [ error? try [compare :a :a] compare :a :a ]
+
+has to succeed (= yield TRUE), either because A is "out of the domain",
+or because the comparison operator shall be reflexive in its domain.
+
+
+Symmetry
+^^^^^^^^
+
+Every equality operator shall be symmetric. That means, that every test
+of the form:
+
+any [ error? try [compare :a :b] equal? compare :a :b compare :b :a
+]
+
+has to succeed.
+
+
+Transitivity
+^^^^^^^^^^^^
+
+Except for the EQUAL? operator, which is expected to test for
+approximate equality of decimal, percent and date values, every equality
+operator shall be transitive. That means, that every test of the form:
+
+any [ error? try [compare :a :b] not compare :a :b error? try
+[compare :b :c] not compare :b :c compare :a :c ]
+
+has to succeed.
+
+
+Hierarchy
+^^^^^^^^^
+
+The equality operators are ordered by their fineness, the order is:
+EQUAL?, EQUIV?, STRICT-EQUAL?, SAME?, where EQUAL? is the coarsest, and
+SAME? the finest equality operator.
+
+The hierarchy requirement can be expressed as the requirement, that
+every test having one of the forms:
+
+; EQUIV? is finer than EQUAL? any [ error? try [equal? :a :b] not
+equiv? :a :b equal? :a :b ]
+
+; STRICT-EQUAL? is finer than EQUIV? any [ error? try [equal? :a
+:b] not strict-equal? :a :b equiv? :a :b ]
+
+; SAME? is finer than STRICT-EQUAL? any [ error? try [equal? :a :b]
+not same? :a :b strict-equal? :a :b ]

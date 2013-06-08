@@ -1,0 +1,127 @@
+
+Sources
+~~~~~~~
+
+Rebol 2.7.8 packages may be downloaded from
+http://www.maxvessi.net/rebsite/Linux/ These packages may make the
+installation and subsequent use of Rebol easier for script writers.
+
+The official download source for Rebol for Linux is Rebol
+http://www.rebol.com/download-view.html Linux x86 Libc6 and Linux
+x86 Fedora downloads are available. If necessary a system's libc version
+ may be found by typing "ldd --version" into the console.
+
+
+Getting To The Console
+~~~~~~~~~~~~~~~~~~~~~~
+
+Puppy Linux is used in this example.
+
+Viewing files with the Rox Filer, go to the directory of the Rebol
+executable.
+
+Right click the empty space of the directory and from the selections
+that appear, choose "Window" and then choose "Terminal Here".
+
+When the rxvt terminal appears, type "./rebol" or "rebol" (mind the
+case) . The Rebol viewtop appears.
+
+From the Rebol viewtop, select "Console" at the bottom left of the
+viewtop.
+
+The Rebol console appears in rxvt.
+
+Type, for example, "do %script.r" in the console to run a Rebol script.
+Or, type your script directly into the console. Errors will output to
+the console.
+
+Problems with rxvt operating Rebol? Try Rebol packages below.
+
+
+Establishing The User.r File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Type "Desktop" into the rxvt console.
+
+When the Rebol viewtop appears, click "User" at the top. Make your
+choices and save, thus creating the user.r file. The user.r file can, of
+course, be edited from the Rebol viewtop.
+
+The user.r file in Puppy Linux can be found by first going to the "Home"
+directory. Once there, click the eye icon, thus showing the hidden
+files.
+
+Selecting the ".rebol" folder, and then the "view" folder will reveal
+the user.r file.
+
+
+Adjusting Fonts
+~~~~~~~~~~~~~~~
+
+Reprinted here is an article from the Rebol.org library, written by
+brianwisti
+
+Adjusting Fonts in /View
+
+This is just a little tip from a while ago when I was having font
+display issues under Linux. The issues have gone away, but this tip
+still applies on any system where you don't care for the default fonts
+being used by REBOL/View.
+
+It's very easy, actually. Important customization rules are contained in
+your personal user.r file, located at ~/.rebol/view/user.r on Linux
+machines. Once you have some decent fonts installed, add the following
+code to your user.r file. if (not none? system/view) [
+system/view/screen-face/options: none font-serif: "Georgia"
+font-sans-serif: "Arial" foreach [style obj] svv/vid-styles [ if
+obj/font [ switch obj/font/name [ "helvetica" [obj/font/name:
+font-sans-serif] "times" [obj/font/name: font-serif] ] ] ] ]
+
+What's going on here? Not much, really. First we check to make sure
+we're running in a REBOL session with View available. That way nothing
+blows up if we are running a command line script. Then we name some
+fonts. I placed them in variables toward the top of the block because
+every little bit of organization helps a scattered brain like mine. The
+important part is last - we step through all of the available styles
+and, if that style cares about fonts, tell them to use our sans-serif
+and serif fonts wherever they use helvetica and times , respectively.
+
+That's it! Like I said, there's not much going on here. Still, little
+adjustments like this can make your REBOL/View sessions on Linux a
+little bit more pleasant.
+
+
+Setting Up Fonts For The Draw Dialect
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Under linux you need to setup the font object to be able use text
+rendered by DRAW dialect. So something like this should work:
+
+`   my-font: make face/font [` +
+`       name: "/usr/share/fonts/truetype/freefont/FreeSans.ttf"` +
+`       ;replace with your path to font you want to use` +
+`       size: 12` +
+`   ]`
+
+`   view layout [` +
+`       box snow 100x100 effect [` +
+`           draw [` +
+`               font my-font` +
+`               pen black` +
+`               text 10x10 "Red Box:"` +
+`               pen red` +
+`               fill-pen red` +
+`               box 10x30 80x50` +
+`           ]` +
+`       ]` +
+`   ]`
+
+by Cyphre, [Linux] group for linux REBOL users, Alme Groups
+http://www.rebol.org/aga-display-posts.r?post=r3wp226x0 03-mar-2011
+
+
+Modify The In-built Editor
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The "File:" label of the top menu often appears truncated, as if not
+have enough length were provided. 

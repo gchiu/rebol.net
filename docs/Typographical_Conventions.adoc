@@ -1,0 +1,42 @@
+
+Suggested conventions for documenting REBOL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[cols=",,",options="header",]
+|=======================================================================
+|Category |Style |How to do it in WikiText
+|emphasized text |_emphasized text_ | _emphasized text_
+(double apostrophe)
+
+|REBOL words |*_bold-and-italic_* |*_bold-and-italic_*
+(quintuple apostrophe)
+
+|values of REBOL variables |*bold* |*bold* (triple
+apostrophe)
+
+|embedded REBOL expression |typewriter text
+|&lt;tt&gt;typewriter text&lt;/tt&gt;
+|=======================================================================
+
+Note: REBOL variables are REBOL words that are bound to a context,
+unbound words don't have values.
+
+Use:
+
+1.  *do* to represent the value of the *_do_* variable - in a fresh
+console this is a native that does not have a serialized form
+2.  *none* to represent the value of the *_none_* variable - in a fresh
+console this is the value that can be literally represented as
+#[none] or #[none!]
+3.  *true* to represent the value of the *_true_* variable - in a fresh
+console this is the value that can be literally represented as
+#[true]
+4.  *unset!* to represent the value of the *_unset!_* variable - in a
+fresh console this is the value that can be literally represented as
+#[datatype! unset!]
+5.  *unset* to represent the value of the *_unset_* variable - in a
+fresh console this is a native that does not have a serialized form
+
+, etc.
+
+The above rules mean, that the #[unset!]

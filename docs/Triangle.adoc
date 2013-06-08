@@ -1,0 +1,146 @@
+
+TRIANGLE
+~~~~~~~~
+
+
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|vertex1 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|vertex2 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|vertex3 |[pair!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|color1 |[tuple!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|color2 |[tuple!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|color3 |[tuple!] |[multiblock cell omitted] |[multiblock cell omitted]
+
+|dilation |[decimal!] |Useful for eliminating anitaliased edges
+|[multiblock cell omitted]
+|=======================================================================
+
+ The TRIANGLE command provides a shortcut
+for a triangular polygon with optional shading parameters (Gouraud
+shading). The three vertices of the triangle are used to specify it.
+*Notes and Examples* Simple
+triangle: fill-pen red triangle 50x1  image:TRIANGLE-1.png[150px]
+
+
+'''''
+
+A group of triangles. This should make it easy to see where each
+triangle is:  pen off triangle 50x150 150x50 150x150 red
+green blue triangle 150x50 250x150 150x150 green yellow blue triangle
+250x150 150x350 150x150 yellow orange blue triangle 150x350 50x150
+150x150 orange red blue translate 200x-15  image:TRIANGLE-2b.png 
+
+'''''
+
+The same triangle group but slightly rotated illustrating the dilation
+parameter:  pen off rotate 5 triangle 50x150 150x50
+150x150 red green blue triangle 150x50 250x150 150x150 green yellow blue
+triangle 250x150 150x350 150x150 yellow orange blue triangle 150x350
+50x150 150x150 orange red blue translate 200x-15 triangle 50x150 150x50
+150x150 red green blue 0.33 triangle 150x50 250x150 150x150 green yellow
+blue 0.33 triangle 250x150 150x350 150x150 yellow orange blue 0.33
+triangle 150x350 50x150 150x150 orange red blue 0.33  image:TRIANGLE-3b.png[TRIANGLE
+example 3] 
+
+'''''
+
+This gives you a much more subtle blending in the middle: 
+ pen off triangle 50x150 150x50 150x150 red green gray triangle
+150x50 250x150 150x150 green yellow gray triangle 250x150 150x350
+150x150 yellow orange gray triangle 150x350 50x150 150x150 orange red
+gray 
+image:TRIANGLE-4b.png[TRIANGLE example 4] 
+
+'''''
+
+And this shows simple highlighting/shading:  pen
+off triangle 50x150 150x50 150x150 water sky sky triangle 150x50 250x150
+150x150 water coal sky triangle 250x150 150x350 150x150 coal coal sky
+triangle 150x350 50x150 150x150 coal water sky  image:TRIANGLE-5b.png[TRIANGLE example 5]
+
+
+'''''
+
+ Pages 
+
+* Draw
+* Anti-Alias
+* Arc
+* Arrow
+* Box
+* Circle
+* Clip
+* Curve
+* Ellipse
+
+
+
+
+
+
+
+* Fill-Pen
+* Fill-Rule
+* Gamma
+* Grad-Pen
+* Invert-Matrix
+* Image
+* Image-Filter
+* Line
+* Line-Cap
+
+
+
+
+
+
+
+* Line-Join
+* Line-Pattern
+* Line-Width
+* Matrix
+* Pen
+* Polygon
+* Push
+* Reset-Matrix
+* Rotate
+
+
+
+
+
+
+
+* Scale
+* Shape
+* Skew
+* Spline
+* Text
+* Transform
+* Translate
+* Triangle
+
+
+
+ Chapters 
+
+* link:R3_Introduction[R3 Introduction]
+* link:Getting_Started_With_R3[Getting Started With R3]
+* link:The_Graphical_User_Interface[The Graphical User Interface]
+* link:Script_Writing_With_The_Visual_Interface_Dialect[Script Writing
+With The VID Dialect]
+* *Script Writing With Draw*
+* link:The_Graphic_Object[The Graphic Object]
+
+
+
+* link:Table_Of_Contents[Table Of Contents]
+

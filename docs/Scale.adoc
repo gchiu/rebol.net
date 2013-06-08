@@ -1,0 +1,30 @@
+
+SCALE
+~~~~~
+
+Sets the scale for drawing commands.
+
+[cols=",,,",options="header",]
+|=======================================================================
+|Arg |Type |Description |Values
+|scale-x |[decimal!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+
+|scale-y |[decimal!] |[multiblock cell omitted]
+|[multiblock cell omitted]
+|=======================================================================
+
+*Notes and Examples* The values given are multipliers; use values
+greater than one to increase the scale; use values less than one to
+decrease it. Negative values fill-pen blue box 100x100
+200x200 scale 2 .5 fill-pen red box 100x100 200x200 reset-matrix ; Reset
+the scale. scale .5 1.5 fill-pen yellow box 100x100 200x200
+ image:SCALE-1.png[SCALE example 1]
+
+Another way to reset the scale is to use the PUSH command:
+ fill-pen blue box 100x100 200x200 push [scale 2 .5 fill-pen
+red box 100x100 200x200] scale .5 1.5 fill-pen yellow box 100x100
+200x200  image:SCALE-2.png[SCALE example 2]
+
+See also:
+http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace
