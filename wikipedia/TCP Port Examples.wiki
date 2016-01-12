@@ -1,0 +1,179 @@
+{{Cookbook|title=TCP Port Examples|author=Carl Sassenrath|level=2|category=Network}}
+
+== TCP Server ==
+
+'''Warning: This code is out of date and being updated.'''
+
+Here is an example TCP server that opens port 8080 and receives new connections. Each connection then gets its own asynchronous handler function (which in this case, simply reads and writes text.)
+
+&lt;pre&gt;
+print &quot;Serving port 8080...&quot;
+
+open-subport: func [port] [
+    print &quot;=== Creating sub-port&quot;
+    port/awake: func [event /local port] [
+        print [&quot;=== Subport event:&quot; event/type]
+        port: event/port
+        switch event/type [
+            read [
+                print [&quot;    &quot; to-string port/data]
+                write port to-binary &quot;got it!&quot;
+            ]
+            wrote [read port]
+            close [close port]
+        ]
+    ]
+    write port to-binary &quot;connected^/&quot;
+]
+
+server: open tcp://:8080
+
+server/awake: func [event] [
+    print [&quot;*** Server event:&quot; event/type]
+    if event/type = 'accept [
+        open-subport first event/port
+    ]
+    false
+]
+
+wait 30
+close server
+print &quot;Done serving&quot;
+halt
+&lt;/pre&gt;
+
+== TCP Client ==
+
+Here is a client that connects to port 8080, then sends strings to the server, and receives a response back from the server.
+
+&lt;pre&gt;
+print &quot;Connecting to port 8080...&quot;
+
+msg-count: 0
+
+client: open tcp://localhost:8080
+
+client/awake: func [event /local port] [
+    print [&quot;=== Client event:&quot; event/type]
+    port: event/port
+    switch event/type [
+        lookup [open port]
+        connect [write port to-binary &quot;hello&quot;]
+        read [
+            print [&quot;    &quot; to-string port/data]
+            ++ msg-count
+            either msg-count &lt; 10 [
+                write port to-binary reform [&quot;ok&quot; msg-count]
+            ][
+                close port
+                return true
+            ]
+        ]
+        wrote [read event/port]
+    ]
+    false
+]
+
+wait [client 30]
+close client
+print &quot;Done&quot;
+halt
+&lt;/pre&gt;
+
+== Notes ==
+
+#Both the server and the client use asynchronous AWAKE handlers to process events. An AWAKE handler is a simple callback function that is called when the state of the port changes, such as when it opens, has sent its data, has read new data, etc.
+#The READ and WRITE functions '''initiate the read and write actions within the handlers'''. That is, you must call READ in order for the READ action to occur (like setting the async mode in R2 async). When the read has data, the READ event will happen. If your handler hangs, chances are you forgot this step.
+#The port uses its port/data buffer for both sending and receiving data. If you want, you can allocate your own buffer for that.
+#Data is transferred as binary by default. If you need to convert the line terminations, use the ENLINE and DELINE functions.
+#Notice that the client must include an extra step to perform the DNS lookup. When the lookup event occurs, it calls OPEN again to open the TCP/IP connection. And, if you want, you can use OPEN? to check if the connection is open.
+#Although the server uses WAIT with a timeout, an actual server would not do that. It's done in this example just to stop the server after 30 seconds.
+#For larger data transfers, WRITE and READ operations will be broken into packets. You can use a length accumulator or special symbol sequence to know when the transfer is complete. Also, you should segment your WRITEs into chunks of 32K or less.
+#If you use a local firewall, it may block these examples. Set it to allow port 8080 to connect.
+
+== Output ==
+
+Here's what you will see. First, run the server, then run the client.
+
+&lt;pre&gt;
+Serving port 8080...
+*** Server event: accept
+=== Creating sub-port
+=== Subport event: wrote
+=== Subport event: read
+     hello
+=== Subport event: wrote
+=== Subport event: read
+     ok 1
+=== Subport event: wrote
+=== Subport event: read
+     ok 2
+=== Subport event: wrote
+=== Subport event: read
+     ok 3
+=== Subport event: wrote
+=== Subport event: read
+     ok 4
+=== Subport event: wrote
+=== Subport event: read
+     ok 5
+=== Subport event: wrote
+=== Subport event: read
+     ok 6
+=== Subport event: wrote
+=== Subport event: read
+     ok 7
+=== Subport event: wrote
+=== Subport event: read
+     ok 8
+=== Subport event: wrote
+=== Subport event: read
+     ok 9
+=== Subport event: wrote
+=== Subport event: close
+Done serving
+&lt;/pre&gt;
+
+The client will show:
+
+&lt;pre&gt;
+Connecting to port 8080...
+=== Client event: lookup
+=== Client event: connect
+=== Client event: wrote
+=== Client event: read
+     connected
+got it!
+=== Client event: wrote
+=== Client event: read
+     got it!
+=== Client event: wrote
+=== Client event: read
+     got it!
+=== Client event: wrote
+=== Client event: read
+     got it!
+=== Client event: wrote
+=== Client event: read
+     got it!
+=== Client event: wrote
+=== Client event: read
+     got it!
+=== Client event: wrote
+=== Client event: read
+     got it!
+=== Client event: wrote
+=== Client event: read
+     got it!
+=== Client event: wrote
+=== Client event: read
+     got it!
+=== Client event: wrote
+=== Client event: read
+     got it!
+Done
+&lt;/pre&gt;
+
+== Cookbook References ==
+
+{{:Cookbook References}}

@@ -1,0 +1,56 @@
+{{Cookbook|title=How to do Things the new Rebol 3 Way|author=Docbase Crew|level=1|category=R2 vs. R3}}
+
+==Loops==
+
+===repeat===
+
+&lt;!-- If someone feels like it, tables could be wikitext'ed
+{| class=&quot;wikitable&quot; width=&quot;100%&quot; style=&quot;clear:right;&quot;
+!REBOL 2
+!REBOL 3
+!Description
+|-
+|&lt;tt&gt;repeat i [a b c] [print i]&lt;/tt&gt;
+|&lt;tt&gt;thing&lt;/tt&gt;
+|description
+|}
+--&gt;
+&lt;table class=&quot;wikitable&quot;&gt;
+&lt;tr&gt;&lt;th width=&quot;35%&quot;&gt;Rebol 2&lt;/th&gt;&lt;th width=&quot;35%&quot; style=&quot;background-color:#BEEFEE&quot;&gt;Rebol 3&lt;/th&gt;&lt;th width=&quot;30%&quot;&gt;Description&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt&gt;repeat i [a b c] [print i]&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;&lt;tt&gt;foreach i [a b c] [print i]&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;Traverse a list of elements&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+==Series Operations==
+
+Mention reduce/only vs. delect.
+
+==Datatypes==
+
+Mention hash! vs. map!
+
+==Graphics==
+
+===unview===
+&lt;table class=&quot;wikitable&quot; style=&quot;width:100%&quot;&gt;
+&lt;tr&gt;&lt;th width=&quot;35%&quot;&gt;Rebol 2&lt;/th&gt;&lt;th width=&quot;35%&quot; style=&quot;background-color:#BEEFEE&quot;&gt;Rebol 3&lt;/th&gt;&lt;th width=&quot;30%&quot;&gt;Description&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt&gt;unview/only window&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;&lt;tt&gt;unview window&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;Hide only the specified window&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt&gt;unview/all&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;&lt;tt&gt;unview 'all&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;Hide all windows&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt&gt;unview&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;&lt;tt&gt;unview none&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;Hide the last window opened&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+===set-face===
+&lt;table class=&quot;wikitable&quot; style=&quot;width:100%&quot;&gt;
+&lt;tr&gt;&lt;th width=&quot;35%&quot;&gt;Rebol 2&lt;/th&gt;&lt;th width=&quot;35%&quot; style=&quot;background-color:#BEEFEE&quot;&gt;Rebol 3&lt;/th&gt;&lt;th width=&quot;30%&quot;&gt;Description&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt&gt;set-face/no-show face&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;&lt;tt&gt;set-face face&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;Sets a face without showing it&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt&gt;set-face&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;&lt;tt&gt;set-face/show&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;Sets a face and shows it&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+===view===
+&lt;table class=&quot;wikitable&quot; style=&quot;width:100%&quot;&gt;
+&lt;tr&gt;&lt;th width=&quot;35%&quot;&gt;Rebol 2&lt;/th&gt;&lt;th width=&quot;35%&quot; style=&quot;background-color:#BEEFEE&quot;&gt;Rebol 3&lt;/th&gt;&lt;th width=&quot;30%&quot;&gt;Description&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt&gt;view/new&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;&lt;tt&gt;view/no-wait&lt;/tt&gt;&lt;/td&gt;&lt;td&gt;Creates a new window and returns immediately&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+==Cookbook References==
+
+{{:Cookbook References}}

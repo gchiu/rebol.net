@@ -1,0 +1,28 @@
+'''For keeping track of changes to development of host kit.'''
+
+For released versions, see: [http://www.rebol.com/r3/changes.html &quot;R3 change log&quot;]
+
+==For A105 (Planned)==
+
+Bootstrap check for DLL version and struct alignment with decent error messages.
+
+Merge the module-related changes back into the release. This will require substantial testing by all developers due to implementation changes in LOAD, DO, MODULE, IMPORT, and more. Many thanks to BrianH.
+
+==For A104 (Released)==
+
+Only one change is planned: combine the host-lib with the ext-lib allowing a single pointer to access both function APIs from either the host or from extensions. The host-lib version compatibility validation test will be used for both host and extension.
+
+This change can be accomplished by padding the host-lib with reserved function slots for future expansion, but with no performance overhead.
+
+==For A103 (Released)==
+
+*Adds '''[[External Callbacks]]'''.
+*Added to reb-ext-lib.h for use in C++ includes (from RMA:Robert):
+ #ifdef __cplusplus
+ #define extern &quot;C&quot; RXIEXT __declspec(dllexport)
+ #else
+ #define RXIEXT __declspec(dllexport)
+ #endif //__cplusplus
+*Adds decoder codec for markup conversion (HTML, XML, etc.) to blocks. Use: &lt;tt&gt;decode 'markup binary&lt;/tt&gt;
+*Fix for pair set path decimal (bad conversion: &lt;tt&gt;a: 0x0 a/x: 1.0&lt;/tt&gt;).
+*Internal changes to graphics series storage method. Makes storage more efficient. Should not affect extensions code that uses proper API functions. Also, if we want to allow various alpha controls for images overall, this needs to be defined.

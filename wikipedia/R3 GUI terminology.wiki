@@ -1,0 +1,97 @@
+==Introduction==
+
+We had a couple of discussions regarding the terminology unification in R3 GUI. This page is devoted to list the related problems and to try to look for the best possible solutions. If you are in doubt what a particular notion means, you can consult the [[#Glossary|Glossary]] section below.
+
+==Layouts of faces==
+
+Carl had the following definition in his documentation: &quot;A panel is a layout of faces.&quot;
+
+===Problems===
+
+The trouble with the above terminology Carl coined and we still keep using is, that the word 'panel' was used as a name of the style as well, which means, that &quot;a panel&quot; could mean &quot;an instance of the panel style&quot; instead. Using both senses makes the documentation (and code) rather confusing.
+
+===Solution===
+
+There were attempts to solve this problem by inventing a special notion denoting the &quot;layout of faces&quot;. One of such notions coined by Ladislav was 'a container', another one coined by Cyphre was 'a compound', but, it seems that the ideal notion to use is 'a layout' (coined by Cyphre).
+
+==Panel or hpanel?==
+
+One of the problems discussed was the question whether to use the notion of 'panel' to describe the most common layout style or whether to use the 'hpanel' word. There are these alternatives:
+
+# use the current 'hpanel' word, use 'vpanel' for panels with vertical layout mode
+# use the 'panel' word, use 'vpanel' for panels with vertical layout mode, that can be expected to be less common, substantiating the longer name
+# use the 'panel' word to represent panels with the horizontal as well as with the vertical layout mode, the default layout mode being the more frequent one, the vertical layout mode being specifiable by a longer 'panel vertical' expression using the word 'vertical' as an option to specify the less frequent LAYOUT-MODE value
+
+==='Hpanel'/'vpanel' styles===
+
+====Advantages====
+
+* The layout dialect looks more specific, not leaving space for doubts about the layout mode of the panels at the first sight.
+
+* The second advantage is terminological. 'A panel' means either a hpanel or a vpanel in this case, which does not cause any confusion.
+
+====Disadvantages====
+
+* It is preferable to use the shortest name for the most frequent variant, reserving a longer name only for the less frequent variant. This argument favours other variants of naming. The practice is already used in the case of the 'align'/'valign' alignment attribute variants. Notice, that other graphic frameworks work that way too.
+
+* The current 'hpanel' and 'vpanel' styles share the same blueprint in fact, differing only by the value of the LAYOUT-MODE attribute, as this example demonstrates:
+
+&lt;pre&gt;view [
+	hpanel [button button] options [layout-mode: 'vertical]
+]&lt;/pre&gt;
+
+The example actually creates a vpanel, as you may find out running it. Thus, hpanels and vpanels differ only by their LAYOUT-MODE attribute value, which can be easily switched during run time.
+
+Taking that into account, there should be only one 'panel' blueprint, the LAYOUT-MODE attribute of which should be either 'horizontal' by default, or 'vertical', if specified otherwise by the user.
+
+==='Panel'/'vpanel' styles===
+
+====Advantages====
+
+* The layout dialect respects the principle used in graphic frameworks to use the shortest name for the most frequent case.
+
+====Disadvantages====
+
+* The layout dialect looks less specific at the first sight, the user needs to know, that the 'panel' style has a horizontal LAYOUT-MODE by default
+
+* The current 'hpanel' and 'vpanel' styles share the same blueprint in fact, differing only by the value of the LAYOUT-MODE attribute, as this example demonstrates:
+
+&lt;pre&gt;view [
+	hpanel [button button] options [layout-mode: 'vertical]
+]&lt;/pre&gt;
+
+The example actually creates a vpanel, as you may find out running it. Thus, hpanels and vpanels differ only by their LAYOUT-MODE attribute value, which can be easily switched during run time.
+
+Taking that into account, there should be only one 'panel' blueprint, the LAYOUT-MODE attribute of which should be either 'horizontal' by default, or 'vertical', if specified otherwise by the user.
+
+* There is a terminological disadvantage. In this case we don't have a common notion describing faces that are either panels or vpanels, and the usage of 'a panel' notion becomes ambiguous in this sense.
+
+===Single 'panel' style===
+
+====Advantages====
+
+* The layout dialect respects the principle used in graphic frameworks to use the shortest name for the most frequent case.
+
+* The usage of this variant acknowledges, that there is just one blueprint for all panels, the LAYOUT-MODE being an attribute settable/changeable at any time.
+
+* Yet another advantage is terminological. 'A panel' means all faces that are instances of the panel style.
+
+====Disadvantages====
+
+* The layout dialect looks less specific at the first sight, the user needs to know, that the 'panel' style has horizontal LAYOUT-MODE by default
+
+==Hgroup and vgroup==
+
+The main problems are similar as described in the previous section.
+
+==Glossary==
+
+Face: A ''face'' is a graphical object.
+
+Gob: A ''gob'' is a low-level graphical object.
+
+Style: A ''style'' is a blueprint used to create faces, instances of the said style.
+
+Layout: A ''layout'' is a face serving as a layout of faces.
+
+Layout style: A ''layout style'' is a style used as a blueprint for layout faces. We currently have e.g. the vpanel layout style in R3-GUI.

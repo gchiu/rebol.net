@@ -1,0 +1,18 @@
+==Vid Script Examples==
+&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=40% VALIGN=TOP&gt;
+[[image:Gui-test.png]]
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+
+Open R3 enter &quot;Demo&quot; and click the &quot;Run Test&quot; button.
+
+The &quot;Source&quot; button will display the source code of the layouts.
+&lt;/TD&gt;
+&lt;TD WIDTH=30%&gt;&lt;/TD&gt;
+&lt;/TR&gt;&lt;/TABLE&gt;
+
+
+
+----
+{{Template:Scripting_with_VID_TOC}}
+[[Category:GUI]]
+[[Category:VID]]

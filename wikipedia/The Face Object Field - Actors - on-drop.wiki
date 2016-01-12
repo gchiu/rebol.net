@@ -1,0 +1,13 @@
+'''on-drop''' can be invoked after '''[[The Face Object Field - Actors - on-click|on-click]]''', if a drag object exists and a mouse up event for either left, middle or right button happens.
+
+After on-drop, the drag object is automatically destroyed. on-drop is used regardless of whether the drag operation was started over this face or a different face.
+
+It can also be invoked if a file is dragged and dropped from the desktop over the face.
+
+The argument is the drag object. A return value is not necessary.
+
+===Examples===
+
+ on-drop: [
+   ; write an example here
+ ]

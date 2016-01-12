@@ -1,0 +1,1 @@
+Document merged. Go to [http://www.rebol.com/r3/docs/view/windows.html R3 View Windows]

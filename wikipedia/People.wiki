@@ -1,0 +1,46 @@
+&lt;!-- The REBOL people wiki page --&gt;
+{| align=&quot;right&quot;
+| __TOC__
+|}
+{{alphanumeric index}}
+
+&lt;span id=&quot;0&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;1&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;2&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;3&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;4&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;5&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;6&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;7&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;8&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;9&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;A&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;B&quot;&gt;&lt;/span&gt;
+==Brian Tiffin==
+
+Self employed REBOL developer.  Cheerleader.
+
+&lt;span id=&quot;C&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;D&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;E&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;F&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;G&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;H&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;I&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;J&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;K&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;L&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;M&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;N&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;O&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;P&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;Q&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;R&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;S&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;T&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;U&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;V&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;W&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;X&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;Y&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;Z&quot;&gt;&lt;/span&gt;

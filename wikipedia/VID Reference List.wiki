@@ -1,0 +1,44 @@
+{| class=&quot;wikitable&quot;
+|+ VID Reference Page
+! &lt;big&gt;Class&lt;/big&gt; !! &lt;big&gt;Documents&lt;/big&gt;
+|-
+! Usage
+|
+*[[VID User Guide]] - ''obsolete''
+*[[VID Tutorial]] - ''obsolete''
+*[[VID User Guide: Basics]] - ''obsolete''
+*[[VID User Guide: Design Overview]] - ''obsolete''
+*[[Draw]] - ''moved''
+|-
+! Technical
+|
+*[[View System]] - ''blank page''
+*[[VID: Style creation guide]] - ''obsolete''
+*[[VID: Skin creation guide]] - ''obsolete''
+*[[VID: Styles]] - ''obsolete''
+*[[VID: Commands]] - ''obsolete''
+*[[VID: Face]] - ''moved''
+*[[VID: Requesters]] - ''future''
+*[[VID: Stock Icons]] - ''future''
+*[[VID: GUI Editor]] - ''future''
+*[[VID: Style Editor]] - ''future''
+*[[VID: Internals]] - ''obsolete''
+|-
+! Background
+|
+*[[VID Requirements]]
+*[[VID Implementation Notes]] - ''obsolete''
+*[[Quirks in VID prototype 2]] - ''obsolete''
+*[[VID: Changes|Some notes on VID differences from REBOL 2 to REBOL 3]]  - ''obsolete''
+|-
+! See Also
+|
+*http://www.rebol.com/docs/view-guide.html
+*http://www.rebol.com/docs/easy-vid.html
+*http://en.wikibooks.org/wiki/REBOL_Programming/Language_Features/VID
+*http://www.dobeash.com/RebGUI/user-guide.html
+*http://www.dobeash.com/RebGUI/widgets.html
+*http://www.rebol.it/steel/modules/glayout/in-a-nutshell.html
+*http://www.rebol.net/cgi-bin/r3blog.r?view=0023 - GUI discussion
+*[[Micro-VID]]
+|}

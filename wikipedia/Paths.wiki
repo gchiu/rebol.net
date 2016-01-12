@@ -1,0 +1,97 @@
+{{underconstruction}}
+Paths work as they did before in R2, but in R3 the internal implementation is totally new.
+
+==Path Definition==
+
+'''Paths provide a way for you select or refine access to a specific value or function.''' They implement the abstraction of selection. In essence, a path navigates a value space in a consistent and reusable way.
+
+An example is a file path. It lets you refer to a specific file by providing a list of directories and the file's name:
+
+    documents/office/contract.txt
+
+Each slash ''refines'' the description of where the file is located. You can think of the names as selectors or as refinements.
+
+REBOL builds on that same concept for accessing a wide range of datatypes, not just files. For example, objects, functions, strings, to name just a few, allow paths for selection and refinement.
+
+If the concept of paths seems difficult to understand, perhaps just think of them like selectors that work on an object field. In many cases, that's how they are being used, but the implementation of the selector may vary, depending on its datatype.
+
+==Path Formats==
+
+In REBOL, a path is formed from root value and a list of refinements. Each refinement provides more specific information about how to select a value, starting from the root. Each refinement is separated by a slash (/) - a method that is identical to how URL's are written on the Internet.
+
+Here are a few example paths:
+&lt;pre&gt;
+names/12
+image/100x20
+account/balance
+source/images/globe.jpg
+USA/CA/Ukiah/size
+parse/all
+&lt;/pre&gt;
+
+So, there's nothing unusual about that. The slashes separate each refinement.
+
+===Special Forms===
+
+Although a path is normally written as shown above, there are some special formats that can be useful. Here is a list:
+
+&lt;pre&gt;
+a/b/c : - natural path - evaluates the value of the path
+a/b/c: : - set path - sets the value
+:a/b/c : - get path - get value, but do not evaluate it
+'a/b/c : - literal path - refer to the path itself
+&lt;/pre&gt;
+
+These formats are identical to those used by variables, as described in chapter NN of the REBOL User Guide.
+
+===Refinements===
+
+As shown above, refinements can be a variety of datatypes. They can be integers, pairs, strings, and a wide range of other values.
+
+It is important to realize that the type of refinement can make a difference on how a path is interpreted. For example, you can write:
+
+&lt;pre&gt;
+; If you have:
+nums: [a 10 b 20 c 30]
+; And:
+n: 4
+
+; You can write:
+nums/4
+nums/b
+nums/:n
+nums/(n)
+nums/(6 - 2)
+&lt;/pre&gt;
+
+All of those return the same value, 20.
+
+==Path Datatypes==
+
+These are the general datatype categories for paths.
+
+===Block===
+
+===String===
+
+===Object===
+
+===File===
+
+===Pair===
+
+===Tuple===
+
+===Time===
+
+===Date===
+
+===Image===
+
+===Gob===
+
+===Event===
+
+==Evaluating Special Formats==
+
+Use of DO, etc.

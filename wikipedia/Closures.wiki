@@ -1,0 +1,58 @@
+A '''closure''' is a special type of function that has persistent variables.
+
+==Concept==
+
+A '''function''' takes a set of arguments, computes with them, then returns a result. There are several types of functions, depending on how they are implemented.
+
+The most common function type is '''function!''', and they are created with code such as:
+
+   add2: func [a b] [a + b]
+
+These functions are efficient and work well for most code. But note, the variables (a and b) of the function are valid only within the body of the function. If you try to use those variables outside of the function, the results may be problematic.
+
+For example, this case returns a block that contains the variables. If after the function returns, you try to access (in this case DO) the variables, you get into trouble:
+
+   &gt;&gt; add2: func [c d] [[c + d]]
+   &gt;&gt; do add2 1 2
+   ** Script error: c word is not bound to a context
+
+This happens because the variables are locally bound (locally scoped) to the function. They only have values for the period of time during which the function is evaluating. They have no meaning outside the function.
+
+A '''closure''' function solves this problem. With a closure you can write:
+
+   &gt;&gt; add2: closure [c d] [[c + d]]
+   &gt;&gt; do add2 1 2
+   == 3
+
+This works because the variables of a closure remain valid, even outside the closure after it has been called. Such variables have ''indefinite extent''. They are not limited to the lifetime of the function.
+
+Note, however, that this luxury provided by closures is not without its costs. Closures require more time to evaluate as well as more memory space.
+
+In essence a closure is an object. When you define the closure, it constructs a prototype object, and each time you call the closure, the prototype object is instantiated and the body code is evaluated within that context. You can read more about the benefits and costs of closures in REBOL 3 [[R2_vs._R3_Contexts|here]].
+
+Here is another usage example:
+
+    &gt;&gt; make-adder: closure[x] [func [y] [x + y]]
+    == closure!
+    &gt;&gt; add-10: make-adder 10
+    == function!
+    &gt;&gt; add-2: make-adder 2
+    == function!
+    &gt;&gt; add-10 5
+    == 15
+    &gt;&gt; add-2 3
+    == 5
+
+===Add info...===
+
+closure mezzanine function
+
+closure? and any-function?
+
+USE implemented as closure
+
+actions that work on the closure datatype
+
+passing closures as values
+
+[http://en.wikipedia.org/wiki/Closure_(computer_science) More about function closures]

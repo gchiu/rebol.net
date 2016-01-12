@@ -1,0 +1,132 @@
+===Some common missteps while learning REBOL===
+
+This page may help you avoid some of the idiosyncracies in the REBOL language
+
+If something tripped you up, please &lt;span class=&quot;plainlinks&quot;&gt;[http://rebol.net/w/index.php?title=Forgoing_faux_pas&amp;action=edit&amp;section=new add]&lt;/span&gt; it here.  &amp;lowast;''Please start each topic with wikitext &lt;nowiki&gt;==topic==&lt;/nowiki&gt; two equal sign headings.''
+
+See &amp;bull; [[Handy Idioms]] &amp;bull; for some nice and positive REBOL tips and tricks.
+ 
+==none==
+
+REBOL is a value-centric language. This can lead to some little confusion with certain values and certain types. '''none''' is one of those special cases.
+
+  &gt;&gt; a: none
+  == none
+  &gt;&gt; type? a
+  == none!
+
+So far so good.  The source text ''none'' when evaluated is the value '''none''' and has a type of none!
+
+  &gt;&gt; b: [none]
+  == [none]
+  &gt;&gt; a: first b
+  == none
+  &gt;&gt; type? a
+  == word!
+
+Huh?  This time the source text ''none'' hasn't been evaluated (due to the nature of how REBOL handles blocks ... the source has been loaded but not yet evaluated ... a subtle but critical difference) so it's still just a word, with a type of word!.
+There are few ways around this.  All [[#yesno|&lt;small&gt;(well almost all)&lt;/small&gt;]] REBOL values have what is called a ''lexical form''.  These can be seen with '''mold/all'''.  These ''serialized'' formats are what REBOL detects as the '''load'''able forms.
+
+  &gt;&gt; a: none
+  == none
+  &gt;&gt; mold/all a
+  == &quot;#[none]&quot;
+  &gt;&gt; a: first [none]
+  == none
+  &gt;&gt; mold/all a
+  == &quot;none&quot;
+
+This is a minor point, but the word ''none'' (type word!) needs to be evaluated to become the value '''none''' (type none!).  So if you edit a configuration file with a text editor and put in a ''none'' thinking that '''none''' is a good default and then LOAD the file, what gets loaded is a ''word!''.  This word will test true inside an IF or EITHER expression, even though it looks like '''none''', it isn't; not yet.  One way is to evaluate the load with DO LOAD %file, but a safer REBOL way is to use the ''lexical form'', and avoid the DO. &lt;span style=&quot;color: #800000;&quot;&gt;Practice safe computing; only '''DO''' what you know to be good.&lt;/span&gt; The source text ''#[none]'' is loaded by REBOL as the value '''none''' with a type of none!, no ambiguity involved, for human or computer.
+
+This is true of all REBOL words, values and types; but ''none'' can be a little trickier when you are starting out.
+{{Hilight|For a more detailed discussion of what is involved here; please check out this Wikibook article on the REBOL [[wikibooks:REBOL_Programming/Advanced/Interpreter|Interpreter]]}}
+
+&lt;span id=&quot;yesno&quot;&gt;&lt;/span&gt;
+===Yes and No===
+
+There are a few special cases of REBOL source text that do not have equivalent lexical forms.  ''yes'' and ''no'' as well as ''on'' and ''off'' will mold/all to '''#[true]''' and '''#[false]'''.
+
+==false and zero==
+
+Just so you know.  In REBOL, '''''zero is not false'''''. '''zero''' is a value (0) of type integer! and is ''true''. So
+
+  &gt;&gt; if 0 [print &quot;true&quot;]
+  == true
+
+The only expressions that test ''false'' in REBOL are '''false''' and '''none''', and by that it is the values '''false''' (type logic!) and '''none''' (type none!).  Be careful with unevaluated words ''false'' and ''none'' as these are of type word! and they will test as ''true''.
+
+==The COPY Trap==
+
+REBOL does whatever it can to avoid copying data. This saves memory and speeds up the code. In most cases, data is not copied unless you specify it. This can lead to some interesting bugs in your code, if you are not careful when APPENDing, INSERTing or using other operations on a series!.
+
+  &gt;&gt; a: [1]
+  == [1]
+  &gt;&gt; append a 2
+  == [1 2]
+  &gt;&gt; a
+  == [1 2]
+
+This is of course expected. A simple copy can help you not affect the block you are working on. If instead of directly APPENDing to the block, you can APPEND to a copy of it:
+
+  &gt;&gt; append copy a 3
+  == [1 2 3]
+  &gt;&gt; a
+  == [1 2]
+
+No surprises there.
+
+But here's the trap: The trap usually occurs when using a block inside another structure, such as a function:
+
+  f: has [t] [t: [] append t 1]
+
+Now if you run this function once, it works OK:
+
+  &gt;&gt; f
+  == [1]
+
+But if you run it multiple times, you get:
+
+  &gt;&gt; f
+  == [1 1]
+  &gt;&gt; f
+  == [1 1 1]
+
+We didn't copy the block. REBOL is aggressively reusing the very same memory area for the T block, even if T is local to the function and therefore T just acculumates 1's. To solve this, simply copy the block first. This forces the block to be re-allocated every time you run the function.
+
+  &gt;&gt; f: has [t] [t: copy [] append t 1]
+  &gt;&gt; f
+  == [1]
+  &gt;&gt; f
+  == [1]
+
+So beware whenever using blocks or strings inside structures, such as functions, objects and other blocks.
+
+==apply and refinements==
+
+Please be aware that when passing arguments to functions with '''apply''', that the refinements are positional.
+
+  &gt;&gt; f: func [a b c /one o /two t] [print [a b c one o two t]]
+  &gt;&gt; apply :f [1 2 3 /two &quot;this is labeled as two&quot; /one &quot;looks like one&quot;]
+  1 2 3 true this is labeled as two true looks like one
+
+You will see that ''one'' prints as true with the data the looks like it was destined for ''/two''.  ''two'' prints as true and gets the data that looks like it was destined for the ''/one'' refinement.
+
+It may be better behaviour to get used to passing the refinements as false for the refinement and with a value of none for the parameter.
+
+  &gt;&gt; apply :f [1 2 3]
+  1 2 3 none none none none
+
+As skipping any optional refinement data may not act as expected under normal interpretation behaviour.
+
+  &gt;&gt; apply :f [1 2 3 false true &quot;Data for /two&quot;]
+  1 2 3 none none true none
+
+You need
+
+  &gt;&gt; apply :f [1 2 3 false none true &quot;Data for /two&quot;]
+  1 2 3 none none true Data for /two
+
+to get what is normally
+
+  &gt;&gt; f/two 1 2 3 &quot;Data for /two&quot;
+  1 2 3 none none true Data for /two

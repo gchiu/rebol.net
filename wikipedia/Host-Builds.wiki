@@ -1,0 +1,45 @@
+'''For temporary plans and notes related to the R3 host kit.'''
+
+See the [http://www.rebol.com/r3/docs/concepts/host-kit.html R3 Host Kit Manual] for information about using the host kit to build your own executable.
+
+==Objective==
+
+Release the REBOL 3.0 Host Kit (host environment, including source code, include files, and core library).
+
+===Release Stages===
+
+#[x] Core - Win32 host to initial developers (Dec-2)
+#[x] Core - Posix hosts (Linux: Dec-12, OSX: ?, Others)
+#[ ] View - experimental releases (draw, richtext, effects)
+#[ ] View - final form, with updates to VID for any changes
+#[ ] View - ports to Linux, OS X, etc. (from developers)
+#[ ] Full release of '''REBOL 3.0 Host Kit'''
+
+===Development Plan===
+
+First stage:
+
+*[x] Reconfigure for Core target (non-View, same as current posix builds)
+*[x] Build initial test host and lib
+*[x] Debug host and lib
+*[x] Review and update all host related include files
+*[x] Merge host include files with lib includes (to stay sync'd, if possible)
+*[x] Update makefiles (script built)
+*[x] Scan host sources for marker tags and review them
+*[x] Rename lib function name prefixes? (do not use REBOL_)
+*[x] Update host source headers
+
+Second stage:
+
+*[x] Modify build scripts for Posix and makefiles
+*[x] Add .so support for Core lib
+*[ ] Research the .so equivalent method on OS X
+
+Future:
+
+*Write and post OSLA (two kinds)
+*Setup RebDev (R3 Chat) source archive area
+*Modify build scripts for dual targets (core and view)
+*Move Delect interfaces to Command! based interfaces
+*Build view target
+*Add more documentation, as needed

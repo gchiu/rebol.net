@@ -1,0 +1,68 @@
+__NOTOC__
+== New Recipes ==
+
+=== 4-Oct-2008: 64-bit Decimals ===
+
+Old document converted to recipe. Explains the way 64-bit decimals work in R3 from the IEEE standard. It can be seen [[Decimals-64|here]].
+
+=== 6-Jun-2008: AltME Bug Tracker Structure ===
+
+Explains the structure of the bug tracker in AltME for helping with writing scripts that take advantage of the bug tracker. It can be seen [[AltME Bug Tracker Structure|here]].
+
+=== 1-May-2008: TCP Port Details ===
+
+New recipe for describing the R3 TCP Port in detail in R3. It can be seen [[TCP Port Details|here]].
+
+=== 18-Apr-2008: R2 vs. R3 Contexts ===
+
+New recipe for describing the difference between R2 and R3 contexts as well as explaining R3 closures. It can be seen [[R2 vs. R3 Contexts|here]].
+
+=== 1-Feb-2008: Mandatory Reading ===
+
+New recipe for REBOL Technologies employees and R3 alpha developers. It can be seen [[Mandatory Reading|here]].
+
+=== 1-Feb-2008: Release Process ===
+
+This document has been changed into a cookbook recipe. It can be seen [[Release Process|here]].
+
+=== 1-Feb-2008: R2 vs. R3 Function List ===
+
+An auto-generated list of changes between R2 and R3 function by function. The page has been created, but no list has been generated yet, since the script does not yet exist. Please read [[R2 vs. R3 function list|here]] for further instructions on how this script should be built.
+
+=== 1-Feb-2008: Changes between R2 and R3 ===
+
+A list of the major changes between R2 and R3 along with a list of affected function for each change. It can be seen [[Changes between R2 and R3|here]].
+
+=== 10-Jan-2008: FAQ on Design of View ===
+
+A collection of questions regarding the design of View for REBOL 3 has been made from a plain page into a cookbook recipe. It can be seen [[FAQ on Design of View|here]].
+
+=== 10-Jan-2008: Porting R3 to other OSes ===
+
+A collection of notes on how to port REBOL 3 to a new operating system has been made from a plain page into a cookbook recipe. It can be seen [[Porting Recipe|here]].
+
+=== 10-Jan-2008: How to do things the new Rebol 3 way ===
+
+A description of how we did things in REBOL 2 and how we now do those same things in REBOL 3. Converted from a plain page to a cookbook recipe. Can be found [[How to do things the new Rebol 3 way|here]].
+
+== Changed Recipes ==
+
+For changed recipes, the best method right now is to visit the [[Special:Recentchanges|Recent Changes]] page.
+
+== New Cookbooks ==
+
+=== 4-Oct-2008: REBOL Internals Cookbook ===
+
+Documents that describe internals of REBOL 3.
+
+=== 1-Feb-2008: RT Developer Cookbook ===
+
+Various documents intended for REBOL Technologies employees and developers.
+
+=== 1-Feb-2008: R2 vs. R3 Cookbook ===
+
+Various lists of the differences between R2 and R3 go into this cookbook.
+
+=== 10-Jan-2008: FAQ Cookbook ===
+
+All FAQs go into this cookbook.

@@ -1,0 +1,17 @@
+==VID Grouping Explained==
+
+{{Need|This is a stub - getting topics on paper}}
+
+VID layout flow is based on GROUP, similar to an HTML table.  Cells are aligned; all cells within a column are the same width and within a row, cells are all the same height.
+
+===Sizing===
+
+The cell sizing includes:
+
+*''natural'' size; '''face/size'''.
+*''shrink'', how much a face can shrink; '''face/shrink'''  
+*''stretch'', how much a face can stretch; '''face/stretch'''.  See [[VID:_Skin_creation_guide#SIZE.2C_SHRINK_and_STRETCH|Shrink and Stretch]] for a diagram and description of this powerful layout feature.
+
+There is a sequence of events that occur to determine the ''natural'' size that includes resizing to maintain consistent hieght and width of cell rows and columns.  With the shrink and stretch controls, default layouts remain consistent across window resizing while allowing for fine tuning.
+
+The styles '''BLANK''' (size: 0x0 - little stretch and shrink), '''PAD''' (size: 24x24, subject to change - same stretch and shrink as BLANK) and '''FILL''' (size: 100x100 - lots of stretch) all assist in this fine tuning.

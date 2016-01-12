@@ -1,0 +1,69 @@
+The R3 alpha uses the default Windows console. This is a temporary situation until the new console has been created.
+
+==Copy and Paste==
+
+In order to '''copy to and paste''' from the clipboard easily in the XP console, you need to enable '''Quick Edit mode''' in the properties menu. (Note: Quick Edit mode is enabled by default in Windows Server 2003.)
+
+Here's how:
+
+#Right click the title bar, or left click on the icon at the upper left corner of the window, and select Properties.
+#In the Options panel, turn on &quot;QuickEdit Mode&quot; and &quot;Insert Mode&quot; and click the OK button.
+#If you start the program from a shortcut you can save these settings by selecting &quot;Modify the shortcut that started this window&quot; in the popup window that follows.
+
+Now you can select text by dragging with the left button down. Note that the text is selected in a rectangular block rather than by line.
+
+'''Right click''' to copy text to the clipboard.
+
+To paste from the clipboard, '''right click'''.
+
+==Scroll Wheel==
+
+It appears that the above Quick Edit change also enables the scroll wheel. Of course, your results for the MS console may vary, depending on release, country, time of day, prior RAM contents, temperature of CPU, etc.
+
+==Echo Mode==
+
+For large output, REBOL provides an echo mode. You can enable it with:
+
+   echo on
+
+to produce a file called output.txt or you can write:
+
+   echo %textfile.txt
+
+for any filename you want.
+
+Use:
+
+   echo off
+
+to close the file. It is also closed when you exit REBOL.
+
+==Special Commands==
+
+For developers, there are a few special &quot;Unix-like&quot; functions that may be of help.
+
+; ls : to list files.  Also, ls dir works, and you can do ls/l, ls/f, ls/r, and combinations like ls/r/f, etc. HELP ls for info.
+
+; cd : to change current dir (or show the current dir if no arg)
+
+; pwd : to see current dir (or use CD with no args)
+
+; more : to view a file
+
+; rm : to delete a file
+
+
+
+==Cygwin Alternative console, rxvt==
+
+Cygwin includes a package, '''rxvt''' which includes a split-personality mode when running without an X11 server.  It looks nice and if you start the alpha with
+
+ $ rlwrap rebhost.exe 
+
+you'll also have access to cursor key command recall.  '''rlwrap''' comes with the GNU readline utilities within Cygwin.  Cygwin can be found at [http://www.cygwin.com Cygwin Home]. The rxvt package needs to be included separately after the Base install.  Tests ok under Win98 and Windows Vista and does not require the X11 server.
+
+=== rxvt Problems===
+
+The rxvt console is not great for stdio redirection so fallback to the Windows console for testing  anything not pure REBOL.
+
+ Also, bugs should always be verified in the default Windows console before reporting.

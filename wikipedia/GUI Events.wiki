@@ -1,0 +1,1 @@
+This document has been removed. See [http://www.rebol.com/r3/docs/view/events.html &quot;R3 View Events&quot;].

@@ -1,0 +1,30 @@
+Various changes have been made to the FORSKIP (and FORALL) functions.
+
+*They have returned to being native functions.
+
+*The FORSKIP function allows negative skip sizes:
+
+    blk: [a b c d]
+    forskip tail blk -2 [probe blk]
+
+This will print:
+
+    [c d]
+    [a b c d]
+
+Note that for negative numbers the decrement happens '''before the block is evaluated''', not after (as is done for positive numbers). This seems the most useful, the above code is an example. (Let me know if you think this behavior is not correct.)
+
+*In addition for negative skip sizes, '''non-modulo blocks will terminate early''':
+
+    blk: [a b c]
+    forskip tail blk -2 [probe blk]
+
+produces only:
+
+    [b c]
+
+The next iteration is not valid, because the position is before the block's head. This behavior is not true for positive increments, which are allowed to return non-modulo results.
+
+*Also note that a skip size of zero is allowed. It is an infinite loop.
+
+*A '''decimal skip value will be truncated to an integer'''. (This may not be the best choice, let me know if you have a better idea.)

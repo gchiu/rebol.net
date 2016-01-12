@@ -1,0 +1,33 @@
+These datatypes are in transition, meaning that they are not yet fully implemented in the Alpha release of R3.
+
+; closure : This currently has a 'self capture bug, but otherwise works.
+
+; error : Has been changed to be passive (disarmed by default). This will lead to a few new situations to address in evaluation.
+
+; frame : 
+
+; handle : 
+
+; map : Mostly functional. This is the replacement for HASH! and works differently. Maps are no longer a series type, they are more like objects. Maps do not have position like series. Some of the actions that work on series also work on maps. Any bugs should be reported.
+
+; module : 
+
+; object : Many details about the specification block still pending. This also relates to all other object-based types: such as module, task, etc. In addition, the action of SELF is not yet online - it is different in a major way.
+
+; percent : Partial implementation. Mainly missing are the various type conversions for mixed datatype expressions. Also, we need a &quot;precision&quot; field for FORMing these.
+
+; port : Mostly works. Not backwards-compatible with R2. Any bugs should be reported.
+
+; rebcode : On hold for a total rethink. Backwards compatibility is unlikely.
+
+; routine : You can't make these yet.
+
+; struct : You can't make these yet.
+
+; task : 
+
+; unicode : Partial implementation. Works well internally but most of the conversion functions are still missing and there is no GUI support yet.
+
+; utype : You can't make these yet.
+
+; vector : Partial implementation. Do not try to use it yet. Some parts may work, but many will not.

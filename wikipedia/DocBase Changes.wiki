@@ -1,0 +1,11 @@
+== Searches ==
+
+Added [[Special Searches]] for one-click searches for pages that are under construction, are nearly complete, need more content or are marked for deletion.
+
+== News Section ==
+
+New News section to collect all news related to all REBOL Technologies related products, both internal and public. See [[REBOL_3|here]].
+
+== Templates ==
+
+&lt;span class=&quot;plainlinks&quot;&gt;List of available [http://rebol.net/w/index.php?title=Special%3AAllpages&amp;from=&amp;namespace=10 DocBase Templates]&lt;/span&gt;

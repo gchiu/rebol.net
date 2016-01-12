@@ -1,0 +1,865 @@
+'''Author: Ladislav Mecir'''
+
+==Acknowledgments==
+I would like to thank the men that influenced this article in some way. Those are especially Galt Barber, Brian D., Mark Dickson, Elan Goldman, Brian Hawley, Gregg Irwin, Thomas Jensen, Pierre Johnson, Holger Kruse, Volker Nitsch, Larry Palmiter, Patrick Philipot, Gabriele Santilli, Carl Sassenrath, Frank Sievertsen and Romano Paolo Tenca. Any errors are my copyright.
+
+==References==
+The code in this article was tested in REBOL/View 2.7.6.3.1. It is possible that other versions of the interpreter yield different results.
+
+A reader who wants to check all the examples can run this code: 
+&lt;pre&gt;do http://www.rebol.org/download-a-script.r?script-name=contexts.r&lt;/pre&gt;
+, which defines all functions from this article.
+
+==Word types==
+REBOL words like all REBOL values have type. Let's have a look at all available word types:
+ &lt;nowiki&gt;type? first [rebol] ; == word!
+type? first [rebol:] ; == set-word!
+type? first [:rebol] ; == get-word!
+type? first ['rebol] ; == lit-word!
+type? first [/rebol] ; == refinement!&lt;/nowiki&gt;
+Moreover, all REBOL words have a common pseudo-type ANY-WORD!:
+ &lt;nowiki&gt;any-word? first [rebol] ; == true
+any-word? first [rebol:] ; == true
+any-word? first [:rebol] ; == true
+any-word? first ['rebol] ; == true
+any-word? first [/rebol] ; == true&lt;/nowiki&gt;
+
+==Spelling==
+Every word has got a spelling. The spelling of a word is a string and it is one of the properties the above example words have in common. We can obtain the spelling of a word using the TO-STRING function:
+
+ &lt;nowiki&gt;to-string first [rebol] ; == &quot;rebol&quot;
+to-string first [rebol:] ; == &quot;rebol&quot;
+to-string first [:rebol] ; == &quot;rebol&quot;
+to-string first ['rebol] ; == &quot;rebol&quot;
+to-string first [/rebol] ; == &quot;rebol&quot;&lt;/nowiki&gt;
+Observation (Unusual spellings): Words normally don't have some spellings like spellings containing spaces, spellings starting with a colon, etc. On the other hand, it is possible to create a word having any spelling as follows:
+ &lt;nowiki&gt;unusual: make word! &quot;:unusual word:&quot;
+type? unusual ; == word!
+to-string unusual ; == &quot;:unusual word:&quot;&lt;/nowiki&gt;
+Observation (Spelling and word equality): Words with strict equal spelling are equal.
+
+Illustration:
+ equal? first [rebol] first [rebol:] ; == true
+The reverse implication does not hold (since REBOL supports aliases). Nevertheless, we can reverse the implication at least in some way.
+
+Observation (SAME? and spelling): If two words are the same according to the SAME? function then they have got strict equal spelling.
+
+==Variables==
+A very important property of words is the ability to serve as variables (refer to REBOL values). To set a variable 'rebolution to refer to a REBOL string &quot;uprising&quot; we can pick one of the following:
+ &lt;nowiki&gt;rebolution: &quot;uprising&quot;
+set 'rebolution &quot;uprising&quot;
+set/any 'rebolution &quot;uprising&quot;
+set first [rebolution:] &quot;uprising&quot;&lt;/nowiki&gt;
+etc.
+
+To get the value a variable refers to we can pick one of the following:
+ &lt;nowiki&gt;:rebolution
+get 'rebolution
+get/any 'rebolution&lt;/nowiki&gt;
+etc.
+
+Observation (Variables): The ability of words to serve as variables is closely related to a word property called binding. A word is a variable if and only if it is bound to a context (has a context, is in a context).
+
+Illustration:
+ &lt;nowiki&gt;; a refinement
+get/any /rebol
+** Script Error: rebol word has no context
+** Near: get/any /rebol&lt;/nowiki&gt;
+The easiest way how to find out if a word is a variable is to use the properties of the BIND? function, which returns NONE for words that aren't variables:
+ &lt;nowiki&gt;variable?: func [
+    {is the given WORD a variable?}
+    word [any-word!]
+] [
+    found? bind? :word
+]&lt;/nowiki&gt;
+Tests:
+ &lt;nowiki&gt;variable? 'rebol ; == true
+variable? /rebol ; == false&lt;/nowiki&gt;
+Observation (Context uniqueness): As the BIND? function helps us to find out, for every REBOL word there is at most one context the given word is bound to.
+
+Corollary (Context hierarchy): From the above observation follows that in REBOL there is no context hierarchy, because a context hierarchy would require some word being bound to at least two distinct contexts, one being &quot;smaller&quot; than the other.
+
+Observation (Word sameness): According to the SAME? function two words are the same if and only if they have strict equal spelling and equal binding.
+
+Observation (The result of the BIND? function): When the BIND? function is used to obtain the context of a word in an object, the result of the BIND? function &quot;is not considered identical&quot; with the object.
+
+Illustration:
+ &lt;nowiki&gt;o: make object! [a: none]
+o-context: bind? in o 'a
+same? o o-context ; == false&lt;/nowiki&gt;
+Observation (Equal words need not have equal binding): In fact, the opposite is true. For any word we can create a word having strict equal spelling, equal type and different binding.
+ &lt;nowiki&gt;different-binding: func [
+    {
+        for a given WORD yield a word having
+        strict equal spelling, equal type and different binding
+    }
+    word [any-word!] {the given word}
+] [
+    bind :word case [
+        'self = :word [use [self] ['self]]
+        set-word? :word [make object! reduce [:word none]]
+        true [first second make function! reduce ['self :word] [self]]
+    ]
+]&lt;/nowiki&gt;
+Let's test, whether the function does what we declared:
+ &lt;nowiki&gt;word1: 'a ; == a
+word2: different-binding word1 ; == a
+strict-equal? to-string word1 to-string word2 ; == true
+equal? type? word1 type? word2 ; == true
+equal? bind? word1 bind? word2 ; == false
+set word1 1
+set word2 2
+get word1 ; == 1
+get word2 ; == 2&lt;/nowiki&gt;
+The test shows that W0RD1 and WORD2 have strict equal spelling and equal type. Their bindings are different. They can refer to different values at the same time, so they are distinct variables. Another test:
+ &lt;nowiki&gt;word1: /a ; == /a
+word2: different-binding word1 ; == /a
+same? word1 word2 ; == false
+equal? bind? word1 bind? word2 ; == false&lt;/nowiki&gt;
+
+==The BIND function==
+When we need to get a word having the spelling and type a given WORDS word has and the context a given KNOWN-WORD has, we can use the BIND function.
+
+This is how the BIND function works:
+
+===Binding to no context===
+Observation (Binding to no context): If the KNOWN-WORD has no context, BIND causes an error.
+
+Illustration:
+ &lt;nowiki&gt;a-word: second first context [rebol: 1] ; == rebol
+bind? a-word ; == none
+bind 'a a-word
+** Script Error: rebol word has no context
+** Near: bind 'a a-word&lt;/nowiki&gt;
+
+===Binding when the WORDS argument is a word===
+Observation (Effective bind): If it is possible, the BIND function yields a word having the spelling and type of the WORDS argument and the context of the KNOWN-WORD argument.
+
+Illustration:
+ &lt;nowiki&gt;words: 'a ; == a
+known-word: use [a b] ['b] ; == b
+result: bind words known-word ; == a
+equal? bind? known-word bind? result ; == true
+same? words known-word ; == false&lt;/nowiki&gt;
+We observe that the result has got the spelling and the type of the WORDS word, but it isn't the WORDS word because it is bound to the same context as the KNOWN-WORD is.
+
+Observation (Equal words and effective bind): If WORD1 is a variable having a context CONTEXT and WORD2 is equal to WORD1 then WORD2 can be bound to CONTEXT too.
+
+Observation (Ineffective bind): In case the BIND function cannot yield a word having the spelling and type of the WORDS argument and the binding of the KNOWN-WORD argument, BIND returns the WORDS argument.
+ &lt;nowiki&gt;words: 'c ; == c
+known-word: use [a b] ['b] ; == b
+result: bind words known-word ; == c
+same? words result ; == true&lt;/nowiki&gt;
+In this case BIND simply returned the WORDS word.
+
+===Binding when the WORDS argument is a block===
+Observation (Binding block without copying): If the /COPY refinement isn't used, BIND replaces the elements of the block by results of their binding. There is one exception to this rule: BIND doesn't bind refinements contained in the block.
+
+==Aliases==
+Definition (Aliases): Equal words that do not have strict equal spelling we call aliases.
+
+This is our definition translated to REBOL:
+ &lt;nowiki&gt;aliases?: func [
+    {find out, if WORD1 and WORD2 are aliases}
+    word1 [any-word!]
+    word2 [any-word!]
+] [
+    found? all [
+        equal? :word1 :word2
+        strict-not-equal? to-string :word1 to-string :word2
+    ]
+]&lt;/nowiki&gt;
+Corollary (Word equality): Two words are equal if and only if one of the following conditions holds:
+#the words have strict equal spelling
+#the words are aliases
+Corollary (Aliases and SAME?): The SAME? function yields FALSE when comparing two aliases.
+
+Proof: See the (SAME? and spelling) observation and our definition of aliases.
+
+Observation (Automatic aliases): Since REBOL tries to be case-insensitive, the interpreter usually (except for inconsistencies) &quot;considers&quot; words with spellings differing only in case to be aliases.
+
+Observation (ALIAS): Aliases can be defined explicitly using the ALIAS function.
+ &lt;nowiki&gt;; let's create an alias 'revolutionary for the word 'rebol
+alias 'rebol &quot;revolutionary&quot;
+; 'rebol and 'revolutionary will be equal words with different spelling:
+equal? 'rebol 'revolutionary ; == true
+strict-equal? to-string 'rebol to-string 'revolutionary ; == false
+aliases? 'rebol 'mean ; == false
+aliases? 'rebol 'rebol ; == false
+aliases? 'rebol 'revolutionary ; == true
+aliases? 'system 'SYSTEM ; == true&lt;/nowiki&gt;
+Observation (ALIAS return value): The ALIAS function returns unbound words.
+ &lt;nowiki&gt;y: alias 'x &quot;xx&quot; ; == xx
+bind? y ; == none&lt;/nowiki&gt;
+Observation (Variable sameness): Two words are one variable if and only if they are equal and their bindings are equal too.
+ &lt;nowiki&gt;same-variable?: func [
+    {are WORD1 and WORD2 the same variable?}
+    word1 [any-word!]
+    word2 [any-word!]
+] [
+    found? all [
+        equal? :word1 :word2
+        equal? bind? :word1 bind? :word2
+    ]
+]&lt;/nowiki&gt;
+Observation (Alternative definition of ALIASES?): According to our previous observations this definition is equivalent to our original definition:
+ &lt;nowiki&gt;aliases?: func [
+    {find out, if WORD1 and WORD2 are aliases}
+    word1 [any-word!]
+    word2 [any-word!]
+    /local context
+] [
+    found? all [
+        equal? :word1 :word2
+        (
+            if context: any [bind? :word1 bind? :word2] [
+                word1: in context :word1
+                word2: in context :word2
+            ]
+            ; WORD1 and WORD2 have equal binding now
+            not same? :word1 :word2
+        )
+    ]
+]&lt;/nowiki&gt;
+The alternative definition looks more complicated, but it is faster due to the fact that it does not need to manipulate strings.
+
+==Context words==
+The BIND? function allows us to find the context of a given word. The reverse task is a task to find all words that are in a given CONTEXT context. It can be done as follows:
+ &lt;nowiki&gt;context-words?: func [
+    {get the words in a given CONTEXT}
+    context [object!]
+] [
+    bind first context context
+]&lt;/nowiki&gt;
+Observation (Simplified set of context words): The block obtained as the result of the &lt;code&gt;first context&lt;/code&gt; expression is a simplified set of context words. As opposed to the result of the above function it contains unbound words. Moreover, similarly as the result of the above function it doesn't contain aliases of its words and it contains only words of the WORD! datatype.
+
+Illustration:
+ &lt;nowiki&gt;alias 'rebol &quot;rebellious&quot;
+o: make object! [rebellious: 1]
+first o ; == [self rebellious]
+bind? first first o ; == none
+in o 'rebol ; == rebol&lt;/nowiki&gt;
+
+==The global context==
+Definition (Global context): The global context can be defined e.g. as follows:
+ global-context: bind? 'system
+Note: This is not the only option, another one is to define it as the SYSTEM/WORDS object. The above definition gives us the simplest possible definition of global words.
+
+Definition (Global words/global variables): The words that are bound to the global context we call global words (global variables):
+ &lt;nowiki&gt;global?: func [
+    {find out if a WORD is global}
+    word [any-word! object!]
+] [
+    same? global-context bind? :word
+]&lt;/nowiki&gt;
+Observation (MAKE, TO, LOAD, BIND and the global context): The words created by MAKE WORD!, MAKE SET-WORD!, MAKE GET-WORD!, MAKE LIT-WORD!, MAKE REFINEMENT!, TO WORD!, TO SET-WORD!, TO GET-WORD!, TO LIT-WORD!, TO REFINEMENT!, LOAD and BIND WORD 'SYSTEM are global.
+
+Illustration:
+ &lt;nowiki&gt;global? make word! first first rebol/words ; == true
+global? to word! first first rebol/words ; == true&lt;/nowiki&gt;
+Observation (Automatic growth): The global context can be enlarged using the MAKE, TO, LOAD and BIND functions. On the other hand, the IN function doesn't enlarge the global context.
+
+Observation (MAKE, TO and unbound words): All words contained in a result block of MAKE BLOCK!, TO BLOCK! and in its subblocks are unbound if the SPEC argument is a string.
+
+Illustration:
+&lt;pre&gt;bind? first make block! &quot;unbound&quot; ; == none
+bind? first first first make block! &quot;[[unbound-too]]&quot; ; == none&lt;/pre&gt;
+
+==Local contexts==
+Definition (Local words/local variables): The words that are neither unbound nor global we call local words (local variables):
+&lt;pre&gt;local?: func [
+    {find out, if a WORD is local}
+    word [any-word!]
+] [
+    not any [
+        none? bind? :word
+        global? :word
+    ]
+]&lt;/pre&gt;
+Definition (Local context): A context is called local context if its words are local words.
+
+Observation (Local context types): User defined objects, function contexts and USE contexts are local contexts. In addition to these we can use the BIND? function to &quot;convert&quot; user defined objects and ports to contexts and using the DISARM function we can convert errors to objects. All the results are local contexts. The main distinction between the function- and USE- contexts and all other context types lies in the fact that the function- and USE- contexts don't need to contain a word equal to the word 'self.
+
+Observation (Enlarging local contexts): Local contexts aren't enlargeable.
+
+Observation (The result of the DIFFERENT-BINDING function): The result of the DIFFERENT-BINDING function as we defined it above is always a local word.
+
+==Computed binding==
+Let's observe the behaviour of the REBOL interpreter when evaluating an example code string:
+ code-string: {'f 'g 'h use [g h] [colorize &quot;USE 1&quot; 'f 'g 'h use [h] [colorize &quot;USE 2&quot; 'f 'g 'h]]}
+
+The COLORIZE function will colorize the code listing as follows:
+* the unbound words will be &lt;font color=&quot;brown&quot;&gt;brown&lt;/font&gt;
+* the global words will be &lt;font color=&quot;blue&quot;&gt;blue&lt;/font&gt;
+* the words bound by the first USE evaluation will be &lt;font color=&quot;red&quot;&gt;red&lt;/font&gt;
+* the words bound by the second USE evaluation will be &lt;font color=&quot;magenta&quot;&gt;magenta&lt;/font&gt;
+ &lt;nowiki&gt;emit: func [text [char! string! block!]] [
+    append result either block? text [rejoin text] [text]
+]
+
+colorize: func [
+    {emit a table row containing text and the colorized code block}
+    text [string!]
+    /local space?
+] [
+    emit [&quot;^/|-^/| &quot; text &quot;^/| &quot;]
+    space?: &quot;&quot;
+    parse code-block rule: [
+        (
+            emit [space? #&quot;[&quot;]
+            space?: &quot;&quot;
+        )
+        any [
+            [
+                set word any-word! (
+                    emit [
+                        space?
+                        {&lt;font color=&quot;}
+                        case [
+                            not bind? :word [&quot;brown&quot;]
+                            global? :word [&quot;blue&quot;]
+                            equal? bind? :word bind? code-block/6/4 [&quot;red&quot;]
+                            equal? bind? :word bind? code-block/6/8/5 [
+                                &quot;magenta&quot;
+                            ]
+                        ]
+                        {&quot;&gt;}
+                        mold :word
+                        &lt;/font&gt;
+                    ]
+                ) | into rule | set word skip (
+                    emit [space? mold :word]
+                )
+            ]
+            (space?: &quot; &quot;)
+        ]
+        (emit #&quot;]&quot;)
+    ]
+]&lt;/nowiki&gt;
+Let's watch how the code is being interpreted:
+ &lt;nowiki&gt;; the result will be a wikitable
+result: {^{| class=&quot;wikitable&quot; border=&quot;1&quot;
+|-
+! Text
+! Code}
+
+; first, the interpreter creates a code block
+code-block: make block! code-string
+colorize &quot;String to block conversion&quot;
+
+; next, the code block is bound to the global context
+bind code-block global-context
+colorize &quot;Code block bound to the global context&quot;
+
+; and then the code block is interpreted
+do code-block
+
+; now we close the table
+emit &quot;^/|}^/&quot;
+
+write clipboard:// result&lt;/nowiki&gt;
+The result (pasted here from the clipboard) is:
+{| class=&quot;wikitable&quot; border=&quot;1&quot;
+|-
+! Text
+! Code
+|-
+| String to block conversion
+| [&lt;font color=&quot;brown&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;brown&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;brown&quot;&gt;'h&lt;/font&gt; &lt;font color=&quot;brown&quot;&gt;use&lt;/font&gt; [&lt;font color=&quot;brown&quot;&gt;g&lt;/font&gt; &lt;font color=&quot;brown&quot;&gt;h&lt;/font&gt;] [&lt;font color=&quot;brown&quot;&gt;colorize&lt;/font&gt; &quot;USE 1&quot; &lt;font color=&quot;brown&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;brown&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;brown&quot;&gt;'h&lt;/font&gt; &lt;font color=&quot;brown&quot;&gt;use&lt;/font&gt; [&lt;font color=&quot;brown&quot;&gt;h&lt;/font&gt;] [&lt;font color=&quot;brown&quot;&gt;colorize&lt;/font&gt; &quot;USE 2&quot; &lt;font color=&quot;brown&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;brown&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;brown&quot;&gt;'h&lt;/font&gt;]]]
+|-
+| Code block bound to the global context
+| [&lt;font color=&quot;blue&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'h&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;use&lt;/font&gt; [&lt;font color=&quot;blue&quot;&gt;g&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;h&lt;/font&gt;] [&lt;font color=&quot;blue&quot;&gt;colorize&lt;/font&gt; &quot;USE 1&quot; &lt;font color=&quot;blue&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'h&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;use&lt;/font&gt; [&lt;font color=&quot;blue&quot;&gt;h&lt;/font&gt;] [&lt;font color=&quot;blue&quot;&gt;colorize&lt;/font&gt; &quot;USE 2&quot; &lt;font color=&quot;blue&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'h&lt;/font&gt;]]]
+|-
+| USE 1
+| [&lt;font color=&quot;blue&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'h&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;use&lt;/font&gt; [&lt;font color=&quot;blue&quot;&gt;g&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;h&lt;/font&gt;] [&lt;font color=&quot;blue&quot;&gt;colorize&lt;/font&gt; &quot;USE 1&quot; &lt;font color=&quot;blue&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;red&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;red&quot;&gt;'h&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;use&lt;/font&gt; [&lt;font color=&quot;red&quot;&gt;h&lt;/font&gt;] [&lt;font color=&quot;blue&quot;&gt;colorize&lt;/font&gt; &quot;USE 2&quot; &lt;font color=&quot;blue&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;red&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;red&quot;&gt;'h&lt;/font&gt;]]]
+|-
+| USE 2
+| [&lt;font color=&quot;blue&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;'h&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;use&lt;/font&gt; [&lt;font color=&quot;blue&quot;&gt;g&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;h&lt;/font&gt;] [&lt;font color=&quot;blue&quot;&gt;colorize&lt;/font&gt; &quot;USE 1&quot; &lt;font color=&quot;blue&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;red&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;red&quot;&gt;'h&lt;/font&gt; &lt;font color=&quot;blue&quot;&gt;use&lt;/font&gt; [&lt;font color=&quot;red&quot;&gt;h&lt;/font&gt;] [&lt;font color=&quot;blue&quot;&gt;colorize&lt;/font&gt; &quot;USE 2&quot; &lt;font color=&quot;blue&quot;&gt;'f&lt;/font&gt; &lt;font color=&quot;red&quot;&gt;'g&lt;/font&gt; &lt;font color=&quot;magenta&quot;&gt;'h&lt;/font&gt;]]]
+|}
+The result proves that:
+*After the string to block conversion all words in the CODE-BLOCK were unbound
+*After the CODE-BLOCK was bound to the global context all words in the CODE-BLOCK were global
+*The first USE call replaced all words 'g and 'h from its body block and its subblock with local USE 1 words
+*The second USE call replaced the 'h in the innermost block with the local USE 2 word
+
+Observation (Computed binding): During the interpretation the binding of REBOL words contained in the code is changed (i.e. the words are being replaced by words with different binding) until they are bound correctly and evaluated. That is why the creator of REBOL calls this behaviour &quot;Computed binding&quot;.
+
+==Scope==
+It looks like we observed a &quot;scope hierarchy&quot; during the execution of the above REBOL code. As we have demonstrated, it was only a side effect of the computed binding.
+
+With a help of the computed binding we can easily create code samples, which do not exhibit any &quot;scope&quot; property:
+ &lt;nowiki&gt;; create a block CODE-BLK containing a word 'a
+code-blk: copy [a]
+a: 12
+
+; now append another word 'a to CODE-BLK
+make object! [append code-blk 'a a: 13]
+
+code-blk ; == [a a]
+
+; test if CODE-BLK contains equal words
+equal? first code-blk second code-blk ; == true
+
+; prove that the CODE-BLK is not a &quot;scope&quot;
+equal? bind? first code-blk bind? second code-blk ; == false&lt;/nowiki&gt;
+
+The CODE-BLK example demonstrates that for a code block there is no such thing as its &quot;current context&quot; in REBOL because in REBOL only individual words are associated with context.
+
+==The USE function==
+To be as precise as possible we will write the description of the USE function behaviour in REBOL.
+
+The following function creates a new context, in which all words are unset:
+ &lt;nowiki&gt;make-context-model: func [
+    {context creation simulation}
+    words [block!] {context words, needs to be non-empty}
+] [
+    bind? first use words reduce [reduce [first words]]
+]&lt;/nowiki&gt;
+The description of USE:
+ &lt;nowiki&gt;use-model: function [
+    {USE simulation, works for non-empty WORDS block}
+    [throw]
+    words [block!] &quot;Local word(s) to the block&quot;
+    body [block!] &quot;Block to evaluate&quot;
+] [new-context] [
+    unless empty? words [
+        ; create a new context
+        new-context: make-context-model words
+        ; bind the body to the new Context
+        bind body new-context
+    ]
+    do body
+]&lt;/nowiki&gt;
+Observation (USE-MODEL and BODY): USE-MODEL modifies its BODY argument when it binds it to the new context. If we wanted to leave the BODY argument unmodified, we should have used BIND/COPY instead of the present BIND.
+
+Let's compare USE-MODEL's behaviour and the behaviour of USE:
+ &lt;nowiki&gt;body: ['a]
+body-copy: copy body
+same? first body first body-copy ; == true
+use [a] body
+same? first body first body-copy ; == false&lt;/nowiki&gt;
+As we made sure, the same is true for both USE-MODEL and the original USE. The simulation is so accurate that it helped us to reveal a bug in the following code:
+ &lt;nowiki&gt;f: func [x] [
+    use [a] [
+        either x = 1 [
+            a: &quot;OK&quot;
+            f 2
+            a
+        ] [
+            a: &quot;BUG!&quot;
+            &quot;OK&quot;
+        ]
+    ]
+]
+f 1 ; == &quot;BUG!&quot;&lt;/nowiki&gt;
+Explanation/correction:
+
+The observed USE property caused that the body of the function F got modified during the second USE execution. After that modification it no longer contained the word 'a that was set to &quot;OK&quot; during the first invocation of F. Instead it contained only the word 'a set to the &quot;BUG!&quot; value during the second invocation of F.
+
+If we preserve the body of the F somehow, we can get the correct behaviour:
+ &lt;nowiki&gt;f: func [x] [
+    use [a] copy/deep [
+        either x = 1 [
+            a: &quot;OK&quot;
+            f 2
+            a
+        ] [
+            a: &quot;BUG!&quot;
+            &quot;OK&quot;
+        ]
+    ]
+]
+f 1 ; == &quot;OK&quot;&lt;/nowiki&gt;
+Another way how to correct the behaviour is to use our own version of USE that will not modify its body argument:
+ &lt;nowiki&gt;nm-use: func [
+    {
+        Defines words local to a block.
+        Does't modify the BODY argument.
+    }
+    [throw]
+    words [block!] {Local words to the block}
+    body [block!] {Block to evaluate}
+] [
+    use words copy/deep body
+]&lt;/nowiki&gt;
+
+==MAKE OBJECT!==
+We need a function that evaluates the SPEC argument like MAKE OBJECT! does, which means that it has to catch  RETURN, THROW and BREAK:
+ &lt;nowiki&gt;spec-eval: func [
+    {evaluate the SPEC like MAKE OBJECT! does}
+    spec [block!]
+] [
+    any-type? catch [loop 1 spec]
+]&lt;/nowiki&gt;
+The MAKE OBJECT! simulation:
+ &lt;nowiki&gt;make-object!-model: function [
+    {MAKE OBJECT! simulation}
+    spec [block!]
+] [set-words object sw] [
+    ; find all set-words in SPEC
+    set-words: copy [self]
+    parse spec [
+        any [
+            copy sw set-word! (append set-words sw) |
+            skip
+        ]
+    ]
+    ; create a context with the desired local words
+    object: make-context-model set-words
+    ; set 'self in object to refer to the object
+    object/self: object
+    ; bind the SPEC to the blank object
+    bind spec in object 'self
+    ; evaluate it
+    spec-eval spec
+    ; return the value of 'self as the result
+    return get/any in object 'self
+]&lt;/nowiki&gt;
+Observation (MAKE-OBJECT!-MODEL and SPEC): MAKE-OBJECT!-MODEL modifies its SPEC argument when it binds it to the new context. If we wanted to leave the SPEC argument unmodified, we should have used BIND/COPY instead of the present BIND.
+
+The described behaviour leads to a bug similar to the bug described in the USE section:
+ &lt;nowiki&gt;f: func [x] [
+    get in make-object!-model [
+        a: &quot;OK&quot;
+        if x = 1 [
+            a: &quot;BUG!&quot;
+            f 2
+            a: &quot;OK&quot;
+        ]
+    ] 'a
+]
+f 1 ; == &quot;BUG!&quot;&lt;/nowiki&gt;
+The explanation and the correction are similar as for the USE function. The word a: in the a: &quot;OK&quot; line positioned after the recursive call to F and bound to the object F created first was replaced by a word a: bound to the object F created during the recursive call. Consequently, the expression a: &quot;OK&quot; had no effect on the object F created first and therefore it retained the last value of 'a, which was &quot;BUG!&quot;. If we preserve the body of F, we can get the correct behaviour:
+ &lt;nowiki&gt;f: func [x] [
+    get in make object! copy/deep [
+        a: &quot;OK&quot;
+        if x = 1 [
+            a: &quot;BUG!&quot;
+            f 2
+            a: &quot;OK&quot;
+        ]
+    ] 'a
+]
+f 1 ; == &quot;OK&quot;&lt;/nowiki&gt;
+As you might have seen, the above code deep copies the BODY block before binding it to the context. Analogical bugs were discovered when the deep copying was not used when the FUNC function created REBOL functions.
+
+==MAKE PROTO==
+This is a simulation of the situation when the MAKE function obtains a prototype of the object it has to create. First of all we need a special BIND-like function:
+ &lt;nowiki&gt;specbind: function [
+    {bind only known-words}
+    block [block!]
+    known-words [block!]
+] [p w bind-one kw] [
+    bind-one: [
+        p:
+        [
+            copy w any-word! (
+                if kw: find known-words first w [
+                    change p bind w first kw
+                ]
+            ) | copy w [path! | set-path! | lit-path!] (
+                if kw: find known-words first first w [
+                    change p bind w first kw
+                ]
+            ) | into [any bind-one] | skip
+        ]
+    ]
+    parse block [any bind-one]
+    block
+]&lt;/nowiki&gt;
+And here is the simulation:
+ &lt;nowiki&gt;make-proto: function [
+    {MAKE PROTO simulation}
+    proto [object!]
+    spec [block!]
+] [set-words object sw word value spc body pwords] [
+    ; get local words from proto
+    set-words: copy first proto
+
+    ; append all set-words from SPEC
+    parse spec [
+        any [
+            copy sw set-word! (append set-words sw) |
+            skip
+        ]
+    ]
+
+    ; create a blank object with the desired local words
+    object: make-context-model set-words
+    object/self: object
+
+    ; copy the contents of the proto
+    pwords: bind first proto object
+    repeat i (length? first proto) - 1 [
+        word: pick next first proto i
+        any-type? set/any 'value pick next second proto i
+        any [
+            all [string? get/any 'value set in object word copy value]
+            all [
+                block? get/any 'value
+                value: specbind copy/deep value pwords
+                set in object word value
+            ]
+            all [
+                function? get/any 'value
+                spc: load mold third :value
+                body: specbind copy/deep second :value pwords
+                set in object word func spc body
+            ]
+            any-type? set/any in object word get/any 'value
+        ]
+    ]
+
+    bind spec object
+    spec-eval spec
+    return get/any in object 'self
+]&lt;/nowiki&gt;
+
+==Functions with MAKE OBJECT!-like handling of local words==
+Before we try to model the function evaluation, we can ask whether we can use the same method of the local words handling as the CONTEXT function uses.
+
+The answer is positive and the function able to do this is defined below.
+
+First of all a function that can extract all local words of a function from its SPEC:
+&lt;pre&gt;locals?: func [
+    {Get all locals from a spec block.}
+    spec [block!]
+    /args {get only arguments}
+    /local locals item item-rule
+] [
+    locals: make block! 16
+    item-rule: either args [[
+	refinement! to end (item-rule: [end skip]) |
+	set item any-word! (insert tail locals to word! :item) | skip
+    ]] [[
+	set item any-word! (insert tail locals to word! :item) | skip
+    ]]
+    parse spec [any item-rule]
+    locals
+]
+
+set-words: func [
+    {Get all set-words from a block}
+    block [block!]
+    /deep {also search in subblocks/parens}
+    /local elem words rule here
+] [
+    words: make block! length? block
+    rule: either deep [[
+        any [
+            set elem set-word! (
+                insert tail words to word! :elem
+            ) | here: [block! | paren!] :here into rule | skip
+        ]
+    ]] [[
+        any [
+            set elem set-word! (
+                insert tail words to word! :elem
+            ) | skip
+        ]
+    ]]
+    parse block rule
+    words
+]
+
+funcs: func [
+    {Define a function with auto local and static variables.}
+    [throw]
+    spec [block!] {Help string (opt) followed by arg words with opt type and string}
+    init [block!] {Set-words become static variables, shallow scan}
+    body [block!] {Set-words become local variables, deep scan}
+    /local svars lvars
+] [
+    ; Preserve the original Spec, Init and Body
+    spec: copy spec
+    init: copy/deep init
+    body: copy/deep body
+    ; Collect static and local variables
+    svars: set-words init
+    lvars: set-words/deep body
+    unless empty? svars [
+        ; create the static context and bind Init and Body to it
+        use svars reduce [reduce [init body]]
+    ]
+    unless empty? lvars: exclude exclude lvars locals? spec svars [
+        ; declare local variables
+        insert any [find spec /local insert tail spec /local] lvars
+    ]
+    do init
+    make function! spec body
+]&lt;/pre&gt;
+
+==Model of REBOL functions==
+Our model of REBOL functions will be a REBOL object FUNCTION!-MODEL having the appropriate attributes. The totally necessary attributes of REBOL functions are SPEC and BODY.
+
+To model the current behaviour of REBOL functions accurately our FUNCTION!-MODEL needs CONTEXT, CONTEXT-WORDS and RECURSION-LEVEL attributes to model the behaviour of REBOL functions during recursive calls:
+ &lt;nowiki&gt;function!-model: make object! [
+    spec: none
+    body: none
+    context: none
+    context-words: none
+    recursion-level: none
+]&lt;/nowiki&gt;
+
+===Model of the FUNC function===
+This function gets the SPEC and BODY attributes, creates a new FUNCTION!-MODEL and initializes it.
+ &lt;nowiki&gt;func-model: function [
+    {create a function!-model}
+    spec [block!]
+    body [block!]
+] [result aw] [
+    result: make function!-model []
+
+    ; SPEC and BODY are deep copied
+    result/spec: copy/deep spec
+    result/body: copy/deep body
+
+    ; context words are collected from SPEC
+    result/context-words: locals? spec
+    either empty? result/context-words [
+        result/context: [[] []]
+    ] [
+        result/context: make-context-model result/context-words
+        bind result/body result/context
+        bind result/context-words result/context
+    ]
+
+    ; RECURSION-LEVEL is set to zero
+    result/recursion-level: 0
+
+    result
+]&lt;/nowiki&gt;
+
+===Model of the function call stack===
+The call stack is empty when the interpreter starts.
+ call-stack-model: make block! []
+
+===Model of function evaluation===
+Our simulation begins when the values of the function arguments are collected and their types checked.
+
+The evaluation function obtains a FUNCTION!-MODEL together with a block of values it shall store to its local context words (i.e. all values of its arguments, optional arguments, refinements and local words).
+
+We model only the morst frequent case of a function without the THROW/CATCH attributes.
+
+The first part of our model executes the body:
+
+ exec: func [body] [do body]
+
+The simulation:
+
+ &lt;nowiki&gt;evaluate-model: function [
+    {evaluate a function!-model}
+    f-model {the evaluated function!-model}
+    values [block!] {the supplied values}
+] [old-values result] [
+    ; detect recursive call
+    if (f-model/recursion-level: f-model/recursion-level + 1) &gt; 1 [
+        ; push the old values of context words to the stack
+        insert/only tail call-stack-model second f-model/context
+    ]
+    set/any f-model/context-words values
+
+    ; execute the function body
+    error? set/any 'result exec f-model/body
+
+    ; restore the former values from the stack, if needed
+    if (f-model/recursion-level: f-model/recursion-level - 1) &gt; 0 [
+        ; pop the old values of the context words from the stack
+        set/any f-model/context-words last call-stack-model
+        remove back tail call-stack-model
+    ]
+
+    return get/any 'result
+]&lt;/nowiki&gt;
+Our model uses just one context for the whole lifetime of the FUNCTION!-MODEL without need to change the binding of its BODY. I call this behaviour a Dynamic Recursion Patch.
+
+Some tests:
+ &lt;nowiki&gt;probeblk: func [] [
+    prin mold blk
+    prin &quot;: &quot;
+    print mold reduce blk
+]
+
+recfun: func-model [x] [
+    append blk 'x
+    either x = 2 [
+        probeblk
+    ] [
+        evaluate-model recfun [2]
+    ]
+]
+blk: copy []
+evaluate-model recfun [1] ; [x x]: [2 2]
+probeblk ; [x x]: [1 1]&lt;/nowiki&gt;
+If we compare the simulated behaviour with the real REBOL functions, we get:
+ &lt;nowiki&gt;recfun: func [x] [
+    append blk 'x
+    either x = 2 [
+        probeblk
+    ] [
+        recfun 2
+    ]
+]
+blk: copy []
+recfun 1 ; [x x]: [2 2]
+probeblk ; [x x]: [1 1]&lt;/nowiki&gt;
+This shows that the simulation is really accurate and that REBOL functions use the Dynamic Recursion Patch too.
+
+Although the Dynamic Recursion Patch can speed up the evaluation under some circumstances it has got its drawbacks:
+ &lt;nowiki&gt;f-returning-x: func [x] [
+    func [] [x]
+]
+f-returning-ok: f-returning-x &quot;OK&quot;
+f-returning-ok ; == &quot;OK&quot;
+f-returning-bug: f-returning-x &quot;BUG!&quot;
+; so far so good, but now:
+f-returning-ok ; == &quot;BUG!&quot;&lt;/nowiki&gt;
+
+==Computed binding functions (Closures)==
+As we have seen above Computed binding has got its merits while the Dynamic recursion patch isn't ideal. The results inspired me to implement the Computed binding functions and compare their behaviour with the behaviour of the Dynamic recursion patch functions.
+
+The Computed binding functions shall create a new context every time they are called and bind their bodies accordingly. We can even use a part of the above simulation to implement them.
+
+ &lt;nowiki&gt;closure: func [
+    [catch]
+    spec [block!] {Help string (opt) followed by arg words (and opt type and string)}
+    body [block!] {The body block of the closure}
+    /local spc item result
+] [
+    spc: make block! 1 + (2 * length? spec)
+    insert/only spc [throw]
+    result: make block! 5 + length? spec
+    insert result reduce [:do :make :function! spc body]
+    parse spec [
+        any [
+            set item any-word! (
+                insert tail result to word! :item
+                insert tail spc to get-word! :item
+                insert/only tail spc [any-type!]
+            ) | skip
+        ]
+    ]
+    throw-on-error [make function! spec result]
+]&lt;/nowiki&gt;
+The first test:
+ &lt;nowiki&gt;recfun: closure [x] [
+    append blk 'x
+    either x = 2 [
+        probeblk
+    ] [
+        recfun 2
+    ]
+]
+blk: copy []
+recfun 1 ; [x x]: [1 2]
+probeblk ; [x x]: [1 2]&lt;/nowiki&gt;
+This surely looks better than before. The second test:
+ &lt;nowiki&gt;f-returning-x: closure [x] [
+    func [] [x]
+]
+f-returning-ok: f-returning-x &quot;OK&quot;
+f-returning-ok ; == &quot;OK&quot;
+f-returning-bug: f-returning-x &quot;BUG!&quot;
+; so far so good, but now:
+f-returning-ok ; == &quot;OK&quot;&lt;/nowiki&gt;
+The end.

@@ -1,0 +1,22 @@
+'''This is an important note to all alpha testers:'''
+
+Test R3 one step at a time. Start with:
+
+   &gt;&gt; 1 + 2
+   == 3
+
+Then try:
+
+   &gt;&gt; a: 1
+   &gt;&gt; a + 2
+   == 3
+
+Ever see the movie, ''What about Bob?''. Well: '''Baby steps.''' That's the mindset.
+
+That's what you need to do. Don't do more.
+
+Don't &lt;tt&gt;do&lt;/tt&gt; your largest script. '''''We guarantee it won't work.'''''
+
+Don't try obscure complex functions. They won't work! Guaranteed.
+
+Take things just one small little step at a time. Find all those little bugs first. We'll get those little ones fixed, then move to the next baby step.

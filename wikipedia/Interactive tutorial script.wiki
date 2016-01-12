@@ -1,0 +1,181 @@
+:''Here is a place where a live &quot;over-the-shoulder&quot; tutorial can be hammered out.  The history will preserve information if a change needs to be backed out, so '''be bold''' in editing!''
+
+The [http://tryruby.sophrinix.com/ &quot;Try Ruby!&quot;] site is very popular in the Ruby community, and for good reasons!  It is an excellent way for users to get a taste of a language in a guided way.  Beyond the basic convenience of not having to download an interpreter, it integrates bite-sized indoctrination to Ruby similar to [http://en.wikipedia.org/wiki/Programmed_learning programmed learning].
+
+Thanks to the work of [http://esperconsultancy.nl/ Esper Consultancy], various Rebol interpreters can currently be [http://tryrebol.esperconsultancy.nl/ tried online].  However there is not yet an integrated tutorial, and users are left for fend for themselves in finding what statements to try.  This page is a starting point for a narrative which could serve as a guided tour of the ideas in Rebol, inspired by what Try Ruby! has achieved.
+
+As food for thought, you may want to look over the HTML file [http://github.com/Sophrinix/TryRuby/blob/master/public/tutorials/intro.html with all the text of Try Ruby!s tutorial].  It includes inline the regular expressions it is scanning for to cue the next step.  Wikipedia's &quot;Wikibook&quot; on [http://en.wikibooks.org/wiki/REBOL_Programming/Programming_in_REBOL The Programming in Rebol] contains some inspiration for code samples and writing copy.
+
+= Introduction =
+
+'''Got 15 minutes? Try the Tesla Roadster of programming!'''
+
+The Rebol language is from a parallel universe where Moore's Law stopped scaling 10 years ago. Astoundingly, ''their engineers implemented all our current technology anyway''! In a single megabyte you'll find nearly anything you can think of...including dynamic Unicode strings, a GUI builder, modern network protocols, and date/currency arithmetic.
+
+For the sake of science and your own curiosity, why not take a test-drive to see what makes this alien artifact tick? To access the bundled documentation just type help (also miraculously packed in the 1MB executable binary!)
+
+In addition to Rebol's builtin methods, the following commands are available:
+
+* '''learn''' Start the 15 minute interactive tutorial. Trust me, it's very interesting!
+* '''learn 2''' Hop to chapter two.
+* '''clear''' Clear screen. Useful if your browser starts slowing down. Your command history will be remembered. 
+* '''back''' Go back one screen in the tutorial.
+* '''reset''' Reset the interpreter if you get too deep. (or Ctrl-D!)
+
+= Using the Prompt =
+
+The window above with the blinking cursor is a Rebol prompt. Type a line of Rebol code, hit Enter and watch it run!
+
+Let's start with something cool: &lt;tt&gt;pick [&quot;apple&quot; &quot;banana&quot; &quot;orange&quot;] 2&lt;/tt&gt;
+
+ == &quot;banana&quot;
+
+= The Series Concept =
+
+You just met &lt;tt&gt;pick&lt;/tt&gt;, which is one of Rebol's operations for working with series of items. It takes two arguments—in this case the first is a block, while the second is the index of the block element to extract.
+
+(As you probably noticed, the indexing starts at 1 and not zero.  Another thing that may have stood out is that there weren't any commas between elements.  We'll talk more about that later!)
+
+Every Rebol operation has a fixed idea about how many arguments they take. We saw that pick wants two, but now let's try a series operation that only expects one argument.
+
+Try this: &lt;tt&gt;third [&quot;apple&quot; &quot;banana&quot; &quot;orange&quot;]&lt;/tt&gt;
+
+ == &quot;orange&quot;
+
+= ...ah, Shorthand! =
+
+So &lt;tt&gt;third&lt;/tt&gt; is equivalent to using &lt;tt&gt;pick&lt;/tt&gt; with an index of 3. (If you're curious how high this has been defined by default, it goes all the way up to &lt;tt&gt;tenth&lt;/tt&gt;)
+
+Rebol encourages programmers to string together words separated by spaces—like in human languages. Our brains are naturally able to build sentence structures in our mind, without relying too strongly on parentheses and commas. Imagine how cumbersome it would be if I'd been forced to write that last sentence with explicit indication of its structure:
+
+&lt;blockquote&gt;&lt;p&gt;''(S (NP Our brains) are (VP (ADVP naturally) build (NP sentence structures) (PP in (NP our mind , (PP without (S (VP relying (ADVP too) (ADVP strongly) (PP on (NP (NP parentheses) and (NP commas))))) .)))))''&lt;/p&gt;&lt;/blockquote&gt;
+
+The more &quot;human&quot; style is not as common in programming languages as the &quot;explicit&quot; style. Rebol supports both, but for the moment let's try stringing together pick and third to make a natural Rebol sentence!
+
+Try this: &lt;tt&gt;pick third [&quot;apple&quot; &quot;banana&quot; &quot;orange&quot;] 2&lt;/tt&gt;
+
+ == #&quot;r&quot; 
+
+= A Processing Pipeline =
+
+When your language instinct kicks in after using Rebol a bit, you won't have trouble grokking that last expression. You probably already could! It says to pick the second element out of the third entry in the sequence &quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;. Since the second letter of orange is a lowercase R, that's the answer.
+
+The hash mark is just Rebol's way of distinguishing between the single character #&quot;r&quot; and the one-letter-long string object &quot;r&quot;. Characters are a simpler data type, used in a series to build the notion of a string.  But unlike C where a character is one-byte long, Rebol's character is a Unicode abstraction, and only has a size when written out using a certain encoding.
+
+Notice the interesting fact that pick can choose letters out of strings as easily as it can choose strings out of blocks! So there are no special &quot;string methods&quot; in Rebol—only &quot;series methods&quot; that work on many different types.
+
+Can you guess the output of &lt;tt&gt;third pick [&quot;apple&quot; &quot;banana&quot; &quot;orange&quot;] 2&lt;/tt&gt; ?
+
+ == #&quot;n&quot;
+
+= A Niftier Notation for {Strings} =
+
+You saw that strings can be enclosed in quotes, just like in most languages.  Rebol has a second way of expressing strings, which is to put them inside curly braces.
+
+Having a different character to start a string from what ends a string is very useful, because it means you can nest them for any even pairing.  Also, apostrophes are used in non-code writing just as often as quotes are.  So if one has single and double quotes as the only option (as in Java, Python, etc.) it's not much help.
+
+Give this a try: &lt;tt&gt;print {It's &quot;rad&quot; to use {braces}...}&lt;/tt&gt;
+
+ It's &quot;rad&quot; to use {braces}...
+
+= Word Word Word, Word is the ''Word'' =
+
+Using curly braces for strings is an example of how Rebol is willing to look and feel different, but not merely for the sake of difference.  One of its mottos is &quot;inspired by theory, but driven by practice&quot;.  So things you find surprising often will come into focus after seeing examples of how it reigns in complexity in actual scripts.
+
+An even more surprising notion is that you'll often find yourself not using delimiters at all.  Many sequences of characters that would be considered &quot;illegal identifiers&quot; in most languages are tolerated by Rebol even when you don't put braces or quotes around them.  What you get is something called a &lt;i&gt;word&lt;/i&gt;.
+
+So far you've seen the words &lt;tt&gt;pick&lt;/tt&gt;, &lt;tt&gt;first&lt;/tt&gt;, and &lt;tt&gt;third&lt;/tt&gt;.  They acted like functions, but now let's see them do a new trick.  Try: &lt;tt&gt;pick [first pick third] 2&lt;/tt&gt;
+
+ == pick
+
+= The Use/Mention Distinction =
+
+You just saw what you think you saw...pick picked itself out of a series!  Somehow when pick was outside the block it acted like ''code'', and when it was inside the block it acted like ''data''.
+
+But what if you want to execute a block as Rebol code?  That's where the &lt;tt&gt;do&lt;/tt&gt; command comes in.  Like all Rebol functions, it knows how many arguments it expects&amp;mdash;just one, which is the block containing the elements you want evaluated:
+
+What happens when you try it on the block above? &lt;tt&gt;do [first pick third]&lt;/tt&gt;
+
+ ** Script error: third is missing its value argument
+ ** Where: do
+ ** Near: do [pick first third]
+
+= Context Is Key =
+
+You can see why it's a good thing that Rebol doesn't try to evaluate these blocks by default.  Treating them as data opens up more possibilities.  What it enables are something called ''dialects'', where you can twist the meaning of Rebol's symbolic infrastructure to suit your purpose.
+
+This might excite you.  This might frighten you.  Or if you know LISP, it might not really seem like much new under the sun (but bear with us, it gets deeper!) :)
+
+For the tip of the iceberg, try &lt;tt&gt;parse &quot;aaa&quot; [3 &quot;a&quot; end]&lt;/tt&gt;
+
+ == true
+
+= The Parse Dialect =
+
+The parse command takes two arguments.  The first is a series to process (in this case the string &quot;aaa&quot;).  The second is a block containing the &quot;rules&quot; for parsing.  It returns true if the rules match.
+
+Our rules in this case were [3 &quot;a&quot; end].  Though Rebol's &lt;tt&gt;do&lt;/tt&gt; doesn't really know what that means, parse interprets this as:
+
+&lt;blockquote&gt;&lt;p&gt;&lt;i&gt;Match against three instances of the &quot;a&quot; string, and advance the input on each match.  If doing so leads us to be at the end of the input string, consider the match successful.&lt;/i&gt;&lt;/p&gt;&lt;/blockquote&gt;
+
+Now let's meet another Rebol concept: &lt;tt&gt;compose [print (reverse &quot;lobeR&quot;)]&lt;/tt&gt;
+
+ == [print &quot;Rebol&quot;]
+
+= Dialects Leverage the Interpreter =
+
+What &lt;tt&gt;compose&lt;/tt&gt; does is it takes the block you give it, looks for expressions in parentheses, and evaluates them.  What was parenthesized is replaced with the result of the evaluation.  Everything else is left alone...that's why the &lt;tt&gt;print&lt;/tt&gt; was kept as data, even though the &lt;tt&gt;reverse&lt;/tt&gt; was executed as code.
+
+Though not as &quot;wild&quot; as &lt;tt&gt;parse&lt;/tt&gt;, it does show that not every dialect needs to involve a lot of work.  Rebol is there to serve your needs if you want to perform evaluations in the middle of your functions.  When your dialect wants to put in hooks for math or small snippets of script code, just call &lt;tt&gt;do&lt;/tt&gt;!
+
+But now that you've seen creative uses of integers in a dialect and parentheses used for something other than precedence, it's time for the dark side.  Brace yourself: &lt;tt&gt;1 + 2 * 3&lt;/tt&gt;
+
+ == 9
+
+= No Operator Precedence = 
+
+Rebol's &lt;i&gt;DO dialect&lt;/i&gt; (the one you'll be using quite a bit of the time) is driven by a uniformity.  Every operator knows how many arguments it takes and it will consume them left to right.  A very few infix operators are provided to meet the readability needs of the most common code cases, but there's no special magic.
+
+So if you want precedence in the &lt;i&gt;DO dialect&lt;/i&gt;, you'll need to use parentheses.  But we saw that parentheses are used by &lt;tt&gt;compose&lt;/tt&gt; to edit code.  I's often considered best to think through how much clearer your code might be if you finessed the need for explicit precedence, due to deep issues like this.
+
+Try this: &lt;tt&gt;print &quot;one&quot; &quot;two&quot; 1 + 2&lt;/tt&gt;
+
+ one
+ == 3
+
+= If It's Not In Brackets, It Runs =
+
+Rebol just churned through that list in a way that makes perfect sense if you know the rules.  The first &lt;tt&gt;print&lt;/tt&gt; looked for its one parameter, found the string &lt;tt&gt;&quot;one&quot;&lt;/tt&gt;, and ran (that much is obvious.)
+
+When it was finished with that, the interpreter found &quot;two&quot;... a string which evaluated to itself and had no side effects.  It disappeared into the void.  But the 1 + 2 at the end didn't disappear because it was the last result of the expression.  (As in Ruby function, Rebol always evaluates to the last line of a series of statements.)
+
+Now that you know, try this: &lt;tt&gt;if (1 &gt; 2) [print &quot;bad&quot;] [print &quot;good&quot;]&lt;/tt&gt;
+
+ == [print &quot;good&quot;]
+
+=If Never takes an &quot;Else&quot; Block! =
+
+Rebol does not have &quot;if-then-else&quot; in the usual sense.  It has &lt;tt&gt;if&lt;/tt&gt; and &lt;tt&gt;either&lt;/tt&gt;.  Like all Rebol functions, they know exactly how many parameters they expect.  &lt;tt&gt;if&lt;/tt&gt; wants two: an expression to evaluate and a block of code to &lt;tt&gt;do&lt;/tt&gt; if that expression is true.  &lt;tt&gt;either&lt;/tt&gt; wants three: an expression to evaluate, a block of code to &lt;tt&gt;do&lt;/tt&gt; if the expression is true, and a block of code to &lt;tt&gt;do&lt;/tt&gt; if the expression is false.
+
+Here the &lt;tt&gt;if&lt;/tt&gt; clause consumed the expression and the first block, and didn't run.  Then it was done, and the evaluator came upon a block.  Because the print was inside a block it did not run, but the expression evaluated to that block.
+
+To get what the author of that probably intended, try: &lt;tt&gt;either (1 &gt; 2) [print &quot;bad&quot;] [print &quot;good&quot;]&lt;/tt&gt;
+
+ &quot;good&quot;
+
+= A Language Without Keywords =
+
+You may think that &lt;tt&gt;if&lt;/tt&gt; and &lt;tt&gt;either&lt;/tt&gt; are bizarre, and that the Rebol-tail is wagging the Rebol-dog.  But it's setting up a pattern that once you understand it, you can adapt the language to your needs.  (etc...)
+
+= Next...? =
+
+* talk about how strings and words are different, and the fairly permissive notions of what makes a word to be legal in the parser
+* if and either, and how the result of an if expression with no else can be assigned to an expression
+* contexts that evaluate vs. those that don't, why brackets around while's condition and not if's condition
+* show how Rebol deals with the [http://en.wikipedia.org/wiki/Use–mention_distinction use/mention distinction] in terms of words
+* teaching set-words and why they are different from conventional &quot;variable assignment&quot;
+* &lt;tt&gt;mold&lt;/tt&gt; and &lt;tt&gt;load&lt;/tt&gt; to demonstrate code and data duality
+* dispel common misunderstanding that &quot;everything is global&quot; by showing how one implements one's own scoping conventions
+* demonstrate built-in network protocols
+* show off &lt;tt&gt;protect&lt;/tt&gt;, &lt;tt&gt;trace&lt;/tt&gt;, and other hi-tech features
+* ...etc

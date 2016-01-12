@@ -1,0 +1,7 @@
+== INVERT-MATRIX== 
+
+Applies an algebraic matrix inversion operation on the current transformation matrix.
+
+This command has no arguments.
+
+''Show example here.'' --[[User:Henrikmk|Henrikmk]] 06:29, 26 August 2007 (EDT)

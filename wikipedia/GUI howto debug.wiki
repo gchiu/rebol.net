@@ -1,0 +1,1 @@
+'''This page has been replaced. Go to [http://www.rebol.com/r3/docs/gui/faces.html R3 GUI Faces]

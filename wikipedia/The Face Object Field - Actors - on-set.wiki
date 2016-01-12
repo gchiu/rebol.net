@@ -1,0 +1,19 @@
+'''on-set''' is invoked by SET-FACE and serves as an interface to manipulating the state value of a face or any other value in the face.
+
+The input argument is the value to set. A return value is not necessary.
+
+===Examples===
+
+Simple setting of the state value:
+
+ on-set: [
+   face/state/value: arg
+ ]
+
+Setting state value based on input datatype:
+
+ on-set: [
+   if integer! type? arg [face/state/value: to-percent arg / 100]
+   if decimal! type? arg [face/state/value: to-percent arg / 100]
+   if percent! type? arg [face/state/value: arg]
+ ]

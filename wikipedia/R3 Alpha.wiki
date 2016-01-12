@@ -1,0 +1,4 @@
+Page has moved to [http://www.rebol.com/r3/alpha-intro.html here].
+----
+{{Template:Getting_Started_TOC}}
+[[Category:Getting_Started]]

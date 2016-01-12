@@ -1,0 +1,78 @@
+{{underconstruction}}&lt;br&gt;
+{{banner}}
+{{Need|These all need better definition. And your assistance will be appreciated.&lt;br&gt;Please help ensure the accuracy and conciseness of REBOL terminology by correcting and perfecting these definitions.&lt;br&gt;Feel free to add definitions, and if anything seems unclear please drop a comment in the discussion.}}
+
+== REBOL Glossary ==
+{{alphanumeric index}}&amp;nbsp; &amp;nbsp; [[#Notes|Notes]]
+
+;REBOL: {{dropcap|R}}elative {{dropcap|E}}xpression {{dropcap|B}}ased {{dropcap|O}}bject {{dropcap|L}}anguage
+
+{{hilight|To ensure the glossary is accurate and understandable by all, it includes a ''special community page''.&lt;br&gt;The [[Glossary rebols view|rebols view]] page is for you to add your own definition of how you perceive certain aspects of REBOL terminology and concepts.  Please add ''your view'', &lt;small&gt;signed if you'd like&lt;/small&gt; . It will help us all gain a better understanding of REBOL and each other.}}
+
+&lt;span id=&quot;A&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;B&quot;&gt;&lt;/span&gt;
+;Binding: Is a property of a REBOL word that makes it a member of a REBOL context. REBOL words having binding can be used as variables, i.e. they can refer to REBOL values.
+&lt;span id=&quot;C&quot;&gt;&lt;/span&gt;
+;Context: REBOL contexts are sets of REBOL words assigning meaning to their member words.
+;Context: There is a REBOL function [[words context|context]] which is a short form for &lt;tt&gt;make object!&lt;/tt&gt;.
+
+&lt;span id=&quot;D&quot;&gt;&lt;/span&gt;
+;Datatype: REBOL is a rich datatype language. Not only are more common computer programming types used by REBOL, such as integers and strings, but there are many other high and low level datatypes built into the core of REBOL. Each REBOL datatype is a REBOL value that has an associated symbol and functions that test if a value is of the given datatype.
+
+;datatype!: This is a REBOL datatype. All REBOL datatypes are of the '''datatype!''' datatype; including the '''datatype!''' datatype itself.
+   
+;Dialect: REBOL dialects are sub-languages of REBOL. They are implemented as functions processing (one or more) REBOL blocks. From this it follows, that all REBOL dialects use the same lexical form for all data types but allow different interpretation of the values within a block. Languages defined on the string level (implemented as functions processing strings) are not REBOL dialects according to this definition. Dialects are able to provide greater expressive power for specific domains of use. &lt;small&gt;A dictionary definition of [[Dictionary: dialect|dialect]].&lt;/small&gt; Dialects may be named after the functions interpreting them. Therefore we speak about the Parse Dialect, which is the dialect the '''parse''' function &quot;understands&quot;. An exception is the '''make''' function, which implements many dialects, like e.g. the Object Specification Dialect or the Function Specification Dialect. Another example of a REBOL dialect is the VID (Visual Interface Dialect), that is interpreted by the '''layout''' function. The main REBOL dialect is the dialect interpreted by the '''do''' function (the Do Dialect).
+&lt;span id=&quot;E&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;F&quot;&gt;&lt;/span&gt;
+;Face: A REBOL object serving as a VID element. A higher level than the [[words gob!|gob!]] datatype.
+
+;Function: One of the main building blocks for REBOL evaluation. Functions perform computations on zero or more arguments and result in a value. There are various types of REBOL functions. Some functions in REBOL are native, being built into REBOL using the C programming language, many are REBOL mezzanines, and the rest are user defined.
+
+;function!: A REBOL datatype. E.g. all REBOL functions defined using the '''func''' function have this datatype.
+
+&lt;span id=&quot;G&quot;&gt;&lt;/span&gt;
+;GOB: Graphical OBject. The basic building block in REBOL's graphics system.
+;gob!: A REBOL datatype that defines a low-level graphical object.
+
+&lt;span id=&quot;H&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;I&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;J&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;K&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;L&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;M&quot;&gt;&lt;/span&gt;
+;Mezzanine: A function that comes built into REBOL implemented using REBOL source code.
+
+&lt;span id=&quot;N&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;O&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;P&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;Q&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;R&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;S&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;T&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;U&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;V&quot;&gt;&lt;/span&gt;
+;VID: Visual Interface Dialect
+;view: The REBOL function to display graphical windows, and then handle user interface events.
+
+&lt;span id=&quot;W&quot;&gt;&lt;/span&gt;
+;Word: REBOL words are REBOL values that can play the roles of variables and keywords as used in other programming languages. To be able to play all the necessary roles there are five different word types in REBOL. We describe the properties of the {{tooltip|Do Dialect|Do Dialect is a more precise term for the normal REBOL interpreter}},  as interpreted by the '''do''' function, since it is the most important dialect. Other dialects can (and usually do) behave differently.
+
+:;word: This is a syntactic form of the '''word!''' datatype. In the Do Dialect if the word refers to a function, '''do''' evaluates the function. So, this datatype can (in the Do Dialect) play the role keywords in other programming languages do. If the word is unset, i.e. if it refers to the &lt;tt&gt;#[unset!]&lt;/tt&gt; value, '''do''' causes an error. This property is used as a typo protection. In addition to functions and the &lt;tt&gt;#[unset!]&lt;/tt&gt; value there is a couple of other &quot;word-active&quot; datatypes causing specific behaviour. For the majority of values, that are &quot;word-inactive&quot; a much simpler behaviour is implemented in the Do Dialect: '''do''' yields the value the word is referring to, causing this syntactic form to behave like variables in other programming languages, representing  the value the variable refers to.
+:;&lt;nowiki&gt;word:&lt;/nowiki&gt;: This is a syntactic form of the '''set-word!''' datatype. In the Do Dialect this syntactic form is used to implement the behaviour of variables on the left-hand side of the set statements known from other programming languages. As a protection measure, '''do''' causes an error when the expression to the right of the set-word evaluates to &lt;tt&gt;#[unset!]&lt;/tt&gt;. For any other result the set-word evaluation succeeds setting the word to refer to the value of the right-hand expression and yielding the value.
+:;&lt;nowiki&gt;:word&lt;/nowiki&gt;: This is a syntactic form of the '''get-word!''' datatype. In the Do Dialect the value the word is referring to is yielded, so this syntactic form plays a role of a variable referring to a value without the exceptions discussed in the '''word!''' datatype case.
+:;'word: This is a syntactic form of the '''lit-word!''' datatype. In the Do Dialect '''do''' yields the corresponding word, i.e. the corresponding value having the '''word!''' datatype.
+:;/word: This is a syntactic form of the '''refinement!''' datatype. The Do Dialect does not use it for any special purpose, '''do''' simply yields the encountered refinement.
+
+&lt;span id=&quot;X&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;Y&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;Z&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;0&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;1&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;2&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;3&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;4&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;5&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;6&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;7&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;8&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;9&quot;&gt;&lt;/span&gt;

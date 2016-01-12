@@ -1,0 +1,95 @@
+{{underconstruction}}
+The vector! datatype is new in REBOL 3. The implementation described below takes effect in Alpha V22. Prior versions will not work.
+
+==Definition==
+
+&lt;b&gt;The vector datatype provides greater efficiency for numeric arrays.&lt;/b&gt;
+
+A vector is a multidimensional array of a single numeric datatype (homogeneous). Vectors can be either integers of 8, 16, 32, or 64 bits, or decimals of 32 or 64 bits.
+
+The benefit of a vector is the memory it saves. For example, if you need to index a large file and keep track of 100000 index positions, a vector will be four times more memory efficient than using a block, saving about 1.2MB in this case.
+
+==Making A Vector==
+
+There are two general formats for making a new vector:
+
+    v1: make vector! 100000
+    v1: make vector! [decimal! 32 100000]
+
+The first is a simple shortcut that makes a vector of the default type: 32 bit signed integer of one dimension.
+
+The second format can be used to create a variety of vectors, depending on your requirements.
+
+The general syntax is
+
+    make vector! [sign type bits size]
+
+or:
+
+    make vector! [sign type bits [size1 size2 size3 ...]] ; not yet supported
+
+where:
+
+*'''sign''' (optional) - '-' for signed (default) or '+' for unsigned
+*'''type''' (optional) - integer! (default) or decimal! (floating point) type
+*'''bits''' - number of bits (32 is the default)
+*'''size''' - size of the vector
+
+And, instead of size, you can provide a block of sizes for each dimension of the vector.
+
+Integer values can be 8, 16, 32, and 64 bits.
+
+Decimal values can be 32 or 64 bits.
+
+===Examples of Make ===
+
+Vector of 1000 signed 16 bit integers:
+
+    make vector! [16 1000]
+
+Vector of 500 signed 64 bit decimals:
+
+    make vector! [decimal! 64 500]
+
+Vector of 2000 unsigned 32 bit integers:
+
+    make vector! [+ 32 2000]
+
+Vector of 10000 unsigned 8 bit integers:
+
+    make vector! [+ 8 2000]
+
+Two dimensional vector of signed 64 bit integers:
+
+    make vector! [64 [200 1000]]  ; Note: not in current alpha release.
+
+==Access to Vector Elements==
+
+Just like other series you can access elements of a vector with a path.
+
+'''However, unlike other series, we have made vectors zero-based'''. We did this as a test, to see if it makes more sense, because vectors are more like arrays found in C and other languages. Let us know what you think of this change.
+
+So as a simple example, to set and print the first element:
+
+    v: make vector! 100
+    v/0: 1234567
+    print v/0
+
+Or, as a 16 bit integer value, it's mostly the same:
+
+    v: make vector! [16 100]
+    v/0: 1234
+    print v/0
+
+Or, as a 32 bit decimal value:
+
+    v: make vector! [decimal! 32 100]
+    v/0: 123.45
+    print v/0
+
+''Note the rounding error that come from the internal floating point math, so be sure to keep that in mind.''
+
+You can also use PICK and POKE functions:
+
+    poke v 9 100
+    print pick v 9

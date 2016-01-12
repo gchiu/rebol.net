@@ -1,0 +1,24 @@
+{{Cookbook|title=R2 vs. R3 Function List|author=Henrik Mikael Kristensen|level=1|category=R2 vs. R3}}
+
+This list will be auto-generated, when the script is written.
+
+'''ATTENTION: If you want to build the script that builds this page:'''
+
+We want to list all functions in R3 vs. all functions in R2, so you can have a direct reference to compare each function between R2 and R3. This will help in listing those subtle changes that R3 has in it's functions. There will be many more subtle changes when the Unicode releases are coming out (probably alpha 2). This is only meant to be on a per-function basis and not for higher level ways to do things.
+
+I suggested to the R3 team that we output the internal help of all functions in R2 and R3 in a two-column table with R2 to the left and R3 to the right. Similarly for all mezzanines, we would output the source code to each function in a separate two-column table of the same format.
+
+When that is done, it needs to be formatted for DocBase, which can be done with Wiki Tools (an internal tool we sometimes use for DocBase)
+
+Some requirements:
+
+* One script that generates the R2 help and R3 help and outputs a text file for each kind
+* Same script also outputs mezzanine sources for both R2 and R3 in two separate text files (these files will probably be large)
+* Another script that assembles all four text files in two two-column table (one for help docs, one for mezz sources) (or use the first script with special arguments, whatever you want)
+* Use [[Wiki Tools]] if you like
+* Script must run under R2 and R3 without changes
+* We must be able to run this again and again after each new R2 and R3 release.
+
+Feel free to add other features, perhaps a VID version that lets us search using a VID interface, or whatever you want.
+
+Feel also free to ask questions and suggest other enhancements on the r3-alpha AltME world, the REBOL3 AltME world. :-)

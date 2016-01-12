@@ -1,0 +1,181 @@
+This page details how various features were implemented in the R3 GUI version 3.4 as created by Carl a couple of years ago. The intent is for Carl to have an easy overview of how a feature is done and why it's done that way, so he can judge whether to approve or find a better way to do it.
+
+The implementations are seen as essential features for the GUI, so if the quality of the code isn't good enough, a different way should be found to implement them.
+
+The document displays the chronological order in which a feature was added with the oldest on top.
+
+== File renaming ==
+
+All files are renamed from .r to .r3.
+
+== Style and Face tags ==
+
+The purpose of tags is to identify styles that hold specific capabilities during runtime, such as fields for forms or decorative items that should not be touched by tab navigation. It's generally not enough to identify by style word or facets alone.
+
+The intent is to use them during:
+
+# Identification of windows, requesters and menu popups.
+# Enabling and disabling of form elements.
+# Tab navigation to help identify faces that can be tabbed to.
+# Form validation
+# Help documentation to identify styles that are for internal use, are compound styles and are parts of compound styles.
+# Window open to find and focus default buttons and to reset forms
+# Window close to validate and submit forms, return values from menu items or values from requesters
+
+Combining tags with other essential face functions to be implemented soon, the result is that much of the detail work that must be &quot;handcranked&quot; into a user interface, can take place automatically and helps to reduce the size and complexity of layouts, while keeping a good user experience.
+
+==== User Experience Example ====
+
+The user performs an operation in the UI of a program and a dialog pops up to fill out a form.
+
+Instead of just static texts and fields with a clickable button to submit at the bottom, you would have a window that, when opened performs:
+
+# Determine the type of window to open via its tags: INFORM, FORM or POPUP
+# If the type is FORM, the window undergoes a form reset procedure:
+## The window face is traversed for faces that either hold STATE or FIELD tags to reset the content of each of those faces. These two tags are the types of faces that can get and set values for the form.
+## The window face is again traversed for validation indicators next to STATE or FIELD tags.
+## The window face is then searched for a default button to mark up visually.
+## The window face is then searched until the first focusable face is encountered, and that item is focused.
+# The window is then finally opened with the first field correctly in focus and the default button visually marked up for cancelling the operation.
+# To use the window, full tab navigation would be done.
+# When the window default close button is used, the button would investigate the window faces for DIRTY tags and asks if the window should be closed, as the content has changed. If the window is sucessfully closed, the form content is not returned.
+# When the window default submit button is used, the button would perform a full validation of the window face to find faces that hold the VALIDATE tag. If errors are found, the first face that holds the INVALID tag is focused. If no error is found, the window closes and returns the entire window contents.
+
+All this would be the form window open, use and close process described in a few of lines of code. No need for wirework to implement validation and handling the close or submission of the form content. The user only notices a nicer-than-average to use window.
+
+=== Implementation ===
+
+Styles and faces implements tags as a map! of words. Map! is used for speed at the suggestion of Richard Smolak. The '''guie/style''' object holds the new tags map at its root. This counts also for '''guie/face'''. This change is seen in '''gui-object.r3'''. To get tags from within a style, '''face/tags''' is used.
+
+==== Making styles ====
+
+When adding tags to a style, you add a block of words, which during the '''stylize''' process is converted to a map!. This takes place inside the '''make-style''' function, seen in '''style-make.r3'''.
+
+Each style would have a default set of tags, which currently is an empty map. As all faces may at some point during runtime hold tags, the tags map is always added. 
+When deriving a style, '''the tags of the parents are NOT inherited'''. This is because the tags relationship between parents and children may not be inheritable, and a method would have to be found to remove tags that a parent has, from a child. So by default, any derivative styles hold an empty tags map.
+
+==== Making faces ====
+
+When adding tags to a face, the process is to copy the tags from the corresponding style definition. This takes place in '''face-make.r3''' inside the '''make-face''' function.
+
+==== Tag restrictions ====
+
+As opposed to flags in R2, tags are limited in R3, i.e. you can't just add a new tag. This means that all possible tags are also listed in '''face-tags.r3'''. The decision for this is to avoid custom tags defined by new styles. Such tags could overlap existing tags or redefine their purpose and break the integrity established by the R3 GUI internally for how and why tags are used.
+
+This also means that whenever you try to set a tag that doesn't exist, an error is generated.
+
+==== List of tags ====
+
+All tags are listed in three blocks:
+
+# '''style-tags''' - tags that are usually set during stylize and never change.
+# '''face-tags''' - tags that are usually set during layout and runtime and often change.
+# '''window-tags''' - tags that are reserved for windows and never change.
+
+They are combined in a single '''tags''' block.
+
+==== Tags in styles ====
+
+Tags have been added to all appropriate styles. Not all styles need tags.
+
+=== Optimizations ===
+
+A possible optimization could be to not add the tags map to the style definition, if the style has no tags. All styles have been reviewed for which tags to use and many don't need tags at all.
+
+==== New Functions ====
+
+Tags need manipulation and so a new file '''face-tags.r3''' was added. The list of functions added:
+
+# '''tag-face?''' returns whether a tag exists for a face. A /deep refinement scans deeply to check for the tag in all subfaces. If it exists in just one subface, TRUE is returned.
+# '''tag-face''' appends a tag to a face. If the tag already exists, the tag is not added. A /deep refinement scans deeply to insert tags in all subfaces.
+# '''untag-face''' removes a tag from a face. A /deep refinement scans deeply to remove tags in all subfaces.
+# '''tag-error''' generates an error string for the tag operation, utilizing the '''fail-gui''' function. This function ''may'' be superfluous. It needs to be looked at.
+
+=== Notes ===
+
+The creator of layouts ideally never sees tags or never needs to adjust them. They are used inside styles and by the R3 GUI itself.
+
+Tags don't work on their own. They need face navigation functions.
+
+=== Files ===
+
+Implemented in '''face-tags.r3''', '''style-make.r3''', '''face-make.r3'''.
+
+== Face Navigation ==
+
+The purpose of this is to allow free traversal of the face object tree. This is useful in many circumstances:
+
+# Face traversal for form validation
+# Enabling and disabling entire panels of faces
+# Find a particular face from a facet, tag or other attribute, such as finding the default button or the first failed field in a validated form.
+# Tab navigation
+# Find an adjacent scrollbar automatically for a scroller face
+# Find adjacent faces for balancer faces in tables
+# Recursively collect field information in panels
+
+These functions are able to work with tags.
+
+=== Functions ===
+
+==== Internal ====
+
+The question marks in function names adhere to other functions already existing in the R3 GUI returning faces.
+
+These functions are used in the general functions below:
+
+# '''has-faces?''' - returns whether the face has a non-empty faces block
+# '''root-face?''' - returns whether the current face is the root face (window face)
+# '''tip-face?''' - continually goes inward through the last face in faces, until no more faces are available and returns the last one.
+# '''return-face?''' - Returns the next possible face outward in the hierarchy
+# '''locate-face''' - returns the index of the faces block, which the given face is sitting in.
+
+==== General ====
+
+===== NEXT-FACE? =====
+
+'''next-face?''' - returns the next possible face. General behavior:
+# If the face has a faces block, go to the first face in that block.
+# If the face is the last in the parent's faces block and the face has no faces block, proceed outwards, until it's possible to find a faces block which isn't at the last face.
+# If reaching the root-face, next possible face is same as rule 1, to allow continually to loop through the face tree.
+
+[[Image:next-face-loop.png|center|caption]]
+&lt;center&gt;A demonstration of how NEXT-FACE? runs through all faces in the tree.&lt;/center&gt;
+
+===== BACK-FACE? =====
+
+# '''back-face?''' - returns the previous possible face. General behavior:
+## If the face parent
+## If reaching the root-face, the next face is the tip-face of the root-face, to allow continually to loop through the face tree.
+
+[[Image:back-face-loop.png|center|caption]]
+&lt;center&gt;A demonstration of how BACK-FACE? runs through all faces in the tree.&lt;/center&gt;
+
+=== Files ===
+
+Implemented in '''face-nav.r3'''
+
+== Tab Navigation ==
+
+Tab navigation involves several things:
+
+# Tab and shift key detection
+# Tab navigation function to find the correct face to tab to
+# Tab frame, created as an additional GOB to be used to visually identify the current tab face
+# Storing the current tab face by reference in the window face.
+
+=== Window Key Handling ===
+
+We need to detect the tab and shift key in the window root face. Currently the only way to detect a key is inside a focused face, so this has to change.
+
+TBD.
+
+=== Functions ===
+
+# '''find-tab-face?''' - This locates the next or previous tab-face in the window from the current tab-face. This is the basic function triggered by tab navigation.
+
+[[image:next-tab-face-loop.png|center|caption]]
+&lt;center&gt;Tab navigation moves using FIND-TAB-FACE? to faces with the TAB tag.&lt;/center&gt;
+
+=== Files ===
+
+Implemented in '''face-nav.r3'''

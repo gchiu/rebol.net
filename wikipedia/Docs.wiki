@@ -1,0 +1,3 @@
+'''RebDev''' is the REBOL development community messaging system.
+
+More soon -Carl

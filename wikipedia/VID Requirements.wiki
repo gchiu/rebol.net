@@ -1,0 +1,364 @@
+'''This is a high level, internal specification document.''' It is intended only for the development team at this time. Please do not publicize it or publish links to it. See also [[VID Implementation Notes]].
+
+==Introduction==
+
+We have learned a lot over the last 6 years of using VID. We have
+learned not only the strengths of the dialect approach to describing
+graphical user interfaces, but also some of the weaknesses when there
+is perhaps too much freedom for new users.
+
+'''This project is to design a new VID for REBOL 3.''' Yes, we have
+limited time to build it, but I think we have a good idea what we want,
+and how best to construct it. That is the advantage of 6 years of
+experience.
+
+It should be noted that there are a few alternative approaches to VID in
+the world today: RebGUI, GLayout, and others. We need to examine those
+designs closely to find ideas that may be of benefit in VID 3. For example, the RebGUI dialect is more regular, making it simpler for
+users. That may be a good thing, and we may want to do that.
+
+I have no strict requirement as to how we implement VID 3, and if synergy or collaboration with other projects is possible, we should take that into account. However, in the end, it is us that must be satisfied. Only with that will VID 3 go far.
+
+'''And finally, this is a ''draft document'', and I am sure that I missed a number of important areas.''' If something is missing, don't make any assumptions about that. It could be a mistake. We can update the document to include it.
+
+==General Goals==
+
+Here is a short summary of the top level goals for VID 3. I know each of
+these sounds rather general, but each one is deeply significant to me.
+For this document, I will refrain from a deep analysis of the importance
+of each one.
+
+VID 3 must be:
+
+*'''Powerful''' - to create most types of GUIs used in modern applications.
+*'''Clean''' - less cluttered and &quot;more regular&quot; dialect format.
+*'''Simpler''' - less complex implementation method.
+*'''Fast''' - very fast at layout, display, and update.
+*'''Small''' - no program bloat and a smaller memory footprint (than R2).
+*'''Pretty''' - we need an updated graphical look and some level of skins.
+
+Of course, stated again for emphasis, the ultimate requirement is that
+we must be satisfied with the new VID design and implementation.
+
+==Dialect Syntax==
+
+Although there are a few small changes that we should make, I think the
+general syntax for VID has been good.
+
+===General Form===
+
+The syntax in pseudo PARSE format is:
+
+    ANY [ var: [ command | style ] ]
+
+where command is:
+
+    command-word ANY args
+
+and style is:
+
+    style-name ANY [ attribute | keyword-option ]
+
+===Command-Word===
+
+Commands are keywords of the VID dialect. They have the highest
+precedence in context (meaning you cannot use a style that has
+a command name). See the section below for more.
+
+===Style-Name===
+
+A style-name is also a word, but it is part of a different context then
+commands. A list of standard styles is provided later in this document.
+
+===Attributes===
+
+A attribute is a datatype that specifies a modification to a style.
+
+In this example:
+
+    text &quot;This is a line&quot;
+
+the quoted string is an attribute of the type STRING!, and the TEXT style
+understands its meaning.
+
+This form is similar to that of functions, so it is quite natural for users. Where it differs from functions is that the datatype order is not position dependent, so users need not care about that detail.
+
+You are free to write:
+
+    text &quot;This is a line&quot; bold
+
+or
+
+    text bold &quot;This is a line&quot;
+
+The datatypes allowed for attributes are:
+
+*integer - width in pixels
+*percent - width in terms of the bounding panel
+*pair - size of style
+*string - text of style
+*tuple - a color for style
+*logic - an initial state
+*file - a file link or source location
+*URL - a URL link or source location
+*block - action code or sub-layout
+*image - an image as style background
+*word - a keyword such as BOLD or CENTER
+*paren - a computation
+
+There may be a few others that I missed. Let's add them.
+
+===Options===
+
+An option is a special keyword followed by a specification block.
+
+For example:
+
+&lt;pre&gt;
+    image effect [colorize blue]
+
+    text-list data list-values
+&lt;/pre&gt;
+
+EFFECT and DATA are the option keywords, followed by their data.
+
+===Variables===
+
+Users can put set-words in front of commands and styles to use
+within their code to refer later.
+
+    n-list: text-list data names
+
+In R3, variables will be bound into the context of the layout. This is
+method is similar to an object definition and helps users prevent leaky
+layouts where their internal variables change global values.
+
+===Expressions===
+
+In R2 VID allowed arbitrary in-line expressions like:
+
+    image i-size + 50x100
+
+Advanced users may like this format, but for most beginners who are just
+learning to parse VID, it may make the dialect overly complicated.
+
+An alternative is to require parens for such expressions, similar to
+the COMPOSE function:
+
+    image (i-size + 50x100)
+
+We can certainly should discuss this matter soon.
+
+If we elect to do it, then we can still allow words and paths to do
+their value lookup.
+
+==Commands==
+
+I'm not going to specify the commands in detail at this time. They are
+discussed in other documents.
+
+'''However, I think it would be good to remove problematic or rarely-used commands, if at all possible.'''
+
+Another choice would be to move general setup commands like SIZE into a special OPTIONS block.
+
+    options [size: 500x500 origin: 10x10]
+
+This has the advantage of removing keywords from the dialect, which is
+normally a good thing.
+
+==Faces==
+
+The object created by a style is a FACE; however, the definition of a
+face is extensively modified from R2 (although it is likely that you
+will be able to emulate R2 if you need to.)
+
+Similar to the reduction of the PORT object a FACE object is grouped
+into primary categories of sub-objects.
+
+At this time, I do not want to specify the exact fields, because it
+is too early to accurately know which are needed, but here is a rough
+idea:
+
+:'''gob''' - the graphics object (offset, size, type, panes)
+:'''feel''' - object that holds engage, etc.
+:'''look''' - object that describes the look of the style
+:'''style''' - name of style
+:'''state''' - holds the state variables for this instance
+:'''access''' - accessor functions
+
+==Style Summary==
+
+I list the styles here because I want to be sure we agree on the range of styles that we need.
+
+Of course, more styles can be added later, including advanced composite styles.
+
+*'''Text Styles'''
+**text - normal text
+**h1-h3 - predefined headings
+**note - text with border, optional icon
+**label - special markers (field labels)
+**info - boxed text (like a field but no input)
+*'''Input Field Styles'''
+**area - paragraph input (with wrap option)
+**field - line input (with hide option)
+**combo - field with dropdown choices
+*'''Image Styles'''
+**box - simple box with color or effect, borders
+**image - simple image with effect, borders
+**icon - image text (below, above, beside), borders
+**arrow - directional choice, alone or boxed
+**led - indicator
+*'''Button Styles'''
+**button - single action
+**toggle - single action, dual state
+**rotary - dual action, multi-state (up/down arrows), value ranges
+**check - like check-line, optional text
+**radio - link radio-line, optional text
+*'''Range Styles'''
+**slider - drag bar
+**scroller - proportional slider with arrows
+**range - arrow to bar with graduated markings
+**progress - with optional % done number on top
+*'''Divider Styles'''
+**bar - simple divider
+*'''Groupers'''
+**panel - subpanel with optional name, tabs, borders, scrollbars
+**group - auto-grouping for panel, fields, checks, radios, etc., row major
+*'''List Styles'''
+**list - multiple rows and columns of any type (e.g. icon, text, text)
+**text-list - list of text lines (simple)
+**icon-list - list or array of icons, optional text (desktop)
+**table - list with cells, headings, dividers, etc.
+**menu - menu lists
+
+Note that any list can be made modal with DROP keyword. For example, a text drop list is:
+
+	text-list drop data [...]
+
+==Hot Styles==
+
+Most of the above styles can be made hot (react on an action) by specifying an action block.
+
+    text &quot;Click Me&quot; [click-me]
+
+In this case, the text is allowed to change its appearance to indicate that it is hot.
+
+==Groupers==
+
+All of the above styles are obvious, but PANEL and GROUP require more
+explanation.
+
+===Panel===
+
+A panel is a collection of styles. It allows you to create a sub-layout within a layout, and then to use the panel as a container.
+
+    panel [
+        label &quot;Name&quot; field
+        label &quot;Email&quot; field
+        button &quot;Submit&quot;
+    ]
+
+If you provide a name, by default, you will get a border box with title (like HTML fieldset). You can also specify a scroll bar to easily create a scrolling pane of styles.
+
+    panel &quot;Properties&quot; scroll [
+        button &quot;Faster&quot;
+        ...
+    ]
+
+See below for tab panels.
+
+===Group===
+
+A group is a way of automatically organizing a set of styles. It deals
+with more than just the layout, it can also form a relationship between
+the faces within it.
+
+For example:
+
+    group [
+        radio &quot;Stereo&quot;
+        radio &quot;Mono&quot;
+        radio &quot;Surround&quot;
+        radio &quot;Muted&quot;
+    ]
+
+will layout the radio buttons, but also make them mutually exclusive
+relative to each other.
+
+Groups can also be used to specify automatic return for repeating
+patterns:
+
+    i-form: group 2 [
+        label &quot;Name:&quot; field
+        label &quot;Email:&quot; field
+        label &quot;Age:&quot; field
+    ]
+
+Groups also provide another implied features. The values of faces
+can be kept together.
+
+For example, in the above group, all of the values of the fields
+can be obtained or set by referring to the i-form variable:
+
+    i-data: get-face i-form
+
+    set-face i-form i-data
+
+Here, the i-date contains only the field values, not the label values.
+This is an internal attribute of the FIELD style that specifies that its
+values can be &quot;groupable&quot;.
+
+===Tabbed Panel===
+
+A tab panel is created by grouping a set of panels. You use the group
+style with a set of panels. For example:
+
+    group tabbed [
+        panel &quot;Properties&quot; [
+            button &quot;Faster&quot;
+            ...
+        ]
+        panel &quot;Networking&quot; [
+            ...
+        ]
+        panel &quot;Sound&quot; [
+            ...
+        ]
+    ]
+
+==Context Layers==
+
+The handling VID code is mainly the process of identifying the meaning
+of the symbols in the dialect. In R2, this was done by scanning various
+lists to map a word to a command, keyword, or style. A better approach
+is to recognize that VID code is really just layers of contexts that can
+be identified directly if the block is bound the multiple contexts.
+
+The contexts include:
+
+:'''Commands''' - VID commands, such as SPACE, PAD, or RETURN.
+:'''Master Styles''' - the master style sheet.
+:'''Local Styles''' - temporary styles used just in this layout (or its children).
+:'''Keywords''' - special attribute and property words, such as EFFECT or DATA.
+:'''Variables''' - the names used to identify specific faces. In R3, these variables can be grouped into an object that is local to the layout (rather than always being global, as in R2).
+
+The way R3 handles these layered contexts is unique. A new feature of BIND allows us to bind to multiple contexts at the same time. The precedence of the binding is determined by the order of the list.
+
+This feature allows us to identify the commands, keywords, master styles, local styles, and variables all at the same time. This should reduce the code required to implement VID as well as make layout faster.
+
+==Event Levels==
+
+Events are handled at different levels. Here is the full range with
+some suggested names for each:
+
+:'''Trigger''' - this is the lowest level of the event system where the user clicks on window at location of button, even system maps event to a face. This level is important in the fact that modes and filters can be applied to the event stream to control what events are sent to what faces.
+
+:'''Reaction''' - the next level up activates the GUI behavior of the button, such as changing its up/down appearance. This is mainly done for visual feedback purposes. This is  commonly handled by the face engage feel function.
+
+:'''Action''' - based on the behavior of the button, it initiates an action that may apply at the GUI level alone (such as scroll a list), or any other function. In R2, this is the level most applications used to interact with application code, but in many cases the action is to simply store the current state of a GUI object into an application variable. In those cases, the next level is more suitable.
+
+:'''Transaction''' - an action can collect and validate an entire &quot;form&quot; then submit the form to the application as an atomic transaction unit. This is the web model that has been proven to satisfy a large number of uses. The state of the display is relatively independent of the state of the application. For such displays, the individual actions for the GUI are not relevant to the application, and can be handled at the GUI level alone.  Upon a key GUI event, such as clicking a submit button, the application is sent a submit event along with the necessary data. If in addition to layout information, the GUI is also provided with field validation information, even those details can be handled by the GUI and not the application itself.
+
+==References==
+
+{{:VID References}}

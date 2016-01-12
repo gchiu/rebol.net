@@ -1,0 +1,59 @@
+== LINE-JOIN== 
+
+Sets the style that will be used where lines are joined.
+
+{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
+! bgcolor=&quot;silver&quot; | Arg 
+! bgcolor=&quot;silver&quot; | Type 
+! bgcolor=&quot;silver&quot; | Description
+! bgcolor=&quot;silver&quot; | Values
+|- 
+| bgcolor=&quot;white&quot; | mode
+| bgcolor=&quot;white&quot; | [word!]
+| bgcolor=&quot;white&quot; | Join style
+| bgcolor=&quot;white&quot; | '''miter'''
+'''miter-bevel'''
+'''round'''
+'''bevel'''
+|}
+&lt;br&gt;'''Notes and Examples'''
+&lt;code&gt;&lt;pre&gt;
+pen yellow
+line-width 15
+
+line-join miter
+polygon 20x20 180x130 10x100
+
+translate 0x140
+
+line-join miter-bevel
+polygon 20x20 180x130 10x100
+
+translate 200x-140
+
+line-join round
+polygon 20x20 180x130 10x100
+
+translate 0x140
+line-join bevel
+polygon 20x20 180x130 10x100
+&lt;/pre&gt;&lt;/code&gt;
+[[image:LINE-JOIN-1.png|LINE-JOIN example 1]]
+
+&lt;br&gt;
+
+'''Additional notes about LINE-CAP and LINE-JOIN'''
+&lt;pre&gt;
+How are lines drawn
+
+LINE - draws single lines (even if multiple line points is specified)
+SPLINE - draws 'connected' lines but the 'head' and 'tail' is splitted (until you specify CLOSED keyword)
+POLYGON - always draws 'connected' lines in form of closed shape
+
+What does LINE-CAP and LINE-JOIN
+
+LINE - shape of 'head' and 'tail' is affected by LINE-CAP mode
+SPLINE - shape of 'line joins' is affected by LINE-JOIN mode
+		 if CLOSED is defined shape of 'head' and 'tail' is affected by LINE-CAP mode
+POLYGON - shape of all 'line joins' is affected by LINE-JOIN mode
+&lt;/pre&gt;

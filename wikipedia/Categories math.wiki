@@ -1,0 +1,146 @@
+{|
+! Math Functions 
+! Mathematical operations.
+|-
+| [[Words *|*]] 
+| Returns the first value multiplied by the second. 
+|- 
+| [[Words **|**]] 
+| Returns the first number raised to the second number. 
+|- 
+| [[Words &amp;plus;|&amp;plus;]] 
+| Returns the result of adding two values. 
+|- 
+| [[Words -|-]] 
+| Returns the second value subtracted from the first. 
+|- 
+| [[Words /|/]] 
+| Returns the first value divided by the second. 
+|- 
+| [[Words //|//]] 
+| Returns the remainder of first value divided by second. 
+|- 
+| [[Words abs|abs]] 
+| Returns the absolute value. 
+|- 
+| [[Words absolute|absolute]] 
+| Returns the absolute value. 
+|- 
+| [[Words add|add]] 
+| Returns the result of adding two values. 
+|- 
+| [[Words and|and]] 
+| Returns the first value ANDed with the second. 
+|- 
+| [[Words arccosine|arccosine]] 
+| Returns the trigonometric arccosine in degrees. 
+|- 
+| [[Words arcsine|arcsine]] 
+| Returns the trigonometric arcsine in degrees. 
+|- 
+| [[Words arctangent|arctangent]] 
+| Returns the trigonometric arctangent in degrees. 
+|- 
+| [[Words complement|complement]] 
+| Returns the one's complement value. 
+|- 
+| [[Words cosine|cosine]] 
+| Returns the trigonometric cosine in degrees. 
+|- 
+| [[Words divide|divide]] 
+| Returns the first value divided by the second. 
+|- 
+| [[Words even?|even?]] 
+| Returns TRUE if the number is even. 
+|- 
+| [[Words exp|exp]] 
+| Raises E (natural number) to the power specified. 
+|- 
+| [[Words log-10|log-10]] 
+| Returns the base-10 logarithm. 
+|- 
+| [[Words log-2|log-2]] 
+| Return the base-2 logarithm. 
+|- 
+| [[Words log-e|log-e]] 
+| Returns the base-E (natural number) logarithm. 
+|- 
+| [[Words max|max]] 
+| Returns the greater of the two values. 
+|- 
+| [[Words maximum|maximum]] 
+| Returns the greater of the two values. 
+|- 
+| [[Words maximum-of|maximum-of]] 
+| Finds the largest value in a series 
+|- 
+| [[Words min|min]] 
+| Returns the lesser of the two values. 
+|- 
+| [[Words minimum|minimum]] 
+| Returns the lesser of the two values. 
+|- 
+| [[Words minimum-of|minimum-of]] 
+| Finds the smallest value in a series 
+|- 
+| [[Words mod|mod]] 
+| Compute a nonnegative remainder of A divided by B. 
+|- 
+| [[Words modulo|modulo]] 
+| Wrapper for MOD that handles errors like REMAINDER. Negligible
+		values (compared to A and B) are rounded to zero. 
+|- 
+| [[Words multiply|multiply]] 
+| Returns the first value multiplied by the second. 
+|- 
+| [[Words negate|negate]] 
+| Changes the sign of a number. 
+|- 
+| [[Words negative?|negative?]] 
+| Returns TRUE if the number is negative. 
+|- 
+| [[Words not|not]] 
+| Returns the logic complement. 
+|- 
+| [[Words odd?|odd?]] 
+| Returns TRUE if the number is odd. 
+|- 
+| [[Words or|or]] 
+| Returns the first value ORed with the second. 
+|- 
+| [[Words positive?|positive?]] 
+| Returns TRUE if the value is positive. 
+|- 
+| [[Words power|power]] 
+| Returns the first number raised to the second number. 
+|- 
+| [[Words random|random]] 
+| Returns a random value of the same datatype. 
+|- 
+| [[Words remainder|remainder]] 
+| Returns the remainder of first value divided by second. 
+|- 
+| [[Words round|round]] 
+| Returns the nearest integer. Halves round up (away from zero) by default. 
+|- 
+| [[Words sign?|sign?]] 
+| Returns sign of number as 1, 0, or -1 (to use as multiplier). 
+|- 
+| [[Words sine|sine]] 
+| Returns the trigonometric sine in degrees. 
+|- 
+| [[Words square-root|square-root]] 
+| Returns the square root of a number. 
+|- 
+| [[Words subtract|subtract]] 
+| Returns the second value subtracted from the first. 
+|- 
+| [[Words tangent|tangent]] 
+| Returns the trigonometric tangent in degrees. 
+|- 
+| [[Words xor|xor]] 
+| Returns the first value exclusive ORed with the second. 
+|- 
+| [[Words zero?|zero?]] 
+| Returns TRUE if the number is zero. 
+|}

@@ -1,0 +1,317 @@
+:''Please boldly edit this document to represent the evolving consensus.  Use the Talk Page to make comments or debate.''
+
+Rebol has the ability to recognize tokens that look like XML or HTML tags, and use them directly without enclosing them in special delimiters.  For example:
+
+&lt;pre&gt;
+ &gt;&gt; site-name: &quot;Rebol Homepage&quot;
+
+ &gt;&gt; site-version: 2
+ 
+ &gt;&gt; print [&lt;a href=&quot;http://rebol.com&quot;&gt; site-name &quot;Version&quot; (site-version + 1) &lt;/a&gt;]
+ &lt;a href=&quot;http://rebol.com&quot;&gt; Rebol Homepage Version 3 &lt;/a&gt;
+&lt;/pre&gt;
+
+Yet to meet the needs of those working with languages like PHP or other web-templating systems, it was important not to choose any specific internal structure for tags.  For this reason, &lt;tt&gt;tag!&lt;/tt&gt; was necessarily classified as an &lt;tt&gt;any-string?&lt;/tt&gt; type.  This is likely to disappoint users who were expecting an abstraction that offers DOM-like access and construction:
+
+&lt;pre&gt;
+ &gt;&gt; t: &lt;a href=&quot;http://rebol.com&quot;&gt;
+ == &lt;a href=&quot;http://rebol.com&quot;&gt;
+ ; OMG WOW!!!
+
+ &gt;&gt; t/href
+ ** Script error: cannot access href in path t/href
+ ; Uhh... so how do I get it?
+ ; (probes documentation, ask community, tinker...)
+
+ &gt;&gt; value: if parse t [thru {href=&quot;} copy value to {&quot;} to end] [to-string value]
+ == &quot;http://rebol.com&quot;
+ ; What... why did they send me that code?  Wait a second...
+
+ &gt;&gt; to-tag {&lt;a href=&quot;http://rebol.com&quot;&gt;}
+ == &lt;&lt;a href=&quot;http://rebol.com&quot;&gt;&gt;
+ ; That's not even a valid tag!  This is a string!
+&lt;/pre&gt;
+
+However, tag elements do still have their own type (&lt;tt&gt;tag!&lt;/tt&gt;).  That means there are several possibilities for introducing behaviors that are more relevant to the real-world needs of those working with XML or HTML messages.  This document lays out some of those proposals.
+
+= Related Projects =
+
+The following projects have attempted to build on, extend, or substitute for Rebol's tag!
+
+* [http://www.ross-gill.com/techniques/rsp/ RebolServer Pages (RSP)] &amp;mdash; a concept adapted from [http://en.wikipedia.org/wiki/JavaServer_Pages JavaServer Pages (JSP)]
+
+= How Tags were Documented in R2 =
+
+Tags were not listed in the same section as string series, but rather listed in [http://www.rebol.com/docs/core23/rebolcore-16.html#section-2.12 Appendix 1].  It is likely that most people encountered tags in practice before finding them in the documentation.
+
+Here is the entire text of the original presentation, to provide context of the subsequent discussion.
+
+=== Concept ===
+
+Tags are used in HTML and other markup languages to indicate how text fields are to be treated. For example, the tag &amp;lt;HTML&amp;gt; at the beginning of a file indicates that it should be parsed by the rules of the Hypertext Markup Language. A tag with a forward slash (/), such as &amp;lt;/HTML&amp;gt;, indicates the closing of the tag.
+
+Tags are a subset of series, and thus can be manipulated as such:
+
+&lt;pre&gt;
+ a-tag: &lt;img src=&quot;mypic.jpg&quot;&gt;
+ probe a-tag
+ &lt;img src=&quot;mypic.jpg&quot;&gt;
+ append a-tag { alt=&quot;My Picture!&quot;}
+ probe a-tag
+ &lt;img src=&quot;mypic.jpg&quot; alt=&quot;My Picture!&quot;&gt;
+&lt;/pre&gt;
+
+=== Format ===
+
+Valid tags begin with an open angle bracket (&amp;lt;) and end with a closing bracket (&amp;gt;). For example:
+
+&lt;pre&gt;
+ &lt;a href=&quot;index.html&quot;&gt;
+ &lt;img src=&quot;mypic.jpg&quot; width=&quot;150&quot; height=&quot;200&quot;&gt;
+&lt;/pre&gt;
+
+=== Creation ===
+
+The to-tag function converts data to the tag! datatype:
+
+&lt;pre&gt;
+ probe to-tag &quot;title&quot;
+ &lt;title&gt;
+&lt;/pre&gt;
+
+Use build-tag to construct tags, including their attributes. The build-tag function takes one argument, a block. In this block, the first word is used as the tag name and the remaining words are processed as attribute value pairs:
+
+&lt;pre&gt;
+ probe build-tag [a href http://www.rebol.com/]
+ &lt;a href=&quot;http://www.rebol.com/&quot;&gt;
+ probe build-tag [
+    img src %mypic.jpg width 150 alt &quot;My Picture!&quot;
+ ]
+ &lt;img src=&quot;mypic.jpg&quot; width=&quot;150&quot; alt=&quot;My Picture!&quot;&gt;
+&lt;/pre&gt;
+
+=== Related ===
+
+Use tag? to determine whether a value is an tag! datatype.
+
+&lt;pre&gt;
+ probe tag? &lt;a href=&quot;http://www.rebol.com/&quot;&gt;
+ true
+&lt;/pre&gt;
+
+As tags are a subset of the series pseudotype, use series? to check this:
+
+&lt;pre&gt;
+ probe series? &lt;a href=&quot;http://www.rebol.com/&quot;&gt;
+ true
+&lt;/pre&gt;
+
+The form function returns a tag as a string:
+
+&lt;pre&gt;
+ probe form &lt;a href=&quot;http://www.rebol.com/&quot;&gt;
+ {&lt;a href=&quot;http://www.rebol.com/&quot;&gt;}
+&lt;/pre&gt;
+
+The mold function returns a tag as a string:
+
+&lt;pre&gt;
+ probe mold &lt;a href=&quot;http://www.rebol.com/&quot;&gt;
+ {&lt;a href=&quot;http://www.rebol.com/&quot;&gt;}
+&lt;/pre&gt;
+
+The print function prints a tag to standard output after doing a reform on it:
+
+&lt;pre&gt;
+ print &lt;a href=&quot;http://www.rebol.com/&quot;&gt;
+ &lt;a href=&quot;http://www.rebol.com/&quot;&gt;
+&lt;/pre&gt;
+
+= Changes to Tag in R3 =
+
+The following was not in the tag documentation, but was how R2 would run a to-block conversion on a tag:
+
+&lt;pre&gt;
+ ;R2
+ &gt;&gt; to-block t
+ == [a href= &quot;http://rebol.com&quot;]
+&lt;/pre&gt;
+
+This was changed as part of the overall cleanup of the semantics of TO.  It was also essential for the LOAD mezzanine to work properly.
+
+&lt;pre&gt;
+ ;R3
+ &gt;&gt; to-block t
+ == [&lt;a href=&quot;http://rebol.com&quot;&gt;]
+&lt;/pre&gt;
+
+The new behavior is much more basic, and simply wraps the tag in a block instead of parsing it.
+
+''(Q: New mezzanine or helper that does this?  Parse-based?)''
+
+= Tags and the Parser =
+
+Though not explicitly emphasized, the underlying tag! implementation was chosen to be a string (and not a map of keys and values).  At the implementation level, it is able to support any content that a string can&amp;mdash;with the key difference that it responds to tag? with true and string? with false...
+
+&lt;pre&gt;
+ &gt;&gt; s: &quot;&lt;&lt;!(/ &lt;&quot;
+ == &quot;&lt;&lt;!(/ &lt;&quot;
+
+ &gt;&gt; t: to-tag s
+ == &lt;&lt;&lt;!(/ &lt;&gt;
+
+; the following should be true for any t: to-tag s
+ &gt;&gt; s = to-string t
+ == true
+&lt;/pre&gt;
+
+As with word! or other Rebol types, what the parser will allow is a subset of what the type is actually able to hold.  It can parse embedded greater-than signs if they are inside of quote marks:
+
+&lt;pre&gt;
+ &gt;&gt; &lt;a title=&quot;a &gt; b?&quot;&gt;
+ == &lt;a title=&quot;a &gt; b?&quot;&gt;
+&lt;/pre&gt;
+
+Outside of quotes (even in braces) they will cause parse errors, although nested less-than signs will not:
+
+&lt;pre&gt;
+ &gt;&gt; &lt;a href={a &gt; b?}&gt;      
+ ** Syntax error: invalid &quot;string&quot; -- &quot;}&quot;
+ ** Near: (line 1) &lt;a href={a &gt; b?}&gt;
+ 
+ &gt;&gt; &lt;a href={a &lt; b?}&gt; 
+ == &lt;a href={a &lt; b?}&gt;
+&lt;/pre&gt;
+
+This rules out the inclusion of generalized Rebol source code in the body of a tag:
+
+&lt;pre&gt;
+ &gt;&gt; t: &lt;a href=( append http://rebol.net/wiki/ either version &gt;= 3 [ {REBOL_3} ] [ {REBOL_2} ] ) title=&quot;wiki site&quot;&gt;
+ ** Syntax error: missing &quot;(&quot; at &quot;end-of-paren&quot;
+ ** Near: (line 1) t: &lt;a href=( append http://rebol.net/wiki/ either version &gt;= 3 [ {REBOL_3} ] [ {REBOL_2} ] ) title=&quot;wiki site&quot;&gt;
+&lt;/pre&gt;
+
+Such a thing would have to be done through a string conversion:
+
+&lt;pre&gt;
+ &gt;&gt; t: to-tag {a href=( append http://rebol.net/wiki/ either version &gt;= 3 [ {REBOL_3} ] [ {REBOL_2} ] ) title=&quot;wiki site&quot;}     
+ == &lt;a href=( append http://rebol.net/wiki/ either version &gt;= 3 [ {REBOL_3} ] [ {REBOL_2} ] ) title=&quot;wiki site&quot;&gt;
+&lt;/pre&gt;
+
+= Tags in Dialects =
+
+Just as paren! can be used to indicate precedence or slots for compose, thinking of tag in a general fashion allows people to use it in dialects for free and novel purposes of expression.  Here is a contrived example of a dialect that is designed for sending and receiving strings:
+
+&lt;pre&gt;
+ communication: [
+     recv &quot;Hello?&quot;
+     send &quot;Hi, what's your question?&quot;
+     recv &quot;Is 1 &gt; 2?&quot;
+     recv &quot;I need to know!&quot;
+     send {Well, not if you listen to those so-called &quot;mathematicians&quot;!}
+  ]
+  send-receive inport outport communication
+&lt;/pre&gt;
+
+This method is common in Rebol, which is to use words to cue how to interpret the string to follow.  However, because tags can carry any string content they could also be applied in dialecting, for instance by letting a tag be a &quot;string to receive&quot; with an ordinary Rebol string being a &quot;string to send&quot;:
+
+&lt;pre&gt;
+ communication: [
+     &lt;Hello?&gt;
+     &quot;Hi, what's your question?&quot;
+     &lt;Is 1 &gt; 2?&gt;
+     &lt;I need to know!&gt;
+     {Well, not if you listen to those so-called &quot;mathematicians&quot;!}
+ ]
+ send-receive inport outport communication
+&lt;/pre&gt;
+
+The strings report their type as string! and the tags report their types as tag!, which allows the dialect to take the appropriate action.
+
+''(Note: This specific case couldn't work at the source-level due to the fact that &lt;tt&gt;&amp;lt;Is 1 &amp;gt; 2?&amp;gt;&lt;/tt&gt; would not parse.  However if the greater than sign were supplied using the escaping mechanism, or if the code were generated programmatically it would be fine.)''
+
+= Why Not Constrain to &quot;Valid&quot; W3C Tags =
+
+One might challenge the value in letting any string be a tag, with no error checking.  Dates are constrained to exclude nonsense:
+
+&lt;pre&gt;
+ &gt;&gt; to-date &quot;34-Jul-2009&quot;
+ ** Script error: cannot MAKE/TO date! from: &quot;34-Jul-2009&quot;
+ ** Where: to to-date
+ ** Near: to date! :value
+&lt;/pre&gt;
+
+You might think that Rebol would constrain tags in the same way:
+
+&lt;pre&gt;
+ &gt;&gt; to-tag &quot;&lt;b&quot;
+ ** Script Error: Invalid argument &lt;b
+ ** Where: to-tag
+ ** Near: to tag! :value
+&lt;/pre&gt;
+
+Instead, what Rebol does is this:
+
+&lt;pre&gt;
+ &gt;&gt; to-tag &quot;&lt;b&quot;
+ == &lt;&lt;b&gt;
+&lt;/pre&gt;
+
+The following reasons are given for why the application space of tag motivates a more general approach than the one for date.
+
+=== Code Generation ===
+
+Tag was purposefully chosen to be a low level element that could represent not only tags that were deemed valid by the W3C spec, but also code that lived outside of that spec.  Lines of PHP for instance are explicitly ''not'' W3C tags, because they must be alien in order to be recognized as &quot;escapes&quot; which must be processed by the language before delivery to the client:
+
+&lt;pre&gt;
+ &lt;? print(Date(&quot;1 F d, Y&quot;)); ?&gt;
+&lt;/pre&gt;
+
+If Rebol were to be prescriptive about tags obeying the W3C structure, then this could not be encoded in a tag.  These would have to stay as strings.
+
+=== Complexity of Edge-Case W3C Tags ===
+
+There would also be complications in handling comments and DOCTYPE.  (Although the W3C has made it clear that DOCTYPE is not considered a tag!)
+
+=== Output Formatting ===
+
+If the underlying representation of a tag within Rebol was structural (like some kind of map or block), it would preclude user control of spacing and newlines in a tag.
+
+=== It's Not Necessary ===
+
+Most of what you would want to do with a W3C tag could be done with the tag! type without changing its underlying implementation. Even some of the tricks like attribute management could be handled by functions that parse the tag at runtime and make the adjustments. Even some of the native functions could have some additional capabilities added on to what they already do, without in any way affecting their existing functionality.
+
+All that you would need to do is to have this extra functionality simply fail gracefully when applied to tags that don't follow W3C syntax. Instead of a standing constraint, add a validation function. If it's not W3C syntax, it's up to the programmer to determine whether that matters and how.
+
+= Proposals =
+
+== Extend SELECT, PICK and POKE ==
+
+SELECT, PICK and POKE are actions, and as such can be modified on a datatype-specific basis. As long as the existing string-like behavior doesn't go away there's no reason we can't add on map-like behavior when using word! selectors. The underlying representation doesn't even need to change - the code could parse the tag if need be.
+
+For instance:
+
+&lt;pre&gt;
+select &lt;a href=&quot;http://rebol.com&quot;&gt; 'href
+&lt;/pre&gt;
+
+The current behavior treats this exactly the same as if you had written:
+
+&lt;pre&gt;
+select &lt;a href=&quot;http://rebol.com&quot;&gt; to-string 'href
+&lt;/pre&gt;
+
+Currently that translates to returning the single character #&quot;r&quot;.  However, select can cue off of the fact that it is using a word! and a tag!
+
+&lt;pre&gt;
+ &gt;&gt; select &lt;a href=&quot;http://rebol.com&quot;&gt; 'href
+ == &quot;http://rebol.com&quot;
+&lt;/pre&gt;
+
+When applied to PICK and POKE, it would work for path and set-path access.  That includes:
+
+&lt;pre&gt;
+t/href: http://www.rebol.com/
+&lt;/pre&gt;
+
+The understanding would be that these extra functions would ''just not work'' on non-W3C formatted tags, returning none.

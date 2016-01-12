@@ -1,0 +1,1 @@
+This page is obsolete. Updated information can be found here: [http://www.rebol.com/r3/docs/view/gobs.html &quot;R3 View Graphical Objects&quot;]

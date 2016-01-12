@@ -1,0 +1,103 @@
+A few tests...
+
+== wiki-function-list ==
+
+&lt;code&gt;&gt;&gt; wiki-function-list [now parse load]&lt;/code&gt;
+
+Returns:
+
+=== NOW ===
+Returns the current local date and time.
+NOW is a native value.
+==== Refinements ====
+: '''/year''' -- Returns the year only. 
+: '''/month''' -- Returns the month only. 
+: '''/day''' -- Returns the day of the month only. 
+: '''/time''' -- Returns the time only. 
+: '''/zone''' -- Returns the time zone offset from GMT only. 
+: '''/date''' -- Returns date only. 
+: '''/weekday''' -- Returns day of the week as integer (Monday is day 1). 
+: '''/yearday''' -- Returns day of the year (Julian) 
+: '''/precise''' -- Use nanosecond precision 
+
+=== PARSE ===
+Parses a series according to rules.
+PARSE is a native value.
+==== Arguments ====
+: '''input''' -- Input series to parse (Type: series)
+: '''rules''' -- Rules to parse by (Type: block string none)
+
+==== Refinements ====
+: '''/all''' -- Parses all chars including spaces. 
+: '''/case''' -- Uses case-sensitive comparison. 
+
+=== LOAD ===
+Loads a file, URL, or string. Binds words to global context.
+LOAD is a native value.
+==== Arguments ====
+: '''source''' -- (Type: file url string any-block binary)
+
+==== Refinements ====
+: '''/header''' -- Includes REBOL header object if present. 
+: '''/next''' -- Load the next value only. Return block with value and new position. 
+: '''/library''' -- Force file to be a dynamic library. (Command version) 
+: '''/markup''' -- Convert HTML and XML to a block of tags and strings. 
+: '''/all''' -- Load all values. Does not evaluate REBOL header.
+
+== wiki-table ==
+
+&lt;code&gt;&gt;&gt; wiki-table/header [[Luke Skywalker][Darth Vader][Han Solo]] [&quot;First Name&quot; &quot;Last Name&quot;]&lt;/code&gt;
+
+Returns:
+
+{|
+!First!!Name!!Last!!Name
+|-
+| Luke 
+| Skywalker 
+|- 
+| Darth 
+| Vader 
+|- 
+| Han 
+| Solo 
+|}
+
+== wiki-link-table ==
+
+&lt;code&gt;&gt;&gt; wiki-link-table [[word1 word2 word3 word4 word5][word6 word7 word8 word9 word10]]&lt;/code&gt;
+
+Returns:
+
+{|
+| [[word1]] 
+| [[word2]] 
+| [[word3]] 
+| [[word4]] 
+| [[word5]] 
+|- 
+| [[word6]] 
+| [[word7]] 
+| [[word8]] 
+| [[word9]] 
+| [[word10]] 
+|}
+
+== wiki-dump-obj ==
+
+&lt;code&gt;&gt;&gt; wiki-dump-obj make object! [a: 5 b: 8 c: &quot;stuff&quot;]&lt;/code&gt;
+
+Returns:
+
+{|
+!Word!!Description
+|-
+|'''a'''
+|5
+|-
+|'''b'''
+|8
+|-
+|'''c'''
+|&quot;stuff&quot;
+|}

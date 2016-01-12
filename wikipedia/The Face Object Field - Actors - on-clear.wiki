@@ -1,0 +1,10 @@
+'''on-clear''' is invoked when a face needs to be cleared. It can be used with the CLEAR reactor. It is also invoked when a panel of form elements needs to be cleared with the CLEAR-PANEL function.
+
+There is no input argument. A return value is not necessary.
+
+===Examples===
+
+ on-clear: [
+   clear face/facets/text-edit
+   show-later face
+ ]

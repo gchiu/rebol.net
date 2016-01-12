@@ -1,0 +1,24 @@
+'''on-resize''' is invoked, every time the layout is resized by the layout engine. Set the dimensions for the draw block as well as the size of the face GOB in this actor.
+
+The input argument is the new size of the face as a pair!.
+
+No return value is necessary.
+
+If your style is a compound style, the faces inside may also need to be resized, which is done with the RESIZE-PANEL function.
+
+===Examples===
+
+Resizing a single face:
+
+ on-resize: [
+   face/gob/size: arg
+   set-facet face 'size arg
+   set-facet face 'area-size arg - 2   
+ ]
+
+Resizing a compound face with scrollers:
+
+ on-resize: [
+   resize-panel face arg
+   update-scrollers face face/gob
+ ]

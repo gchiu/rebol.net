@@ -1,0 +1,331 @@
+==Introduction==
+
+REBOL exceptions have been discussed at:
+
+*[http://www.rebol.com/r3/notes/errors.html Errors article]
+*R3 blog ([http://www.rebol.net/cgi-bin/r3blog.r?view=0309#comments Discussion about error handling])
+*AltMe
+*Cure Code tickets [http://curecode.org/rebol3/ticket.rsp?id=539 #539], [http://curecode.org/rebol3/ticket.rsp?id=771 #771], [http://curecode.org/rebol3/ticket.rsp?id=851 #851], [http://curecode.org/rebol3/ticket.rsp?id=884 #884], [http://curecode.org/rebol3/ticket.rsp?id=1361 #1361], [http://curecode.org/rebol3/ticket.rsp?id=1506 #1506], [http://curecode.org/rebol3/ticket.rsp?id=1509 #1509], [http://curecode.org/rebol3/ticket.rsp?id=1514 #1514], [http://curecode.org/rebol3/ticket.rsp?id=1515 #1515], [http://curecode.org/rebol3/ticket.rsp?id=1518 #1518], [http://curecode.org/rebol3/ticket.rsp?id=1519 #1519], [http://curecode.org/rebol3/ticket.rsp?id=1520 #1520], [http://curecode.org/rebol3/ticket.rsp?id=1521 #1521], [http://curecode.org/rebol3/ticket.rsp?id=1734 #1734], [http://curecode.org/rebol3/ticket.rsp?id=1742 #1742], [http://curecode.org/rebol3/ticket.rsp?id=1743 #1743], [http://curecode.org/rebol3/ticket.rsp?id=1744 #1744]
+
+The purpose of this article is to find a coherent proposal solving the above problems (and maybe more, with a bit of luck).
+
+==Types of exceptions==
+
+The [http://www.rebol.com/r3/notes/errors.html R3 Exception/Error Mechanism] article mentions that there are two types of exceptions in REBOL: unwinds and throws. Since every exception type can be emulated using the other one, I decided to make a couple of speed tests to find out what the relative speed of the respective exception types is:
+
+&lt;pre&gt;; the relative speed of throw is 100%
+base-throw: time-block [try [none]] 0,05
+base-unwind: round to percent! base-throw / time-block [catch [none]] 0,05 ; == 106% 
+error: make error! &quot;&quot;
+handled-throw: time-block [try [do error]] 0,05
+handled-unwind: round to percent! handled-throw / time-block [catch [throw none]] 0,05 ; == 139%&lt;/pre&gt;
+
+This simple test seems to suggest, that unwinds are faster than throws, which suggests, that it is preferable to replace throws by unwinds whenever possible (and it should be always possible, as noted above; this should be handled as an implementation detail, and should not &quot;leak&quot; into the user space anyway, correcting the corresponding unwind bugs mentioned in CureCode).
+
+==RETURN and EXIT==
+
+As stated in the [http://www.rebol.com/r3/notes/errors.html Errors article], REBOL currently uses just dynamically scoped return and exit. Problems with dynamic scoping occur when a function processes code block (or blocks) with return or exit coming from different contexts. In such cases, the behaviour looks &quot;unnatural&quot; or &quot;unexpected&quot; for most users.
+
+: '''NOTE'''
+:
+: &lt;code&gt;exit&lt;/code&gt; is equivalent to &lt;code&gt;return #[unset!]&lt;/code&gt;, therefore it is not necessary to discuss it separately. When mentioning &quot;function using dynamic return&quot;, we usually mean &quot;function using dynamic return and exit&quot;.
+
+===USE===
+
+The '''use''' function and other control functions, like the '''collect''' function below are not supposed to catch return from the '''body''' block. The place where they should return should be related to the &quot;context of '''body''' origin&quot; instead. This is a problem for the current interpreter version, as mentioned in [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+
+The '''use''' function was proposed by Brian as a good example to illustrate the problem, as well as how it can be solved. The '''use''' function is currently implemented as follows:
+
+====Closure based USE implementation====
+
+&lt;pre&gt;use: func [
+    &quot;Defines words local to a block.&quot;
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    body [block!] &quot;Block to evaluate&quot;
+] [
+    apply make closure! reduce [to block! vars copy/deep body] []
+]&lt;/pre&gt;
+
+This '''use''' implementation does not work as required when:
+
+*The inner closure catches the dynamic return, and the dynamic return call is present in the '''body''' block. The problem is, that the dynamic return is caught by the inner closure, causing the bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*The inner closure is made to use the definitional return, and a ''return'' word is present in the '''body''' block. In this case the problem is, that the '''make''' function binds the '''body''' block to the closure context, which results in binding (and redefining) any ''return'' word present in the '''body''' block, effectively causing the same bug.
+
+R2 would solve the bug by using the '''[throw]''' function attribute in both the '''use''' function and in the inner closure.
+
+One more note to the implementation: Since the inner closure is called just once, there seems to be no need deep copy the '''body''' block when it is defined; but the block passed to '''use''' might itself be reused, by other calls to '''use''' for instance, and using a block as a closure body binds the block to that closure even if the closure is thrown away. If we don't deep copy the block here we can't reuse it later, such as in other calls to the code that contains the '''use''' statement.
+
+====Foreach based USE implementation====
+
+Instead of using a closure, we can implement the '''use''' function as follows:
+
+&lt;pre&gt;use: func [
+    &quot;Defines words local to a block.&quot;
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    body [block!] &quot;Block to evaluate&quot;
+] [
+    foreach (vars) [#[none]] body
+]&lt;/pre&gt;
+
+Advantages:
+*This implementation is simpler than the closure based one.
+*This implementation is faster.
+*No additional deep copy necessary since '''foreach''' doesn't modify its body block.
+*If the code that calls the '''use''' function had a definitionally scoped return, or even if '''use''' just passed through the dynamic return, bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539] would be corrected.
+
+Disadvantages:
+*This solution goes into an infinite loop, if all '''vars''' are set-words. I see this property as a '''foreach''' design quirk, as noted in [http://curecode.org/rebol3/ticket.rsp?id=1751 #1751], but even if that is fixed we will still have a problem.
+*This solution catches '''break''' and '''continue''' in the body as well.
+
+Those last two disadvantages can be solved by using the following modification:
+
+&lt;pre&gt;use: func [
+    &quot;Defines words local to a block.&quot;
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    body [block!] &quot;Block to evaluate&quot;
+] [
+    do foreach (vars) [#[none]] reduce [to paren! reduce [:break 'return] body]
+]&lt;/pre&gt;
+
+Now the '''foreach''' loop in the '''use''' implementation just binds the body, and does nothing else. This way, when evaluating the body block, the '''foreach''' loop is not running, which precludes any interference between the '''foreach''' loop and any '''break'''/'''continue''' call made when the body is evaluated. This can be made even simpler with a helper function that calls '''break'''/return. However, this begins to illustrate the problem with requiring regular developers to do such workarounds.
+
+===COLLECT===
+
+The '''use''' function is not the only one currently caught by this problem, so we shall discuss another example presented by Brian, the '''collect''' function. The '''collect''' function is currently implemented as follows:
+
+====FUNC based COLLECT====
+
+&lt;pre&gt;collect: make function! [[
+    {Evaluates a block, storing values via KEEP function, and returns block of collected values.}
+    body [block!] &quot;Block to evaluate&quot;
+    /into {Insert into a buffer instead (returns position after insert)}
+    output [series!] &quot;The buffer series (modified)&quot;
+][
+    unless output [output: make block! 16]
+    do func [keep] body func [value [any-type!] /only] [
+        output: apply :insert [output :value none none only]
+        :value
+    ]
+    either into [output] [head output]
+]]&lt;/pre&gt;
+
+Notice that the given body is bound when the new anonymous function is created; '''func''' is used so that the function bodies are copied. This operation is problematic, if the anonymous function has a definitional return, since in that case all 'return word occurrences in the body are bound, which is not desirable.
+
+====FOREACH based COLLECT====
+
+&lt;pre&gt;collect: make function! [[
+    {Evaluates a block, storing values via KEEP function, and returns block of collected values.}
+    body [block!] &quot;Block to evaluate&quot;
+    /into {Insert into a buffer instead (returns position after insert)}
+    output [series!] &quot;The buffer series (modified)&quot;
+][
+    unless output [output: make block! 16]
+    do foreach keep reduce [
+        func [value [any-type!] /only] [
+            output: apply :insert [output :value none none only]
+            :value
+        ]
+    ] reduce [body]
+    either into [output] [head output]
+]]&lt;/pre&gt;
+
+Notice, that here no 'return in the given body can be bound, as opposed to the word 'keep, binding of which ''is'' wanted. This case is less problematic than the '''use''' solution above.
+
+===Proposed RETURN alternatives===
+
+====Dynamic return with optional transparency====
+
+This alternative is inspired by the R2's '''[throw]''' function attribute, though it would likely be specified using a set-word like '''throw:''' instead.
+
+Advantages:
+*Solves the most serious traditional problems.
+*Most functions would not need to specify an option, including code that calls functions like '''use''', though '''use''' itself would need to specify it once or twice.
+*Can call '''return''' from code blocks not contained in functions. This is common in '''parse''' code blocks, and manual common subexpression elimination (though that should be in functions instead). As an additional advantage, the meaning and expected behavior of '''return''' from code blocks is clear with dynamic return, since dynamic return is defined in relation to the flow of calls to functions (dynamic scope) rather than nested code blocks (lexical scope).
+*At least the dynamic return part is implemented already, and uses the same code that the other dynamic escapes use to propagate.
+*Doesn't combine the transparency option with an option to specify a typespec for the return value, allowing them to be specified separately.
+*Easy to translate code from R2.
+
+Disadvantages:
+*Bad locality for the unhandled '''return''' error ([http://curecode.org/rebol3/ticket.rsp?id=1506 #1506]), or overhead to check for that situation.
+*Does not address the need to have both a function scoped return as well as pass through returns from different contexts at the same time.
+*Some people seem to question or have trouble understanding dynamic return as a concept, let alone its benefits. They prefer to think in terms of lexical scoping, even if it is only faked in REBOL.
+*The transparency option would need to be specified more often than the comparable option for definitional return.
+*We could do better than the name '''throw:''' for the transparency option.
+
+====Definitional return only====
+
+At function definition time, '''make''' would bind the 'return word in function bodies to local versions of the '''return''' function. Those local functions would only return to the function to which they are bound. The top-level versions of '''return''' would just trigger an error.
+
+Advantages:
+*Solves the '''use''' (and '''collect''', etc...) problems after the rewrite above.
+*Functions would not need to specify an option.
+*The easiest to explain to people who are familiar with lexical scoping, but unfamiliar with dynamic return. And no options need to be explained either.
+*Satisfies the need to have both a function scoped '''return''' as well as pass through '''return''' from different contexts at the same time, though significant code rewriting will sometimes be needed.
+*Can be used to implement code patterns like the definitional '''catch'''/'''throw''' mezzanine pair below.
+*Good locality for the unhandled '''return''' errors ([http://curecode.org/rebol3/ticket.rsp?id=1506 #1506]), with no extra overhead.
+*The meaning of '''return''' outside of functions is clear: it's an error.
+*You don't run into the limitations of this model as commonly as you do those of dynamic return, whether or not '''[throw]''' is available. And when you run into those limitations, it is at least ''possible'' to work around them, for a sufficiently smart programmer.
+
+Disadvantages:
+*If the code block using '''return''' is nested in the function body, '''return''' works automatically. If not, the user needs to either bind the code block, or get the correct '''return''' function otherwise ('''get'''/'''set''' word, etc.). For example, see the mezzanine definitional '''catch'''/'''throw''' implementation below. Code blocks outside of functions are common for '''parse''' rules, for instance.
+*No (native) way to construct a function ''without'' it redefining 'return (as would be needed by the inner functions of the '''use''' and '''collect''' examples above, before the rewrites).
+*More work is required by regular programmers to work around the limitations of this model, and more tricky work at that. See the above rewrites for examples of this.
+*Slight added overhead to function creation and memory use.
+
+There is an even more arcane workaround to the limit of this model than the '''foreach''' rewrites above: You can use direct references to the '''return''' function instead of referring to it by a word. Of course you would need to refer to them by words at least once in the function for them to be redefined to the local versions, before you could pass them along by value. Look at the code examples in [http://curecode.org/rebol3/edit-ticket.rsp?id=637 #637] to get an idea of what that looks like.
+
+====Dynamic-return-only functions vs. option of definitional-return-only functions====
+
+This is one interpretation of the &quot;Possible Return Method&quot; in the [http://www.rebol.com/r3/notes/errors.html Errors article]. In this interpretation, there will be two kinds of functions: regular and definitional. Definitional functions would redefine '''return''', as stated above, but being definitional would be an option. Definitional functions would not catch dynamic returns. Regular functions would catch dynamic returns, but would not redefine '''return''' in their code blocks, and thus not catch definitional returns; they are the &quot;regular&quot; functions because the top-level '''return''' would be have to be the dynamic versions. There would be no equivalent to R2's '''[throw]''' - in theory it would be unnecessary (in practice, no).
+
+Advantages:
+*In theory this would directly handle more situations than pure definitional return without needing workarounds as often.
+*Solves the '''use''' problem, though only when you can do rewrites like the above '''foreach''' based approach.
+*Solves the unhandled return error locality problem for definitional returns, though not for dynamic returns.
+
+Disadvantages:
+*The most difficult to use solution (except maybe the [[#Dynamic return with a definitional return option|other interpretation]]).
+*Would still have the unhandled return error locality problem for dynamic return.
+*You won't know whether '''return''' is definitional or dynamic, which will lead to hard-to-debug errors.
+*If we have both definitional return and dynamic return it becomes a little less obvious what '''return''' outside of a function means, even if it is clearly specified.
+*You would also need to specify the definitional return option for functions that might otherwise catch dynamic returns they aren't supposed to, even if the function contains no references to '''return''' itself. This adds programming overhead.
+*There are some times when you don't want a function to catch a return, either definitional or dynamic, that is specified in its code block. The only way to do this is to make a function that does definitional return, and then reference the dynamic or definitional '''return''' functions you want to call in the code by value, rather than by name. Awkward.
+*If we adopt the proposal in the [http://www.rebol.com/r3/notes/errors.html Errors article] to use '''return:''' as a conflated option to both specify definitional return and optionally a function return type, it will be impossible to specify a return type on a dynamic return function. These options should be separate.
+*There will be whole classes of functions that will be impossible to write, and noone will be able to tell you what those classes are or why they are impossible, even when you run into them. At least with the other models the limitations are explainable.
+*Slight added overhead to function creation and memory use for definitional return functions.
+
+====Dynamic return with a definitional return option====
+
+By another interpretation of the &quot;Possible Return Method&quot; in the [http://www.rebol.com/r3/notes/errors.html Errors article], the '''return:''' option would only cause the redefinition of '''return''' to be function-local (definitional return), but '''not''' cause the function to ignore dynamic returns. All functions would catch dynamic returns, and '''return''' would be defined at the top level to generate dynamic returns. Definitional return would still be an option, not the default.
+
+Advantages (compared to the [[#Dynamic-return-only functions vs. option of definitional-return-only functions|other interpretation]]):
+*You would have a better chance of knowing whether '''return''' would work for you.
+*Slightly easier to understand (this is debatable).
+
+Disadvantages (compared to the [[#Dynamic-return-only functions vs. option of definitional-return-only functions|other interpretation]]):
+*There would be even more functions that would be impossible to write, for even more confusing reasons.
+*Though the unhandled return error locality problem would still only affect dynamic returns, it would apply more often.
+*You can't ''not'' catch dynamic return. This means that even code that ''calls'' functions like '''use''' would need to use the definitional return option. The definitional return option would need to be specified a lot.
+*The awkward direct-reference workaround mentioned above to not catch any '''return''' would not work with dynamic return.
+*Possibly more difficult to use than the other interpretation, though that would be debatable (if we could figure out how to do so).
+*Definitely less useful than the other interpretation.
+
+====Definitional return only, with an option to not redefine RETURN and EXIT====
+
+This would be a variant of the [[#Definitional return only|pure definitional model]], but you could specify an option in a function's spec that would make it ''not'' redefine '''return''' and '''exit''' to refer to local return functions. Any 'return or 'exit words would keep their old definitions. Basically, this option would be the definitional return version of what R2's '''[throw]''' function attribute is for dynamic return. This would provide a simple native option that would get around all of the limits in the pure definitional model, without needing any user code workarounds like the '''foreach''' rewrites or direct function references. We would not need dynamic return at all, even as an option. As with the pure definitional return model, the top-level versions of '''return''' and '''exit''' would just trigger an error.
+
+Advantages:
+*Easy to explain: one return type, one simple option, lexical scoping.
+*Easy to use: one rarely specified option, easy to debug either way.
+*Most functions would not need to specify the option, including ones that call functions like '''use'''. Even '''use''' itself wouldn't need to specify the option, though its inner function would.
+*Solves the '''use''' problem and all comparable problems (including '''collect''') without the rewrites, just a set-word occasionally added to function specs.
+*Satisfies the need to have both a function scoped '''return''' as well as pass through '''return''' from different contexts at the same time.
+*Can be used to implement code patterns like the definitional '''catch'''/'''throw''' mezzanine pair below.
+*Good locality for the unhandled '''return''' errors ([http://curecode.org/rebol3/ticket.rsp?id=1506 #1506]), with no extra overhead.
+*The meaning of '''return''' outside of functions is clear: it's an error.
+*Provides a clean native way to specify the workaround for the limitations of the pure definitional return model, without requiring any arcane user workaround code.
+*Making definitional return the default for functions deals with most of the usability problems that definitional-as-an-option has.
+*The option is not conflated with an option to specify the return type of the function.
+*The option is easy to explain, even when compared to R2's '''[throw]'''.
+
+Disadvantages:
+*What do we call this option? We shouldn't call it '''return:''' - that wouldn't make sense. Perhaps '''throw:''', '''fallthrough:''', '''no-local-return:''' or something better?
+*We lose the benefit of dynamic return from code blocks outside of functions. Some R2-style code would need a rewrite, particularly '''parse''' rules.
+*Slight added overhead to function creation and memory use.
+
+====Definitional return, with an option to not redefine RETURN and EXIT, dynamic return as a fallback====
+
+This is the same as the [[#Definitional return only, with an option to not redefine RETURN and EXIT|above model]], except the top-level versions of '''return''' and '''exit''' would perform a dynamic return, instead of just triggering an error. Functions specified without an option would catch these dynamic returns. If the option to not rebind 'return and 'exit is chosen, the function would also be [[#Dynamic return with optional transparency|transparent to dynamic returns]], as with R2's '''[throw]'''. This would make the &quot;doesn't catch returns&quot; option consistent.
+
+Advantages (compared to the [[#Definitional return only, with an option to not redefine RETURN and EXIT|previous model]]):
+*Returning from code blocks that are outside of functions would work again. Less R2 code would need a rewrite.
+*Most existing non-erroneous R3 code will run unchanged (as long as it doesn't rely on [http://curecode.org/rebol3/ticket.rsp?id=539 #539]).
+*We already have dynamic return implemented, and any additional overhead we almost get for free along with that required for the other dynamic escape functions.
+
+Advantages (compared to the [[#Dynamic-return-only functions vs. option of definitional-return-only functions|other]] [[#Dynamic return with a definitional return option|models]] with both definitional and dynamic return)
+*Making definitional return the default for functions deals with most of the usability problems that definitional-as-an-option has.
+*Dynamic return will be rare: Most functions will use definitional return.
+*Fewer options need to be specified. Most functions won't need them.
+*Simpler to explain and use: No question about whether '''return''' will return to your function.
+*If you don't want to catch returns you don't have to, and you don't have to do workarounds.
+*The option is not conflated with an option to specify the return type of the function.
+
+Disadvantages (compared to the [[#Definitional return only, with an option to not redefine RETURN and EXIT|previous model]]):
+*Two return types to understand and debug. And you can't tell them apart at a glance.
+*You will need to specify the option to not catch returns more often than the option to not rebind 'return, even though they will be the same option.
+*We either get bad locality for the error of an unhandled dynamic return, or overhead to check for that situation ([http://curecode.org/rebol3/ticket.rsp?id=1506 #1506]).
+
+==QUIT==
+
+*The '''quit''' function is useful, allowing the user to finish the work of the interpreter.
+*The '''catch/'''quit function is useful for applications, which &quot;need&quot; to catch the '''quit''' not wanting (e.g the tested) code to escape from their control
+*Having the '''quit/'''now function is an error (see [http://www.curecode.org/rebol3/ticket.rsp?id=1743&amp;cursor=8 #1743]), imitating just the state that existed before '''catch/'''quit was introduced. If we want to have that state, it suffices to undefine '''catch/'''quit. But we ''don't'' want that state, so we should remove the '''quit/'''now option.
+
+==HALT==
+
+Except for bugs (counting '''quit/'''now as one too), '''halt''' is the only exception in REBOL able to cause the [https://github.com/rebolsource/rebol-test test environment] crash. It is desirable to achieve a situation when all exceptions are catchable (this can be easily transformed to its opposite by undefining the respective catch functions/options), therefore, a corresponding catch function was proposed in [http://www.curecode.org/rebol3/ticket.rsp?id=1742&amp;cursor=9 #1742].
+
+==THROW==
+
+The '''throw''' function is currently a dynamic exception. The /name refinement can be used to &quot;individualize&quot; throws. Problems with named '''throw''':
+
+*Named '''throw''' is longer to write, needing the '''catch/'''name ''block'' ''name'' and '''throw/'''name ''value'' ''name'' pair of expressions.
+*Named '''catch''' does not check the context of the thrown word, which still admits naming conflicts.
+*Regular '''catch''' catches named '''throw''', which is arguably an error under normal circumstances (see [http://curecode.org/rebol3/ticket.rsp?id=1518 #1518]). Most test/debug code relies on this error though.
+
+Exactly like the dynamic '''return''', the dynamic '''throw''' is subject to the locality problems mentioned in [http://curecode.org/rebol3/ticket.rsp?id=1506 #1506].
+
+None of the above mentioned problems is too serious (except [http://curecode.org/rebol3/ticket.rsp?id=1518 #1518]), e.g. [http://curecode.org/rebol3/ticket.rsp?id=1506 #1506] can be circumvented by using an additional '''catch''', but they contribute to the reasons why this construct is used just rarely.
+
+===Example mezzanine implementation of definitional CATCH/THROW===
+
+If we had a definitional '''return''' in REBOL, the definitional '''catch'''/'''throw''' pair could be defined as a mezzanine, using code like:
+&lt;pre&gt;catch: func [
+    {Catches a throw from a block and returns its value.}
+    body [block!]
+] [
+    ; create a new function to have a new definitional RETURN available
+    ; use the new definitional RETURN as THROW in the BODY
+    do func [] [do foreach throw reduce [:return] reduce [body]]
+]&lt;/pre&gt;	
+
+Notice, how the definitional '''return''' of the new function defined in '''catch''' is used as definitional '''throw''' in the body.
+
+===Why THROW should be kept dynamic===
+
+Definitional '''throw''' would disable the greatest strength of the dynamic '''catch'''/'''throw''' pair: They can be used to implement all ''other'' dynamic escape functions that we haven't thought of yet, or are so user-specific that they won't be added to the main language. On a practical level, this usually requires the '''catch''' statement and the '''throw''' statement to be in different functions, wrapper functions that implement the exact semantics that are needed. If the code is required to be nested or explicitly bound (side effect of definitional escapes) then you lose the advantages that dynamic escapes give you, which means that you need to use some ''other'' method of doing dynamic escapes, leaving us back where we started.
+
+Advantages of having '''throw''' serve as the general-purpose method for implementing custom dynamic escape functions:
+*It's an easy method, particularly when you use '''throw/'''name. And you don't have to be as smart as Ladislav to do it.
+*There are tricks that you can do with dynamic escapes that you can't do with definitional, and this would be an easy way to do those tricks. This includes replacing '''quit/'''now, which would allow us to remove that option ([http://curecode.org/rebol3/ticket.rsp?id=1743 #1743]). For that matter, '''all''' dynamic escape functions could be implemented using '''throw/'''name, which could be useful when making safe function wrappers used by sandboxed code.
+*When it's built in, you can make a standard method to catch '''throw''' and '''throw/'''name for debug/test code, and this method would extend to ''all'' dynamic escapes that use them. See [http://curecode.org/rebol3/ticket.rsp?id=1520 #1520] for how.
+*Having ''one'' built-in method for future user-created dynamic escapes, and then controlling that method with a built-on option, stops the escape control arms race dead in its tracks.
+
+Disadvantages (mostly to all uses of '''throw/'''name at the moment):
+*'''throw/'''name doesn't currently work: It doesn't get past '''catch''' without /name. See [http://curecode.org/rebol3/ticket.rsp?id=1518 #1518] for details.
+*No dynamic escapes work when used in an expression that accepts ''error!'' values. See [http://curecode.org/rebol3/ticket.rsp?id=1509 #1509], [http://curecode.org/rebol3/ticket.rsp?id=1515 #1515], [http://curecode.org/rebol3/ticket.rsp?id=1519 #1519] and more for details.
+*Locality problems of the unhandled '''throw''' error, as discussed in [http://curecode.org/rebol3/ticket.rsp?id=1506 #1506]. See there for solutions that don't involve the definitional approach.
+*To be ''really'' useful for implementing custom escape functions, they have to be unspoofable, and '''throw/'''name is spoofable if you know the name - this is a problem for sandboxing functions. One solution for this is to make '''catch/'''name only catch words that are bound to the same context ('''equiv?''' instead of '''equal?'''), as proposed in [http://curecode.org/rebol3/ticket.rsp?id=1744 #1744]. The alternate solution of including a token with the thrown value is spoofable, because someone can intercept the token and reuse it.
+*Name conflicts when the flow of execution goes through code that is written by different people who aren't coordinating their efforts well enough. Also solved by [http://curecode.org/rebol3/ticket.rsp?id=1744 #1744].
+
+Here's an unspoofable '''quit/'''now replacement implemented using dynamic '''throw/'''name with [http://curecode.org/rebol3/ticket.rsp?id=1518 #1518] and [http://curecode.org/rebol3/ticket.rsp?id=1744 #1744] fixed:
+&lt;pre&gt;use [name] [ ; Local 'name makes it unspoofable
+    quit-now: func [retcode] [throw/name retcode 'name]
+    catch-quit-now: func [body [block! file! url!]] [quit/return catch/name [return do body] 'name]
+]
+
+chat: funct [
+    &quot;Open REBOL DevBase forum/BBS.&quot;
+][
+    print &quot;Fetching chat...&quot;
+    if error? err: try [catch-quit-now http://www.rebol.com/r3/chat.r none] [
+        either err/id = 'protocol [print &quot;Cannot load chat from web.&quot;] [do err]
+    ]
+    exit
+]&lt;/pre&gt;
+
+Then the chat script at the url would call '''quit-now''' instead of '''quit/'''now'''/'''return.
+
+==BREAK==
+
+==CONTINUE==

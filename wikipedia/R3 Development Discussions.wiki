@@ -1,0 +1,22 @@
+==R3 Development Discussions==
+
+*[[Things that must be doc'd]] - reminder list
+*[[R3 Alpha Test Priorities]] - what to focus on
+*[[Primary Issues]] - need to be resolved
+*[[TCP Port Open Issue]] - that needs to be described
+*[[Parse Project]] - proposals for extensions to PARSE
+*[[DLL Interface]] - proposals and single point of information for R3 DLL interface
+*[[Replacement]] - proposals for composition via replacement/substitution
+*[[Inclusion Methods]] - discussion about use of PREBOL, INCLUDE, DO, IMPORT, etc.
+*[[GUI Face Sizing]] - finalizing the algorithm
+*[[Comparisons]] - how comparisons should work
+*[[Copy Semantics]] - defining what copy does
+*[[Builder Functions]] - The /INTO option
+*[[Exceptions]] - RETURN, EXIT, CATCH, THROW, QUIT, BREAK, CONTINUE, triggered errors
+*[[Exception proposals]] - dynamic or definitional?
+*[[R3 GUI terminology]] - terminology unification
+*[[Mathematical model of REBOL series | Indexing]] - discussion of indexing in R2 vs. indexing in R3, vs. other possible alternatives
+
+----
+{{Template:Community_TOC}}
+[[Category:Community]]

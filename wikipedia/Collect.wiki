@@ -1,0 +1,9 @@
+Simple COLLECT example:
+
+    collect [
+        repeat i 10 [
+            if 0 = (i // 2) [emit i]
+        ]
+    ]
+
+    == [2 4 6 8 10]

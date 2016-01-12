@@ -1,0 +1,45 @@
+'''A place to make suggestions regarding the [http://www.rebol.com/docs/reference.html REBOL Reference Card.]'''
+
+==A few notes from Carl==
+
+*'''The purpose of this card is to help beginners (not experts.)'''
+
+*The card is designed to list the commonly used REBOL functions, not all REBOL functions. For some parts, like comparison, we list the useful set of functions.
+
+*All links appear to be fixed now. ([[User:Carl|Carl]] 14:21, 6 August 2010 (EDT))
+
+==Developer Comments==
+
+The better the idea, the more suggestions it will provoke.
+
+My initial two cents:
+*add url! type - ''done [[User:Carl|Carl]]''
+*add yes/no in logic! values - ''done [[User:Carl|Carl]]''
+*add ** and exp to Maths - ''done [[User:Carl|Carl]]''
+*change binary! value example to show hex digits A-F and add spaces - ''done [[User:Carl|Carl]]''
+--[[User:Meijeru|Meijeru]] 07:12, 8 August 2010 (EDT)
+
+Add these:
+*body-of to Reflection - ''done [[User:Carl|Carl]]''
+*poke to Series Modify (you already have pick) - ''not common (I've used it rarely) [[User:Carl|Carl]]''
+*remove-each and map-each to the See also: of for - ''done [[User:Carl|Carl]]''
+*map-each to the See also: of remove-each - ''done [[User:Carl|Carl]]''
+-- [[User:BrianH|BrianH]] 05:34, 10 August 2010 (EDT)
+
+And these:
+*forall/forskip (with loops)
+*until (with while)
+--[[User:Meijeru|Meijeru]] 08:11, 13 August 2010 (EDT)
+
+''Meijeru:'' I did not include those because they're not commonly used (by beginners) and they are linked in the &quot;see also&quot; sections of the related functions. -[[User:Carl|Carl]] 14:54, 13 August 2010 (EDT)
+
+Also:
+
+The basic documentation could have a separate category ''system object'' which explains in some detail what is in '''system'''.
+That way, one could link both the various system components in this reference card, and the various schemes, to those explanations.
+
+Incidentally, the choice of system components resp. schemes is somewhat arbitrary right now.
+
+--[[User:Meijeru|Meijeru]] 14:50, 13 August 2010 (EDT)
+
+''Meijeru:'' The plan is to add a system object section to the docs, but it does not yet exist, so the refcard can only provide a brief hint of various fields. For R3, the same is true about schemes. The choices for what appears in the refcard for system and schemes is determined by what is most common, not to include all possibilities. We may want an &quot;advanced user reference card&quot; and some later time. -[[User:Carl|Carl]] 15:00, 13 August 2010 (EDT)

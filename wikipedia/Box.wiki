@@ -1,0 +1,142 @@
+==BOX== 
+
+'''Return To [[Draw]] Contents'''
+&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=50% VALIGN=TOP&gt;
+{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
+! bgcolor=&quot;silver&quot; | Arg 
+! bgcolor=&quot;silver&quot; | Type 
+! bgcolor=&quot;silver&quot; | Description
+! bgcolor=&quot;silver&quot; | Values
+|- 
+| bgcolor=&quot;white&quot; | upper-left-point
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | lower-right-point
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | corner-radius
+| bgcolor=&quot;white&quot; | [decimal!]
+| bgcolor=&quot;white&quot; | Rounds corners
+| bgcolor=&quot;white&quot; | 
+|}
+&lt;/TD&gt;&lt;TD WIDTH=50% VALIGN=TOP&gt;
+The BOX command provides a shortcut for a rectangular polygon. Only the upper-left and lower-right points are needed to draw the box.
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+&lt;br&gt;'''Notes and Examples'''
+
+&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
+&lt;TD WIDTH=60%&gt;
+    fill-pen blue
+    box 20x20 200x200
+&lt;/TD&gt;
+&lt;TD align=center valign=MIDDLE&gt;[[image:BOX-1b.png]]&lt;/TD&gt;
+&lt;/TR&gt;&lt;TR&gt;
+
+&lt;TD WIDTH=60%&gt;
+    fill-pen logo.gif
+    box 20x20 200x200
+&lt;/TD&gt;
+&lt;TD align=center valign=MIDDLE&gt;[[image:BOX-2b.png]] &lt;BR&gt;
+Repititions of Small Image.&lt;/TD&gt;
+&lt;/TR&gt;&lt;TR&gt;
+
+&lt;TD WIDTH=60%&gt;
+    pen red
+    line-pattern yellow 50 30
+    line-width 30
+    line-join round
+    box 50x50 350x350
+&lt;/TD&gt;
+&lt;TD align=center valign=MIDDLE&gt;[[image:BOX-3b.png]]&lt;BR&gt;
+Line widths, patterns, joins are fully supported.&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+
+
+
+
+----
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+Pages
+&lt;font size=1&gt;
+*[[Draw]]
+*[[Anti-Alias]]
+*[[Arc]]
+*[[Arrow]]
+*[[Box]]
+*[[Circle]]
+*[[Clip]]
+*[[Curve]]
+*[[Ellipse]]
+&lt;/font&gt;&lt;/TD&gt;
+
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+
+
+
+&lt;font size=1&gt;
+*[[Fill-Pen]]
+*[[Fill-Rule]]
+*[[Gamma]]
+*[[Grad-Pen]]
+*[[Invert-Matrix]]
+*[[Image]]
+*[[Image-Filter]]
+*[[Line]]
+*[[Line-Cap]]
+
+&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+
+
+
+&lt;font size=1&gt;
+*[[Line-Join]]
+*[[Line-Pattern]]
+*[[Line-Width]]
+*[[Matrix]]
+*[[Pen]]
+*[[Polygon]]
+*[[Push]]
+*[[Reset-Matrix]]
+*[[Rotate]]
+&lt;/font&gt;&lt;/TD&gt;
+
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+
+
+
+&lt;font size=1&gt;
+*[[Scale]]
+*[[Shape]]
+*[[Skew]]
+*[[Spline]]
+*[[Text]]
+*[[Transform]]
+*[[Translate]]
+*[[Triangle]]
+&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP width=25%&gt;
+Chapters
+&lt;font size=1&gt;
+*[[R3 Introduction]]
+*[[Getting Started With R3]]
+*[[The Graphical User Interface]]
+*[[Script Writing With The Visual Interface Dialect|Script Writing With VID]]
+*'''Script Writing With Draw'''
+*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP&gt;
+&lt;font size=1&gt;
+*[[Table Of Contents]]
+&lt;/font&gt;&lt;/TD&gt;
+&lt;/TR&gt;&lt;/TABLE&gt;

@@ -1,0 +1,5 @@
+===REBOL 2 Examples===
+
+http://www.rebol.org/
+
+http://www.rebol.net/cookbook/

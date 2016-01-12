@@ -1,0 +1,67 @@
+'''A lot of R3 is totally new code, and that makes it much more difficult to test because you cannot be guaranteed that any of the code works properly. This document outlines the priorities for testing.'''
+
+==Stages of Testing==
+
+To blindly start testing random parts of the system will uncover a range of bugs and problems, but that is a ''chaotic approach''. It is better to focus on the system in separate stages, proceeding from the lower to higher levels. This makes sense because without solid lower layers, &quot;false bugs&quot; can appear at the higher layers.
+
+==First Priority==
+
+These are primary functions that must work well before we can count on anything else to work at all:
+
+*'''Scanner bugs''' - these are problems related to the way source code is translated into blocks and values.
+
+*'''Evaluation bugs''' - in the way the evaluator itself handles functions, arguments, datatypes, paths, etc.
+
+*'''Allocation problems''' - the way memory is allocated for datatypes and computations. Memory corruption falls into this category too, as would the primary stacks (code and data).
+
+*'''Garbage collection''' - GC is always difficult, and I'm sure we will find bugs here.
+
+*'''Error handling''' - it is hard to track down errors if error handling has a problem.
+
+*'''Basic IO''' - for standard IO (raw console) output of messages and reading writing files (basic, not advanced). Without these, it is difficult to build test scripts.
+
+*'''Assertion failures*** - the interpreter is doing a wide range of internal tests. When these fail, you will see a '''System Error''' message box. Please be sure to report those.
+
+==Second Priority==
+
+*'''Primitive datatypes''' - These are the basic types like numeric, strings, blocks, functions, objects. Without these working properly, nothing will.
+
+*'''Primary conversions''' - these are conversions between strings and datatypes, and back (form and mold). For example, we just noticed that mold of bitset was broken.
+
+*'''Native actions''' - there are hundreds (thousands?) of variations if you include the refinements. This is difficult to test, and we are going to find a lot of bug cases here. Use &quot;help action!&quot; if you need a list.
+
+*'''Native functions''' - Use &quot;help native!&quot; to see what they are. Some are more important than others. For example, TRY is more important right now than DECLOAK.
+
+*'''Math conversions''' - math gets to be fairly complex, so we need to detect various conversion errors that are likely to occur.
+
+*'''Advanced datatypes''' - paths, modules, tasks, dictionary.
+
+==Third Priority==
+
+*Mezzanine functions
+
+*Devices
+
+*Networking
+
+*Graphics
+
+*Scripts
+
+*Files
+
+*File directories
+
+*Startup arguments
+
+==Fourth Priority==
+
+*Special features
+
+*Special interfaces
+
+*Console
+
+*Protocols
+
+*VID GUI

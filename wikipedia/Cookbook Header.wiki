@@ -1,0 +1,1 @@
+This page is a '''Cookbook'''. [[Cookbooks|Complete list of Cookbooks]]. Add your own cookbooks.

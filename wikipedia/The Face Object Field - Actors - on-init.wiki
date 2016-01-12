@@ -1,0 +1,9 @@
+'''on-init'''  is invoked after '''[[The Face Object Field - Actors - on-resize|on-resize]]''', first on regular faces and then on trigger faces. At this state the face is completely ready for use, and you can for example reset it to a default value with the '''[[The Face Object Field - Actors - on-reset|on-reset]]''' actor.
+
+===Examples===
+
+Resetting the face on initialization:
+
+ on-init: [
+   do-style face 'on-reset
+ ]

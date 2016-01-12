@@ -1,0 +1,9 @@
+This wiki is for development purposes. See these pages for official documentation:
+
+*[http://www.rebol.com/r3/docs Official R3 User Guide and Reference]  and 
+*[http://rebol.com/docs.html Rebol Documentation]
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+
+----
+{{Template:Getting_Started_TOC}}
+[[Category:Getting_Started]]

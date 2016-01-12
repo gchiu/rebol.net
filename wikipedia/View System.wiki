@@ -1,0 +1,3 @@
+This page was blank.
+
+'''Related content is here: [http://www.rebol.com/r3/docs/gui/gui.html R3 View and GUI]'''

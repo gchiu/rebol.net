@@ -1,0 +1,3 @@
+The trace function has been entirely rewritten for R3 and is much more useful.
+
+Details about trace are now found on the [http://www.rebol.com/r3/docs/functions/trace.html TRACE function] documentation page.

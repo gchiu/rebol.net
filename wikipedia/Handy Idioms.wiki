@@ -1,0 +1,61 @@
+These can save you some code and maybe some time too.
+
+''Know a good idiom? Please &lt;span class=&quot;plainlinks&quot;&gt;[http://rebol.net/w/index.php?title=Handy_Idioms&amp;action=edit&amp;section=new add]&lt;/span&gt; it here.''
+
+See &amp;bull; [[Forgoing faux pas]] &amp;bull; to avoid some common mistakes.
+
+==To-block works for words too==
+
+This is handy to know:
+
+ &gt;&gt; to-block 'word
+ == [word]
+
+because also:
+
+ &gt;&gt; to-block [word1 word2]
+ == [word1 word2]
+
+So, in some cases, you don't need to write:
+
+ if word? arg [arg: reduce [arg]]
+
+but just:
+
+ to-block arg
+
+==Function parameters that accept unset! arguments==
+
+REBOL's evaluation will complain about unset! values unless your code is prepared to handle them. If you want your function to accept unset! arguments, you can specify the parameters like this:
+
+ arg [any-type!]
+
+If you are more picky about the data types, you can just add unset! (for unset values) and maybe none! (for the value '''none''') to your type list like this:
+
+ arg [string! none! unset!]
+
+Don't forget to use '''get/any''' or ''':arg''' to retrieve values from these words, and to use '''set/any''' for assignments of these values in your function.
+
+Even if you add support for the unset! type to your parameters, REBOL will still complain if you don't provide an argument at all. This is normally a good thing: REBOL functions normally have a fixed number of arguments; variable numbers of arguments are generally passed in blocks. However, there are some functions intended for interactive use at the command line that relax this rule.
+
+If you want your function to accept missing arguments, you need to accept unset! values as above, and specify your parameter using either lit-word! notation like this:
+
+ 'arg [any-type!]
+
+or using get-word! notation like this:
+
+ :arg [any-type!]
+
+There are other effects to the evaluation of the parameters that you will need to take into account. When you use lit-word! parameters, any word or path arguments will not be evaluated. If you want a word or path argument to be evaluated you will have to do so yourself in your function, and then manually do any type checking that is needed. Function expressions with arguments will be evaluated in the function context rather than the calling context. The only alternative is to put the arguments in parentheses so that they will be evaluated and type-checked normally.
+
+If you use get-word! parameters, even expressions in parentheses will not be evaluated. Your function will have to do even more work if that is not your intention. You will find that get-word! parameters are only appropriate on rare occasions.
+
+==Using APPLY to pass NONE arguments==
+
+Sometimes you want to quickly pass all none! values to a function, but don't know how many arguments the function takes - perhaps it is a function value you are constructing or got from somewhere else. APPLY will fill in any missing arguments in the argument block with NONE, so you can just pass an empty argument block and APPLY will do the rest.
+
+ apply :a []
+
+If you want to do the same trick with unset! values, you can just call the function in parentheses:
+
+ (a)

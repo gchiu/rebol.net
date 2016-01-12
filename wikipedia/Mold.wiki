@@ -1,0 +1,59 @@
+We now try to remove spaces that would sometimes appear before a newline. In the example below, there are no spaces following the c and the f before the newline.
+
+   [
+       abc
+       def
+   ]
+
+
+Also, for /all keep in mind that just like in R2:
+
+   mold/all none =&gt; #[none]
+   mold/all true =&gt; #[true]
+   mold/all false =&gt; #[false]
+
+These are common shortcut cases. We make them easier because for these specific cases, programmers may actually type them into their code.
+
+===Question about MOLD/only===
+
+Should mold/only on objects remove the MAKE object! part of the mold and also the brackets?
+
+===Long Term Solution===
+
+MOLD can potentially have quite a few other refinements. For example, the precision of decimal values or use of , not . for decimals. Rather than make each of these a refinement, it is more likely that we will allow an object to specify the variations.
+
+   mold/options block [decimal-precision: 10]
+
+==MOLD/all==
+
+There are a few changes to mold/all:
+
+First, we do not think that these datatypes should require mold/all special #[ datatype format, because nothing is gained. (Tell Carl if you think there is a missed case for any of them.)
+
+*integer     
+*decimal
+*percent     
+*money       
+*char        
+*pair        
+*tuple       
+*time        
+*date        
+*word        
+*set-word    
+*get-word    
+*lit-word    
+*refinement  
+*port        
+
+These datatypes are still pending implementation for MOLD/all:
+
+*gob
+*event
+*vector
+*unicode
+*struct
+*routine
+*task
+
+(And, there are likely a few more.)

@@ -1,0 +1,132 @@
+{{obsolete}}
+
+The current VID3 prototype has some quirks that don't fit entirely into a bug report, as they are more a discussion of small problems that could turn into big problems later and it takes longer to explain. This is seen from a style developer's perspective.
+
+==General Style==
+
+===Required Knowledge===
+
+Creating a style requires a certain amount of knowledge. Minimizing how much you need to know, makes it easier to create styles, obviously. Here's a list of required knowledge:
+
+#You need to know about the STYLIZE command. This is pretty obvious.
+#You need to know that a style has at least 3 sections: An argument block, a FEEL object and a LOOK object. This requires a little bit of reading, or have an example style to look at, because you apparently need to place the arguments, feel and style in the right order. From an example you can't see that you can leave out the parts you don't need. It's fairly obvious to figure out that the LOOK is separated from the FEEL.
+#You need to know about DELECT to figure out how the argument block works in detail and take full advantage of it. You don't need to know about it, when using simple arguments. This requires reading about the DELECT function, obviously, and can have a bit of a learning curve, if you don't know about parsing.
+#You need to know that argument values are available through FACE/SPECS. This is only obvious when you look at an example.
+#You need to be careful with &quot;SPECS&quot; vs. &quot;SPEC&quot; spelling. :-)
+#You need to read up on all on-* functions to see what they do and in what order they are run. This is not entirely obvious and of course requires a reference style to work with. ''When I started developing styles, this was the starting point for me, so I skipped directly to the example style to see where they were placed, rather than read up on each single on-* function individually. I think it's more important to get an overview of the style first, and then read up on function details later, where it's the other way around in the current VID3 style documentation.''
+#DRAW is essential to know in style creation. Since the documentation is currently not available, we are relying on R2 DRAW documentation and the few notices that have been announced by Cyphre on R3 DRAW changes.
+#You need to know about additional functions inside the VID system, such as MAKE-RESIZABLE-DRAWING, RESIZE-DRAWING in order to create properly resizable elements using DRAW. This requires that MAKE-RESIZABLE-DRAWING is properly documented.
+#For proper resizing behaviour, you need to know about shrinking and stretching using FACE/SHRINK and FACE/STRETCH.
+#You need to know about binding and the difference between BIND and BIND/COPY in order to create properly optimized DRAW blocks that take advantage of the face, globals and other data that may be appropriate. There may be a tiny learning curve here.
+#You need to know that a style word that is added, is automatically useful inside LAYOUT. '''This is nicely intuitive.'''
+#To override a style, you must use the original style using STYLIZE. This is fine and obvious.
+#To test a style, you should use LAYOUT. This is fairly obvious.
+#In order to create multiple GOBs arranged in a specific way, you need to know how GOBs work, how to append GOBs to other GOBs and what you can do with them.
+#To take advantage of existing colors, gradients or fonts without hardcoding, you need to know the global data for these things. They are stored in the vid-skin.r file.
+#To communicate properly between two elements with the ATTACH word, you need to know how one style can send information to another style, where to get this information inside the target style, and where to send it from the source style. For example, the slider always uses a percent! value. METER always uses a decimal! value, and so, you need to provide code to convert the percent! value from an input to the decimal! value in METER. There can be a bit of a learning curve here, if it's not explicitly mentioned how to get the input value from an attached style.
+#You need to be aware of the CHANGES block, what manipulates it and its syntax (block with word/value pairs). This ties into ON-*-ACTIONS and is a bit of a learning curve.
+#You need to know how ON-*-ACTIONS blocks work, something which I find a bit difficult to grasp, even after an explanation. You need to be aware that it's a block that it being SWITCHed. You need to know which words you can use in the switch block and how they are triggered. I think the learning curve here for this concept is high, because you need to understand a lot of things about in order to use this. The fact that the syntax is simple, does not make it simple to understand. Documentation on this is essential.
+
+===Expert knowledge===
+
+#Some styles can be built from multiple other styles. I have no idea yet how this works. :-)
+#Some parts of a style can be overridden in a specific way, if you are basing a new style on an existing style, but only want to make a few modifications. This requires knowledge on how to override specific functions, using the OVERRIDE function. If you use OVERRIDE you have to use SUPER as well: super face specs
+
+==MAKE-RESIZABLE-DRAWING==
+
+Really, the only quirk I have with it, is that you have to write it, every time you want to make a resizable draw block. :-)
+
+However simple the function in it self may be, it's 100% given that you need to use it, practically every time you are creating DRAW graphics for an element. So far all elements require that they can scale or shrink in some form. Creating styles without DRAW is not an option and not using MAKE-RESIZABLE-DRAWING only make creating elements a lot more difficult.
+
+Some issues:
+
+#MAKE-RESIZABLE-DRAWING does not allow scaling of sub-blocks.
+#It does not immediately lend itself to be used outside of VID for style testing.
+
+Getting rid of it, however, limits the freedom of using multiple DRAW compositions in the same style.
+
+===Words in MAKE-RESIZABLE-DRAWING===
+
+'''Using BOTTOM-LEFT, BOTTOM-RIGHT, TOP-LEFT, TOP-RIGHT is IMHO a good convention.''' I think, if possible, it should spread to other elements that require resizing in VID.
+
+==GOB dialect==
+
+I'm already creating GOB arrangements for quick shadows, which takes up quite a bit of code. A dialect to simplify GOB creation is already in the works by Gabriele, however some notes may be of importance here:
+
+Resizable GOBs could be handled the same way as with MAKE-RESIZABLE-DRAWING, perhaps using a MAKE-RESIZABLE-GOBs function, paired with a RESIZE-GOBs function. To place dynamic coordinates for some pair! values in a GOB, there could then be the possibility to use exactly the same words as in MAKE-RESIZABLE-DRAWING.
+
+==Style Testing==
+
+Some styles require a high level of graphical accuracy and require a lot of adjustments to look right, sometimes 4-500 adjustments for a single style. Such adjustments can't be made on the fly, so the turnaround time between writing DRAW code and testing can be up to a minute, rather than being in a few seconds (or better: real time) because you need to relaunch your application and do guess work on what works and not. This reduces the user friendliness for artists and dramatically increases the time needed to create the style artwork, particularly when bitmaps are not involved.
+
+In order to provide on the fly adjustments to a style, you need to hook into the style somehow and provide your own adjustment code, which can take time to write, and so, requires an experienced style developer. Furthermore this adjustment code needs to be taken out again in the finished style.
+
+I circumvented this by using a simple DRAW tool to draw up the style in R2, to make it possible to:
+
+#See the style by itself.
+#See it rendered against different backgrounds and gradients to see if the colors hold up in a colorful environment.
+#Make quick adjustments to anything and have the style update, every time I unfocus the text area with the draw code.
+#Scale the graphics up and down with SCALE in draw.
+
+However:
+
+#I could not immediately see multiple instances of the style.
+#I still had to convert the style to be usable under MAKE-RESIZABLE-DRAWING, fiddling with hitting the right coordinates.
+
+This could be made simpler by providing a feature to do some form of real time feed back as standard, where you can perhaps hook into anything for the style, if a test flag is set. Alternatively, there should be a tool created to write the style code.
+
+==Overriding Styles==
+
+There is a problem scenario, that may contain traps: If you create an original style, e.g. BUTTON and create another style based on BUTTON, e.g. TOGGLE, TOGGLE will have the same properties as BUTTON. However, if you then override the BUTTON style with, for example a new appearance, you may think that overriding TOGGLE with the old TOGGLE will create the correct result.
+This is not the case, as it will have the same properties as the old TOGGLE. Perhaps this is not a problem, and I'm making a fuss, but I had to understand that, before I could work on overriding multiple different styles correctly. I have to know which styles originally are based on other styles.
+
+* could we use the 'type propertie (wich should contain the based style) to get an inheritance path so that the specs can be rebuild with the specs of ancestors, following the path ? It could be encaped in a specific function, like rebuild-style or refresh-style. [[User:Steeve|Steeve]] 13:00, 12 Dec 2007 (EDT)
+
+==Globals==
+
+Some items are global right now:
+
+#Standard gradients
+#Standard colors
+#Standard fonts
+#Style prototypes (STYLE-PROTOS) where own styles (created with STYLIZE) are appended to
+#Vid dialect (VID-DIALECT) where own styles (created with STYLIZE) are appended to
+
+Each one is an object with other objects and blocks embedded with hardcoded color tuples and strings for font names.
+
+===The role of Globals===
+
+Essentially, the globals are only supposed to be available for the given skin, but basic globals might be usable for any skin. There should be a list of globals in the documentation.
+
+Currently we have: FONTS, GOBS, COLORS and GRADIENTS.
+
+===Overriding Globals===
+
+There is a problem scenario here.
+
+==Speed Profiling==
+
+It would be nice to be able to profile the speed of the drawing and resizing of a style. Currently VID3 and DRAW is so fast that this is not noticable on my Celeron 500 Mhz laptop, but slower hardware may have problems, and so, it would be nice to be aware of which elements can cause slowdowns on very slow/embedded hardware.
+
+==Error Handling==
+
+#Some errors inside a style trigger errors inside the VID code and therefore, they can be very confusing and hard to track down.
+#Currently error handling does not return errors from an overridden style. Instead an error is returned from the original style, if an error occurs there. I haven't tested, but it might appear that if the original style does not fail, in case of a failed override, you will not notice that the style has not been overridden.
+#You can't immediately see which style is failing during layout.
+
+==VID3 to Editor Capabilities==
+
+===Style Editor===
+
+VID3 styles should of course be as capable of being editable through a style editor, as it is to write the code by hand. A list of things that would immediately simplify style development with editing:
+
+'''List of requirements had been moved to [[VID: Style Editor|Style Editor]].'''
+
+===GUI Editor===
+
+Gabriele is already contemplating how to build this, so I have not many comments on how to do this. However:
+
+#The GUI editor should be completely separate from the style editor. A GUI editor is different from a style editor in that it focuses on LAYOUT, rather than the single style.
+#It should be able to load different skins.
+
+Unfinished...

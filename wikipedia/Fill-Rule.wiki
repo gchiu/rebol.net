@@ -1,0 +1,103 @@
+== FILL-RULE== 
+
+Determines the algorithm used to determine what area to fill, if a path that intersects itself or one subpath encloses another. For non-intersecting paths, you shouldn't need to use this.
+
+{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
+! bgcolor=&quot;silver&quot; | Arg 
+! bgcolor=&quot;silver&quot; | Type 
+! bgcolor=&quot;silver&quot; | Description
+! bgcolor=&quot;silver&quot; | Values
+|- 
+| bgcolor=&quot;white&quot; | mode
+| bgcolor=&quot;white&quot; | [word!]
+| bgcolor=&quot;white&quot; | Fill algorithm
+| bgcolor=&quot;white&quot; | '''non-zero''' - This rule determines the &quot;insideness&quot; of a point on the canvas by drawing a ray from that point to infinity in any direction and then examining the places where a segment of the shape crosses the ray. Starting with a count of zero, add one each time a path segment crosses the ray from left to right and subtract one each time a path segment crosses the ray from right to left. After counting the crossings, if the result is zero then the point is outside the path. Otherwise, it is inside.
+'''even-odd''' - This rule determines the &quot;insideness&quot; of a point on the canvas by drawing a ray from that point to infinity in any direction and counting the number of path segments from the given shape that the ray crosses. If this number is odd, the point is inside; if even, the point is outside.
+|}
+&lt;br&gt;'''Notes and Examples'''
+&lt;p&gt;The following page has drawings that drawing illustrates the rules:&lt;/p&gt;
+&lt;p&gt;http://www.w3.org/TR/SVG/painting.html#FillProperties&lt;/p&gt;
+
+
+
+----
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+Pages
+&lt;font size=1&gt;
+*[[Draw]]
+*[[Anti-Alias]]
+*[[Arc]]
+*[[Arrow]]
+*[[Box]]
+*[[Circle]]
+*[[Clip]]
+*[[Curve]]
+*[[Ellipse]]
+*[[Fill-Pen]]
+*[[Fill-Rule]]
+*[[Gamma]]&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+Pages
+&lt;font size=1&gt;
+*[[Grad-Pen]]
+*[[Invert-Matrix]]
+*[[Image]]
+*[[Image-Filter]]
+*[[Line]]
+*[[Line-Cap]]
+*[[Line-Join]]
+*[[Line-Pattern]]
+*[[Line-Width]]
+*[[Matrix]]
+*[[Pen]]
+*[[Polygon]]&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+Pages
+&lt;font size=1&gt;
+*[[Push]]
+*[[Reset-Matrix]]
+*[[Rotate]]
+*[[Scale]]
+*[[Shape]]
+*[[Skew]]
+*[[Spline]]
+*[[Text]]
+*[[Transform]]
+*[[Translate]]
+*[[Triangle]]
+*[[Grad-Pen]]&lt;/font&gt;&lt;/TD&gt;
+
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+Pages
+&lt;font size=1&gt;
+
+*[[Invert-Matrix]]
+*[[Image]]
+*[[Image-Filter]]
+*[[Line]]
+*[[Line-Cap]]
+*[[Line-Join]]
+*[[Line-Pattern]]
+*[[Line-Width]]
+*[[Matrix]]
+*[[Pen]]
+*[[Polygon]]&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP width=30%&gt;
+Chapters
+&lt;font size=1&gt;
+*[[R3 Introduction]]
+*[[Getting Started With R3]]
+*[[The Graphical User Interface]]
+*[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
+*'''Script Writing With The Draw Dialect'''
+*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=10%&gt;
+&lt;font size=1&gt;
+*[[Table Of Contents]]
+&lt;/font&gt;&lt;/TD&gt;
+&lt;/TR&gt;&lt;/TABLE&gt;

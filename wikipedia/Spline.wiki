@@ -1,0 +1,60 @@
+== SPLINE== 
+
+The spline command lets you draw a curve through any number of points. The smoothness of the curve will be determined by the segment factor that you specify.
+
+{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
+! bgcolor=&quot;silver&quot; | Arg 
+! bgcolor=&quot;silver&quot; | Type 
+! bgcolor=&quot;silver&quot; | Description
+! bgcolor=&quot;silver&quot; | Values
+|- 
+| bgcolor=&quot;white&quot; | segmentation
+| bgcolor=&quot;white&quot; | [integer!]
+| bgcolor=&quot;white&quot; | Optional. Number of segments between each point; default is 1.
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | closed
+| bgcolor=&quot;white&quot; | [word!]
+| bgcolor=&quot;white&quot; | Optional. 'closed will cause the path to be closed between the start and end points.
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | point1
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | point2
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | ...
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | none
+|}
+&lt;br&gt;'''Notes and Examples'''
+&lt;code&gt;&lt;pre&gt;
+spline 20x20 200x70 150x200 50x230 50x300 80x300 200x200
+&lt;/pre&gt;&lt;/code&gt;
+[[image:SPLINE-1.png|SPLINE example 1]]
+
+&lt;br&gt;
+&lt;code&gt;&lt;pre&gt;
+spline 3 20x20 200x70 150x200 50x230 50x300 80x300 200x200
+&lt;/pre&gt;&lt;/code&gt;
+[[image:SPLINE-2.png|SPLINE example 2]]
+
+&lt;br&gt;
+&lt;code&gt;&lt;pre&gt;
+spline 10 20x20 200x70 150x200 50x230 50x300 80x300 200x200
+&lt;/pre&gt;&lt;/code&gt;
+[[image:SPLINE-3.png|SPLINE example 3]]
+
+&lt;br&gt;
+&lt;code&gt;&lt;pre&gt;
+spline 10 closed 20x20 200x70 150x200 50x230 50x300 80x300 200x200
+&lt;/pre&gt;&lt;/code&gt;
+[[image:SPLINE-4.png|SPLINE example 4]]
+
+&lt;br&gt;

@@ -1,0 +1,129 @@
+There have been two different icons used for Rebol.  One is white letters in a Rounded rectangle, with a white target for the O:
+
+:[[Image:Rebol-classic-logo-bw.gif]]
+
+The second one is a white R inside of a red square.  It is used for the program icons on installation, as well as the little 16x16 &quot;favicon&quot; that appears in web browser tabs when visiting rebol.com, .net, etc.
+
+:[[Image:Rebol-historic-red-program-icon.png]]
+
+Logos can go a long way in communicating something about one's image nonverbally.  If one is going to spend a decade developing a programming system then it's worth taking some time thinking about what an effective logo for that language would be.  This page is for discussions of a new logo design that would be property of Rebol Technologies and the same control over using it would apply as in using the Rebol trademark, so please only contribute suggestions that you are willing to release under that understanding.
+
+= Issues to Address =
+
+== Similarity To Target Stores Logo ==
+
+What should immediately grab anyone is that Target has already made the target-like visual element a very recognizable national brand (furthermore they have built that brand up as &quot;affordable&quot; and not &quot;Quality&quot;, so not the kind of image you want.)
+
+:[[Image:Target-store-logo.jpg|100px]]
+
+Any graphics effort for R3 which carries this motif forward should be sensitive to that similarity and excise it wherever possible.
+
+== R in a Square is Generic ==
+
+The Purple target is difficult to see in the red, but more generally, it's just not emotive.  For many, this evokes power-ups from old shoot-em-up games:
+
+:[[Image:Icon-comparison-to-powerups.jpg|200px]]
+
+It would be nice to give people a metaphor to hold onto...some visual allusion to an idea.  With a name like &quot;Ruby&quot; and a graphic that is a Ruby, programmers can at least think the code they make is precious... hardened.  The back-to-back snakes in the Python are suggestive of a yin-yang almost, &quot;programming as spiritual act&quot;.  So something to hold onto here that communicated more than &quot;Rebol starts with R&quot; is important.
+
+Target Store is why &quot;Rebol hits the bullseye&quot; won't work, otherwise it might've been okay.
+
+== Capitalization ==
+
+This is a consideration in general to think about in terms of Rebol's image.  It's a hard habit to break, but it really does affect perception.  Though Rebol has nothing in common with the much-disliked language COBOL, the name does bear an unfortunate similarity.  Using all caps is just asking for people to think they are in the same group.
+
+Other languages have taken a strong stand on not being capitalized and seeming like an &quot;acronym name&quot;.  For instance, the main [http://www.cs.auckland.ac.nz/references/ruby/doc_bundle/FAQ/FAQ.html FAQ] that ships with Ruby even says:
+
+ Officially, the language is called ``Ruby''. On most systems, it is invoked using the command ``ruby''. It's OK to use ruby instead of Ruby.
+ Please don't use RUBY as the language name.
+ Originally, or historically, it was called ``ruby''.
+
+Note that Ruby was never an acronym, while REBOL always has been, so that position makes sense for Ruby. The '''only''' reason that acronym-style language names seem archaic now is that most of the popular programming languages that have been created recently have names (like Java, Python, Ruby or Perl) rather than acronyms (like PHP) or random characters (like C#). Fork's proposal is that the acronym REBOL be changed to the name Rebol.
+
+Anyway, as far as this affects the logo... it may not at all.  Capitalizing a word in a logo is different from capitalizing it every time you say it in a sentence (visually disruptive).  But perhaps worth it to think about how the logotype uses case may send a certain message about making the language seem &quot;archaic&quot; (instead of futuristic)... some typography experiments of using mixed-case Rebol should probably be considered.
+
+Also, there is yet another case to consider: the language name is not pronouced as an acronym (i.e., as R.E.B.O.L). An example of such case may be the word &quot;laser&quot; which originated as an acronym but became a &quot;normal word&quot; afterwards not reminding that it means &quot;Light Amplification by Stimulated Emission of Radiation&quot;.
+
+= HostileFork's Bracketed O Proposal =
+
+As a way of carrying forward history and adding a bit of pizzaz, [[User:Fork|Fork]] has proposed the following concept art:
+
+:[[Image:Fork-logo-3d-draft.png]]
+
+This design represents an extraction of the portion of the classic logo near the &quot;o&quot;, and would replace the white-R-in-a-red-square entirely.  The more subtle curve around the &quot;o&quot; than in the original black and white logo leads the edges to look more like brackets, and de-emphasizes the similarity to the Target bullseye.
+
+It can be scaled down and still be seen clearly, here it is around 160x160:
+
+:[[Image:rebol-3d-160x160.png]]
+
+Depending on context, the shadow may be desired or not...and possibly done with alpha.
+
+== Suggestion of a Series ==
+
+There are some fun visual suggestions here. ''(Note: images were made using an earlier prototype of the logo.)''
+
+:[[Image:Rebol-metaphor.png]]
+
+== Color and Stylistic Variations ==
+
+Variations can exist for core (green screen or &quot;Tron&quot; outline looking?)...alphas (red, dangerous looking?).  It's possible to and it is something that has its own look and motif while still being rather simple.  (Note: kbyte numbers fictitious as who knows what the finals will be):
+
+:[[Image:Fork-logo-cli-vs-gui.png]]
+
+Being three-dimensional is not critical to the design, as it works well in two dimensions also.  [http://www.ross-gill.com/ Christopher Ross-Gill] offered this sketched frontal perspective, showing another stylistic interpretation.
+
+:[[Image:forklogo-sketch.png]]
+
+== Why curves not brackets? ==
+
+As for why not to go all the way to brackets, that doesn't look good in context:
+
+:[[Image:Fork-logo-bracket-comparison.png]]
+
+'''HOWEVER''' it would be good to make the curves subtler to hide that Target resemblance.
+
+== Favicon ==
+
+The iconography can be reduced to a favicon reasonably, like this:
+
+:[[Image:Fork-favicon-proposal.png]]
+
+While in general Fork favors bracketing which lies on the spectrum between completely squared and rounded, the favicon is a very limited 16x16 medium.  Accepting the limitation and squaring them is probably for the best to get a decent image, and it makes a stronger mark.  Kind of like how in text mediums it might be rendered as '''[o]''' and still convey the idea in a non-ideal way.  A refresh of the classic logo to excise the Target mark and strengthen the bracketing association would be nice.
+
+Here is a closeup of the [http://hostilefork.com/shared/rebol/rebol-thick-favicon.ico actual .ico file].  Hand-drawn antialiasing is used to kind of extend the brackets up a bit to extrude, while leaving a transparent gap for the browser's (usually-but-not-always-gray) background to show through.
+
+:[[Image:Fork-logo-favicon-closeup.png]]
+
+== Font Used in Classic Logo ==
+
+In researching variants of an updated logo, questions have come up as to what the font in the original logo was.  The R, E, B, and L seem to be a slight variant of [http://www.myfonts.com/fonts/linotype/dialog/extra-bold/glyphs.html Dialog Extra Bold].  There is a bit more symmetry in the letters, and the holes in the R and B seem to be equally sized instead of each varying.
+
+Here is a large rendering of Dialog Extra Bold that has been tweaked to more of the balance of the original:
+
+:[[Image:rebol-typography-approximate.png]]
+
+== Other Angles ==
+
+A balance needs to be chosen of what looks good in the OS/X dock, and maybe a more frontal perspective, e.g.
+
+:[[Image:Fork-logo-view-front.png]] [[Image:Fork-logo-core-front.png]]
+
+= Proposal #2? =
+
+*Your concept here
+
+= Proposal #3? =
+
+*Your concept here
+
+= Next Steps =
+
+== Surveys ==
+
+Once a set of alternatives are available, it might be good to design some kind of survey.  Perhaps using something like Amazon Mechanical Turk or [http://crowdflower.com/ Crowdflower]... just to pit the various logos against each other and against the logos for other competing languages.
+
+== Professional Finish ==
+
+It would be good to hire a professional icon designer who can really nail the drawings/shadows/perspectives and package it right on the various platforms.  There are people out there who do this for a living &amp;mdash; e.g. [http://www.icondesigner.net/icondesign/ icondesigner.net]  It's only one or two icons, so worth hiring someone with experience who has a good portfolio.
+
+If you're happy with a fleshed out design originating from the community, then you should be able to have it done at a lesser cost than what would be charged if the artist had to come up with the whole identity concept and go through those iterations.  Thus probably want to find someone who bills by the hour instead of by the project.

@@ -1,0 +1,40 @@
+{{Test Template page}}
+
+=== WIKI-TABLE ===
+Outputs a table in MediaWiki format.
+WIKI-TABLE is a function value.
+==== Arguments ====
+: '''data''' -- Block of items or blocks. (Type: block)
+
+==== Refinements ====
+: '''/header''':: '''header-block''' -- Block of strings that make up the header row. (Type: block)
+: '''/class''':: '''table-class''' -- Table CSS class name (Type: any)
+: '''/cell-func''':: '''cf''' -- Perform a callback on each cell (Type: function)
+
+=== WIKI-LINK-TABLE ===
+Outputs a table of links in MediaWiki format.
+WIKI-LINK-TABLE is a function value.
+==== Arguments ====
+: '''data''' -- (Type: block)
+
+=== WIKI-DUMP-OBJ ===
+Similar to DUMP-OBJ, but returns a MediaWiki formatted table.
+WIKI-DUMP-OBJ is a function value.
+==== Arguments ====
+: '''obj''' -- (Type: object)
+
+==== Refinements ====
+: '''/match''' -- Include only those that match a string or datatype 
+:: '''pat''' -- (Type: any)
+
+=== WIKI-HELP-FUNC ===
+Outputs a function as a MediaWiki entry.
+WIKI-HELP-FUNC is a function value.
+==== Arguments ====
+: '''word''' -- (Type: word)
+
+=== WIKI-FUNCTION-LIST ===
+Prints a function list formatted for MediaWiki.
+WIKI-FUNCTION-LIST is a function value.
+==== Arguments ====
+: '''words''' -- (Type: block)

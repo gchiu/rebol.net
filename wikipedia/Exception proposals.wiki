@@ -1,0 +1,800 @@
+==Introduction==
+
+REBOL exceptions have been discussed at:
+
+*[http://www.rebol.com/r3/notes/errors.html Errors article]
+*R3 blog ([http://www.rebol.net/cgi-bin/r3blog.r?view=0309#comments Discussion about error handling])
+*AltMe
+*Cure Code tickets [http://curecode.org/rebol3/ticket.rsp?id=539 #539], [http://curecode.org/rebol3/ticket.rsp?id=771 #771], [http://curecode.org/rebol3/ticket.rsp?id=851 #851], [http://curecode.org/rebol3/ticket.rsp?id=884 #884], [http://curecode.org/rebol3/ticket.rsp?id=1361 #1361], [http://curecode.org/rebol3/ticket.rsp?id=1506 #1506], [http://curecode.org/rebol3/ticket.rsp?id=1509 #1509], [http://curecode.org/rebol3/ticket.rsp?id=1515 #1515], [http://curecode.org/rebol3/ticket.rsp?id=1518 #1518], [http://curecode.org/rebol3/ticket.rsp?id=1519 #1519], [http://curecode.org/rebol3/ticket.rsp?id=1521 #1521], [http://curecode.org/rebol3/ticket.rsp?id=1734 #1734], [http://curecode.org/rebol3/ticket.rsp?id=1742 #1742], [http://curecode.org/rebol3/ticket.rsp?id=1743 #1743], [http://curecode.org/rebol3/ticket.rsp?id=1744 #1744]
+
+The purpose of this article is to find a coherent proposal solving the above problems (and maybe more, with a bit of luck).
+
+While I started the [[Exceptions]] article, due to the Brian's edits I was unable to continue. Therefore I decided to write my proposal in here, trying to achieve the following:
+
+*no intended introductions of bugs into the code somebody else wrote
+*no intended reformulation of somebody else's proposal, introduction of counterproposals is encouraged instead
+*to substantiate questioned claims, real code examples are preferred
+
+As long as you are willing to keep these simple rules, you are welcome to add your proposals below.
+
+===Chosen model===
+
+The RETURN and EXIT model described in the [[Exception_proposals#Hybrid_return_model|Hybrid RETURN model]] has been chosen by Carl as the one, that will be implemented in R3.
+
+==Types of exceptions==
+
+The [http://www.rebol.com/r3/notes/errors.html R3 Exception/Error Mechanism] article mentions that there are two types of exceptions in REBOL: unwinds and throws. Since every exception type can be emulated using the other one, I decided to make a couple of speed tests to find out what the relative speed of the respective exception types is:
+
+&lt;pre&gt;; the relative speed of throw is 100%
+base-throw: time-block [try [none]] 0,05
+base-unwind: round to percent! base-throw / time-block [catch [none]] 0,05
+; == 106% 
+error: make error! &quot;&quot;
+handled-throw: time-block [try [do error]] 0,05
+handled-unwind: round to percent! handled-throw / time-block [catch [throw none]] 0,05
+; == 139%&lt;/pre&gt;
+
+This simple test seems to suggest, that unwinds are faster than throws. Nevertheless, we only tested &quot;jump up one level&quot;, so here is a &quot;jump up many levels&quot; test:
+
+&lt;pre&gt;g: func [i] [if i = 1 [do error] g i - 1]
+throw-40: time-block [try [g 40]] 0,05
+f: func [i] [if i = 1 [throw &quot;OK&quot;] f i - 1]
+unwind40: round to percent! throw-40 / time-block [catch [f 40]] 0,05
+; == 98%&lt;/pre&gt;
+
+==Dynamic versus definitional exceptions==
+
+===Dynamic exceptions===
+
+Dynamic exceptions are caught by the (at run-time) closest (i.e. the last executed) catching construct.
+
+Example using dynamic return:
+
+&lt;pre&gt;c1: func [arg][do arg]
+f1: does [print [&quot;c1 returned:&quot; c1 [return 1]] return 2]
+print [&quot;f1 returned:&quot; f1]&lt;/pre&gt;
+
+Results are:
+
+&lt;pre&gt;c1 returned: 1
+f1 returned: 2&lt;/pre&gt;
+
+Notice, that the &lt;code&gt;return 1&lt;/code&gt; has been caught by the '''c1''' function, since that was the closest (last executed) catching construct for it.
+
+===Definitional exceptions===
+
+Definitional exceptions are caught by the (at definition time) closest (i.e. the last defining) catching construct.
+
+Example using definitional return:
+
+&lt;pre&gt;c1: func [arg][do arg]
+f1: does [print [&quot;c1 returned:&quot; c1 [return 1]] return 2]
+print [&quot;f1 returned:&quot; f1]&lt;/pre&gt;
+
+Results are:
+
+&lt;pre&gt;f1 returned: 1&lt;/pre&gt;
+
+Notice, that the &lt;code&gt;return 1&lt;/code&gt; has been caught by the '''f1''' function, since that was the closest (last defining) catching construct for it.
+
+==RETURN and EXIT==
+
+Note: The &lt;code&gt;exit&lt;/code&gt; code is equivalent to &lt;code&gt;return #[unset!]&lt;/code&gt;, therefore it is not necessary to discuss it separately. When mentioning &quot;function using dynamic return&quot;, we usually mean &quot;function using dynamic return and exit&quot;.
+
+===The current state (dynamic return)===
+
+As mentioned in the [http://www.rebol.com/r3/notes/errors.html Errors article], REBOL currently uses just dynamically scoped return and exit, with no alternative behaviour. Problems with dynamic scoping occur when a function processes code block (or blocks) with return or exit coming from different contexts. In such cases, the behaviour is actually bug-prone, as demonstrated below.
+
+====USE====
+
+The '''use''' function is currently implemented as follows:
+
+&lt;pre&gt;use: func [
+    &quot;Defines words local to a block.&quot;
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    body [block!] &quot;Block to evaluate&quot;
+][
+    apply make closure! reduce [to block! vars copy/deep body][]
+]&lt;/pre&gt;
+
+Problems:
+*The '''use''' function and other control functions, like the '''collect''' function below are not supposed to catch return or exit from the '''body''' block. The place where they should return should be related to the &quot;context of '''body''' origin&quot; instead. Since that does not happen due to the fact, that the inner closure catches the dynamic '''return''', the implementation is subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*The bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539] is not correctible in the current interpreter version.
+*Since the anonymous inner closure is called just once, the &lt;code&gt;copy/deep&lt;/code&gt; call deep copying the given '''body''' block is superfluous.
+*The implementation is more complicated than necessary, as demonstrated below.
+
+====COLLECT====
+
+The current implementation looks as follows:
+
+&lt;pre&gt;collect: make function! [[
+    {Evaluates a block, storing values via KEEP function, and returns block of collected values.}
+    body [block!] &quot;Block to evaluate&quot;
+    /into {Insert into a buffer instead (returns position after insert)}
+    output [series!] &quot;The buffer series (modified)&quot;
+][
+    unless output [output: make block! 16]
+    do func [keep] body func [value [any-type!] /only][
+        output: apply :insert [output :value none none only]
+        :value
+    ]
+    either into [output][head output]
+]]&lt;/pre&gt;
+
+Problems:
+*The anonymous function inside the '''collect''' function body catches the dynamic '''return''', causing the bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*The bug #539 cannot be circumvented currently.
+*The implementation is more complicated than necessary, as demonstrated below.
+
+====Disadvantages====
+
+*The above mentioned bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539] is serious, not allowing any nonnative control function to work correctly. The problem is not solvable in this model.
+
+===The state of R2 (dynamic return with optional transparency)===
+
+R2 uses the dynamic return enhanced by the &lt;code&gt;[throw]&lt;/code&gt; function attribute. It is mentioned here for comparison purposes, not as a proposal. This method is not chosen to be used in R3.
+
+====LET====
+
+The '''let''' function creates a new selfless context containing the given '''vars''', sets '''vars''' to '''values''', binds (/copy) the given '''body''' block and evaluates it.
+
+&lt;pre&gt;let: funct [
+    {Defines words local to a block.}
+    [throw]
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    values [any-type!] &quot;Value or block of values&quot;
+    body [block!] &quot;Block to evaluate&quot;
+][
+    word: either any-word? :vars [:vars][first :vars]
+    do either :word [
+        word: repeat (to word! :word) 1 reduce [:quote :word]
+        set/any bind/new :words :word :values
+        bind/copy :body :word
+    ][:body]
+]&lt;/pre&gt;
+
+Advantages of having such a function in REBOL:
+*'''let''' yields a result that is wanted, as opposed to the '''context''' function, which yields the object
+*'''let''' facilitates initialization of local variables
+*'''let''' can emulate the R2 variant of the '''use''' function
+*'''let''' is shorter and simpler than the &lt;code&gt;do func [variables] block&lt;/code&gt; idiom
+
+====USE====
+
+The '''use''' function can be implemented as follows:
+
+&lt;pre&gt;use: func [
+    {Defines words local to a block.}
+    [throw]
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    body [block!] &quot;Block to evaluate&quot;
+][
+    ; this initializes all VARS to #[unset!]
+    ; let vars #[unset!] body
+
+    ; this initializes all VARS to #[none!]
+    let vars #[none!] body
+]&lt;/pre&gt;
+
+Notes:
+*The implementation uses the &lt;code&gt;[throw]&lt;/code&gt; function attribute.
+*The implementation is not a subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*The implementation is simpler than the current mezzanine.
+
+====COLLECT====
+
+The '''collect''' function can be implemented as follows:
+
+&lt;pre&gt;collect: make function! [[
+    {Evaluates a block, storing values via KEEP function, and returns block of collected values.}
+    [throw]
+    body [block!] &quot;Block to evaluate&quot;
+    /into {Insert into a buffer instead (returns position after insert)}
+    output [series!] &quot;The buffer series (modified)&quot;
+][
+    unless output [output: make block! 16]
+    let 'keep func [value [any-type!] /only][
+        output: apply :insert [output :value none none only]
+        :value
+    ] body
+    either into [output][head output]
+]]&lt;/pre&gt;
+
+Notes:
+*The implementation uses the &lt;code&gt;[throw]&lt;/code&gt; function attribute.
+*The implementation is not a subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*The implementation is simpler than the current mezzanine.
+
+====General cycle====
+
+General iteration constructs can be used to express any standard sort of loop, as well as others -- such as looping over a number of collections in parallel. Where a more specific looping construct can be used, it is usually preferred over the general iteration construct, since it often makes the purpose of the expression more clear.
+
+Implementation:
+
+&lt;pre&gt;iterate: func [
+    {General cycle control function}
+    [throw]
+    init [block!] {cycle initialization}
+    test [block!] {test code}
+    inc [block!] {incrementation code}
+    body [block!] {cycle body}
+][
+    ; to not modify the given arguments
+    init: copy/deep init
+    body: head insert tail copy/deep body copy/deep inc
+	
+    let collect-words/set init #[unset!] reduce [
+        :do init
+        :while test body
+    ]
+]&lt;/pre&gt;
+
+Notes:
+*The implementation uses the &lt;code&gt;throw:&lt;/code&gt; function attribute.
+*The implementation is not a subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+
+Example:
+
+&lt;pre&gt;; this example doubles the cycle variable after every iteration
+iterate [i: 1][i &lt;= 2000][i: i + i][print i]&lt;/pre&gt;
+
+====Definitional mezzanine CATCH/THROW pair====
+
+This is how a definitional '''catch'''/'''throw''' mezzanine pair can be implemented:
+
+&lt;pre&gt;make object! [
+    sys-catch: :catch
+    sys-throw: :throw
+    set 'catch func [
+        {Catches a throw from a block and returns its value.}
+        [throw]
+        block [block!] &quot;Block to evaluate&quot;
+        /local result caught normal?
+    ][
+        do func [
+            [throw]
+            /throw
+        ] compose/deep/only [
+            set/any 'caught sys-catch [
+                throw: func [
+                    {Throws control back to its catch.}
+                    value [any-type!] &quot;Value returned from catch&quot;
+                ][
+                    sys-throw append/only tail (copy [throw]) get/any 'value
+                ]
+                set/any 'result do (block)
+                normal?: true
+            ]
+            case [
+                normal? [get/any 'result]
+                all [
+                    block? get/any 'caught
+                    word? pick :caught 1
+                    same? first :caught 'throw
+                ][second :caught]
+                'else [sys-throw get/any 'caught]
+            ]
+        ]
+    ]
+    unset 'throw
+]&lt;/pre&gt;
+
+Notes:
+*Unhandled throw is not localized well in R2.
+*Definitional mezzanine '''continue''' can be implemented using a similar approach, see also the implementation below.
+
+====Advantages====
+
+*Solves the most serious traditional problems (see '''use''' '''collect''').
+*Most functions would not need to specify an option.
+*This is the existing R2 implementation.
+
+====Disadvantages====
+
+*Since the catching construct is not obvious from the source code (being determined at run time), code readability is worse than readability of the code using definitional return.
+*Bad locality for unhandled '''return''', bug [http://curecode.org/rebol3/ticket.rsp?id=1506 #1506].
+*Since the dynamic return is nonlocal, one may be tempted to catch unhandled returns. This may lead to an opposite extreme, catching some dynamic returns, that are, in fact, handled.
+*Does not address the need to have both a function scoped return as well as stay transparent for returns from different scopes at the same time. This is critical in R2, where errors must always be returned using '''return'''.
+*Some users have trouble understanding the dynamic return as a concept.
+*The transparency option would need to be specified for almost all control functions written in REBOL.
+*The transparency option is even harder to explain to users than the concept of dynamic return.
+*Some programmers use code blocks outside of functions e.g. in '''parse''' rules, putting even &quot;unhandled&quot; '''return''' or '''exit''' calls into them. The ability to write such &quot;unhandled&quot; code does not allow the reader to detect what is the intended context to return from, hurting the understandability and maintainability of such code.
+
+===Definitional return===
+
+The difference between the dynamic return and the definitional return is, that at function definition time, '''make''' would bind the 'return and 'exit words in function bodies to local versions of the '''return''' and '''exit''' functions. Those locally bound functions would only return to the function to which they are bound. The top-level versions of '''return''' and '''exit''' would just trigger an error, or not be defined at all.
+
+There are suggestions, that the '''make''' function should be able to not bind the 'return and 'exit words in the function body if not wished. Such a feature is possible, and as opposed to the R2 &lt;code&gt;[throw]&lt;/code&gt; function attribute, it would not influence the way how the functions work, influencing just the set of words the '''make''' function would bind when creating such a function. Nevertheless, the examples below (exploring the limits in a daring way) demonstrate, why such a feature is not strictly needed.
+
+====LET====
+
+The '''let''' function creates a new selfless context containing the given '''vars''', sets vars to '''values''', binds (/copy) the given '''body''' block and evaluates it.
+
+&lt;pre&gt;let: funct [
+    {Defines words local to a block.}
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    values [any-type!] &quot;Value or block of values&quot;
+    body [block!] &quot;Block to evaluate&quot;
+][
+    word: either any-word? :vars [:vars][first :vars]
+    do either :word [
+        word: repeat (to word! :word) 1 reduce [:quote :word]
+        set/any bind/new :words :word :values
+        bind/copy :body :word
+    ][:body]
+]&lt;/pre&gt;
+
+Advantages of having such a function in REBOL:
+*'''let''' yields a result that is wanted, as opposed to the '''context''' function, which yields the object
+*'''let''' facilitates initialization of local variables
+*'''let''' can emulate the R2 variant of the '''use''' function
+*'''let''' is shorter and simpler than the &lt;code&gt;do func [variables] block&lt;/code&gt; idiom
+
+Let-example #1 (using a local 'sqrt2 variable to compute the final result):
+&lt;pre&gt;print [&quot;result:&quot; let 'sqrt2 square-root 2 [1 / sqrt2]]&lt;/pre&gt;
+Let-example #2 (using a local 'x variable to not modify the original 'x variable outside):
+&lt;pre&gt;x: 121 print [&quot;result:&quot; let 'x :x [x: x + 1 x / 2 + x]]&lt;/pre&gt;
+Let-example #3 (emulates the R2 variant of the '''use''' function):
+&lt;pre&gt;let vars #[unset!] body&lt;/pre&gt;
+Context-example #1 (notice, that it needs a 'result field to &quot;get the result outside&quot;):
+&lt;pre&gt;print [
+    &quot;result:&quot; get in context [
+        sqrt2: square-root 2
+        ; we need to get the above result out
+        ; so we use a (above unneeded) 'result variable
+        result: 1 / sqrt2
+    ] 'result
+]&lt;/pre&gt;
+Context-example #2 (the method used works only if the &quot;outside 'x&quot; is in the user context):
+&lt;pre&gt;x: 121
+print [
+    &quot;result:&quot; get in context [
+        x: system/contexts/user/x
+        x: x + 1
+        result: x / 2 + x
+    ] 'result
+]&lt;/pre&gt;
+Use-example #1:
+&lt;pre&gt;print [&quot;result:&quot; use 'sqrt2 [sqrt2: square-root 2 1 / sqrt2]]&lt;/pre&gt;
+Use-example #2 (works only if the &quot;outside 'x&quot; is in the user context):
+&lt;pre&gt;x: 121 print [&quot;result:&quot; use 'x [x: system/contexts/user/x x: x + 1 x / 2 + x]]&lt;/pre&gt;
+Func-example #1:
+&lt;pre&gt;print [&quot;result:&quot; do has [sqrt2] [sqrt2: square-root 2 1 / sqrt2]]&lt;/pre&gt;
+Func-example #2:
+&lt;pre&gt;x: 121 print [&quot;result:&quot; do func [x] [x: x + 1 x / 2 + x] :x]&lt;/pre&gt;
+
+====USE====
+
+The '''use''' function can be implemented as follows:
+
+&lt;pre&gt;use: func [
+    {Defines words local to a block.}
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    body [block!] &quot;Block to evaluate&quot;
+][
+    ; this initializes all VARS to #[unset!]
+    ; let vars #[unset!] body
+
+    ; this initializes all VARS to #[none!]
+    let vars #[none!] body
+]&lt;/pre&gt;
+
+Notes:
+*The implementation does not need to use any function attribute.
+*The implementation is not a subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*The implementation is simpler than the current mezzanine.
+
+====COLLECT====
+
+The '''collect''' function can be implemented as follows:
+
+&lt;pre&gt;collect: make function! [[
+    {Evaluates a block, storing values via KEEP function, and returns block of collected values.}
+    body [block!] &quot;Block to evaluate&quot;
+    /into {Insert into a buffer instead (returns position after insert)}
+    output [series!] &quot;The buffer series (modified)&quot;
+][
+    unless output [output: make block! 16]
+    let 'keep func [value [any-type!] /only][
+        output: apply :insert [output :value none none only]
+        :value
+    ] body
+    either into [output][head output]
+]]&lt;/pre&gt;
+
+Notes:
+*The implementation does not need to use function attribute.
+*The implementation is not a subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*The implementation is simpler than the current mezzanine.
+
+====General cycle====
+
+General iteration constructs can be used to express any standard sort of loop, as well as others -- such as looping over a number of collections in parallel. Where a more specific looping construct can be used, it is usually preferred over the general iteration construct, since it often makes the purpose of the expression more clear.
+
+Implementation:
+
+&lt;pre&gt;iterate: func [
+    {General cycle}
+    init [block!] {cycle initialization}
+    test [block!] {test code}
+    inc [block!] {incrementation code}
+    body [block!] {cycle body}
+][
+    ; to not modify the given arguments
+    init: copy/deep init
+    body: head insert tail copy/deep body copy/deep inc
+	
+    let collect-words/set init #[unset!] reduce [
+        :do init
+        :while test body
+    ]
+]&lt;/pre&gt;
+
+Notes:
+*The implementation uses the &lt;code&gt;throw:&lt;/code&gt; function attribute.
+*The implementation is not a subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+
+Example:
+
+&lt;pre&gt;; this example doubles the cycle variable after every iteration
+iterate [i: 1][i &lt;= 2000][i: i + i][print i]&lt;/pre&gt;
+
+====Definitional mezzanine CATCH/THROW pair====
+
+Having definitional return in REBOL, the definitional '''catch'''/'''throw''' pair can be defined as a mezzanine as follows:
+
+&lt;pre&gt;catch: func [
+    {Catches a throw from a block and returns its value.}
+    body [block!]
+][
+    ; create a new function to have a new definitional RETURN available
+    ; use the new definitional RETURN as THROW in the BODY
+    do does [let 'throw :return body]
+]&lt;/pre&gt;	
+
+Notice, how the definitional return of the anonymous function is used as definitional throw.
+
+A mezzanine definitional break looks to be implementable the same way.
+
+====Definitional mezzanine CONTINUE====
+
+This is not as perfect as the above definitional mezzanine '''catch'''/'''throw''' solution, but usable, when needed.
+
+This version binds the given BLOCK just once, not at the start of every loop:
+
+&lt;pre&gt;c-aware: func [
+    {make a block definitional mezzanine CONTINUE-aware}
+    block [block!]
+    /local do-block do-block-body
+][
+    do-block-body: copy [exit block]
+    do-block: make function! reduce [[block] do-block-body]
+    
+    ; define 'continue in the BODY block
+    body: let 'continue does reduce [first do-block-body] reduce [body]
+	
+    ; the DO-BLOCK function has to do the BLOCK actually
+    ; replacing the 'exit word by 'do
+    change do-block-body 'do
+    
+    reduce [:do-block block]
+]&lt;/pre&gt;
+Usage:
+&lt;pre&gt;for n 1 5 1 c-aware [
+    if n &lt; 3 [continue]
+    print n
+]&lt;/pre&gt;
+
+====Advantages====
+
+*Better readability of code, the catching construct is detectable from the source.
+*Solves the control function problems without needing any function attribute.
+*The easiest to explain to people who are familiar with lexical scoping, but unfamiliar with dynamic return.
+*No options need to be explained either.
+*Satisfies the need to have both a function scoped '''return''' as well as pass through '''return''' from different contexts at the same time.
+*Can be used to implement the definitional '''catch'''/'''throw''' mezzanine pair.
+*Can be used (moderately) to implement the definitional mezzanine '''continue'''.
+*Can be used to implement the definitional mezzanine '''break'''.
+*Good locality for the unhandled '''return''' or '''exit''' errors (the cure for [http://curecode.org/rebol3/ticket.rsp?id=1506 #1506] is already implemented, with no extra overhead), meaning, that it is easy to correctly catch unhandled definitional returns.
+
+====Disadvantages====
+
+*If the code block using '''return''' is nested in the function body, '''return''' works automatically. If not, the user needs to either bind the code block, or get the correct '''return''' function otherwise ('''get'''/'''set''' word, etc.). Nevertheless, that is not hard to do, as can be seen in the mezzanine definitional '''catch'''/'''throw''' implementation.
+*Added overhead to function creation and memory use (usually unsubstantial, though).
+
+===Hybrid return model===
+
+As stated in the [http://www.rebol.com/r3/notes/errors.html Errors article], it is possible, that we will have a hybrid model allowing the existence of functions catching the dynamic return as well as the existence of functions transparent for the dynamic return using their own definitional return.
+
+====LET====
+
+The '''let''' function creates a new selfless context containing the given '''vars''', sets vars to '''values''', binds (/copy) the given '''body''' block and evaluates it.
+
+&lt;pre&gt;let: funct [
+    {Defines words local to a block.}
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    values [any-type!] &quot;Value or block of values&quot;
+    body [block!] &quot;Block to evaluate&quot;
+    return:
+][
+    word: either any-word? :vars [:vars][first :vars]
+    do either :word [
+        word: repeat (to word! :word) 1 reduce [:quote :word]
+        set/any bind/new :words :word :values
+        bind/copy :body :word
+    ][:body]
+]&lt;/pre&gt;
+
+Advantages of having such a function in REBOL:
+*'''let''' yields a result that is wanted, as opposed to the '''context''' function, which yields the object
+*'''let''' facilitates initialization of local variables
+*'''let''' can emulate the R2 variant of the '''use''' function
+*'''let''' is shorter and simpler than the &lt;code&gt;do func [variables] block&lt;/code&gt; idiom
+
+Let-example #1 (using a local 'sqrt2 variable to compute the final result):
+&lt;pre&gt;print [&quot;result:&quot; let 'sqrt2 square-root 2 [1 / sqrt2]]&lt;/pre&gt;
+Let-example #2 (using a local 'x variable to not modify the original 'x variable outside):
+&lt;pre&gt;x: 121 print [&quot;result:&quot; let 'x :x [x: x + 1 x / 2 + x]]&lt;/pre&gt;
+Let-example #3 (emulates the R2 variant of the '''use''' function):
+&lt;pre&gt;let vars #[unset!] body&lt;/pre&gt;
+Context-example #1 (notice, that it needs a 'result field to &quot;get the result outside&quot;):
+&lt;pre&gt;print [
+    &quot;result:&quot; get in context [
+        sqrt2: square-root 2
+        ; we need to get the above result out
+        ; so we use a (above unneeded) 'result variable
+        result: 1 / sqrt2
+    ] 'result
+]&lt;/pre&gt;
+Context-example #2 (the method used works only if the &quot;outside 'x&quot; is in the user context):
+&lt;pre&gt;x: 121
+print [
+    &quot;result:&quot; get in context [
+        x: system/contexts/user/x
+        x: x + 1
+        result: x / 2 + x
+    ] 'result
+]&lt;/pre&gt;
+Use-example #1:
+&lt;pre&gt;print [&quot;result:&quot; use 'sqrt2 [sqrt2: square-root 2 1 / sqrt2]]&lt;/pre&gt;
+Use-example #2 (works only if the &quot;outside 'x&quot; is in the user context):
+&lt;pre&gt;x: 121 print [&quot;result:&quot; use 'x [x: system/contexts/user/x x: x + 1 x / 2 + x]]&lt;/pre&gt;
+Func-example #1:
+&lt;pre&gt;print [&quot;result:&quot; do has [sqrt2] [sqrt2: square-root 2 1 / sqrt2]]&lt;/pre&gt;
+Func-example #2:
+&lt;pre&gt;x: 121 print [&quot;result:&quot; do func [x] [x: x + 1 x / 2 + x] :x]&lt;/pre&gt;
+
+====USE====
+
+The '''use''' function can be implemented as follows:
+
+&lt;pre&gt;use: func [
+    {Defines words local to a block.}
+    vars [block! word!] &quot;Local word(s) to the block&quot;
+    body [block!] &quot;Block to evaluate&quot;
+    return:
+][
+    ; this initializes all VARS to #[unset!]
+    let vars #[unset!] body
+
+    ; if we wanted to initialize all VARS to #[none!]
+    ; we could have used:
+    ; let vars #[none!] body
+]&lt;/pre&gt;
+
+Notes:
+*The implementation does not need to use any function attribute.
+*The implementation is not a subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*The implementation is simpler than the current mezzanine.
+
+====COLLECT====
+
+The '''collect''' function can be implemented as follows:
+
+&lt;pre&gt;collect: make function! [[
+    {Evaluates a block, storing values via KEEP function, and returns block of collected values.}
+    body [block!] &quot;Block to evaluate&quot;
+    return:
+    /into {Insert into a buffer instead (returns position after insert)}
+    output [series!] &quot;The buffer series (modified)&quot;
+][
+    unless output [output: make block! 16]
+    let 'keep func [value [any-type!] /only][
+        output: apply :insert [output :value none none only]
+        :value
+    ] body
+    either into [output][head output]
+]]&lt;/pre&gt;
+
+Notes:
+*The implementation does not need to use function attribute.
+*The implementation is not a subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*The implementation is simpler than the current mezzanine.
+
+====General cycle====
+
+General iteration constructs can be used to express any standard sort of loop, as well as others -- such as looping over a number of collections in parallel. Where a more specific looping construct can be used, it is usually preferred over the general iteration construct, since it often makes the purpose of the expression more clear.
+
+Implementation:
+
+&lt;pre&gt;iterate: func [
+    {General cycle}
+    init [block!] {cycle initialization}
+    test [block!] {test code}
+    inc [block!] {incrementation code}
+    body [block!] {cycle body}
+    return:
+][
+    ; to not modify the given arguments
+    init: copy/deep init
+    body: head insert tail copy/deep body copy/deep inc
+	
+    let collect-words/set init #[unset!] reduce [
+        :do init
+        :while test body
+    ]
+]&lt;/pre&gt;
+
+Notes:
+*The implementation uses the &lt;code&gt;throw:&lt;/code&gt; function attribute.
+*The implementation is not a subject to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+
+Example:
+
+&lt;pre&gt;; this example doubles the cycle variable after every iteration
+iterate [i: 1][i &lt;= 2000][i: i + i][print i]&lt;/pre&gt;
+
+====Definitional mezzanine CATCH/THROW pair====
+
+Having definitional return in REBOL, the definitional '''catch'''/'''throw''' pair can be defined as a mezzanine as follows:
+
+&lt;pre&gt;catch: func [
+    {Catches a throw from a block and returns its value.}
+    body [block!]
+    return:
+][
+    ; create a new function to have a new definitional RETURN available
+    ; use the new definitional RETURN as THROW in the BODY
+    do does [let 'throw :return body]
+]&lt;/pre&gt;	
+
+Notice, how the definitional return of the anonymous function is used as definitional throw.
+
+A mezzanine definitional break looks to be implementable the same way.
+
+====Definitional mezzanine CONTINUE====
+
+This is not as perfect as the above definitional mezzanine '''catch'''/'''throw''' solution, but usable, when needed.
+
+This version binds the given BLOCK just once, not at the start of every loop:
+
+&lt;pre&gt;c-aware: func [
+    {make a block definitional mezzanine CONTINUE-aware}
+    block [block!]
+    return:
+    /local do-block do-block-body
+][
+    do-block-body: copy [exit block]
+    do-block: make function! reduce [[block] do-block-body]
+    
+    ; define 'continue in the BODY block
+    body: let 'continue does reduce [first do-block-body] reduce [body]
+	
+    ; the DO-BLOCK function has to do the BLOCK actually
+    ; replacing the 'exit word by 'do
+    change do-block-body 'do
+    
+    reduce [:do-block block]
+]&lt;/pre&gt;
+Usage:
+&lt;pre&gt;for n 1 5 1 c-aware [
+    if n &lt; 3 [continue]
+    print n
+]&lt;/pre&gt;
+
+====Advantages====
+
+*All control function problems are solvable using the functions with the definitional return, i.e. the same way as in the &quot;Definitional return&quot; section.
+*Can implement definitional mezzanine '''catch'''/'''throw''' pair like above.
+*Solves the unhandled return error locality for definitional returns.
+
+====Disadvantages====
+
+*Would still have the unhandled return error locality problem for dynamic return (if not corrected).
+*Notice, that the above control functions need to use the definitional return, specified by using the &lt;code&gt;return:&lt;/code&gt; option.
+*If we adopt the proposal in the [http://www.rebol.com/r3/notes/errors.html Errors article] to use '''return:''' as a conflated option to both specify definitional return and optionally a function return type, it will be impossible to specify a return type on a dynamic return function.
+*Slight added overhead to function creation and memory use for definitional return functions.
+
+==QUIT==
+
+*The QUIT function is useful, allowing the user to finish the work of the interpreter.
+*The CATCH/quit function is useful for applications, which &quot;need&quot; to catch the QUIT not wanting (e.g the tested) code to escape from their control
+*Having the QUIT/now function is an error (see [http://www.curecode.org/rebol3/ticket.rsp?id=1743&amp;cursor=8 #1743]), imitating just the state that existed before CATCH/quit was introduced. If we want to have that state, it suffices to undefine CATCH/quit.
+
+==HALT==
+
+Except for bugs (counting QUIT/NOW as one too), HALT is the only exception in REBOL able to cause the [https://github.com/rebolsource/rebol-test test environment] crash. It is desirable to achieve a situation when all exceptions are catchable (this can be easily transformed to its opposite by udefining the respective catch function/functions), therefore, a corresponding catch function was proposed in [http://www.curecode.org/rebol3/ticket.rsp?id=1742&amp;cursor=9 #1742].
+
+==BREAK==
+
+===Dynamic break===
+
+'''break''' is a dynamic exception currently. The /return refinement is used to force the respective loop to return a value. Since the exception is dynamic, the every problem of the dynamic return has an analogy in dynamic break, see the examples below.
+
+===DO-ALL control function===
+
+To illustrate that there is an analogy to the bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539], we define this (&quot;artificial&quot;) control function. Its purpose is to evaluate the subblocks of the given block. Implementation:
+
+&lt;pre&gt;do-all: func [
+    {evaluate the subblocks of the given BLOCK}
+    block [block!]
+][
+    foreach subblock block [do subblock]
+]&lt;/pre&gt;
+
+=====Analogy to #539=====
+
+&lt;pre&gt;loop 1 [do-all [[break/return 1]] 2]
+; == 2 (1 is expected)&lt;/pre&gt;
+
+====Advantages====
+
+*Already implemented.
+*The analogy to the bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539] can be circumvented, since we already do have a (kind of) loop construct in REBOL, which is transparent for the dynamic '''break'''.
+*Does not require binding of the loop body.
+
+====Disadvantages====
+
+*Analogy to the bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*Bug [http://curecode.org/rebol3/ticket.rsp?id=1506 #1506] and related problems with catching just the unhandled breaks, leaving the handled ones untouched (this one is more serious than the previous one, which, as mentioned, can be circumvented).
+*Worse readability of the code, the catching construct not being obvious.
+
+===Definitional break===
+
+====Advantages====
+
+*No problems with an analogy to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*No problems with catching unhandled breaks.
+*A possibility to break from several nested loops using just one break call.
+*Better readability of the code.
+
+====Disadvantages====
+
+*Requires binding of the body block.
+
+==CONTINUE==
+
+This is formally very similar to '''break''', so I am referring the reader to the section.
+
+See also the way how a definitional mezzanine '''continue''' could be introduced if it weren't available.
+
+==THROW==
+
+===Dynamic throw===
+
+THROW is currently a dynamic exception. The /name refinement can be used to &quot;individualize&quot; throws.
+
+====Advantages====
+
+*Already implemented.
+*Does not require binding the block, which may be considered &quot;expensive&quot;, since the block is evaluated just once.
+
+====Disadvantages====
+
+*While the /name refinement can be used to &quot;individualize&quot; throws, it most frequently remains unused, because a pair of &lt;code&gt;catch/name block name&lt;/code&gt; and &lt;code&gt;throw/name value name&lt;/code&gt; is too long to write compared to the proper individualization offered by the definitional throw.
+*As opposed to the definitional throw, the '''name''' word does not individualize the throw so, that the naming conflicts are precluded (see the bug [http://curecode.org/rebol3/ticket.rsp?id=1744 #1744]).
+*An analogy to [http://curecode.org/rebol3/ticket.rsp?id=539 #539] is lurking as well.
+*Analogies to all problems of dynamic exception handling mentioned above.
+
+===Definitional THROW===
+
+====Advantages====
+
+*Can be implemented as a mezzanine, having the definitional RETURN (see above).
+*No problems with an analogy to bug [http://curecode.org/rebol3/ticket.rsp?id=539 #539].
+*Free individualization (no need to pass any refinements/words).
+*Good readability of the code.
+
+====Disadvantages====
+
+*Requires binding of the body block.

@@ -1,0 +1,45 @@
+This page documents a number of pending issues in the R3 definition, design, or implementation.
+
+==Math Operations for Percent==
+
+We must precisely define how math for percent works. It makes sense that:
+
+   5% + 10% = 15%
+
+But does:
+
+   5% + 10 = 10.5 or 15?
+
+And, the same is true for:
+
+   10 + 5%
+
+==Set-Words in Function Specs==
+
+Set-words in function specs will get a new meaning to allow special function modes. It has been used in ROUTINE! specs before, but how this works for functions is still being defined (and it is non-essential to beta 1 release.)
+
+Examples:
+
+    f1: func [a [integer!] return: [integer!]]
+    f2: func [a b options: [protect]]
+    f3: func [a b trace: [enter exit]]
+    f4: func [a b trace: [step]]
+    f5: func [a b catch: [all]]
+
+==Function Input Stream Access==
+
+Should a function have access to its input evaluation stream. For example, if F1 is a function, do we allow:
+
+    F1 10 &quot;test&quot;
+
+where F1 can access the block from the point of [10 &quot;test&quot;].
+
+It may be possible to redefine the :word function spec meaning (which does almost the same thing as 'word) to allow this.
+
+==Smart Mold of Function!==
+
+Should we allow functions to MOLD back to FUNC, DOES, HAS, etc.? It is not a major change to do so.
+
+==Smart Mold of Bitset!==
+
+Should MOLD on a bitset return a string or block similar to normal bitset specs?  More user friendly. Not, some cases may remain as binary, to avoid odd characters in strings.

@@ -1,0 +1,12 @@
+==Special Notes, Issues==
+*[[Boot Info]] - system/options and other info
+*[[Boot options]] - summary of currently active options
+*[[Forgoing faux pas]] - some idiosyncrasies for the uninitiated
+*[[Handy Idioms]] - useful little code snippets
+*[[Profiler]] - a starting point
+*[[Porting Recipe]] - porting to other systems
+*[[New behavior for QUIT]] -  making QUIT work better
+*[[Schemes]] - also completely revised and simplified
+*[[Scheme: HTTP]] - new web networking handler
+*[[Specifying Larger Options]] - a principle
+*[[TCP Port Examples]] - example of minimal TCP server and client

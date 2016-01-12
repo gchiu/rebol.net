@@ -1,0 +1,60 @@
+The '''RebTalk''' forum is a micro-bbs system written in REBOL 3.0 -- its first ''[[Reblet]] application''.
+
+==Purpose==
+
+RebTalk serves dual purposes:
+
+#'''To force us to create an actual reblet in 3.0'''. Now that 3.0 is actually used for something, it helps motivate the team toward finalizing and improving various components.
+#'''To provide a simple, REBOL-based topic/threaded communication system'''. This is the &quot;drink our own wine&quot; approach.
+
+''We are not trying to duplicate all the features of various other forum systems'', but rather create an agile design that we can ''rapidly improve upon'' to meet our own needs.
+
+==Features==
+
+RebTalk uses a simple three-layer communication design:
+
+*'''Topics''' are used as top level categories that contain one or more threads.
+*'''Threads''' are titled message areas that contain one or more messages.
+*'''Messages''' contain the content as posted by users.
+
+Yes, it's a basic system, but it will get things started for us.
+
+Can new features be added? Yes, but we should make a list and prioritize them. A lot of features of standard BBS systems may be cool or fun, but not really that functional... at least not for the purpose of communicating with developers.
+
+==Warning==
+
+'''In order to use RebTalk, you will need a direct Internet connection. Proxy connections are not currently supported.'''
+
+To check your connection run rt-check.r (a script in RebTalk directory).
+
+Note that RebTalk currently uses the ''dumb terminal'' HTTP thin-client model. It does not hold messages locally.
+
+==Set-up an account==
+
+After you've determined that you can access HTTP, you can set-up an account:
+
+#Run RebTalk.r
+#Click the '''Login''' button
+#Enter a username and password
+#Click the '''Create''' button
+#Click on Announcements/New Users and click '''Reply''' to say hi.
+
+If you see an alert, then there was an error, such as use of an existing user-name.
+
+Otherwise, you're registered!
+
+==Quick Start==
+
+It's easy to use:
+
+*Run rebtalk.r to view topics and threads.
+*Click a topic to see its threads.
+*Click a thread to read its messages.
+*You do not need to login to read messages.
+
+Your account will let you post replies and also create new threads in existing topics. However, you cannot create new topics.
+
+==Versions==
+
+;0.0.1: First client prototype (30-Nov-2008) 8.1 KB in size, and first server, 4.6 KB. Written by Carl Sassenrath.
+;0.0.2: Fixes small GUI problems in lists -[[User:Carl|Carl]] 18:36, 1 December 2008 (EST)

@@ -1,0 +1,16 @@
+===State===
+
+'''Style/state''' is a prototype object that defines the fields that will be part of the face/state object.
+
+These fields are used to state information, not attributes or properties. See [[GUI Faces]] for details.
+-----------------------------------------------------------------------
+&lt;TABLE CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=50% VALIGN=TOP&gt;
+'''Face/state''' keeps track of special values that are not considered to be attributes or properties of the face. For example, for simple buttons, this is where we keep track of over and selected states. For other face types, such as scroll bars, this is where we would store values like the scroll and delta percentages.
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+Example of scrollbar state:
+
+  value: 0%	; scroller offset
+  delta: 10%	; &quot;page size&quot; increment
+
+The state object is normally quite small and gets expanded as necessary for specific styles that require extra fields.
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;

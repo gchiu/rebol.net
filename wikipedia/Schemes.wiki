@@ -1,0 +1,101 @@
+'''A scheme specifies a type of port.''' Schemes are defined for files, networking, sound, and many other functions. Users can define their own schemes or modify the existing schemes.
+
+==Related Scheme Docs==
+
+*[[Schemes:Notes]]
+
+==Origin of the Name &quot;Scheme&quot;==
+
+The name ''scheme'' comes from the standard description of a URI (URL). In this URL:
+
+    http://www.rebol.net/index.html
+
+HTTP is the scheme name, www.rebol.net is the host, and index.html is the file path. REBOL uses that same naming convention.
+
+== Built-in schemes ==
+
+A variety of schemes are built-into REBOL 3 and can be used immediately on boot.
+
+Here is a partial list of built-in schemes:
+
+&lt;blockquote&gt;
+{| border=1 cellspacing=0 cellpadding=4
+!style=&quot;background-color:silver&quot;|Scheme
+!style=&quot;background-color:silver&quot;|Description
+|-
+| '''system''' || System port (primary event dispatcher)
+|-
+| '''stdio''' || Standard input and output
+|-
+| '''stderr''' || Standard error
+|-
+| '''console''' || REBOL interactive console
+|-
+| '''file''' || Local file access
+|-
+| '''dir''' || Local file directory access
+|-
+| '''event''' || GUI event handling
+|-
+| '''DNS''' || Domain name lookup
+|-
+| '''TCP''' || Transfer control protocol
+|-
+| '''UDP''' || User datagram protocol
+|-
+| '''HTTP''' || [[Scheme: HTTP|Hypertext transfer protocol]]
+|-
+| '''shell''' || External shell commands (call)
+|-
+| '''serial''' || Serial port access
+|-
+| '''USB''' || USB serial port access
+|-
+| '''mutex''' || Mutual exclusion locks
+|}
+&lt;/blockquote&gt;
+
+More (such as FTP, SMTP, POP) will be included as time and user-base contributions permit.
+
+To obtain a list of the current schemes, you can write:
+
+    probe words-of system/schemes
+
+or:
+
+   foreach val get system/schemes [print [val/name val/title]]
+
+== Scheme object structure ==
+
+The scheme object is defined in system/standard as:
+
+    scheme: context [
+        name:       ; word of http, ftp, sound, etc.
+        title:      ; user-friendly title for the scheme
+        spec:       ; custom spec for scheme (if needed)
+        info:       ; prototype info object returned from query
+        actor:      ; standard action handler for scheme port functions
+        awake:      ; standard awake handler for this scheme's ports
+            none
+    ]
+
+Where:
+
+&lt;blockquote&gt;
+; name : is the type of scheme. This is the word used in the first part of the URL, such as TCP, HTTP, FTP, etc.. It must be a valid REBOL word (e.g. cannot begin with a number).
+; title : is the title of the scheme for user identification and documentation purposes.
+; spec : an object used to specify additional features of the scheme.
+; info : an prototype object that is instantiated for a query on the scheme.
+; actor : the handler function that processes standard actions a port of this scheme type. For example, open, close, read, write, etc.
+; awake : a callback function that is invoked when new events arrive for a port of this scheme type.
+&lt;/blockquote&gt;
+
+
+== Adding a new scheme ==
+
+The &lt;tt&gt;make-scheme&lt;/tt&gt; function creates a new scheme from a block object specification.
+
+(show example)
+
+
+[[Notes|Draft Notes]]

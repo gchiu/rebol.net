@@ -1,0 +1,48 @@
+=== ABS ===
+Returns the absolute value.
+ABS is an action value.
+==== Arguments ==== 
+: '''value''' -- (Type: number! pair! money! time!)
+
+
+==== Description ==== 
+
+
+Returns a positive value equal in magnitude.
+
+
+&lt;code&gt;&lt;pre&gt;
+print absolute -123
+
+print absolute -1:23
+&lt;/pre&gt;&lt;/code&gt;
+
+
+==== Categories ==== 
+
+
+{|
+| [[Categories math|math]] 
+| Mathematical operations. 
+|}
+
+==== See also ==== 
+
+
+{|
+| [[Words -|-]] 
+| Returns the second value subtracted from the first. 
+|- 
+| [[Words negate|negate]] 
+| Changes the sign of a number. 
+|- 
+| [[Words absolute|absolute]] 
+| Returns the absolute value. 
+|}
+
+==== Comments ==== 
+
+
+&lt;blockquote&gt;
+{|
+|}&lt;/blockquote&gt;

@@ -1,0 +1,253 @@
+== Introduction ==
+
+Wiki Tools is a very small, but pretty powerful dialect for communicating with a [[MediaWiki]] (MW) server, to remotely manipulate the contents of a MW page or a series of pages. Wiki Tools has specifically been created for use in [[Main Page|REBOL 3 DocBase]], but can be used generally for MW sites.
+
+Wiki Tools can:
+
+#Upload single or multiple pages as MW pages.
+#Download single or multiple pages as MW pages.
+#Synchronize pages so that local or remotely stored pages are not overwritten. This is based on the modification time of the local file or the remote page.
+
+The manual is itself uploaded to DocBase using Wiki Tools using the following code:
+
+  do-wiki [
+    login &lt;user&gt; &lt;pass&gt;
+    upload &quot;Wiki Tools Documentation&quot;
+    logout
+  ]
+
+Wiki Tools requires Cyphre's HTTP modification to handle cookies.
+
+To download this file using Wiki Tools:
+
+  do-wiki [
+    login &lt;user&gt; &lt;pass&gt;
+    download &quot;Wiki Tools Documentation&quot;
+    logout
+  ]
+
+And a file named '''Wiki Tools Documentation.wiki''' will be stored in the same directory as Wiki Tools on your local machine.
+
+== Basics ==
+
+To connect and do operations on a MW server, you should use the '''DO-WIKI''' function, which provides a simple dialect, called the '''MediaWiki Dialect''' for this purpose:
+
+  do-wiki [login upload text &quot;== My Page ==&quot; &quot;My Page&quot; logout]
+
+Wiki Tools keeps track of a few things, like, login information, if you've logged in or which current work path has been set.
+
+Therefore you can split operations up like this, if you desire:
+
+  do-wiki [login &lt;username&gt; &lt;password&gt;]
+  do-wiki [at %/my/wiki/files/]
+  do-wiki [upload text &quot;== My Page ==&quot; &quot;My Page&quot;]
+  do-wiki [upload text &quot;== My Page 2 ==&quot; &quot;My Page 2&quot;]
+  do-wiki [logout]
+
+There's no speed difference between one big block or multiple blocks, but can be meaningful, if you want to do custom error checking, between specific operations.
+
+== Installation ==
+
+Currently the sources for MediaWiki is only available to the alpha testers of REBOL 3, but they will be made widely available later.
+
+== Configuration ==
+
+=== Connecting ===
+
+To connect to a MW server, you must configure a few things in the WIKI context:
+
+  wiki/wpHost: server-name
+
+This should be the host name of the server to connect to, without http://. So if your server is located at http://www.breadcrumb.com/ use:
+
+  wiki/wpHost: &quot;www.breadcrumb.com&quot;
+
+and here it is:
+
+  wiki/wpHost: &quot;www.rebol.net&quot;
+
+The path is the path to the index.php file that is used for editing pages. This could be: http://www.breadcrumb.com/w/index.php?something. You can see this path in the url of your webbrowser by selecting a MW page, and click on the Edit Tab.
+
+There is no default but standard is &quot;w&quot;.
+
+  wiki/wpPath: &quot;w&quot;
+
+=== Testing Connection ===
+
+With this set up, you can now test whether there is access to the server, using:
+
+  do-wiki [login &quot;me&quot; &quot;mypassword&quot;]
+
+If the response is:
+
+  User 'me' logged into www.breadcrumb.com's MediaWiki.
+
+Then the server responds correctly and you can begin working with it.
+
+=== Work Path ===
+
+By default, Wiki Tools stores .wiki files downloaded from MW servers in its own path. This can be changed by setting:
+
+  wiki/work-path: %somepath/
+
+When working inside '''do-wiki''' you can set the work-path to different locations, when uploading or downloading files.
+
+  do-wiki [
+    at %upload-these-files/
+    upload &quot;My Page 1&quot; &quot;My Page 2&quot; &quot;My Page 3&quot;
+    at %downloaded-files/
+    download &quot;Page 1&quot; &quot;Page 2&quot; &quot;Page 3&quot;
+  ]
+
+=== Time Settings ===
+
+Wiki Tools is very dependent on the time on the MW server and where Wiki Tools runs, being synchronized, so Wiki Tools will know what the time is on the server. This is because all data synchronization is time based, and if those settings are incorrect, synchronization may be incorrect and .wiki files may risk being overwritten with older data.
+
+  wiki/time-url: &lt;url&gt;
+
+== Logging In and Logging Out ==
+
+Wiki Tools require that you have a user account to access the MW. Anonymous access will not work at this time. '''It's considered unwise to create such a tool with anonymous access, as it will make it very easy and efficient to deface MW sites, so it may not be implemented.'''
+
+Login information is stored also in '''plain text''' in the WIKI context and is remembered in a cookie.
+
+If you want to completely avoid storing login information, you can enter:
+
+  do-wiki [login]
+
+without username and password. You will then be prompted for this in the console.
+
+'''Remember that username and password is always stored in plain text in the cookie and in the WIKI context.'''
+
+After logging in, you can perform as many operations as you want until logging out with:
+
+  do-wiki [logout]
+
+Logging out will clear the cookie login information, but not the login information in the context. To delete all traces of username and password, use:
+
+  do-wiki [logout purge]
+
+== Uploading Plain Text and Text Files ==
+
+=== Plain Text ===
+
+To upload plain text directly inside the dialect block, use the '''TEXT''' word to do this:
+
+  do-wiki [upload text &quot;== My Page ==&quot; as &quot;My Page&quot;]
+
+You must always specify the page title, otherwise Wiki Tools does not know where to store the page on the MW server. '''Page names are case sensitive.''' The text will be stored as plain text on the MW, i.e. the text you send will be equivalent to what you type in the MW edit page for submission.
+
+You can upload multiple pages like this:
+
+  do-wiki [
+    upload
+      text &quot;== Front Page is Under Construction ==&quot; as &quot;Front Page&quot;
+      text &quot;== Contacts is Under Construction ==&quot; as &quot;Contacts&quot;
+      text &quot;== Products is Under Construction ==&quot; as &quot;Products&quot;
+      text &quot;== News is Under Construction ==&quot; as &quot;News&quot;
+  ]
+
+This will upload 4 text pages to '''Front Page''', '''Contacts''', '''Products''' and '''News'''.
+
+=== Files ===
+
+Files are uploaded like plain text like this:
+
+  do-wiki [upload &quot;My Page&quot;]
+
+Assuming that you have already downloaded or created '''My Page.wiki''', prior to uploading it, it will be recognized and uploaded.
+
+If you want to upload a page from a text file of a different name, you can specify this as well:
+
+  do-wiki [upload %my-page.txt as &quot;My Page&quot;]
+
+You can also leave out the page specification, but then the file name will be used to create the page title:
+
+  do-wiki [upload %my-page.txt]
+
+This will cause a page called '''my-page.txt''' to be created on the MW server.
+
+You can again, also upload multiple files, here shown in a mixed example of options:
+
+  do-wiki [
+    upload
+      %front-page.txt as &quot;Front Page&quot;
+      &quot;Contacts&quot;
+      %product-list.txt as &quot;Products&quot;
+      &quot;News&quot;
+  ]
+
+	This will upload the 4 files to '''Front Page''', '''Contacts''', '''Products''' and '''News'''.
+
+=== Multiple Pages ===
+
+It's possible to upload multiple pages in one go, using the 'all word. This will upload all files that have the .wiki extension from the current work path.
+
+  do-wiki [
+    at %/this/path/
+    upload all
+  ]
+
+== Downloading Pages ==
+
+To download pages, you must specify the page name:
+
+  do-wiki [download &quot;My Page&quot;]
+
+This will download '''My Page''' to '''My Page.wiki''' stored in the same directory as Wiki Tools.
+
+You can specify the file name, if you don't want to use the file name created by default:
+
+  do-wiki [download &quot;My Page&quot; as %my-page.txt]
+
+== Force Up- and Downloading ==
+
+By default, when downloading or uploading a page, the modification time for the locally stored file, if it exists, is compared to the remote page. If you are trying to upload a file to the server that is older than the modification time of the remote page, it will not be uploaded, and Wiki Tools proceeds to the next file.
+
+This can be overridden with the '''FORCE''' word:
+
+  do-wiki [upload force &quot;My Page&quot; &quot;My Page 2&quot;]
+
+By not specifying FORCE for the next series of files, these will be uploaded normally until you specify FORCE again:
+
+  do-wiki [
+    upload force &quot;My Page&quot; &quot;My Page 2&quot;
+    upload &quot;My Page 3&quot;
+    upload force &quot;My Page 4&quot; &quot;My Page 5&quot;
+  ]
+
+== Synchronization ==
+
+Synchronization builds on the above mentioned feature of checking modification times of the local and remote file. This makes it very simple to update the file or remote page appropriately:
+
+  do-wiki [sync &quot;My Page&quot; &quot;My Page 2&quot; &quot;My Page 3&quot;]
+
+This causes '''My Page 1''', '''My Page 2''' and '''My Page 3''' to be automatically updated either on the MW server or the local file, depending on, which one has the latest modification time.
+
+Like when uploading or downloading, you can specify alternate filenames for pages names:
+
+  do-wiki [sync &quot;My Page&quot; as %my-page.txt]
+
+This will compare '''My Page''' on the MW server with %my-page.txt on disk.
+
+== Console Output ==
+
+By default, networking operations in '''system/options/quiet''' is set to '''TRUE''', hence, they are not displayed.
+
+The LOG function displays more useful information instead about the current operation in progress.
+
+By default, logging happens to console:
+
+  wiki/log-type: 'console
+
+But you can log to a file instead, by setting:
+
+  wiki/log-type: 'file
+
+The file name is by default:
+
+  wiki/log-file: %wiki-tools.log
+
+In the file, each line is timestamped.
+
+Logging is simple and so if the log file grows very big, you should delete or truncate it yourself. There's currently no log rotation mechanism.

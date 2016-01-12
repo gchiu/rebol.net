@@ -1,0 +1,36 @@
+= Top things that make you say WOW =
+
+#Rich in Datatype Literals.
+#Meta Programming Made Easy. &quot;Dialecting&quot; (DSL - Domain Specific Languages) is Productive.
+#Tiny Footprint, Giant Leap.
+#Graphics Dialect Included (VID - Visual Interface Dialect) (No more TK or something like that, Please)
+#Do More With Less.
+#Good at Parsing ( and there is no excuse for using XML )
+#For Speed, I Just Love Rebcode
+#Many Languages Do not Support Unicode, but We Do (I mean, We Will)
+#Don't give up on SOA. SOA Can Be Light-Weight and Flexible (Rebservices).
+#WORA (Windows, Linux, MacOS, ... )
+#We will Support RIA ( with Browser-Plugin )
+
+= 10 Reasons to look at REBOL again =
+ 
+;Openness
+:REBOL Technologies (RT) have opened REBOL more than ever before. Although the very core of REBOL, the language, is still closed, RT have opened up everything else around it, so you can help improve them. All subsystems, mezzanines, documentation. Everything.
+;Powerful device and resolution independent GUI
+:The new Visual Interface Dialect version 3 is a powerful, very feature scalable and complete replacement for the original VID, which pioneered one-line-coded graphical user interfaces. We're going for completeness this time, so it will be far easier to build complex user interfaces.
+;Speed
+:REBOL is faster than ever due to new coding techniques, rewriting the core of REBOL from the bottom up to eliminate bottlenecks in graphics and ports. With tasks, you can perform operations asynchronously, greatly speeding up network operations, without needing to build your own tasking engine. Some of the most common mezzanine functions in older versions of REBOL have been converted to natives for added speed.
+;Size
+:With REBOL's usually modest script size, REBOL 3 offers even smaller script sizes. With new functions for common operations, particularly for series, many scripts can be reduced in size.
+;Stronger design
+:With over two years of development and based on 8 years of experience with the previous versions of REBOL and thousands of developer discussions, learning all the defects and advantages of REBOL 2 have had a profound impact on the design of every single part of REBOL 3.
+;Broadness
+:With new and open subsystems, it's possible for you, the developer, to port REBOL 3 to the device you desire. Thanks to almost complete OS and hardware independency, it's possible to adapt REBOL to utilize for example Open GL or DirectX for hardware accelerated 3D graphics. You can make it run on your embedded hardware, or on the alternative operating system of your choice. '''There are enormous areas to cover. REBOL 3 can reach them all.'''
+;Larger than Life
+:Modules give you the ability to build very large programs (in terms of features, not code size. This is REBOL, you know.), from many small components in an orderly way. Support for Unicode will help internationalization. Adding new number formats such as a more accurate money! datatype, gives REBOL 3 industrial strength math abilities, so we are sure REBOL 3 will not fall short of your expectations in this area.
+;Development
+:New tools for development already available:  DocBase and DevBase. Upcoming development tools: Reference manuals, books, GUI style design tool, Intergrated Development Environments (IDE) and SDK. (this is a risky list...) And what ever you decide that REBOL 3 should have.
+;Free
+:REBOL 3 is now entirely free (as in beer) with all features enabled.
+;Welcome!
+:Welcome to REBOL 3. Welcome to a new paradigm in programming. Welcome to 20 years into the future. If you have looked at REBOL 2, but turned away, you may be in for a surprise!

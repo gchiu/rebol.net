@@ -1,0 +1,3 @@
+This is the '''REBOL Host Application Environment'''. It is implemented as an open source wrapper around the [[RRTE]]. It provides both the outer environment for the RRTE as well as an API for RRTE OS and related functions.
+
+This architecture allows the RRTE to be embedded in other types of applications, not just the standard REBOL program distribution or SDK.

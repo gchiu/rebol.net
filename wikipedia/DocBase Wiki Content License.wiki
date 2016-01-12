@@ -1,0 +1,7 @@
+'''All content located here on www.rebol.net/wiki is published in the public domain.'''
+
+The content of this wiki can be copied, linked, or reused freely with no attribution or credit of any kind. If your country or domain of publication absolutely requires document ownership, attribution, or copyright, then you are hereby granted the necessary license free of charge from [http://www.rebol.com REBOL Technologies] but no liability, warranty, or guarantees of any kind are included.
+
+''Some portions of this content may be inaccurate or incorrect. Use this documentation entirely at your own risk.''
+
+''Content located on other pages or sites outside of this wiki system, and/or linked from here are not covered by this license.''

@@ -1,0 +1,393 @@
+For bug reports and enhancement requests.
+
+==Summary==
+
+For 3.0 bug reporting and enhancement requests we use '''CureCode''', written and hosted by [http://softinnov.org/ Softinnov].
+
+The web site interface can be found at http://curecode.org/rebol3/
+
+==Basics==
+
+It's pretty obvious when you look at it.
+
+'''No account is needed''' to view and search tickets.
+
+'''To submit or change a ticket requires an account.''' But, it is easy and fast [http://curecode.org/rebol3/register.rsp to register] (also via the link at the top of the page.)
+
+You can also modify the state of tickets that you've submitted earlier.
+
+==Questions==
+
+*Q:
+**Does it have a REBOL interface?
+**Although it runs in REBOL via the Cheyenne web server, there is currently no direct REBOL interface, but there are plans to add it later.
+*Q:
+**Can it be enhanced?
+**Several enhancements have already been made, and you can submit your suggestions to Softinnov. In addition, the source code is available, so you can help with bugs and enhancements.
+
+==API documentation==
+&lt;blockquote&gt;
+''Main features :''
+* ''retrieve a list of tickets based on preset filters''
+* ''retrieve whole details about a given ticket ID''
+* ''returned data are in REBOL format (XML support pending)''
+* ''doesn't support yet adding or modifying tickets''
+
+''The current API should be considered alpha.''
+&lt;/blockquote&gt;
+
+===Query format===
+
+CureCode API URLs must be in the following format:
+&lt;pre&gt;
+    http&amp;#58;//curecode.org/rebol3/api.rsp?&lt;parameter 1&gt;&amp;&lt;parameter 2&gt;&amp;&lt;parameter n&gt; 
+&lt;/pre&gt;
+Parameters are separated using the ampersand character (&amp;). You can specify as many parameters as you like, in any order. Parameters can be passed in URL or as POST data.
+
+===Response format===
+
+All responses are encapsulated using the following format :
+&lt;pre&gt;
+    [&lt;status&gt; &lt;data&gt;]
+&lt;/pre&gt;	
+&lt;span style=&quot;color:green&quot;&gt;'''&lt;tt&gt;&lt;status&gt;&lt;/tt&gt;'''&lt;/span&gt; is a ''word!'' value informing about the completion of the request :
+&lt;blockquote&gt;
+* '''&lt;tt&gt;ok&lt;/tt&gt;''' : valid request, &lt;span style=&quot;color:green&quot;&gt;'''&lt;tt&gt;&lt;data&gt;&lt;/tt&gt;'''&lt;/span&gt; can be a ''block!'' or ''integer!'' value.
+* '''&lt;tt&gt;error&lt;/tt&gt;''' : invalid request, &lt;span style=&quot;color:green&quot;&gt;'''&lt;tt&gt;&lt;data&gt;&lt;/tt&gt;'''&lt;/span&gt; will be a ''string!'' containing an error message.
+
+&lt;pre&gt;
+    [ok 492]
+    [ok [403 202 404]]
+    [ok [summary: &quot;Crash calling BROWSE function&quot; description:...]]
+
+    [error &quot;FILTER argument is invalid&quot;]
+&lt;/pre&gt;
+You can use LOAD to query the remote API and get REBOL data back. If you don't trust the server, you can use LOAD/ALL or READ instead.
+&lt;pre&gt;
+    &gt;&gt; load http://curecode.org/rebol3/api.rsp?type=list&amp;filter=2&amp;mode=count
+    == [ok 492]
+
+    &gt;&gt; read http://curecode.org/rebol3/api.rsp?type=list&amp;filter=2&amp;mode=count
+    == &quot;[ok 492]&quot;
+&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+===Get tickets list===
+
+Returns a list of tickets ID matching the selected filter. Optional parameters can be specified to control paging and/or retrieve additional informations.
+
+
+'''Required parameters'''
+
+*&lt;tt&gt;type=list&lt;/tt&gt;
+*&lt;tt&gt;filter=&lt;span style=&quot;color:green&quot;&gt;'''&lt;preset&gt;'''&lt;/span&gt;&lt;/tt&gt;
+
+&lt;blockquote&gt;
+&lt;span style=&quot;color:green&quot;&gt;'''&lt;tt&gt;&lt;preset&gt;&lt;/tt&gt;'''&lt;/span&gt; is an integer index value for one of the preset filters:
+
+*&lt;tt&gt;2&lt;/tt&gt; : Most Recent Reports
+*&lt;tt&gt;3&lt;/tt&gt; : Unreviewed Submissions
+*&lt;tt&gt;4&lt;/tt&gt; : Active Priorities
+*&lt;tt&gt;5&lt;/tt&gt; : Tested
+*&lt;tt&gt;6&lt;/tt&gt; : Recent Changes
+*&lt;tt&gt;7&lt;/tt&gt; : Worst Severit
+*&lt;tt&gt;8&lt;/tt&gt; : By Submitter
+*&lt;tt&gt;9&lt;/tt&gt; : Completed
+
+
+&lt;pre&gt;
+    &gt;&gt; load http://curecode.org/rebol3/api.rsp?type=list&amp;filter=2
+    == [ok [
+        507
+        506
+        505
+        504
+        ...
+&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+'''Optional parameters'''
+
+*&lt;tt&gt;mode=&lt;span style=&quot;color:green&quot;&gt;'''&lt;kind&gt;'''&lt;/span&gt;&lt;/tt&gt;
+
+&lt;blockquote&gt;
+&lt;span style=&quot;color:green&quot;&gt;'''&lt;tt&gt;&lt;kind&gt;&lt;/tt&gt;'''&lt;/span&gt; is a word switching between different modes of information:
+
+*&lt;tt&gt;count&lt;/tt&gt; : returns only the number of tickets matching the query (''integer!'' value).
+
+*&lt;tt&gt;brief&lt;/tt&gt; : returns a few additionnal info for each ticket (''block!'' of tickets).
+
+
+&lt;pre&gt;
+    &gt;&gt; load http://curecode.org/rebol3/api.rsp?type=list&amp;filter=2&amp;mode=count
+    == [ok 492]
+    
+    &gt;&gt; load http://curecode.org/rebol3/api.rsp?type=list&amp;filter=2&amp;mode=brief
+    == [ok [
+          [507 1 &quot;Bug&quot; &quot;minor&quot; &quot;submitted&quot; 12-Apr-2009/1:08:18 &quot;test&quot; 1 5 &quot;normal&quot;]
+          [506 0 &quot;Wish&quot; &quot;trivial&quot; &quot;submitted&quot; 30-Nov-2008/17:16:43 ...
+&lt;/pre&gt;
+
+'''''Note 1''''': ''The &lt;tt&gt;brief&lt;/tt&gt; mode returns a few extra info that may be removed in future versions, like at position 8 the internal status ID and at position 9, the internal severity ID.''
+
+'''''Note 2''''': ''The &lt;tt&gt;count&lt;/tt&gt; mode main usage is to allow paging preparation for long lists.''
+&lt;/blockquote&gt;
+
+*&lt;tt&gt;range=&lt;span style=&quot;color:green&quot;&gt;'''&lt;part&gt;'''&lt;/span&gt;&lt;/tt&gt;
+
+&lt;blockquote&gt;
+&lt;span style=&quot;color:green&quot;&gt;'''&lt;tt&gt;&lt;part&gt;&lt;/tt&gt;'''&lt;/span&gt; parameter is a ''pair!'' value defining a sub-list. First value indicates the lower bound (&gt;=1) and the second one the upper bound value.
+
+
+&lt;pre&gt;
+    &gt;&gt; load http://curecode.org/rebol3/api.rsp?type=list&amp;filter=2&amp;range=2x5
+    == [ok [
+    	506
+    	505
+    	504
+    	503
+    ]]
+    
+    &gt;&gt; load http://curecode.org/rebol3/api.rsp?type=list&amp;filter=2&amp;mode=brief&amp;range=1x1
+    == [ok [
+    	[507 1 &quot;Bug&quot; &quot;minor&quot; &quot;submitted&quot; 12-Apr-2009/1:08:18 &quot;test&quot; 1 5 &quot;normal&quot;]
+    ]]
+&lt;/pre&gt;
+
+'''''Note''''': ''A query like'' &lt;span style=&quot;color:green&quot;&gt;'''&lt;tt&gt;type=list&amp;filter=1&amp;range=1x1&lt;/tt&gt;'''&lt;/span&gt; ''will give you the last submitted ticket. This can be use in a native client for notifying user when a new ticket is posted.''
+&lt;/blockquote&gt;
+
+===Get ticket data===
+
+Returns ticket detailed informations. Optional parameters can be specified to get comments and history.
+
+
+'''Required parameters'''
+
+*&lt;tt&gt;type=ticket&lt;/tt&gt;
+*&lt;tt&gt;id=&lt;span style=&quot;color:green&quot;&gt;'''&lt;ticket-id&gt;'''&lt;/span&gt;&lt;/tt&gt;
+
+&lt;blockquote&gt;
+&lt;span style=&quot;color:green&quot;&gt;'''&lt;tt&gt;&lt;ticket-id&gt;&lt;/tt&gt;'''&lt;/span&gt; is a unique ''integer!'' value referencing the ticket on the server. You can get it typically from a ticket list query (see above).
+
+
+&lt;pre&gt;
+    &gt;&gt; load http://curecode.org/rebol3/api.rsp?type=ticket&amp;id=507
+    == [ok [
+        summary: &quot;test&quot;
+        description: &quot;test&quot;
+        code: none
+        version: &quot;2.100.15&quot;
+        severity: &quot;minor&quot;
+        status: &quot;submitted&quot;
+        resolution: &quot;open&quot;
+        priority: &quot;normal&quot;
+        type: &quot;Bug&quot;
+        platform: &quot;All&quot;
+        created: 27-Jan-2009/10:28:24
+        modified: 12-Apr-2009/1:08:18
+        user: &quot;admin&quot;
+        category: &quot;n/a&quot;
+        reproduce: &quot;Always&quot;
+        fixed-in: none
+        project: &quot;AltME&quot;
+        comments: none
+        history: none
+    ]]
+&lt;/pre&gt;
+
+'''''Note''''': ''By default, &lt;tt&gt;comments&lt;/tt&gt; and &lt;tt&gt;history&lt;/tt&gt; are always none.''
+&lt;/blockquote&gt;
+
+'''Optional parameters'''
+
+*&lt;tt&gt;show=&lt;span style=&quot;color:green&quot;&gt;'''&lt;level&gt;'''&lt;/span&gt;&lt;/tt&gt;
+
+&lt;blockquote&gt;
+&lt;span style=&quot;color:green&quot;&gt;'''&lt;tt&gt;&lt;level&gt;&lt;/tt&gt;'''&lt;/span&gt; is a ''word!'' value allowing to expand the ticket with additional informations. Allowed values are :
+
+*&lt;tt&gt;comments&lt;/tt&gt; : provides all the comments attached to the requested ticket.
+*&lt;tt&gt;history&lt;/tt&gt; : provides the whole history of the requested ticket.
+*&lt;tt&gt;all&lt;/tt&gt; : combines the two other options (comments+history).
+
+
+&lt;pre&gt;
+    &gt;&gt; load http://curecode.org/rebol3/api.rsp?type=ticket&amp;id=507&amp;show=all
+    == [ok [
+        summary: &quot;test&quot;
+        description: &quot;test&quot;
+        code: none
+        version: &quot;2.100.15&quot;
+        severity: &quot;minor&quot;
+        status: &quot;submitted&quot;
+        resolution: &quot;open&quot;
+        priority: &quot;normal&quot;
+        type: &quot;Bug&quot;
+        platform: &quot;All&quot;
+        created: 27-Jan-2009/10:28:24
+        modified: 12-Apr-2009/1:08:18
+        user: &quot;admin&quot;
+        category: &quot;n/a&quot;
+        reproduce: &quot;Always&quot;
+        fixed-in: none
+        project: &quot;AltME&quot;
+        comments: [
+            [1 &quot;admin&quot; 12-Apr-2009/1:08:18 &quot;yes we can!&quot;]
+        ]
+        history: [
+            [12-Apr-2009/1:08:18 &quot;admin&quot; &quot;Comment : 0000001&quot; &quot;Added&quot; &quot;-&quot;]
+            [27-Jan-2009/10:28:24 &quot;admin&quot; &quot;Ticket &quot; &quot;Added&quot; &quot;-&quot;]
+        ]
+    ]]
+&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+==Change Log==
+
+'''CureCode 0.9.12 - 13/12/2010''' :
+
+*FEAT: Added the ability to move tickets between projects.
+*FEAT: New search field: &quot;User&quot;.
+*FEAT: New isolated search field: &quot;Commented by&quot;.
+*FEAT: RSS feeds added for notifications of projects &amp; tickets changes.
+*FEAT: Added short URLs for tickets direct referencing.
+	
+*FIX: Double line breaks in PRE tags in comments removed.
+*FIX: Stats bar graphs were never displaying per-project stats.
+*FIX: Double escaping of HTML entities in description and comments removed.
+
+'''CureCode 0.9.11 - 20/02/2010''' :
+
+*FEAT: Custom captcha system replaced by ReCaptcha.
+*FEAT: Auto-adjusting scale for bar charts in stats (more accurate and readable).
+*FEAT: Category selector added in tickets list detailed view
+*FEAT: Empty attached file section not shown anymore in tickets read-only view.
+	
+*FIX: When clicked, attached files will now show up in browser's window by default.
+*FIX: When attaching file in a new ticket, the returned attached filename was 'none'.
+
+'''CureCode 0.9.10 - 17/01/2009''' :
+
+*FEAT: Ticket's attached files management added.
+	
+*FIX: Default query parameters corruption for anonymous users fixed.
+*FIX: Issue #1371 regarding policy for ticket deletion by owner.
+*FIX: Dimissed ticket can't be changed by the owner anymore.
+*FIX: Ordering not working properly for all filters and columns.
+*FIX: Minor missing translations for french catalog.
+
+*LOOK: Added Henrik's 33% fix for page header.
+*LOOK: &quot;Example code&quot; field now use PRE tag for better rendering of source code.
+
+'''CureCode 0.9.9 - 26/07/2009''' :
+
+*FEAT: Prefered filters and project can now be user-defined.
+*FEAT: Categories order can now be set by admin.
+	
+*FIX:  Stats charts are now correct.
+*FIX:  Default filter in anonymous mode works now correctly.
+*FIX:  Switched from HTML quirk mode to correct doctype.
+	
+*LOOK: Fixed borders issues in CSS (except for IE8)
+
+'''CureCode 0.9.8 - 26/05/2009''' :
+
+*FEAT: &quot;User&quot; column added to tickets list page.
+*FEAT: Search text feature extended to comments.
+*FEAT: &quot;Main&quot; page now populated with statistics.
+*FEAT: New Preset filter: &quot;My Reports&quot; (default when logged)
+	
+*FIX:  &quot;By Submitter&quot; filter now working correctly.
+*FIX:  Redirection issues with Chrome fixed.
+*FIX:  In Preset mode, columns sorting links removed.
+	
+*LOOK: Textarea edit fields now enlarged to maximum width.
+
+'''CureCode 0.9.7 - 11/04/2009''' :
+
+*FEAT: Dismissed tickets are now filtered out from &quot;Active Priorities&quot; and &quot;Worst Severity&quot; filters.
+*FEAT: Current project name added to &quot;Add Ticket&quot; form.
+*FEAT: Reversed sort order for Versions and Categories lists in admin page.
+*FEAT: Added an experimental API for getting tickets in REBOL format.
+
+*FIX:	Front page stats now count &quot;dismissed&quot; tickets as closed.
+*FIX:	Message &quot;n ticket(s) found&quot; fixed for localization, now translates correctly in french.
+
+'''CureCode 0.9.6 - 21/01/2009''' :
+
+*FEAT: Ticket submitter can now delete his ticket.
+*FEAT: Admin can now delete any ticket.
+*FEAT: Admin can now delete a user.
+*FEAT: Admin can now change user's role.
+*FEAT: Admin can now force validation of a new user's account.
+	
+*FIX:	Tickets list loading twice on first visit issue fixed.
+	
+*LOOK: Input fields and buttons border width reduced to 1 pixel.
+
+'''Migration Changelog''':
+*&quot;Response&quot; AltME Tracker field now mapped to a comment in CC (keeping the original response's date) rather than using the &quot;Code Example&quot; field.
+*There's no more data to migrate to CC from AltME, so the migration is considered finished (meaning that old tickets can now be changed safely in CC).
+
+'''CureCode 0.9.5 - 05/12/2008''' :
+
+*FEAT: Added Preset ticket list filters (from AltME Tracker)
+*FEAT: Added search ticket by text feature
+*FEAT: Added direct access to a ticket knowing its ID
+*FEAT: Filter zone in tickets list page redesigned to account for different filtering modes.
+*FEAT: Back and forward navigation now possible from inside a ticket.
+*FEAT: Ticket's ID in descriptions and comments now displayed as links.
+	
+*FIX:  Parsing URL in description/comments section will now stop on #&quot;&lt;&quot;.
+*FIX:  CSS fixed for tables border rendering on non-IE browser.
+*FIX:  Case-only changes in ticket's title are now possible.
+	
+*LOOK: Minor positionning enhancements of login block in home page.
+*LOOK: &quot;Description&quot; and &quot;Code example&quot; sections default height reduced.
+
+'''Migration Changelog''':
+
+*Ticket submitting users are now migrated too
+*Target projects list reduced to only one : &quot;REBOL 3.0&quot;
+*Fixed wrong tickets ID passed to 'add-log (for proper ticket's logs)
+
+'''CureCode 0.9.4 Changelog''':
+
+*When session times out, user is redirected to login page.
+*Fixed the &quot;Developer&quot; access right level issues.
+*Admin/Developer users enter Ticket pages in edit mode directly.
+*Once logged in, users start at the ticket page list directly.
+*Several minor bug fixes
+
+'''Todo-List (by priority)''' :
+
+#&quot;View Tickets&quot; custom and persistent filters (can survive to RSP sessions).
+#API for external access :
+#*allow ticket submission
+#*add support for XML output
+#Make the &quot;Assigned to&quot; field editable
+#REBOL code formatting in code section 
+#Option for being permanently logged (permanent session cookie).
+#In &quot;All Projects&quot; view, there should be a &quot;Project&quot; column.
+#Improve the UI of the home page when logged.
+
+'''Tasks done'''
+
+#Define a backup procedure and find a backup server.
+#Navigation buttons in Ticket page to walk back and forth in a filtered view.
+#Add admin features :
+#*Delete a project
+#*Delete a user
+#*Change user's role
+#API for external access :
+#*formats: REBOL, XML
+#*access: simple HTTP API, REST
+#Add an intro text + usage docs on home page for newcomers.
+
+
+
+----
+{{Template:Community_TOC}}
+[[Category:Community]]
+
+==Related Links==

@@ -1,0 +1,21 @@
+'''on-draw''' allows you to perform an action, typically a manipulation of the draw block of the face, just before the face is drawn. on-draw occurs every time DRAW-FACE is invoked.
+
+The input argument is the draw block and it must be returned from on-draw.
+
+When the on-draw actor has finished, the face is redrawn.
+
+===Examples===
+
+A plain empty on-draw actor:
+
+ on-draw: [
+   arg ; return value
+ ]
+
+If the face state is 'up, we want to display a bright face. If the face state is 'down, we want to display a darker face, to indicate the face has been pressed.
+
+ on-draw: [
+   if face/state = 'up [set-facet face 'color 200.200.200]
+   if face/state = 'down [set-facet face 'color 160.160.160]
+   arg ; return value
+ ]

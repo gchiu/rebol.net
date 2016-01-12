@@ -1,0 +1,70 @@
+Just a few notes to remember incorporating into a Git tutorial targeted at R3 developers. This is work in progress.
+
+= Notes =
+
+== Line endings / msysGit option ==
+
+Proposed policy: text files in the official repository always use LF (&quot;Unix&quot;) line endings.
+
+For the Win32 msysgit installer, that means two options in &quot;Choosing CR/LF behavior&quot;:
+
+* Select the &quot;Commit line endings as they are&quot; option, if you can set up your editor and remaining toolchain to properly work with LF line endings. This way Git won't interfere with your text files, but you'll have to ensure yourself that you don't commit text with CRLF lines endings.
+
+* Select the &quot;Use Windows style line endings&quot; option to have Git automatically convert from LF to CRLF on checkout, and from CRLF to LF on commit. The primary disadvantage to that is that some people really do not like it if software &quot;automagically&quot; interferes with their files. If you are one of those people, chose the other option.
+
+The underlying Git config set by this is &lt;tt&gt;core.autocrlf&lt;/tt&gt;.
+
+== Github Zip/Tgz Downloads ===
+
+Download the latest hostkit sources as .tgz or .zip (does not need Git at all; a Github feature):
+
+* .tgz: http://github.com/rebolsource/r3-hostkit/tarball/master
+* .zip: http://github.com/rebolsource/r3-hostkit/zipball/master
+
+== Access the repository via Git ==
+
+Clone (&quot;check out&quot;) the host-kit repository:
+
+  $ git clone git://github.com/rebolsource/r3-hostkit.git
+
+== Access the repository via Subversion ==
+
+As a fallback, you can use Subversion to access Github repositories:
+
+  $ svn co https://svn.github.com/rebolsource/r3-hostkit
+
+
+
+
+= Downloads =
+
+Primary Git download page: http://git-scm.com/download
+
+== Windows ==
+
+- msysGit: http://code.google.com/p/msysgit/downloads/list?can=3
+
+Includes the graphical Git tools gitk and git-gui. At the time of this writing, the suggeste download to use was named &lt;tt&gt;Git-1.7.3.1-preview20101002.exe&lt;/tt&gt;.
+
+- TortoiseGit: http://code.google.com/p/tortoisegit/downloads/list
+
+If you need (or are used to) more advanced explorer integration and GUIs a'la the other Tortoise* tools. __Requires__ msysGit.
+
+== Linux ==
+
+For many reasonably modern distributions, simply install Git via your package manager. The package is probably called &lt;tt&gt;git&lt;/tt&gt; or &lt;tt&gt;git-core&lt;/tt&gt;. Make sure you get a Git &gt;= 1.6, though, as there have been many improvements in the CLI. For Debian Lenny, that means you'll have to use lenny-backports. Or build from the sources.
+
+== OS X ==
+
+Use the official installers: http://code.google.com/p/git-osx-installer/downloads/list?can=3
+
+== FreeBSD ==
+
+Either use the &lt;tt&gt;git&lt;/tt&gt; package:
+
+  pkg_add -r git
+
+Or use the &lt;tt&gt;devel/git&lt;/tt&gt; port:
+
+  cd /usr/src/ports/devel/git
+  make install

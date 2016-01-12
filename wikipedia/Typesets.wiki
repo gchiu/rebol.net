@@ -1,0 +1,46 @@
+{{underconstruction}}
+A '''typeset''' is a set of datatypes.
+
+For example, when you define a function, you specify the datatypes of arguments in this way:
+
+    f: func [arg1 [integer! number!] arg2 [string! url!]] ...
+
+What follows each arg word is a set of accepted datatypes.
+
+REBOL 3.0 adds a new datatype called a typeset! A typeset is
+simply a compact, high-performance method of storing the datatype sets
+as a new kind of datatype. Typesets are important because the
+interpreter uses them to quickly validate function arguments.
+
+The typeset! datatype knows how to convert a block of datatype names
+such as [integer! decimal! money!] into an internal representation
+(similar to the bitset datatype). It can also convert the internal
+format back to a block for output or changes.
+
+The addition of typesets eliminates the need for the special REBOL
+pseudo-datatypes like series! and number!. These are now
+implemented as typesets, but you can use them the same way as before.
+They can be used in function argument specifications:
+
+    f: func [arg1 [number!] arg2 [series!]] ...
+
+and also for datatype tests:
+
+    if series? value [....]
+
+Note, however, this difference. In REBOL 2.*:
+
+    type? series!
+    datatype!
+
+in REBOL 3.0 becomes:
+
+    type? series!
+    typeset!
+
+For advanced users, REBOL 3.0 will provide a way to create and manage
+your own custom typesets.
+
+    tmp-type: make typeset! [time! money! percent!]
+
+    f: func [arg1 [tmp-type]] [...]

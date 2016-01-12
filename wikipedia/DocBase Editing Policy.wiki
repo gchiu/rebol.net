@@ -1,0 +1,41 @@
+DocBase is based on MediaWiki, which is a flat and loosely structured database of pages. With this design, it's necessary to practice discipline every time you manipulate with the content of DocBase in any way.
+
+== When to Add ==
+
+Many people have not ever tried editing a Wiki before. They may feel they are trespassing or destroying content. '''Not true!''' DocBase is based on MediaWiki, which allows us to revert changes, even destructive ones. If you are uncertain about language or wording, do not worry or be embarrassed. Your information may be '''vital'''! We'd rather have badly worded vital information in DocBase, than not being in DocBase at all.
+
+== Where to Add ==
+
+If you're adding a new page, it may fit into one of several sections.
+
+See [[About Cookbooks]] to read about if your page fits there.
+
+== When to Edit ==
+
+*Obvious spelling or grammar errors.
+*If you know '''for a fact''' that the information is wrong.
+
+== When NOT to Edit ==
+
+*If you don't know anything about the subject at hand and don't have sufficient knowledge to make a correction.
+*If you '''think''' that the information is wrong. It's better to discuss the information with the original author to make sure the information is wrong.
+
+== When to Delete ==
+
+If you want a page to be deleted, you will not be able to delete it immediately. Only a DocBase administrator can delete pages. But you can mark a page for deletion.
+
+*Page contains strongly obsolete, confusing or otherwise redundant content.
+*If a page is marked for deletion, there 
+
+== When to Move ==
+
+Pages can be moved in the database. To move a page, you simply change its title. If the new title doesn't already exist in the database, you can freely change it. When the page has been changed, any links to it will automatically redirect to the new page. For more information on page moving in MediaWiki, see [[here]].
+
+*If a page has a very long name that can be shortened.
+*If the naming of a specific page does not fit with the naming policy for such a page.
+
+When encountering a page without an author
+
+== License ==
+
+[[DocBase Wiki Content License]]

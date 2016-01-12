@@ -1,0 +1,162 @@
+This is a temporary document for exploring the problem of waiting within an awake (from another wait).
+
+==GUI Uses WAIT==
+
+The [[Event_System#WAIT_function | WAIT function]] is used to wait for events.
+
+When the GUI is running, events are being processed. This happens when the VIEW function or the user script calls the DO-EVENTS function, which is defined as:
+
+  wait system/view/event-port
+
+In other words, the main program stops at this code, and lets events drive the system, processed by the various event handlers which perform the GUI functions.
+
+==Recursion (Nesting) Situation==
+
+However, what happens when a function called within the GUI must wait? For example, if a button is used to READ a web page and then show it, what happens?
+
+Let's take this example:
+
+   view [
+       button &quot;Read&quot; do [set-face sf read http://www.rebol.com]
+       sf: area
+       button &quot;Quit&quot; quit
+   ]
+
+This code is somewhat problematic. The reason is:
+
+#We synchronously want to perform the read, get the result, and set the area with the page contents.
+#We asynchronously want the user to be able to press the Quit button at any time to close the window.
+
+These are opposing requirements, because we cannot satisfy both at the same time.
+
+==Solution for Requestors==
+
+Of course, we have this problem within the GUI itself, but use a simple method to solve it.
+
+Consider this code:
+
+    view [
+        button &quot;Ask&quot; do [alert &quot;You have been asked.&quot;]
+        button &quot;Quit&quot; quit
+    ]
+
+When the Ask button is clicked, the alert window will open, but ''it is a modal window and events to other GUI windows will be ignored''.
+
+The problem is solved by &quot;going modal&quot; for the duration of the alert window. Events to the main window cannot occur.
+
+==The Problem with READ==
+
+However, this is not the case for the READ above, which internally operates asynchronously and will call the WAIT function itself, to wait for the network to respond.
+
+We can represent it this way:
+
+    WAIT for GUI
+       [awake on GUI event for button]
+       WAIT for HTTP
+           [awake on tcp]
+           process HTTP
+       WAKE makes WAIT return
+       [next GUI event]
+       ...
+
+The second WAIT is occurring during the first WAIT.
+
+But, depending on the network and servers, the WAIT in HTTP can take a few seconds. If the user clicks on the &quot;Read&quot; button a few times for HTTP finishes, this will happen:
+
+    WAIT for GUI
+       [awake on button]
+       WAIT for HTTP
+           [awake on button]
+           WAIT for HTTP
+               [awake on button]
+               WAIT for HTTP
+                   [awake on ...]
+
+So, the code is now nested within three WAITs.
+
+In order for this to actually work, two basic requirements would need to be properly implemented:
+
+#'''All code and data would need to be re-entrant.''' For example, the GUI style code that implements the button click processing, etc. Although for the functional code, this is normally true, there are exceptions because faces use objects to hold their state, which is a problem.
+#'''Events would need some way to force WAIT to awake''', even on ports it's not waiting on. However, that's a violation of the design rules for WAIT, so we cannot allow that.
+
+==Can Multitasking Fix It?==
+
+One of the first things programmers like to do is ask if a problem like this would be fixed by using multitasking.
+
+Generally, the answer is no. In fact, tasking makes the situation even more complicated because it requires the use of WAIT even more frequently (with events, signals, semaphores) within your GUI event handlers.
+
+It should be noted that this issue is in general is a common problem in GUI's because single-threaded operation is preferable to the overhead of granular mutual exclusion protection for all objects of the GUI.
+
+I believe it is the reason why even to this day (2008) your web browser GUI will sometimes hang, and you must abort the task to clear it.
+
+==Reexamining Requirements==
+
+When forced with a situation like this, it's good to examine our requirements again.
+
+#'''For simple GUI scripts, we would normally want READ to be not only synchronous, but also modal with respect to the GUI'''. That would mean that events would be ignored while the READ proceeded.
+#'''For advanced reblet applications, we would want a central top-level event handler''' to account for all IO READ operations with the GUI only initiating specific IO actions, but with the primary AWAKE servicing their results. WAIT would be called only once.
+
+The first case is like the use of modal requestors, such as the alert shown above.
+
+This second case is more like a general event handler loop, as often used in programming environments.
+
+==Another Case: Timers==
+
+Here's another case of WAIT in WAIT to think about.
+
+Some buttons periodically repeat. For example, clicking in the bar or the arrow buttons on a scroll bar.
+
+Often a programmer would be tempted to write code such as:
+
+    arrow-button do [
+        while [button-down][
+            bump knob
+            wait .1
+        ]        
+    ]
+
+To the user, this code seems to work ok because the mouse is sitting in a single spot and with buttons in a single state (holding the button down).
+
+But, consider what may really be going on:
+
+    WAIT for GUI
+        [awake on arrow button down]
+        WAIT .1
+            [wake on move in arrow button]
+            does something, perhaps ON-OVER
+        WAIT (.1 - time used)
+            [awake on timeout]
+            bump knob
+        WAIT .1
+            ...
+
+So, this is another case where WAIT is nesting. It tends not to be a problem because the range of possible events is limited.
+
+==Possible Solution==
+
+===For Timers===
+
+For things like timers, there is a possible solution that should work well and be fairly easy to implement.
+
+In general, allow '''[[Event_System#Event_Datatype|events]] to be written back to the event-port with a time value specified'''.
+
+This would be done by creating an object with whatever required state may be needed, then writing it to the event port, along with a timer value.  After that time period, the event port would awake with that event.
+
+It could look something like this:
+
+   my-event: make event! [
+       type: 'custom
+       window: window-gob (or none)
+       data: context [
+           timer: 0.1
+           field1: 123
+           etc.
+       ]
+   ]
+   write event-port my-event
+
+Then the event would be processed at a low level in the GUI event handler functions, calling the higher level style actors as needed. For example, in a scroller style, an on-repeat actor could be called.
+
+===For Async IO===
+
+For actions like READ from HTTP, perhaps a general solution would be to make the DO reactor  (and perhaps others) a modal action. That is, while DO is being processed, other events would be ignored, with perhaps a few special events such as quit being allowed.

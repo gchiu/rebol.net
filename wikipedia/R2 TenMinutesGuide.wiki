@@ -1,0 +1,169 @@
+==== Introduction ====
+
+Welcome to the Ten Minutes Guide to Rebol2.
+Here you will discover how Rebol works in a very short time. There are other guide available, read them too.
+
+Lets Start !
+
+Download Rebol for your platform, install it if required and start the interpreter clicking on the Rebol.Exe or View.Exe. In the latter scenario click on the console icon at the bottom left.
+
+Now you are in front of the Rebol Console. It should appear something like this:
+
+ REBOL/View 2.7.5.3.1 20-Mar-2007
+ Copyright 2000-2007 REBOL Technologies.  All rights reserved.
+ REBOL is a trademark of REBOL Technologies. WWW.REBOL.COM
+ &gt;&gt;
+
+The '''&gt;&gt;''' is the console prompt. You can start writing your first line of Rebol code after it.
+
+Lets start with the most famous one line of code
+
+ Print [&quot;Hello World!&quot;]
+
+This is the result as you can see in the console.
+
+ &gt;&gt;  Print [&quot;Hello World!&quot;]
+ '''Hello World!'''
+ &gt;&gt;
+
+From we will write only code and see the result and not the whole console screen and the prompt.
+
+==== What exactly happened ?====
+
+Rebol reads '''from left to right'''. The first word it finds is ''Print''. The interpreter discovers it is a function, a special word, which execute another inner code. This code accepts an argument: a block; a ''block is everything between sqare brackets''.
+
+After the Print command there is its argument: 
+
+ '''[&quot;Hello World!&quot;]''' 
+
+Inside the block there is a string of characters. In rebol, the strings of characters are surrounded by double apices or by an opening and closing brace. The previous line would be the same if written as:
+
+ '''[{Hello World!}]'''
+
+When the Print command consumes all of the expected arguments its internal function is executed in this situation the phrase ''Hello World!'' is printed.
+
+Now, don't close Rebol and continue writing.
+
+Lets use word, a &quot;container&quot; of data, as cointainer of a string.
+
+ myword: &quot;Hello World!&quot;
+
+The &quot;:&quot; after the word instruct Rebol to assign to the word the value after it. Now '''myword''' contains the string '''Hello World!'''
+
+With the following line of code we will print the value contained in '''myword'''
+
+ Print [myword]
+
+ '''Hello World!'''
+
+====A little explanation of the previous facts====
+
+Why Rebol did print ''Hello World'' and not ''myword'' ?
+The Print function is a very special one. It asks Rebol to explode the content of block. A string would exploded in itself (Remember, a string is everything between apices or braces); a word is exploded in its content, if it contains data the data is given back as results in this case the string ''Hello World!''. 
+
+If it contains code we will see later what will happen.
+
+====Doing calculations====
+
+Close and open the Rebol interpreter to reset all the words.
+
+Lets do a simple calculation and store it into a word
+
+ myword: 1 + 1
+
+Now lets print the result
+
+ Print [&quot;The result of the calculus is: &quot; myword]
+
+You will see 
+
+ The result of the calculus is: 2
+
+As written before Print explodes, in Rebolish '''Reduces''' the content of the block. The String returns itself, the word ''myword'' return the result of the calculation which is ''2''
+
+===== Now lets find why Rebol is different =====
+
+In Rebol each word could be code (a function, a little subprogram) or data.
+
+Write the following code:
+
+  mycode: [Print [&quot;Hello Word!&quot;!]]
+
+You have set the content of the word to '''[Print [&quot;Hello World!&quot;]]'''
+
+Write this other line
+
+  do mycode
+
+''Do'' Accepts a block of code to be executed and ''mycode'' contains the block of of code '''[Print [&quot;Hello Word!&quot;!]]'''
+
+The result is
+
+ '''Hello World!'''
+
+Now write
+
+ mycode: [Print [myword]]
+
+and again
+
+ do mycode
+
+The result is again
+
+ '''Hello World!'''
+
+===Blocks and words===
+
+A block, as written, is everything between square brackets and can contain quite everything: words, string, another block.
+
+A word inside a block is neutral it is considere a a ''literal'' value.
+
+If you write:
+
+ myword: &quot;Hello World!&quot;
+ Probe [myword]
+
+The result is:
+
+ '''[myword]'''
+
+If you write:
+
+  Print [myword]
+
+The result is:
+
+ '''Hello World!'''
+
+This because probe does not ''reduce'' the block making clear the content of ''myword'' inside the block. Instead print, before executin its work, ''reduces'' the block.
+
+Try this:
+
+ reduce [myword]
+
+The result is
+
+ '''== [&quot;Hello World!&quot;]'''
+
+reduce returns to the cosole the block with MYWORD conveted to its content.
+
+====Literals====
+
+Without closing the console, try this example
+
+ Print myword
+
+The result is again
+
+ '''Hello World!'''
+
+And then
+
+ Print 'myword
+
+The result is 
+
+ '''myword'''
+
+The apex instructs the REBOL interpreter to not reduce the word but use it literally !

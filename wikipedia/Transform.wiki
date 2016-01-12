@@ -1,0 +1,40 @@
+== TRANSFORM== 
+
+You can apply a transformation such as translation, scaling, and rotation to any DRAW result.
+
+{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
+! bgcolor=&quot;silver&quot; | Arg 
+! bgcolor=&quot;silver&quot; | Type 
+! bgcolor=&quot;silver&quot; | Description
+! bgcolor=&quot;silver&quot; | Values
+|- 
+| bgcolor=&quot;white&quot; | angle
+| bgcolor=&quot;white&quot; | [decimal!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | center
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | scale-x
+| bgcolor=&quot;white&quot; | [decimal!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | scale-y
+| bgcolor=&quot;white&quot; | [decimal!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | translation
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | 
+| bgcolor=&quot;white&quot; | 
+|}
+&lt;br&gt;'''Notes and Examples'''
+&lt;p&gt;See also:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;http://www.w3.org/TR/SVG/coords.html#TransformAttribute&lt;/li&gt;
+&lt;/ul&gt;

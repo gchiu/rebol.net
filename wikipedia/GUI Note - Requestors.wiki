@@ -1,0 +1,89 @@
+{{underconstruction}}
+This describes the requestor mechanism in the [[R3 GUI]].
+
+==Basics==
+
+Requestors are small popup windows used to inform the user or request specific types of information. They are allowed to be modal (wait for user response) or non-modal.
+
+===Typical Requestors===
+
+The REBOL GUI supplies the most commonly used requestors, so you don't need to provide them in your own applications. Examples are:
+
+*'''alerts''' - urgent messages to user
+*'''dialogs''' - informative messages
+*'''questions''' - prompting user for decision
+*'''string''' - asking for string input (general)
+*'''user-pass''' - username and password
+*'''color''' - select a color
+*'''time''' - pick a time
+*'''calendar''' - pick a date
+*'''file''' - open or save a file
+*'''directory''' - indicate a directory
+
+Others are also possible, and of course you can create your own custom requestors.
+
+===General Characteristics===
+
+General characteristics of requstors are:
+
+*'''popup''' - opens small window to get user's attention
+*'''modal''' - locks out events for other windows (optional)
+*'''on-top''' - stays on top of other windows
+*'''no caption''' - no title bar or close box
+*'''centered''' - over screen or app window
+*'''auto-close''' - response can close the popup
+
+==Mechanism==
+
+There are two general types of requestors: modal and non-modal.
+
+Modal requestors will open a window and will block events that are sent to all windows except the one that has been opened. For example, if you need to ask the user to &quot;Please confirm deletion?&quot; a modal requestor will wait until the user responds, and no other windows can be used. Modal requestors are also convenient to use because their results are returned from the function.
+
+A non-modal requestor will open a window but will not block events to other windows. The requestor will return immediately, and you must check later (or use a callback function) to determine the result of the request. They are useful in cases where you want the user to make some choices, but those choices are not critical to the application. Color selection is a typical example.
+
+===Modal===
+
+Here is the general mechanism of a modal requestor. This sequence is for a simple yes-no dialog question.
+
+#REQUEST function called
+#REQUEST builds panel then calls VIEW
+#VIEW opens a popup window to show the panel
+#VIEW calls WAIT to process GUI events
+#VIEW suspends at the WAIT
+#Various GUI events get processed (via event port)
+#User clicks on YES or NO button
+#Popup stores result in its window face
+#Popup face reactor (CLOSE) calls UNVIEW
+#UNVIEW closes the popup window
+#UNVIEW tells WAIT to awake
+#WAIT returns, code resumes in VIEW (called earlier)
+#VIEW returns window (GOB, face)
+#REQUEST function gets result from window and returns it (face/state)
+
+===Non-Modal===
+
+(give details)
+
+==More Details==
+
+For more details and examples, you can [[SOURCE]] these functions:
+
+*REQUEST
+*VIEW
+*DO-EVENTS
+*WAKE-EVENT
+*UNVIEW
+*System/view/event-port/awake
+*System/view/event-port/locals/handlers
+
+==Pending==
+
+purpose and how to use non-modal requestors
+
+how values are returned
+
+where return value is stored
+
+in general, avoid calling WAIT
+
+list of standard (built-in) requstors

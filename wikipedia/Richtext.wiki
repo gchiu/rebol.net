@@ -1,0 +1,109 @@
+== Turning Text Styles On &amp; Off==
+
+'''Turn On Bold, Italic, Underline &amp; Color Styles'''
+
+   &lt;code&gt;'''bold''' &quot;This text is bold&quot;&lt;/code&gt;
+   &lt;code&gt;'''italic''' &quot;This text is italic&quot;&lt;/code&gt;
+   &lt;code&gt;'''underline''' &quot;This text is underlined&quot;&lt;/code&gt;
+   &lt;code&gt;'''255.0.0''' &quot;This text is red&quot;&lt;/code&gt;
+
+'''Turn Off Or Drop Styles'''
+
+'''Off''' turns off one text style.
+    &lt;code&gt;bold &quot;This text is bold&quot; bold '''off''' &quot;This text is normal&quot; &lt;/code&gt;
+
+More text styles can be removed with '''Drop''' and an integer argument.
+
+    &lt;code&gt;bold &quot;This text is bold&quot; italic &quot; and italic.&quot; '''drop 2''' &quot;This text is normal&quot;&lt;/code&gt;
+Without the integer argument, only one style is dropped.
+
+== Setting Fonts &amp; Font Attributes ==
+
+1. prepare font in Rebol:
+
+&lt;code&gt;&lt;pre&gt;fixed-font: make system/standard/font [name: &quot;Courier new&quot;]&lt;/pre&gt;&lt;/code&gt;
+
+2. now you can use that font in rich-text dialect
+
+&lt;code&gt;&lt;pre&gt;font fixed-font &quot;This text is in Courier New&quot;&lt;/pre&gt;&lt;/code&gt;
+
+This is standard font object in system/standard/font:
+
+&lt;code&gt;&lt;pre&gt;
+SYSTEM/STANDARD/FONT is an object of value:
+   name            string!   &quot;arial&quot;
+   style           none!     none
+   size            integer!  12
+   color           tuple!    0.0.0
+   offset          pair!     2x2
+   space           pair!     0x0
+   align           word!     center
+   valign          word!     center
+   shadow          none!     none
+&lt;/pre&gt;&lt;/code&gt;
+
+Note, that you don't have to create new font if you want to just change size or color of the text:
+
+    view [text [red &quot;this is default size red text^/&quot; size 20 blue &quot;and this is blue big text&quot;]]
+
+== Setting Paragraph Attributes ==
+
+Usage of paragraphs is similar to fonts.
+
+1. prepare para in Rebol:
+
+&lt;code&gt;&lt;pre&gt;nowrap-para: make system/standard/para [wrap?: no]&lt;/pre&gt;&lt;/code&gt;
+
+2. use it in rich-text:
+
+&lt;code&gt;&lt;pre&gt;para nowrap-para &quot;This text won't wrap&quot;&lt;/pre&gt;&lt;/code&gt;
+
+It seems that para supports 'wrap? only, setting 'origin, 'margin, 'indent or 'scroll seems to have no effect.
+
+== Setting Text Position ==
+
+You can set position of text using 'scroll command
+
+&lt;code&gt;&lt;pre&gt;scroll 0x50&lt;/pre&gt;&lt;/code&gt;
+
+''(NOTE: This position is a pixel offset - not a text character offset)''
+
+
+'''IMPORTANT:''' The 'scroll command must be before the first line of actual text in the rich-text dialect block.
+
+For example the following is valid:
+
+&lt;code&gt;&lt;pre&gt;
+para my-para
+font big-font
+scroll 50x50
+&quot;Hello World&quot; newline
+&quot;Welcome to RichText&quot;
+&lt;/pre&gt;&lt;/code&gt;
+
+This is invalid (and scroll will be ignored):
+
+&lt;code&gt;&lt;pre&gt;
+para my-para
+font big-font
+&quot;Hello World&quot; newline
+scroll 50x50
+&quot;Welcome to RichText&quot;
+&lt;/pre&gt;&lt;/code&gt;
+
+== Notes ==
+
+'newline keyword is also supported.
+
+'anti-alias may also be used to specify aliasing of text.
+
+&lt;code&gt;&lt;pre&gt;
+scroll 50x20
+font big-font
+anti-alias
+&quot;Hello World&quot;
+&lt;/pre&gt;&lt;/code&gt;
+
+'anti-alias may be placed anywhere within the block and affects the entire block.
+
+Note# When setting a new font the current pen is reset to black.

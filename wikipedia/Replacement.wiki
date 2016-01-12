@@ -1,0 +1,317 @@
+For discussion about '''composition via replacement/substitution'''.
+
+==Background==
+
+The background for this discussion/specification can be found [http://www.rebol.net/r3blogs/0169.html in this R3 blog entry].
+
+==Discussion==
+
+Discussion of this project is in R3 chat. Download the [[R3 Alpha]] and join in!
+
+==Guidelines==
+
+We get to be more informal here than in the [[Parse Project]] because any new functions we suggest here will be REBOL code: They may be accepted as R3 mezzanines or standard library functions (not the same thing in R3, more later). Code samples are encouraged, test cases, even whole functions if you like. If you know R2 but don't know R3 well enough yet, write the code for R2 and make a note and we'll translate it. If you don't want to give permission for your code to be used, don't post it here.
+
+Be warned though: ''The REBOL optimizer will be in effect here''. It is a running joke in the REBOL community that the best way to optimize your code is to post it into a REBOL forum and let the experts tear it to shreds and rebuild it. There's no better optimizer than an expert. This goes doubly so for mezzanines and standard library functions - ''we live on that code''. Keep it polite though, and remember that R3 chat allows in-topic private discussions if you really need to rant.
+
+There is such a thing as REBOL-like, and it matters. REBOL's semantics are carefully designed, and most of the differences between REBOL and other languages were done for very good reasons - even the syntax is different for a reason. If you suggest functions that are in other languages, expect some changes to make them fit in with the rest of REBOL. It might be as simple a change as a new name, or it might be changing a higher-order-function to not work on function values anymore. Functions won't be accepted until they are REBOL-like.
+
+Some of these may get turned into natives later by Carl if they are '''really''' useful and aren't fast enough as REBOL code. But don't be surprised if they stay REBOL code - REBOL code can be really fast in R3. We won't need detailed semantic models if he wants to make them into natives - REBOL code, tests and examples will be enough.
+
+===Mezzanine vs. Library===
+
+REBOL 3 will be modular and you will be able to build your own host programs. This means that the old monolithic &quot;everything is built in and assigned to a global word&quot; model is gone. ''There will be no global words''. The closest equivalent to global words will be the exports of modules that get included by default, and the person who builds the host program picks which modules those are.
+
+However, some REBOL functions ''will'' be used by the most core of REBOL code, so they are probably going to be included in every REBOL build, and their modules are likely to be imported by most code. These are what we call mezzanines in R3. A good example is LOAD.
+
+There are real advantages to having a standard library of code that works really well and is supported by the community, so we will have standard modules that aren't loaded by default, but can be. The name of this standard library has yet to be decided - the current frontrunner is /Plus.
+
+What this all means here is that you shouldn't be afraid to suggest new functions here. Some people have expressed some concern that we may bundle too many functions into the core, and REBOL might become bloated and confusing as a result. Well, you don't have to worry about that because ''only the most useful functions will become mezzanines, and the rest won't''. We are going to be ruthless in our cuts - even standard R2 functions won't be immune.
+
+But functions suggested here will go through the REBOL optimizer and the good ones will be added to the standard library, so feel free to bring up your best ideas :)
+
+===Builders vs. Modifiers===
+
+There are two classes of functions under consideration here: Builders and Modifiers.
+
+A builder creates a new series or structure based on some kind of specification, template or source data. The argument is not modified, and the result may not even be of the same datatype as the argument. Examples of builders are REDUCE, MOLD, ARRAY, COPY, ENLINE any-block!, BIND/copy, and so on.
+
+A modifier changes its argument and then returns the argument after the change. Sometimes for series modifiers the position returned is the position after the changed part. Some are position independent or don't have a position concept. Examples of modifiers are CHANGE, INSERT, REPLACE, TRIM, ENLINE any-string!, BIND without /copy, and so on.
+
+Builders and modifiers are generally used differently from each other - the whole code pattern is different. They take different standard options, though there is some overlap. However, and most importantly, functions tend to either be builders or modifiers, ''but not both'', especially for functions written in REBOL code. Instead, we generally have separate builder and modifier functions for the same class of behavior, as in JOIN vs. REPEND. This leads to much faster code at runtime since the choice of builder vs. modifier can be made at programming time rather than runtime.
+
+There are exceptions, usually highly specialized native functions like BIND and ENLINE - these often change their behavior based on the type of the argument, or are modifiers with a /copy option. Some builders have an /into option to make them act like INSERT instead of creating a new series, and more are going to get that option.
+
+In your proposals, try to figure out whether your function is a builder or a modifier. If you can't decide then consider a builder with /into. This will affect which standard options get added, implementation methods and so on.
+
+===Standard Options===
+
+Go to R3 chat in the R3/Language/Options heading (#1097) for discussion of standard options.
+
+===Properties of composition functions===
+
+For every composition function it is useful to know whether it provides support for
+*verbatim composition (leaving the components &quot;untouched&quot;, &quot;as is&quot;)
+*insertion of precomposed parts
+*composition of hierarchical structures
+
+==What we have in REBOL now==
+
+Here's some some information about the functions we are all familiar with, provided by Peta. It should serve as a good reference point for comparison.
+
+===Properties of the available functions===
+
+====REFORM====
+
+=====Verbatim composition=====
+
+REFORM ''partially supports verbatim composition''
+ reform [&quot;U can't touch this&quot;] ; == &quot;U can't touch this&quot;
+, but
+ reform [#&quot;U&quot; &quot; can't&quot; &quot; touch&quot; &quot; this&quot;] ; == &quot;U  can't  touch  this&quot;
+inserts &quot;unnecessary&quot; spaces into the result string.
+
+=====Precomposed parts=====
+
+REFORM ''supports insertion of precomposed parts''
+ precomposed: &quot; touch this&quot;
+ reform [&quot;U can't&quot; precomposed] ; == &quot;U can't  touch this&quot;
+, except for the insertion of &quot;unnecessary&quot; spaces like above.
+
+=====Hierarchy composition=====
+
+Since strings are flat, ''no hierarchy composition is needed''.
+
+====REJOIN====
+
+=====Verbatim composition=====
+
+REJOIN ''supports verbatim composition''
+ rejoin [&quot;U can't touch this&quot;] ; == &quot;U can't touch this&quot;
+ rejoin [#&quot;U&quot; &quot; can't&quot; &quot; touch&quot; &quot; this&quot;] ; == &quot;U can't touch this&quot;
+
+=====Precomposed parts=====
+
+REJOIN ''supports insertion of precomposed parts''
+ precomposed: &quot; touch this&quot;
+ rejoin [&quot;U can't&quot; precomposed] ; == &quot;U can't touch this&quot;
+
+=====Hierarchy composition=====
+
+Since strings are flat, ''no hierarchy composition is needed''.
+
+====REDUCE====
+
+=====Verbatim composition=====
+
+REDUCE ''does not support verbatim composition of blocks''. E.g. to obtain the
+ [U can't touch this]
+block we need to write
+ reduce ['U 'can't 'touch 'this] ; == [U can't touch this]
+We can use the /only refinement, which allows us to write
+ reduce/only [U can't touch this] [U can't touch this] ; == [U can't touch this]
+, but that does not look any better.
+
+If we want to obtain
+ [(U can't touch this)]
+We need to quote the paren somehow, preferably using the [[Replacement#QUOTE|QUOTE]] function
+
+ reduce [quote (U can't touch this)] ; == [(U can't touch this)]
+
+In this case the /only refinement works too
+ reduce/only [(U can't touch this)] [] ; == [(U can't touch this)]
+
+To obtain
+ ['U 'can't 'touch 'this]
+we again have to [[Replacement#QUOTE|QUOTE]] the elements
+ reduce [quote 'U quote 'can't quote 'touch quote 'this] ; == ['U 'can't 'touch 'this]
+
+=====Precomposed parts=====
+
+REDUCE ''does not support insertion of precomposed parts''. E.g. if
+ precomposed: [touch this]
+REDUCE does not provide a way how to write
+ reduce ['U 'can't ...]
+using the PRECOMPOSED block to obtain
+ [U can't touch this]
+
+=====Hierarchy composition=====
+
+REDUCE ''does not support hierarchy composition''. We can compose hierarchical blocks using recursive calls to REDUCE, though
+ reduce [1 '+ reduce [1 '+ 1 + 1]] ; == [1 + [1 + 2]]
+or
+ reduce [1 '+ to paren! reduce [1 '+ 1 + 1]] ; == [1 + (1 + 2)]
+Efficiency note: the last example is inefficient, since the TO function copies the contents of the already composed innermost block when transforming it to paren!.
+
+====COMPOSE====
+
+=====Verbatim composition=====
+
+COMPOSE ''supports verbatim composition of blocks''. E.g. to obtain the
+ [U can't touch this]
+block we can write
+ compose [U can't touch this]
+
+If we want to obtain
+ [(U can't touch this)]
+, the situation is more complicated, since parens are used as escape elements. In this case we need to [[Replacement#QUOTE|QUOTE]] the paren
+ compose [(quote (U can't touch this))] ; == [(U can't touch this)]
+
+=====Precomposed parts=====
+
+COMPOSE ''supports insertion of precomposed parts''. E.g. for
+ precomposed: [touch this]
+we can write
+ compose [U can't (precomposed)] ; == [U can't touch this]
+
+=====Hierarchy composition=====
+
+COMPOSE ''partially supports hierarchy composition''. We can compose hierarchical blocks using the /deep refinement. E.g.
+ compose/deep [1 + [1 + (1 + 1)]] ; == [1 + [1 + 2]]
+, which is much more readable than its REDUCE counterpart. The problem is that the hierarchy may need to contain parens too, which is in fact unsupported since parens are used as escape for evaluation. We can use recursive calls to COMPOSE, though
+ compose [1 + (to paren! compose [1 + (1 + 1)])] ; == [1 + (1 + 2)]
+Efficiency note: the last example is inefficient since the TO function copies the contents of the already composed innermost block when transforming it to paren!.
+
+==Team==
+
+*Team lead: BrianH
+*Advisor: Carl S.
+*Contributors: Peta
+
+==Proposals==
+
+===QUOTE===
+
+In R3 syntax:
+
+ &lt;nowiki&gt;quote: func [
+    &quot;Returns the value thrown at it without evaluation&quot;
+    :value [any-type!]
+] [
+    :value
+]&lt;/nowiki&gt;
+
+In R2 syntax:
+
+ &lt;nowiki&gt;quote: func [
+    &quot;Returns the value thrown at it without evaluation&quot;
+    :value [any-type!]
+] [
+    get/any 'value
+]&lt;/nowiki&gt;
+
+The R2 version doesn't work with word! arguments because get-word parameters get the value assigned to the word - there's no way to do a full QUOTE in R2. You just have to use lit-words instead of QUOTE word.
+
+'''Accepted in alpha 37, will be Mezzanine'''
+
+===INLINE===
+
+This is the ''proposed'' inline composition function. It uses just one escape keyword (e.g. '''esc''').
+
+====Verbatim composition====
+
+INLINE ''supports verbatim composition of blocks''. E.g. to obtain the
+ [U can't touch this]
+block we can write
+ inline [U can't touch this]
+
+If we want to obtain:
+ [(U can't touch this)]
+using INLINE, we can write
+ inline [(U can't touch this)] ; == [(U can't touch this)]
+
+Since '''esc''' is the escape keyword, the expression following it is evaluated and inserted into the composed block. E.g. to obtain the
+ [esc]
+block, we need to write
+ inline [esc 'esc] ; == [esc]
+
+====Precomposed parts====
+
+INLINE ''supports insertion of precomposed parts''. E.g. for
+ precomposed: [touch this]
+we can write
+ inline [U can't esc precomposed] ; == [U can't touch this]
+
+====Hierarchy composition====
+
+INLINE ''supports hierarchy composition''. We can compose hierarchical blocks using the /deep refinement. E.g.
+ inline/deep [1 + [1 + esc 1 + 1]] ; == [1 + [1 + 2]]
+This is more readable than the REDUCE counterpart while not being substantially less readable than the COMPOSE equivalent.
+
+If the hierarchy contains parens, we can use
+ inline/deep [1 + (1 + esc 1 + 1)] ; == [1 + (1 + 2)]
+, which is much more readable than either the REDUCE or COMPOSE alternative.
+
+====Comments====
+
+An /escape word! option to choose the escape word would be good - esc would be the default. The implementation of this would likely require DO/next, so make sure your reference code is R2 compatible for now (see [http://curecode.org/rebol3/ticket.rsp?id=538 bug 538]).
+
+My guess is that esc should suffice, I never encountered a problem where a different word was needed; maybe a task for the BUILD function as mentioned below?
+
+===BUILD===
+
+Can do everything the above INLINE is able to do and more.
+
+In addition to the above mentioned properties/purposes, the Build dialect is successfully used to process/transform other dialects, such as:
+
+* the Spider plotting dialect, or
+* the XYplot plotting dialect.
+
+The Build dialect implementation is available at http://www.fm.tul.cz/~ladislav/rebol/build.r, where the implementations of the Spider and XYplot dialects can be found as well.
+
+===SUBSTITUTE===
+
+The Substitute dialect is meant as a data format representing constructed strings for translation purposes.
+
+====Examples====
+
+&lt;pre&gt;; the #&quot;%&quot; character is considered &quot;ordinary character&quot; if not followed by a digit
+substitute [&quot;%&quot;] ; == &quot;%&quot; 
+substitute [&quot;%-1&quot;] ; == &quot;%-1&quot;
+substitute [&quot;%.&quot;] ; == &quot;%.&quot;
+
+ ; the &quot;%1&quot; is taken as a reference to the first argument string
+substitute [&quot;%1&quot; &quot;x&quot;] ; == &quot;x&quot;
+
+; the argument string is substituted &quot;as is&quot;, not processed further
+substitute [&quot;%1&quot; &quot;%1&quot;] ; == &quot;%1&quot;
+
+; &quot;%0&quot; is a reference to the (unprocessed) template string
+substitute [&quot;%0&quot;] ; == &quot;%0&quot;
+substitute [&quot;a%0&quot;] ; == &quot;aa%0&quot;
+
+; the arguments have to be strings
+substitute [&quot;%1&quot; 12] ; triggers an error&lt;/pre&gt;
+
+A more typical example would be something like (generated using REDUCE):
+
+&lt;pre&gt;reduce [{
+    Das File '%1' kann nicht geloescht werden.
+    Stellen Sie sicher, dass Sie ueber ausreichende Zugriffsrechte
+    (schreiben und loeschen) auf Ihrem System verfuegen.
+} to-string tmp]&lt;/pre&gt;
+
+====Terminology====
+
+The first element of the block is a string, which is called the &quot;template string&quot;, the other elements are &quot;argument strings&quot;.
+
+====Translation====
+
+It seems that for the translation of a substitution block it shall suffice to replace the template string by its translated version leaving the argument strings untouched.
+
+====Advantages====
+
+* The dialect was optimized to prefer the speed and ease of translation.
+* This format allows the translation of the template string as a whole.
+* It was observed that the approaches translating the constructed string &quot;per partes&quot; lead to:
+** translation of strings that are too small to have a clear meaning necessary for them to be translated accurately
+** also, translation may change the order and placement of the argument strings, which is a problem for the &quot;per partes&quot; translation obtaining an unacceptable order of words in the result of the translation. This is not the case of the Substitute dialect.
+* The currently used approach is to translate constructed strings &quot;ad hoc&quot; using e.g. the ON-TRANSLATE function defined for the purpose or using the TRANSLATE function in the code. Both these instruments are inconvenient, intrusive (needing code adjustments) and may lead to the translation to not be performed &quot;just in time when it is needed&quot;, as well as to the above mentioned inaccuracies.
+
+====Other properties====
+
+Besides the declared purpose, it shall be possible to use the Substitute dialect for other purposes as well. When judged by the above mentioned criteria, the Substitute dialect supports:
+
+* verbatim composition (argument strings are used &quot;as is&quot;)
+* insertion of precomposed parts (argument strings can be precomposed, substitution blocks can be generated e.g. using REDUCE, or other functions)
+*it does not support the composition of hierarchical structures, since strings are not hierarchical in REBOL

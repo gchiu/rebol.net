@@ -1,0 +1,19 @@
+'''on-scroll-event''' is invoked every time the mouse wheel is used over the face to scroll up or down, but not for clicking.
+
+The argument and the return value is the event object.
+
+Do not confuse this with '''[[The Face Object Field - Actors - on-scroll|on-scroll]]''' which is used to scroll a face using a SCROLLER style.
+
+===Examples===
+
+Scroll by line or page (BUMP-SCROLL is a function specific to the style this source comes from):
+
+ on-scroll-event: [ ; arg: event
+   dy: none
+   switch arg/type [
+     scroll-line [dy: arg/offset/y / -30]
+     scroll-page [dy: negate arg/offset/y]
+   ]
+   if dy [bump-scroll face dy]
+   none
+ ]

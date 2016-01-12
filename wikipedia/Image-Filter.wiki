@@ -1,0 +1,42 @@
+== IMAGE-FILTER== 
+
+Specifies type of algorithm used when an image is scaled.
+
+{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
+! bgcolor=&quot;silver&quot; | Arg 
+! bgcolor=&quot;silver&quot; | Type 
+! bgcolor=&quot;silver&quot; | Description
+! bgcolor=&quot;silver&quot; | Values
+|- 
+| bgcolor=&quot;white&quot; | filter-type
+| bgcolor=&quot;white&quot; | [word!]
+| bgcolor=&quot;white&quot; | Filter algorithm
+| bgcolor=&quot;white&quot; | '''nearest''' - Uses 'nearest neighbour' algorithm to scale image
+'''bilinear''' - Uses bilinear filter' for scaling
+'''bicubic''' - Uses bicubic filter for scaling
+'''gaussian''' - Uses gaussian filter for scaling
+|- 
+| bgcolor=&quot;white&quot; | filter-mode
+| bgcolor=&quot;white&quot; | [word!]
+| bgcolor=&quot;white&quot; | Optional. Filter mode used for slower but hi-quality output
+| bgcolor=&quot;white&quot; | '''resample'''
+|- 
+| bgcolor=&quot;white&quot; | blur-amount
+| bgcolor=&quot;white&quot; | [decimal!]
+| bgcolor=&quot;white&quot; | Optional. Used only in '''resample''' mode
+| bgcolor=&quot;white&quot; | 
+|}
+
+'''Need a good stock bitmap for these examples.'''
+
+''Show examples for NEAREST NEIGHBOR here.''
+
+''Show examples for BILINEAR here.''
+
+''Show examples for BICUBIC here.''
+
+''Show examples for RESAMPLE here.''
+
+''Also there is no mention of up- or downscaling effects for each type, to for example allow the best performing algorithm for a specific job, e.g. thumbnail downscaling or full-screen upscaling.''
+
+--[[User:Henrikmk|Henrikmk]] 06:19, 26 August 2007 (EDT)

@@ -1,0 +1,428 @@
+==Introduction==
+
+This article:
+
+* defines a mathematical model of REBOL series
+* discusses the current state of the interpreter
+* proposes changes
+
+==Mathematical model of REBOL series==
+
+'''Definition:''' we say that a mathematical function &lt;code&gt;S&lt;/code&gt; is a ''REBOL series'' if:
+
+    S datatype
+is one of the series! datatypes
+    S displacement
+is an integer value
+    S payload
+is a payload.
+
+Series! datatypes are: string!, binary!, block!, ...
+
+'''Definition:''' we say that mathematical function &lt;code&gt;D&lt;/code&gt; is a ''payload'' if for every executionTime &lt;code&gt;t&lt;/code&gt;
+    D t size
+is a nonnegative integer value &lt;code&gt;N&lt;/code&gt; and for every integer value &lt;code&gt;i&lt;/code&gt; such that &lt;code&gt;0 &lt;= i &lt; N&lt;/code&gt;
+    D t i
+is a REBOL value.
+
+Note that &lt;code&gt;N = 0&lt;/code&gt; is allowed, in which case the payload size is 0 and the payload is empty. Note also that payloads depend on execution time, i.e., they can change in time.
+
+==Some simple functions==
+
+The goal of this section is to define some simple functions to establish basic terminology necessary to discuss the current state of the interpreter.
+
+'''Convention:''' from now on, unless otherwise stated, symbol &lt;code&gt;t&lt;/code&gt; will denote the executionTime value of the time when the evaluation of the expression started.
+
+===The &lt;code&gt;at-head?&lt;/code&gt; function===
+
+The &lt;code&gt;at-head?&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning a logic value determining whether the series is at its head.
+
+    (at-head? S) = #[true]
+, if &lt;code&gt;(S displacement) = 0&lt;/code&gt;
+    (at-head? S) = #[false]
+, if &lt;code&gt;(S displacement) &lt;&gt; 0&lt;/code&gt;
+
+Tests suggest that this model matches the &lt;code&gt;head?&lt;/code&gt; function defined in the &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; interpreter. The &lt;code&gt;at-head?&lt;/code&gt; name has been chosen just for compatibility with the function naming convention in the subsequent cases.
+
+===The &lt;code&gt;head&lt;/code&gt; function===
+
+The &lt;code&gt;head&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning its head series &lt;code&gt;T&lt;/code&gt;.
+
+&lt;code&gt;T&lt;/code&gt; is a REBOL series having the same datatype as &lt;code&gt;S&lt;/code&gt;, displacement 0 and the same payload as &lt;code&gt;S&lt;/code&gt;, i.e.,
+
+    (T datatype)     = (S datatype)
+    (T displacement) = 0
+    (T payload)      = (S payload)
+
+Tests suggest that this model of the &lt;code&gt;head&lt;/code&gt; function is implemented in, e.g., the &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; interpreter.
+
+===The &lt;code&gt;pre-head?&lt;/code&gt; function===
+
+The &lt;code&gt;pre-head?&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning a logic value determining whether the series is at a pre-head position.
+
+    (pre-head? S) = #[true]
+, if &lt;code&gt;S displacement&lt;/code&gt; is negative
+    (pre-head? S) = #[false]
+, if &lt;code&gt;S displacement&lt;/code&gt; is nonnegative
+
+This function is not available in the interpreter, even though the &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; interpreter can construct such series, as this example demonstrates:
+
+    index? #[block! [a] -2] ; == -2
+
+This function can be defined as a mezzanine in the &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; interpreter; for example:
+
+    pre-head?: func [
+        &quot;Returns TRUE if SERIES is at a pre-head position&quot;
+        series [series!]
+    ] [
+        0 &gt;= index? :series
+    ]
+
+===The &lt;code&gt;at-tail?&lt;/code&gt; function===
+
+The &lt;code&gt;at-tail?&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning a logic value determining whether the series is at its tail.
+
+    (at-tail? S) = #[true]
+, if &lt;code&gt;(S displacement) = (do S payload t size)&lt;/code&gt;
+    (at-tail? S) = #[false]
+, if &lt;code&gt;(S displacement) &lt;&gt; (do S payload t size)&lt;/code&gt;
+
+This function does not exist in the current interpreter. It can be defined as a mezzanine:
+
+    at-tail?: func [
+        &quot;Returns TRUE if SERIES is exactly at its tail position.&quot;
+        series [series!]
+    ] [
+        same? :series tail :series
+    ]
+
+===The &lt;code&gt;tail&lt;/code&gt; function===
+
+The &lt;code&gt;tail&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning its tail series &lt;code&gt;T&lt;/code&gt;.
+
+&lt;code&gt;T&lt;/code&gt; is a REBOL series with the same datatype as &lt;code&gt;S&lt;/code&gt;, a displacement equal to the current payload size and the same payload as &lt;code&gt;S&lt;/code&gt;, i.e.,
+
+    (T datatype)     = (S datatype)
+    (T displacement) = (do S payload t size)
+    (T payload)      = (S payload)
+
+Tests suggest that this model is implemented in the &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; interpreter as the &lt;code&gt;tail&lt;/code&gt; function.
+
+===The &lt;code&gt;past-tail?&lt;/code&gt; function===
+
+The &lt;code&gt;past-tail?&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning a logic value determining whether the series is at a past-tail position.
+
+    (past-tail? S) = #[true]
+, if &lt;code&gt;(S displacement) &gt; (do S payload t size)&lt;/code&gt;
+    (past-tail? S) = #[false]
+, if &lt;code&gt;(S displacement) &lt;= (do S payload t size)&lt;/code&gt;
+
+This function does not exist in the current interpreter, while the interpreter can construct such series as this example demonstrates:
+
+    s: tail [a]
+    clear head s
+    same? s tail s ; == false
+
+This function can be defined as a mezzanine:
+
+    past-tail?: func [
+        &quot;Returns TRUE if SERIES is at a past-tail position&quot;
+        series [series!]
+    ] [
+        and~ tail? :series not same? :series tail :series
+    ]
+
+===The &lt;code&gt;in-bounds?&lt;/code&gt; function===
+
+The &lt;code&gt;in-bounds?&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning a logic value determinig whether the position of the series is in bounds, i.e., neither pre-head nor past-tail.
+
+    (in-bounds? S) = #[true]
+, if &lt;code&gt;((S displacement) &gt;= 0) and ((S displacement) &lt;= (do S payload t size))&lt;/code&gt;
+    (in-bounds? S) = #[false]
+otherwise.
+
+This function is not defined in the current interpreter, but it can be defined as a mezzanine:
+
+    in-bounds?: func [
+        &quot;Returns TRUE if SERIES is neither pre-head nor past-tail.&quot;
+        series [series!]
+    ] [
+        not any [pre-head? :series past-tail? :series]
+    ]
+
+===The &lt;code&gt;constrain&lt;/code&gt; function===
+
+The &lt;code&gt;constrain&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning a REBOL series &lt;code&gt;T&lt;/code&gt; with a position constrained to range bounded by series head and tail positions.
+
+    T = head S
+, if &lt;code&gt;pre-head? S&lt;/code&gt;
+    T = S
+, unless &lt;code&gt;(pre-head? S) or (past-tail? S)&lt;/code&gt;
+    T = tail S
+otherwise.
+
+This function can be defined as a mezzanine:
+
+    constrain: func [
+        &quot;Returns SERIES constrained to the range bounded by the SERIES head and tail positions&quot;
+        series [series!]
+    ] [
+        case [
+            pre-head? :series [head :series]
+            past-tail? :series [tail :series]
+            'else [:series]
+        ]
+    ]
+
+===The &lt;code&gt;length-of&lt;/code&gt; function===
+
+The &lt;code&gt;length-of&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning a nonnegative integer determining the length of the series.
+
+    (length-of S) = (max 0 (do S payload t size) - (max 0 S displacement))
+
+The &lt;code&gt;length?&lt;/code&gt; function in the &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; interpreter does not work like that as this test demonstrates:
+
+    length? #[block! [] -2] ; == 3
+
+, while the &lt;code&gt;length-of&lt;/code&gt; function would yield 0.
+
+==Discussion of the current interpreter state==
+
+===Pre-head series===
+
+'''Definition:''' ''Pre-head series'' are series displaced backwards from their head, i.e., series having a negative &lt;code&gt;displacement&lt;/code&gt;.
+
+====Inconsistencies====
+
+In the &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; interpreter these inconsistencies can be found:
+
+* When discussed (if discussed at all), pre-head series are called &quot;Illegal series&quot;. That is inconsistent. If it is a bug for such a series to exist, a consistent interpreter shall not produce it.
+* Pre-head series are treated obscurely, as &quot;Series that must not be mentioned in the documentation&quot;.
+* Simple functions and reflectors (like the ones defined above) for handling and detecting pre-head series are missing in the interpreter.
+* The &lt;code&gt;mold&lt;/code&gt; function is not able to handle pre-head series triggering an error (while &lt;code&gt;mold/all&lt;/code&gt; works without a quirk). This is a serious problem - the &lt;code&gt;mold&lt;/code&gt; function is used to print error reports and must not trigger an error when printing an error report unless we want the interpreter to crash.
+* The &lt;code&gt;pick&lt;/code&gt; function acknowledges pre-head positions allowing picking at such positions without triggering an error.
+* The &lt;code&gt;back&lt;/code&gt;, &lt;code&gt;skip&lt;/code&gt; and &lt;code&gt;at&lt;/code&gt; functions refuse to go to pre-head positions, ignoring that such positions exist and are acknowledged by &lt;code&gt;pick&lt;/code&gt;.
+
+====Possible amendments====
+
+There are two different methods trying to handle the inconsistencies
+
+=====Amend the interpreter to not produce pre-head series at all=====
+
+The &lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt; interpreter has been amended so that it does not produce pre-head series now. However, this leads to
+
+======Inconsistencies======
+
+    s: load &quot;#[block! [a] -3]&quot;
+    mold/all s ; == &quot;#[block! [a] 2]&quot;
+
+* The inconsistency is that if it is &quot;illegal&quot; for the interpreter to create the &lt;code&gt;#[block! [a] -3]&lt;/code&gt; block, why does the &lt;code&gt;load&lt;/code&gt; function accept the source string as &quot;legal&quot; and produce a result that is incompatible with the specification instead of triggering an error?
+
+* As discussed below, this provision is not usable for past-tail series meaning that for past-tail series a different (incompatible and therefore inconsistent with this) provision should take place.
+
+* As noted above this provision is incompatible with the behaviour of the &lt;code&gt;pick&lt;/code&gt; function. It would be possible to change the behaviour of the function, but there is a broad agreement between REBOL users that the current behaviour of the function when picking at pre-head positions is convenient.
+
+======Usability limitations======
+
+This provision is less comfortable than the alternative proposed below.
+
+'''Example:''' Let's assume that a user wants to use a series of values [d e] indexed by numbers in the [3..4] range. To be able to do it using the &lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt; interpreter the user needs to define:
+
+    my-series: [#[none] #[none] d e]
+
+Now:
+
+    pick my-series 3 ; == d
+    pick my-series 4 ; == e
+
+In &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; the following works:
+
+    index? my-series: #[block! [d e] -1] ; == -1
+    pick my-series 3 ; == d
+    pick my-series 4 ; == e
+
+Comparing the two alternatives we see that in &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; we did not have to insert the extraneous &lt;code&gt;#[none]&lt;/code&gt; values to the block to achieve the same effect, i.e., the &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; solution is faster and more memory efficient.
+
+In addition to that, the &lt;code&gt;length?&lt;/code&gt; function yields:
+
+    length? my-series ; == 4
+
+, which does not look desirable. The &lt;code&gt;length-of&lt;/code&gt; function defined above would yield a more natural result 2 if used for the &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; case.
+
+=====The alternative is to handle pre-head series consistently=====
+
+This includes:
+
+* Mention pre-head series in the documentation (a definition suffices, in my opinion).
+* Stop calling pre-head series &quot;Illegal series&quot; (this is the &quot;easiest to implement&quot; part of the proposal).
+* Define the simple functions described above (quite easy as well).
+* Amend the &lt;code&gt;mold&lt;/code&gt; function to not trigger an error. An expression like &lt;code&gt;mold #[block! [a] -2]&lt;/code&gt; can yield &quot;[a]&quot;.
+* Amend the &lt;code&gt;length?&lt;/code&gt; function to work like the &lt;code&gt;length-of&lt;/code&gt; function above.
+* Define new &lt;code&gt;back-any&lt;/code&gt; function going to the previous position even when it is a pre-head position.
+* Define new &lt;code&gt;skip-any&lt;/code&gt; function going to the specified position even if it is a pre-head position.
+
+'''Advantages:'''
+
+* consistence
+* comfortable indexing (see below)
+
+===Past-tail series===
+
+'''Definition:''' ''Past-tail'' series are series having &lt;code&gt;displacement&lt;/code&gt; greater than the payload size.
+
+====Inconsistencies====
+
+'''Example:''' In &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; interpreter the help string of the &lt;code&gt;tail?&lt;/code&gt; function states:
+
+    &quot;Returns TRUE if a series is at its tail.&quot;
+
+However, the the actual behaviour is:
+
+    s: skip  [a b c d] 3
+    clear skip s -2
+    same? s tail s ; == false
+    tail? s ; == true
+
+, which, in my opinion, contradicts the help string. In the &lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt; interpreter the help string of the &lt;code&gt;tail?&lt;/code&gt; function has been corrected, but the 'tail' and 'tail?' function names alone (when not reading their help strings) still look misleading. Also, we obtain:
+
+    index? s ; == 2
+
+, while
+
+    mold/all s ; == &quot;#[block![a]4]&quot;
+
+, which shows the correct result.
+
+'''Example:'''
+
+    mold/all load &quot;#[block! [a] 4]&quot; ; == &quot;#[block![a]2]&quot;
+
+* The inconsistency is that if it is &quot;illegal&quot; for the interpreter to create the &lt;code&gt;#[block! [a] 4]&lt;/code&gt; block, why does the &lt;code&gt;load&lt;/code&gt; function accept the string as &quot;legal&quot; and produce a result that is incompatible with the specification instead of triggering an error? This is strange knowing that the interpreter does (and cannot stop, in fact) produce the &lt;code&gt;#[block! [a] 4]&lt;/code&gt; series as demonstrated above.
+* In &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; interpreter the &lt;code&gt;index?&lt;/code&gt; function pretends that the past-tail positions it encounters aren't past-tail. This just impairs the reflexivity of the language, because the user can obtain correct informations using other means as demonstrated.
+* The &lt;code&gt;tail?&lt;/code&gt; function yields &lt;code&gt;#[true]&lt;/code&gt; for past-tail, which looks misleading even if the help string of the function is amended (some users may not read help strings).
+* Past-tail series are treated as &quot;Series that must not be mentioned in the documentation&quot;.
+* When discussed (if discussed at all), past-tail series are called &quot;Illegal series&quot;. That is inconsistent. If it is a bug for such a value to exist, a consistent interpreter shall not produce it.
+* Simple functions and reflectors defined above designed for handling and detecting past-tail series are missing in the interpreter.
+* The &lt;code&gt;mold&lt;/code&gt; function is not able to handle past-tail series triggering an error (&lt;code&gt;mold/all&lt;/code&gt; works without a quirk). This is a serious problem - the &lt;code&gt;mold&lt;/code&gt; function is used to print error reports and must not trigger an error when printing an error report unless we want the interpreter to crash.
+* The &lt;code&gt;pick&lt;/code&gt; function acknowledges past-tail positions allowing picking at such positions without triggering an error.
+* The &lt;code&gt;mext&lt;/code&gt;, &lt;code&gt;skip&lt;/code&gt; and &lt;code&gt;at&lt;/code&gt; functions refuse to go to past-tail positions, ignoring that such positions exist and are acknowledged by &lt;code&gt;pick&lt;/code&gt;.
+
+====Possible amendments====
+
+Just the incorrect behaviour of the &lt;code&gt;index?&lt;/code&gt; function has been corrected in &lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt; interpreter. Due to the fact that series payloads can be cleared, any series with positive displacement can become past-tail. The interpreter cannot detect which series become past-tail when a payload is cleared, because that would make the &lt;code&gt;remove&lt;/code&gt; and &lt;code&gt;clear&lt;/code&gt; operations slower and more complicated than acceptable. Thus, it is not possible to amend the interpreter to not produce past-tail series at all. Therefore, the only serious alternative is to handle past-tail series consistently, which includes:
+
+* Mention past-tail series in the documentation (a definition suffices, in my opinion).
+* Stop calling past-tail series &quot;Illegal series&quot; (this is the easiest part of the proposal).
+* Define the simple functions described above (quite easy as well).
+* Amend the &lt;code&gt;load&lt;/code&gt; function to yield the specified result when handling the &quot;#[block! [a] 4]&quot; source string.
+* Amend the &lt;code&gt;mold&lt;/code&gt; function to not trigger an error when handling past-tail series. An expression like &lt;code&gt;mold #[block! [a] 4]&lt;/code&gt; can yield &quot;[a]&quot;.
+* Amend the &lt;code&gt;length?&lt;/code&gt; function to work like the &lt;code&gt;length-of&lt;/code&gt; function above.
+* Define new &lt;code&gt;next-any&lt;/code&gt; function going to the next position even when it is a past-tail position.
+* Define the &lt;code&gt;skip-any&lt;/code&gt; function so that it goes to the specified position even if it is a past-tail position.
+
+'''Advantages:'''
+
+* consistence
+* comfortable indexing (see below)
+
+===Indexing===
+
+Before discussing indexing, let's take a &quot;philosophical detour&quot;
+
+====Does 0 &quot;exist&quot;?====
+
+Some opponents of 0 state: &quot;0 does not even exist, it should not be allowed as an index, then&quot;
+
+It is fair to admit that the question whether 0 &quot;exists&quot; may indeed be resolved by stating that it actually does not &quot;exist&quot;. However, that does not mean the opponents of 0 could start to celebrate. The situation is the same as with the number 1, e.g. Does 1 &quot;exist&quot;? Not &quot;much&quot;, we cannot find it in the real world any easier than we can find 0. Note that many Greek mathematicians did not consider 1 to be &quot;a number&quot;, so to them 2 was &quot;the smallest number&quot; (they used the term &quot;multitude&quot; and it is easy to see why they considered inappropriate to call 1 &quot;multitude&quot;).
+
+It suffices to say that 1 is not something that &quot;exists&quot; in the common sense of the word, it is just an abstract notion invented by clever people to point to the common property of a hand containing one apple, a letter consisting of one page, a room in which one man is sitting, a net containing just one fish, a purse containing just one coin, etc.
+
+In a similar sense 0 is an abstract notion pointing to the common property of a hand containing no apple, an empty envelope, a room in which nobody is sitting, a net containing no fish, an empty purse, etc.
+
+====Does REBOL have 1-based indexing?====
+
+Unsurprisingly, the answer is &quot;yes&quot;.
+
+'''Example:'''
+
+    block: [a b]
+    pick block 1 ; == a
+    pick block 2 ; == b
+
+====Is REBOL indexing 1-based?====
+
+Perhaps surprisingly, the answer is &quot;no&quot;.
+
+'''Example:'''
+
+    index? block: #[block! [a b] 0] ; == 0
+    pick block 2 ; == a
+    pick block 3 ; == b
+
+As we use indices from the &lt;code&gt;2 &lt;= index &lt; 4&lt;/code&gt; range to pick the values of the &lt;code&gt;block&lt;/code&gt;, we are actually using 2-based indexing.
+
+====Does REBOL have 0-based indexing?====
+
+&lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt; actually does.
+
+'''Example:'''
+
+    block: #[block! [a b] 2]
+    pick block 0 ; == a
+    pick block 1 ; == b
+
+, i.e., we are using indices in the &lt;code&gt;0 &lt;= index &lt; 2&lt;/code&gt; range to pick the values of the block, which means that we are using 0-based indexing.
+
+However, &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; does not have 0-based indexing:
+
+    block: #[block! [a b] 2]
+    pick block -1 ; == a
+    pick block 1 ; == b
+
+, i.e., in this case, the &quot;index space&quot; consists of two ranges, in fact. The first is the range containing just -1 (, i.e., -1-based), while the second is the range containing just 1 (, i.e., 1-based). This also demonstrates that &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; does not have true -1-based, or negative-based indexing, because the &lt;code&gt;pick&lt;/code&gt; function uses a discontinuous range made of two arithmetically incompatible (using different index arithmetic) segments.
+
+I think that it is good to discuss why this happened to &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt;. The main reason seems to be the &quot;1 pointing at the current position&quot; indexing. This, when using the &quot;common indexing principle&quot; assigning the previous position the previous integer number induces the &quot;0 pointing backwards&quot; case. &quot;0 pointing backwards&quot; looks incomfortable/unusual as some users object. However, the approach using smell of garlic to take away the smell of onion (removing 0 from the set of possible index values) did not bring any good. Hurting the index arithmetic this way is not just incomfortable as the &quot;0 pointing backwards&quot; case was, it is inconsistent. (Even the REBOL designer felt victim to the problem in his code.)
+
+====Indexing inconsistencies====
+
+* In &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; the &lt;code&gt;index?&lt;/code&gt; function is not injective (one to one) function, because it assigns the tail index to all past-tail positions. This contradicts the principle of indexing that a one to one correspondence between indices and positions shall be established. In &lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt; this bug has been corrected.
+* The &lt;code&gt;at&lt;/code&gt; function is not injective (one to one) because it assigns the same series position to two different indices 0 and 1. Note that this is, in fact, a different property than the previous one. A mathematical object having both properties would not even be representable as a function. This bug is detectable in both &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; and &lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt;.
+* In &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; the &lt;code&gt;pick&lt;/code&gt; function subdivides its range to two arithmetically incompatible segments. This has been corrected in &lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt;.
+* In &lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt; the index 0 &quot;points backwards&quot; when the &lt;code&gt;pick&lt;/code&gt; function is used. This is not an inconsistency, but it contradicts the expectations of users unaccustomed to 0 &quot;pointing backwards&quot; meaning that this property is inconvenient for such users.
+
+====Index arithmetic primer====
+
+'''Task:'''
+
+Define a &lt;code&gt;head-index?&lt;/code&gt; function obtaining a series &lt;code&gt;s&lt;/code&gt; and an index value &lt;code&gt;i&lt;/code&gt; yielding an index value &lt;code&gt;j&lt;/code&gt; such that the &lt;code&gt;pick s i&lt;/code&gt; expression will be equivalent to the &lt;code&gt;pick head s j&lt;/code&gt; expression.
+
+'''Solutions:'''
+
+This is the solution working when the &lt;code&gt;index?&lt;/code&gt; function and the &lt;code&gt;pick&lt;/code&gt; function both use indexing method compatible with the &lt;code&gt;skip&lt;/code&gt; function indexing method:
+
+&lt;pre&gt;head-index?: func [s [series!] i [integer!]] [i + index? s]&lt;/pre&gt;
+
+This is the solution working when the &lt;code&gt;index?&lt;/code&gt; function and the &lt;code&gt;pick&lt;/code&gt; function use the indexing methods from R3:
+
+&lt;pre&gt;head-index?: func [s [series!] i [integer!]] [i - 1 + index? s]&lt;/pre&gt;
+
+This is the solution working in the present state of R2:
+
+&lt;pre&gt;head-index?: func [s [series!] i [integer!]] [case [i &lt; 0 [i - index? s] i &gt; 0 [i - 1 + index? s] i = 0 [0]]]&lt;/pre&gt;
+
+'''Summary:'''
+
+* The &quot;skip indexing&quot; uses the simplest index arithmetic, allowing the solution to be the simplest one.
+* The index arithmetic used in &lt;code&gt;rebol/version == 2.100.111.3.1&lt;/code&gt; is simple as well, but not as simple as the optimal indexing.
+* The non-arithmetic indexing used in &lt;code&gt;rebol/version == 2.7.8.3.1&lt;/code&gt; does not support any simple solution and it provokes errors even when experienced users are writing code.
+
+==Proposed functions==
+
+===The &lt;code&gt;curr&lt;/code&gt; function===
+
+The &lt;code&gt;curr&lt;/code&gt; function is a function accepting a REBOL series &lt;code&gt;S&lt;/code&gt; and returning the REBOL value at its current position.
+
+    (curr S) = (do S payload t S displacement)
+, if &lt;code&gt;in-bounds? S&lt;/code&gt;
+    (curr S) = #[none]
+otherwise.

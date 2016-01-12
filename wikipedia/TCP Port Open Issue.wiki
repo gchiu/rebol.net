@@ -1,0 +1,70 @@
+The purpose of this technical note is to describe how OPEN works for TCP ports (so if there is a problem with this method, we can address and correct it very soon -- before we have a few protocols running with it).
+
+==Quick Review==
+
+As a quick review, recall these facts:
+
+*TCP connections are made with IP addresses, not with host names.
+*REBOL TCP port specifications (e.g. URLs) allow host names, as well as IP addresses.
+
+'''What this means is that in REBOL the TCP OPEN action does an extra step.''' It does a DNS lookup if a host is given.
+
+In R3, '''that is a small problem because the state machine has been cleaned up and simplified compared to R2'''.
+
+==The Connection Sequence==
+
+So, here is how the sequence for OPEN now works in R3.
+(Keep in mind that this is all asynchronous.)
+
+#OPEN port (where port is a spec or an existing port object).
+#If the IP address is not known, the port issues a LOOKUP to the TCP device. (See note A below)
+#When the IP address is found, the AWAKE handler gets a LOOKUP event.
+#OPEN port (a second time, see note B below).
+#The IP address is known, so the port issues a CONNECT to the TCP device.
+#When the connection is made, the AWAKE handler gets a CONNECT event.
+#Your code can then issue a WRITE and begin communicating.
+
+==Notes==
+
+;Note A: The TCP device itself does the lookup. The DNS device is not used. The reason is to avoid a conflict with a single request object being used at the same time with two separate devices. Although, it would probably be ok to do that, it could create issues when the request is queued (pending), because the request would not be found in the TCP device queue, but in the DNS device queue. I decided it would be best to avoid that situation.
+
+;Note B: OPEN is called twice. '''It is moded.''' The mode is determined by the existence of the IP address. If the IP address is not known, the LOOKUP happens, otherwise the CONNECT happens. This also means that if you do an OPEN of a port where you provide the IP address, no lookup is done; you skip directly to CONNECT. If it is necessary to determine if the IP address is known (a rare situation), use QUERY -- which can be called at any time and is very fast.
+
+;Additional Note: The benefit of receiving the LOOKUP event in the awake handler should be stated. First, it allows you to easily apply IP filters (such as deny or redirect) within a TCP handler. Second, it keeps the state machine simple, because there is no hidden state that you cannot detect in your code.
+
+;Device Changes: Because the LOOKUP is &quot;out of band&quot; with regard to the normal read/write activities of the TCP device, a special command, LOOKUP, has been added to the device driver interface. (This is similar to the CREATE, DELETE, and RENAME special commands needed for things like directory IO.) This command may also be of use in other devices, but ''it should not be confused'' with the usage of READ such as that done for the file directory device -- where the READ specifies the directory path (and file name pattern) of the file list to return.
+
+==Example==
+
+Here is an example of a minimal raw TCP case that makes an HTTP request (without the HTTP scheme of course) and prints the result.
+
+The AWAKE handler code shows the lookup and other states. Note that the handler itself requests the next state. The state machine is not built into the port or device C code, so you can manage the state at the lowest levels.
+
+&lt;pre&gt;
+http-request: {GET / HTTP/1.1
+Host: www.rebol.net
+
+}
+
+wp: make port! tcp://www.rebol.net
+
+wp/awake: func [event /local port] [
+    port: event/port
+    print [&quot;==TCP-event:&quot; event/type]
+    switch/default event/type [
+        read [print [&quot;^\read:&quot; length? port/data] read port]
+        wrote [read port]
+        lookup [print query port open port]
+        connect [write port http-request]
+    ][true]
+]
+
+open wp
+wait [wp 3]
+print wp/data
+close wp
+&lt;/pre&gt;
+
+Here, the event handler actions in the switch are listed according to frequency (although it won't make much difference in speed -- just a habit.)
+
+Note, to keep the example simple, the HTTP result header is not processed (so we don't know the correct length). The WAIT just times out after three seconds and returns.

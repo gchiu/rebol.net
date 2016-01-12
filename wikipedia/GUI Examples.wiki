@@ -1,0 +1,12 @@
+==GUI Examples==
+
+*[[GUI Example - View all styles|View all styles]]
+*[[GUI Example - Text file browser|Text file browser]]
+
+
+
+
+----
+{{Template:GUI_TOC}}
+
+[[Category:GUI]]

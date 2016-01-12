@@ -1,0 +1,38 @@
+To get the source code for a mezzanine-level or user-defined function, you can use the SOURCE function.
+
+For example:
+
+&lt;pre&gt;
+source probe
+&lt;/pre&gt;
+
+will display
+
+&lt;pre&gt;
+probe: make function! [[
+    {Debug print a molded value and returns that same value.}
+    value [any-type!]
+][
+    print mold :value
+    :value
+]]
+&lt;/pre&gt;
+
+Another example, to see the source for the SOURCE function:
+
+&lt;pre&gt;
+source source
+&lt;/pre&gt;
+
+displays:
+
+&lt;pre&gt;
+source: make function! [[
+    &quot;Prints the source code for a word.&quot;
+    'word [word! path!]
+][
+    if not value? word [print [word &quot;undefined&quot;] exit]
+    print head insert mold get word reduce [word &quot;: &quot;]
+    exit
+]]
+&lt;/pre&gt;

@@ -1,0 +1,18 @@
+==Graphics notes==
+
+*[[graphics|Graphics]] - a more efficient design
+*[[GOB]] datatype - low level graphical objects
+*[[Event System]] - low level event system
+*[[R3 GUI]] - newer GUI prototype design
+
+Special graphics dialects:
+*[[richtext|Richtext]] dialect - new dialect for drawing text
+*[[Draw]] dialect - drawing scalar vector graphics
+*[[Shape]] dialect - complex vector shapes
+*[[Effect]] dialect - for image effects
+
+Older VID GUI prototype docs:
+*[[View System]] - changes to VIEW functions
+*[[VID References|VID]] - a new ''Visual Interface Dialect''
+*[[Make_GOBs]] - for quick graphics
+*[[GUI Events]] - GUI event system

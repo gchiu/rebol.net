@@ -1,0 +1,2 @@
+#'''Context management currently disabled''' for this stage of testing. So, most words will merge into the global context right now. But this will change.
+#'''[[Micro-VID]]''' is there for alpha testing purposes

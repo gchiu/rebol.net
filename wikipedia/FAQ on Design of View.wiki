@@ -1,0 +1,182 @@
+{{Cookbook|title=FAQ on Design of View|author=Carl Sassenrath|level=1|category=FAQ}}
+
+This document answers design questions about the R3 View system. It is a living document and will expand.
+
+== Quick Overview ==
+
+Information about the view system can be found on [[View System]]. So, please check there first.
+
+'''You can post new questions at the bottom, then bring it to my attention for an answer.'''
+
+You should know that functions of the View system are ''designed by objective''. They are each designed to meet a set of requirements.  If a function is missing a feature, then that was not an objective, or it is a bug - a missing part of the implementation.
+
+== Why /options for View? ==
+
+'''Q:''' Why does R2 use /custom refinement for extra details, but we now use /options?
+
+'''A:''' It is because VIEW/options was used in R2. And, even though it is a different kind of block now (a MAP of names and values), it made sense to use the same word.
+
+Semantically, these ''really are options'' - none of them are required. So /options is the better word.
+
+By comparison /custom means to add custom behavior to a function. That word is not as good as /options.
+
+Also, I describe the main reason for /options in [[Specifying Larger Options]].
+
+== Why uses modes word in /options block? ==
+
+'''Q:''' Why does the options block use the word modes for the gob options?
+
+'''A:''' Simply this: I did not want user to confuse the usage. It would appear as:
+
+ view/options window [options: [...]]
+
+So, that seemed redundant.
+
+''However: I must state:'' '''we can change this!''' If we think we should change it to be options, then let's do that. I understand why that may be better.
+
+== Naming of HANDLE-EVENTS function ==
+
+'''Q:''' HANDLE-EVENTS sounds to me like initialization of handling of events.
+
+'''A:''' And, that is what it does. It is an initialization that specifies how events are to be handled.
+
+Precise naming is a difficult thing. I considered several other names for this function.
+
+The proper full name would be: INSERT-EVENT-HANDLER.  Note that it would ''not'' be ADD-EVENT-HANDLER, because in REBOL an ''add'' is much different than an ''insert''. It is possible to call it INSERT-HANDLER, but it is for events, and there are other kinds of handlers in R3 (like device handlers).
+
+However, that name just seemed too long to me. Since ''handle'' can be a verb (as well as a noun) I picked it as the verb for this action of specifying how events are handled.
+
+The name UNHANDLE-EVENTS came as a result of the first decision.
+
+== Is MAP better than OBJECT for options? ==
+
+'''Q:''' Is using a map! more efficient than an object! for the options?
+
+'''A:''' This is a bit of an experiment, but yes in a few ways:
+
+#Options are more like a list, not a context. So, we don't suffer the binding overhead.
+#A map! is optimized by its size. A small map such as what we use here has no hash overhead.
+#And, the primary reason, is that a map! allows references to non-existing fields. So, in effect, there are no wasted slots for unused options.
+
+== Should we use BACKGROUND for color and draw ==
+
+'''Q:''' Should we use the word background for things like color and draw, and use the datatype to dispatch the related option?
+
+'''A:''' This was a difficult decision. I made my choice for these reasons:
+
+#We might want to add EFFECT as well. If we do, then we cannot use the datatype to dispatch the type, because DRAW and EFFECT are both a block.
+#I wanted to use the same words that would appear in the gob itself, so the meaning would be related in the document. (And, perhaps this reason should tell us to change modes above to options.)
+#It may be possible in the future that a gob wants a DRAW and an EFFECT over the top of it. But, perhaps that is doing more than we need for VIEW function.
+
+== Is VIEW becoming too complicated? ==
+
+'''Q:''' How do I control my window parameters when VIEW builds the window for me? Also, how do I know the names of the options?
+
+'''A:''' These are valid points, and I understand your concern.
+
+''VIEW is a complex function by its very nature.'' If you look at similar functions in an OS, you will find dozens of special options. And, we will be adding several more options to VIEW as well (e.g. dialog modes, etc.) The page [[Specifying Larger Options]] discusses this issue, so be sure to read that.
+
+How is a user expected to deal with all this?
+
+Well, there ''are going to be times'' when a user needs to read the documentation.
+
+Yes, we've tried to build it so simple things are simple. You ''can'' write:
+
+  view [text &quot;Hello World&quot;]
+
+and that will display! Also, simple changes to that are simple:
+
+  view/options [text &quot;Hello World&quot;] [color: gold]
+
+In my book, that's quite clean and easy. But still, there are times when you must read the docs.
+
+There may also be some way to store a summary of the fields in autodoc format so a user can get help at the console, rather than the online docs. We need to figure that out.
+
+== Closing the window closes the console ==
+
+'''Q:''' When I VIEW a window, then close it, the console closes.
+
+'''A:''' It depends on how you started it. This is covered in detail in the doc [[New behavior for QUIT]].
+
+== Should GOBs use only set words? ==
+
+'''Q:''' I forgot to use set-words in my GOB spec block, and it worked!
+
+'''A:''' Yes, currently that may work. But, '''I think perhaps we should change that to require set-words.'''
+
+The reasons to require them would be:
+
+#Helps make code more clear to users.
+#Gives us an &quot;escape route&quot; in the future if we want to allow other word types (perhaps for boolean options, etc.)
+
+== Should VID be relaxed about errors? ==
+
+'''Q:''' Should VID be more like HTML and not error out on invalid usage?
+
+'''A:''' This is one of those hot topics, and really should be in the VID area, not VIEW area. However, let me make just a few comments...
+
+Relaxing errors in GUI descriptions comes from this premise: '''it is thought to be easier to find errors visually than it is to find them in the code or data.'''
+
+That premise may or may not be true. Some errors are so subtle that you may not see them visually, then all of sudden when a new skin is used, there are problems. Also, if you write bad GUI code, it's not going to go far, because you'll be forced to fix it.
+
+I think the main problem we have is that ''it can be very difficult to determine what the VID error message means!'' For example, it often tells me &quot;attempt to divide by zero.&quot; That's not very useful information. In fact, many times we don't even look at the error info, because we think we cannot figure it out!
+
+'''So, I think we have some work to do... we need to create a nice collection of VID errors and trap things like &quot;divide by zero&quot; to provide more useful error output to users.'''
+
+== How to refresh the background on resize? ==
+
+'''Q:''' What should programmer do to properly refresh background during resizing?
+
+'''A:''' Yes, this occurs when you provide raw GOBs to VIEW, specify a RESIZE option, then resize the window. By contrast, if you use VID (face or block) the resize works very well.
+
+'''So, the short answer is: if you want that, use VID.'''
+
+To understand the long answer, you should know the reason we allow GOB's to be passed to VIEW. It is to help programmers test out small parts of code without requiring a lot of setup.
+
+This raw GOB mode is a &quot;low level dumb mode&quot;. The fact that it draws a background at all is just to help keep the test scripts smaller.  But, other than draw it, the code does nothing else. It knows nothing about how to resize anything. You must provide those extras when working at this lower level.
+
+This is the same as with the default event handler, and I will describe that below.
+
+== Can I specify the window size ==
+
+'''Q:''' How to I specify the initial size of a window?
+
+'''A:''' Currently, it is not supported very well, and it depends on if you are using GOBs or VID.
+
+For GOBS, the size of the window is the size of the gob you provide to VIEW. If you want to provide the window GOB yourself, then use the as-is option.
+
+For VID, the size of the window is determined by VID and more importantly by the user. But, we do understand the need to specify a specific size (such as if restoring a prior window or opening a dialog box, drop-down list, etc.)
+
+Therefore, SIZE will be something that we can add to the VIEW /options spec block. Also, it may be a good idea for the SKIN (the LOOK in VID) to be able to specify size in order to make things like dialog boxes look good.
+
+== Does the default event handler refresh too often? ==
+
+'''Q:''' When drawing the window, the default event handler does a SHOW on the entire window with each event.
+
+'''A:''' Yes. This is where I get to say: ''think about it!'' How does the default handler know ''anything'' about the events required by your application? It cannot!
+
+The default handler is provided just to let you write simple test scripts using a few GOBs and not let it blow out due to lack of event handling. '''It serves no other purpose.''' Any real script will need to provide its own handler. Search the examples for &quot;handler&quot; to see how that is done.
+
+That is also why the default handler prints events. This is a low level developer mode. Most of the time, you want to see those events.
+
+== Can we keep common VIEW refinements? ==
+
+'''Q:''' Boolean options like no-wait and as-is are commonly used. Can we keep those as refinements?
+
+'''A:''' Yes, I thought you would mention that, and I agree. We can make that change.
+
+== Default event handler ==
+
+'''Q:''' Should a default event handler exist when not explicitly created by the user?
+
+'''A:''' The default event handler is added during initialization. It is provided so that there is always at least some kind of event handler running, mainly to process the close event for windows.
+
+You can just add your own handler with HANDLE-EVENTS, give it a pri of 50, and your handler will run instead of the default.
+
+== New Questions ==
+
+Add new questions here. If you follow the question with 4 &quot;~&quot; chars, then your name and the date will be inserted.
+
+==Cookbook References==
+
+{{:Cookbook References}}

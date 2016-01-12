@@ -1,0 +1,1 @@
+'''Document has moved to [http://www.rebol.com/r3/devbase/index.html R3 DevBase]'''

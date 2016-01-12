@@ -1,0 +1,108 @@
+This document specifies the R3 I/O port functions.
+
+== Important conceptual changes ==
+
+Some fundamental changes have been made to ports.
+
+#Ports default to binary, not to string.
+#String ports expect an encoding for read and write.
+#By default, the string encoding is UTF-8, but others are allowed.
+#String terminators are converted as well. REBOL strings default to LF.
+
+=== READ is binary by default ===
+
+When you open a port (or read or write on an unopened file or URL), if you do not specify an encoding, the port will be opened as binary by default.
+
+For example:
+
+  data: read %file
+
+will return data as a binary value, as sequence of raw bytes. No conversion is done.
+
+'''The main benefit is that non-textual files, such as images and sounds, will not be corrupted in this default case.''' We are trading a bit of ease-of-use for safety. It is a good trade.
+
+To read the file as a string:
+
+  data: read/string %file
+
+The file will be decoded into a string using some simple rules about the encoding:
+
+#If the file starts with a byte order marker (BOM), then that encoding will be applied.
+#If the file has no BOM, then UTF-8 is expected. Note that UTF-8 includes, without conversion, ASCII (7-bit chars), but not Latin-1.
+
+See more about READ options below.
+
+=== WRITE depends on datatype ===
+
+When you write to a port, file, or URL, the default is to use binary as well:
+
+   write %file data
+
+It is also possible to write it as a string:
+
+   write/string file data
+
+However, this is not required. REBOL knows the datatype of the content data and will do the right thing for binary and string. So, WRITE will auto-encode the content, using the default encoding (UTF-8).
+
+See more about WRITE options below.
+
+=== Effect on common idiom ===
+
+The above change has an impact the line conversion method we often use in REBOL. The code:
+
+   write %file2 read %file1
+
+'''no longer converts line terminators''' (e.g. CRLF). Instead, this line must be used:
+
+   write %file2 read/string %file1
+
+This tells READ to decode the file into a string. Note that the WRITE does not require a /string refinement, because it is being provided with a string datatype. The default encoding is applied.
+
+== Definition of READ ==
+
+The READ function is currently defined as:
+
+&lt;pre&gt;
+USAGE:
+        READ source /binary /string /as encoding /lines /part size /skip length
+
+DESCRIPTION:
+        Reads from a port, file, or URL.
+        READ is an action value.
+
+ARGUMENTS:
+        source (port! file! url! block!)
+
+REFINEMENTS:
+        /binary -- Read as bytes, no conversion
+        /string -- Read as string, encoded from BOM, default to UTF-8, converts terminators
+        /as -- Read using the given encoding, such as UTF-8
+                encoding -- BOM UTF-8 UTF-16LE UTF-16BE ASCII LATIN-1 CR LF CRLF (word! block!)
+        /lines -- Read as strings, splitting into a block of lines
+        /part -- Read a specified number of bytes (not chars)
+                size (number!)
+        /skip -- Skip a number of bytes (not chars)
+                length -- Byte offset, negative end offset, or 'end (number!)
+&lt;/pre&gt;
+
+As stated above, the /binary refinement is the default.
+
+Other refinements work as indicated.
+
+Note that various refinements have been removed. We can add them back as we choose, but for performance, we want to specify as few refinements as possible.
+
+=== The /AS refinement ===
+
+The /as refinement will accept a word or a block. It is used to specify the encoding of the data. For example, a file may be encoded as UTF-8, UTF-16LE, JPEG, WAVE, etc.
+
+In general, the benefit of performing the encoding as part of the WRITE is that it can be done as part of the buffering process, eliminating the need to a separate encoding pass, and also allowing encoded streams.
+
+format...
+
+words...
+
+complications related to partial or hanging bytes
+
+== Definition of WRITE ==
+
+== Definition of OPEN ==

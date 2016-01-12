@@ -1,0 +1,28 @@
+'''on-click''' is invoked, every time a mouse button press or release occurs.
+
+The input argument is the event object for the mouse click.
+
+The return value is NONE or a drag object for a button press. A return value is not necessary for the button release.
+
+===Examples===
+
+Analyze the event object to check whether the left or the right mouse button was pressed or released.
+
+ on-click: [
+   if arg/type = 'down [print &quot;Left mouse button goes down.&quot;]
+   if arg/type = 'up [print &quot;Left mouse button goes up.&quot;]
+   if arg/type = 'alt-down [print &quot;Right mouse button goes down.&quot;]
+   if arg/type = 'alt-up [print &quot;Right mouse button goes up.&quot;]
+   if arg/type = 'aux-down [print &quot;Middle mouse button goes down.&quot;]
+   if arg/type = 'aux-up [print &quot;Middle mouse button goes up.&quot;]
+   none ; return value
+ ]
+
+on-click is also the precursor to dragging (holding down a mouse button, while moving the mouse), so  you can create a drag object in on-click using the INIT-DRAG function. If you then return the drag object, the actor '''[[The Face Object Field - Actors - on-drag|on-drag]]''' will be invoked. The INIT-DRAG function returns the drag object.
+
+ on-click: [
+   if arg/type = 'down [
+     return init-drag face arg/offset
+   ]
+   none ; return value
+ ]

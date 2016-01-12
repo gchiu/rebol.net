@@ -1,0 +1,135 @@
+==List of equality operators==
+
+EQUAL?, EQUIV?, STRICT-EQUAL?, and SAME? (proposed by BrianH as his list #2).
+
+==General principles==
+
+===Domain===
+
+To be comparable, all equality operators shall have the same domain, which means, that every test of the form:
+
+&lt;pre&gt;equal? error? try [equal? :a :b] error? try [compare :a :b]&lt;/pre&gt;
+
+has to succeed (= yield TRUE).
+
+One of the simplest alternatives is, that the domain of every equality operator will consist of all REBOL values except for #[unset!]. In that case every test of the form:
+
+&lt;pre&gt;not all [
+    value? 'a
+    value? 'b
+    error? try [compare :a :b]
+]&lt;/pre&gt;
+
+has to succeed.
+
+===Relational===
+
+The equality operators are relational operators, i.e. they should yield a LOGIC! type value whenever the argument values are in the domain of the respective operator (i.e. whenever the operator evaluation doesn't cause error). This means, that every test of the form:
+
+&lt;pre&gt;any [
+    error? try [compare :a :b]
+    logic? compare :a :b
+]&lt;/pre&gt;
+
+has to succeed (= yield TRUE) either because the arguments are &quot;out of the domain&quot;, or because the result is of the LOGIC! type.
+
+===Reflexivity===
+
+Every equality operator shall be reflexive. That means, that every test of the form:
+
+&lt;pre&gt;any [
+    error? try [compare :a :a]
+    compare :a :a
+]&lt;/pre&gt;
+
+has to succeed (= yield TRUE), either because A is &quot;out of the domain&quot;, or because the comparison operator shall be reflexive in its domain.
+
+===Symmetry===
+
+Every equality operator shall be symmetric. That means, that every test of the form:
+
+&lt;pre&gt;any [
+    error? try [compare :a :b]
+    equal? compare :a :b compare :b :a
+]&lt;/pre&gt;
+
+has to succeed.
+
+===Transitivity===
+
+Except for the EQUAL? operator, which is expected to test for approximate equality of decimal, percent and date values, every equality operator shall be transitive. That means, that every test of the form:
+
+&lt;pre&gt;any [
+    error? try [compare :a :b]
+    not compare :a :b
+    error? try [compare :b :c]
+    not compare :b :c
+    compare :a :c
+]&lt;/pre&gt;
+
+has to succeed.
+
+===Hierarchy===
+
+The equality operators are ordered by their fineness, the order is: EQUAL?, EQUIV?, STRICT-EQUAL?, SAME?, where EQUAL? is the coarsest, and SAME? the finest equality operator.
+
+The hierarchy requirement can be expressed as the requirement, that every test having one of the forms:
+
+&lt;pre&gt;; EQUIV? is finer than EQUAL?
+any [
+    error? try [equal? :a :b]
+    not equiv? :a :b
+    equal? :a :b
+]&lt;/pre&gt;
+
+&lt;pre&gt;; STRICT-EQUAL? is finer than EQUIV?
+any [
+    error? try [equal? :a :b]
+    not strict-equal? :a :b
+    equiv? :a :b
+]&lt;/pre&gt;
+
+&lt;pre&gt;; SAME? is finer than STRICT-EQUAL?
+any [
+    error? try [equal? :a :b]
+    not same? :a :b
+    strict-equal? :a :b
+]&lt;/pre&gt;
+
+shall succeed.
+
+==EQUAL?==
+
+Characteristic: symmetric, non-transitive (approximate equality)
+
+Ignores: datatype differences, binding (words), alias distinctions, character case differences
+
+[[EQUAL? tests]]
+
+==EQUIV?==
+
+Characteristic: symmetric, transitive
+
+Ignores: datatype differences, alias distinctions, character case differences
+
+Observes: binding (words)
+
+Added precision in DECIMAL! comparison.
+
+[[EQUIV? tests]]
+
+==STRICT-EQUAL?==
+
+Characteristic: finer than the previous method
+
+Observes: datatype differences, binding (words), alias distinctions, character case differences
+
+[[STRICT-EQUAL? tests]]
+
+==SAME?==
+
+Characteristic: the finest comparison, bit by bit equivalence
+
+Useful especially for mutable datatypes.
+
+[[SAME? tests]]

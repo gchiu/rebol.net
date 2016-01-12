@@ -1,0 +1,27 @@
+Here are the steps to obtain the current GUI source code:
+
+#Run R3
+#Type: chat
+#Login (if you need to)
+
+Now type this at the chat console:
+
+&lt;pre&gt;
+   &gt;&gt; 2586
+   R3/GUI/Source:
+   ...
+   &gt;&gt; get *
+
+   &gt;&gt; 2656
+   R3/GUI/Source/styles-proto
+   ...
+   &gt;&gt; get *
+&lt;/pre&gt;
+
+Now, open the source dir:
+
+   &gt;&gt; od
+
+Run R3 with gui-test.r to test that the GUI loads properly. A verification window should open with text and a couple buttons.
+
+To build the GUI as a single package file, run gui-build.r and it will output a file: gui.r that you can use.

@@ -1,0 +1,9 @@
+This is a list of requested Cookbooks or recipes.
+
+Currently the list is empty.
+
+Just add your suggestion here.
+
+==Cookbook References==
+
+{{:Cookbook References}}

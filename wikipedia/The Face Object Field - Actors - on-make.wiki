@@ -1,0 +1,21 @@
+'''on-make''' is the first actor invoked, when the face is created by the layout engine. It's appropriate to set faced values here, such as blocks of data, colors, face orientation, etc. that are unique to the face. These values may be parameters in the layout.
+
+It's also here you should set up sub-faces, if you are working with a compound style, using the MAKE-PANEL2 function.
+
+There is no input argument or return value.
+
+The event that follows on-make is '''[[The Face Object Field - Actors - on-resize|on-resize]]'''.
+
+===Examples===
+
+Setup colors unique to this face.
+
+ on-make: [
+   face/facets/colors: copy [255.255.255 128.128.128]
+ ]
+
+Setting up panels for a compound style.
+
+ on-make: [
+   make-panel2 face
+ ]

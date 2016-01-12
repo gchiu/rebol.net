@@ -1,0 +1,1 @@
+A short introduction for users who want to understand the basic concepts of the [[R3 GUI]] and how to use it.

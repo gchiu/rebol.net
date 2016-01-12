@@ -1,0 +1,364 @@
+{{obsolete}}
+{| align=&quot;right&quot;
+| __TOC__
+|}
+Here is the quick shortcut for getting started using VID in REBOL 3.0.
+
+==Basic Concepts==
+
+'''VID''' stands for '''Visual Interface Dialect'''.  It is a subsystem of REBOL for rapidly creating user interfaces.
+
+To understand VID you must understand these basic concepts:
+
+*'''Functions'''
+*'''Styles'''
+*'''Commands'''
+*'''Groups'''
+
+We will describe each of these below.
+
+==Quick Example==
+
+Ok, try it out. Run REBOL 3, and at the prompt, enter this line:
+
+ view [button &quot;Click Here&quot; [unview none]]
+
+This will open a window and display a single button. When you click on the button the window will close.
+
+This line helps show three of the above concepts:
+
+#The words '''view''' and '''unview''' are ''functions''. They are normal REBOL functions. They are used to open and close a window on the screen.
+#The word '''button''' is a ''style''. It is a way of specifying an clickable button, including how it looks and acts. Some systems call this a widget or gadget, but as you will find out, styles are actually more flexible, like the CSS used in HTML web pages.
+#The block [ ] that surrounds the button style is a ''group''. You will build interfaces by using groups within groups to build a ''layout''. We'll show you many more examples.
+
+The only thing missing from this example is a ''command''. Commands are special words to control or specify other features of VID. We will say a lot more about them below.
+
+==Make a Layout==
+
+When you create a user interface, you will want various components to be positioned within a window. This is called a ''layout''.
+
+To help you learn the rules of layout, we will keep things simple by using only the BUTTON style below. But, keep in mind that these rules apply to all the other styles as well.
+
+Start with this line:
+
+ view [button &quot;First&quot;]
+
+It will open a window with a single button. Notice that the button has a default width here. We will talk about that more later.
+
+Now try this:
+
+&lt;pre&gt;
+ view [
+    button &quot;First&quot;
+    button &quot;Second&quot;
+    button &quot;Third&quot;
+    button &quot;Fourth&quot;
+ ]
+&lt;/pre&gt;
+You will see a vertical layout of the buttons:
+
+[[Image:Vid-tutorial-buttons1.png|center]]
+
+
+If instead you want horizontal buttons, you use ''group'' such as this:
+&lt;pre&gt;
+ view [
+    group [
+        button &quot;First&quot;
+        button &quot;Second&quot;
+        button &quot;Third&quot;
+        button &quot;Fourth&quot;
+    ]
+ ]
+&lt;/pre&gt;
+It will display:
+
+[[Image:Vid-tutorial-buttons2.png|center]]
+
+
+Here, '''group''' is a special type of style that creates a panel in which the buttons are placed.
+
+
+You can also use groups to organize your layout into columns. Here we request two columns of buttons:
+
+&lt;pre&gt;
+ view [
+    group 2 [
+        button &quot;First&quot;
+        button &quot;Second&quot;
+        button &quot;Third&quot;
+        button &quot;Fourth&quot;
+    ]
+ ]
+&lt;/pre&gt;
+It looks like &amp;rarr;
+
+[[Image:Vid-tutorial-buttons3.png|center]]
+
+
+This column-alignment feature is very useful for creating forms and many other page layouts.
+
+Now, if you want a group that is just vertical you can write:
+
+&lt;pre&gt;
+ view [
+    group 1 [
+        button &quot;First&quot;
+        button &quot;Second&quot;
+        button &quot;Third&quot;
+        button &quot;Fourth&quot;
+    ]
+ ]
+&lt;/pre&gt;
+
+That makes sense. It is just one column.
+
+It will appear as &amp;rarr;
+
+[[Image:Vid-tutorial-buttons1.png|center]]
+
+'''So, now you know the basics of layout.''' Easy!
+
+==A Range of Styles==
+
+A ''style'' is a way of displaying and controlling elements of the user interface. Styles include text, images, fields, buttons, toggles, lists, tables, and a lot more.
+
+VID provides the most common styles, so you can just start creating user interfaces. And, if you need to create your own special styles, you can do that too.
+
+The fastest way to learn the basic styles is to show them! Here's a sample of styles:
+
+&lt;!--
+&lt;pre&gt;
+ view [
+    h1 &quot;Style Examples&quot;
+
+    h2 &quot;Buttons:&quot;
+    button &quot;Button&quot;
+    toggle &quot;Toggle&quot;
+    btn &quot;Btn&quot;
+    tog &quot;Tog&quot;
+
+    h2 &quot;Text:&quot;
+    text &quot;Normal text here&quot;
+    label &quot;Field label&quot;
+
+    h2 &quot;Slider bars:&quot;
+    slider 200x24
+    scroller 200x24
+    progress 33.33%
+
+    h2 &quot;Text input:&quot;
+    field &quot;Field&quot;
+    area &quot;Text area&quot;
+
+    h2 &quot;Images:&quot;
+    image %city.jpg
+    draw (need little drawing here)
+ ]
+&lt;/pre&gt;
+
+They will display like this:
+
+{{need|example image}}
+--&gt;
+{{need|Deal with the commented section here.  Carl's example was cleaner, but the groupings allowed a screen capture}}
+{{caution|about logo.gif;  The line  pen logo.gif will not work in the REBOL Alpha.  It can be worked around by using&lt;br&gt;  &gt;&gt; save/all %/tmp/logo.gif logo.gif  &lt;br&gt;from REBOL/View 1.3.2.  Then &lt;br&gt; &gt;&gt; logo.gif: load %/tmp/logo.gif &lt;br&gt; in the alpha.}}
+&lt;pre&gt;
+view [
+    h1 &quot;Style Examples&quot;
+
+    h2 &quot;Buttons:&quot;
+    group [button &quot;Button&quot; filler]
+    group [btn &quot;Btn&quot; filler]
+    group [toggle &quot;Toggle&quot; filler]
+    group [tgl &quot;Tgl&quot; filler]
+
+    h2 &quot;Text:&quot;
+    text &quot;Normal text here&quot;
+    label &quot;Field label&quot;
+
+    h2 &quot;Slider bars:&quot;
+    slider 200x24
+    scroller 200x24
+    progress 33.33%
+
+    h2 &quot;Text input:&quot;
+    field &quot;Field&quot;
+    area &quot;Text area&quot;
+
+    h2 &quot;Images:&quot;
+    group [
+        image %bay.jpg
+        draw 192x144 [
+            pen logo.gif
+            circle 96x77 53
+            pen black fill-pen red
+            circle 96x77 15
+        ]
+    ]
+]
+&lt;/pre&gt;
+
+Displays as:
+[[Image:Vid-tutorial-style-examples.png|center]]
+
+===Styles Defined===
+
+Above, the words like '''h1''' and '''text''' are style names. Here's what the above styles create:
+
+*'''h1''' - a text heading of level 1
+*'''h2''' - a text heading of level 2
+*'''button''' - an expandable button
+*'''toggle''' - an expandable toggle button
+*'''btn''' - a minimal button
+*'''tog''' - a minimal toggle
+*'''text''' - a line of text
+*'''slider''' - a sliding controller
+*'''scroller''' - a scrollbar
+*'''field''' - a text input field
+*'''area''' - a text input area
+*'''image''' - a bitmap image
+*'''draw''' - a scalar vector graphic
+
+
+===Style Variations===
+
+In addition to the above styles, you can create an endless number of variations on how they look and act.
+
+For example, to change the color of a button, just specify it. In the example below, the second button will be gold in color:
+
+ view [
+     button &quot;Normal&quot;
+     button gold &quot;Special&quot;
+ ]
+
+It looks like this:
+
+[[Image:vid-tutorial-style-variations1.png|center]]
+
+For text, you can write:
+
+    text &quot;Hot text&quot; [browse &lt;nowiki&gt;http://www.rebol.com&lt;/nowiki&gt;]
+    text [&quot;This text is &quot; bold red &quot;bold red!&quot;]
+
+The second line of text is an example of rich-text, where you can control precisely how text looks.
+
+The result is:
+
+[[Image:Vid-tutorial-style-variations2.png|center]]
+
+To get even greater control over a style, you can specify precise ''options''. Here's an example:
+
+&lt;pre&gt;
+    button &quot;Button&quot; options [rounding: 10]
+    toggle &quot;Toggle&quot; options [rounding: 10]
+    button &quot;Button&quot; options [material: 'sand]
+    toggle &quot;Toggle&quot; options [material: 'sand led-colors: [red green]]
+
+    field &quot;Field&quot; options [
+        rounding: 0
+        back-colors: [200.10.10 255.40.40]
+        align: 'right
+        font: make fonts/normal [
+            name: &quot;Verdana&quot;
+            style: 'bold
+            color: yellow
+        ]
+    ]
+&lt;/pre&gt;
+
+Here, the ''options'' block tells VID how to modify the style.
+
+It will look like this:
+
+[[Image:Vid-tutorial-style-variations3.png|center]]
+
+
+===Drawings===
+
+Easy to create drawing...
+
+&lt;pre&gt;
+view [
+    draw [
+        pen blue
+        box
+        pen red
+        fill-pen gold
+        circle
+    ]
+]
+&lt;/pre&gt;
+
+[[Image:Vid-tutorial-style-resize1.png|center]]
+
+Now, resize the window.
+
+[[Image:Vid-tutorial-style-resize2.png|center]]
+
+==Combining Layouts and Styles==
+
+Now that you know the main concepts for layouts and styles, it's time to combine them to create something useful: an input form.
+
+&lt;pre&gt;
+ view [
+    h2 &quot;Account Information&quot;
+
+    text &quot;Please enter your account details here.&quot;
+
+    group 2 [
+
+        label &quot;First name&quot; field
+        label &quot;Last name&quot; field
+        label &quot;Email&quot; field
+        label &quot;City&quot; field
+
+        blank
+        group [
+            button gold &quot;Submit&quot;
+            button sky &quot;Cancel&quot;
+        ]
+
+    ]
+ ]
+&lt;/pre&gt;
+
+It will display like this:
+
+[[Image:Vid-tutorial-style-form1.png|center]]
+
+Notice how the buttons are indented to fit under the fields. This is done by using the ''blank'' style. It's just a space filler to skip the space used by the labels above it.
+
+The blank is followed by a new group. As you recall from above, a group that specifies no columns is just a horizontal group, so the buttons follow each other to the right.
+
+==Getting Results==
+
+Covers: actions, get-face
+
+
+==Updating a Display==
+
+Covers: show, set-face
+
+
+==Commands==
+
+Commands are special words used to control your GUI. Unlike styles, commands are not displayed, but they may have an effect on the display.
+
+do, attach, tight
+
+
+==Tweaking a Layout==
+
+Using fillers for spacing.
+
+==Useful Functions==
+
+Other VID functions.
+
+
+==Figuring out Errors==
+
+How to figure out what an error means.
+
+The R3 decision to show errors, rather than hide them.

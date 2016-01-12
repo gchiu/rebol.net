@@ -1,0 +1,159 @@
+== ARROW== 
+
+'''Return To [[Draw]] Contents'''
+
+'''Image resized, click to see original. Some images to be redone here due to scaling distortion''' 
+
+Set the arrow mode
+
+{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
+! bgcolor=&quot;silver&quot; | Arg 
+! bgcolor=&quot;silver&quot; | Type 
+! bgcolor=&quot;silver&quot; | Description
+! bgcolor=&quot;silver&quot; | Values
+|- 
+| bgcolor=&quot;white&quot; | arrow-mode
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | Possible numbers for combination in pair!
+| bgcolor=&quot;white&quot; | '''0''' - none
+
+'''1''' - head
+
+'''2''' - tail
+|- 
+| bgcolor=&quot;white&quot; | arrow-color
+| bgcolor=&quot;white&quot; | [tuple!]
+| bgcolor=&quot;white&quot; | color of the head/tail of the arrow
+| bgcolor=&quot;white&quot; | 
+|}
+&lt;br&gt;'''Notes and Examples'''
+&lt;p&gt;Arrow marks are drawn at end-points, but not between the line
+that closes polygons, closed splines, etc.&lt;/p&gt;
+
+
+&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
+&lt;TD WIDTH=60%&gt;
+    line 20x20 100x100
+&lt;/TD&gt;
+&lt;TD align=center valign=MIDDLE&gt;[[image:ARROW-1.png|200px 200px]]&lt;/TD&gt;
+&lt;/TR&gt;&lt;&lt;TR&gt;
+
+&lt;TD WIDTH=60%&gt;
+    arrow 1x2
+    curve 50x50 300x50 50x300 300x300
+&lt;/TD&gt;
+&lt;TD align=center valign=MIDDLE&gt;[[image:ARROW-2.png|200px 200px]]&lt;/TD&gt;
+&lt;/TR&gt;&lt;TR&gt;
+
+&lt;TD WIDTH=60%&gt;
+    arrow 1x2
+    spline 3 20x20 200x70 150x200 50x300 80x300 200x200
+&lt;/TD&gt;
+&lt;TD align=center valign=MIDDLE&gt;[[image:ARROW-3.png|200px 200px]]&lt;/TD&gt;
+&lt;/TR&gt;&lt;TR&gt;
+
+&lt;TD WIDTH=60%&gt;
+    arrow 1x2
+    spline closed 3 20x20 200x70 150x200 50x300 80x300 200x200
+&lt;/TD&gt;
+&lt;TD align=center valign=MIDDLE&gt;[[image:ARROW-4.png|200px 200px]]&lt;/TD&gt;
+&lt;/TR&gt;&lt;TR&gt;
+
+&lt;TD WIDTH=60%&gt;
+    arrow 1x2
+    box 20x20 150x200
+&lt;/TD&gt;
+&lt;TD align=center valign=MIDDLE&gt;[[image:ARROW-5.png|200px 200px]]&lt;/TD&gt;
+&lt;/TR&gt;&lt;TR&gt;
+
+&lt;TD WIDTH=60%&gt;
+    arrow 1x2
+    polygon 20x20 200x70 150x200 50x300
+&lt;/TD&gt;
+&lt;TD align=center valign=MIDDLE&gt;[[image:ARROW-6b.png]]&lt;/TD&gt;
+&lt;/TR&gt;&lt;/TABLE&gt;
+
+
+
+
+
+----
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+Pages
+&lt;font size=1&gt;
+*[[Draw]]
+*[[Anti-Alias]]
+*[[Arc]]
+*[[Arrow]]
+*[[Box]]
+*[[Circle]]
+*[[Clip]]
+*[[Curve]]
+*[[Ellipse]]
+&lt;/font&gt;&lt;/TD&gt;
+
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+
+
+
+&lt;font size=1&gt;
+*[[Fill-Pen]]
+*[[Fill-Rule]]
+*[[Gamma]]
+*[[Grad-Pen]]
+*[[Invert-Matrix]]
+*[[Image]]
+*[[Image-Filter]]
+*[[Line]]
+*[[Line-Cap]]
+
+&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+
+
+
+&lt;font size=1&gt;
+*[[Line-Join]]
+*[[Line-Pattern]]
+*[[Line-Width]]
+*[[Matrix]]
+*[[Pen]]
+*[[Polygon]]
+*[[Push]]
+*[[Reset-Matrix]]
+*[[Rotate]]
+&lt;/font&gt;&lt;/TD&gt;
+
+
+&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+
+
+
+&lt;font size=1&gt;
+*[[Scale]]
+*[[Shape]]
+*[[Skew]]
+*[[Spline]]
+*[[Text]]
+*[[Transform]]
+*[[Translate]]
+*[[Triangle]]
+&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP width=25%&gt;
+Chapters
+&lt;font size=1&gt;
+*[[R3 Introduction]]
+*[[Getting Started With R3]]
+*[[The Graphical User Interface]]
+*[[Script Writing With The Visual Interface Dialect|Script Writing With VID]]
+*'''Script Writing With Draw '''
+*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+
+&lt;TD ALIGN=LEFT VALIGN=TOP&gt;
+&lt;font size=1&gt;
+*[[Table Of Contents]]
+&lt;/font&gt;&lt;/TD&gt;
+&lt;/TR&gt;&lt;/TABLE&gt;

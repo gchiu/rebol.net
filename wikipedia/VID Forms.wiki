@@ -1,0 +1,176 @@
+{{:under construction}}
+
+This is a brain storming page on what is needed for having a pleasant experience in producing and using forms in VID3.
+
+The question of how to use VID3 to produce forms is very important.
+
+=== In the Old Bad Days ===
+
+Form building is about more than just slapping some fields into a window. Slapping things into a window is something which the original VID did pretty well, but when you needed to do all the remaining things, you quickly run into the shortcomings of the standard FIELD and other text inputs: There's simply too much code that needs to be written to do the wiring of form fields to a data structure (database) and to make the form fields behave like you want. It becomes more of an exercise in coercing VID and wrestling with it, than about testing the usability of your form.
+
+=== In the New Good Days ===
+
+R3 VID must have the best form implementation experience possible, where a developer should be able to design a form, perform data checking on it and connect the fields to database fields in a meaningful way in a matter of minutes of pure hand coding.
+
+== The User Experience ==
+
+Fields that are arranged incorrectly or don't support sufficient checking of the data that is put in and don't signal back that the data is incorrect, increases the risk of incorrect data stored in your database. This depends strongly on how experienced people are with the form and with computing in general. '''More than you would expect!'''
+
+People can be entering data incorrectly, simply because they don't look at the screen while typing! They may also not capitalize names or use spaces at the start or end of a field, which can for example invalidate your parsing operation, when you need to perform analysis on the data. That leave more things to take into account here and more manual checking to do.
+
+This has cost me many hours of data correction, because a form did not do enough error checking or error correction. This was not necessarily a design issue, but an issue with knowing how to do such checking with VID.
+
+== Putting fields into a Window ==
+
+VID3 has this mostly solved as face arrangement is simplified using the GROUP style to produce tables of labels and fields. This is working in a good fashion already now.
+
+There are many theories on how to put fields into a form and place them correctly, but VID3 should in no way restrict the developer from producing forms in the design he/she desires. Sometimes you have to emulate a paper based form and must place the fields in the same place. VID3 does this somewhat OK now.
+
+Forms that come from other sources require generating VID layouts dynamically. We can generate layouts already, but doing the rest of the work, namely, tieing the VID fields to database fields is still not a fixed, standardized and well-defined process. Optimally, all of this happens directly inside the layout process.
+
+== Mapping Data to a Form ==
+
+Mapping form data to a database, write something about various different methods that can be used.
+
+Should be possible to do directly from layout.
+
+Traversing a block of objects.
+
+Traversing a block of blocks.
+
+Traversing a one-dimensional block.
+
+Retrieving and storing data.
+
+== Single Field Operations ==
+
+A single field in a form has to be very capable:
+
+=== Self Checking ===
+
+A field should have a host of different checking options, that you shouldn't need to code up yourself:
+
+*Check if the field is empty.
+*Check if the field conforms to an email, number or other specific datatype.
+
+Setting up field checking should be simple flags.
+
+ view layout [field options [on-fail: [empty not-email]]]
+
+=== Displaying Errors ===
+
+When an error occurs for a field, an error should be generated, which you should be able to handle in the layout. This can be done in two ways:
+
+For example with an OK-CHECK style (bad name, I know), that displays an X or a checkmark, if the field was filled out correctly or incorrectly. This style would be attachable to the desired field and refresh itself, when the field check is done.
+
+ view layout [f: field options [on-fail: [empty]] ok-check attach]
+
+The values that OK-CHECK would receive would be:
+
+*TRUE - displays OK checkmark
+*FALSE - displays not-ok X
+*NONE - displays nothing
+
+So these three values are what the field check should return.
+
+The other way is to display it with the field itself, for example by turning the field background red, when a failure occurs.
+
+In both cases, the field checking mechanism would behave the same. Both ways should be possible.
+
+=== Self Correction ===
+
+This is an issue that usually occurs per key stroke. If your key range is restricted to integers for a numeric field, it should block for letter key strokes.
+
+Some standard correction mechanisms:
+
+*Restrict to key range
+*Restrict a number to a specific range
+*A name field should have the option of capitalizing the first letter
+*Auto completion from a dictionary
+
+Self correction does not usually lead to errornous results, as they are designed to prevent errors.
+
+== Field Interaction ==
+
+=== Acknowledge Field Content ===
+
+There are many ways to acknowledge that the content of the field is correct and you wish to leave the field.
+
+;Shift-tabbing out : Field checking is done here and the data is stored. We move to the previous field in the tab order.
+;Tabbing out : The data is stored and field checking is done here. We move to the next field in the tab order.
+;Pressing Enter : The data is stored and field checking is done here.
+;Pressing Escape : The data is not stored and the field is reverted to its original value. This should be optional.
+;Submitting Form : The data is stored and field checking is done.
+
+=== Tabbing Order ===
+
+Tabbing order should map itself over groups of fields. If multiple groups of fields exist, it should be possible to tab between all of them, without having to use the mouse to move between groups. It should also be possible to set a custom tab order. ''Tab order must always be cyclic, which is a problem in R2 VID.'' This will be solved in VID3.
+
+=== Tabbing Direction ===
+
+In R2 VID, the tabbing direction determines whether the field data is stored or not. Write something about that here.
+
+== Changes in Database Structure ==
+
+Over time, when developing a database, the value limits for a field may change, so that the database contains values that are illegal to use in the form. When setting the form with values from the database, the form should check itself, to see if any of the values are illegal. Otherwise you would have a loop hole that would keep illegal values inside the form.
+
+== Global Field Operations ==
+
+An example for the issues below:
+
+ window: view [
+   vid-form: group 2 [
+     label &quot;Name&quot; name-field: field
+     label &quot;Address&quot; address-field: field
+   ]
+ ]
+
+=== Clearing all fields ===
+
+It should be possible to refer to a single group or an entire window to clear all writable styles.
+
+ clear-face name-field
+
+ clear-face vid-form
+
+I know the two first are possible, but I don't know if an entire window can be cleared in one operation:
+
+ clear-face window
+
+Clearing fields should either clear to empty or to a default value.
+
+Clearing fields that are not cleared already should set the '''dirty?''' flag for the affected fields.
+
+=== Setting all fields ===
+
+This is highly depending on the data structure that is conformed over the form fields. Write some more about that.
+
+=== Auto-filling fields ===
+
+When auto-filling a field, the text should appear in a lower contrast, so you can tell, which part of a field is manually filled and which parts are auto-filled. A field can both have manually filled parts and auto-filled parts at the same time.
+
+Auto-filling has two aspects:
+
+#It is a search mechanism, where we need to figure out how to map database entries to fields in a smart way.
+
+There are however two aspects to it: One is that auto-filling is a search mechanism, so we need to figure out how to map database entries to fields in a smart way. The other is that results are not displayed as fully black text, but gray text, so you can tell the difference between text that was manually entered and text that is auto-filled. Perhaps auto-filling can be a two-tier mechanism: One that simply does some kind of set-face on a face and it shows the text as auto-filled. The other would query what exactly to auto-fill in that field. Also the field that you auto-fill should be separable from the field that you are entering text in. I think I'm going to make a DocBase document about this. I have more to say about it. :-)
+
+=== Checking for field changes ===
+
+In R2 VID, it can be difficult to check whether the content of the form has been changed, even when the cursor has been placed in a field, editing has happened and you escape out of the field or re-edit it to it's original state.
+
+Doing this, requires that the start state of the form is stored and will be used as a comparison against the edited state of the form.
+
+Every field should have a '''dirty?''' flag and it should be possible to check if a group is '''dirty?''' as well, by checking each field inside automatically. If just one field is '''dirty?''', the whole group becomes '''dirty?'''.
+
+To check if the fields have changed, this could be something like:
+
+ if vid-form/dirty? [print &quot;Form has changed!&quot;]
+
+To check only one field, just access the field:
+
+ if address-field/dirty? [print &quot;Field has changed!&quot;]
+
+== Multi-part Forms ==
+
+In VID as opposed to HTML pages, it may not make sense to take anything into account for multi-page forms. In this case, this would be a form that just spans several groups, for example in a wizard. This would be handled by VID3 through the use of the above mentioned group form mapping features.

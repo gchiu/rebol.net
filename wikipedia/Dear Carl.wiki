@@ -1,0 +1,11 @@
+===Dear Carl,===
+
+====Altissimo?====
+Can we get a blurb on the plans for the Altme/IOS/ side of REBOL 3?  [[User:BTiffin|Bluey]]
+
+====SYSTEM====
+How will the SYSTEM object change in REBOL 3? [[User:BTiffin|Bluey]]
+
+===Gratitudes===
+
+You make computing fun again, thanks. [[User:BTiffin|Bluey]] 21:07, 6 February 2008 (EST)

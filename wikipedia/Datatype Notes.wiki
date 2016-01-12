@@ -1,0 +1,27 @@
+
+==Datatype Notes==
+&lt;TABLE&gt;&lt;TR&gt;&lt;TD VALIGN=TOP&gt;
+*[[Bitsets]] - major changes to know about
+*[[Closures]] - a special type of function
+*[[Errors]] - changes in error datatype
+*[[GOB]] - low level graphical objects
+*[[Map]] - associative name-values (hashes, dictionaries)
+*[[Module]] - components and namespaces
+*[[Decimals-64]] - binary floating point numbers
+*[[Money]] - high precision numbers
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+*[[Paths]] - access and refinement paths
+*[[Percent]] - numeric percentage
+*[[Ports]] - completely redesigned
+*[[Unicode]] - unicode (pending)
+*[[Vectors]] - efficient arrays
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+*Special datatype sections:
+**[[datatypes|List of datatypes]]
+**[[Datatypes in Transition]]
+**[[Datatype math compatibility tables]] - draft (currently)
+**[[Datatype string conversion table]] - draft
+**[[Datatype conversion matrix]] - draft
+
+
+'''[[Typesets]], Sets Of Datatypes'''

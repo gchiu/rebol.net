@@ -1,0 +1,17 @@
+'''on-drag''' is invoked when a drag object has been created and the mouse is moving inside the face in which the drag object was created.
+
+on-drag usually comes after '''[[The Face Object Field - Actors - on-click|on-click]]''' and ceases to be used when the drag object is destroyed, which happens right after '''[[The Face Object Field - Actors - on-drop|on-drop]]'''.
+
+The drag object the input argument to the on-drag actor. No return value is necessary.
+
+When a drag object exists, the '''[[The Face Object Field - Actors - on-move|on-move]]''' and '''[[The Face Object Field - Actors - on-over|on-over]]''' actors are not called.
+
+===Examples===
+
+Slider updates value constantly during drag and performs its face action:
+
+ on-drag: [
+   do-style face 'on-offset arg/delta + arg/base
+   draw-face face
+   do-face face
+ ]

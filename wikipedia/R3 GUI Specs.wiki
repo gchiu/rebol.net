@@ -1,0 +1,811 @@
+== Specification of Requirements for the R3 GUI ==
+
+Note: These specifications are based on the current state of VID3.4 and what we feel are necessary to bring it up to a level, where it can be used in industrial strength applications. Many more edits are required to complete and modify the specs. Please post your thoughts on AltME.
+
+=== Definitions ===
+# Proper definition of GET-FACE and SET-FACE, i.e. how to pass faces to them as simply as possible. This doesn't exist for R2.
+## Which may lead to a generic face retrieval path model, that will work with any *-FACE function mentioned below.
+
+=== Face facets ===
+# Extra face facets:
+## '''TAGS''' list, simply a list of words, determined inside the style. This is usually occuring during style prototype creation.
+## '''TAGGED''' list, simply a list of words, determined inside the face. This changes during runtime for the face instance.
+
+=== Face traversal ===
+# A face traversal model (a well working one exists for R2 in the VID Extension Kit):
+## Built: '''BACK-FACE?''': Moves to the previous face in the face tree. It's a basic function in face traversal.
+## Built: '''NEXT-FACE?''': Moves to the next face in the face tree. It's a basic function in face traversal.
+## Built: '''TIP-FACE?''': Moving to the last face in the tree from a specific branch. Used in BACK-FACE?.
+## Built: '''RETURN-FACE?''': Returns the next possible face outward and then forward in the hierarchy. Used in NEXT-FACE?.
+# Requirements for face:
+## OK: Clear exposure of face pane.
+## OK: Clear exposure of parent face relations.
+## OK: All faces must have a parent face.
+
+=== Extra face functions ===
+# Some nice items that are easy to build after the face traversal model (also all these exist for R2 VID Extension Kit):
+## Built: '''FIND-FACE''': Find face relatively from current face, either by tag (not yet implemented), by index or by facet.
+## Built: '''LOCATE-FACE''': Locate the index of this face in the parent.
+## '''GET-TAB-FACE''': Which face is currently tabbed to, using tab navigation. There is one per window.
+## '''OVER-FACE''': Which face the mouse is currently over. One per window.
+## Built: '''WITHIN-FACE?''': Returns if the first passed face is inside the second passed face. Use this to determine visibilty of TAB-FACE inside a tab-panel.
+## Built: '''TRAVERSE-FACE''': Traverses the entire face tree from the current branch and performs an action on each face encountered.
+## '''VALIDATE-FACE''': Performs validation of the face tree from the current branch and appropriately highlights valid and invalid elements.
+## '''TAG-FACE''': Sets a tag for a face. A /DEEP refinement would set this tag for all faces inside the face.
+## '''UNTAG-FACE''': Removes a tag for a face. A /DEEP refinement would remove this tag for all faces inside the face.
+## '''TAG-FACE?''': Returns TRUE or FALSE for whether the tag for a specific face is set. A /DEEP refinement would determine if a subface has this particular tag set.
+## '''ATTACH-FACE''': Attach the facets of two faces, so when changing one, the other follows.
+## '''DETACH-FACE''': Detaches the facets of two faces, previously established by ATTACH-FACE.
+
+=== Face states ===
+# Some items that make it easier to manage some general states for faces (also have these for R2 VID Extension Kit):
+## '''FREEZE-FACE''' removes actor functionality of the face, WRT user input.
+## '''THAW-FACE''' restores the actor functionality of the face, WRT user input.
+## '''ENABLE-FACE''' uses THAW-FACE and a face accessor to enable the face visually.
+## '''DISABLE-FACE''' uses FREEZE-FACE and a face accessor to disable the face visually.
+## '''DIRTY-FACE?''' checks whether a face or one of its subfaces has the DIRTY tag set.
+
+=== Face Actors ===
+
+# New actors might be focused on face attachment:
+## '''ON-SEND''': When sending a message for one or more attached faces.
+## '''ON-RECEIVE''': When receiving a message from one or more attached faces.
+## '''ON-ATTACH''': When a face is being asked to attach to a source face.
+## '''ON-DETACH''': When a face is being asked to detach from a source face.
+# Issues:
+## Might need separate ON-ATTACH-SRC and ON-ATTACH-DEST actors, but need better names for that.
+## Might need separate ON-DETACH-SRC and ON-DETACH-DEST actors, but need better names for that.
+# Other actors needed to correspond to specific tags:
+## '''ON-DISABLE''': When disabling or enabling a face. Allows you to specify display of the face, when disabled.
+## '''ON-VALIDATE''': When validating a face. Allows you to specify validation result display for the face.
+## '''ON-EMIT''': Hard link to an external data source to store content of face. TBD.
+
+=== Face Accessors ===
+
+Most accessors are managed through actors, such as ON-SET and ON-GET, which are determined by style. At this time there is little to add in terms of accessors.
+
+=== Style and Face tag principle ===
+
+# Tags are necessary to determine the state and type of the face for applying navigation, focusing, disabling, validating and various other functions on it.
+# Tags are a distant relative of face flags from R2 VID.
+# Tags would exist as a block of words inside each face.
+# Tags are written by style creators in styles directly as aforementioned blocks.
+# Tags are manipulated by layout and the R3 GUI inside layout.
+# Tags are not suitable for manipulation by end-users (writers of layouts).
+# Tags can be divided into two groups:
+## Tags that don't change very often or never
+## Tags that change very often.
+# Tags can be changed by various *-FACE functions:
+## TAG-FACE
+## UNTAG-FACE
+## VALIDATE-FACE
+## SET-FACE
+## RESET-FACE
+## DISABLE-FACE
+## Also during layout. TBD.
+# Tags adhere to sets of rules that prevent or force certain combinations of tags.
+# These rules must be easy to write up and must be enforced at all times.
+# Adding new tags over time requires modification of said rules.
+## When trying to use a tag that doesn't exist, make an error.
+## When adhering to a rule, nothing happens beyond normal operation.
+## When not adhering to a rule, an error must be generated to stop the program.
+## Reporting errors is part of style development, not layout development. When a style is well functioning, errors wouldn't be reported.
+## Errors are only reported on manipulating tags, not when querying tags. This means that functions like TAG-FACE? won't report errors.
+
+=== Face tags (often changing) ===
+# Face tags, which determine whether the face can be:
+## '''TAB''', whether the face can be tabbed to or is skipped during tab navigation (TAGS), which means enabled fields and other input.
+## '''DISABLED''', whether the face is disabled (TAGS)
+## '''FROZEN''', whether face is frozen (TAGS)
+## '''FOCUS''', whether the face is focused (not the same as tabbed to) (TAGS)
+## '''INVALID''' whether last validation was not passed (TAGS) if face requires validation and must fail
+## '''PASS''' whether last validation was passed (TAGS) if face requires validation and must pass
+## '''DIRTY''' whether the face has been edited somehow (TAGS) Any STATE or FIELD face
+## '''MULTIPLE''' when a face has been set, usually to NONE or a block! to indicate that multiple values exist for the face and can't be properly displayed (TAGS) Any STATE or FIELD face.
+
+=== Face tags (general attributes, usually don't change) ===
+# Face tags to determine its general attributes inside the layout
+## '''DEBUG''' is set during layout for a face, and specifies that the face can be used by various debug functions. (TAGGED). Any face.
+## '''PART''' is part of a compound face (TAGGED) sub-field for date field, etc.
+## '''DEFAULT''' is default (TAGS) Any face
+## '''PANEL''' is a panel face (TAGGED) Panel, group, window
+## '''AUTO-TAB''' auto-tabs (TAGGED) sub-field for date field automatically tabs to the next face on N chars entered
+## '''COMPOUND''' is a compound face (TAGGED) IP-address field, date field, etc.
+## '''INTERNAL''' is for internal use only (TAGGED) sub-fields for compound faces. For help information only.
+## '''FIELD''' is editable as text (TAGGED) Field, area, etc.
+## '''STATE''' can change state via user input (TAGGED) Toggle, radio, check, etc.
+## '''ACTION''' can perform an action via user input (TAGGED) Button.
+## '''VALIDATE''' can undergo face validation (TAGS) Any STATE or FIELD face
+## '''KEEP''' whether a FIELD face keeps selection and caret position after unfocusing. (TAGS) Any FIELD face.
+## '''ENTER''' whether a face will perform its action when Enter is pressed, regardless of TAB-FACE, if TAB-FACE is not STATE or FIELD.
+## '''REQUIRED''' is for faces that must validate with specific content. (TAGS) Any STATE or FIELD face.
+## '''INFO''' is for faces purely for indication purposes of a single value (TAGGED) LED, info, Valid indicator, etc.
+## '''SELECT''' is for faces which lets the user select its text (TAGGED) Info
+
+=== Window Tags (general attributes, usually don't change) ===
+
+# Different types of windows helps the R3 GUI determine what to do with it on open and on close.
+# Window type is stored as tag
+## '''FORM''': For windows that contain a validatable form or other FIELD or STATE faces. (TAGS). Most ordinary windows, some complex requesters.
+## '''INFORM''': For windows that only contain text and no validatable faces. (TAGS). Some requesters, splash screens.
+## '''POPUP''': For windows that contain a menu or selection which, when interacted with, returns a result immediately. (TAGS) Calendar window, drop down lists.
+
+=== Some rules (not bidirectional, not in order) ===
+# When a face is DISABLED, it also has its FROZEN tag set.
+# When a face is ENABLED with ENABLE-FACE, the FROZEN tag is also removed.
+# A DISABLED face can still use GET-FACE and SET-FACE.
+
+=== DIRTY tag rules ===
+# When a STATE or FIELD face is set with RESET-FACE or SET-FACE, its DIRTY flag is cleared.
+# When a STATE or FIELD face is changed by the user, its DIRTY flag is set
+# When querying a panel for a DIRTY tag inside it using DIRTY-FACE?, the function will return DIRTY.
+
+=== Tabbing rules ===
+# When pressing the tab button, tab navigation moves to the next face.
+# When pressing shift-tab, the tab navigation moves to the previous face.
+# When pressing tab continually to move past the last face, tab navigation will cycle back to the first face.
+# When a face is DISABLED or does not have TAB tag, it can't be tabbed to.
+# Even when a face is FROZEN, it can be tabbed to.
+# When a face is hidden, it must not be tabbed to.
+# When a face is hidden, and is TAB-FACE, it must tab to the next possible face in the same operation as the hide occurs.
+# If no face is visible and no face has the TAB tag, no attempt at tabbing can be done.
+# A face can be tabbed to, if it has the TAB tag and is visible.
+# A DISABLED face does not get its TAB tag unset.
+# A hidden face does not get its TAB tag unset.
+# Tabbing order is normally going inward on the first subface and then moving back out on the last face in the pane of the subface.
+# Custom tabbing order is at this time TBD.
+
+=== Focusing rules ===
+==== Focus ====
+# Focusing is independent from tabbing.
+# Focusing occurs by mouse click and does not set tab.
+# Focusing done with FOCUS works like mouse click.
+# Tabbing occurs by pressing tab or shift-tab and sets both tab and focus.
+
+==== KEEP tag ====
+# When KEEP tag is set, FIELD tagged faces perform when focusing either with keyboard or mouse:
+## Restore stored highlight
+## Restore stored caret location
+## Navigate to stored caret location
+# When KEEP tag is not set, FIELD tagged faces perform when focusing with the mouse:
+## Set caret at mouse position
+## No selection
+# When KEEP tag is not set, FIELD tagged faces perform when focusing with tab navigation:
+## Highlight all
+## No caret
+# When KEEP tag is set, it only works with FIELD tag faces.
+# When AUTO-TAB is set, moving the caret beyond the end of the text with cursor keys, tabs to the next or previous face.
+
+==== SELECT tag ====
+# SELECT faces do not have a visible caret, but allow swiping and copying of text.
+# SELECT faces do not have the FIELD tag set.
+
+==== Unfocus ====
+# When clicking an empty area in the UI with the mouse:
+## The active focused face is unfocused.
+## The TAB-FACE is unset.
+
+=== General highlighting rules ===
+# '''HIGHLIGHT-FACE''' function to highlight specific sections of a FIELD or SELECT face.
+# HIGHLIGHT-FACE works even on DISABLED faces.
+# '''GET-FACE-HIGHLIGHT''' to return text in highlighted section.
+# When highlight is not text, but graphics, sound sample waveform or other type of selection:
+## GET-FACE-HIGHLIGHT returns data of whatever type is selected.
+
+=== Highlighting rules with mouse ===
+
+# These rules apply both to SELECT and FIELD tagged faces
+# If the face is DISABLED, you can't select text with the mouse
+# Click and drag to highlight text under mouse position
+# Doubleclick to highlight a word
+# Tripleclick to highlight a line
+
+=== Highlighting rules with keyboard ===
+# These rules do not apply to SELECT tagged faces, only FIELD faces.
+# If the face is DISABLED, you can't select text with the keyboard.
+# When all text is highlighted:
+## Cursor right/down moves caret to end and eliminates highlight
+## Cursor left/up moves caret to start and eliminates highlight
+
+=== Drag'n'drop rules ===
+
+==== General ====
+
+# A drag tolerance must exist, i.e. about 5x5 pixels to avoid accidental dragging.
+# It's not possible to drop on a DISABLED face, even if it's a FIELD.
+# All dragged elements are displayed at about 50% transparency.
+# All faces that are susceptible to dropping a specific datatype on it, must be highlightable by a GOB conforming around the target face, when mouse over occurs while dragging.
+# When trying to drop on an incompatible target face (color on a text field), nothing should happen.
+# The datatype to drag is determined inside the source style.
+# The supported datatypes to drop for is determined inside the target style.
+
+==== Text ====
+
+# Text to drag is either a string! or a block!
+# When text is highlighted, you can drag the text by holding down the left mouse button over the text for the double click duration and then drag.
+# When dragging a small amount of text, display it as the rich text it was originally formatted in.
+# When dragging a large amount of text, only display a small portion of it for memory and speed.
+# When dragging text over a target FIELD face, the face caret should be displayed at the mouse position.
+# When dragging text over a target FIELD face, the existing highlight and current caret position stored in TEXT-BODY of the target face, may not be destroyed.
+# When dragging text over a target SELECT face, no disturbance must happen.
+# When dropping text on a target face
+
+==== Graphics ====
+
+# Image to drag is image! datatype.
+# When dragging an image, drag a thumbnail version of it, about 64x64 pixels in size.
+# The size of the thumbnail should be adjustable.
+
+==== Other Elements ====
+
+# A drag image should be defined inside the source style. It can be composed of any elements. This image would be used for dragging.
+
+=== Window rules (not in order) ===
+# One window or global flag may lock focusing with tab, so tabbing also works with focus.
+# A window face generally only has one DEFAULT face, but only the first one set in layout counts.
+# A window face generally only has one ENTER face, but only the first one set in layout counts.
+# A window face can't have STATE, FIELD, AUTO-TAB, FIELD, INTERNAL, COMPOUND, PART, DEFAULT tags set.
+# A window generally behaves like a PANEL, except it keeps a TAB-FACE.
+# A window face to be closed, must run one of several standard actions or actors: CLOSE, CANCEL, SELECT, APPROVE. See &quot;on window close&quot; rule 2.
+# A window face usually pairs certain actions: CLOSE and SELECT. CLOSE and SELECT can operate separately. CANCEL and APPROVE to avoid traps.
+# A window face is any face that doesn't have a parent face.
+
+=== On window open ===
+# If a window face has one or more faces with the DEFAULT tag, the first one is automatically tabbed to.
+# If a window face doesn't have faces with a DEFAULT tag, it focuses the first TAB face.
+# If a window face doesn't have faces with TAB tag, no attempt at tabbing can be done, in adherence with rule 012.
+# When opened, initial validation setup is made: All REQUIRED faces are indicated. See &quot;validation rules&quot; 002.
+
+=== On window close ===
+# If a window face has a focused face or tabbed face, both are set to NONE.
+# If a window face is closed, there are several standard predefined paths out of it:
+## '''CLOSE''' simply closes the window without performing further actions. For popups, informs, menus
+## '''CANCEL''' closes the window and clears whatever form is inside it. For window based forms.
+## '''SELECT''' returns a single value from the window. For calendar popups, drop lists.
+## '''APPROVE''' first validates the window, then returns the entire window contents if approved, otherwise:
+### does not close the window
+### displays validation indicators
+### tab focuses the first element that has the INVALID tag in adherence with rule 027.
+# Each of the four actions are run automatically on window close.
+# Each of the four actions would be actors in the window face.
+# The window close button served by the OS causes either CANCEL or CLOSE, depending on window type.
+# The SELECT action can be caused by any button in the window.
+# The APPROVE action is caused by the window's OK-BUTTON face.
+# Before running one of the four actions, allow running another user defined action (ON-CLOSE actor) on window close, that uses one of the four action words as input, depending on which action is going to be run.
+# The undo/redo manager is emptied.
+# On each action, you can perform a custom action.
+
+=== Panel rules (not in order) ===
+# PANEL faces do not have DIRTY tags, because faces tagged as PANEL don't have FIELDs or STATEs tags.
+# If VALIDATE-FACE is attempted on a PANEL, even when it doesn't have a VALIDATE tag, all sub-faces with VALIDATE tags are validated.
+
+=== Validation rules (not in order) ===
+# When a face has its VALIDATE tag set, it can have REQUIRED, INVALID or PASS set, not otherwise.
+# INVALID and PASS can't be set at the same time.
+# When a face is REQUIRED, it must be marked up on display, if it has an INDICATOR face attached to it.
+# When a face is DISABLED, it's still validated.
+# A FIELD or STATE face can be paired freely with any INDICATOR face for validation.
+# An INDICATOR face is not required.
+# The results for the validation of a face can be one of 4 words:
+## '''VALID''' for good validation on a required or not required face.
+## '''INVALID''' for invalid, required validation.
+## '''NOT-REQUIRED''' for not required and not validated face. (Initial state)
+## '''NOT-VALIDATED''' for required and not validated face. (Initial state)
+# The INDICATOR face for validation must understand these four words.
+# RESET-FACE invokes validation resetting for the given face and its subfaces.
+
+=== Caret Management ===
+# Each FIELD or SELECT face maintains a TEXT-BODY object.
+# The TEXT-BODY object exists per face instance.
+# The purpose of this is to simplify text navigation, selection and scroll bar management:
+## caret X char position (integer)
+## caret Y char position (integer)
+## line length of current line in chars (integer)
+## number of lines (integer)
+## visible Y start position (integer)
+## visible X start position (integer)
+## visible Y end position (integer)
+## visible X end position (integer)
+## start of string (string)
+## pixel size of text (pair)
+## vertical scroll ratio (decimal)
+## horizontal scroll ratio (decimal)
+## vertical scroll position (decimal)
+## horizontal scroll position (decimal)
+# The TEXT-BODY is updated on each key press for FIELD faces:
+## For character insertion or deletion, all items of the text body are updated.
+## For cursor movement, only the caret position is updated as well as vertical and horizontal scroll position.
+# The TEXT-BODY is updated on SET-FACE.
+# The TEXT-BODY is updated on DROP.
+
+=== Undo/Redo Management ===
+# Each window contains its own complete undo/redo manager
+# FIELD and STATE faces can store recordings in the undo/redo manager
+# All actions defined below to track must be reversible and repeatable using RECORD, REWIND and PLAYBACK actions.
+# Elements to record:
+## Each char typed in FIELD faces.
+## Each state change in STATE faces.
+## Each style change in FIELD faces with rich text.
+## DROP operations by mouse.
+## The face the action was performed in.
+## For styles using custom actions, store the action of its datatype, string!, image!, binary!, etc.
+# Keep an index for current position in the undo/redo manager.
+# It must be possible to freely move back and forth in the undo/redo manager, carrying out the actions:
+## RECORD or user interaction.
+## REWIND on undo one step.
+## PLAYBACK, plays an action for REDO by: tabbing to the right face and inserting the string.
+# Do not record on SET-FACE.
+# When performing a RECORD action when the undo/redo manager is not at the tail, the rest of the block is cleared.
+# Undo or redo to any position in the undo/redo manager.
+# Undo/redo manager must be possible to store elsewhere, so it can be imposed on a window at any time.
+
+=== Face attachment ===
+
+# Face attachment is used to connect particular facets of two faces and allow them to interact, without needing to manually update them.
+# Each face would need an attachment actor, which would be run at the same time as the general face action for the source face.
+# Each attachment would be unidirectional.
+# Some new possible actors:
+## ON-SEND
+## ON-RECEIVE
+## ON-ATTACH
+## ON-DETACH
+# Face attachment inside layout would occur with the ATTACH keyword, describing the 4 required arguments
+# Face attachment outside layout would occur with ATTACH-FACE
+# Face detachment outside layout would occur with DETACH-FACE
+# Faces can be reattached or detached during runtime.
+# It should be possible to attach two faces more than once with different facets.
+# Circular face attachment would be a risk that would have to be avoided.
+# Debugging keyword for the debug system would be 'attach
+# It should be possible to monitor through debugging:
+## Face attachment topology.
+## Face attachment actions and values sent and received during runtime.
+
+==== Attach Face ====
+
+# Works through either the ATTACH-FACE function or through layout with the ATTACH keyword
+# Both offer identical functionality since the ATTACH keyword would use ATTACH-FACE.
+## Four arguments
+## Face 1 (source face) and its facet (word!)
+## Face 2 (target face) and its facet (word!)
+# When attaching a face, the source face ON-ATTACH actor would be run.
+# When trying to perform the same attachment operation multiple times, nothing would happen.
+
+==== Detach Face ====
+
+# Works through the DETACH-FACE function.
+# There would not be a DETACH keyword in layout, as it wouldn't really make sense.
+## Four arguments:
+## Face 1 (source face) and its facet (word!)
+## Face 2 (target face) and its facet (word!)
+# When detaching a face, the source face ON-DETACH actor would be run.
+# When trying to perform a detachment operation on '''faces''' that don't exist, an error would be reported.
+# When trying to perform a detachment operation on '''facets''' that don't exist, nothing would happen. This would be like performing the detachment multiple times.
+
+=== Tab Navigation ===
+
+# Tab navigation uses a GOB to display a conforming frame around the currently tabbed face
+
+=== Accelerator Navigation ===
+
+Under most desktop OSes, there is a possibility to use fast way to navigate to particular UI elements by using keyboard shortucs (accelerator keys). There are basically three ways of how to visually represent accelerator keys:
+
+* underlined letters - Windows, OS-X, KDE, Gnome (and most probably other GUIs too) all use underlined letters, to visually represent accelerator key. This might be a problem for VID, because we use only simple text for UI styles. Will we have to switch to rich-text instead, to fulfill the needs?
+
+* the same as above, but underlined letters (as well as menu) are displayed after the press of an Alt key (this concept is used by IE8 for e.g.)
+
+* after the press of Alt key, small &quot;balloon&quot; boxes representing accelerator keys are displayed upon particular UI elements. If VID3.4 gets layers concept, we might consider this aproach, although it is not common and above mentioned ones are preferrable
+
+=== Window Navigation ===
+
+Some essential operations:
+
+# Open window
+# Close window
+# Move to next window
+# Move to previous window
+# Activate specific window and move to top
+
+=== Resizing ===
+
+==== Model ====
+
+Model should be describable in one sentence. TBD.
+
+==== Dialect ====
+
+Dialect will support guides for displaying resizable elements. This is in accordance with Carl's specifications on guides. TBD.
+
+=== Dialect ===
+
+Additional words for each face.
+
+=== Face Coupling ===
+
+Not requirements yet, but some notes:
+
+SCROLLER is currently set up as a face that can automatically attach to a scrollable face. In the longer run, it may not be a good idea to base face attachment on this, as scrollers are rarely something the end user wants to place and control themselves. This violates also a requirement that scrollers adhere to layout rules. The styles themselves should control scrollers.
+
+Thus the face attachment process has not been formally defined.
+
+Other faces combining to share operations (a slider outputs a value to a field) has also not yet been defined.
+
+=== Layout ===
+
+==== Guides ====
+
+In adherence with Carl's specs. TBD.
+
+==== Layers ====
+
+In adherence with Carl's specs. TBD.
+
+Having multiple layers would enable the ability to place GOBs arbitrarily above the general layout. Each layer would be working with a specific task or item to display.
+
+#Layers would consist of:
+## Tooltips
+## Tab navigation frame
+## Drag frame for icon views
+## Drop sheets
+## Various effects
+
+=== Styles ===
+
+TBD. Many styles to add.
+
+==== Fields ====
+
+Generically, field is an area for inputting text, either for one-line fields or for larger rich text areas.
+
+===== text-box =====
+
+# Scrollable text area, editable by user. Used as part of a '''field'''.
+# Can use rich text
+# FIELD tag
+# INTERNAL tag
+# SET-FACE sets the face with text (block! string!)
+# GET-FACE gets the text from the face (block! string!)
+
+===== numeric-box =====
+
+# One line, horizontally scrollable text area, editable by user. Uses only numbers as input. Used as part of a '''field''', '''date-field''', '''ip-field'''.
+# Can not use rich text
+# Negative numbers are red
+# FIELD tag
+# INTERNAL tag
+# SET-FACE sets the face with number (integer! decimal! money!)
+# SET-FACE with NONE or block! sets tag MULTIPLE (none! block!)
+# GET-FACE gets the text from the face (block! string!)
+
+===== field =====
+
+# One line, horizontally scrollable text area, editable by user. Based on '''text-box''' and displays a frame around the box.
+# COMPOUND tag
+# TAB tag
+# SET-FACE sets the face with number (integer! decimal! money!)
+# GET-FACE gets the text from the face (block! string!)
+
+===== numeric-field =====
+
+# One line, horizontally scrollable text area, editable by user. Based on '''text-box''' and displays a frame around the box.
+# COMPOUND tag
+# TAB tag
+# SET-FACE sets the face with number (integer! decimal! money!)
+# GET-FACE gets the text from the face (block! string!)
+
+===== Info =====
+
+# One line, horizontally scrollable text area that can't be edited. Usually appears slightly different or disabled from '''field'''.
+# Can use rich text
+# SELECT tag
+# TAB tag
+# SET-FACE sets the face with text (block! string!)
+# GET-FACE gets the text from the face (block! string!)
+
+===== numeric-info =====
+
+# Same as '''info''', just using the '''numeric-box''' instead of '''text-box'''.
+# SELECT flag
+# TAB flag
+# SET-FACE sets the face with number (integer! decimal! money!)
+# GET-FACE gets the text from the face (block! string!)
+
+===== date-field =====
+
+This field would consist of a list of numeric fields:
+
+All fields would be AUTO-TAB.
+
+# Year (integer!)
+# Month (integer!)
+# Day (integer)
+
+And a POPUP-BUTTON for displaying a calendar popup.
+
+GET-FACE gets date (date!)
+SET-FACE sets date (date!)
+
+===== DateTime Field =====
+
+This field would consist of a list of numeric fields:
+
+# Year (integer!)
+# Month (integer!)
+# Day (integer)
+# Hour (integer!)
+# Minute (integer!)
+# Second (integer!)
+
+And a POPUP-BUTTON for displaying a calendar popup.
+
+All fields would be AUTO-TAB.
+
+GET-FACE gets date (date!)
+SET-FACE sets date (date!)
+
+===== Number Field =====
+
+# This field would consist of a numeric field and drag adjustment buttons for incrementing and decrementing the number.
+# GET-FACE returns number (integer! decimal! money!)
+# SET-FACE sets number (integer! decimal! money!)
+# SET-FACE set as NONE would set the face as MULTIPLE.
+
+===== IP Field =====
+
+This field would consist of four numeric sub fields to enter an IP address.
+
+All fields would be AUTO-TAB.
+
+SET-FACE sets IP address (tuple!)
+GET-FACE gets IP address (tuple!)
+
+==== Box ====
+
+===== Bar =====
+
+==== Group ====
+
+==== Panel ====
+
+==== Checkbox ====
+
+==== Radio ====
+
+# Radio is an INTERNAL style. It doesn't make sense to use it alone.
+# Setting the face by the user, sets the DIRTY tag.
+# SET-FACE sets the item to TRUE or FALSE (logic!)
+# SET-FACE NONE sets the item to MULTIPLE (none!)
+# GET-FACE returns the item as TRUE or FALSE (logic!)
+
+==== Radio Group ====
+
+# The radio group would consist of several RADIO styles, defined in layout or by SETUP-FACE after layout.
+# Radio group is a COMPOUND style.
+# Layout can be vertical or horizontal.
+# Face setup would be a block of word/string pairs.
+# SET-FACE sets the word for the option to select (word!).
+# SET-FACE set as NONE will set no option in the group.
+# SET-FACE set as a block! will set all radio buttons to MULTIPLE.
+# GET-FACE gets the word for the group (word!).
+# Internal key navigation would have:
+## cursor up/left and down/right to select previous and next option in the group.
+## backspace clears the option
+## escape resets to first option selected before the face was DIRTY.
+
+==== Headline ====
+
+This is suitable for labelling groups and panels. Headlines don't have TAB.
+
+==== Label ====
+
+This is suitable for labelling fields for forms. Labels don't have TAB.
+
+=== Field Persistence ===
+
+# Attach fields and groups of fields directly to database records.
+# Removable, when not in use:
+## Separate source file consisting of emission code and persistence logic.
+## Minimal impact on existing styles, using only an ON-EMIT actor.
+
+==== New Values ====
+
+# Styles need to adhere to 4 new details or facets (implementation TBD):
+## '''Record''' reference for detailing the table, the face is linked to.
+### Record reference is self or parent scoped. This allows separation between GUI and database semantics.
+### Value is a word
+## '''Column''' reference for detailing the field or column in the table, the face is linked to.
+### Detected through set-word! in layout, i.e. the face name
+### Value is a word
+### Scope is self
+## Record '''skipping''' to indicate that during ON-EMIT, the face is to be skipped and not stored.
+### Value is a flag
+### Scope is self
+## '''Data''' reference stores key/value pair in block without allocating an extra column in the record/table. Allows for dynamic record size.
+### Data reference is self or parent scoped.
+### Data is logic
+### When used, '''Column''' becomes a column name in the block.
+# ON-EMIT emits data to an external data source, such as SQLite.
+# ON-EMIT is both centric around:
+## face (store one field) by do-style face 'on-emit none on itself
+## around group/panel (store entire record). This is done by applying traverse-face content [do-style face 'on-emit none].
+# ON-EMIT is run by the user, using a &quot;Save Record&quot; type button.
+# Function run with ON-EMIT that retrieves:
+## face data using GET-FACE
+## record
+## column
+## skip
+## data
+
+==== Design ====
+
+# Minimize the use of OPTIONS to pass database relevant information
+# Persistent fields use tags INPUT, STATE or FIELD. No additional tags.
+# New reactor: RECORD. (Name not finalized). Input is block. Specifies:
+## Record
+## Skipping
+## Data flag
+## word!, specifies record link
+
+Example:
+
+  name-panel: group 2 [
+    label &quot;ID&quot;
+    id: field record [skip]
+    label &quot;Name&quot;
+    name: field record []
+    label &quot;Address&quot;
+    address: field record [data]
+    label &quot;Post Code&quot;
+    postcode: field record [data]
+    label &quot;Comment&quot;
+    comment: area record [data]
+  ] record [name-table]
+
+Minimal example uses only RECORD in outer panel. Fields inside would use that information:
+
+  name-panel: group 2 [
+    name: field
+    address: field
+    post-code: field
+    city: field
+    comment: field
+  ] record [name-table]
+
+Scoping example:
+﻿
+  data-panel: group 1 [
+    value1: field record [table1] ; would use value 1 in table 1
+    value2: field record [table2] ; would use value 2 in table 2
+    value3: field                 ; would use value 3 in table 3 and would skip on emit
+  ] record [table3 skip]
+
+# Persistence logic links to database.
+## Prototype for SQLite:
+### Emit function
+### Store record function
+### Retrieve record function
+### Table create function
+## Other prototypes, TBD.
+
+==== Possibilities ====
+
+# Without using set-words to identify by column, have fields identified by position using the traverse-face route of the parent face.
+# Possible problems:
+## Mixture of having set-words and no set-words could be confusing.
+
+==== Questions ====
+
+# Can ON-EMIT be standardized?
+## If not, then we have to define ON-EMIT for all necessary styles = bad.
+## If so, we define ON-EMIT for panels and INFO/STATE/FIELD styles = good.
+# Logic for queries? How to for example freely state the number of records in the table.
+## Goal is to minimize required logic for displaying this value.
+
+=== Resources ===
+
+==== Fonts ====
+
+# Allow creation of fonts with FONTIZE.
+# Derive font styles with FONTIZE.
+
+==== Colors ====
+
+# Use the standard REBOL color options available in R3.
+
+==== Materials ====
+
+# Inspired by how 3D modelers manage materials
+# Allow creation of materials with MATERIALIZE
+# A material must be an object that can be accessed during style creation and used or referenced in DRAW blocks.
+# A material consists of:
+## Color (tuple)
+## Gradient (block), consists of:
+### Decimals indicate intensity/diffuse level
+### Integer indicates position in gradient
+## Specular degree (decimal!), the higher, the whiter the most intense diffusion values are.
+## Texture (image!) layered below the gradient
+# Material gradient must be convertible for use in DRAW block (possible security issue, if DRAW is able to execute functions)
+# Materials are named by words: GOLD, SILVER, PLASTIC, etc.
+
+=== Language Support ===
+
+==== Display ====
+
+# Standard unicode support for various languages in the GUI must be supported through View.
+# Localization can freely happen by:
+## Preprocessing of script using token strings or token rich text blocks, before runtime.
+## Runtime referral to list of strings or rich text blocks. This means the layout dialect should be able to set face/text based on path notation or a word. See &quot;layout&quot; for more.
+
+==== Editing ====
+
+# It must be possible to refer to an external tool for entering symbols at the focused FIELD face at the current caret position.
+# There must be a standard method to call up the external tool for symbol entry.
+# The external tool would typically be a window with position near the FIELD face.
+# The tool will not be defined now.
+
+=== Documentation ===
+
+# Styles should largely be self documenting using:
+## Tags
+## The ABOUT facet
+# It should be possible to autogenerate a list of styles.
+
+=== Debugging ===
+
+# It should be possible to dump the face tree.
+# It should be possible to visualize the size of each face inside the face
+# Show face topology as varying levels of shading
+# Show face updating as blinking squares and list them in console for speed optimization.
+# Show outer edge of face as red border for DRAW debugging.
+
+=== Editor ===
+
+# Face styles should be possible to use in an editor for creating styles and layouts.
+# It may be possible to simply use some draw blocks and disable/replace certain actors, to make them usable in an editor for:
+## Moving face around with mouse
+## Resize face with mouse
+## Double click to edit text
+# Other requirements:
+## Visual indication of springs or typical resize elements.
+
+=== Dialogs ===
+
+Dialogs build upon eachother.
+
+==== Alerts ====
+
+===== Flash =====
+
+# Flashes text or an image
+# Specifies an optional timeout
+
+===== Alert =====
+
+# Displays text or image.
+# Presents an &quot;OK&quot; or &quot;Close&quot; button for closure.
+
+==== Requesters ====
+
+# Colors
+# File, for OSes that don't offer good file requesters
+## Load
+## Save
+
+==== Native Requesters ====
+
+# File requester
+## Directory
+## Load
+## Save
+
+==== Viewers ====
+
+# Viewers are about displaying REBOL datatypes visually, possibly for debugging or simply visualization.
+# Viewers could be an optional module.
+# Viewers would be used as a guideline for which types of advanced styles to develop, i.e. tables, tree-views.
+# Viewers should largely use one style for representing the datatype.
+## Image!
+### Displays the image in a window.
+## Object!
+### Displaying a tree-view of the object.
+## Any-block!
+### Displaying a table view of the block.

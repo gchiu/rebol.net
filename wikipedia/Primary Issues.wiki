@@ -1,0 +1,28 @@
+I am starting this new section to keep track of primary issues that need to be resolved before beta release. [[User:Carl|Carl]] 21:49, 24 July 2007 (EDT)
+
+== MAKE Object Parent Cloning ==
+
+Right now the alpha release does a shallow copy of the block provided to MAKE OBJECT!. This is not the same as R2. The change was made to be consistent with MAKE FUNCTION! - which also does a shallow copy. However, this is a big change from R2, and it may be problematic for most users (because it is not isolated by a creator function such as FUNC, etc., which can do the deep copy first.)
+
+In addition, COPY of an object is allowed in R3, and it does a deep copy, and it should be changed to do a shallow copy by default.
+
+Post your comments in the discussion section of this page.
+
+== Finalized Function Arg Specs ==
+
+We need a complete definition of args specs soon, including their side effects and ranges. The full meaning of this line should be defined:
+
+    a-func: func [arg1 'arg1 :arg1 arg1:]
+
+Definition includes what happens in cases such as: no arg (end of input case), no word (non-word value given), or non value (word has no context).
+
+In addition, there are combinations, such as if I use the function above in these ways:
+
+    a-func :w :w :w
+    a-func 'w 'w 'w
+    a-func (x) (x) (x)
+    a-func p/w p/w p/w
+
+And there are no doubt other cases.
+
+And finally, we must resolve the ARG1: (set-word) cases. These are most likely meta-tags. They must be defined.

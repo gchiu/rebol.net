@@ -1,0 +1,73 @@
+== TEXT== 
+
+Draws a string of text.
+
+{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
+! bgcolor=&quot;silver&quot; | Arg 
+! bgcolor=&quot;silver&quot; | Type 
+! bgcolor=&quot;silver&quot; | Description
+! bgcolor=&quot;silver&quot; | Values
+|- 
+| bgcolor=&quot;white&quot; | offset
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | optional
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | size
+| bgcolor=&quot;white&quot; | [pair!]
+| bgcolor=&quot;white&quot; | optional
+| bgcolor=&quot;white&quot; | 
+|- 
+| bgcolor=&quot;white&quot; | render-mode
+| bgcolor=&quot;white&quot; | [word!]
+| bgcolor=&quot;white&quot; | How text will be rendered
+| bgcolor=&quot;white&quot; | '''vectorial''' - Can be transformed with stroke/dashes, filled with fill-pens, etc.
+|- 
+| bgcolor=&quot;white&quot; | rich-text-block
+| bgcolor=&quot;white&quot; | [block!]
+| bgcolor=&quot;white&quot; | block containing valid richtext dialect syntax
+| bgcolor=&quot;white&quot; | 
+|}
+&lt;br&gt;'''Notes and Examples'''
+&lt;p&gt;To run some of these tests, you'll need to define the following
+font objects:&lt;/p&gt;
+&lt;code&gt;
+bold20: make system/standard/font [style: 'bold size: 20 color: white]
+bold36: make system/standard/font [style: 'bold size: 36 color: white]
+&lt;/code&gt;
+&lt;p&gt;Basic text isn't too exciting to look at.&lt;/p&gt;
+&lt;code&gt;&lt;pre&gt;
+text 10x15 [white &quot;This is a string of raster aliased text&quot;]
+text 10x40 [white anti-alias on &quot;This is a string of raster anti-aliased text&quot;]
+pen off
+fill-pen red
+text vectorial 10x60 [&quot;This is a string of vectorial text&quot;]
+
+text 10x90 [anti-alias off font bold20 &quot;Font Size 20 - raster&quot;]
+
+text 10x120 [anti-alias on font bold20 &quot;Font Size 20 - raster AA&quot;]
+pen yellow
+fill-pen blue
+text 10x150 vectorial [font bold20 &quot;Font Size 20 - vectorial&quot;]
+
+&lt;/pre&gt;&lt;/code&gt;
+[[image:TEXT-1.png|TEXT example 1]]
+
+&lt;br&gt;
+&lt;p&gt;Vectorial text supports the '''pen''', '''fill-pen''', '''line-width''', and
+'''line-pattern''' settings.&lt;/p&gt;
+
+Note:  Once a color in richtext dialect block is defined text color is switched under control of the richtext dialect pens.
+
+&lt;code&gt;&lt;pre&gt;
+pen yellow
+line-width 2
+grad-pen 50x180 0 450 [255.0.0 255.255.0 0.255.0 0.255.255]
+text 0x15 vectorial [font bold36 &quot;Font Size 36 - vectorial&quot;]
+grad-pen off
+line-pattern red 5 5
+text vectorial 0x60 [font bold36 &quot;Patterned Text&quot;]
+&lt;/pre&gt;&lt;/code&gt;
+[[image:TEXT-2.png|TEXT example 2]]
+
+&lt;br&gt;

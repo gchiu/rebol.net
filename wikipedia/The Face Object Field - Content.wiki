@@ -1,0 +1,12 @@
+===Content===
+
+'''Style/content''' is an optional field used to create compound styles. The field holds a GUI draw dialect block that defines the layout of the compound style.
+
+For example, an area style has:
+
+    content: [
+        field-area :text-edit :text-color
+        scroller
+    ]
+
+Note that the content block within a style is also slightly different because get-words can be used to pass optional fields from the main face to the subfaces. Above the text-edit and text-color values are passed to the new field-area.

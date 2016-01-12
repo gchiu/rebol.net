@@ -1,0 +1,19 @@
+{| class=&quot;wikitable&quot;
+|+ Cookbook Reference Page
+! &lt;big&gt;Class&lt;/big&gt; !! &lt;big&gt;Documents&lt;/big&gt;
+|-
+! Usage
+|
+*[[Cookbooks|Cookbook List]]
+*[[Cookbook Changes|New Cookbooks and Recipes]]
+|-
+! Authoring
+|
+*[[About Cookbooks]]
+*[[Requested Cookbooks]]
+*[[List of Cookbook/Recipe Authors]]
+|-
+! See Also
+|
+*http://www.rebol.net/cookbook/
+|}

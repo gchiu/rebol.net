@@ -1,0 +1,27 @@
+{{Cookbook|title=Function Symmetry|author=Henrik Mikael Kristensen|level=1|category=}}
+
+REBOL has many functions for manipulating code and data in series and in blocks with the purpose of storing them either on disk or moving them across networks or media to have them restored to their original state later. An example is ENCLOAK. Its opposite is DECLOAK. Here's a table that describes such functions.
+
+Insert table here which describes the relationships between:
+
+*AS-STRING - AS-BINARY
+*COMPRESS - DECOMPRESS
+*DO - FORM
+*DO - TO-BLOCK
+*DO - TO-STRING
+*ENBASE - DEBASE
+*ENCLOAK - DECLOAK
+*ENTAB - DETAB
+*INPUT - PRINT
+*LOAD - FORM
+*LOAD - MOLD
+*LOAD - SAVE
+*READ - WRITE
+*TO-LOCAL-FILE - TO-REBOL-FILE
+
+
+I realize there might be 100s of combinations, but I hope also we can make a clear table of combinations that work well together.
+
+==Cookbook References==
+
+{{:Cookbook References}}

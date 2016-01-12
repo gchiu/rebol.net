@@ -1,0 +1,56 @@
+==Some Commercial Examples==
+
+In this page you will find a ''partial list'' of companies and developers using REBOL.
+Feel free to add yourself into these lists if you are a company or a developer working with REBOL.
+
+Please note this is not a full list as it is maintained under a volunteer basis. 
+
+
+{| class=&quot;wikitable&quot;
+! Company and homepage
+! Project
+|-
+|[http://www.altme.com/ AltMe]
+|AltMe, a messaging and cooperation system written in REBOL
+|-
+|[http://www.qtask.com Qtask]
+|Qtask, collaborative project and task management - backend written in REBOL
+|-
+|[http://www.digicamsoft.com/ Digicamsoft]
+|Producer of Reviewer, photo manager written in REBOL
+|-
+|[http://www.synapsedirect.com/ Synapse EMR]
+|Multi-user Electronic Medical Records system written in REBOL
+|-
+|[http://www.rockfactory.us/ Rockfactory Lesson Studios]
+|Commercial music lesson studio, scheduling system written in REBOL
+|-
+|[http://www.easybraine.be EasyBraine SA]
+|Custom ERP solutions written in REBOL
+|-
+|[http://www.saphirion.com Saphirion Ltd. &amp; Co. KG]
+|Producer of myValueDriver, Cost Analisys tool for goods and product to achive knowledge and conduct negotiations.
+|-
+|[http://www.refaktor.si Refaktor Ltd.]
+|Makers of [http://www.site-assistant.com Site Assistant], [https://www.cebelca.biz Cebelca.biz],[http://www.qwikitodo.com QwikiTodo], [http://www.qwikitxt.com QwikiTxt]. All are written in REBOL and Cheyenne
+|-
+|[http://www.softinnov.org Softinnov]
+|[http://cheyenne-server.org Cheyenne Web Server] in REBOL, free database drivers for REBOL ([http://softinnov.org/rebol/mysql.shtml MySQL], [http://softinnov.org/rebol/pgsql.shtml PostgreSQL])
+|-
+|[http://www.neosysta.com NEOSYSTA]
+|Professional services, IT developments and management softwares in REBOL (French Company)
+|}
+
+{| class=&quot;wikitable&quot;
+! Developer
+! Projects an Skills
+! Contact
+|-
+|
+|
+|
+|}
+
+'''Note: If you are under NDA, the projects you are working on could be a generic description and you could still be listed; however the adder retains full responsibility of the entry'''
+
+'''Note2: We suggest to add your contact in an antispam way like mymail on gmail_dot com'''

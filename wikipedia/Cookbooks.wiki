@@ -1,0 +1,279 @@
+{{Cookbook|title=Cookbook List|author=DocBase Crew|level=1|category=Reference}}
+List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http://www.rebol.net/cookbook/]. Please add your own ideas!
+
+==List of Cookbooks==
+
+===Audio Cookbook===
+
+*Playing a sound
+*Adjusting volume
+*Scrubbing in a sound file
+*Displaying a sound waveform
+*FFT analyzer
+
+
+===Console Cookbook===
+
+*Using a serial console on headless R3 host.
+*Write console output to disk
+*Knowing the user.r file
+*Getting Raw Keyboard Characters in the Console
+
+
+===Data Processing Cookbook===
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+*Convert Text File Formats (Line Terminators)
+*Search a File
+*Replace Text in a File
+*Create HTML Code
+*A Micro Database
+*Creating Text with Form, Mold, Join, etc.
+*Circular Series of Values
+*Reading Delimited Text Files (Like CSV)
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+*Lowercase Clipboard
+*HTML Thumbnail Photo Directory Maker
+*Tiny HTML to Text Converter
+*REBOL Parser in 10 Lines (plus Pretty Printer)
+*One Line Network Port Checker
+*DNS and Reverse DNS Lookup
+*Simple TCP Port-Forwarder
+*[[How to feed DECOMPRESS with correctly compressed data]]
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+
+
+===Dates and Times Cookbook===
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+*Time and Date Stamps
+*Computing Time Differences
+*Last Modified Date/Time (Within a REBOL Script)
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+*Calculate the age of a person
+*A Different Time(r)
+*Unix Date Format Converter
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+
+
+===Debugging Cookbook===
+
+*Use TRACE properly
+*PROBE, ??
+*Good debugging techniques
+*Simple Unit Test Tool
+*Stepping through a script
+
+
+===Documentation Cookbook===
+
+*[[About Cookbooks]]
+*[[Typographical Conventions]]
+
+
+===Embedded Cookbook===
+
+*Restricting memory usage in your scripts
+
+
+===Error Handling Cookbook===
+
+*Trapping Errors
+*Create Errors
+*Create user friendly error requesters
+
+
+===File Management Cookbook===
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+*Get a Directory File List
+*Copy all Files in a Directory
+*Match File Extensions
+*Writing a Program File (Executable)
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+*Retrieve Specific Lines from a File
+*Writing a Log File
+*Search a huge file
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+
+===Low- and Mid-Level Networking===
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+*Fetch Web Pages (Web HTTP Files)
+*Write a Protocol
+*[[TCP Port Examples]]
+*Two Simple Scripts Talking Over TCP
+*Uploading a File with HTTP (Post)
+*Automated FTP Script
+*Creating a Server Port
+*Simple Web Site Monitor
+*Multiple Web Site Monitor with Email Alerts
+*Fetch All IP Addresses
+*Using HTTP Cookies
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+*Tiny Web Server
+*Send Binary (Image) Using a TCP Socket
+*Raw HTTP Web Requests
+*Graphical Internet and Website Server Monitor
+*Telnet protocol
+*Streaming data
+*Simple Stock Ticker
+*Get Dictionary Entry
+*Google Search
+*[[TCP Port Details]]
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+
+===REBOL/Services===
+'''Source''' [http://www.rebol.com/docs/services/source.html]
+*[[REBOL/Services Tutorial]]
+*[[REBOL/Services Security]]
+*[[REBOL/Services Benefits]]
+
+===Rebcode===
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+*[[Rebcode Overview]]
+*REBOL To Rebcode Conversion
+*Using Rebcode To Generate Bitmaps
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+*Optimizing Rebcode
+*Mandelbrot Generator
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+
+===Low-Level Graphics Cookbook===
+
+*Using DRAW to create math graphs
+*Using DRAW to create 3D vector graphics
+*Simple Animation with View/Draw
+
+===VID Cookbook===
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+*Create a dynamic user interface
+*Write a style
+*Simple Text Form Window
+*Open Two Windows
+*Changing Text Font Attributes
+*Get and Set Text Fields
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+*Adding a Scrollbar to Text
+*Getting A Text List Value
+*Scrolling an Image
+*Scrolling a GUI Panel
+*Progress Bar
+*Mouse Move Events - Raw Over and Hover Events
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+
+===OpenGL Cookbook===
+
+*Creating a First Person View
+
+
+
+===Security Cookbook===
+
+*Strong Authentication Method
+*Cloaking (Encrypting) Strings
+*RSA Key Encryption over TCP
+
+===Scripting Cookbook===
+
+*Running scripts from OS console (not REBOL console)
+*Running scripts from the Gnome desktop
+*Storing Image Files in a Script (Embedded Images)
+*REBOL Scripts Embedded Within Web Pages
+*Good REBOL script headers
+*[[INCLUDE documentation]]
+
+===Plugin Cookbook===
+
+*Embed a script in a webpage
+*Use Plugin to navigate the DOM
+
+===Modules Cookbook===
+
+*Creating a Module
+
+===Tasking Cookbook===
+
+*Do's and Don'ts in tasking
+*Sending a Message to a Task
+
+
+
+===REBOL Internals Cookbook===
+
+*[[Decimals-64|64-bit Decimals]]
+
+===REBOL Language Cookbook===
+
+*Increment / Decrement a word value
+*Passing Single Values and Blocks to Functions
+*CASE
+*Exploring the SYSTEM object
+*Creating a new datatype
+*[[R2 vs. R3 Contexts]]
+
+
+
+===Numbers and Math Cookbook===
+
+*Explaining Math Precision
+*Using the money! datatype
+
+===Mediatypes Cookbook===
+
+*Creating a mediatype
+
+===System Cookbook===
+
+*[[Porting Recipe|Porting R3 to another OS]]
+*Making a device driver
+*The REBOL boot process
+
+
+
+===Windows Cookbook===
+
+*Reading Windows Shortcuts
+*Placing windows on multiple screens
+*Vista compatibility
+*Windows 95/98 compatibility
+*Reading NTFS timestamps
+*Using Network Drives
+*Creating icons for encapsulated R3 scripts
+
+===MacOSX Cookbook===
+&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+*Using the menubar in your REBOL apps
+*Using LaunchD to make an R3 script into a daemon
+*Understanding Application Packages
+*Sending files to Trash properly
+&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+*MacOSX Panther Compatibility
+*MacOSX Tiger Compatibility
+*MacOSX Leopard Compatibility
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+
+===Linux Cookbook===
+
+*Start an R3 script as a daemon under Debian
+*Making an RPM package from an R3 script
+*Making an APT package from an R3 script
+
+===R2 vs. R3 Cookbook===
+
+*[[R2 vs. R3 function list]]
+*[[How to do things the new Rebol 3 way]]
+*[[Changes between V2 and V3]]
+
+=== FAQ Cookbook ===
+
+*[[FAQ on Design of View]]
+*[[REBOL/Services FAQ]]
+
+
+
+===RT Developer Cookbook===
+
+*[[Mandatory Reading]]
+*[[Release Process]]
+*[[AltME Bug Tracker Structure]]
+
+==Cookbook References==
+
+{{:Cookbook References}}

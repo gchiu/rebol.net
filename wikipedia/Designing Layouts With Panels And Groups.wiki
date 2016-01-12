@@ -1,0 +1,1 @@
+'''The documentation for Panels can now be found here: [http://www.rebol.com/r3/docs/gui/panels.html &quot;R3 GUI Panels&quot;]'''

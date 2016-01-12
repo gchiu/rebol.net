@@ -1,0 +1,123 @@
+{| class=&quot;wikitable&quot;
+! width=&quot;10%&quot; | Command !! width=&quot;30%&quot; | arguments !! width=&quot;60%&quot; | Description
+|-
+!ADD
+|image! image!
+|
+|-
+!ALPHAMUL
+|image! integer!
+|
+|-
+!ASPECT
+|image! word! word! decimal!
+|
+|-
+!BLUR
+|image!
+|
+|-
+!COLORIZE
+|image! tuple! integer!
+|
+|-
+!CONVOLVE
+|image! block! decimal! integer! logic!
+|
+|-
+!CONTRAST
+|image! integer!
+|
+|-
+!CROP
+|image! pair! pair!
+|
+|-
+!DIFFERENCE
+|image! image! tuple!
+|
+|-
+!EMBOSS
+|image!
+|
+|-
+!EXTEND
+|image! pair! pair!
+|
+|-
+!FIT
+|image! word! word! decimal!
+|
+|-
+!FLIP
+|image! pair!
+|
+|-
+!GRADCOL
+|image! pair! tuple! tuple!
+|
+|-
+!GRADIENT
+|image! pair! tuple! tuple!
+|
+|-
+!GRADMUL
+|image! pair! tuple! tuple!
+|
+|-
+!GRAYSCALE
+|image!
+|
+|-
+!HSV
+|image! tuple!
+|
+|-
+!INVERT
+|image!
+|
+|-
+!KEY
+|image! tuple!
+|
+|-
+!LUMA
+|image! integer!
+|
+|-
+!MIX
+|image! image!
+|
+|-
+!MULTIPLY
+|image! image! tuple! integer!
+|
+|-
+!REFLECT
+|image! pair!
+|
+|-
+!ROTATE
+|image! integer!
+|
+|-
+!SHADOW
+|image! pair! pair! tuple! decimal! word!
+|
+|-
+!SHARPEN
+|image!
+|
+|-
+!TILE
+|image! pair!
+|
+|-
+!TILE-VIEW
+|image!
+|
+|-
+!TINT
+|image! integer!
+|
+|}

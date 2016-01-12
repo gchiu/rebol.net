@@ -1,0 +1,215 @@
+'''Author: Ladislav Mecir'''
+
+There have been numerous discussions on the REBOL mailing list covering this subject. I decided to summarize some of the information to have at hand for future use.
+
+==Regular expressions==
+Regular expressions are designed to describe regular grammars, i.e. a regular grammar is a grammar that can be described using a regular expression.
+
+Example:
+ a*bc*
+
+There is another definition: A regular grammar is a grammar that can be described by a [http://en.wikipedia.org/wiki/Formal_grammar generative grammar] having every rule of the kind:
+ X &amp;rarr; wY
+or
+ X &amp;rarr; w
+, where X and Y are nonterminal symbols, while w is a word containing only terminal symbols. That is why regular grammars are called &quot;right linear grammars&quot; too.
+
+The above example grammar can be translated to:
+ S &amp;rarr; aS
+ S &amp;rarr; bC
+ C &amp;rarr; cC
+ C &amp;rarr; &amp;epsilon;
+
+Every regular expression can be easily transliterated to obtain the corresponding right-linear grammar as well as the corresponding parse expression.
+
+Warning: Don’t be confused by notions like &quot;Perl’s regular expressions&quot; or &quot;Python’s regular expressions&quot; etc. These &quot;regular expressions&quot; actually are ''enhanced regular expressions''. They use generalizations of regular expressions, i.e. they aren’t regular expressions in the strict meaning of the notion. As an illustration see the example of a context dependent grammar below using Perl’s regular expression. On the other hand, it is straightforward to describe any regular grammar using Perl’s regular expression.
+
+==Parsing expression grammars and parse expressions==
+For the definition of PEGs see the [http://en.wikipedia.org/wiki/Parsing_expression_grammar PEG] Wikipedia page.
+
+To notice that the ''parse expressions'' and PEGs are related it suffices to find out that the constructs they use are equivalent:
+{| class=&quot;wikitable&quot; border=&quot;1&quot;
+!Name
+!PEG expression
+!Equivalent parse expression
+|-
+|Trivial success
+|&amp;epsilon;
+|none
+|-
+|Sequence
+|e1 e2
+|e1 e2
+|-
+|Ordered choice
+|e1 / e2
+|&lt;nowiki&gt;e1 | e2&lt;/nowiki&gt;
+|-
+|Zero or more
+|e*
+|any e
+|-
+|One or more
+|e+
+|some e
+|-
+|Optional
+|e?
+|opt e
+|-
+|And-predicate
+|&amp;e
+|&lt;nowiki&gt;[e (cont: none) | (cont: [end skip])] [end skip] | cont&lt;/nowiki&gt;&lt;br&gt;and e
+|-
+|Not-predicate
+|!e
+|&lt;nowiki&gt;[e (cont: [end skip]) | (cont: none)] cont&lt;/nowiki&gt;&lt;br&gt;not e
+|-
+|}
+Notes:
+
+*a much simpler recursion-unsafe equivalent of the PEG ''and'' predicate is:
+ here: e :here
+
+*In case of the ''and'' and ''not'' predicates, the first variant works in R2 as well as in R3, the second variant is available only in R3.
+
+==Context free grammar==
+Let’s see a simple example of a context free grammar. This is a generative grammar that describes a (possibly empty) correctly parenthesized expression:
+
+Terminal symbols:
+ (
+ )
+Non terminal symbols and their meaning:
+ S - start
+Rules:
+ S &amp;rarr; &quot;(&quot;S&quot;)&quot;S
+ S &amp;rarr; &amp;epsilon;
+A PEG description of such a grammar is:
+ S &amp;larr; &quot;(&quot;S&quot;)&quot;S/&amp;epsilon;
+, or, alternatively:
+ S &amp;larr; (&quot;(&quot;S&quot;)&quot;)*
+
+===Purely recursive Parse dialect description===
+ expression: [&quot;(&quot; expression &quot;)&quot; expression | none]
+Note: This is equivalent to the first PEG rule above.
+
+Usage:
+ parse/all &quot;()&quot; expression ; == true
+
+===A Parse dialect description using the ANY keyword===
+ expression: [any [&quot;(&quot; expression &quot;)&quot;]]
+Note: This is equivalent to the second PEG rule above.
+
+===A description using regular expression===
+This grammar is not a regular grammar, therefore it cannot be described using a regular expression.
+
+Some programming languages (e.g. Perl) have a built-in parser that can be called an enhanced regular expression parser, because it can parse more complicated grammars than regular.
+
+Here is an implementation using PERL5 enhanced regular expression:
+ &lt;nowiki&gt;while ($test =~ /\([^\(*.)]+\)/) {
+    $test=~ s/\([^\(*.)]+\)//g;
+}&lt;/nowiki&gt;
+
+==More complicated context free grammar==
+This generative grammar describes a (possibly empty) correctly parenthesized expression with two kinds of parentheses.
+
+Terminal symbols:
+ (
+ )
+ [
+ ]
+
+Non terminal symbols and their meaning:
+ S - start
+Rules:
+ S &amp;rarr; &quot;(&quot;S&quot;)&quot;S
+ S &amp;rarr; &quot;[&quot;S&quot;]&quot;S
+ S &amp;rarr; &amp;epsilon;
+
+===PARSE dialect===
+ &lt;nowiki&gt;expression2: [
+    &quot;(&quot; expression2 &quot;)&quot; expression2
+    | &quot;[&quot; expression2 &quot;]&quot; expression2
+    | none
+]&lt;/nowiki&gt;
+Usage:
+ parse &quot;&quot; expression2 ; == true
+ parse &quot;()&quot; expression2 ; == true
+ parse &quot;[]&quot; expression2 ; == true
+ parse &quot;[(])&quot; expression2 ; == false
+Note: Using the equivalence table it is easy to transform the above PARSE rule to a PEG.
+
+==An unrestricted grammar==
+Perl’s enhanced regular expression parser can parse even complicated languages. Let’s take an expression:
+ /(.+)\1+$/
+, which describes a text containing a repeated group of characters at its end (one or more characters, repeated two or more times consecutively).  Examples:
+ &quot;my doggyoggy&quot;
+
+ &quot;has as as as as &quot;
+
+ &quot;fleasssssss&quot;
+It looks pretty simple. How can we do it in Rebol?
+
+===PARSE rules===
+PARSE rules may look as follows:
+ &lt;nowiki&gt;repeated-group?: [
+    ; is the input non-empty?
+    here: skip :here
+    (group-length: (length? :here) / 2)
+    copy group group-length skip
+    group
+    | ; did not succeed, skip two characters and try again
+    2 skip repeated-group?
+]
+
+rules: [
+    ; skip an odd character, if any
+    opt [skip here: any [2 skip] end :here]
+    repeated-group?
+]&lt;/nowiki&gt;
+Note: these rules are not easy to translate to PEG, since they use REBOL run-time evaluation (notice the parens) and copy the input.
+
+===Generative grammar===
+Terminal symbols (using just two to simplify the rules):
+ a
+ b
+Non-terminal symbols:
+ S - start
+ E - end marker of the first group
+ F - end marker of the second group
+ T - transport marker
+Rules:
+ ; the string can start with any number of terminal symbols:
+ S &amp;rarr; aS
+ S &amp;rarr; bS
+ ; we need two equal non-empty groups at the end
+ S &amp;rarr; aEaF
+ S &amp;rarr; bEbF
+ ; we can add a terminal symbol to the end of the first group,
+ ; which has to be added to the end of the second group:
+ E &amp;rarr; aEaT
+ E &amp;rarr; bEbT
+ ; T &quot;transports&quot; terminals towards the end of the second group:
+ aTa &amp;rarr; aaT
+ aTb &amp;rarr; baT
+ bTa &amp;rarr; abT
+ bTb &amp;rarr; bbT
+ ; the transport stops at the end of the second group:
+ TF &amp;rarr; F
+ ; we can erase group end markers when done:
+ E &amp;rarr; &amp;epsilon;
+ F &amp;rarr; &amp;epsilon;
+
+==Summary==
+Although somebody may say that the generative grammars are purely descriptive means for language definition, it isn’t always so. In the previous section we have seen that the generative grammar had some “procedural” properties.
+
+What about REBOL Parse dialect? Is it descriptive, procedural or “hybrid”?
+
+At the first sight it looks descriptive, but there is evidence supporting a point of view that it is purely procedural and the descriptive look is just an illusion.
+
+The procedurality of the dialect may be demonstrated by the fact that the choice rule is order-dependent (the [a | b] construct isn’t generally equivalent to the [b | a] construct), it isn’t distributive (the [[a | b] c] construct isn’t generally equivalent to the [a c | b c] construct), it has simple backtracking, rules are greedy, etc.
+
+==See also==
+
+*The [[Parse_Project|Parse Project]] for more information about Parse and proposals for the future.
+*The [http://en.wikibooks.org/wiki/REBOL_Programming/Language_Features/Parse Parse] article in the [http://en.wikibooks.org/wiki/REBOL_Programming REBOL programming] wikibook.
