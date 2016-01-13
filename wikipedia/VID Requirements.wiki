@@ -7,7 +7,7 @@ learned not only the strengths of the dialect approach to describing
 graphical user interfaces, but also some of the weaknesses when there
 is perhaps too much freedom for new users.
 
-'''This project is to design a new VID for REBOL 3.''' Yes, we have
+'''This project is to design a new VID for Rebol 3.''' Yes, we have
 limited time to build it, but I think we have a good idea what we want,
 and how best to construct it. That is the advantage of 6 years of
 experience.

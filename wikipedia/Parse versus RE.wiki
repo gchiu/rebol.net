@@ -1,6 +1,6 @@
 '''Author: Ladislav Mecir'''
 
-There have been numerous discussions on the REBOL mailing list covering this subject. I decided to summarize some of the information to have at hand for future use.
+There have been numerous discussions on the Rebol mailing list covering this subject. I decided to summarize some of the information to have at hand for future use.
 
 ==Regular expressions==
 Regular expressions are designed to describe regular grammars, i.e. a regular grammar is a grammar that can be described using a regular expression.
@@ -167,7 +167,7 @@ rules: [
     opt [skip here: any [2 skip] end :here]
     repeated-group?
 ]</nowiki>
-Note: these rules are not easy to translate to PEG, since they use REBOL run-time evaluation (notice the parens) and copy the input.
+Note: these rules are not easy to translate to PEG, since they use Rebol run-time evaluation (notice the parens) and copy the input.
 
 ===Generative grammar===
 Terminal symbols (using just two to simplify the rules):
@@ -203,7 +203,7 @@ Rules:
 ==Summary==
 Although somebody may say that the generative grammars are purely descriptive means for language definition, it isn’t always so. In the previous section we have seen that the generative grammar had some “procedural” properties.
 
-What about REBOL Parse dialect? Is it descriptive, procedural or “hybrid”?
+What about Rebol Parse dialect? Is it descriptive, procedural or “hybrid”?
 
 At the first sight it looks descriptive, but there is evidence supporting a point of view that it is purely procedural and the descriptive look is just an illusion.
 
@@ -212,4 +212,4 @@ The procedurality of the dialect may be demonstrated by the fact that the choice
 ==See also==
 
 *The [[Parse_Project|Parse Project]] for more information about Parse and proposals for the future.
-*The [http://en.wikibooks.org/wiki/REBOL_Programming/Language_Features/Parse Parse] article in the [http://en.wikibooks.org/wiki/REBOL_Programming REBOL programming] wikibook.
+*The [http://en.wikibooks.org/wiki/Rebol_Programming/Language_Features/Parse Parse] article in the [http://en.wikibooks.org/wiki/Rebol_Programming Rebol programming] wikibook.

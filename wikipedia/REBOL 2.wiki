@@ -4,25 +4,25 @@ __NOTOC__
 {| style="width:85%; border:1px solid SlateBlue; background:Cornsilk; color:black; padding:1em; font-size:120%; margin:1px auto;"
  |-
  |
-'''[[REBOL_2#What Is REBOL|Introduction]]''' 
+'''[[Rebol_2#What Is Rebol|Introduction]]''' 
 
-'''[[R2_Getting_Started|Getting Started With REBOL]] <small>''start here''</small>
+'''[[R2_Getting_Started|Getting Started With Rebol]] <small>''start here''</small>
 
 '''[[R2_Documentation|Documentation]]'''
 
-'''[[R2_on_the_net|REBOL on the net]]'''
+'''[[R2_on_the_net|Rebol on the net]]'''
 
-'''[[R2_code|REBOL2 Examples]]'''
+'''[[R2_code|Rebol2 Examples]]'''
 
 '''[http://www.rebol.net/builds/ Alpha & Beta Releases]
  |
-'''[[R2_projects|REBOL Projects]]'''
+'''[[R2_projects|Rebol Projects]]'''
 
 '''[[R2_companies|Some Commercial Examples]]'''
 
 '''[[Users|Who is Who]]'''
 
-'''[[R2_migrating_to_R3|Migrating to REBOL3]]'''
+'''[[R2_migrating_to_R3|Migrating to Rebol3]]'''
 
 '''[[View|View]]'''
 
@@ -35,37 +35,37 @@ __NOTOC__
 <!-- END CONTENTS BOX -->
 
 
-==What is REBOL==
+==What is Rebol==
 
-REBOL is a data exchange language and a programming language, but if you are here you probably already know this.<BR>
+Rebol is a data exchange language and a programming language, but if you are here you probably already know this.<BR>
 It is an interpreted language in which the interpreter loads your program (henceforth called a script) in memory and executes it.<BR><BR>
-Some points about REBOL:<BR>
+Some points about Rebol:<BR>
 
-REBOL 2 was released in 1999.<BR>
-*REBOL scripts are short and expressive. In a single line you can write an entire program.
+Rebol 2 was released in 1999.<BR>
+*Rebol scripts are short and expressive. In a single line you can write an entire program.
 *The language can be extended with "dialects" that enable the programmer to add new WORDS for specific domains.
 *It is multi-platform. The same script can run on many OS's with no changes.
 *It includes a GUI system for light or heavy applications.
 *It is FAST. With a single loop you can search for an entry in a million of records in less than a second.
 
-REBOL has been created by one of the gurus of the computing world - [[User:Carl|'''Carl Sassenrath''']].<BR><BR>
+Rebol has been created by one of the gurus of the computing world - [[User:Carl|'''Carl Sassenrath''']].<BR><BR>
 
 See http://en.wikipedia.org/wiki/Rebol
 
-==Why REBOL==
+==Why Rebol==
 
-'''Why use REBOL?'''
+'''Why use Rebol?'''
 
-* Tired of installs that consume gigabytes and take hours to configure? REBOL setup is very fast: download the interpreter, run it and the REBOL environment is ready.
+* Tired of installs that consume gigabytes and take hours to configure? Rebol setup is very fast: download the interpreter, run it and the Rebol environment is ready.
 * Create applications in less time with its highly expressive yet concise syntax. Download and process an entire web page in one line of code.
 * Connect to the X Internet.
 
-==REBOL 2 or REBOL 3?==
+==Rebol 2 or Rebol 3?==
 
-REBOL 3 is currently under [[R3_Releases|development]]. The concepts are essentially those of REBOL 2, but it has been extended in many ways.
+Rebol 3 is currently under [[R3_Releases|development]]. The concepts are essentially those of Rebol 2, but it has been extended in many ways.
 
-For any production work, you should use REBOL 2 as it is a complete and quite stable. The adventurous might want to experiment with REBOL 3 in its present state, with the expectation that there will be bugs and undocumented areas to deal with.
+For any production work, you should use Rebol 2 as it is a complete and quite stable. The adventurous might want to experiment with Rebol 3 in its present state, with the expectation that there will be bugs and undocumented areas to deal with.
 
-Once comfortable with REBOL 2, the changes in REBOL 3 should present no difficulty, and by that time REBOL 3 should be ready for you with a more stable base.
+Once comfortable with Rebol 2, the changes in Rebol 3 should present no difficulty, and by that time Rebol 3 should be ready for you with a more stable base.
 
 {{Need|Rework all subpages for a better look and add text, they are too short}}

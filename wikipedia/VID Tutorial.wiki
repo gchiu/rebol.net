@@ -2,11 +2,11 @@
 {| align="right"
 | __TOC__
 |}
-Here is the quick shortcut for getting started using VID in REBOL 3.0.
+Here is the quick shortcut for getting started using VID in Rebol 3.0.
 
 ==Basic Concepts==
 
-'''VID''' stands for '''Visual Interface Dialect'''.  It is a subsystem of REBOL for rapidly creating user interfaces.
+'''VID''' stands for '''Visual Interface Dialect'''.  It is a subsystem of Rebol for rapidly creating user interfaces.
 
 To understand VID you must understand these basic concepts:
 
@@ -19,7 +19,7 @@ We will describe each of these below.
 
 ==Quick Example==
 
-Ok, try it out. Run REBOL 3, and at the prompt, enter this line:
+Ok, try it out. Run Rebol 3, and at the prompt, enter this line:
 
  view [button "Click Here" [unview none]]
 
@@ -27,7 +27,7 @@ This will open a window and display a single button. When you click on the butto
 
 This line helps show three of the above concepts:
 
-#The words '''view''' and '''unview''' are ''functions''. They are normal REBOL functions. They are used to open and close a window on the screen.
+#The words '''view''' and '''unview''' are ''functions''. They are normal Rebol functions. They are used to open and close a window on the screen.
 #The word '''button''' is a ''style''. It is a way of specifying an clickable button, including how it looks and acts. Some systems call this a widget or gadget, but as you will find out, styles are actually more flexible, like the CSS used in HTML web pages.
 #The block [ ] that surrounds the button style is a ''group''. You will build interfaces by using groups within groups to build a ''layout''. We'll show you many more examples.
 
@@ -162,7 +162,7 @@ They will display like this:
 {{need|example image}}
 -->
 {{need|Deal with the commented section here.  Carl's example was cleaner, but the groupings allowed a screen capture}}
-{{caution|about logo.gif;  The line  pen logo.gif will not work in the REBOL Alpha.  It can be worked around by using<br>  >> save/all %/tmp/logo.gif logo.gif  <br>from REBOL/View 1.3.2.  Then <br> >> logo.gif: load %/tmp/logo.gif <br> in the alpha.}}
+{{caution|about logo.gif;  The line  pen logo.gif will not work in the Rebol Alpha.  It can be worked around by using<br>  >> save/all %/tmp/logo.gif logo.gif  <br>from Rebol/View 1.3.2.  Then <br> >> logo.gif: load %/tmp/logo.gif <br> in the alpha.}}
 <pre>
 view [
     h1 "Style Examples"

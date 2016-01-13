@@ -9,7 +9,7 @@ We aim to expand the gob API. As some ideas get implemented or revised, this doc
 ====Why?====
 Its not because we use an alternate graphic engine that we want to relinquish the use of View's easy to use graphic engine.
 
-This is even more true when we want to use a *REBOL* GUI package and just embed some other graphic system into the same window.
+This is even more true when we want to use a *Rebol* GUI package and just embed some other graphic system into the same window.
 
 ====A quick note about the R3 rendering pipeline====
 The R3 view has basically 3 levels of graphic management, only one which is directly accessible from within the interpreter.

@@ -4,7 +4,7 @@ The [http://tryruby.sophrinix.com/ "Try Ruby!"] site is very popular in the Ruby
 
 Thanks to the work of [http://esperconsultancy.nl/ Esper Consultancy], various Rebol interpreters can currently be [http://tryrebol.esperconsultancy.nl/ tried online].  However there is not yet an integrated tutorial, and users are left for fend for themselves in finding what statements to try.  This page is a starting point for a narrative which could serve as a guided tour of the ideas in Rebol, inspired by what Try Ruby! has achieved.
 
-As food for thought, you may want to look over the HTML file [http://github.com/Sophrinix/TryRuby/blob/master/public/tutorials/intro.html with all the text of Try Ruby!s tutorial].  It includes inline the regular expressions it is scanning for to cue the next step.  Wikipedia's "Wikibook" on [http://en.wikibooks.org/wiki/REBOL_Programming/Programming_in_REBOL The Programming in Rebol] contains some inspiration for code samples and writing copy.
+As food for thought, you may want to look over the HTML file [http://github.com/Sophrinix/TryRuby/blob/master/public/tutorials/intro.html with all the text of Try Ruby!s tutorial].  It includes inline the regular expressions it is scanning for to cue the next step.  Wikipedia's "Wikibook" on [http://en.wikibooks.org/wiki/Rebol_Programming/Programming_in_Rebol The Programming in Rebol] contains some inspiration for code samples and writing copy.
 
 = Introduction =
 

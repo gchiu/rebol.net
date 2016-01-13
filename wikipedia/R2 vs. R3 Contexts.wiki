@@ -2,7 +2,7 @@
 
 Let's think of a context as a being block of words and an associated block of values (close enough for our purposes). You can only bind a word to a context if it is in that word block.
 
-== REBOL 2 Contexts ==
+== Rebol 2 Contexts ==
 
 R2 just has one kind of context (two if you include the autoexpand context used by system/words). Functions, objects and USE all use this type of context, and words are bound to this kind of context.
 
@@ -10,7 +10,7 @@ A function! in R2 gets one of these contexts and the words in its code block are
 
 The only difference between object! contexts and function! or USE contexts is that the word 'self is added to them.
 
-== REBOL 3 Functions ==
+== Rebol 3 Functions ==
 
 In R3, there is at least one more context type: stack-relative, which is used by the function! type. All of the words bound to a function! resolve their bindings relative to the context in the executing stack frame, rather than directly. When a function starts it allocates a context on the stack; when it ends it deallocates the context. This means that the real context of the words bound to a function context only exists while the function is running - there is no point to referring to these words outside of the function.
 
@@ -18,7 +18,7 @@ Although the stack indirection slows down word references around 28%, it speeds 
 
 This slowdown in function word references is the reason that R2-style Rebcode doesn't make as much sense to add to R3 without some changes to its semantic model to make up for the difference in speed.
 
-== REBOL 3 Closures ==
+== Rebol 3 Closures ==
 
 A closure! in R3 is like a USE call in R2 (USE in R3 is implemented using closure!). When the closure starts, it creates a new context and bind/copy's the code block to it. Words bound to this new context can then be returned from the closure or assigned as word values, and their bindings will still be valid. Closures are useful for generators, partial application and other functional programming tricks.
 
@@ -26,7 +26,7 @@ When called, a closure repeats most of the overhead of creating the closure in t
 
 If you bind an external word to a closure's context before the closure is called, that binding will not be updated when the closure is called unless the word is in the closure's code block, not an easy task to accomplish from the outside. Many of the in-place code modification tricks used in R2 don't work in R3 for security reasons, so it's best to expect that any such code will need to be rewritten anyways.
 
-== REBOL 3 Objects ==
+== Rebol 3 Objects ==
 
 In R3, object! contexts are like the R2 system/words context: They can expand, but not shrink; closure! and function! contexts can't expand though. Object words are direct-bound. There will be further changes to the way object! contexts work as the semantics of objects are refined, and thread-safety is considered. Module contexts will behave the same way.
 

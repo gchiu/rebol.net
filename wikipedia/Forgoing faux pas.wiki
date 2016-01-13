@@ -1,14 +1,14 @@
-===Some common missteps while learning REBOL===
+===Some common missteps while learning Rebol===
 
-This page may help you avoid some of the idiosyncracies in the REBOL language
+This page may help you avoid some of the idiosyncracies in the Rebol language
 
 If something tripped you up, please <span class="plainlinks">[http://rebol.net/w/index.php?title=Forgoing_faux_pas&action=edit&section=new add]</span> it here.  &lowast;''Please start each topic with wikitext <nowiki>==topic==</nowiki> two equal sign headings.''
 
-See &bull; [[Handy Idioms]] &bull; for some nice and positive REBOL tips and tricks.
+See &bull; [[Handy Idioms]] &bull; for some nice and positive Rebol tips and tricks.
  
 ==none==
 
-REBOL is a value-centric language. This can lead to some little confusion with certain values and certain types. '''none''' is one of those special cases.
+Rebol is a value-centric language. This can lead to some little confusion with certain values and certain types. '''none''' is one of those special cases.
 
   >> a: none
   == none
@@ -24,8 +24,8 @@ So far so good.  The source text ''none'' when evaluated is the value '''none'''
   >> type? a
   == word!
 
-Huh?  This time the source text ''none'' hasn't been evaluated (due to the nature of how REBOL handles blocks ... the source has been loaded but not yet evaluated ... a subtle but critical difference) so it's still just a word, with a type of word!.
-There are few ways around this.  All [[#yesno|<small>(well almost all)</small>]] REBOL values have what is called a ''lexical form''.  These can be seen with '''mold/all'''.  These ''serialized'' formats are what REBOL detects as the '''load'''able forms.
+Huh?  This time the source text ''none'' hasn't been evaluated (due to the nature of how Rebol handles blocks ... the source has been loaded but not yet evaluated ... a subtle but critical difference) so it's still just a word, with a type of word!.
+There are few ways around this.  All [[#yesno|<small>(well almost all)</small>]] Rebol values have what is called a ''lexical form''.  These can be seen with '''mold/all'''.  These ''serialized'' formats are what Rebol detects as the '''load'''able forms.
 
   >> a: none
   == none
@@ -36,28 +36,28 @@ There are few ways around this.  All [[#yesno|<small>(well almost all)</small>]]
   >> mold/all a
   == "none"
 
-This is a minor point, but the word ''none'' (type word!) needs to be evaluated to become the value '''none''' (type none!).  So if you edit a configuration file with a text editor and put in a ''none'' thinking that '''none''' is a good default and then LOAD the file, what gets loaded is a ''word!''.  This word will test true inside an IF or EITHER expression, even though it looks like '''none''', it isn't; not yet.  One way is to evaluate the load with DO LOAD %file, but a safer REBOL way is to use the ''lexical form'', and avoid the DO. <span style="color: #800000;">Practice safe computing; only '''DO''' what you know to be good.</span> The source text ''#[none]'' is loaded by REBOL as the value '''none''' with a type of none!, no ambiguity involved, for human or computer.
+This is a minor point, but the word ''none'' (type word!) needs to be evaluated to become the value '''none''' (type none!).  So if you edit a configuration file with a text editor and put in a ''none'' thinking that '''none''' is a good default and then LOAD the file, what gets loaded is a ''word!''.  This word will test true inside an IF or EITHER expression, even though it looks like '''none''', it isn't; not yet.  One way is to evaluate the load with DO LOAD %file, but a safer Rebol way is to use the ''lexical form'', and avoid the DO. <span style="color: #800000;">Practice safe computing; only '''DO''' what you know to be good.</span> The source text ''#[none]'' is loaded by Rebol as the value '''none''' with a type of none!, no ambiguity involved, for human or computer.
 
-This is true of all REBOL words, values and types; but ''none'' can be a little trickier when you are starting out.
-{{Hilight|For a more detailed discussion of what is involved here; please check out this Wikibook article on the REBOL [[wikibooks:REBOL_Programming/Advanced/Interpreter|Interpreter]]}}
+This is true of all Rebol words, values and types; but ''none'' can be a little trickier when you are starting out.
+{{Hilight|For a more detailed discussion of what is involved here; please check out this Wikibook article on the Rebol [[wikibooks:Rebol_Programming/Advanced/Interpreter|Interpreter]]}}
 
 <span id="yesno"></span>
 ===Yes and No===
 
-There are a few special cases of REBOL source text that do not have equivalent lexical forms.  ''yes'' and ''no'' as well as ''on'' and ''off'' will mold/all to '''#[true]''' and '''#[false]'''.
+There are a few special cases of Rebol source text that do not have equivalent lexical forms.  ''yes'' and ''no'' as well as ''on'' and ''off'' will mold/all to '''#[true]''' and '''#[false]'''.
 
 ==false and zero==
 
-Just so you know.  In REBOL, '''''zero is not false'''''. '''zero''' is a value (0) of type integer! and is ''true''. So
+Just so you know.  In Rebol, '''''zero is not false'''''. '''zero''' is a value (0) of type integer! and is ''true''. So
 
   >> if 0 [print "true"]
   == true
 
-The only expressions that test ''false'' in REBOL are '''false''' and '''none''', and by that it is the values '''false''' (type logic!) and '''none''' (type none!).  Be careful with unevaluated words ''false'' and ''none'' as these are of type word! and they will test as ''true''.
+The only expressions that test ''false'' in Rebol are '''false''' and '''none''', and by that it is the values '''false''' (type logic!) and '''none''' (type none!).  Be careful with unevaluated words ''false'' and ''none'' as these are of type word! and they will test as ''true''.
 
 ==The COPY Trap==
 
-REBOL does whatever it can to avoid copying data. This saves memory and speeds up the code. In most cases, data is not copied unless you specify it. This can lead to some interesting bugs in your code, if you are not careful when APPENDing, INSERTing or using other operations on a series!.
+Rebol does whatever it can to avoid copying data. This saves memory and speeds up the code. In most cases, data is not copied unless you specify it. This can lead to some interesting bugs in your code, if you are not careful when APPENDing, INSERTing or using other operations on a series!.
 
   >> a: [1]
   == [1]
@@ -91,7 +91,7 @@ But if you run it multiple times, you get:
   >> f
   == [1 1 1]
 
-We didn't copy the block. REBOL is aggressively reusing the very same memory area for the T block, even if T is local to the function and therefore T just acculumates 1's. To solve this, simply copy the block first. This forces the block to be re-allocated every time you run the function.
+We didn't copy the block. Rebol is aggressively reusing the very same memory area for the T block, even if T is local to the function and therefore T just acculumates 1's. To solve this, simply copy the block first. This forces the block to be re-allocated every time you run the function.
 
   >> f: has [t] [t: copy [] append t 1]
   >> f

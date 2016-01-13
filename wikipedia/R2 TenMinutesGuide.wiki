@@ -9,9 +9,9 @@ Download Rebol for your platform, install it if required and start the interpret
 
 Now you are in front of the Rebol Console. It should appear something like this:
 
- REBOL/View 2.7.5.3.1 20-Mar-2007
- Copyright 2000-2007 REBOL Technologies.  All rights reserved.
- REBOL is a trademark of REBOL Technologies. WWW.REBOL.COM
+ Rebol/View 2.7.5.3.1 20-Mar-2007
+ Copyright 2000-2007 Rebol Technologies.  All rights reserved.
+ Rebol is a trademark of Rebol Technologies. WWW.Rebol.COM
  >>
 
 The '''>>''' is the console prompt. You can start writing your first line of Rebol code after it.
@@ -166,4 +166,4 @@ The result is
 
  '''myword'''
 
-The apex instructs the REBOL interpreter to not reduce the word but use it literally !
+The apex instructs the Rebol interpreter to not reduce the word but use it literally !

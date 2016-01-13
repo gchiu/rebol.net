@@ -1,10 +1,10 @@
-This is a technical document describes the lower-level REBOL event system that is used for all types of ports, including networking and the user interface. (For specific information about higher-level GUI events, see the [http://www.rebol.com/r3/docs/gui/gui.html R3 GUI] documentation.)
+This is a technical document describes the lower-level Rebol event system that is used for all types of ports, including networking and the user interface. (For specific information about higher-level GUI events, see the [http://www.rebol.com/r3/docs/gui/gui.html R3 GUI] documentation.)
 
 ==Definition==
 
-In general, the event system operates similar to the I/O kernel of an operating system. Events isolate I/O port actions from their asynchronous requests and results. Events are a signaling mechanism. We call them ''events'' because they include more than just signal information, but also specific REBOL port and device state information as well.
+In general, the event system operates similar to the I/O kernel of an operating system. Events isolate I/O port actions from their asynchronous requests and results. Events are a signaling mechanism. We call them ''events'' because they include more than just signal information, but also specific Rebol port and device state information as well.
 
-Each time an I/O operation occurs, such as reading from a network device, a precise sequence of events occur to coordinate the interaction between the I/O devices, their ports (REBOL language programming model), and the end-user application.
+Each time an I/O operation occurs, such as reading from a network device, a precise sequence of events occur to coordinate the interaction between the I/O devices, their ports (Rebol language programming model), and the end-user application.
 
 ===An example===
 
@@ -21,7 +21,7 @@ However, if you create a new port scheme or I/O device, you will need to underst
 
 The Event! datatype holds events.
 
-Event is a direct datatype holding its value within its REBOL value (like integer! and pair!) not a reference datatype. This makes it more efficient, requiring no allocation for most event situations.
+Event is a direct datatype holding its value within its Rebol value (like integer! and pair!) not a reference datatype. This makes it more efficient, requiring no allocation for most event situations.
 
 The main event fields are:
 
@@ -49,7 +49,7 @@ The WAIT function can wait on events from one port, multiple ports, or a timer. 
 
 The WAIT function will return a block of ports that have satisfied their WAIT conditions, or NONE in the case of timeout.
 
-'''The WAIT function is critical to event processing.''' By calling WAIT, you are allowing all types of events to be processed. During that processing additional REBOL code is called via the AWAKE functions that are specified for each port.
+'''The WAIT function is critical to event processing.''' By calling WAIT, you are allowing all types of events to be processed. During that processing additional Rebol code is called via the AWAKE functions that are specified for each port.
 
 Note that when you call WAIT, you allow all events to process, not just the ones that you specify in the WAIT argument. For example, if you are running a GUI, but you wait for a network TCP port, the GUI events will be processed during the WAIT.
 
@@ -116,7 +116,7 @@ When an event is found above (in WAIT), this occurs:
 #This system port examines its events queue (a block in the state field).
 #The system port examines its wake list (a block in the data field).
 #If both are empty, no wake is needed, return.
-#If port found on either above list, call the system port awake function (see REBOL code below).
+#If port found on either above list, call the system port awake function (see Rebol code below).
 #If an event has happened, call the AWAKE function for its related port. Note that this will happen even for ports not specified in the WAIT code above. Port AWAKE functions evaluate independently and in the order they were queued.
 #Append any new AWAKE ports to the WAKE list.
 #Update the WAIT port list (just one port in this case, TCP). If the event did not happen, it will be removed from the list (the result returned from WAIT).
@@ -200,7 +200,7 @@ The GUI event port's AWAKE function is called for each event.
 
 ==Timestamping==
 
-REBOL 3 removes timestamps from the EVENT datatype (note, timestamps, not timers). In most cases, timestamps are not used, so they just serve to slow the event system down.
+Rebol 3 removes timestamps from the EVENT datatype (note, timestamps, not timers). In most cases, timestamps are not used, so they just serve to slow the event system down.
 
 If we discover that timestamps are necessary for specific types of events, we can add a special timestamp event. It would immediately follow its related event in the queue.
 
@@ -210,4 +210,4 @@ The above design is intended to offer great flexibility in the operation of port
 
 If you write an event AWAKE function for your own port scheme, it is advised that you keep it simple and fast. If you do significant processing in your AWAKE, you may delay the results for other important sub-systems, such as the GUI.
 
-For cases where an operation could potentially block (or slow down) the entire system, it is better to use a REBOL task and coordinate with it via events. That is the subject for a separate section.
+For cases where an operation could potentially block (or slow down) the entire system, it is better to use a Rebol task and coordinate with it via events. That is the subject for a separate section.

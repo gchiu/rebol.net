@@ -4,41 +4,41 @@ The purpose is to make improvements to the PARSE function.
 
 See [http://www.rebol.net/r3blogs/0155.html Improvements to the PARSE function] (on R3 Blog) for project requirements.
 
-Some ideas have been posted [http://www.colellachiara.com/soft/Misc/parse-rep.html REBOL Enhancement Proposal for the Parse dialect] (on Gabriele's site).
+Some ideas have been posted [http://www.colellachiara.com/soft/Misc/parse-rep.html Rebol Enhancement Proposal for the Parse dialect] (on Gabriele's site).
 
 The primary editor/manager of this project is: Brian Hawley (BrianH).
 
 The current and up-to-date R3 summary document for '''parse''' is [http://www.rebol.com/r3/docs/concepts/parsing-summary.html Parse Summary].
 
-The goal of this page is to collect finished proposals for passing along to Carl to implement in REBOL 3. ''These proposals are currently considered pretty settled, unless there are really new ideas or unknown implementation issues.''
+The goal of this page is to collect finished proposals for passing along to Carl to implement in Rebol 3. ''These proposals are currently considered pretty settled, unless there are really new ideas or unknown implementation issues.''
 
 ===Guidelines===
 
-''Discussion of these proposals should be posted in REBOL 3 chat, under the R3/Parse heading (#28). If you want to contribute to this page, start there. Membership is open: Anyone with [[R3 Alpha|REBOL 3]] can join in.''
+''Discussion of these proposals should be posted in Rebol 3 chat, under the R3/Parse heading (#28). If you want to contribute to this page, start there. Membership is open: Anyone with [[R3 Alpha|Rebol 3]] can join in.''
 
-There will be factors that affect these proposals that will be specific to changes in REBOL 3. Some of these changes are already in the [[R3 Alpha|R3 public alpha releases]], and some are still being planned. The best approach is to test your code against the public alphas and ask for clarification in R3 chat. People who know and make the plans are in R3 chat almost every day, including Carl.
+There will be factors that affect these proposals that will be specific to changes in Rebol 3. Some of these changes are already in the [[R3 Alpha|R3 public alpha releases]], and some are still being planned. The best approach is to test your code against the public alphas and ask for clarification in R3 chat. People who know and make the plans are in R3 chat almost every day, including Carl.
 
 When making proposals here, there are some things you should keep in mind:
 
 *People are going to use this dialect to do real work, so consider practical implications first as they are what make a feature "important".
 *The scope of PARSE is language recognition. Going outside of that scope shouldn't be done lightly.
 *PARSE is implemented in native code, primarily by Carl. It doesn't change often. Carl's word on PARSE is the last word.
-*These changes are being proposed for REBOL 3.0, not 2.x. There are some semantic changes in REBOL 3 that may make some of these changes easier, and other changes required. If you have any confusion about REBOL 3's semantic changes, ask the editor, preferably in AltME. Testing the public alpha releases of R3 is not enough - some changes are still in the planning stage.
-*REBOL 3.0 strings are Unicode, so charsets might not work in the way that you might expect. In particular, complementing a charset in R3 requires a special flag in the charset because of memory issues. This was the original reason for the [[#NOT|NOT]] proposal, for instance.
-*REBOL 3.0 will have multitasking. We will not be accepting proposals that are not multitasking-safe.
-*PARSE is only one of many REBOL dialects that all work together. Not everything has to go into PARSE - some tasks are better done in other REBOL dialects.
+*These changes are being proposed for Rebol 3.0, not 2.x. There are some semantic changes in Rebol 3 that may make some of these changes easier, and other changes required. If you have any confusion about Rebol 3's semantic changes, ask the editor, preferably in AltME. Testing the public alpha releases of R3 is not enough - some changes are still in the planning stage.
+*Rebol 3.0 strings are Unicode, so charsets might not work in the way that you might expect. In particular, complementing a charset in R3 requires a special flag in the charset because of memory issues. This was the original reason for the [[#NOT|NOT]] proposal, for instance.
+*Rebol 3.0 will have multitasking. We will not be accepting proposals that are not multitasking-safe.
+*PARSE is only one of many Rebol dialects that all work together. Not everything has to go into PARSE - some tasks are better done in other Rebol dialects.
 *PARSE rules are data. If your feature doesn't make it in you can always write a preprocessor for your rules in PARSE.
-*Simplicity and balance are nice and will make REBOL programming less stressful. Overly complex features will likely be rejected.
+*Simplicity and balance are nice and will make Rebol programming less stressful. Overly complex features will likely be rejected.
 *Don't be afraid to include stuff that only smart people will understand - we have a lot of those. Still, be nice to people who don't have Comp-Sci degrees - we have a lot of those too.
-*PARSE and REBOL have been around for years, and there is a lot of terminology that has specific usage in the REBOL community. We can be convinced to use other terms, but any attempt to just use different terminology without reference to the REBOL-standard terms will just lead to confusion.
+*PARSE and Rebol have been around for years, and there is a lot of terminology that has specific usage in the Rebol community. We can be convinced to use other terms, but any attempt to just use different terminology without reference to the Rebol-standard terms will just lead to confusion.
 
-The PARSE function of REBOL will not become a parser generator, though the dialect might be usable for others to create one if they so choose. PARSE rules make a good target language though.
+The PARSE function of Rebol will not become a parser generator, though the dialect might be usable for others to create one if they so choose. PARSE rules make a good target language though.
 
-Modification operations are out of the scope of language recognition and pattern matching; modification is usually done in REBOL code in the parentheses. However, modification of the data being parsed is a '''really''' common practice in existing REBOL code and will likely continue to be so - complaining will not make the practice go away. The [[#CHANGE_1|CHANGE]], [[#INSERT|INSERT]] and [[#REMOVE_1|REMOVE]] proposals below have been accepted as a minimal way to allow people to do what they are already doing, badly in many cases. It is unlikely that any other modification proposals will be accepted.
+Modification operations are out of the scope of language recognition and pattern matching; modification is usually done in Rebol code in the parentheses. However, modification of the data being parsed is a '''really''' common practice in existing Rebol code and will likely continue to be so - complaining will not make the practice go away. The [[#CHANGE_1|CHANGE]], [[#INSERT|INSERT]] and [[#REMOVE_1|REMOVE]] proposals below have been accepted as a minimal way to allow people to do what they are already doing, badly in many cases. It is unlikely that any other modification proposals will be accepted.
 
 ==Theory of PARSE==
 
-REBOL is designed as a practical language. It has been notoriously difficult to make REBOL fit theoretical models because its design was only inspired by theory, but driven by practice. This has not stopped the community from trying though, and those efforts bring certain advantages to REBOL. While conforming to a theory is not an end in itself, it does let you use some helpful techniques that have resulted from the research on that theory.
+Rebol is designed as a practical language. It has been notoriously difficult to make Rebol fit theoretical models because its design was only inspired by theory, but driven by practice. This has not stopped the community from trying though, and those efforts bring certain advantages to Rebol. While conforming to a theory is not an end in itself, it does let you use some helpful techniques that have resulted from the research on that theory.
 
 (Editor's Note: Thanks to Peta for researching most of this section.)
 
@@ -65,11 +65,11 @@ The membership of the PARSE dialect in the above language family brings the foll
 *Many context free grammars contain inherent ambiguities, even when they're intended to describe unambiguous languages. The "dangling else" problem in C, C++, and Java is one example. These problems are often resolved by applying a rule outside of the grammar. In the PARSE dialect these ambiguities never arise because of prioritization.
 *PARSE has an unlimited lookahead capability, brought to PARSE by the ordered choice operator.
 
-If your rules contain any modifying REBOL code that is executed in parentheses or modifying operations (that may be added as proposals here) then any changes made by those operations will not be undone on backtracking. (Editor's note: Just like that Icon code you couldn't debug.) You may need to consider this when trying to use modifying rules since they may interact with the unlimited lookahead capability PARSE has. As a result of modifying techniques, linear optimizations like those of [http://pdos.csail.mit.edu/~baford/packrat/ Packrat] parsers are likely impossible in REBOL PARSE (though one can hope).
+If your rules contain any modifying Rebol code that is executed in parentheses or modifying operations (that may be added as proposals here) then any changes made by those operations will not be undone on backtracking. (Editor's note: Just like that Icon code you couldn't debug.) You may need to consider this when trying to use modifying rules since they may interact with the unlimited lookahead capability PARSE has. As a result of modifying techniques, linear optimizations like those of [http://pdos.csail.mit.edu/~baford/packrat/ Packrat] parsers are likely impossible in Rebol PARSE (though one can hope).
 
-For those of you who are fans of REBOL history, it is no longer possible (even in REBOL 2) to explicitly set the parse position with a get-word to another series than the one being parsed already, a previously popular technique used for incremental parsing (and which crashed PARSE if misused). Another thing which won't crash anymore in REBOL 3 is off-the-end references to series - they get moved back to the nearest end. Safer, if more boring.
+For those of you who are fans of Rebol history, it is no longer possible (even in Rebol 2) to explicitly set the parse position with a get-word to another series than the one being parsed already, a previously popular technique used for incremental parsing (and which crashed PARSE if misused). Another thing which won't crash anymore in Rebol 3 is off-the-end references to series - they get moved back to the nearest end. Safer, if more boring.
 
-(Editor's Note: When someone in the REBOL community says "set the parse position" they are referring to explicitly setting the parse position with get-words. All other changes to the parse position are implicit effects of the other operations, and thus not usually mentioned.)
+(Editor's Note: When someone in the Rebol community says "set the parse position" they are referring to explicitly setting the parse position with get-words. All other changes to the parse position are implicit effects of the other operations, and thus not usually mentioned.)
 
 ==Format==
 
@@ -258,7 +258,7 @@ matches the word abc in the input stream.
 
 will match 'abc, abc:, and :abc respectively.
 
-You can also match full literal structures, which will be compared as if with the REBOL EQUAL? function. For example,
+You can also match full literal structures, which will be compared as if with the Rebol EQUAL? function. For example,
 
   quote [a b c]
 
@@ -501,7 +501,7 @@ Parse to the #"a" delimiter, to the #"b" delimiter, or to the end of the input, 
 
   any [[#"a" | #"b"] then [end skip] | skip]
 
-Note: The word => has been suggested instead of THEN for this operation, but would require a REBOL syntax exception.
+Note: The word => has been suggested instead of THEN for this operation, but would require a Rebol syntax exception.
 
 Editor's Note: THEN was accepted with that name, not as =>.
 
@@ -686,10 +686,10 @@ If specified the rule would be matched before the change is made, failing and ba
 
 Replacement values can be one of these:
 *A word (or path?) which refers to the value (dereferenced, not executed).
-*A REBOL expression calculated in parentheses.
+*A Rebol expression calculated in parentheses.
 *Some other literal value (except word types and parens), treated as a terminal (like QUOTE).
 
-After this operation finishes the position is set to the position after the replacement value, just like the return value of the CHANGE function in REBOL. The current position at the end of the matching rule is used as the other end of the segment to be changed, with CHANGE/PART compatibility rules applying.
+After this operation finishes the position is set to the position after the replacement value, just like the return value of the CHANGE function in Rebol. The current position at the end of the matching rule is used as the other end of the segment to be changed, with CHANGE/PART compatibility rules applying.
 
 Examples:
 
@@ -737,10 +737,10 @@ The pos argument is a series position set earlier, used as one end of the portio
 
 Replacement values can be one of these:
 *A word or path which refers to the value (dereferenced, not executed).
-*A REBOL expression calculated in parentheses.
+*A Rebol expression calculated in parentheses.
 *Some other literal value (except word types and parens), treated as a terminal (like QUOTE).
 
-After this operation finishes the position is set to the position after the replacement value, just like the return value of the CHANGE function in REBOL.
+After this operation finishes the position is set to the position after the replacement value, just like the return value of the CHANGE function in Rebol.
 
 Examples:
 
@@ -879,9 +879,9 @@ Examples:
 
 The [http://www.rebol.org/view-script.r?script=use-rule.r USE-RULE function] defined in the script library implements this as the default variant, but it has also a /NO-REBIND variant, which does not rebind the given rules block, i.e. takes care of doing the binding just once.
 
-Notes: The rule argument to USE would likely need to be have BIND/copy applied, and only nested blocks and parens would be bound, just like with USE in REBOL. It is the initial rebinding that makes this multitasking-safe. We might be able to use the semantics of R3 function! contexts with a little memoization - the overhead should be compared to the BIND/copy overhead to see which is better. However, this would prevent the bound words from being used outside the extent of the USE operation.
+Notes: The rule argument to USE would likely need to be have BIND/copy applied, and only nested blocks and parens would be bound, just like with USE in Rebol. It is the initial rebinding that makes this multitasking-safe. We might be able to use the semantics of R3 function! contexts with a little memoization - the overhead should be compared to the BIND/copy overhead to see which is better. However, this would prevent the bound words from being used outside the extent of the USE operation.
 
-In REBOL 2 (and in the public REBOL 3 alpha from January 2008), the PARSE keywords can be used as variables without influencing the PARSE functionality, like here:
+In Rebol 2 (and in the public Rebol 3 alpha from January 2008), the PARSE keywords can be used as variables without influencing the PARSE functionality, like here:
  <nowiki>rebol/version ; == 2.99.4.3.1
 parse [] b: [(end: 11) end (print [end same? bind? second b bind? 'end])]
 ; 11 true</nowiki>
@@ -898,7 +898,7 @@ Importance: Powerful feature for advanced parse rules. There are some patterns t
 Syntax:
 *IF (expression)
 
-The REBOL expression in the paren following the IF keyword is executed like any other paren. If the result of the expression would be accepted as true by REBOL's IF function, parsing continues as usual; if not, the rule fails as if there were a [[#FAIL|FAIL]] there.
+The Rebol expression in the paren following the IF keyword is executed like any other paren. If the result of the expression would be accepted as true by Rebol's IF function, parsing continues as usual; if not, the rule fails as if there were a [[#FAIL|FAIL]] there.
 
 Previously you had to do something like this:
 
@@ -973,7 +973,7 @@ Discussion: If the proposal to redefine [[#BREAK|BREAK]] as breaking to a loop i
 
 Suggested by: Peter Wood (as RETURN), many others who assumed it worked already.
 
-Purpose: Make the REBOL BREAK/return function work within the PARSE function.
+Purpose: Make the Rebol BREAK/return function work within the PARSE function.
 
 Importance: Ease of use and consistency.
 
@@ -1075,7 +1075,7 @@ Purpose:
 *Allow the PARSE position to be set explicitely to another series
 
 Importance:
-*Citing the editor's note: "For those of you who are fans of REBOL history, it is no longer possible (even in REBOL 2) to set the parse position to another series than the one being parsed already, a previously popular technique used for incremental parsing (and which crashed PARSE if misused)."	 
+*Citing the editor's note: "For those of you who are fans of Rebol history, it is no longer possible (even in Rebol 2) to set the parse position to another series than the one being parsed already, a previously popular technique used for incremental parsing (and which crashed PARSE if misused)."	 
 *PARSE now detects attempts to explicitly set its position into another series and "forbids them". Since the INTO operator does just that (it sets the PARSE position into another series), such an operation is provably always possible. Therefore, as an alternative to the current behavior, it is possible for PARSE to do the appropriate bookkeeping to make sure no crash can occur.
 
 Issues:	 
@@ -1090,12 +1090,12 @@ Editor's Note: INTO works through recursion, not parse position setting. Accepte
 
 Suggested by: Gabriele
 
-Purpose: Putting REBOL code in your dialects. Block parse dialect only.
+Purpose: Putting Rebol code in your dialects. Block parse dialect only.
 
 Syntax:
 *DO rule
 
-At the current parse position, a single expression of REBOL code will be evaluated, using the algorithm of the REBOL DO/next function. The parse position is then changed to the position after the expression, as would be returned by DO/next. No binding is performed by the DO operation, but it does not restrict any binding explicitly done by the expression.
+At the current parse position, a single expression of Rebol code will be evaluated, using the algorithm of the Rebol DO/next function. The parse position is then changed to the position after the expression, as would be returned by DO/next. No binding is performed by the DO operation, but it does not restrict any binding explicitly done by the expression.
 
 The single result of the expression is then matched by the argument rule as if the value were contained in a nested block and the rule used as the argument of INTO. If the expression result is of a block type it will be treated as if it is nested, not inline. Any rule that expects to match more than one value will fail, as there will only be one value to be matched. The SKIP rule will match any value, including #[none], but not unset values. The NONE rule will match either #[none] or unset values. An empty rule block will only match unset values (Question: Should the NONE rule also behave this way? Decision for Carl - he knows the internals).
  

@@ -1,4 +1,4 @@
-===REBOL 2 Examples===
+===Rebol 2 Examples===
 
 http://www.rebol.org/
 

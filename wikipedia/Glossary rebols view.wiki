@@ -1,7 +1,7 @@
 <div style="background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid;">
-== The REBOL User Community Glossary ==
+== The Rebol User Community Glossary ==
 Add your own definitions of existing topic, or add new topics.<br>
-The objective is to paint a picture of many colours regarding the understanding of some crucial REBOL concepts.
+The objective is to paint a picture of many colours regarding the understanding of some crucial Rebol concepts.
 </div>
 {| style="background:#F5FAFF;" align="right"
 | __TOC__
@@ -13,10 +13,10 @@ The objective is to paint a picture of many colours regarding the understanding 
 <hr>
 =====Bluey=====
 {{hilight|This entry is not correct, but it is left here as an example of a rebol's changing view.  Update starts [[#bluey-update-1|below]].}}
-A note about words.  REBOL uses multiple phases during interpretation of scripts.  Words are only symbols until
+A note about words.  Rebol uses multiple phases during interpretation of scripts.  Words are only symbols until
 evaluated.  This is normally of little concern, but there are times when this distinction needs to be understood.
 
-For example; REBOL includes an important '''datatype!''' called '''none!'''.  The value '''none''' is the only value with this datatype.  Evaluation of words occurs in very specific and clear circumstances, and normally in a script, the symbol ''none'' will be evaluated to the value '''none''', without the developer thinking about it.
+For example; Rebol includes an important '''datatype!''' called '''none!'''.  The value '''none''' is the only value with this datatype.  Evaluation of words occurs in very specific and clear circumstances, and normally in a script, the symbol ''none'' will be evaluated to the value '''none''', without the developer thinking about it.
  
 Within a '''block!''' this may not be the case.  Words inside blocks, like all other words, remain as symbols until
 evaluated.  The code
@@ -37,7 +37,7 @@ assigns the symbol ''none'' to the word '''c'''.  The values set in the words ''
 
 '''a''' has the '''''value''''' '''none''' and '''c''' has the '''''symbol''''' ''none''.
 
-All values have a ''lexical form'', the text #[none] is loaded by REBOL as the '''''value''''' '''none'''.
+All values have a ''lexical form'', the text #[none] is loaded by Rebol as the '''''value''''' '''none'''.
 Furthering the above example;
 
  c: first [#[none]]
@@ -49,9 +49,9 @@ assigns the '''''value''''' '''none''' to the word '''c'''.
 =====Bluey correction 1=====
 <span id="bluey-update-1"></span>
 {{hilight|Updated view}}
-Ok, so I've had an incorrect view of REBOL pretty much since day 1.
+Ok, so I've had an incorrect view of Rebol pretty much since day 1.
 
-REBOL is not ''word'' based, it is ''value'' based.  Source text is treated as VALUES; and these values have a '''type''' and '''content''', or the value of the value so to speak.  So the source text that looks like
+Rebol is not ''word'' based, it is ''value'' based.  Source text is treated as VALUES; and these values have a '''type''' and '''content''', or the value of the value so to speak.  So the source text that looks like
 
  1
 
@@ -59,9 +59,9 @@ is a ''value'' with a type of '''integer!''' and a content of '''1'''.  The sour
 
  a: 1
 
-is two values.  The first is '''a:''', and this value is of type '''set-word!''' and the content is '''a''' <small>or is it '''a:'''?</small>.  Now this leads to the content of the set-word! '''a:''' becoming another value of type '''word!''', with a ''spelling'' of '''a'''.  This '''word!''' value, refers to some value slots; one for spelling and one for ''context''.  The context is used by REBOL to keeping track of the various word spellings, much like a dictionary.  In this '''a: 1''' case, the value with a type of '''word!''' will refer to a value of type '''integer!''' with a content of '''1'''.
+is two values.  The first is '''a:''', and this value is of type '''set-word!''' and the content is '''a''' <small>or is it '''a:'''?</small>.  Now this leads to the content of the set-word! '''a:''' becoming another value of type '''word!''', with a ''spelling'' of '''a'''.  This '''word!''' value, refers to some value slots; one for spelling and one for ''context''.  The context is used by Rebol to keeping track of the various word spellings, much like a dictionary.  In this '''a: 1''' case, the value with a type of '''word!''' will refer to a value of type '''integer!''' with a content of '''1'''.
 
-I'm leaving the previous definition in the document, but I think it can safely be ignored as wrong minded.  The concepts mentioned for '''none''' as still worthy, but needs to be defined in terms of values as described in this update.  My view may change still.  REBOL is deep and understanding comes in small steps somedays and leaps and bounds on others.
+I'm leaving the previous definition in the document, but I think it can safely be ignored as wrong minded.  The concepts mentioned for '''none''' as still worthy, but needs to be defined in terms of values as described in this update.  My view may change still.  Rebol is deep and understanding comes in small steps somedays and leaps and bounds on others.
 
 {{hilight|It's all part of the reason for the '''rebols view''' page.  To correct the misconceptions}}
 [[User:BTiffin|Bluey]] 03:51, 27 August 2007 (EDT) 
@@ -69,7 +69,7 @@ I'm leaving the previous definition in the document, but I think it can safely b
 =====Ladislav=====
 My (Ladislav) take:
 
-REBOL source text is converted (by the '''load''' function) to a REBOL block containing REBOL ''values''; and these values have a ''type'' and ''other contents''.  So the source text that looks like
+Rebol source text is converted (by the '''load''' function) to a Rebol block containing Rebol ''values''; and these values have a ''type'' and ''other contents''.  So the source text that looks like
 
  1
 

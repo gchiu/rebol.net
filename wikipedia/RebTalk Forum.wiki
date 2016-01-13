@@ -1,11 +1,11 @@
-The '''RebTalk''' forum is a micro-bbs system written in REBOL 3.0 -- its first ''[[Reblet]] application''.
+The '''RebTalk''' forum is a micro-bbs system written in Rebol 3.0 -- its first ''[[Reblet]] application''.
 
 ==Purpose==
 
 RebTalk serves dual purposes:
 
 #'''To force us to create an actual reblet in 3.0'''. Now that 3.0 is actually used for something, it helps motivate the team toward finalizing and improving various components.
-#'''To provide a simple, REBOL-based topic/threaded communication system'''. This is the "drink our own wine" approach.
+#'''To provide a simple, Rebol-based topic/threaded communication system'''. This is the "drink our own wine" approach.
 
 ''We are not trying to duplicate all the features of various other forum systems'', but rather create an agile design that we can ''rapidly improve upon'' to meet our own needs.
 

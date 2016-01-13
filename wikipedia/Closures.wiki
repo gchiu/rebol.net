@@ -28,7 +28,7 @@ This works because the variables of a closure remain valid, even outside the clo
 
 Note, however, that this luxury provided by closures is not without its costs. Closures require more time to evaluate as well as more memory space.
 
-In essence a closure is an object. When you define the closure, it constructs a prototype object, and each time you call the closure, the prototype object is instantiated and the body code is evaluated within that context. You can read more about the benefits and costs of closures in REBOL 3 [[R2_vs._R3_Contexts|here]].
+In essence a closure is an object. When you define the closure, it constructs a prototype object, and each time you call the closure, the prototype object is instantiated and the body code is evaluated within that context. You can read more about the benefits and costs of closures in Rebol 3 [[R2_vs._R3_Contexts|here]].
 
 Here is another usage example:
 

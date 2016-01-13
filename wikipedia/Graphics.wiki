@@ -1,4 +1,4 @@
-The REBOL 3 graphics system has been redesigned in a major way to provide greater performance while at the same time requiring substantially fewer resources (memory and CPU time).
+The Rebol 3 graphics system has been redesigned in a major way to provide greater performance while at the same time requiring substantially fewer resources (memory and CPU time).
 
 ==Requirements==
 
@@ -35,4 +35,4 @@ The REBOL 3 graphics system has been redesigned in a major way to provide greate
 
 The new system is based on a new graphical object structure called a [[GOB]].
 
-GOBs are implemented as a native REBOL datatype, but with highly optimized internal structure to minimize memory requirements. With the new design, it should be possible to create graphical displays and interfaces that contain thousands of objects, but with much less impact on memory than in prior versions.
+GOBs are implemented as a native Rebol datatype, but with highly optimized internal structure to minimize memory requirements. With the new design, it should be possible to create graphical displays and interfaces that contain thousands of objects, but with much less impact on memory than in prior versions.

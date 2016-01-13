@@ -709,7 +709,7 @@ Scoping example:
 
 ==== Colors ====
 
-# Use the standard REBOL color options available in R3.
+# Use the standard Rebol color options available in R3.
 
 ==== Materials ====
 
@@ -799,7 +799,7 @@ Dialogs build upon eachother.
 
 ==== Viewers ====
 
-# Viewers are about displaying REBOL datatypes visually, possibly for debugging or simply visualization.
+# Viewers are about displaying Rebol datatypes visually, possibly for debugging or simply visualization.
 # Viewers could be an optional module.
 # Viewers would be used as a guideline for which types of advanced styles to develop, i.e. tables, tree-views.
 # Viewers should largely use one style for representing the datatype.

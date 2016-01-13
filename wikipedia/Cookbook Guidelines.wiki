@@ -6,7 +6,7 @@ First, you'll need to initiate a new DocBase page. The easiest way is to type yo
 
 While not totally necessary, cookbooks should start with the <nowiki>{{Cookbook}}</nowiki> template.  This template accepts 4 parameters.  A '''title''', an '''author''', a difficulty '''level''' and a '''category'''.
 
-*title does not need to be the same as the page title.  Use something short and snappy.  If not included a generic '''REBOL Recipe''' will be used.
+*title does not need to be the same as the page title.  Use something short and snappy.  If not included a generic '''Rebol Recipe''' will be used.
 *author would be what ever credit you would like.  If not included '''Incognito''' will be used.
 *level is a number from 1 to 3.  1 matches ''Beginner'', 2 for ''Intermediate'' and 3 for 'Advanced''. 2 is default.
 *category should be Tip, Code, Networking, Data Processing etcetera.  Defaults to '''Code'''.

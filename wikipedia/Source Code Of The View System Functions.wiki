@@ -1,7 +1,7 @@
 <pre>
-REBOL [
-	Title: "REBOL View System Functions"
-	Rights: "Copyright REBOL Technologies 2001-2007"
+Rebol [
+	Title: "Rebol View System Functions"
+	Rights: "Copyright Rebol Technologies 2001-2007"
 ]
 
 ; The View system handles windowing, events, popups, requestors, and modal
@@ -93,7 +93,7 @@ view: func [
 	]
 
 	; Window title:
-	window/text: any [opts/title window/text "REBOL: untitled"]
+	window/text: any [opts/title window/text "Rebol: untitled"]
 
 	;!!! Add later: use script title - once modules provide that
 

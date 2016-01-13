@@ -1,6 +1,6 @@
 == Introduction ==
 
-Wiki Tools is a very small, but pretty powerful dialect for communicating with a [[MediaWiki]] (MW) server, to remotely manipulate the contents of a MW page or a series of pages. Wiki Tools has specifically been created for use in [[Main Page|REBOL 3 DocBase]], but can be used generally for MW sites.
+Wiki Tools is a very small, but pretty powerful dialect for communicating with a [[MediaWiki]] (MW) server, to remotely manipulate the contents of a MW page or a series of pages. Wiki Tools has specifically been created for use in [[Main Page|Rebol 3 DocBase]], but can be used generally for MW sites.
 
 Wiki Tools can:
 
@@ -48,7 +48,7 @@ There's no speed difference between one big block or multiple blocks, but can be
 
 == Installation ==
 
-Currently the sources for MediaWiki is only available to the alpha testers of REBOL 3, but they will be made widely available later.
+Currently the sources for MediaWiki is only available to the alpha testers of Rebol 3, but they will be made widely available later.
 
 == Configuration ==
 

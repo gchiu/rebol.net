@@ -1,8 +1,8 @@
-''While even R2 was found being a cool language, REBOL never attracted enough of developers, nor broader public attention. There were some past marketing/strategic mistakes in the past. Let's find out, where we are today, how to "reboot" our points of view, and how to get under the radar once again ...'' 
+''While even R2 was found being a cool language, Rebol never attracted enough of developers, nor broader public attention. There were some past marketing/strategic mistakes in the past. Let's find out, where we are today, how to "reboot" our points of view, and how to get under the radar once again ...'' 
 
-= REBOL (R2) - the world most ignored Beauty =
+= Rebol (R2) - the world most ignored Beauty =
 
-Back in 1997-8, REBOL was still new. It was brought to the world by world respected OS architect, Carl Sassenrath, and it surely was a positive sign. So why actually did REBOL not get more popular, and adopted? Let's find out.
+Back in 1997-8, Rebol was still new. It was brought to the world by world respected OS architect, Carl Sassenrath, and it surely was a positive sign. So why actually did Rebol not get more popular, and adopted? Let's find out.
 
 == A missed momentum? ==
 
@@ -12,39 +12,39 @@ When you introduce new product, you have some limited time to get people's atten
 
 What eventually might help in the case of new technology, is existance of so called "killer app", which is so significant, that it causes some movement/following in and of itself. 
 
-In SW technology world, let's name a few - an Amiga, ICQ, Skype, Linux, LAMP, FaceBook, Twitter, Ruby on Rails. I mentioned Ruby on Rails, because Ruby is another programming language, which started its development approximately at the same time as REBOL did. Do you think it is really any special, considering the [http://en.wikipedia.org/wiki/List_of_programming_languages list] of all possible programming languages out there? 
+In SW technology world, let's name a few - an Amiga, ICQ, Skype, Linux, LAMP, FaceBook, Twitter, Ruby on Rails. I mentioned Ruby on Rails, because Ruby is another programming language, which started its development approximately at the same time as Rebol did. Do you think it is really any special, considering the [http://en.wikipedia.org/wiki/List_of_programming_languages list] of all possible programming languages out there? 
 
 Remember - there would be no Ruby, without Rails.
 
-And REBOL's killer app? Back in the early days of P2P networks, REBOL was choosen as a platform for a new, upcoming Morpheus P2P client. But the company behind the Morpheus got sued, so the project was cancelled. Another attempt at a killer app was  - AltME. While there is something like 10K of AltME worlds running, it never won much of the public's attention, mainly because of its "darknet" aspects (no web visibility of ongoing communication).
+And Rebol's killer app? Back in the early days of P2P networks, Rebol was choosen as a platform for a new, upcoming Morpheus P2P client. But the company behind the Morpheus got sued, so the project was cancelled. Another attempt at a killer app was  - AltME. While there is something like 10K of AltME worlds running, it never won much of the public's attention, mainly because of its "darknet" aspects (no web visibility of ongoing communication).
 
 == Open source vs free ==
 
 Back in 1997-8, open-source movement was not still regarded being a significant work-force. It was just starting to become popular. The question is, should the open-source movement have been ignored even back then? Why? Because there is a group of people out there, who will not touch the thing, unless it is open source. I even know ones, who never ever downloaded language sources, nor are able to fix eventual bugs in C level, but will prefer open source anyway. If you ignore them, you can write-off a rather significant precentage of potential followers.
 
-So REBOL was free, but not open-sourced. Why open-sourcing R2 would cause us harm? You can find the answer in following two categories:
+So Rebol was free, but not open-sourced. Why open-sourcing R2 would cause us harm? You can find the answer in following two categories:
 
 === Technical "support" ===
 
-Back at those times of R2, there was just mailing list and feedback email adress, from which you got only sporadic replies. No bug database (later fixed with RAMBO bugbase), no web forum. RT got its commercial product called IOS (Internet Operating System). It was nice system for enterprises, but it dragged all RT's resources. Product as REBOL/View was not updated in 18 months. Many people felt frustration, because it contained some significant bugs, which were not fixed.
+Back at those times of R2, there was just mailing list and feedback email adress, from which you got only sporadic replies. No bug database (later fixed with RAMBO bugbase), no web forum. RT got its commercial product called IOS (Internet Operating System). It was nice system for enterprises, but it dragged all RT's resources. Product as Rebol/View was not updated in 18 months. Many people felt frustration, because it contained some significant bugs, which were not fixed.
 
 So - it was like throwing gasoline on a fire - "'''if R2 was open sourced, we could fix it ourselves'''" could be heard so often. '''Technical support was one of the biggest problems back then'''.
 
 === Problem of deployment ===
 
-REBOL was propagated as a scripting language for communications. But could it really communicate? Yes, it was kind of network aware - tcp, udp, mail, ftp, http. But - what about the Apache module? What about shell, ability to call into libraries, databases, https? Those were available later, but in a commercial (paid) versions. Hello, give me a break? Users should pay to get access to /Shell? Hello? What a let down ...
+Rebol was propagated as a scripting language for communications. But could it really communicate? Yes, it was kind of network aware - tcp, udp, mail, ftp, http. But - what about the Apache module? What about shell, ability to call into libraries, databases, https? Those were available later, but in a commercial (paid) versions. Hello, give me a break? Users should pay to get access to /Shell? Hello? What a let down ...
 
-Shell and Library components were later released into free REBOL versions, but - it was too late to cure those past marketing/strategy mistakes.
+Shell and Library components were later released into free Rebol versions, but - it was too late to cure those past marketing/strategy mistakes.
 
 But that was not the only deployment problem - if you wanted to use R2 in the enterprise sphere, you can't ignore the surrounding IT infranstructure. So how do I connect to .NET, COM components, which allow me to plug-in into whole MS enterprise world? How to communicate with JAVA? Where's my connector to SAP? Those were another nails in the coffin of R2. 
 
-Remember - many programmers do use REBOL as a hobby. But they have got their daily jobs too. And if you like REBOL (as many of us do), you can't use it at your work by showing your boss that the job can be done in few lines of code. The situation gets even more denerving and frustrating.
+Remember - many programmers do use Rebol as a hobby. But they have got their daily jobs too. And if you like Rebol (as many of us do), you can't use it at your work by showing your boss that the job can be done in few lines of code. The situation gets even more denerving and frustrating.
 
-There was also another "enemy" starting to emerge. The web. It got more and more useful for applications. No matter what I think about all that junk combination of JS, HTML, XML, CSS, PHP or other stuff on the server side - the web has won. Back in 1998 REBOL/View was one of the first RIAs. We should have got to the browser a long time ago. Sadly - REBOL browser plug-in never went out of the beta.
+There was also another "enemy" starting to emerge. The web. It got more and more useful for applications. No matter what I think about all that junk combination of JS, HTML, XML, CSS, PHP or other stuff on the server side - the web has won. Back in 1998 Rebol/View was one of the first RIAs. We should have got to the browser a long time ago. Sadly - Rebol browser plug-in never went out of the beta.
 
 == Documentation ==
 
-We should admit, that documentation was a bit of a problem too. There is many docs, but they somehow feel like they are finished to some 80%. They cover various areas which overlap, but no official guide, other than REBOL 2.3 one.
+We should admit, that documentation was a bit of a problem too. There is many docs, but they somehow feel like they are finished to some 80%. They cover various areas which overlap, but no official guide, other than Rebol 2.3 one.
 
 But I am not so critical here - if you need help, you can find help.
 
@@ -54,45 +54,45 @@ I don't want to hurt anyone's feelings, but rebol.com and rebol.net look like ol
 
 == "You can code it in few lines" attitude ==
 
-How often have I hear the phrase? Quite often. While it is true that you can do many usefull things in few lines of REBOL code,the  community should learn one thing - there are many people, which might hear about REBOL for the first time and will like to eventually give it a try. But - those people are looking for solutions. They want to '''use the solution, not create one''' themselves.
+How often have I hear the phrase? Quite often. While it is true that you can do many usefull things in few lines of Rebol code,the  community should learn one thing - there are many people, which might hear about Rebol for the first time and will like to eventually give it a try. But - those people are looking for solutions. They want to '''use the solution, not create one''' themselves.
 
 == Community+ ==
 
-I think that one of the biggest assets of REBOL is its community support. I am on many public forums and groups, and I think that while the REBOL community is kind of small, you can get help in seconds to minutes. Those seconds might apply for AltME communication channel. Yes, I know, darknet, but - if you have not tried it, you can't value its IM nature.
+I think that one of the biggest assets of Rebol is its community support. I am on many public forums and groups, and I think that while the Rebol community is kind of small, you can get help in seconds to minutes. Those seconds might apply for AltME communication channel. Yes, I know, darknet, but - if you have not tried it, you can't value its IM nature.
 
 == A bit of a luck? ==
 
 Sometimes you need a bit of a luck too. You know the media - one magazine mentions something, others don't want to stay behind, and mostly reproduce the same messages over and over again. Easy free marketing, isn't it? It is our nature to pay attention to stuff, which is being written about and well advertised.
 
-I think that we will need to propagate REBOL a bit ourselves, but we should do so only in those cases where we can back-up our words with the real product, we surely don't want to talk about vapor.
+I think that we will need to propagate Rebol a bit ourselves, but we should do so only in those cases where we can back-up our words with the real product, we surely don't want to talk about vapor.
 
 = R3 - a new kid on the block? =
 
-The trouble with fixing bugs and introducing new features to R2 was its architecture - a monolithic one, where OS to REBOL layers were not properly isolated. RT had to do all the job for something like 150 various set-ups of a product configuraiton themselves. You have read about many R2 drawbacks, and RT was aware of them too. 
+The trouble with fixing bugs and introducing new features to R2 was its architecture - a monolithic one, where OS to Rebol layers were not properly isolated. RT had to do all the job for something like 150 various set-ups of a product configuraiton themselves. You have read about many R2 drawbacks, and RT was aware of them too. 
 
-In order to fix them, we needed [http://www.rebol.com/rebol3/architecture.html new architecture] for the REBOL language to sit upon, we needed - R3. Its development started back in 1996-7 period.
+In order to fix them, we needed [http://www.rebol.com/rebol3/architecture.html new architecture] for the Rebol language to sit upon, we needed - R3. Its development started back in 1996-7 period.
 
 == It's a big project ==
 
-Some ppl are questioning the amount of time it takes us to finish R3. I should note, that we are not talking Python 2.5 to 3.0 like effort here, we are talking ground-up rewrite of REBOL.
+Some ppl are questioning the amount of time it takes us to finish R3. I should note, that we are not talking Python 2.5 to 3.0 like effort here, we are talking ground-up rewrite of Rebol.
 
 The rewrite, however, is done on purpose. It is done to allow us to adress most of the past drawbacks.
 
 == Hybrid open-source model? What is that? ==
 
-RT redesigned R3 so that a language interpreter is platform agnostic DLL (dynamic library). I am not sure I even used the right term - "language interpreter", because some ppl might think - well, so REBOL is now mostly a dll, so what? But - that '''DLL contains ONLY a platform agnostic code''' of what we generally understand as a REBOL language.
+RT redesigned R3 so that a language interpreter is platform agnostic DLL (dynamic library). I am not sure I even used the right term - "language interpreter", because some ppl might think - well, so Rebol is now mostly a dll, so what? But - that '''DLL contains ONLY a platform agnostic code''' of what we generally understand as a Rebol language.
 
-Why is it important? Because the '''rest actually IS open-sourced'''. Yes, stuff like networking, console, files, events (devices), gui, all OS related layers, everything sits in so called Host code, which is [http://www.rebol.net/wiki/Host-Builds open-sourced and released] to first members of REBOL community as we speak.
+Why is it important? Because the '''rest actually IS open-sourced'''. Yes, stuff like networking, console, files, events (devices), gui, all OS related layers, everything sits in so called Host code, which is [http://www.rebol.net/wiki/Host-Builds open-sourced and released] to first members of Rebol community as we speak.
 
-Some ppl might oppose - well, but we want EVERYTHING being open sourced. And while I might respect anyone's right for his/her opinion, all I can say is - I am glad the interpreter will be in hands of RT. This is also why REBOL is still under 1MB of size, and not 10MB package. Don't get me wrong, I actually believe REBOL will be fully open sourced one day. We just do it in steps. Its semantics is still a bit young - give it a few more years, and we might get there.
+Some ppl might oppose - well, but we want EVERYTHING being open sourced. And while I might respect anyone's right for his/her opinion, all I can say is - I am glad the interpreter will be in hands of RT. This is also why Rebol is still under 1MB of size, and not 10MB package. Don't get me wrong, I actually believe Rebol will be fully open sourced one day. We just do it in steps. Its semantics is still a bit young - give it a few more years, and we might get there.
 
-And to die-hard open source followers - please think why you want REBOL being fully open sourced? Because you are a cult follower, or because you want to feel safe about speed of REBOL development, fixing bugs, speed of porting to new platforms, RT going bancrupt etc.? If you are for the latter, you might be safe with our Hybrid open-source model as well. If you are for the former - maybe there are going to be some pills for your diagnose one day :-) (a joke, you know? :-)
+And to die-hard open source followers - please think why you want Rebol being fully open sourced? Because you are a cult follower, or because you want to feel safe about speed of Rebol development, fixing bugs, speed of porting to new platforms, RT going bancrupt etc.? If you are for the latter, you might be safe with our Hybrid open-source model as well. If you are for the former - maybe there are going to be some pills for your diagnose one day :-) (a joke, you know? :-)
 
 == Few bits about the architecture ==
 
 === R3 DLL, Host ---> R3 product ===
 
-With R2, you either could use the free REBOL products, or you bought an SDK that contained a packager (Encap), which allowed you to produce your own executables. I think that with R3 the situation is going to be a bit different. What you actually get is the R3 language interpreter in the form of a DLL, and [http://www.rebol.net/wiki/Host-Builds Host source codes].
+With R2, you either could use the free Rebol products, or you bought an SDK that contained a packager (Encap), which allowed you to produce your own executables. I think that with R3 the situation is going to be a bit different. What you actually get is the R3 language interpreter in the form of a DLL, and [http://www.rebol.net/wiki/Host-Builds Host source codes].
 
 You basically decide, what you want to have in your rebol.exe. You can build your own special one (if you are technically skilled to do so). And yes, you can create special variants of the R3 product line. You can start porting it to new platforms, e.g. embedded ones, phones, whatever you want. The only task left for RT is to recompile the R3 DLL for your target platform of choice. 
 
@@ -100,13 +100,13 @@ This is really completly different scenario in comparison to R2, where RT had to
 
 === R3 Extensions ===
 
-The second most important architectural change is the introduction of [http://www.rebol.com/r3/docs/concepts/extensions.html R3 Extensions]. With R2, we have got DLL interface. While it was rather easy to use, most of the time it was difficult to properly map REBOL datatypes to the target library architecture datatypes.
+The second most important architectural change is the introduction of [http://www.rebol.com/r3/docs/concepts/extensions.html R3 Extensions]. With R2, we have got DLL interface. While it was rather easy to use, most of the time it was difficult to properly map Rebol datatypes to the target library architecture datatypes.
 
 Extensions are much more flexible, but are not for the beginners - but that is a trade-off. In first few days of the concept existence, we have seen succesfull attempts in linking R3 to OpenGL for example.
 
 === Asynchronous Devices - Amiga anyone? ===
 
-Amiga developers are surely familiar with async devices model. [http://www.rebol.net/r3blogs/0087.html REBOL Devices] are abstracting IO methods via API, so that REBOL works with them in an unified way. This feature pushes REBOL closer to being an OS, than just a scripting language.
+Amiga developers are surely familiar with async devices model. [http://www.rebol.net/r3blogs/0087.html Rebol Devices] are abstracting IO methods via API, so that Rebol works with them in an unified way. This feature pushes Rebol closer to being an OS, than just a scripting language.
 
 === Port model ===
 
@@ -118,31 +118,31 @@ Well, we are not quite there yet. But basic abstraction for [http://www.rebol.ne
 
 === Modules - a bit of a catch-up ===
 
-While most of the other languages used modules systems for ages, REBOL was a bit behind. Not that you could not isolate your code in Contexts, or use some community systems (Slim - greetings, Max :-), but it was not official. So now [http://www.rebol.com/r3/docs/concepts/modules.html R3 modules] are official, so you can enjoy more PITL (Programming in the Large) support in R3.
+While most of the other languages used modules systems for ages, Rebol was a bit behind. Not that you could not isolate your code in Contexts, or use some community systems (Slim - greetings, Max :-), but it was not official. So now [http://www.rebol.com/r3/docs/concepts/modules.html R3 modules] are official, so you can enjoy more PITL (Programming in the Large) support in R3.
 
 === Parse - new King on the block ===
 
 Most of the programming world uses Regexp for parsing. If you like Regexp, you might as well be liking studying Sendmail configs, or [http://en.wikipedia.org/wiki/Brainfuck a Brainfuck] programming language :-) Yes, we can do it [http://www.rebol.org/view-script.r?script=alien.r too], we have nicely reflective language capabilities, you know? :-)
 
-Well, jokes aside - Regexp is fine, for those who prefer it, right? But REBOL really understood Parse. It is different, it is somehow special, but it is indeed powerful. There were many suggestions on how to make parse even more usefull all around, and we finally got them implemented into R3. 
+Well, jokes aside - Regexp is fine, for those who prefer it, right? But Rebol really understood Parse. It is different, it is somehow special, but it is indeed powerful. There were many suggestions on how to make parse even more usefull all around, and we finally got them implemented into R3. 
 
 R3 brings parse to a whole new level, although we still have few [http://www.rebol.net/wiki/Parse_Project parse enhancement proposals] left for implementation.
 
 === Unicode ===
 
-REBOL was really lacking in this area. In R3, we had basically had two options on how to implement it. Either to use it in the form of a special datatype, or make it much more deeply integrated into the language itself, making Unicode a natural part of the language. We choosed the latter, even if it meant a significant amount of work. But we [http://www.rebol.net/r3blogs/0117.html delivered].
+Rebol was really lacking in this area. In R3, we had basically had two options on how to implement it. Either to use it in the form of a special datatype, or make it much more deeply integrated into the language itself, making Unicode a natural part of the language. We choosed the latter, even if it meant a significant amount of work. But we [http://www.rebol.net/r3blogs/0117.html delivered].
 
 There is still some work to do. While parse, bitsets etc. were adapted, GUI and sorting still needs to reflect the unicode changes.
 
 === GUI ===
 
-REBOL/View. A controversial project. Some people don't use a GUI at all, some people prefer a web front-end, and some would like to use REBOL/View for its simplicity, even if it was more mature than R2.
+Rebol/View. A controversial project. Some people don't use a GUI at all, some people prefer a web front-end, and some would like to use Rebol/View for its simplicity, even if it was more mature than R2.
 
-For R3, REBOL/View was pretty much rewritten. The most significant change was the removal of the old compositing engine, replacing it with the AGG one (we used AGG already for vector graphics). This change made it almost 20times faster in some areas of R3.
+For R3, Rebol/View was pretty much rewritten. The most significant change was the removal of the old compositing engine, replacing it with the AGG one (we used AGG already for vector graphics). This change made it almost 20times faster in some areas of R3.
 
-But - REBOL GUI = VID. And what VID lacked most was quality styles, although [http://www.dobeash.com/rebgui.html RebGUI] is available, it still does not feel natural on the target platforms. I think that users might be forgiving as for the look, but not so to the app behaviour and its OS deployment.
+But - Rebol GUI = VID. And what VID lacked most was quality styles, although [http://www.dobeash.com/rebgui.html RebGUI] is available, it still does not feel natural on the target platforms. I think that users might be forgiving as for the look, but not so to the app behaviour and its OS deployment.
 
-Well - to all naysayers - we know web kind of won, but there is still some area (e.g. embedded), where a small, lean&mean GUI system might be useful. Remember - REBOL + GUI is still < 1MB!
+Well - to all naysayers - we know web kind of won, but there is still some area (e.g. embedded), where a small, lean&mean GUI system might be useful. Remember - Rebol + GUI is still < 1MB!
 
 While the outer world tries to copy our declarative aproach (hello, JavaFX guys! :-), we will take it to the next level once again. 
 
@@ -160,19 +160,19 @@ To be fair though - VID3 architecture is still only from some 70-80% done, but t
 
 === RebCode, JIT ===
 
-The area in which REBOL lacks behind its competition is the speed of math. Well, that is not an accurate claim. It is a speed of operations in loops, which is slow.
+The area in which Rebol lacks behind its competition is the speed of math. Well, that is not an accurate claim. It is a speed of operations in loops, which is slow.
 
-R2 introduced concept of so called [http://www.rebol.com/docs/rebcode.html Rebcode VM], kind of byte-code interpreter with assembler like syntax. The advantage was its cross-platform nature, and its relative speed improvement (about 25times faster on certain operations than REBOL code).
+R2 introduced concept of so called [http://www.rebol.com/docs/rebcode.html Rebcode VM], kind of byte-code interpreter with assembler like syntax. The advantage was its cross-platform nature, and its relative speed improvement (about 25times faster on certain operations than Rebol code).
 
-The problem with Rebcode as done in R2 was, that due to some internal changes, it was only about 3 times faster than normal REBOL code. But - there is a plan to [http://www.rebol.net/cgi-bin/r3blog.r?view=0296#comments bring it back] with some changes for 3.1 milestone.
+The problem with Rebcode as done in R2 was, that due to some internal changes, it was only about 3 times faster than normal Rebol code. But - there is a plan to [http://www.rebol.net/cgi-bin/r3blog.r?view=0296#comments bring it back] with some changes for 3.1 milestone.
 
 In the meantime, some community members are [http://cyphre.mysteria.cz/tests/rebol-jit-test.html experimenting with JIT compiler], and I can bet that with R3 Extensions, even more attempts will appear. There are some talks about LLVM, etc.
 
 == Let's leave technical advancement area ==
 
-I hope I helped you to see, that R3 project is really a big effort. But not only that - I hope you can also see now, that R3 introduces some really nice new concepts and features. But let's leave this area now, and get back to the main topic - how to improve REBOL adoption?
+I hope I helped you to see, that R3 project is really a big effort. But not only that - I hope you can also see now, that R3 introduces some really nice new concepts and features. But let's leave this area now, and get back to the main topic - how to improve Rebol adoption?
 
-=So, How to improve REBOL adoption?=
+=So, How to improve Rebol adoption?=
 
 == The product existence ==
 
@@ -184,7 +184,7 @@ I will just restate:
 
 ''I don't want to hurt anyone's feelings, but rebol.com and rebol.net look like old bad MS Word 1998 joke :-) Don't you know the old marketing claim, that "design sells"? I am glad there is an ongoing effort to redefine the rebol.com website (content adaptation has started), but I somehow feel, there's something wrong in the air once again - RT [http://www.rebol.com/article/0443.html looking for a designer] in the community. I think that our community has 2-3 capable ppl in the webdesign area, but other than that - you have been warned - programmers should not be allowed to touch the design work!''
 
-I will try to provide my point of view, what should be rebol.com about, in a separate [http://www.rebol.net/wiki/REBOL.com document]. But - RT already started preparation work for the new website. Its current content is more streamlined, Community page got added, etc.
+I will try to provide my point of view, what should be rebol.com about, in a separate [http://www.rebol.net/wiki/Rebol.com document]. But - RT already started preparation work for the new website. Its current content is more streamlined, Community page got added, etc.
 
 == Product/community support channels ==
 
@@ -192,7 +192,7 @@ I would let community and support be spread upon several communication channels.
 
 === AltME ===
 
-AltME is still nice community channel. It is kind of a "REBOL pub". Chat is happening not only on REBOL topics, but you can also find out more about who your REBOL friends are. One advantage of AltME is, that you can get usefull answer to your REBOL problem in seconds/minutes, and it really has IM (instant messaging) nature. Other advantage is, that whoever can start new AltME world, e.g. related to specific topic, it provides us with file-sharing, hidden groups, etc.
+AltME is still nice community channel. It is kind of a "Rebol pub". Chat is happening not only on Rebol topics, but you can also find out more about who your Rebol friends are. One advantage of AltME is, that you can get usefull answer to your Rebol problem in seconds/minutes, and it really has IM (instant messaging) nature. Other advantage is, that whoever can start new AltME world, e.g. related to specific topic, it provides us with file-sharing, hidden groups, etc.
 
 === ML (mailing list) ===
 
@@ -220,25 +220,25 @@ Thanks to [http://softinnov.org/ Softinnov's] [http://curecode.org/rebol3/ CureC
 
 === 2 Blogs of language author===
 
-I think that when people are complaining, they also forgot about what actually we have got. We have two blogs of REBOL author - a [http://www.rebol.com/cgi-bin/blog.r general one], and [http://www.rebol.net/cgi-bin/r3blog.r R3 one].
+I think that when people are complaining, they also forgot about what actually we have got. We have two blogs of Rebol author - a [http://www.rebol.com/cgi-bin/blog.r general one], and [http://www.rebol.net/cgi-bin/r3blog.r R3 one].
 
-We actually have the luxury of being able to talk and provide feedback to the REBOL author on a daily basis. And as I know Carl, he really cares about our feedback, and if his time permits, he responds.
+We actually have the luxury of being able to talk and provide feedback to the Rebol author on a daily basis. And as I know Carl, he really cares about our feedback, and if his time permits, he responds.
 
 === Other channels ===
 
 * '''rebol.org''' - community organised [http://www.rebol.org script archive] and much more
-* '''rebolweek''' - general [http://rebolweek.blogspot.com/ community blog] about REBOL news
+* '''rebolweek''' - general [http://rebolweek.blogspot.com/ community blog] about Rebol news
 
-=== REBOL consulting ===
+=== Rebol consulting ===
 
-[http://www.rebol.com/consulting.html REBOL consulting] is recently formed service, which will provide REBOL solution consulting and development.
+[http://www.rebol.com/consulting.html Rebol consulting] is recently formed service, which will provide Rebol solution consulting and development.
 
 == Deployment - a magic word once again==
 
 === Don't fight them - use them ===
 
  As I said - the web mostly won. There is really strong company who is pushing web forward - Google. Maybe we could expect
- more from company having almost unlimited resources, e.g. to introduce some miracle technology much better than REBOL is.
+ more from company having almost unlimited resources, e.g. to introduce some miracle technology much better than Rebol is.
  Instead - they go with the status quo. The thing is - it works for them, it works for users.
  So - we should not fight web technologies, we should somehow embrace them, and use them to our advantage.
 
@@ -270,18 +270,18 @@ I would also like to say, that following categories should be reflected on rebol
 
 === Make life easier for - IT managers, CEOs ===
 
-* '''Success stories''' - how someone choosed REBOL to solve xyz - make them feel safe, if their team uses REBOL
+* '''Success stories''' - how someone choosed Rebol to solve xyz - make them feel safe, if their team uses Rebol
 * '''Deployment scenarios & Integrations''' - reworded for managers, but generally this one is the same as Connectors area for Programmers. Those people need to know, they can access SAP, they can access AD (Active Directory), they can script Windows server, access their DBs
 
-== Marketing REBOL ==
+== Marketing Rebol ==
 
 I think that once main work is done - product ready, website redone, basic connectors avaiable - we need to start spread a word:
 
 * '''Interviews''' - Carl needs to be interviewed on many places
 * '''Community members blogs''' - this is partialy community's responsibility of spreading a word on own blogs.
-* '''Devcons''' - we need Devcons for REBOL community once again
+* '''Devcons''' - we need Devcons for Rebol community once again
 
-Let's not just do one thing - let's not spam places, where they are not interested into hearing anything about REBOL. That causes more harm than good.
+Let's not just do one thing - let's not spam places, where they are not interested into hearing anything about Rebol. That causes more harm than good.
 
 =The end=
 
@@ -295,6 +295,6 @@ Let's not just do one thing - let's not spam places, where they are not interest
 
 ==From [http://hostilefork.com/ Hostile Fork]==
 
-I added my comments on the [http://www.rebol.net/wiki/Talk:REBOL_adoption Talk Page], which is probably the best way to handle threaded conversation in a Wiki.  The usual idea is to make the main wiki page represent consensus where everyone collaborates.
+I added my comments on the [http://www.rebol.net/wiki/Talk:Rebol_adoption Talk Page], which is probably the best way to handle threaded conversation in a Wiki.  The usual idea is to make the main wiki page represent consensus where everyone collaborates.
 
 BTW, here's a useful refresher on MediaWiki markup (which is kind of ridiculous, but gets the job done): [http://en.wikipedia.org/wiki/Help:Wikitext_examples http://en.wikipedia.org/wiki/Help:Wikitext_examples]

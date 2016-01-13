@@ -2,7 +2,7 @@ This is a discussion area for ''converging'' on what we want to include in R3 fo
 
 ==Goal==
 
-Our goal is to finalize what we need in REBOL to support inclusion of code components both at run-time, but also at application build time (for apps that use that method.)
+Our goal is to finalize what we need in Rebol to support inclusion of code components both at run-time, but also at application build time (for apps that use that method.)
 
 Developers can:
 
@@ -60,7 +60,7 @@ The disadvantages are:
 *It happens at run-time - so you must have access to all the listed files.
 *It is evaluated, so must be in code format with a header. Therefore, if files contain data, they must be wrapped and assigned to a variable (or returned as a result).
 *Uncomfortable - no automatic file search using a search path
-*Incompatible with PREBOL (ignores PREBOL directives)
+*Incompatible with PRebol (ignores PRebol directives)
 
 ===LOAD===
 
@@ -81,7 +81,7 @@ It is also used often to build distributions, using this simple method:
 
 It turns out, ''this is how the programs that run most RT tools and websites are built''.
 
-Is it scalable (PITL)? Yes, the primary REBOL releases are all built using this approach, with a few minor variations.
+Is it scalable (PITL)? Yes, the primary Rebol releases are all built using this approach, with a few minor variations.
 
 ====How it satisfies the needs====
 
@@ -107,7 +107,7 @@ The disadvantages are:
 
 ===Modules: IMPORT function===
 
-The REBOL 3.0 method of dynamically including modules in a program at runtime.
+The Rebol 3.0 method of dynamically including modules in a program at runtime.
 
 Summary of usage:
 
@@ -148,19 +148,19 @@ Disadvantages:
 *Dynamically exported words can't be determined without running the code in the module, which might not be safe. This makes the analysis and sandboxing tools difficult to make.
 *The limits of dynamic import/export would be confusing to people familiar with modular languages.
 *Not usable for building distributions using INCLUDE method.
-*Hence, no fine-grained inclusion control (like PREBOL, below).
+*Hence, no fine-grained inclusion control (like PRebol, below).
 
 ===Modules: IMPORTS and EXPORTS headers===
 
-The REBOL 3.0 method of including modules in a program at LOAD time.
+The Rebol 3.0 method of including modules in a program at LOAD time.
 
 Summary of usage:
 
-    REBOL [type: module imports: ['module]]   ; converts to .r and will use search path
-    REBOL [type: module imports: [%module.r]] ; will use search path
-    REBOL [type: module imports: <nowiki>[http://www.rebol.com/module.r]</nowiki>]
-    REBOL [type: module exports: [myfunc myobject]] ; Exported words.
-    REBOL [type: module exports: all] ; Export all locally set words.
+    Rebol [type: module imports: ['module]]   ; converts to .r and will use search path
+    Rebol [type: module imports: [%module.r]] ; will use search path
+    Rebol [type: module imports: <nowiki>[http://www.rebol.com/module.r]</nowiki>]
+    Rebol [type: module exports: [myfunc myobject]] ; Exported words.
+    Rebol [type: module exports: all] ; Export all locally set words.
 
 Imported modules are fully encapsulated when loaded. Exported words are controlled via an export list.
 
@@ -179,21 +179,21 @@ Advantages:
 *The import and export headers can be a full dialect.
 *Can optionally include a module by name, rather than binding its exported words to your context.
 *Binding can be resolved at LOAD time, when it is safe.
-*Headers can be used by distribution builders like PREBOL.
+*Headers can be used by distribution builders like PRebol.
 *Headers can be used by analysis code without tracing.
-*Can be used to sandbox REBOL code for safe execution.
-*Can be backported to REBOL 2 (and mostly has been already by Gabriele).
+*Can be used to sandbox Rebol code for safe execution.
+*Can be backported to Rebol 2 (and mostly has been already by Gabriele).
 *Most modular code programmers are familiar with this method.
 
 Disadvantages:
 
 *More complex. Unknown global options can make it difficult to debug.
-*Dynamic management of imports and exports would need to be done by a distribution builder like PREBOL, or at runtime with the IMPORT function.
+*Dynamic management of imports and exports would need to be done by a distribution builder like PRebol, or at runtime with the IMPORT function.
 *The limits of static import/export would be confusing to new programmers unfamiliar with PITL.
 
-===PREBOL===
+===PRebol===
 
-The REBOL SDK introduced a method called PREBOL (REBOL preprocessing).
+The Rebol SDK introduced a method called PRebol (Rebol preprocessing).
 
 This method uses the ISSUE! datatype (which is rarely used in code itself) as a type of markup.
 
@@ -223,9 +223,9 @@ Advantages:
 Disadvantages:
 
 *More complex and more difficult to debug.
-*Not very Rebolish. Introduces a new meta-syntax, and although it is a valid REBOL dialect, it's really outside the original symbolic intentions of the language (because it uses #issues which are series, not symbolic words.)
+*Not very Rebolish. Introduces a new meta-syntax, and although it is a valid Rebol dialect, it's really outside the original symbolic intentions of the language (because it uses #issues which are series, not symbolic words.)
 
-===PREBOL (INCLUDE dialect) keywords===
+===PRebol (INCLUDE dialect) keywords===
 
 If the usage of #issue values as dialect keywords is undesirable, there is still a variant to use words. They just need to be somewhat "outstanding" to make them immediately visible and to suppress the probability, that the keywords will be used for other, incompatible purposes. For example, the INCLUDE function already took the <code>comment</code> word (since it is highly unlikely that it can cause any undesirable interference) as its keyword to support automatic stripping of comments. The following alternatives look like being available:
 
@@ -252,18 +252,18 @@ etc.
 
 See the [[INCLUDE documentation]].
 
-The '''include''' method is a significant extension of PREBOL created by Ladislav Mecir.
+The '''include''' method is a significant extension of PRebol created by Ladislav Mecir.
 
-It adds new functions to PREBOL (in a compatible manner), but the greatest strength/enhancement over PREBOL is its compatibility with DO, supporting testing and more fine-grained inclusion than supported by PREBOL (a user can specify, that a part has to be included multiple times, or just once).
+It adds new functions to PRebol (in a compatible manner), but the greatest strength/enhancement over PRebol is its compatibility with DO, supporting testing and more fine-grained inclusion than supported by PRebol (a user can specify, that a part has to be included multiple times, or just once).
 
-It is routinely used as a standard development tool in several environments replacing PREBOL as a more versatile tool. It is standard-based:
+It is routinely used as a standard development tool in several environments replacing PRebol as a more versatile tool. It is standard-based:
 
-*PREBOL standard
+*PRebol standard
 *DO standard
-*LOAD standard - supporting prefixed scripts, embedded scripts, REBOL-loadable data. Having a /only refinement to yield a built block as a result similarly as LOAD
-*like PREBOL it supports general data too
+*LOAD standard - supporting prefixed scripts, embedded scripts, Rebol-loadable data. Having a /only refinement to yield a built block as a result similarly as LOAD
+*like PRebol it supports general data too
 
-Ladislav and others have suggested that this be considered, and perhaps even replace PREBOL itself. - yes, I propose to use it in place of PREBOL, since it adheres to the PREBOL standard and is simpler and more versatile than PREBOL.
+Ladislav and others have suggested that this be considered, and perhaps even replace PRebol itself. - yes, I propose to use it in place of PRebol, since it adheres to the PRebol standard and is simpler and more versatile than PRebol.
 
 ====How it satisfies the needs====
 #Executes code.
@@ -280,9 +280,9 @@ Ladislav and others have suggested that this be considered, and perhaps even rep
 Advantages:
 
 *Fine grained inclusion (complete control for code and data) - i.e. complete support for points #1 and #2
-*Direct support for #3 (evaluating code like DO) is a great advantage over PREBOL.
-*Compatible with PREBOL - supports all its directives and functionality.
-*Simpler to use than PREBOL.
+*Direct support for #3 (evaluating code like DO) is a great advantage over PRebol.
+*Compatible with PRebol - supports all its directives and functionality.
+*Simpler to use than PRebol.
 
 Disadvantages:
 

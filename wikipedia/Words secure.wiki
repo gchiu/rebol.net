@@ -94,9 +94,9 @@ probe secure query
 </pre></code>
 Using QUERY, you can modify the current security level by querying the current settings, modifying them, then using the secure function to set the new values.
 
-Note that lowering the security level produces a change security settings requestor to the user. The exception is when the REBOL session is running in quiet mode which will, instead, terminate the REBOL session. No request is generated when security levels are raised. Note that the security request includes an option to allow all access for the remainder of the scripts processing.
+Note that lowering the security level produces a change security settings requestor to the user. The exception is when the Rebol session is running in quiet mode which will, instead, terminate the Rebol session. No request is generated when security levels are raised. Note that the security request includes an option to allow all access for the remainder of the scripts processing.
 
-When running REBOL, the -s argument can be provided on the command line to specify an initial security of:
+When running Rebol, the -s argument can be provided on the command line to specify an initial security of:
 
 
 <code><pre>
@@ -108,7 +108,7 @@ The +s argument will specify:
 <code><pre>
 secure quit
 </pre></code>
-You can also use the --secure argument to specify any other default security level on REBOL startup.
+You can also use the --secure argument to specify any other default security level on Rebol startup.
 
 
 

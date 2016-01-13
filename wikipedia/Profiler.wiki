@@ -140,7 +140,7 @@ Let's check the tiger.r SVG for a few hundred frames:
 ]
 </pre>
 
-Useful info! It shows that REBOL's graphics system is quite efficient.
+Useful info! It shows that Rebol's graphics system is quite efficient.
 
 ==Useful Observations==
 

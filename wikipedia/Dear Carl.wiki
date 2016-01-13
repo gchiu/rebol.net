@@ -1,10 +1,10 @@
 ===Dear Carl,===
 
 ====Altissimo?====
-Can we get a blurb on the plans for the Altme/IOS/ side of REBOL 3?  [[User:BTiffin|Bluey]]
+Can we get a blurb on the plans for the Altme/IOS/ side of Rebol 3?  [[User:BTiffin|Bluey]]
 
 ====SYSTEM====
-How will the SYSTEM object change in REBOL 3? [[User:BTiffin|Bluey]]
+How will the SYSTEM object change in Rebol 3? [[User:BTiffin|Bluey]]
 
 ===Gratitudes===
 

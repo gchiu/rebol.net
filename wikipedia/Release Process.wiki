@@ -1,6 +1,6 @@
 {{Cookbook|title=Release Process|author=Henrik Mikael Kristensen|level=1|category=RT Developer}}
 
-REBOL Technologies wants to have a standardized release process. Currently this is shaping up for the first Alpha release of REBOL 3 and is necessary to make future releases go as smoothly as possibly. This document is intended for people unfamiliar with the release process and want to understand it.
+Rebol Technologies wants to have a standardized release process. Currently this is shaping up for the first Alpha release of Rebol 3 and is necessary to make future releases go as smoothly as possibly. This document is intended for people unfamiliar with the release process and want to understand it.
 
 '''For developers, who must participate in this process, this document is mandatory reading.'''
 
@@ -14,7 +14,7 @@ There is no formal way to entering the release process other than having access 
 
 == DevBase ==
 
-DevBase holds all the open parts of the source code to REBOL 3 and is the only method to update source code to REBOL 3 prior to release. To read more about how to use DevBase, click [[DevBase|here]].
+DevBase holds all the open parts of the source code to Rebol 3 and is the only method to update source code to Rebol 3 prior to release. To read more about how to use DevBase, click [[DevBase|here]].
 
 == Files ==
 
@@ -59,9 +59,9 @@ When the files from the '''Test''' directory show no outstanding bugs, they are 
 Right now, the distribution is made up of the following files:
 
 ;Rebhost.exe
-:This is the main executable. It requires Rebol.dll in order to run. Just click on this file to run REBOL 3.
+:This is the main executable. It requires Rebol.dll in order to run. Just click on this file to run Rebol 3.
 ;Rebol.dll
-:This is the core of REBOL 3. Currently REBOL 3 is delivered in this format for easier updating of the core.
+:This is the core of Rebol 3. Currently Rebol 3 is delivered in this format for easier updating of the core.
 ;Readme.txt
 :This is a makedoc2 formatted file that contains information about this release of the distribution.
 ;Readme.html
@@ -69,15 +69,15 @@ Right now, the distribution is made up of the following files:
 ;graphics directory
 :This directory contains images used in Readme.html
 ;Examples directory
-:This contains examples made by various developers on the REBOL 3 team.
+:This contains examples made by various developers on the Rebol 3 team.
 
-== Who is Releasing REBOL 3? ==
+== Who is Releasing Rebol 3? ==
 
-The release process is managed by Maarten Koopmans. He delegates work and oversees what needs to be done in order to complete the process of releasing a version of REBOL 3.
+The release process is managed by Maarten Koopmans. He delegates work and oversees what needs to be done in order to complete the process of releasing a version of Rebol 3.
 
 ;Contributions and Examples:
 
-:All REBOL 3 developers
+:All Rebol 3 developers
 
 ;Quality testing:
 

@@ -11,13 +11,13 @@ An example is a file path. It lets you refer to a specific file by providing a l
 
 Each slash ''refines'' the description of where the file is located. You can think of the names as selectors or as refinements.
 
-REBOL builds on that same concept for accessing a wide range of datatypes, not just files. For example, objects, functions, strings, to name just a few, allow paths for selection and refinement.
+Rebol builds on that same concept for accessing a wide range of datatypes, not just files. For example, objects, functions, strings, to name just a few, allow paths for selection and refinement.
 
 If the concept of paths seems difficult to understand, perhaps just think of them like selectors that work on an object field. In many cases, that's how they are being used, but the implementation of the selector may vary, depending on its datatype.
 
 ==Path Formats==
 
-In REBOL, a path is formed from root value and a list of refinements. Each refinement provides more specific information about how to select a value, starting from the root. Each refinement is separated by a slash (/) - a method that is identical to how URL's are written on the Internet.
+In Rebol, a path is formed from root value and a list of refinements. Each refinement provides more specific information about how to select a value, starting from the root. Each refinement is separated by a slash (/) - a method that is identical to how URL's are written on the Internet.
 
 Here are a few example paths:
 <pre>
@@ -42,7 +42,7 @@ a/b/c: : - set path - sets the value
 'a/b/c : - literal path - refer to the path itself
 </pre>
 
-These formats are identical to those used by variables, as described in chapter NN of the REBOL User Guide.
+These formats are identical to those used by variables, as described in chapter NN of the Rebol User Guide.
 
 ===Refinements===
 

@@ -4,7 +4,7 @@
 Domain Specific Dialecting. Doctors express their ideas in medical terms, stockbrokers in trade terms, and quarterbacks in football terms. Why? Because it's more efficient and productive. That's the benefit of dialecting. Dialecting is the ability to create sub-languages that provide you with extra leverage and productivity by expressing your solutions in terms that are best suited to your purpose.
 
 
-VID is REBOL's Visual Interface Dialect. A dialect is an extension of the REBOL language that makes it easier to express or describe information, actions, or interfaces. VID is a dialect that provides a powerful method of describing user interfaces.
+VID is Rebol's Visual Interface Dialect. A dialect is an extension of the Rebol language that makes it easier to express or describe information, actions, or interfaces. VID is a dialect that provides a powerful method of describing user interfaces.
 </TD></TR></TABLE>
 ==General Syntax Of The Visual Interface Dialect==
 <TABLE style="color:green; background-color:#ffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
@@ -57,10 +57,10 @@ Just to provide a simple starting point, here's a GUI that consists of two butto
 [[images/gui-basics-buttons.jpg|No Description]]
 
 
-REBOL [ ]
+Rebol [ ]
 :load-gui
 :view [
-::button "REBOL" browse http://www.rebol.com
+::button "Rebol" browse http://www.rebol.com
 ::button "Close" close
 :]
    </TD>
@@ -69,8 +69,8 @@ REBOL [ ]
 <TABLE CELLPADDING=10 CELLSPACING=0><TR><TD WIDTH=90% VALIGN=TOP ALIGN=LEFT BGCOLOR=#ffffcc>
 
 #'''view''' is a function that is given a block that constructs a '''panel''' and displays it in a window.
-#'''button''' is an in-built REBOL face.
-#The buttons' text "REBOL" & "Close", are ''inline options'' of the 2 faces.
+#'''button''' is an in-built Rebol face.
+#The buttons' text "Rebol" & "Close", are ''inline options'' of the 2 faces.
 #'''browse''' and '''close''' are the buttons' actions.
 </TD><TD VALIGN=TOP  ALIGN=LEFT BGCOLOR=#ffffcc>
 </TD></TR></TABLE>
@@ -78,18 +78,18 @@ REBOL [ ]
 </TD>
 </TR></TABLE>
 <TABLE CELLSPACING=10 CELLPADDING=10><TR><TD WIDTH=50% VALIGN=TOP>
-REBOL scripts must have the header REBOL [ ].  
+Rebol scripts must have the header Rebol [ ].  
 
 If using the R3 alpha version, ''load-gui'' must also be included in the script to ensure the latest version will be downloaded and used. 
 </TD><TD VALIGN=TOP>
 
-To run a script, copy and paste the examples into a text file headed with '''REBOL [ ]''', include the load-gui function, and save this file with a ".r" extension.  Then either from the console type: do %example.r,  or drag the script file icon onto the REBOL file icon.
+To run a script, copy and paste the examples into a text file headed with '''Rebol [ ]''', include the load-gui function, and save this file with a ".r" extension.  Then either from the console type: do %example.r,  or drag the script file icon onto the Rebol file icon.
 </TD></TR><TR><TD VALIGN=TOP>
 It should be noted that the '''view''' function is one of several ways to construct GUIs. In addition to '''view''', R3 will also allow you to evaluate ''GUI code directly'', similar to an HTML page. Therefore, to make this document simpler, we could just write the contents of the panel. For example,
 </TD><TD VALIGN=TOP>
 <TABLE style="color:green; background-color:#ffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%>
 <TR><TD>
-:button "REBOL" browse http://www.rebol.com
+:button "Rebol" browse http://www.rebol.com
 :button "Quit" quit
 </TD></TR></TABLE>
 More on this later.
@@ -101,7 +101,7 @@ For the sake of illustration, let's toss in a few more faces and their styles to
 
 <TABLE style="color:green; background-color:#ffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
 <TD WIDTH=50%>
-:REBOL [ ]
+:Rebol [ ]
 :load-gui
 :view [
 ::title "Opinion Survey"
@@ -143,7 +143,7 @@ For the sake of illustration, let's toss in a few more faces and their styles to
 
 <TABLE style="color:green; background-color:#ffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
 <TD WIDTH=50%>
-REBOL [ ]
+Rebol [ ]
 load-gui
 view [
 :group 1 [

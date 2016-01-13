@@ -1,5 +1,5 @@
 {{underconstruction}}
-The vector! datatype is new in REBOL 3. The implementation described below takes effect in Alpha V22. Prior versions will not work.
+The vector! datatype is new in Rebol 3. The implementation described below takes effect in Alpha V22. Prior versions will not work.
 
 ==Definition==
 

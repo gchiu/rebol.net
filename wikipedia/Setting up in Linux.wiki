@@ -44,7 +44,7 @@ Reprinted here is an article from the Rebol.org library, written by brianwisti
 
 Adjusting Fonts in /View
 
-This is just a little tip from a while ago when I was having font display issues under Linux. The issues have gone away, but this tip still applies on any system where you don't care for the default fonts being used by REBOL/View.
+This is just a little tip from a while ago when I was having font display issues under Linux. The issues have gone away, but this tip still applies on any system where you don't care for the default fonts being used by Rebol/View.
 
 It's very easy, actually. Important customization rules are contained in your personal user.r file, located at ~/.rebol/view/user.r on Linux machines. Once you have some decent fonts installed, add the following code to your user.r file.
  if (not none? system/view) [
@@ -62,9 +62,9 @@ It's very easy, actually. Important customization rules are contained in your pe
  ]
  
 
-What's going on here? Not much, really. First we check to make sure we're running in a REBOL session with View available. That way nothing blows up if we are running a command line script. Then we name some fonts. I placed them in variables toward the top of the block because every little bit of organization helps a scattered brain like mine. The important part is last - we step through all of the available styles and, if that style cares about fonts, tell them to use our sans-serif and serif fonts wherever they use helvetica and times , respectively.
+What's going on here? Not much, really. First we check to make sure we're running in a Rebol session with View available. That way nothing blows up if we are running a command line script. Then we name some fonts. I placed them in variables toward the top of the block because every little bit of organization helps a scattered brain like mine. The important part is last - we step through all of the available styles and, if that style cares about fonts, tell them to use our sans-serif and serif fonts wherever they use helvetica and times , respectively.
 
-That's it! Like I said, there's not much going on here. Still, little adjustments like this can make your REBOL/View sessions on Linux a little bit more pleasant.
+That's it! Like I said, there's not much going on here. Still, little adjustments like this can make your Rebol/View sessions on Linux a little bit more pleasant.
 
 ==Setting Up Fonts For The Draw Dialect==
 
@@ -90,7 +90,7 @@ rendered by DRAW dialect. So something like this should work:
         ]
     ]
 
-by Cyphre, [Linux] group for linux REBOL users, Alme Groups http://www.rebol.org/aga-display-posts.r?post=r3wp226x0  03-mar-2011
+by Cyphre, [Linux] group for linux Rebol users, Alme Groups http://www.rebol.org/aga-display-posts.r?post=r3wp226x0  03-mar-2011
 
 
 

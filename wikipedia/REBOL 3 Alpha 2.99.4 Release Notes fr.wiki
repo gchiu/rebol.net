@@ -4,7 +4,7 @@ Traduction réalisée par Jean-François "Jeffrey" Richard
 
 ==Qu'est-ce que c'est==
 
-<b>C'est une version alpha de REBOL 3.0</b>
+<b>C'est une version alpha de Rebol 3.0</b>
 
 Une version alpha est un prototype non finalisé. Il contient la plupart des caractéristiques de la version finale, mais ce n'est pas cette dernière, et ce n'est pas un produit en tant que tel.
 
@@ -16,7 +16,7 @@ C'est une version limitée et nous savons cela. Ainsi, s'il vous plaît, ne l'ut
 
 R3 a une longue liste d'objectifs, et ci-dessous en sont énumérés quelques uns
 
-*Un modèle d'environnement multi-hôte (avec REBOL-dans-une-DLL)
+*Un modèle d'environnement multi-hôte (avec Rebol-dans-une-DLL)
 *Une implentation ouverte des interfaces et des sous-systèmes
 *Une architecture modulaire (espaces de noms, contextes multi-globaux)
 *Support de l'Unicode (source encodée, chaînes internes)
@@ -46,9 +46,9 @@ Cette distribution comprends
 
 :readme.txt (.html) - vous être en train de le lire
 
-:rebhost.exe - L'environnement hôte REBOL (graphiques, périphériques, etc...)
+:rebhost.exe - L'environnement hôte Rebol (graphiques, périphériques, etc...)
 
-:rebol.dll - Le noyau du moteur d'exécution de REBOL 3.0 (il doit être dans le même répertoire que le rebhost.exe)
+:rebol.dll - Le noyau du moteur d'exécution de Rebol 3.0 (il doit être dans le même répertoire que le rebhost.exe)
 
 :examples/ - scripts provenant des développeurs et testeurs qui ont développés ou testés sur R3 et qui illustrent ou testent différentes fonctionnalités de R3
 

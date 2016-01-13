@@ -4,7 +4,7 @@
 
 *UTF-8 is the most common unicode standard and is widely supported by most systems, servers, tools, editors, and other utilities.
 *When treated as a stream of bytes, UTF-8 strings can be handled even by systems that do not know of their encoding. (For example, C-libs that use zero as a terminating character.)
-*UTF-8 also has the advantage that existing ASCII (ANSI) strings that use chars with values less than 128 remain as they are. This allows many existing REBOL script to be run exactly as they are now, without modification or specification of their encoding.
+*UTF-8 also has the advantage that existing ASCII (ANSI) strings that use chars with values less than 128 remain as they are. This allows many existing Rebol script to be run exactly as they are now, without modification or specification of their encoding.
 *All unicode codepoints can be represented in UTF-8 (even those outside of a 16 bit range).
 
 R3 will support a range of conversions to and from UTF-8 and the popular character encodings.

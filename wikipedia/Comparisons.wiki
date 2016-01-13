@@ -12,7 +12,7 @@ To be comparable, all equality operators shall have the same domain, which means
 
 has to succeed (= yield TRUE).
 
-One of the simplest alternatives is, that the domain of every equality operator will consist of all REBOL values except for #[unset!]. In that case every test of the form:
+One of the simplest alternatives is, that the domain of every equality operator will consist of all Rebol values except for #[unset!]. In that case every test of the form:
 
 <pre>not all [
     value? 'a

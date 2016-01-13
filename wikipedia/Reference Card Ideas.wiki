@@ -1,10 +1,10 @@
-'''A place to make suggestions regarding the [http://www.rebol.com/docs/reference.html REBOL Reference Card.]'''
+'''A place to make suggestions regarding the [http://www.rebol.com/docs/reference.html Rebol Reference Card.]'''
 
 ==A few notes from Carl==
 
 *'''The purpose of this card is to help beginners (not experts.)'''
 
-*The card is designed to list the commonly used REBOL functions, not all REBOL functions. For some parts, like comparison, we list the useful set of functions.
+*The card is designed to list the commonly used Rebol functions, not all Rebol functions. For some parts, like comparison, we list the useful set of functions.
 
 *All links appear to be fixed now. ([[User:Carl|Carl]] 14:21, 6 August 2010 (EDT))
 

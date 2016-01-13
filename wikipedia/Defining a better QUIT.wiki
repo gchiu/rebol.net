@@ -1,17 +1,17 @@
-The purpose of this document is to define the general parameters of REBOL's run-time environment, and develop a better method of handling QUIT (and related functions).
+The purpose of this document is to define the general parameters of Rebol's run-time environment, and develop a better method of handling QUIT (and related functions).
 
 ==Environments Defined==
 
-There are four general environments for running REBOL programs. It is best to clearly label them, so we can refer to them later:
+There are four general environments for running Rebol programs. It is best to clearly label them, so we can refer to them later:
 
 #'''Application''' - run by user, not for debugging purposes, but to achieve an end result
 #'''Server''' - run by a server, not for debugging purposes, but to achieve an end result
-#'''Shell''' - run by a user, using REBOL as a shell to run a variety of tasks that achieve an end result
+#'''Shell''' - run by a user, using Rebol as a shell to run a variety of tasks that achieve an end result
 #'''Development''' - run by developer, for debugging, education, or experimentation by using the console.
 
 We will include running as a browser (or embedded app) plugin as the first case: an application. It is also possible that it may be run as a plugin in the second case too.
 
-In addition, we will define <b>Console</b> to mean the REBOL interactive session (prompt, evaluate, and show result).
+In addition, we will define <b>Console</b> to mean the Rebol interactive session (prompt, evaluate, and show result).
 
 ==Importance of Console Varies==
 
@@ -49,7 +49,7 @@ This is a natural model, similar to that of a function. In fact, if the script's
 
 The console handles three exceptional conditions for the termination of a script:
 
-#'''QUIT''' - forces an immediate termination of the script and the REBOL system environment itself.
+#'''QUIT''' - forces an immediate termination of the script and the Rebol system environment itself.
 #'''HALT''' - forces the script to terminate, and returns to the console prompt (except in server environments, where it also will force a quit).
 #'''THROW''' - an error has occurred, and if not handled by the script, will force the script similar to a HALT, but with an error message.
 
@@ -59,9 +59,9 @@ The console handles three exceptional conditions for the termination of a script
 
 Many programmers use QUIT to mean: ''The program is done, stop now.''
 
-Unfortunately, QUIT also ''terminates the REBOL system itself'', and for Shell and Development work, that can be a problem.
+Unfortunately, QUIT also ''terminates the Rebol system itself'', and for Shell and Development work, that can be a problem.
 
-So, it appears that an important case is missing from the above exceptions.  We need something similar to QUIT: the script wants to terminate, but it does not terminate the REBOL system.
+So, it appears that an important case is missing from the above exceptions.  We need something similar to QUIT: the script wants to terminate, but it does not terminate the Rebol system.
 
 ==Possible Solutions==
 
@@ -78,9 +78,9 @@ The second seems like it is a better solution. We can make QUIT modal (its mode 
 
 A modal QUIT is one that depends on its context (including how it was called). Before we examine how to implement such a QUIT, let's first determine if this would be an adequate solution to our needs:
 
-#When running as an Application or Server, QUIT would terminate the program and the REBOL system
-#When running as a Shell or for Development, QUIT would stop the script, but will not terminate the REBOL system.
-#When evaluated directly from the console (not in a script), QUIT would terminate the REBOL system (as it does today).
+#When running as an Application or Server, QUIT would terminate the program and the Rebol system
+#When running as a Shell or for Development, QUIT would stop the script, but will not terminate the Rebol system.
+#When evaluated directly from the console (not in a script), QUIT would terminate the Rebol system (as it does today).
 
 How can this be implemented? The cleanest approach would be to automatically bind QUIT to a different function when it is input from the console. Since the console already performs its own bind, this solution is quite easy and could be working by today.
 
@@ -90,7 +90,7 @@ There is another requirement implied by the above definitions: ''Should QUIT do 
 
 At this time, we can only do a small degree of cleanup... such as close all open windows. However, until we have the full R3 module system online, other resources will remain allocated and in use.
 
-Once R3 modules are working, those parts of the script that do not modify the REBOL system itself can easily be purged from memory. In addition, we can allow a finalization method to close ports, files, and other resources.
+Once R3 modules are working, those parts of the script that do not modify the Rebol system itself can easily be purged from memory. In addition, we can allow a finalization method to close ports, files, and other resources.
 
 ==Comments==
 

@@ -21,4 +21,4 @@ The TITLE face displays a title in a large bold font at the top of the panel. It
 
 The BUTTON face when clicked with execute the CLOSE reactor, which will close the window.
 
-If no other windows are open, REBOL will quit.
+If no other windows are open, Rebol will quit.

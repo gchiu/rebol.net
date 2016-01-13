@@ -1,18 +1,18 @@
-'''Include''' is a REBOL script processor. It is implemented as a function and works as a REBOL script loader, preprocessor and evaluator. It is not an "alternative module system", in fact, it is orthogonal to any such system, meaning that it can work together with such a system.
+'''Include''' is a Rebol script processor. It is implemented as a function and works as a Rebol script loader, preprocessor and evaluator. It is not an "alternative module system", in fact, it is orthogonal to any such system, meaning that it can work together with such a system.
 
 ==Design features==
 
-# A comfortable REBOL script evaluator:
+# A comfortable Rebol script evaluator:
 ## Can preprocess and evaluate any script (the script does not have to contain '''prebol''' directives).
 ## Processes '''prebol''' directives facilitating SDK debugging.
 ## During preprocessing errors are enhanced to inform in which file the error occurred to make debugging more comfortable.
 ## Uses '''include-ctx/path''' which resembles paths of many operating systems to search for scripts.
 ## '''include-ctx/path''' can contain URLs, not just local directories.
 ## '''include/check''' prevents scripts from being re-included (included more than once).
-## Processes ordinary scripts with REBOL header.
-## Processes prefaced REBOL scripts, i.e., REBOL scripts with preface preceding REBOL header and embedded REBOL scripts (see [http://www.rebol.com/docs/core23/rebolcore-5.html#section-1.2]).
+## Processes ordinary scripts with Rebol header.
+## Processes prefaced Rebol scripts, i.e., Rebol scripts with preface preceding Rebol header and embedded Rebol scripts (see [http://www.rebol.com/docs/core23/rebolcore-5.html#section-1.2]).
 # An improved script loader:
-## '''include/only''' just loads and preprocesses a script yielding a REBOL block.
+## '''include/only''' just loads and preprocesses a script yielding a Rebol block.
 ## '''include/link''' loads a script, preprocesses it and saves the result to the specified file.
 # An improved preprocessor:
 ## Processes all '''prebol''' directives and is compatible with SDK.
@@ -29,7 +29,7 @@ Licensed under the Apache License, Version 2.0 (the "License"). You may obtain a
 
 ==Description==
 
-The preprocessing phase is used to build the script, i.e., to include the necessary parts. Moreover, it enables the user to evaluate any REBOL expression(s).
+The preprocessing phase is used to build the script, i.e., to include the necessary parts. Moreover, it enables the user to evaluate any Rebol expression(s).
 
 ===Standard preprocessing directives===
 
@@ -101,7 +101,7 @@ The directories (or URLs) that are first in the '''include-path''' are searched 
 
 ===='''''log'''''====
 
-The '''''log''''' variable refers to a block containing the files (with complete paths) '''include''' function processed. It is used by the <code>/check</code> refinement and by the <code>#include-check</code> directive to check whether a specific file was already included. The default REBOL comparison (which is case-insensitive) is used and the paths are converted to lowercase.
+The '''''log''''' variable refers to a block containing the files (with complete paths) '''include''' function processed. It is used by the <code>/check</code> refinement and by the <code>#include-check</code> directive to check whether a specific file was already included. The default Rebol comparison (which is case-insensitive) is used and the paths are converted to lowercase.
 
 The user can save the '''log''' to a file to create a log file. The user can influence what will be considered as "already included", typically by clearing the contents of the '''log''' block when starting to link a new file. The files are appended to the '''log''' block as they are found by '''include''', which means that the file found last will be the last one in the log.
 
@@ -255,7 +255,7 @@ The distinction between preprocessing directives and "normal" '''include''' usag
 
 The first example uses '''include''', but not the preprocessing directives:
 
-<pre>REBOL [
+<pre>Rebol [
     File: %script-builder.r
 ]
 
@@ -278,7 +278,7 @@ To create the two versions of the script containing everything they need to run 
 
 The <code>%script-base.r</code> file can look e.g. as follows:
 
-<pre>REBOL [
+<pre>Rebol [
     File: %script-base.r
 ]
 
@@ -291,7 +291,7 @@ The <code>%script-base.r</code> file can look e.g. as follows:
 
 It is possible to encapsulate contexts as follows:
 
-<pre>REBOL [
+<pre>Rebol [
     Title: "my script"
 ]
 	
@@ -507,7 +507,7 @@ In the same way you can define the <code>open</code> association for <code>.r3</
 
 * INCLUDE/only update
 ** to help Cyphre use it for encapping purposes
-** returns the REBOL header spec part in the result block if available
+** returns the Rebol header spec part in the result block if available
 
 26-Dec-2012/15:00:27+1:00
 

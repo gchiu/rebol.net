@@ -4,20 +4,20 @@
 I would like to thank the men that influenced this article in some way. Those are especially Galt Barber, Brian D., Mark Dickson, Elan Goldman, Brian Hawley, Gregg Irwin, Thomas Jensen, Pierre Johnson, Holger Kruse, Volker Nitsch, Larry Palmiter, Patrick Philipot, Gabriele Santilli, Carl Sassenrath, Frank Sievertsen and Romano Paolo Tenca. Any errors are my copyright.
 
 ==References==
-The code in this article was tested in REBOL/View 2.7.6.3.1. It is possible that other versions of the interpreter yield different results.
+The code in this article was tested in Rebol/View 2.7.6.3.1. It is possible that other versions of the interpreter yield different results.
 
 A reader who wants to check all the examples can run this code: 
 <pre>do http://www.rebol.org/download-a-script.r?script-name=contexts.r</pre>
 , which defines all functions from this article.
 
 ==Word types==
-REBOL words like all REBOL values have type. Let's have a look at all available word types:
+Rebol words like all Rebol values have type. Let's have a look at all available word types:
  <nowiki>type? first [rebol] ; == word!
 type? first [rebol:] ; == set-word!
 type? first [:rebol] ; == get-word!
 type? first ['rebol] ; == lit-word!
 type? first [/rebol] ; == refinement!</nowiki>
-Moreover, all REBOL words have a common pseudo-type ANY-WORD!:
+Moreover, all Rebol words have a common pseudo-type ANY-WORD!:
  <nowiki>any-word? first [rebol] ; == true
 any-word? first [rebol:] ; == true
 any-word? first [:rebol] ; == true
@@ -40,12 +40,12 @@ Observation (Spelling and word equality): Words with strict equal spelling are e
 
 Illustration:
  equal? first [rebol] first [rebol:] ; == true
-The reverse implication does not hold (since REBOL supports aliases). Nevertheless, we can reverse the implication at least in some way.
+The reverse implication does not hold (since Rebol supports aliases). Nevertheless, we can reverse the implication at least in some way.
 
 Observation (SAME? and spelling): If two words are the same according to the SAME? function then they have got strict equal spelling.
 
 ==Variables==
-A very important property of words is the ability to serve as variables (refer to REBOL values). To set a variable 'rebolution to refer to a REBOL string "uprising" we can pick one of the following:
+A very important property of words is the ability to serve as variables (refer to Rebol values). To set a variable 'rebolution to refer to a Rebol string "uprising" we can pick one of the following:
  <nowiki>rebolution: "uprising"
 set 'rebolution "uprising"
 set/any 'rebolution "uprising"
@@ -75,9 +75,9 @@ The easiest way how to find out if a word is a variable is to use the properties
 Tests:
  <nowiki>variable? 'rebol ; == true
 variable? /rebol ; == false</nowiki>
-Observation (Context uniqueness): As the BIND? function helps us to find out, for every REBOL word there is at most one context the given word is bound to.
+Observation (Context uniqueness): As the BIND? function helps us to find out, for every Rebol word there is at most one context the given word is bound to.
 
-Corollary (Context hierarchy): From the above observation follows that in REBOL there is no context hierarchy, because a context hierarchy would require some word being bound to at least two distinct contexts, one being "smaller" than the other.
+Corollary (Context hierarchy): From the above observation follows that in Rebol there is no context hierarchy, because a context hierarchy would require some word being bound to at least two distinct contexts, one being "smaller" than the other.
 
 Observation (Word sameness): According to the SAME? function two words are the same if and only if they have strict equal spelling and equal binding.
 
@@ -158,7 +158,7 @@ Observation (Binding block without copying): If the /COPY refinement isn't used,
 ==Aliases==
 Definition (Aliases): Equal words that do not have strict equal spelling we call aliases.
 
-This is our definition translated to REBOL:
+This is our definition translated to Rebol:
  <nowiki>aliases?: func [
     {find out, if WORD1 and WORD2 are aliases}
     word1 [any-word!]
@@ -176,7 +176,7 @@ Corollary (Aliases and SAME?): The SAME? function yields FALSE when comparing tw
 
 Proof: See the (SAME? and spelling) observation and our definition of aliases.
 
-Observation (Automatic aliases): Since REBOL tries to be case-insensitive, the interpreter usually (except for inconsistencies) "considers" words with spellings differing only in case to be aliases.
+Observation (Automatic aliases): Since Rebol tries to be case-insensitive, the interpreter usually (except for inconsistencies) "considers" words with spellings differing only in case to be aliases.
 
 Observation (ALIAS): Aliases can be defined explicitly using the ALIAS function.
  <nowiki>; let's create an alias 'revolutionary for the word 'rebol
@@ -285,7 +285,7 @@ Observation (Enlarging local contexts): Local contexts aren't enlargeable.
 Observation (The result of the DIFFERENT-BINDING function): The result of the DIFFERENT-BINDING function as we defined it above is always a local word.
 
 ==Computed binding==
-Let's observe the behaviour of the REBOL interpreter when evaluating an example code string:
+Let's observe the behaviour of the Rebol interpreter when evaluating an example code string:
  code-string: {'f 'g 'h use [g h] [colorize "USE 1" 'f 'g 'h use [h] [colorize "USE 2" 'f 'g 'h]]}
 
 The COLORIZE function will colorize the code listing as follows:
@@ -382,10 +382,10 @@ The result proves that:
 *The first USE call replaced all words 'g and 'h from its body block and its subblock with local USE 1 words
 *The second USE call replaced the 'h in the innermost block with the local USE 2 word
 
-Observation (Computed binding): During the interpretation the binding of REBOL words contained in the code is changed (i.e. the words are being replaced by words with different binding) until they are bound correctly and evaluated. That is why the creator of REBOL calls this behaviour "Computed binding".
+Observation (Computed binding): During the interpretation the binding of Rebol words contained in the code is changed (i.e. the words are being replaced by words with different binding) until they are bound correctly and evaluated. That is why the creator of Rebol calls this behaviour "Computed binding".
 
 ==Scope==
-It looks like we observed a "scope hierarchy" during the execution of the above REBOL code. As we have demonstrated, it was only a side effect of the computed binding.
+It looks like we observed a "scope hierarchy" during the execution of the above Rebol code. As we have demonstrated, it was only a side effect of the computed binding.
 
 With a help of the computed binding we can easily create code samples, which do not exhibit any "scope" property:
  <nowiki>; create a block CODE-BLK containing a word 'a
@@ -403,10 +403,10 @@ equal? first code-blk second code-blk ; == true
 ; prove that the CODE-BLK is not a "scope"
 equal? bind? first code-blk bind? second code-blk ; == false</nowiki>
 
-The CODE-BLK example demonstrates that for a code block there is no such thing as its "current context" in REBOL because in REBOL only individual words are associated with context.
+The CODE-BLK example demonstrates that for a code block there is no such thing as its "current context" in Rebol because in Rebol only individual words are associated with context.
 
 ==The USE function==
-To be as precise as possible we will write the description of the USE function behaviour in REBOL.
+To be as precise as possible we will write the description of the USE function behaviour in Rebol.
 
 The following function creates a new context, in which all words are unset:
  <nowiki>make-context-model: func [
@@ -541,7 +541,7 @@ The explanation and the correction are similar as for the USE function. The word
     ] 'a
 ]
 f 1 ; == "OK"</nowiki>
-As you might have seen, the above code deep copies the BODY block before binding it to the context. Analogical bugs were discovered when the deep copying was not used when the FUNC function created REBOL functions.
+As you might have seen, the above code deep copies the BODY block before binding it to the context. Analogical bugs were discovered when the deep copying was not used when the FUNC function created Rebol functions.
 
 ==MAKE PROTO==
 This is a simulation of the situation when the MAKE function obtains a prototype of the object it has to create. First of all we need a special BIND-like function:
@@ -689,10 +689,10 @@ funcs: func [
     make function! spec body
 ]</pre>
 
-==Model of REBOL functions==
-Our model of REBOL functions will be a REBOL object FUNCTION!-MODEL having the appropriate attributes. The totally necessary attributes of REBOL functions are SPEC and BODY.
+==Model of Rebol functions==
+Our model of Rebol functions will be a Rebol object FUNCTION!-MODEL having the appropriate attributes. The totally necessary attributes of Rebol functions are SPEC and BODY.
 
-To model the current behaviour of REBOL functions accurately our FUNCTION!-MODEL needs CONTEXT, CONTEXT-WORDS and RECURSION-LEVEL attributes to model the behaviour of REBOL functions during recursive calls:
+To model the current behaviour of Rebol functions accurately our FUNCTION!-MODEL needs CONTEXT, CONTEXT-WORDS and RECURSION-LEVEL attributes to model the behaviour of Rebol functions during recursive calls:
  <nowiki>function!-model: make object! [
     spec: none
     body: none
@@ -791,7 +791,7 @@ recfun: func-model [x] [
 blk: copy []
 evaluate-model recfun [1] ; [x x]: [2 2]
 probeblk ; [x x]: [1 1]</nowiki>
-If we compare the simulated behaviour with the real REBOL functions, we get:
+If we compare the simulated behaviour with the real Rebol functions, we get:
  <nowiki>recfun: func [x] [
     append blk 'x
     either x = 2 [
@@ -803,7 +803,7 @@ If we compare the simulated behaviour with the real REBOL functions, we get:
 blk: copy []
 recfun 1 ; [x x]: [2 2]
 probeblk ; [x x]: [1 1]</nowiki>
-This shows that the simulation is really accurate and that REBOL functions use the Dynamic Recursion Patch too.
+This shows that the simulation is really accurate and that Rebol functions use the Dynamic Recursion Patch too.
 
 Although the Dynamic Recursion Patch can speed up the evaluation under some circumstances it has got its drawbacks:
  <nowiki>f-returning-x: func [x] [

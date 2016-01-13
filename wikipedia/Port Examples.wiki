@@ -180,7 +180,7 @@ Note that this example reads the page at a low level, just for the purpose of sh
 The example shows how to use asynchronous TCP to perform the transfer.
 
 <pre>
-REBOL [Title: "Simple Async HTTP"]
+Rebol [Title: "Simple Async HTTP"]
 
 send-http-request: func [port] [
     write port to-binary ajoin [
@@ -332,10 +332,10 @@ We will also add a little command dialect to transfer the file name and the file
 
 ==== Server ====
 
-The server waits for the client to send a REBOL block that provides the file name and size. It then responds with either a 'go or a 'no to tell the client what to do.
+The server waits for the client to send a Rebol block that provides the file name and size. It then responds with either a 'go or a 'no to tell the client what to do.
 
 <pre>
-REBOL []
+Rebol []
 
 dir: %temp/
 make-dir dir
@@ -413,7 +413,7 @@ Also, if for some reason we fail to get the startup command from the client (a b
 The client gets the file name and file size, and sends it to the server. It then waits for a 'go to begin. If it gets a 'no, it closes the connection.
 
 <pre>
-REBOL []
+Rebol []
 
 file-name: %data.dat
 

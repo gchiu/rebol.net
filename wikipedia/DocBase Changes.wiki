@@ -4,7 +4,7 @@ Added [[Special Searches]] for one-click searches for pages that are under const
 
 == News Section ==
 
-New News section to collect all news related to all REBOL Technologies related products, both internal and public. See [[REBOL_3|here]].
+New News section to collect all news related to all Rebol Technologies related products, both internal and public. See [[Rebol_3|here]].
 
 == Templates ==
 

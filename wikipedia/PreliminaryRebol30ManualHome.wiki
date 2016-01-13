@@ -1,4 +1,4 @@
-==REBOL 3 Documentation==
+==Rebol 3 Documentation==
 
 ===Sections===
 
@@ -17,7 +17,7 @@
 
 ===News and Links===
 
-* REBOL Modules:      New information for A40 release
+* Rebol Modules:      New information for A40 release
 * Recent changes:      What's new in the docs
 * About the structure:      Organization of this document system.
 * New doc engine goes beta:      Summary of the release

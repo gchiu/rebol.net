@@ -7,7 +7,7 @@ Requestors are small popup windows used to inform the user or request specific t
 
 ===Typical Requestors===
 
-The REBOL GUI supplies the most commonly used requestors, so you don't need to provide them in your own applications. Examples are:
+The Rebol GUI supplies the most commonly used requestors, so you don't need to provide them in your own applications. Examples are:
 
 *'''alerts''' - urgent messages to user
 *'''dialogs''' - informative messages

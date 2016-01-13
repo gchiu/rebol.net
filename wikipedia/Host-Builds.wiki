@@ -4,7 +4,7 @@ See the [http://www.rebol.com/r3/docs/concepts/host-kit.html R3 Host Kit Manual]
 
 ==Objective==
 
-Release the REBOL 3.0 Host Kit (host environment, including source code, include files, and core library).
+Release the Rebol 3.0 Host Kit (host environment, including source code, include files, and core library).
 
 ===Release Stages===
 
@@ -13,7 +13,7 @@ Release the REBOL 3.0 Host Kit (host environment, including source code, include
 #[ ] View - experimental releases (draw, richtext, effects)
 #[ ] View - final form, with updates to VID for any changes
 #[ ] View - ports to Linux, OS X, etc. (from developers)
-#[ ] Full release of '''REBOL 3.0 Host Kit'''
+#[ ] Full release of '''Rebol 3.0 Host Kit'''
 
 ===Development Plan===
 
@@ -26,7 +26,7 @@ First stage:
 *[x] Merge host include files with lib includes (to stay sync'd, if possible)
 *[x] Update makefiles (script built)
 *[x] Scan host sources for marker tags and review them
-*[x] Rename lib function name prefixes? (do not use REBOL_)
+*[x] Rename lib function name prefixes? (do not use Rebol_)
 *[x] Update host source headers
 
 Second stage:

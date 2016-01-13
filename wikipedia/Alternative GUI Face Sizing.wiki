@@ -6,7 +6,7 @@ NOTE: This is an unfinished document. More work will not be done until Carl has 
 
 ===Predictability===
 
-In REBOL 3, as long as we don't have a graphical editor for creating layouts, it's very important to have some sense of how your layout will work in your head.
+In Rebol 3, as long as we don't have a graphical editor for creating layouts, it's very important to have some sense of how your layout will work in your head.
 
 ===Simplicity in Layout===
 

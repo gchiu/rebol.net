@@ -22,7 +22,7 @@ and it is not the same as:
 
    12.3 * 110% = 13.53
 
-It is good to keep that in mind, and don't get too excited that you've thought up a great new semantic for using percent. Members of the REBOL community have tried that and deemed it to be quite problematic.
+It is good to keep that in mind, and don't get too excited that you've thought up a great new semantic for using percent. Members of the Rebol community have tried that and deemed it to be quite problematic.
 
 ==Percent Defined==
 
@@ -34,7 +34,7 @@ Well, we've kept it simple, but it is best described by what kinds of expression
 
 Ok, here's what to do if you find a bug or want to change the percent datatype.
 
-#Talk it over with others in the REBOL community.
+#Talk it over with others in the Rebol community.
 #If they agree with your opinion, then add one or more lines to the test file (kept in the R3-alpha world in the test-cases folder).
 #Switch on the Batsignal.
 

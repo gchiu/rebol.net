@@ -2,50 +2,50 @@
 | __TOC__
 |}
 
-==REBOL2 Official Documentation==
+==Rebol2 Official Documentation==
 
-REBOL Technologies has produced many manuals and guides for the REBOL platform. In the following table you will find links to this documentation.
+Rebol Technologies has produced many manuals and guides for the Rebol platform. In the following table you will find links to this documentation.
 
 {| class="wikitable" width="100%" style="clear:right;"
 ! Documentation
 ! Description
 |-
-|td colspan="2" align="center"|'''Documentation for the REBOL Language'''
+|td colspan="2" align="center"|'''Documentation for the Rebol Language'''
 |-
 |[http://www.rebol.com/docs.html Rebol Main Documentation page]
 |This is the homepage for the documentation you find listed here
 |-
-|[http://www.rebol.com/docs/core23/rebolcore.html REBOL/Core Documentation]
-|The REBOL/Core manual. Here you will find everything about REBOL. This manual has been written by the REBOL creator and you will learn a lot of basic and advanced techniques.
+|[http://www.rebol.com/docs/core23/rebolcore.html Rebol/Core Documentation]
+|The Rebol/Core manual. Here you will find everything about Rebol. This manual has been written by the Rebol creator and you will learn a lot of basic and advanced techniques.
 |-
 |[http://www.rebol.com/docs/changes.html Updates to the documentation]
-|The REBOL/Core Manual has been created on REBOL 2.3.x. Here are the changes made on the programming language since then.
+|The Rebol/Core Manual has been created on Rebol 2.3.x. Here are the changes made on the programming language since then.
 |-
-|[http://www.rebol.com/docs/dictionary.html REBOL Function Dictionary]
-|All the REBOL words are documented here by area or from first to last.
+|[http://www.rebol.com/docs/dictionary.html Rebol Function Dictionary]
+|All the Rebol words are documented here by area or from first to last.
 |-
-|[http://www.rebol.com/faq.html REBOL Language FAQ]
+|[http://www.rebol.com/faq.html Rebol Language FAQ]
 |A '''F'''requently '''A'''sked '''Q'''uestions page
 |-
-|td colspan="2" align="center"|'''Documentation for the REBOL Graphics subsystem'''
+|td colspan="2" align="center"|'''Documentation for the Rebol Graphics subsystem'''
 |-
-|[http://www.rebol.com/docs/easy-vid.html Beginners Guides to <br>REBOL Visual Interfaces]
-|VID Is the Visual Interface Dialect. This is the first guide written by REBOL Technologies on VID.
+|[http://www.rebol.com/docs/easy-vid.html Beginners Guides to <br>Rebol Visual Interfaces]
+|VID Is the Visual Interface Dialect. This is the first guide written by Rebol Technologies on VID.
 |-
-|[http://www.rebol.com/docs/view-guide.html Concepts and Features of REBOL/View]
-|More advanced guide to VID and REBOL/View
+|[http://www.rebol.com/docs/view-guide.html Concepts and Features of Rebol/View]
+|More advanced guide to VID and Rebol/View
 |-
-|[http://www.rebol.com/docs/view-system.html REBOL Graphic System Documentation]
+|[http://www.rebol.com/docs/view-system.html Rebol Graphic System Documentation]
 |The most updated guide for rebol VIEW
 |-
 |[http://www.rebol.com/docs/changes-view.html Updates to View 1.3]
-|All the updates to REBOL View 1.3
+|All the updates to Rebol View 1.3
 |-
-|[http://www.rebol.com/docs/draw-ref.html REBOL/View DRAW Dialect] <BR> (Older Docs:[http://www.rebol.com/docs/draw.html Here])
-|Documentation of the REBOL Draw dialect
+|[http://www.rebol.com/docs/draw-ref.html Rebol/View DRAW Dialect] <BR> (Older Docs:[http://www.rebol.com/docs/draw.html Here])
+|Documentation of the Rebol Draw dialect
 |-
-|[http://www.rebol.com/docs/image.html REBOL Image Datatype]
-|The REBOL image datatype
+|[http://www.rebol.com/docs/image.html Rebol Image Datatype]
+|The Rebol image datatype
 |}
 
 ==Other Documentation==
@@ -54,63 +54,63 @@ REBOL Technologies has produced many manuals and guides for the REBOL platform. 
 ! Documentation
 ! Description
 |-
-|td colspan="2" align="center"|'''Other Documentation for REBOL'''
+|td colspan="2" align="center"|'''Other Documentation for Rebol'''
 |-
 |[http://www.rebol.net/docs/async-ports.html Async Port]
-|REBOL Async (Asynchronous) Network Ports
+|Rebol Async (Asynchronous) Network Ports
 |-
 |[http://www.rebol.net/docs/async-examples.html ASYNC Examples]
-|REBOL Async Network Port Examples
+|Rebol Async Network Port Examples
 |}
 
-==REBOL 2 Online Books/Guides==
+==Rebol 2 Online Books/Guides==
 
 {| class="wikitable" width="100%" align="left" style="clear:all;"
 ! Name
 ! Type
 ! Description
 |-
-|[http://en.wikibooks.org/wiki/REBOL_Programming Rebol Community Book]
+|[http://en.wikibooks.org/wiki/Rebol_Programming Rebol Community Book]
 |Book
-|A REBOL Programming book written by the community and hosted on WikiBooks
+|A Rebol Programming book written by the community and hosted on WikiBooks
 |-
-|[http://en.wikipedia.org/wiki/REBOL REBOL in Wikipedia]
+|[http://en.wikipedia.org/wiki/Rebol Rebol in Wikipedia]
 |Article
-|What is REBOL
+|What is Rebol
 |-
-|[http://www.rebol.net/plugin/tests/plugin-guide.html REBOL Web Plugin]
+|[http://www.rebol.net/plugin/tests/plugin-guide.html Rebol Web Plugin]
 |Guide
-|Documentation for the REBOL Internet Explorer Plugin
+|Documentation for the Rebol Internet Explorer Plugin
 |-
-|[http://www.rebol.com/oneliners.html REBOL Oneliners]
+|[http://www.rebol.com/oneliners.html Rebol Oneliners]
 |Guide
-|What REBOL can do for you in one line
+|What Rebol can do for you in one line
 |-
-|[http://musiclessonz.com/rebol_tutorial.html REBOL Programming for<br>the Absolute Beginner]
+|[http://musiclessonz.com/rebol_tutorial.html Rebol Programming for<br>the Absolute Beginner]
 |Guide
-|Read this guide by Nick Antonaccio if you have never programmed in REBOL
+|Read this guide by Nick Antonaccio if you have never programmed in Rebol
 |-
-|[http://musiclessonz.com/rebol.html REBOL Programming guide]
+|[http://musiclessonz.com/rebol.html Rebol Programming guide]
 |Guide
 |Another guide by Nick Antonaccio more concise, oriented to experienced programmers
 |-
-|[http://www.rebol.com/docs/rebol-tutorial-3109.pdf REBOL Essential<br>(PDF Version)]
+|[http://www.rebol.com/docs/rebol-tutorial-3109.pdf Rebol Essential<br>(PDF Version)]
 |Guide
-|Another nice guide for REBOL
+|Another nice guide for Rebol
 |-
-|[http://www.codeconscious.com/rebol/ Programming with REBOL]
+|[http://www.codeconscious.com/rebol/ Programming with Rebol]
 |Guide
-|Online guide hosted at Codeconscious with various topic on REBOL
+|Online guide hosted at Codeconscious with various topic on Rebol
 |-
 |[http://www.rebol.net/wiki/Index_of_Japanese_Documents Index of Japanese Documents]
 |Guide
-|Japanese Documents　for REBOL. It contains some R3 Documents too.
+|Japanese Documents　for Rebol. It contains some R3 Documents too.
 |}
 <br clear="all"/>
 
-==REBOL 2 Commercial Books==
+==Rebol 2 Commercial Books==
 
-Here is a list of commercial and non commercial REBOL books available
+Here is a list of commercial and non commercial Rebol books available
 
 <!-- {| border="1" cellspacing="1" cellpadding="5" align="right" -->
 {| class="wikitable" width="100%"
@@ -119,17 +119,17 @@ Here is a list of commercial and non commercial REBOL books available
 ! Author
 ! Description
 |-
-|[http://www.rebol.com/docs/core23/rebolcore.html REBOL/Core User Guide]
+|[http://www.rebol.com/docs/core23/rebolcore.html Rebol/Core User Guide]
 |EN
 |Rebol Tech.
-|This is the official REBOL/Core documentation, it is available online.
+|This is the official Rebol/Core documentation, it is available online.
 |-
-|[http://www.amazon.com/REBOL-Dummies-Ralph-Roberts/dp/0764507451 REBOL For Dummies]
+|[http://www.amazon.com/Rebol-Dummies-Ralph-Roberts/dp/0764507451 Rebol For Dummies]
 |EN
 |Ralph Roberts
 |A reference for the rest of us.
 |-
-|[http://www.a1books.com/cgi-bin/mktSearch?act=showDesc&code=froogle&ISBN=007212279X REBOL: The Official Guide]
+|[http://www.a1books.com/cgi-bin/mktSearch?act=showDesc&code=froogle&ISBN=007212279X Rebol: The Official Guide]
 |EN
 |Elan Goldman, John Blanton
 |An introduction to the language containing an online db example.
@@ -139,63 +139,63 @@ Here is a list of commercial and non commercial REBOL books available
 |Olivier Auverlot
 |Découvrez la puissance du langage Rebol à l'aide de cet ouvrage résolument tourné vers la pratique.
 |-
-|[http://www.lulu.com/content/663836 REBOL Guide du Programmeur]
+|[http://www.lulu.com/content/663836 Rebol Guide du Programmeur]
 |FR
 |Olivier Auverlot
-|A concise book introducing most aspects of REBOL to programmers covering Core, View, Command, Unix Programming and IOS.
+|A concise book introducing most aspects of Rebol to programmers covering Core, View, Command, Unix Programming and IOS.
 |-
 |[http://www.lulu.com/content/708907 Rebol IOS Administration et Programmation]
 |FR
 |Olivier Auverlot
-|Book written by Olivier Auverlot about REBOL/IOS programming.
+|Book written by Olivier Auverlot about Rebol/IOS programming.
 |-
-|[http://www.lulu.com/product/paperback/rebol---a-programmers-guide/4092467 REBOL - A programmer's guide]
+|[http://www.lulu.com/product/paperback/rebol---a-programmers-guide/4092467 Rebol - A programmer's guide]
 |EN
 |Olivier Auverlot
-|REBOL Guide du Programmeur translated to English by Peter W. A. Wood
+|Rebol Guide du Programmeur translated to English by Peter W. A. Wood
 |}
 <br clear="all"/>
 
-==REBOL Tutorials==
+==Rebol Tutorials==
 
 {| class="wikitable" width="100%" align="left" style="clear:all;"
 ! Name
 ! Description
 |-
-|[http://plain.at/vpavlu/REBOL/tutorial/ REBOL Essentials]
-|A concise introduction to REBOL/Core and /View.
+|[http://plain.at/vpavlu/Rebol/tutorial/ Rebol Essentials]
+|A concise introduction to Rebol/Core and /View.
 |-
-|[http://home.pacifier.com/~mcginty/rebol_cuddle.html Mini REBOL Tutorial]
-|A small tutorial for REBOL
+|[http://home.pacifier.com/~mcginty/rebol_cuddle.html Mini Rebol Tutorial]
+|A small tutorial for Rebol
 |-
-|[http://www.reboltutorial.com REBOL Tutorial]
+|[http://www.reboltutorial.com Rebol Tutorial]
 |Learn Rebol day by day with Real World Examples
 |}
 <br clear="all"/>
 
-==REBOL Professional and Commercial Programming==
+==Rebol Professional and Commercial Programming==
 
 <!-- {| border="1" cellspacing="1" cellpadding="5" style="clear:all;" align="right" -->
 {| class="wikitable" width="100%"
 ! Documentation
 ! Description
 |-
-|[http://www.rebol.com/docs/sdk/sdkug.html REBOL/SDK]
-|REBOL/SDK - Software Developer's Kit - Index to all SDK documents
+|[http://www.rebol.com/docs/sdk/sdkug.html Rebol/SDK]
+|Rebol/SDK - Software Developer's Kit - Index to all SDK documents
 |-
-|[http://www.rebol.com/docs/cmdug.html REBOL/Command]
-|REBOL/Command - Professional Extensions - Index to all Command documents 
+|[http://www.rebol.com/docs/cmdug.html Rebol/Command]
+|Rebol/Command - Professional Extensions - Index to all Command documents 
 |-
-|[http://www.reboltech.com/express/docs/index.html REBOL/IOS]
-|REBOL/IOS - Collaboration Platform - Index page for all IOS documents 
+|[http://www.reboltech.com/express/docs/index.html Rebol/IOS]
+|Rebol/IOS - Collaboration Platform - Index page for all IOS documents 
 |}
 <br clear="all"/>
 
-==REBOL 2 Articles==
+==Rebol 2 Articles==
 
 {{:R2_Articles}}
 
 <!-- Go to [[R2_Articles|this page]] to see a collection of rebol articles. -->
 
-[[Category:REBOL2]]
+[[Category:Rebol2]]
 [[Category:Documentation]]

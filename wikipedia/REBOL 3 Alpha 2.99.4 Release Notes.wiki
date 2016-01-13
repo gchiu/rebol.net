@@ -4,7 +4,7 @@ This is the readme file from the release distribution.
 
 ===What is it?===
 
-<b>This is an alpha release of REBOL 3.0.</b>
+<b>This is an alpha release of Rebol 3.0.</b>
 
 An alpha release is an unfinished prototype. It contains many of the
 features of the final product, but it is not final, and it is not a
@@ -21,7 +21,7 @@ customers.
 
 R3 has a long list of objectives, and here are a few of the main ones...
 
-*multi-host environment model (with REBOL-in-a-DLL)
+*multi-host environment model (with Rebol-in-a-DLL)
 *open implementation of interfaces and subsystems
 *module architecture (namespaces, multi-global contexts)
 *unicode support (source encoding, string internals)
@@ -53,9 +53,9 @@ This distribution includes:
 
 :readme.txt (.html) - you're reading it
 
-:rebhost.exe - the REBOL host environment (graphics, devices, etc.)
+:rebhost.exe - the Rebol host environment (graphics, devices, etc.)
 
-:rebol.dll - the REBOL 3.0 run time kernel (must be in same dir as rebhost.exe)
+:rebol.dll - the Rebol 3.0 run time kernel (must be in same dir as rebhost.exe)
 
 :examples/ - scripts contributed by developers and testers that show or test various features of R3.
 

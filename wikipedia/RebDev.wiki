@@ -3,7 +3,7 @@
 
 ==Overview==
 
-In a nutshell, '''RebDev''' is a fast, efficient communication system aimed at accelerating REBOL development and focusing discussions.
+In a nutshell, '''RebDev''' is a fast, efficient communication system aimed at accelerating Rebol development and focusing discussions.
 
 It supports messages, topics, alerts, threads, banners, comments, submissions, and also includes user ranking and private messages. A wide range of client programs allow access from any environment, including shells, GUIs, web browsers, cell phones, and email.
 
@@ -23,8 +23,8 @@ To meet these requirements, the system was designed with the features below.
 
 We want users to be able to access the message system from anywhere. That includes:
 
-*REBOL CLI - command line interface - so even users on remote server shells can see messages.
-*REBOL GUI - graphical user interface - the easiest to use.
+*Rebol CLI - command line interface - so even users on remote server shells can see messages.
+*Rebol GUI - graphical user interface - the easiest to use.
 *Web - as a normal HTML web page - so people anywhere can view it, and also find it in Google.
 *Web Mobile - light-styled for cell phones - for rebolers-on-the-go.
 *Email - as a subscription/publication list - for people who find email convenient.
@@ -103,7 +103,7 @@ In addition to the above features, there were also a few technology requirements
 *'''Lightweight DB''' - use of a very lightweight homogeneous database model that can associate via tagging any record with any other record.
 *'''Super-lean server''' - requires only an HTTP server running CGI (as a proxy). No other special packages, modules, or databases are necessary.
 *'''Server logs''' - server logs all events and actions, and auto-generates user-viewable messages for primary events like user creation.
-*'''REBOL-based technology''' - drink our own wine.
+*'''Rebol-based technology''' - drink our own wine.
 
 ==RebDev CLI Commands==
 
@@ -190,7 +190,7 @@ This section describes the design of file sharing.
 
 Just like messages, files are stored to headings. This keeps files and their related discussion messages together.
 
-For example, the official file collection for the REBOL 3.0 mezzanine functions is in r3/mezzanines. That's where you'll find mezz-funcs.r and mezz-help.r, etc.
+For example, the official file collection for the Rebol 3.0 mezzanine functions is in r3/mezzanines. That's where you'll find mezz-funcs.r and mezz-help.r, etc.
 
 However, during development, you may want to work on files outside of the primary file collections. For example, if you and others are working together on LOAD, you would want to share your changes in r3/mezzanines/load until you've concluded your work, tested it, and are ready to submit it back to r3/mezzanines as a contributed improvement to the system.
 

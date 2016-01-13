@@ -21,4 +21,4 @@ Some requirements:
 
 Feel free to add other features, perhaps a VID version that lets us search using a VID interface, or whatever you want.
 
-Feel also free to ask questions and suggest other enhancements on the r3-alpha AltME world, the REBOL3 AltME world. :-)
+Feel also free to ask questions and suggest other enhancements on the r3-alpha AltME world, the Rebol3 AltME world. :-)

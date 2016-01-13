@@ -13,7 +13,7 @@ To help you test for bugs in the lower level system, such as in GOBs or the DRAW
 It's pretty easy to do. Take a look at this code:
 
 <pre>
-REBOL [Title: "Base level (minimum) window code"]
+Rebol [Title: "Base level (minimum) window code"]
 
 win: make gob! [text: "test" offset: 100x100 size: 300x300]
 append win make gob! [

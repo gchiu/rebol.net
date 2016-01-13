@@ -116,7 +116,7 @@ round/ceiling 1.0000000001
 
 round/ceiling -1.999
 </pre></code>
-If you are rounding extremely large numbers (e.g. 562'949'953'421'314), or using very high precision decimal values (e.g. 13 or more decimal places), you may run up against REBOL's native limits for values and its internal rounding rules. The ROUND function is a mezzanine and has no control over that behavior.
+If you are rounding extremely large numbers (e.g. 562'949'953'421'314), or using very high precision decimal values (e.g. 13 or more decimal places), you may run up against Rebol's native limits for values and its internal rounding rules. The ROUND function is a mezzanine and has no control over that behavior.
 
 Sometimes, it might appear that ROUND is doing something strange, so before submitting a bug to RAMBO, think about what you're actually asking it to do. For example, look at the results from this piece of code:
 
@@ -129,7 +129,7 @@ repeat i 10 [
 </pre></code>
 The results approach 10.55 for values from 0.91 to 0.95, but then jump back when using values in the range 0.96 to 0.99. Those are the expected results, because you're truncating, that is, truncating to the nearest multiple of SCALE.
 
-The design and development of the ROUND function involved many members of the REBOL community. There was much debate about the interface (one function with refinement versus individual functions for each rounding type, what words to use for parameter names, behavior with regards to type coercion).
+The design and development of the ROUND function involved many members of the Rebol community. There was much debate about the interface (one function with refinement versus individual functions for each rounding type, what words to use for parameter names, behavior with regards to type coercion).
 
 
 

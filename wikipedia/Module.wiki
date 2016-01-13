@@ -1,4 +1,4 @@
-'''Modules are isolated contexts (name and value spaces) that extend the run-time environment of REBOL in a convenient and modular way.'''
+'''Modules are isolated contexts (name and value spaces) that extend the run-time environment of Rebol in a convenient and modular way.'''
 
 ==Introduction==
 
@@ -10,7 +10,7 @@ A module is allowed to export an API. It can make specific functions, objects, o
 
 ==Keeping It Simple==
 
-In a dynamic language like REBOL the concept of modules can be designed with many special features and "cool properties".  However, in the normal course of programming, only a small number of features are actually useful.
+In a dynamic language like Rebol the concept of modules can be designed with many special features and "cool properties".  However, in the normal course of programming, only a small number of features are actually useful.
 
 The balance in the design of the system is how do decide which new and interesting concepts have merit and which will rarely, if ever, be used. With that rule as a goal, the module system has been designed to be simple.
 
@@ -49,7 +49,7 @@ The body is a block of code that is initialized when the module is created. It i
 
 Here is an example that shows a module spec and body:
 
-<pre>REBOL [
+<pre>Rebol [
     Name: stock-trade
     Title: "Stock Trading Module"
     Version: 1.2.0
@@ -90,7 +90,7 @@ In the example above, the buy and sell functions are defined and exported.
 
 Before a module can be used, it must be imported.
 
-Sometimes the word "loaded" is used for this action. In REBOL, this term is a misnomer because the module is not only loaded, but also initialized. However, the the term "load" is widely used in the world of languages.
+Sometimes the word "loaded" is used for this action. In Rebol, this term is a misnomer because the module is not only loaded, but also initialized. However, the the term "load" is widely used in the world of languages.
 
 ===The IMPORT Function===
 
@@ -313,7 +313,7 @@ In such cases, the MODULE function above can be used multiple times in the same 
 
 ===LOAD Module===
 
-You can LOAD a module in the same way you can load any other REBOL code and data. To LOAD a module does not mean to make or evaluate it, it means to convert it to block format to be handled as normal data. This allows modules to be processed in the same way as all other REBOL scripts and files.
+You can LOAD a module in the same way you can load any other Rebol code and data. To LOAD a module does not mean to make or evaluate it, it means to convert it to block format to be handled as normal data. This allows modules to be processed in the same way as all other Rebol scripts and files.
 
 '''Note, however, that when you LOAD a file that specifies its type as a module, the words of the loaded block are not bound to any context.''' This is done to allow the loader to process the file as a whole, but avoid the binding step, which is not usually performed at load time for modules.
 
@@ -340,4 +340,4 @@ The system code that defines how modules operate can be found in these files:
 *mezz-load.r - the file loader
 *mezz-instrinsics.r - the MAKE-MODULE and DO functions.
 
-The MAKE-MODULE function is a callback function used to implement the MAKE MODULE! action.  This function is written in REBOL code to allow us to expand its capabilities (within the guidelines noted at the top of this document.)
+The MAKE-MODULE function is a callback function used to implement the MAKE MODULE! action.  This function is written in Rebol code to allow us to expand its capabilities (within the guidelines noted at the top of this document.)

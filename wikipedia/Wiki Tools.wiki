@@ -1,4 +1,4 @@
-This is the page for the Wiki Tools made in REBOL. The tools are available in DocBase/Wiki Tools in the AltME world for REBOL 3 alpha.
+This is the page for the Wiki Tools made in Rebol. The tools are available in DocBase/Wiki Tools in the AltME world for Rebol 3 alpha.
 
 [[Test Page]] - Basic Testing
 

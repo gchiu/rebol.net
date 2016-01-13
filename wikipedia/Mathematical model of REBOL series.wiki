@@ -2,13 +2,13 @@
 
 This article:
 
-* defines a mathematical model of REBOL series
+* defines a mathematical model of Rebol series
 * discusses the current state of the interpreter
 * proposes changes
 
-==Mathematical model of REBOL series==
+==Mathematical model of Rebol series==
 
-'''Definition:''' we say that a mathematical function <code>S</code> is a ''REBOL series'' if:
+'''Definition:''' we say that a mathematical function <code>S</code> is a ''Rebol series'' if:
 
     S datatype
 is one of the series! datatypes
@@ -23,7 +23,7 @@ Series! datatypes are: string!, binary!, block!, ...
     D t size
 is a nonnegative integer value <code>N</code> and for every integer value <code>i</code> such that <code>0 <= i < N</code>
     D t i
-is a REBOL value.
+is a Rebol value.
 
 Note that <code>N = 0</code> is allowed, in which case the payload size is 0 and the payload is empty. Note also that payloads depend on execution time, i.e., they can change in time.
 
@@ -35,7 +35,7 @@ The goal of this section is to define some simple functions to establish basic t
 
 ===The <code>at-head?</code> function===
 
-The <code>at-head?</code> function is a function accepting a REBOL series <code>S</code> and returning a logic value determining whether the series is at its head.
+The <code>at-head?</code> function is a function accepting a Rebol series <code>S</code> and returning a logic value determining whether the series is at its head.
 
     (at-head? S) = #[true]
 , if <code>(S displacement) = 0</code>
@@ -46,9 +46,9 @@ Tests suggest that this model matches the <code>head?</code> function defined in
 
 ===The <code>head</code> function===
 
-The <code>head</code> function is a function accepting a REBOL series <code>S</code> and returning its head series <code>T</code>.
+The <code>head</code> function is a function accepting a Rebol series <code>S</code> and returning its head series <code>T</code>.
 
-<code>T</code> is a REBOL series having the same datatype as <code>S</code>, displacement 0 and the same payload as <code>S</code>, i.e.,
+<code>T</code> is a Rebol series having the same datatype as <code>S</code>, displacement 0 and the same payload as <code>S</code>, i.e.,
 
     (T datatype)     = (S datatype)
     (T displacement) = 0
@@ -58,7 +58,7 @@ Tests suggest that this model of the <code>head</code> function is implemented i
 
 ===The <code>pre-head?</code> function===
 
-The <code>pre-head?</code> function is a function accepting a REBOL series <code>S</code> and returning a logic value determining whether the series is at a pre-head position.
+The <code>pre-head?</code> function is a function accepting a Rebol series <code>S</code> and returning a logic value determining whether the series is at a pre-head position.
 
     (pre-head? S) = #[true]
 , if <code>S displacement</code> is negative
@@ -80,7 +80,7 @@ This function can be defined as a mezzanine in the <code>rebol/version == 2.7.8.
 
 ===The <code>at-tail?</code> function===
 
-The <code>at-tail?</code> function is a function accepting a REBOL series <code>S</code> and returning a logic value determining whether the series is at its tail.
+The <code>at-tail?</code> function is a function accepting a Rebol series <code>S</code> and returning a logic value determining whether the series is at its tail.
 
     (at-tail? S) = #[true]
 , if <code>(S displacement) = (do S payload t size)</code>
@@ -98,9 +98,9 @@ This function does not exist in the current interpreter. It can be defined as a 
 
 ===The <code>tail</code> function===
 
-The <code>tail</code> function is a function accepting a REBOL series <code>S</code> and returning its tail series <code>T</code>.
+The <code>tail</code> function is a function accepting a Rebol series <code>S</code> and returning its tail series <code>T</code>.
 
-<code>T</code> is a REBOL series with the same datatype as <code>S</code>, a displacement equal to the current payload size and the same payload as <code>S</code>, i.e.,
+<code>T</code> is a Rebol series with the same datatype as <code>S</code>, a displacement equal to the current payload size and the same payload as <code>S</code>, i.e.,
 
     (T datatype)     = (S datatype)
     (T displacement) = (do S payload t size)
@@ -110,7 +110,7 @@ Tests suggest that this model is implemented in the <code>rebol/version == 2.7.8
 
 ===The <code>past-tail?</code> function===
 
-The <code>past-tail?</code> function is a function accepting a REBOL series <code>S</code> and returning a logic value determining whether the series is at a past-tail position.
+The <code>past-tail?</code> function is a function accepting a Rebol series <code>S</code> and returning a logic value determining whether the series is at a past-tail position.
 
     (past-tail? S) = #[true]
 , if <code>(S displacement) > (do S payload t size)</code>
@@ -134,7 +134,7 @@ This function can be defined as a mezzanine:
 
 ===The <code>in-bounds?</code> function===
 
-The <code>in-bounds?</code> function is a function accepting a REBOL series <code>S</code> and returning a logic value determinig whether the position of the series is in bounds, i.e., neither pre-head nor past-tail.
+The <code>in-bounds?</code> function is a function accepting a Rebol series <code>S</code> and returning a logic value determinig whether the position of the series is in bounds, i.e., neither pre-head nor past-tail.
 
     (in-bounds? S) = #[true]
 , if <code>((S displacement) >= 0) and ((S displacement) <= (do S payload t size))</code>
@@ -152,7 +152,7 @@ This function is not defined in the current interpreter, but it can be defined a
 
 ===The <code>constrain</code> function===
 
-The <code>constrain</code> function is a function accepting a REBOL series <code>S</code> and returning a REBOL series <code>T</code> with a position constrained to range bounded by series head and tail positions.
+The <code>constrain</code> function is a function accepting a Rebol series <code>S</code> and returning a Rebol series <code>T</code> with a position constrained to range bounded by series head and tail positions.
 
     T = head S
 , if <code>pre-head? S</code>
@@ -176,7 +176,7 @@ This function can be defined as a mezzanine:
 
 ===The <code>length-of</code> function===
 
-The <code>length-of</code> function is a function accepting a REBOL series <code>S</code> and returning a nonnegative integer determining the length of the series.
+The <code>length-of</code> function is a function accepting a Rebol series <code>S</code> and returning a nonnegative integer determining the length of the series.
 
     (length-of S) = (max 0 (do S payload t size) - (max 0 S displacement))
 
@@ -220,7 +220,7 @@ The <code>rebol/version == 2.100.111.3.1</code> interpreter has been amended so 
 
 * As discussed below, this provision is not usable for past-tail series meaning that for past-tail series a different (incompatible and therefore inconsistent with this) provision should take place.
 
-* As noted above this provision is incompatible with the behaviour of the <code>pick</code> function. It would be possible to change the behaviour of the function, but there is a broad agreement between REBOL users that the current behaviour of the function when picking at pre-head positions is convenient.
+* As noted above this provision is incompatible with the behaviour of the <code>pick</code> function. It would be possible to change the behaviour of the function, but there is a broad agreement between Rebol users that the current behaviour of the function when picking at pre-head positions is convenient.
 
 ======Usability limitations======
 
@@ -339,7 +339,7 @@ It suffices to say that 1 is not something that "exists" in the common sense of 
 
 In a similar sense 0 is an abstract notion pointing to the common property of a hand containing no apple, an empty envelope, a room in which nobody is sitting, a net containing no fish, an empty purse, etc.
 
-====Does REBOL have 1-based indexing?====
+====Does Rebol have 1-based indexing?====
 
 Unsurprisingly, the answer is "yes".
 
@@ -349,7 +349,7 @@ Unsurprisingly, the answer is "yes".
     pick block 1 ; == a
     pick block 2 ; == b
 
-====Is REBOL indexing 1-based?====
+====Is Rebol indexing 1-based?====
 
 Perhaps surprisingly, the answer is "no".
 
@@ -361,7 +361,7 @@ Perhaps surprisingly, the answer is "no".
 
 As we use indices from the <code>2 <= index < 4</code> range to pick the values of the <code>block</code>, we are actually using 2-based indexing.
 
-====Does REBOL have 0-based indexing?====
+====Does Rebol have 0-based indexing?====
 
 <code>rebol/version == 2.100.111.3.1</code> actually does.
 
@@ -381,7 +381,7 @@ However, <code>rebol/version == 2.7.8.3.1</code> does not have 0-based indexing:
 
 , i.e., in this case, the "index space" consists of two ranges, in fact. The first is the range containing just -1 (, i.e., -1-based), while the second is the range containing just 1 (, i.e., 1-based). This also demonstrates that <code>rebol/version == 2.7.8.3.1</code> does not have true -1-based, or negative-based indexing, because the <code>pick</code> function uses a discontinuous range made of two arithmetically incompatible (using different index arithmetic) segments.
 
-I think that it is good to discuss why this happened to <code>rebol/version == 2.7.8.3.1</code>. The main reason seems to be the "1 pointing at the current position" indexing. This, when using the "common indexing principle" assigning the previous position the previous integer number induces the "0 pointing backwards" case. "0 pointing backwards" looks incomfortable/unusual as some users object. However, the approach using smell of garlic to take away the smell of onion (removing 0 from the set of possible index values) did not bring any good. Hurting the index arithmetic this way is not just incomfortable as the "0 pointing backwards" case was, it is inconsistent. (Even the REBOL designer felt victim to the problem in his code.)
+I think that it is good to discuss why this happened to <code>rebol/version == 2.7.8.3.1</code>. The main reason seems to be the "1 pointing at the current position" indexing. This, when using the "common indexing principle" assigning the previous position the previous integer number induces the "0 pointing backwards" case. "0 pointing backwards" looks incomfortable/unusual as some users object. However, the approach using smell of garlic to take away the smell of onion (removing 0 from the set of possible index values) did not bring any good. Hurting the index arithmetic this way is not just incomfortable as the "0 pointing backwards" case was, it is inconsistent. (Even the Rebol designer felt victim to the problem in his code.)
 
 ====Indexing inconsistencies====
 
@@ -420,7 +420,7 @@ This is the solution working in the present state of R2:
 
 ===The <code>curr</code> function===
 
-The <code>curr</code> function is a function accepting a REBOL series <code>S</code> and returning the REBOL value at its current position.
+The <code>curr</code> function is a function accepting a Rebol series <code>S</code> and returning the Rebol value at its current position.
 
     (curr S) = (do S payload t S displacement)
 , if <code>in-bounds? S</code>

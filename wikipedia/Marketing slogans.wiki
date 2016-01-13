@@ -6,7 +6,7 @@ In this context, a marketing slogan is a higher-level capture of the philosophy.
 
 == From The Past ==
 
-=== REBOL rebels against software complexity ===
+=== Rebol rebels against software complexity ===
 
 * very solid and rings true with what Rebol is
 * is punchier as this simple statement rather than phrasing "Rebelling against large, expensive, complex software"
@@ -25,7 +25,7 @@ In this context, a marketing slogan is a higher-level capture of the philosophy.
 === Smarter, Smaller, Better ===
 
 * was originally used with Web 3.0 Starts Here Slogan, but could as well be used separately
-* it feels like giving a world a clear and short message of what REBOL is
+* it feels like giving a world a clear and short message of what Rebol is
 
 === Make IT Simple ===
 
@@ -37,7 +37,7 @@ In this context, a marketing slogan is a higher-level capture of the philosophy.
 * people who would rally and use term "Web 3.0" would never agree Rebol is suited to be called this
 * people who understand what this is supposed to mean likely wouldn't use the term "Web 3.0"
 
-=== Vive la REBOLution ===
+=== Vive la Rebolution ===
 
 * a little too goofy to use without a smiley after it :)
 
@@ -57,7 +57,7 @@ In this context, a marketing slogan is a higher-level capture of the philosophy.
 
 === Rebol is the rebellion against software complexity ===
 
-* Same sentiment as before but scans better than ''REBOL rebels against...''
+* Same sentiment as before but scans better than ''Rebol rebels against...''
 * ''"It's not just '''a''' rebellion, it's '''the''' rebellion"''
 
 === Version 3: It's Rebol. Rebooted. ===

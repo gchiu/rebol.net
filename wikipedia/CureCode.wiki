@@ -19,8 +19,8 @@ You can also modify the state of tickets that you've submitted earlier.
 ==Questions==
 
 *Q:
-**Does it have a REBOL interface?
-**Although it runs in REBOL via the Cheyenne web server, there is currently no direct REBOL interface, but there are plans to add it later.
+**Does it have a Rebol interface?
+**Although it runs in Rebol via the Cheyenne web server, there is currently no direct Rebol interface, but there are plans to add it later.
 *Q:
 **Can it be enhanced?
 **Several enhancements have already been made, and you can submit your suggestions to Softinnov. In addition, the source code is available, so you can help with bugs and enhancements.
@@ -30,7 +30,7 @@ You can also modify the state of tickets that you've submitted earlier.
 ''Main features :''
 * ''retrieve a list of tickets based on preset filters''
 * ''retrieve whole details about a given ticket ID''
-* ''returned data are in REBOL format (XML support pending)''
+* ''returned data are in Rebol format (XML support pending)''
 * ''doesn't support yet adding or modifying tickets''
 
 ''The current API should be considered alpha.''
@@ -62,7 +62,7 @@ All responses are encapsulated using the following format :
 
     [error "FILTER argument is invalid"]
 </pre>
-You can use LOAD to query the remote API and get REBOL data back. If you don't trust the server, you can use LOAD/ALL or READ instead.
+You can use LOAD to query the remote API and get Rebol data back. If you don't trust the server, you can use LOAD/ALL or READ instead.
 <pre>
     >> load http://curecode.org/rebol3/api.rsp?type=list&filter=2&mode=count
     == [ok 492]
@@ -308,7 +308,7 @@ Returns ticket detailed informations. Optional parameters can be specified to ge
 *FEAT: Dismissed tickets are now filtered out from "Active Priorities" and "Worst Severity" filters.
 *FEAT: Current project name added to "Add Ticket" form.
 *FEAT: Reversed sort order for Versions and Categories lists in admin page.
-*FEAT: Added an experimental API for getting tickets in REBOL format.
+*FEAT: Added an experimental API for getting tickets in Rebol format.
 
 *FIX:	Front page stats now count "dismissed" tickets as closed.
 *FIX:	Message "n ticket(s) found" fixed for localization, now translates correctly in french.
@@ -348,7 +348,7 @@ Returns ticket detailed informations. Optional parameters can be specified to ge
 '''Migration Changelog''':
 
 *Ticket submitting users are now migrated too
-*Target projects list reduced to only one : "REBOL 3.0"
+*Target projects list reduced to only one : "Rebol 3.0"
 *Fixed wrong tickets ID passed to 'add-log (for proper ticket's logs)
 
 '''CureCode 0.9.4 Changelog''':
@@ -366,7 +366,7 @@ Returns ticket detailed informations. Optional parameters can be specified to ge
 #*allow ticket submission
 #*add support for XML output
 #Make the "Assigned to" field editable
-#REBOL code formatting in code section 
+#Rebol code formatting in code section 
 #Option for being permanently logged (permanent session cookie).
 #In "All Projects" view, there should be a "Project" column.
 #Improve the UI of the home page when logged.
@@ -380,7 +380,7 @@ Returns ticket detailed informations. Optional parameters can be specified to ge
 #*Delete a user
 #*Change user's role
 #API for external access :
-#*formats: REBOL, XML
+#*formats: Rebol, XML
 #*access: simple HTTP API, REST
 #Add an intro text + usage docs on home page for newcomers.
 

@@ -32,7 +32,7 @@ What do messages look like? Can it be any simpler than this?
 
     [opt header  body]
 
-For interop purposes, how do you map from native REBOL format to JSON, XML, or other formats?
+For interop purposes, how do you map from native Rebol format to JSON, XML, or other formats?
 
 
 ==Interface/API==
@@ -54,7 +54,7 @@ Do we use the same mechanism for inter-thread messaging?
 
 Is this at all possible?
 
-Is this simply mimicked using a common REBOL API running over two different engines?
+Is this simply mimicked using a common Rebol API running over two different engines?
 
 Advantages:
 *Consistency in API
@@ -66,7 +66,7 @@ Disadvantages:
 
 
 ==Implementation==
-Should this be coded right into the host-kit as a default part of REBOL or as an extension?
+Should this be coded right into the host-kit as a default part of Rebol or as an extension?
 
 If an extension model is used, should it be included by default in the host or loaded at run-time?
 

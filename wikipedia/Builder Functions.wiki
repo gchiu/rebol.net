@@ -18,7 +18,7 @@ Behavior with /INTO:
 
 Since you already have a reference to the buffer's insert position (you passed it), and you can get the HEAD and TAIL positions, the only position you can't know without it being returned is the position after the insert. This is why INSERT and CHANGE return that position, and why /INTO does.
 
-Examples (as of the current REBOL versions): 
+Examples (as of the current Rebol versions): 
 
 * Has /INTO: 
 ** [http://curecode.org/rebol3/ticket.rsp?id=506 REDUCE] (in R3 only)

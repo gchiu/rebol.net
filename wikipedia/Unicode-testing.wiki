@@ -23,11 +23,11 @@ Notes:
 
 ==Areas to Try==
 
-*Console - can you type any char into REBOL as a string or as a word?
+*Console - can you type any char into Rebol as a string or as a word?
 
-*REBOL internals - there are more than 100 different parts of REBOL changed to allow Unicode. So, for example, create a string and try inserting Unicode chars.
+*Rebol internals - there are more than 100 different parts of Rebol changed to allow Unicode. So, for example, create a string and try inserting Unicode chars.
 
-*OS command line - e.g. can you pass any file name to REBOL?
+*OS command line - e.g. can you pass any file name to Rebol?
 
 *OS function API - things like WHAT-DIR and system/options, do those look correct?
 

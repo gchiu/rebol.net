@@ -86,7 +86,7 @@ I think that issue is a matter of user education. In the R3 GUI, you can insert 
 
 There is only one way to reach a decision. Use a variety of test cases, and determine if  good results are produced.
 
-Good results also means that it must abide by the REBOL principles:
+Good results also means that it must abide by the Rebol principles:
 
 *Simple things should be simple. Defaults should be smart.
 *Common variations should be possible with little effort.

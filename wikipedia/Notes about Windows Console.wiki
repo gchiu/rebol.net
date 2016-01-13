@@ -22,7 +22,7 @@ It appears that the above Quick Edit change also enables the scroll wheel. Of co
 
 ==Echo Mode==
 
-For large output, REBOL provides an echo mode. You can enable it with:
+For large output, Rebol provides an echo mode. You can enable it with:
 
    echo on
 
@@ -36,7 +36,7 @@ Use:
 
    echo off
 
-to close the file. It is also closed when you exit REBOL.
+to close the file. It is also closed when you exit Rebol.
 
 ==Special Commands==
 
@@ -64,6 +64,6 @@ you'll also have access to cursor key command recall.  '''rlwrap''' comes with t
 
 === rxvt Problems===
 
-The rxvt console is not great for stdio redirection so fallback to the Windows console for testing  anything not pure REBOL.
+The rxvt console is not great for stdio redirection so fallback to the Windows console for testing  anything not pure Rebol.
 
  Also, bugs should always be verified in the default Windows console before reporting.

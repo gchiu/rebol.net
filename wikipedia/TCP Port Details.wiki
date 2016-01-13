@@ -22,7 +22,7 @@ TCP ports are divided into two main parts:
 #The TCP port (within the [[RRTE]] layer)
 #The TCP device (part of the [[RHAE]] layer)
 
-These two layers communicate via the '''IO-Request''' structure that is used for all REBOL I/O.
+These two layers communicate via the '''IO-Request''' structure that is used for all Rebol I/O.
 
 The IO-Request is handled in two ways:
 

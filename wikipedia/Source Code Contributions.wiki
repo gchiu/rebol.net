@@ -12,7 +12,7 @@ As a developer, your submission must agree to this condition. And, like other la
 
 ==Standard Releases==
 
-For source code that is part of REBOL 3 itself, there will be a '''standard version''' that is integrated. This is the official source that will be supported.
+For source code that is part of Rebol 3 itself, there will be a '''standard version''' that is integrated. This is the official source that will be supported.
 
 '''Not everything that is contributed will be part of the standard'''. But, that's ok. You can always download other code yourself, and even include it within your own applications. That's for you to decide.
 

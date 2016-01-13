@@ -1,8 +1,8 @@
-*[[User:Carl|Carl Sassenrath]] ''on DocBase'', [http://en.wikipedia.org/wiki/Carl_Sassenrath Carl] ''on Wikipedia''.  '''REBOL Creator'''.  Also see [http://www.sassenrath.com SassenRanch], Carl's homepage.
+*[[User:Carl|Carl Sassenrath]] ''on DocBase'', [http://en.wikipedia.org/wiki/Carl_Sassenrath Carl] ''on Wikipedia''.  '''Rebol Creator'''.  Also see [http://www.sassenrath.com SassenRanch], Carl's homepage.
 
-==REBOL Internal Developers==
+==Rebol Internal Developers==
 
-==REBOL External Collaborators==
+==Rebol External Collaborators==
 *[[User:Gabriele|Gabriele Santilli]]
 *[[User:Richard|Richard Smolak]]
 *[[User:BrianH|Brian Hawley]]

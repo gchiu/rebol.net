@@ -38,11 +38,11 @@ LOAD is a native value.
 : '''source''' -- (Type: file url string any-block binary)
 
 ==== Refinements ====
-: '''/header''' -- Includes REBOL header object if present. 
+: '''/header''' -- Includes Rebol header object if present. 
 : '''/next''' -- Load the next value only. Return block with value and new position. 
 : '''/library''' -- Force file to be a dynamic library. (Command version) 
 : '''/markup''' -- Convert HTML and XML to a block of tags and strings. 
-: '''/all''' -- Load all values. Does not evaluate REBOL header.
+: '''/all''' -- Load all values. Does not evaluate Rebol header.
 
 == wiki-table ==
 

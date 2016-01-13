@@ -38,7 +38,7 @@ Other languages have taken a strong stand on not being capitalized and seeming l
  Please don't use RUBY as the language name.
  Originally, or historically, it was called ``ruby''.
 
-Note that Ruby was never an acronym, while REBOL always has been, so that position makes sense for Ruby. The '''only''' reason that acronym-style language names seem archaic now is that most of the popular programming languages that have been created recently have names (like Java, Python, Ruby or Perl) rather than acronyms (like PHP) or random characters (like C#). Fork's proposal is that the acronym REBOL be changed to the name Rebol.
+Note that Ruby was never an acronym, while Rebol always has been, so that position makes sense for Ruby. The '''only''' reason that acronym-style language names seem archaic now is that most of the popular programming languages that have been created recently have names (like Java, Python, Ruby or Perl) rather than acronyms (like PHP) or random characters (like C#). Fork's proposal is that the acronym Rebol be changed to the name Rebol.
 
 Anyway, as far as this affects the logo... it may not at all.  Capitalizing a word in a logo is different from capitalizing it every time you say it in a sentence (visually disruptive).  But perhaps worth it to think about how the logotype uses case may send a certain message about making the language seem "archaic" (instead of futuristic)... some typography experiments of using mixed-case Rebol should probably be considered.
 

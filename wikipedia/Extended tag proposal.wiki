@@ -186,16 +186,16 @@ Outside of quotes (even in braces) they will cause parse errors, although nested
 This rules out the inclusion of generalized Rebol source code in the body of a tag:
 
 <pre>
- >> t: <a href=( append http://rebol.net/wiki/ either version >= 3 [ {REBOL_3} ] [ {REBOL_2} ] ) title="wiki site">
+ >> t: <a href=( append http://rebol.net/wiki/ either version >= 3 [ {Rebol_3} ] [ {Rebol_2} ] ) title="wiki site">
  ** Syntax error: missing "(" at "end-of-paren"
- ** Near: (line 1) t: <a href=( append http://rebol.net/wiki/ either version >= 3 [ {REBOL_3} ] [ {REBOL_2} ] ) title="wiki site">
+ ** Near: (line 1) t: <a href=( append http://rebol.net/wiki/ either version >= 3 [ {Rebol_3} ] [ {Rebol_2} ] ) title="wiki site">
 </pre>
 
 Such a thing would have to be done through a string conversion:
 
 <pre>
- >> t: to-tag {a href=( append http://rebol.net/wiki/ either version >= 3 [ {REBOL_3} ] [ {REBOL_2} ] ) title="wiki site"}     
- == <a href=( append http://rebol.net/wiki/ either version >= 3 [ {REBOL_3} ] [ {REBOL_2} ] ) title="wiki site">
+ >> t: to-tag {a href=( append http://rebol.net/wiki/ either version >= 3 [ {Rebol_3} ] [ {Rebol_2} ] ) title="wiki site"}     
+ == <a href=( append http://rebol.net/wiki/ either version >= 3 [ {Rebol_3} ] [ {Rebol_2} ] ) title="wiki site">
 </pre>
 
 = Tags in Dialects =

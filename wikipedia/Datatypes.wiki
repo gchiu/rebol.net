@@ -455,7 +455,7 @@ integer! decimal! percent! money! char! pair! tuple! time!
 |}
 
 
-===[[Mathematical model of REBOL series | series!]]===
+===[[Mathematical model of Rebol series | series!]]===
 
 A typeset of:
 

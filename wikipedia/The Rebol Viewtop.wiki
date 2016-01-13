@@ -37,7 +37,7 @@ The script for the illustrated viewtop will be presented here in the near future
 
 
 
-The version of Rebol that includes GUI libraries has been historically called "REBOL/View".  Included in the distribution is a function called <tt>viewtop</tt>, which starts a simple browser application that lets you run sample Rebol programs from some trusted network locations.
+The version of Rebol that includes GUI libraries has been historically called "Rebol/View".  Included in the distribution is a function called <tt>viewtop</tt>, which starts a simple browser application that lets you run sample Rebol programs from some trusted network locations.
 
 === Index ===
 

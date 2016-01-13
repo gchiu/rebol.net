@@ -6,8 +6,8 @@
 
 <!-- If someone feels like it, tables could be wikitext'ed
 {| class="wikitable" width="100%" style="clear:right;"
-!REBOL 2
-!REBOL 3
+!Rebol 2
+!Rebol 3
 !Description
 |-
 |<tt>repeat i [a b c] [print i]</tt>

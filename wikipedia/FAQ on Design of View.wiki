@@ -42,7 +42,7 @@ So, that seemed redundant.
 
 Precise naming is a difficult thing. I considered several other names for this function.
 
-The proper full name would be: INSERT-EVENT-HANDLER.  Note that it would ''not'' be ADD-EVENT-HANDLER, because in REBOL an ''add'' is much different than an ''insert''. It is possible to call it INSERT-HANDLER, but it is for events, and there are other kinds of handlers in R3 (like device handlers).
+The proper full name would be: INSERT-EVENT-HANDLER.  Note that it would ''not'' be ADD-EVENT-HANDLER, because in Rebol an ''add'' is much different than an ''insert''. It is possible to call it INSERT-HANDLER, but it is for events, and there are other kinds of handlers in R3 (like device handlers).
 
 However, that name just seemed too long to me. Since ''handle'' can be a verb (as well as a noun) I picked it as the verb for this action of specifying how events are handled.
 

@@ -46,7 +46,7 @@ Setup your editor to run view.exe for your script (to save you time).
 Start with:
 
 <pre>
-REBOL []
+Rebol []
 
 do %load-gui.r
 

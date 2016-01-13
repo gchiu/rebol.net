@@ -1,20 +1,20 @@
 {{Cookbook|title=Typographical Conventions|author=Ladislav Mecir|level=1|category=Documentation}}
 
-==Suggested conventions for documenting REBOL==
+==Suggested conventions for documenting Rebol==
 
 {| class="wikitable"
 !Category !!Style !!How to do it in WikiText
 |-
 | emphasized text || ''emphasized text'' || <nowiki> ''emphasized text''</nowiki> (double apostrophe)
 |-
-| REBOL words || '''''bold-and-italic''''' || <nowiki>'''''bold-and-italic'''''</nowiki> (quintuple apostrophe)
+| Rebol words || '''''bold-and-italic''''' || <nowiki>'''''bold-and-italic'''''</nowiki> (quintuple apostrophe)
 |-
-| values of REBOL variables|| '''bold''' || <nowiki>'''bold'''</nowiki> (triple apostrophe)
+| values of Rebol variables|| '''bold''' || <nowiki>'''bold'''</nowiki> (triple apostrophe)
 |-
-| embedded REBOL expression || <tt>typewriter text</tt> || &lt;tt&gt;typewriter text&lt;/tt&gt;
+| embedded Rebol expression || <tt>typewriter text</tt> || &lt;tt&gt;typewriter text&lt;/tt&gt;
 |}
 
-Note: REBOL variables are REBOL words that are bound to a context, unbound words don't have values.
+Note: Rebol variables are Rebol words that are bound to a context, unbound words don't have values.
 
 Use:
 #'''do''' to represent the value of the '''''do''''' variable - in a fresh console this is a native that does not have a serialized form

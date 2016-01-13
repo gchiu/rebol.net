@@ -1,4 +1,4 @@
-Here is a list of useful REBOL articles.
+Here is a list of useful Rebol articles.
 
 {| class="wikitable" width="100%"
 ! Article
@@ -9,12 +9,12 @@ Here is a list of useful REBOL articles.
 |[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=x60w Reading CGI Data Safely]
 |CGI
 |Sunanda
-|An article about REBOL and CGI gateways
+|An article about Rebol and CGI gateways
 |-
-|[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=m298xx REBOL and Strings]
+|[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=m298xx Rebol and Strings]
 |Strings
 |Sunanda
-|Article explaining various types of strings in REBOL and their working
+|Article explaining various types of strings in Rebol and their working
 |-
 |[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=vhz9xq Adjusting Fonts]
 |View
@@ -24,22 +24,22 @@ Here is a list of useful REBOL articles.
 |[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=d25z A cookie Jar Library]
 |Examples
 |Gregg Irwin
-|An example of REBOL code to access the Cookie-Jar file
+|An example of Rebol code to access the Cookie-Jar file
 |-
 |[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=lf019t Rebol Programmer Levels]
 |Various
 |BTiffin
-|The ten levels to the top. 10 Steps for the REBOL programmer
+|The ten levels to the top. 10 Steps for the Rebol programmer
 |-
-|[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=kg55x The REBOL.org library]
+|[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=kg55x The Rebol.org library]
 |Various
 |BTiffin
-|A deep overview of the REBOL.org archive
+|A deep overview of the Rebol.org archive
 |-
 |[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=pfx654q Beginners Guide]
 |Language
 |Nick Antonaccio
-|An introductory guide to the REBOL language
+|An introductory guide to the Rebol language
 |-
 |[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=j315vt Quine]
 |Examples
@@ -49,39 +49,39 @@ Here is a list of useful REBOL articles.
 |[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=cv6t IRUA]
 |Various
 |BTiffin
-|The REBOL International User Association
+|The Rebol International User Association
 |-
 |[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=j98t Programming TIPS]
 |Language
 |Sunanda
-|Some tips for the REBOL programmer
+|Some tips for the Rebol programmer
 |-
-|[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=jgp446wq REBOL Tutorial]
+|[http://www.rebol.org/cgi-bin/cgiwrap/rebol/art-display-article.r?article=jgp446wq Rebol Tutorial]
 |Guide
 |Nick Antonaccio
-|Another REBOL Programming tutorial
+|Another Rebol Programming tutorial
 |- 
-|[[wikibooks:REBOL_Programming/Language_Features/Series|About REBOL series]]
+|[[wikibooks:Rebol_Programming/Language_Features/Series|About Rebol series]]
 |Series
 |Ladislav Mecir
-|An in-depth look at REBOL's series! datatype and the conceptual influence it has on the language
+|An in-depth look at Rebol's series! datatype and the conceptual influence it has on the language
 |-
-|[[wikibooks:REBOL_Programming/Advanced/Interpreter|How is the source code interpreted]]
+|[[wikibooks:Rebol_Programming/Advanced/Interpreter|How is the source code interpreted]]
 |Language
 |Ladislav Mecir
-|Describing the MAKE, LOAD and DO phases of the REBOL interpreter
+|Describing the MAKE, LOAD and DO phases of the Rebol interpreter
 |-
-|[http://www.fm.vslib.cz/~ladislav/rebol/argstake.html How many arguments can a REBOL function take]
+|[http://www.fm.vslib.cz/~ladislav/rebol/argstake.html How many arguments can a Rebol function take]
 |Language
 |Ladislav Mecir
 |NARGS
 |-
-|[[Identity|About two REBOL expressions yelding one value]]
+|[[Identity|About two Rebol expressions yelding one value]]
 |Language
 |Ladislav Mecir
-|Identity, Equivalence and Mutability in REBOL
+|Identity, Equivalence and Mutability in Rebol
 |-
-|[[Bindology|All about REBOL Binding]]
+|[[Bindology|All about Rebol Binding]]
 |Language
 |Ladislav Mecir
 |BINDOLOGY 101
@@ -101,7 +101,7 @@ Here is a list of useful REBOL articles.
 |Ladislav Mecir
 |Parse versus regular expressions etc.
 |-
-|[http://en.wikibooks.org/wiki/REBOL_Programming/Language_Features/Parse Parse compendium]
+|[http://en.wikibooks.org/wiki/Rebol_Programming/Language_Features/Parse Parse compendium]
 |Language
 |Various
 |A detailed Parse description
@@ -116,17 +116,17 @@ Here is a list of useful REBOL articles.
 |Carl Sassenrath
 |Description to be written
 |-
-|[http://www.rebol.net/article/0188.html REBOL Functions are not Commands]
+|[http://www.rebol.net/article/0188.html Rebol Functions are not Commands]
 |Language
 |Carl Sassenrath
-|The Do dialect of REBOL is a functional language not having commands.
+|The Do dialect of Rebol is a functional language not having commands.
 |-
-|[http://www.rebol.net/article/0020.html Associative Arrays in REBOL - Hash!]
+|[http://www.rebol.net/article/0020.html Associative Arrays in Rebol - Hash!]
 |Language
 |Carl Sassenrath
 |The advantages of the hash! datatype.
 |-
-|[http://www.codeconscious.com/rebol/articles/rebol-concepts.html REBOL Concepts]
+|[http://www.codeconscious.com/rebol/articles/rebol-concepts.html Rebol Concepts]
 |Basic Guid
 |Codeconscious
 |Article explaining the Rebol Basic Concepts, datatypes, words, functions and some traps for beginners
@@ -136,35 +136,35 @@ Here is a list of useful REBOL articles.
 |Codeconscious
 |Extensive article describing the working of PARSE, an essential function for parsing input
 |-
-|[http://www.codeconscious.com/rebol/articles/x-internet-security.html REBOL Security Issues]
+|[http://www.codeconscious.com/rebol/articles/x-internet-security.html Rebol Security Issues]
 |Security
 |Codeconscious
 |The X-Internet poses some security risks. Here you will find a small tutorial to avoid them.
 |-
-|[http://www.codeconscious.com/rebol/tips-and-techniques.html REBOL Tips and Techniques]
+|[http://www.codeconscious.com/rebol/tips-and-techniques.html Rebol Tips and Techniques]
 |Various
 |Codeconscious
-|A collection of small articles on REBOL programming.
+|A collection of small articles on Rebol programming.
 |-
-|[http://www.codeconscious.com/rebol/rebol-net.html REBOL and the Net]
+|[http://www.codeconscious.com/rebol/rebol-net.html Rebol and the Net]
 |Net
 |Codeconscious
-|A collection of articles on REBOL net related operations
+|A collection of articles on Rebol net related operations
 |-
-|[http://www.codeconscious.com/rebol/rebol-and-notetab.html REBOL and Notetab]
+|[http://www.codeconscious.com/rebol/rebol-and-notetab.html Rebol and Notetab]
 |Editors
 |Codeconscious
-|REBOL and NoteTab
+|Rebol and NoteTab
 |-
-|[http://www.codeconscious.com/rebol/dialects.html REBOL Dialects]
+|[http://www.codeconscious.com/rebol/dialects.html Rebol Dialects]
 |Dialects
 |Codeconscious
-|Dialects are domain specific languages. Explore the prower of REBOL dialecting with this small article
+|Dialects are domain specific languages. Explore the prower of Rebol dialecting with this small article
 |-
-|[http://www.codeconscious.com/rebol/view-tips.html REBOL/View Tips]
+|[http://www.codeconscious.com/rebol/view-tips.html Rebol/View Tips]
 |View
 |Codeconscious
-|REBOL and its Video Interface Dialect
+|Rebol and its Video Interface Dialect
 |}
 
 '''Advanced topics'''
@@ -181,10 +181,10 @@ Here is a list of useful REBOL articles.
 | Carl Sasenrath
 | The Rebcode Virtual Machine Overview
 |-
-|[http://www.rebol.com/docs/services/ REBOL/Services]
+|[http://www.rebol.com/docs/services/ Rebol/Services]
 | Services
 |Carl Sasenrath
-|REBOL Services, similar to Web Services but only in few KB of REBOL code
+|Rebol Services, similar to Web Services but only in few KB of Rebol code
 |-
 |[http://anton.wildit.net.au/rebol/doc/translated/AccessODBC/odbcsockserv_english.html ODBC Access in Core]
 | Database

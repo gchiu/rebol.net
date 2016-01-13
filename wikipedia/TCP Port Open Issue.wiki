@@ -5,9 +5,9 @@ The purpose of this technical note is to describe how OPEN works for TCP ports (
 As a quick review, recall these facts:
 
 *TCP connections are made with IP addresses, not with host names.
-*REBOL TCP port specifications (e.g. URLs) allow host names, as well as IP addresses.
+*Rebol TCP port specifications (e.g. URLs) allow host names, as well as IP addresses.
 
-'''What this means is that in REBOL the TCP OPEN action does an extra step.''' It does a DNS lookup if a host is given.
+'''What this means is that in Rebol the TCP OPEN action does an extra step.''' It does a DNS lookup if a host is given.
 
 In R3, '''that is a small problem because the state machine has been cleaned up and simplified compared to R2'''.
 

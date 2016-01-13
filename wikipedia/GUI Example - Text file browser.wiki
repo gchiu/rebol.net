@@ -34,4 +34,4 @@ CODE-AREA is a minor variation of the AREA style that displays using a monospace
 ==Notes==
 
 #The READ-STRING function is a temporary function used to read files and convert them from binary (and possibly in Unicode format) into a string datatype.
-#Although the REBOL kernel does support Unicode, the graphics library does not yet handle unicode strings.
+#Although the Rebol kernel does support Unicode, the graphics library does not yet handle unicode strings.

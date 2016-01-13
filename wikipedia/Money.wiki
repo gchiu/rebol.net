@@ -56,7 +56,7 @@ The money datatype uses a variation of arbitrary-precision arithmetic (also call
 
 Space efficiency comparison: while the BCD is defined to use 4 bits to represent one decimal digit, i.e. 104 bits for 26 decimal digits, the money datatype uses just 87 bits for that purpose.
 
-Primarily, the datatype is designed to take advantage of the high-performance 32 bit integer operations found on all modern CPUs. In addition, the datatype is optimized for storage directly in REBOL's 128 bit processing engine, eliminating the overhead of memory allocation and GC from standard numeric computations. 
+Primarily, the datatype is designed to take advantage of the high-performance 32 bit integer operations found on all modern CPUs. In addition, the datatype is optimized for storage directly in Rebol's 128 bit processing engine, eliminating the overhead of memory allocation and GC from standard numeric computations. 
 
 The representation of money numbers uses a sign, unsigned significand (also coefficient/mantissa) in Little Endian order with 26 decimal digits and an unbiased signed decimal exponent in range between -128 to +127.
 

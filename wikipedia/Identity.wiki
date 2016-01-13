@@ -1,23 +1,23 @@
 '''Author: Ladislav Mecir'''
 
-REBOL is an expression-oriented language. A successful evaluation of an expression yields a value. After successfully performing two expression evaluations we can legitimately ask whether we obtained two values or just one that is actually a result of both evaluations.
+Rebol is an expression-oriented language. A successful evaluation of an expression yields a value. After successfully performing two expression evaluations we can legitimately ask whether we obtained two values or just one that is actually a result of both evaluations.
 
 In the past, the question became a subject to dispute. The answers in the mailing list ranged from:
-:"Only the REBOL designer can answer such a question." (S opinion)
+:"Only the Rebol designer can answer such a question." (S opinion)
 to:
-:"Two expression evaluations never yield one REBOL value. If the evaluations are discernible then their results can be discerned too." (N opinion)
+:"Two expression evaluations never yield one Rebol value. If the evaluations are discernible then their results can be discerned too." (N opinion)
 
-The "S opinion" can be called "skeptic" since it expresses skepticism about our ability to find the correct answer to the question. In response to the "S opinion" we summarize the properties of REBOL identity and show that we ''are'' able to find out whether two successful expression evaluations yield one REBOL value. We do it by defining an '''identical?''' function "mechanically" doing just that.
+The "S opinion" can be called "skeptic" since it expresses skepticism about our ability to find the correct answer to the question. In response to the "S opinion" we summarize the properties of Rebol identity and show that we ''are'' able to find out whether two successful expression evaluations yield one Rebol value. We do it by defining an '''identical?''' function "mechanically" doing just that.
 
-Examining the "N opinion" one is tempted to call it "nihilistic" since it suggests that "two expression evaluations ''never'' yield one REBOL value". The acceptance of this idea has even more thorough consequences than the acceptance of the "S opinion", which at least allows us to ask REBOL designer when in doubt. As opposed to that, the "N opinion" might discourage us from reasoning about identity of REBOL values and from using it for practical purposes. Our definition of the '''identical?''' function looks sufficient to refute this opinion too, showing that REBOL identity exists and is practically usable.
+Examining the "N opinion" one is tempted to call it "nihilistic" since it suggests that "two expression evaluations ''never'' yield one Rebol value". The acceptance of this idea has even more thorough consequences than the acceptance of the "S opinion", which at least allows us to ask Rebol designer when in doubt. As opposed to that, the "N opinion" might discourage us from reasoning about identity of Rebol values and from using it for practical purposes. Our definition of the '''identical?''' function looks sufficient to refute this opinion too, showing that Rebol identity exists and is practically usable.
 
-During our quest for the REBOL identity we discuss other (once disputable) matters like "Is a given value mutable?" or "Which attributes a given value has?" and implement a couple of (hopefully interesting) functions.
+During our quest for the Rebol identity we discuss other (once disputable) matters like "Is a given value mutable?" or "Which attributes a given value has?" and implement a couple of (hopefully interesting) functions.
 
 ==Acknowledgments==
-I would like to say thanks to Joel Neely, Romano Paolo Tenca and many others who discussed the subject with me on the REBOL mailing list.
+I would like to say thanks to Joel Neely, Romano Paolo Tenca and many others who discussed the subject with me on the Rebol mailing list.
 
 ==Notes==
-This version of the article was tested in REBOL/View 2.7.6.3.1. Other versions of the interpreter may differ in a few details.
+This version of the article was tested in Rebol/View 2.7.6.3.1. Other versions of the interpreter may differ in a few details.
 
 A reader, wanting to check all the examples can run this code:
 <pre>do http://www.rebol.org/download-a-script.r?script-name=identity.r</pre>
@@ -29,7 +29,7 @@ The goal of our quest, the '''identical?''' function has to accept any result (o
 Let's call a function having these properties a ''relation''.
 
 ==Reflexivity==
-As is well known, we can refer to REBOL values using REBOL blocks or words. Example:
+As is well known, we can refer to Rebol values using Rebol blocks or words. Example:
 <pre>a-char: #"a"</pre>
 The effect is that the '''''a-char''''' variable refers to the character as we expected:
 <pre>a-char ; == #"a"</pre>
@@ -78,9 +78,9 @@ shall yield '''true''' too.
 This property we call ''transitivity''.
 
 ==Equivalence==
-'''Definition''' (Equivalence): We call any REBOL function having the above described properties (i.e. a relation that is reflexive, symmetric and transitive) an ''equivalence''.
+'''Definition''' (Equivalence): We call any Rebol function having the above described properties (i.e. a relation that is reflexive, symmetric and transitive) an ''equivalence''.
 
-In accordance with our previous observations we restate that REBOL identity has to be an equivalence.
+In accordance with our previous observations we restate that Rebol identity has to be an equivalence.
 
 Let's use the definition to find out whether some functions are equivalences. For example, the '''never''' function implementing the "N opinion" from the summary
 <pre>never: func [
@@ -156,7 +156,7 @@ yields '''true'''.
 
 '''Observation''': The above defined '''always''' function is the coarsest equivalence.
 
-==Definition of REBOL identity==
+==Definition of Rebol identity==
 The notion of equivalence doesn't define identity completely since, e.g., the '''always''' function is an equivalence, but it isn't the identity we are looking for.
 
 To define the identity we employ a fundamental logic principle known as
@@ -165,15 +165,15 @@ To define the identity we employ a fundamental logic principle known as
 
 As a corollary to this principle we obtain
 
-'''Observation''' (Leibniz's law): The '''identical?''' function has to be the finest equivalence in REBOL.
+'''Observation''' (Leibniz's law): The '''identical?''' function has to be the finest equivalence in Rebol.
 
 '''Proof:''' We demonstrated that '''identical?''' has to be an equivalence. Let's have an equivalence '''eq''' and a block '''block''' having two entries for which the expression
  identical? first block second block
-yields '''true'''. If the '''identical?''' function is the REBOL identity, we know that the first and second entries of the block refer to one REBOL value. According to the principle of indiscernibility of identicals the '''eq''' equivalence cannot discern <code>first block</code> from <code>second block</code>, which proves that '''identical?''' is finer or as fine as '''eq''' '''q.e.d.'''
+yields '''true'''. If the '''identical?''' function is the Rebol identity, we know that the first and second entries of the block refer to one Rebol value. According to the principle of indiscernibility of identicals the '''eq''' equivalence cannot discern <code>first block</code> from <code>second block</code>, which proves that '''identical?''' is finer or as fine as '''eq''' '''q.e.d.'''
 
 We use Leibniz's law to define
 
-'''Definition''' (Identity): We call an equivalence ''identity'' if it is the finest equivalence in REBOL.
+'''Definition''' (Identity): We call an equivalence ''identity'' if it is the finest equivalence in Rebol.
 
 '''Observation''': Any two identities must be of equal fineness.
 
@@ -185,10 +185,10 @@ The proof is left as an exercise to the reader.
 
 While we succeeded to uniquely define the identity, we are only half-way done since we didn't yet succeed to implement it.
 
-To be able to implement the identity we need to collect more informations about REBOL values.
+To be able to implement the identity we need to collect more informations about Rebol values.
 
 ==The type attribute==
-Let's note that every REBOL value has a type. A type-comparing equivalence can be defined as follows:
+Let's note that every Rebol value has a type. A type-comparing equivalence can be defined as follows:
 <pre>equal-type?: func [
     {do the values have equal type?}
     a [any-type!]
@@ -216,9 +216,9 @@ yields '''true''', while
 yields '''false''' '''q.e.d.'''
 
 ==The new-line attribute==
-'''Observation''' (the new-line attribute): Every REBOL value has a new-line attribute.
+'''Observation''' (the new-line attribute): Every Rebol value has a new-line attribute.
 
-'''Proof:''' In the case of the type attribute we didn't need to prove that every REBOL value has a type since it is widely documented, there are many examples of values with various types and there is a '''type?''' native that returns a type of any given value.
+'''Proof:''' In the case of the type attribute we didn't need to prove that every Rebol value has a type since it is widely documented, there are many examples of values with various types and there is a '''type?''' native that returns a type of any given value.
 
 To prove the existence of the new-line attribute we need to document it, provide examples of values with distinct new-line attribute values and define a new-line-attribute? function returning a new-line attribute of any given value.
 
@@ -269,7 +269,7 @@ On the other hand, it is equally easy to observe that the '''same?''' function d
 <pre>same? one one-nl ; == true</pre>
 
 ==Functions that do not modify their arguments==
-In REBOL, some functions modify their arguments (it is usually stated in their documentation). It is not easy to write a simple definition of what the phrase "a function modifying its argument(s)" means, so, let's start with simple examples
+In Rebol, some functions modify their arguments (it is usually stated in their documentation). It is not easy to write a simple definition of what the phrase "a function modifying its argument(s)" means, so, let's start with simple examples
 <pre>f1: func [a] [2]</pre>
 When observing the behaviour like
 <pre>f1 1 ; == 2</pre>
@@ -364,9 +364,9 @@ get first arguments ; == 2.1.1</pre>
 
 '''Definition''' (Immutable values): Values that cannot be modified we call ''immutable values''.
 
-'''Observation''': REBOL variables are mutable (see the '''set''' and '''tuple''' examples).
+'''Observation''': Rebol variables are mutable (see the '''set''' and '''tuple''' examples).
 
-'''Observation''': REBOL blocks are mutable (see the '''change''' example).
+'''Observation''': Rebol blocks are mutable (see the '''change''' example).
 
 ==Mutations used to discern values==
 While our excursion to the realms of modifying functions looked like a detour on our quest, now we show that mutations can be used to discern values. In the following example we define two bitsets
@@ -423,7 +423,7 @@ This equivalence can discern the above '''bs1''' and '''bs2''' bitsets
 ==Implementation of '''identical?'''==
 We have collected all the necessary informations. The '''same?''' function is close to our goal, so we will try to use it as much as possible and take care of the cases when it fails to do what we want.
 
-Observation: The finest equivalence in REBOL is
+Observation: The finest equivalence in Rebol is
 <pre>identical?: func [
     {are the values identical?}
     a [any-type!]
@@ -528,7 +528,7 @@ clear a
 index? b ; == 1
 real-index? b ; == 2</pre>
 
-==REBOL identity doesn't depend on the '''same?''' function==
+==Rebol identity doesn't depend on the '''same?''' function==
 While we used the '''same?''' function above to obtain an "efficient" implementation of '''identical?''', there is a possibility that '''identical?''' actually doesn't depend on the '''same?''' function. To check we create another (even though a less efficient) implementation of '''identical?''' not using '''same?''' or '''=?''' at all
 <pre>id2?: func [
     {are the values identical?}
@@ -634,7 +634,7 @@ While the objection is logical, our result is not as much of a coincidence as it
 While the language having the coarser identity may look like "crippled" in some way, it actually is "fully featured". Its identity describes all properties of its values. There is no need (in most implementations no way) to define a '''same?''' function "exploring" properties that are neither "visible" nor "accessible" for any function distinct from '''same?'''.
 
 ==Applications==
-Having implemented REBOL identity, let's try to define other interesting notions and functions.
+Having implemented Rebol identity, let's try to define other interesting notions and functions.
 
 ==Relatives==
 Example (Errors and objects):
@@ -894,7 +894,7 @@ Application of the FIND-REFERENCE function, a function able to recursively find 
 ]</pre>
 
 ==Comparing state==
-Two values may be in equal state even if they aren't identical. Let's define another equivalence able to find out whether two REBOL values are in equal state. Because the defined function will be an equivalence, it will not have the main disadvantages of the '''equal?''', '''strict-equal?''', etc. functions.
+Two values may be in equal state even if they aren't identical. Let's define another equivalence able to find out whether two Rebol values are in equal state. Because the defined function will be an equivalence, it will not have the main disadvantages of the '''equal?''', '''strict-equal?''', etc. functions.
 
 There is a problem with complicated values. Two functions shouldn't be found equal if they can yield different results. It is impossible to define a general comparing algorithm that would be able to find out whether two complicated functions are equal if they aren't the same. That is why I use a trivial approach (find out whether the values are identical) for functions. This approach is used for ports too.
 
@@ -974,9 +974,9 @@ equal-state?: function [
     rc get/any 'a get/any 'b
 ]</pre>
 
-Observation (Another informal description of '''identical?'''): Two REBOL expression evaluations yield one value, if the state of the result of the first expression evaluation is equal as the state of the result of the second expression evaluation and every mutation of the result of the first expression evaluation is a mutation of the result of the second expression evaluation.
+Observation (Another informal description of '''identical?'''): Two Rebol expression evaluations yield one value, if the state of the result of the first expression evaluation is equal as the state of the result of the second expression evaluation and every mutation of the result of the first expression evaluation is a mutation of the result of the second expression evaluation.
 
-Corollary: Two expression evaluations in REBOL yield one value if the result is immutable and the state of the result of the first expression evaluation is equal as the state of the result of the second expression evaluation.
+Corollary: Two expression evaluations in Rebol yield one value if the result is immutable and the state of the result of the first expression evaluation is equal as the state of the result of the second expression evaluation.
 
 ==Finding out whether a given block is cyclic==
 We can use a lot of different definitions of block cyclicity. The first one is probably the most strict:
@@ -1055,12 +1055,12 @@ Here is another one that yields results more closely related to results of nativ
     rc :block
 ]</pre>
 
-==Attributes of REBOL values==
-Attributes of REBOL values are the values that are associated with them. The state of a REBOL value is a "composition" of its attributes. Every REBOL value has at least one attribute: its type. Another attribute every Rebol value has is its new-line attribute.
+==Attributes of Rebol values==
+Attributes of Rebol values are the values that are associated with them. The state of a Rebol value is a "composition" of its attributes. Every Rebol value has at least one attribute: its type. Another attribute every Rebol value has is its new-line attribute.
 
 For the values of type '''none!''' and '''unset!''' the above are their only attributes.
 
-When a REBOL value is changed, at least one of its attributes changes. An attribute of a REBOL value that can be changed I call a volatile attribute. Attributes that aren't volatile I call regular.
+When a Rebol value is changed, at least one of its attributes changes. An attribute of a Rebol value that can be changed I call a volatile attribute. Attributes that aren't volatile I call regular.
 
 Observation: The type attribute as well as the new-line attribute is regular. 
 
@@ -1189,7 +1189,7 @@ type, new-line, length, element references
 Element references are volatile. (The '''insert''' and '''remove''' functions change element references.)
 
 ==Structs==
-Attributes of REBOL structs are:
+Attributes of Rebol structs are:
 
 type, new-line, spec, binary representation
 
@@ -1212,7 +1212,7 @@ The set of variables of an object cannot be modified, except for the global cont
 Individual variables are volatile (see above).
 
 ==Errors==
-REBOL errors are relatives with objects, can be transformed to objects using the '''disarm''' function. They differ only in type.
+Rebol errors are relatives with objects, can be transformed to objects using the '''disarm''' function. They differ only in type.
 
 ==Ports==
 Attributes:

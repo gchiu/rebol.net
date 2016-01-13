@@ -156,7 +156,7 @@
 <BR>
 [http://www.rebol.org/view-script.r?script=color-names.r In-built Colors] Library Script
 <BR>
-These scripts may be run directly from the  Rebol Viewtop, the REBOL Folder, Tools:
+These scripts may be run directly from the  Rebol Viewtop, the Rebol Folder, Tools:
 <BR>
 : [http://www.rebol.com/view/demos/font-lab.r Font Lab] Script By Carl Sassenrath
 : [http://www.rebol.com/view/tools/grad-lab.r Gradient Lab] Script By Carl Sassenrath

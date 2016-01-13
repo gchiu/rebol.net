@@ -27,7 +27,7 @@ WARNING: ''Various pages in this wiki may be obsolete.'' Your help is needed to 
 
 ===Graphics and GUI===
 
-*[http://www.rebol.com/r3/docs/gui/gui.html Graphics and GUI Documentation (on REBOL.com)]
+*[http://www.rebol.com/r3/docs/gui/gui.html Graphics and GUI Documentation (on Rebol.com)]
 
 ===Other Sections===
 

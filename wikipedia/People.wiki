@@ -1,4 +1,4 @@
-<!-- The REBOL people wiki page -->
+<!-- The Rebol people wiki page -->
 {| align="right"
 | __TOC__
 |}
@@ -18,7 +18,7 @@
 <span id="B"></span>
 ==Brian Tiffin==
 
-Self employed REBOL developer.  Cheerleader.
+Self employed Rebol developer.  Cheerleader.
 
 <span id="C"></span>
 <span id="D"></span>

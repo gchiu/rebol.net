@@ -40,10 +40,10 @@ The change from 32 bit to 64 bit integer! influences:
 ===TO-HEX===
 
 Care must be taken with any code that assumes the length of the ISSUE! data returned by to-hex.
-;REBOL2
+;Rebol2
  >> to-hex 80
  == #00000050
-;REBOL3
+;Rebol3
  >> to-hex 80
  == #0000000000000050
 

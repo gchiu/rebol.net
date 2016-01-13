@@ -7,7 +7,7 @@ Some fundamental changes have been made to ports.
 #Ports default to binary, not to string.
 #String ports expect an encoding for read and write.
 #By default, the string encoding is UTF-8, but others are allowed.
-#String terminators are converted as well. REBOL strings default to LF.
+#String terminators are converted as well. Rebol strings default to LF.
 
 === READ is binary by default ===
 
@@ -42,13 +42,13 @@ It is also possible to write it as a string:
 
    write/string file data
 
-However, this is not required. REBOL knows the datatype of the content data and will do the right thing for binary and string. So, WRITE will auto-encode the content, using the default encoding (UTF-8).
+However, this is not required. Rebol knows the datatype of the content data and will do the right thing for binary and string. So, WRITE will auto-encode the content, using the default encoding (UTF-8).
 
 See more about WRITE options below.
 
 === Effect on common idiom ===
 
-The above change has an impact the line conversion method we often use in REBOL. The code:
+The above change has an impact the line conversion method we often use in Rebol. The code:
 
    write %file2 read %file1
 

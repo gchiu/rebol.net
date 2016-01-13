@@ -1,4 +1,4 @@
-DELECT stands for DEcode diaLECT. It is used to implement REBOL's internal dialects such as DRAW, EFFECT, rich TEXT, SECURE, and VID, but its function is available to all users.
+DELECT stands for DEcode diaLECT. It is used to implement Rebol's internal dialects such as DRAW, EFFECT, rich TEXT, SECURE, and VID, but its function is available to all users.
 
 ==Basics==
 

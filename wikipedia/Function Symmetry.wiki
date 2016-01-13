@@ -1,6 +1,6 @@
 {{Cookbook|title=Function Symmetry|author=Henrik Mikael Kristensen|level=1|category=}}
 
-REBOL has many functions for manipulating code and data in series and in blocks with the purpose of storing them either on disk or moving them across networks or media to have them restored to their original state later. An example is ENCLOAK. Its opposite is DECLOAK. Here's a table that describes such functions.
+Rebol has many functions for manipulating code and data in series and in blocks with the purpose of storing them either on disk or moving them across networks or media to have them restored to their original state later. An example is ENCLOAK. Its opposite is DECLOAK. Here's a table that describes such functions.
 
 Insert table here which describes the relationships between:
 
@@ -17,7 +17,7 @@ Insert table here which describes the relationships between:
 *LOAD - MOLD
 *LOAD - SAVE
 *READ - WRITE
-*TO-LOCAL-FILE - TO-REBOL-FILE
+*TO-LOCAL-FILE - TO-Rebol-FILE
 
 
 I realize there might be 100s of combinations, but I hope also we can make a clear table of combinations that work well together.

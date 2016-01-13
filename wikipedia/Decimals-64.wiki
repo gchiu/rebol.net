@@ -1,8 +1,8 @@
-{{Cookbook|title=64-bit Decimals|author=Contributors|level=2|category=REBOL Internals}}
+{{Cookbook|title=64-bit Decimals|author=Contributors|level=2|category=Rebol Internals}}
 
 Authors include Carl Sassenrath, John Niclasen, Ladislav Mecir
 
-REBOL decimals are standard 64-bit IEEE 754 binary floating point numbers.
+Rebol decimals are standard 64-bit IEEE 754 binary floating point numbers.
 
 ==IEEE 754 Standard==
 

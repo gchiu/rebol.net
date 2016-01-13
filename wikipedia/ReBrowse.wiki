@@ -10,17 +10,17 @@ A few things are worth noting:
 
 *This is not a web browser, nor does it display web content or use the web markup language. Those can be done with traditional browsers, and it would be silly to try to compete with them.
 *You can think of reblets as a different content format, lying somewhere between the concepts of Flash and HTML. Reblets are fully dynamic, yet their primary format is intended to be that of declarative text dialects (readable source code).
-*The navigational convenience of the old icon-based ViewTop is not gone. A desktop of icons can easily be created by any reblet, as necessary. For example, if you go to the REBOL.org library URL, it has the option of displaying the library as a list of scripts or as panels of icons. As it has been shown in most operating systems, each mode of viewing has its advantages (and disadvantages).
-*Just like with the ViewTop, you can still run REBOL scripts directly, and the browser shell will not appear.
+*The navigational convenience of the old icon-based ViewTop is not gone. A desktop of icons can easily be created by any reblet, as necessary. For example, if you go to the Rebol.org library URL, it has the option of displaying the library as a list of scripts or as panels of icons. As it has been shown in most operating systems, each mode of viewing has its advantages (and disadvantages).
+*Just like with the ViewTop, you can still run Rebol scripts directly, and the browser shell will not appear.
 *Reblet content can be addressed with URLs, in the same way as web content, using the same backend (web servers).
 
-Hopefully, you can see why this change is important. Indeed, it helps users think of REBOL applications more within the common framework they understand, that of URLs and page content.
+Hopefully, you can see why this change is important. Indeed, it helps users think of Rebol applications more within the common framework they understand, that of URLs and page content.
 
-Finally, it should be noted that this approach is not really new in the world of REBOL. The very first R2 ViewTop prototype in 2001 was intended to work this way, but other influences within RT moved us in a different direction. It has also been suggested many times over the years by members of the REBOL community.
+Finally, it should be noted that this approach is not really new in the world of Rebol. The very first R2 ViewTop prototype in 2001 was intended to work this way, but other influences within RT moved us in a different direction. It has also been suggested many times over the years by members of the Rebol community.
 
 ==Challenges==
 
-The greatest challenge in this approach is that of reblet security. That is, users can run multiple reblets within the same instance of the REBOL process. To do so in a secure fashion requires modules, tasks, sandboxes, and firewalls to properly isolate each reblet from the others.
+The greatest challenge in this approach is that of reblet security. That is, users can run multiple reblets within the same instance of the Rebol process. To do so in a secure fashion requires modules, tasks, sandboxes, and firewalls to properly isolate each reblet from the others.
 
 As you can imagine, this is non-trivial if we also want to allow reblets to perform their necessary I/O operations, such as writing files or accessing the network.
 
@@ -30,7 +30,7 @@ We expect we will need to make a few compromises at first, just to avoid further
 
 The general layout of ReBrowse GUI window similar to a simple web browser.
 
-A requirement of REBOL keep-it-simple design is that less is more.
+A requirement of Rebol keep-it-simple design is that less is more.
 
 To start the GUI is divided horiztonally into:
 
@@ -47,7 +47,7 @@ Most of this is obvious to everyone; however, the purpose of the opts button is 
 
 In general, I (Carl) want a general method of jumping to the "meta layer" of the browser. The opts are a panel that provides two main things: information and preferences.
 
-*Opts information includes panels about the browser and the current reblet, including REBOL header info such as purpose, author, date, version, size, signature, links to documentation, etc.
+*Opts information includes panels about the browser and the current reblet, including Rebol header info such as purpose, author, date, version, size, signature, links to documentation, etc.
 *Opts preferences include a section for general browser options, but also any special preferences needed by current reblet.
 
 The rationale for opts is that this information needs to be one click away at all times. (And you can be sure you're going to see it added to future versions of the iphone, etc.)

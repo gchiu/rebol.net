@@ -9,7 +9,7 @@ For example, when you open a file, the system creates a port from the file schem
 
 === Port object structure ===
 
-The standard port object has been substantially reduced in size and complexity from REBOL 2. The new object is defined by system/standard as:
+The standard port object has been substantially reduced in size and complexity from Rebol 2. The new object is defined by system/standard as:
 
     port: context [
         spec:       ; published specification of the port
@@ -55,6 +55,6 @@ Definitions:
 
 Only ports that require native support need requests and devices. Higher level ports, such as HTTP, do not directly create requests. Typically, they use lower level ports, such a TCP, and those do use requests.
 
-<b>The primary benefit of this design is that it formalizes a method for accessing a wide range of devices without expanding the REBOL-to-environment API for each device.</b> (In a way, it implements a mini operating system to keep REBOL as system-independent as possible.)
+<b>The primary benefit of this design is that it formalizes a method for accessing a wide range of devices without expanding the Rebol-to-environment API for each device.</b> (In a way, it implements a mini operating system to keep Rebol as system-independent as possible.)
 
-Also note that requests and devices <i>do not appear</i> within REBOL code itself. <i><b>They are purposely kept isolated in order to eliminate potential interdependencies in future versions of REBOL (or improvements to the device code itself.)</b></i>
+Also note that requests and devices <i>do not appear</i> within Rebol code itself. <i><b>They are purposely kept isolated in order to eliminate potential interdependencies in future versions of Rebol (or improvements to the device code itself.)</b></i>

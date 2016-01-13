@@ -130,7 +130,7 @@ and, the word values do not need to be set-words. This also works:
 
    d2: make map! [a 10 b 20 c 30]
 
-In fact, REBOL will always preserve the datatype of the word, so if you MOLD d1 you will see:
+In fact, Rebol will always preserve the datatype of the word, so if you MOLD d1 you will see:
 
    make map! [a: 10 b: 20 c: 30]
 

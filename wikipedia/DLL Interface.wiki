@@ -5,19 +5,19 @@ List of topics we need to consider, decide on, work out further
 
 ====Option 1: Rebol Dialect====
 
-It's all in REBOL code, just like it's done today in R2 (as a dialect that can interface with the DLL) with some enhancements to make life easier.
+It's all in Rebol code, just like it's done today in R2 (as a dialect that can interface with the DLL) with some enhancements to make life easier.
 
-;Pros: It's like R2, so you already know it. The code can all be seen at the REBOL code level (nothing hidden below).
+;Pros: It's like R2, so you already know it. The code can all be seen at the Rebol code level (nothing hidden below).
 
-;Cons: Has limitations regarding parts of the OS environment that are difficult to access via REBOL code, and it's not as fast as native code.
+;Cons: Has limitations regarding parts of the OS environment that are difficult to access via Rebol code, and it's not as fast as native code.
 
 ====Option 2: Host-Lib====
 
-It's all in C code, and it defines its own native functions used in REBOL.
+It's all in C code, and it defines its own native functions used in Rebol.
 
-;Pros: The host level is written in C code and begins at the main program entry point. This allows full control over the environment, including window handles, threads, mutex, events, and other parts of the OS API (that are often not accessible via REBOL code directly).
+;Pros: The host level is written in C code and begins at the main program entry point. This allows full control over the environment, including window handles, threads, mutex, events, and other parts of the OS API (that are often not accessible via Rebol code directly).
 
-;Cons: Requires expert-level coding practices and debugging can be difficult. All of the code is hidden from the REBOL level except the native function names themselves. The natives are statically created (during host compile time), not dynamically.
+;Cons: Requires expert-level coding practices and debugging can be difficult. All of the code is hidden from the Rebol level except the native function names themselves. The natives are statically created (during host compile time), not dynamically.
 
 ====Option 3: Hybrid Model====
 
@@ -35,9 +35,9 @@ A way to specify some interface hints, interfaces, where to bring in function na
 
 ====Option 4: Plug-In Model====
 
-Similar to option 2, except that a REBOL script loads a plugin (which is a DLL that conforms to the REBOL plug-in standard). The plugin then defines natives, mezzanines, and data and can load other DLLs as part of its initialization.
+Similar to option 2, except that a Rebol script loads a plugin (which is a DLL that conforms to the Rebol plug-in standard). The plugin then defines natives, mezzanines, and data and can load other DLLs as part of its initialization.
 
-;Pros: Provides a standard plugin model with C-level access to external DLLs and the OS API and environment (like option 1). Also allows dynamic adding of native functions into REBOL.
+;Pros: Provides a standard plugin model with C-level access to external DLLs and the OS API and environment (like option 1). Also allows dynamic adding of native functions into Rebol.
 
 ;Cons: Requires that a plugin be made for any external DLL that is needed. Less flexible than option 1 (because C code must be compiled), but more flexible than option 2 (because it is dynamic).
 
@@ -83,7 +83,7 @@ Nevertheless, we should be possible to support all kind of patterns:
 == R2 DLL Interface Feedback ==
 This is a collection of feedback, ideas and proposals based on the R2 DLL interface. It will help us to get an overview of problems, quirks etc. to finally design a good R3 DLL interface
 
-I (Ladislav) support the variant 1, i.e. the variant based on REBOL dialect, a.k.a. improved R2 DLL interface. Reason: this is the way how to "drink our own wine", helping REBOL popularity, although it may not be the way offering the highest speed.
+I (Ladislav) support the variant 1, i.e. the variant based on Rebol dialect, a.k.a. improved R2 DLL interface. Reason: this is the way how to "drink our own wine", helping Rebol popularity, although it may not be the way offering the highest speed.
 
 ===Structs are for interfacing with C===
 
@@ -184,9 +184,9 @@ The same holds for
 
 To be as user-friendly as possible we need to allow for struct*! conversions like:
 
-<pre>to string! ptr ; converts char* to REBOL string using the nul-character convention
+<pre>to string! ptr ; converts char* to Rebol string using the nul-character convention
 bp: to #[struct*! [char [10]]] p ; converts void *p to a pointer to array of 10 characters
-to binary! bp ; converts the pointer to REBOL binary! having length (10)
+to binary! bp ; converts the pointer to Rebol binary! having length (10)
 op: to #[struct*! [x [float] y [float]]] p ; converts p to a pointer to a structure containing two floats</pre>
 
 ===Existing code===

@@ -10,11 +10,11 @@ The name ''scheme'' comes from the standard description of a URI (URL). In this 
 
     http://www.rebol.net/index.html
 
-HTTP is the scheme name, www.rebol.net is the host, and index.html is the file path. REBOL uses that same naming convention.
+HTTP is the scheme name, www.rebol.net is the host, and index.html is the file path. Rebol uses that same naming convention.
 
 == Built-in schemes ==
 
-A variety of schemes are built-into REBOL 3 and can be used immediately on boot.
+A variety of schemes are built-into Rebol 3 and can be used immediately on boot.
 
 Here is a partial list of built-in schemes:
 
@@ -29,7 +29,7 @@ Here is a partial list of built-in schemes:
 |-
 | '''stderr''' || Standard error
 |-
-| '''console''' || REBOL interactive console
+| '''console''' || Rebol interactive console
 |-
 | '''file''' || Local file access
 |-
@@ -82,7 +82,7 @@ The scheme object is defined in system/standard as:
 Where:
 
 <blockquote>
-; name : is the type of scheme. This is the word used in the first part of the URL, such as TCP, HTTP, FTP, etc.. It must be a valid REBOL word (e.g. cannot begin with a number).
+; name : is the type of scheme. This is the word used in the first part of the URL, such as TCP, HTTP, FTP, etc.. It must be a valid Rebol word (e.g. cannot begin with a number).
 ; title : is the title of the scheme for user identification and documentation purposes.
 ; spec : an object used to specify additional features of the scheme.
 ; info : an prototype object that is instantiated for a query on the scheme.

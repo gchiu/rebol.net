@@ -1,6 +1,6 @@
 ==Introduction==
 
-REBOL exceptions have been discussed at:
+Rebol exceptions have been discussed at:
 
 *[http://www.rebol.com/r3/notes/errors.html Errors article]
 *R3 blog ([http://www.rebol.net/cgi-bin/r3blog.r?view=0309#comments Discussion about error handling])
@@ -11,7 +11,7 @@ The purpose of this article is to find a coherent proposal solving the above pro
 
 ==Types of exceptions==
 
-The [http://www.rebol.com/r3/notes/errors.html R3 Exception/Error Mechanism] article mentions that there are two types of exceptions in REBOL: unwinds and throws. Since every exception type can be emulated using the other one, I decided to make a couple of speed tests to find out what the relative speed of the respective exception types is:
+The [http://www.rebol.com/r3/notes/errors.html R3 Exception/Error Mechanism] article mentions that there are two types of exceptions in Rebol: unwinds and throws. Since every exception type can be emulated using the other one, I decided to make a couple of speed tests to find out what the relative speed of the respective exception types is:
 
 <pre>; the relative speed of throw is 100%
 base-throw: time-block [try [none]] 0,05
@@ -24,7 +24,7 @@ This simple test seems to suggest, that unwinds are faster than throws, which su
 
 ==RETURN and EXIT==
 
-As stated in the [http://www.rebol.com/r3/notes/errors.html Errors article], REBOL currently uses just dynamically scoped return and exit. Problems with dynamic scoping occur when a function processes code block (or blocks) with return or exit coming from different contexts. In such cases, the behaviour looks "unnatural" or "unexpected" for most users.
+As stated in the [http://www.rebol.com/r3/notes/errors.html Errors article], Rebol currently uses just dynamically scoped return and exit. Problems with dynamic scoping occur when a function processes code block (or blocks) with return or exit coming from different contexts. In such cases, the behaviour looks "unnatural" or "unexpected" for most users.
 
 : '''NOTE'''
 :
@@ -148,7 +148,7 @@ Advantages:
 Disadvantages:
 *Bad locality for the unhandled '''return''' error ([http://curecode.org/rebol3/ticket.rsp?id=1506 #1506]), or overhead to check for that situation.
 *Does not address the need to have both a function scoped return as well as pass through returns from different contexts at the same time.
-*Some people seem to question or have trouble understanding dynamic return as a concept, let alone its benefits. They prefer to think in terms of lexical scoping, even if it is only faked in REBOL.
+*Some people seem to question or have trouble understanding dynamic return as a concept, let alone its benefits. They prefer to think in terms of lexical scoping, even if it is only faked in Rebol.
 *The transparency option would need to be specified more often than the comparable option for definitional return.
 *We could do better than the name '''throw:''' for the transparency option.
 
@@ -263,7 +263,7 @@ Disadvantages (compared to the [[#Definitional return only, with an option to no
 
 ==HALT==
 
-Except for bugs (counting '''quit/'''now as one too), '''halt''' is the only exception in REBOL able to cause the [https://github.com/rebolsource/rebol-test test environment] crash. It is desirable to achieve a situation when all exceptions are catchable (this can be easily transformed to its opposite by undefining the respective catch functions/options), therefore, a corresponding catch function was proposed in [http://www.curecode.org/rebol3/ticket.rsp?id=1742&cursor=9 #1742].
+Except for bugs (counting '''quit/'''now as one too), '''halt''' is the only exception in Rebol able to cause the [https://github.com/rebolsource/rebol-test test environment] crash. It is desirable to achieve a situation when all exceptions are catchable (this can be easily transformed to its opposite by undefining the respective catch functions/options), therefore, a corresponding catch function was proposed in [http://www.curecode.org/rebol3/ticket.rsp?id=1742&cursor=9 #1742].
 
 ==THROW==
 
@@ -279,7 +279,7 @@ None of the above mentioned problems is too serious (except [http://curecode.org
 
 ===Example mezzanine implementation of definitional CATCH/THROW===
 
-If we had a definitional '''return''' in REBOL, the definitional '''catch'''/'''throw''' pair could be defined as a mezzanine, using code like:
+If we had a definitional '''return''' in Rebol, the definitional '''catch'''/'''throw''' pair could be defined as a mezzanine, using code like:
 <pre>catch: func [
     {Catches a throw from a block and returns its value.}
     body [block!]
@@ -315,7 +315,7 @@ Here's an unspoofable '''quit/'''now replacement implemented using dynamic '''th
 ]
 
 chat: funct [
-    "Open REBOL DevBase forum/BBS."
+    "Open Rebol DevBase forum/BBS."
 ][
     print "Fetching chat..."
     if error? err: try [catch-quit-now http://www.rebol.com/r3/chat.r none] [

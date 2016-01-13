@@ -1,1 +1,1 @@
-A '''reblet''' is a small application written in REBOL. The concept is similar to an ''applet'', such as those written languages.
+A '''reblet''' is a small application written in Rebol. The concept is similar to an ''applet'', such as those written languages.
