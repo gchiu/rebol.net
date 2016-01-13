@@ -42,7 +42,7 @@ Make note about return value. A TRUE will satisfy a WAIT, but other values do no
 
 The diagram below shows the basic relationship between '''[[schemes]], ports, requests,''' and '''devices''':
 
-<br><blockquote>[[image:port-flow.png]]</blockquote>
+<br><blockquote>[[images/port-flow.png|No Description]]</blockquote>
 
 Definitions:
 

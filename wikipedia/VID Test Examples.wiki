@@ -1,6 +1,6 @@
 ==Vid Script Examples==
 <TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=40% VALIGN=TOP>
-[[image:Gui-test.png]]
+[[images/Gui-test.png|No Description]]
 </TD><TD VALIGN=TOP>
 
 Open R3 enter "Demo" and click the "Run Test" button.

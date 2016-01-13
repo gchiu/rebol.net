@@ -20,7 +20,7 @@ fill-pen blue box 100x100 300x300
 rotate  30 fill-pen red box 100x100 300x300
 rotate -60 fill-pen yellow box 100x100 300x300
 </pre></code>
-[[image:ROTATE-1.png|ROTATE example 1]]
+[[images/ROTATE-1.png|ROTATE example 1]]
 
 <br>
 <p>See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>

@@ -51,7 +51,7 @@ fill-pen blue
 text 10x150 vectorial [font bold20 "Font Size 20 - vectorial"]
 
 </pre></code>
-[[image:TEXT-1.png|TEXT example 1]]
+[[images/TEXT-1.png|TEXT example 1]]
 
 <br>
 <p>Vectorial text supports the '''pen''', '''fill-pen''', '''line-width''', and
@@ -68,6 +68,6 @@ grad-pen off
 line-pattern red 5 5
 text vectorial 0x60 [font bold36 "Patterned Text"]
 </pre></code>
-[[image:TEXT-2.png|TEXT example 2]]
+[[images/TEXT-2.png|TEXT example 2]]
 
 <br>

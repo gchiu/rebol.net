@@ -8,7 +8,7 @@ REBOL decimals are standard 64-bit IEEE 754 binary floating point numbers.
 
 The bits in a Rebol decimal are laid out like this:
 
-[[image:General_double_precision_float_frac.PNG|The three fields in a 64-bit IEEE 754 float]]
+[[images/General_double_precision_float_frac.PNG|The three fields in a 64-bit IEEE 754 float]]
 
 A number has value v:
 

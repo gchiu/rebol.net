@@ -37,6 +37,6 @@ pen logo.gif
 fill-pen off
 box 100x100 300x300
 </pre></code>
-[[image:PEN-1.png|PEN example 1]]
+[[images/PEN-1.png|PEN example 1]]
 
 <br>

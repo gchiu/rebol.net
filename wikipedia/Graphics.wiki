@@ -29,7 +29,7 @@ The REBOL 3 graphics system has been redesigned in a major way to provide greate
 
 ==Architecture==
 
-[[image:Graphics-system.jpg]]
+[[images/Graphics-system.jpg|No Description]]
 
 ==Graphical Objects: GOBs==
 

@@ -37,24 +37,24 @@ The spline command lets you draw a curve through any number of points. The smoot
 <code><pre>
 spline 20x20 200x70 150x200 50x230 50x300 80x300 200x200
 </pre></code>
-[[image:SPLINE-1.png|SPLINE example 1]]
+[[images/SPLINE-1.png|SPLINE example 1]]
 
 <br>
 <code><pre>
 spline 3 20x20 200x70 150x200 50x230 50x300 80x300 200x200
 </pre></code>
-[[image:SPLINE-2.png|SPLINE example 2]]
+[[images/SPLINE-2.png|SPLINE example 2]]
 
 <br>
 <code><pre>
 spline 10 20x20 200x70 150x200 50x230 50x300 80x300 200x200
 </pre></code>
-[[image:SPLINE-3.png|SPLINE example 3]]
+[[images/SPLINE-3.png|SPLINE example 3]]
 
 <br>
 <code><pre>
 spline 10 closed 20x20 200x70 150x200 50x230 50x300 80x300 200x200
 </pre></code>
-[[image:SPLINE-4.png|SPLINE example 4]]
+[[images/SPLINE-4.png|SPLINE example 4]]
 
 <br>

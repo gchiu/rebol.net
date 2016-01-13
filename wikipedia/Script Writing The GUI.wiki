@@ -54,7 +54,7 @@ Here are some examples to illustrate how the syntax may be applied:
 Just to provide a simple starting point, here's a GUI that consists of two buttons:
 <TABLE style="color:green; background-color:#ffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
    <TD WIDTH=50%>
-[[Image:gui-basics-buttons.jpg]]
+[[images/gui-basics-buttons.jpg|No Description]]
 
 
 REBOL [ ]
@@ -125,7 +125,7 @@ For the sake of illustration, let's toss in a few more faces and their styles to
 ::]
 :]
    </TD>
-   <TD align=center valign=MIDDLE>[[Image:gui-basics-survey2.jpg|216px 221px]]
+   <TD align=center valign=MIDDLE>[[images/gui-basics-survey2.jpg|216px 221px]]
 
 <TABLE CELLPADDING=10 CELLSPACING=0><TR><TD WIDTH=50% VALIGN=TOP ALIGN=LEFT BGCOLOR=#ffffcc>
 1. Several more faces (title, text, panel, etc.) along with their options have been added.<BR><BR>
@@ -173,7 +173,7 @@ view [
 :] options [spacer: -3x-3]
 ]
 </TD>
-   <TD align=center valign=MIDDLE>[[Image:gui-basics-test-panel2.jpg|298px 393px]]
+   <TD align=center valign=MIDDLE>[[images/gui-basics-test-panel2.jpg|298px 393px]]
 
 <TABLE CELLPADDING=10 CELLSPACING=0><TR><TD WIDTH=90% VALIGN=TOP ALIGN=LEFT BGCOLOR=#ffffcc>
 

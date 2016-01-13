@@ -66,6 +66,6 @@ line 20x100 150x100
 line-width 11
 line 20x120 150x120
 </pre></code>
-[[image:LINE-CAP-1.png|LINE-CAP example 1]]
+[[images/LINE-CAP-1.png|LINE-CAP example 1]]
 
 <br>

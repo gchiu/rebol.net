@@ -532,13 +532,13 @@ You can also create image using binary data directly, like:
     view layout [image img 200x80]
 
 
-[[image:hello-world-encoded-as-an-image.png]]
+[[images/hello-world-encoded-as-an-image.png|No Description]]
 
 If you have raw RGBA binary data, you can create image! from it using:
    img: to image! #{FFFFFFC0000000C0}
    view layout [image img 200x100]
 
-[[Image:To-image-example-result.png]]
+[[images/To-image-example-result.png|No Description]]
 
 Another note:
 In Rebol2 you have to use:

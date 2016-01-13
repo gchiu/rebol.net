@@ -66,7 +66,7 @@ Draws an elliptical arc from the current point.
       arc 300x200 120 50 0
    ]
 </TD><TD WIDTH=30% VALIGN=MIDDLE ALIGN=CENTER>
-[[image:SARC-1.png|200px]]
+[[images/SARC-1.png|200px]]
 </TD></TR></TABLE>
 
 <p>Set SWEEP to draw arcs in a "positive-angle" direction:</p>
@@ -78,7 +78,7 @@ Draws an elliptical arc from the current point.
 		arc 300x200 120 50 0 sweep
 	]
 </pre></code>
-[[image:SARC-2.png |200px]]
+[[images/SARC-2.png|200px]]
 
 <br>
 <p>Set LARGE for arc sweeps greater than 180°:</p>
@@ -90,7 +90,7 @@ Draws an elliptical arc from the current point.
 		arc 300x200 120 50 0 sweep large
 	]
 </pre></code>
-[[image:SARC-3.png|ARC example 3]]
+[[images/SARC-3.png|ARC example 3]]
 
 <br>
 
@@ -112,7 +112,7 @@ Draws an elliptical arc from the current point.
 		move 0x0 
 	]
 </pre></code>
-[[image:SARC-4.png|ARC example 4]]
+[[images/SARC-4.png|ARC example 4]]
 
 <br>
 <p>Same complex example but with relative positioning commands:</p>
@@ -134,7 +134,7 @@ Draws an elliptical arc from the current point.
 		move 0x0
 	]
 </pre></code>
-[[image:SARC-5.png|ARC example 5]]
+[[images/SARC-5.png|ARC example 5]]
 
 <br>
 
@@ -160,7 +160,7 @@ This command has no arguments.
 		line 200x160 200x0 0x0
 	]
 </pre></code>
-[[image:CLOSE-1.png|CLOSE example 1]]
+[[images/CLOSE-1.png|CLOSE example 1]]
 
 <br>	
 <p>And here with CLOSE commands:</p>
@@ -178,7 +178,7 @@ This command has no arguments.
 		line 200x160 200x0 0x0
 	]
 </pre></code>
-[[image:CLOSE-2.png|CLOSE example 2]]
+[[images/CLOSE-2.png|CLOSE example 2]]
 
 <br>
 
@@ -230,7 +230,7 @@ the first control point is the current point.)"</p>
 		move 0x0
 	]
 </pre></code>
-[[image:CURV-1.png|CURV example 1]]
+[[images/CURV-1.png|CURV example 1]]
 
 <br>	
 <p>Same example but with relative positioning commands:</p>
@@ -244,7 +244,7 @@ the first control point is the current point.)"</p>
 		move 0x0
 	]
 </pre></code>
-[[image:CURV-2.png|CURV example 2]]
+[[images/CURV-2.png|CURV example 2]]
 
 <br>
 
@@ -296,7 +296,7 @@ and two control points.</p>
 		move 0x0
 	]
 </pre></code>
-[[image:SCURVE-1.png|CURVE example 1]]
+[[images/SCURVE-1.png|CURVE example 1]]
 
 <br>	
 <p>Same example but with relative positioning commands:</p>
@@ -308,7 +308,7 @@ and two control points.</p>
 		move 0x0
 	]
 </pre></code>
-[[image:SCURVE-2.png|CURVE example 2]]
+[[images/SCURVE-2.png|CURVE example 2]]
 
 <br>
 
@@ -341,7 +341,7 @@ shape [
 	hline 200
 ]
 </pre></code>
-[[image:HLINE-1.png|HLINE example 1]]
+[[images/HLINE-1.png|HLINE example 1]]
 
 <br>
 <p>Using relative coordinates:</p>
@@ -357,7 +357,7 @@ shape [
 	'hline 100
 ]
 </pre></code>
-[[image:HLINE-2.png|HLINE example 2]]
+[[images/HLINE-2.png|HLINE example 2]]
 
 <br>
 
@@ -408,7 +408,7 @@ shape [
 	move 0x0
 ]
 </pre></code>
-[[image:SLINE-1.png|LINE example 1]]
+[[images/SLINE-1.png|LINE example 1]]
 
 <br>
 <p>Using relative coordinates:</p>
@@ -421,7 +421,7 @@ shape [
 	move 0x0
 ]
 </pre></code>
-[[image:SLINE-2.png|LINE example 2]]
+[[images/SLINE-2.png|LINE example 2]]
 
 <br>
 
@@ -462,7 +462,7 @@ shape [
     line 20x120 150x150
 ]
 </pre></code>
-[[image:MOVE-1.png|MOVE example 1]]
+[[images/MOVE-1.png|MOVE example 1]]
 
 <br>
 <p>Using relative coordinates for the second shape:</p>
@@ -482,7 +482,7 @@ shape [
     'move 0x0
 ]
 </pre></code>
-[[image:MOVE-2.png|MOVE example 2]]
+[[images/MOVE-2.png|MOVE example 2]]
 
 <br>
 
@@ -517,7 +517,7 @@ shape [
 	move 0x0
 ]
 </pre></code>
-[[image:QCURV-1.png|QCURV example 1]]
+[[images/QCURV-1.png|QCURV example 1]]
 
 <br>
 <p>Using relative coordinates:</p>
@@ -531,7 +531,7 @@ shape [
 	move 0x0
 ]
 </pre></code>
-[[image:QCURV-2.png|QCURV example 2]]
+[[images/QCURV-2.png|QCURV example 2]]
 
 <br>
 
@@ -579,7 +579,7 @@ shape [
 	move 0x0
 ]
 </pre></code>
-[[image:QCURVE-1.png|QCURVE example 1]]
+[[images/QCURVE-1.png|QCURVE example 1]]
 
 <br>
 <p>Using relative coordinates:</p>
@@ -592,7 +592,7 @@ shape [
 	move 0x0
 ]
 </pre></code>
-[[image:QCURVE-2.png|QCURVE example 2]]
+[[images/QCURVE-2.png|QCURVE example 2]]
 
 <br>
 
@@ -622,7 +622,7 @@ shape [
     move 200x100  vline 200
 ]
 </pre></code>
-[[image:VLINE-1.png|VLINE example 1]]
+[[images/VLINE-1.png|VLINE example 1]]
 
 <br>
 <p>Using relative coordinates:</p>
@@ -635,7 +635,7 @@ shape [
     'move 50x-150  'vline 100
 ]
 </pre></code>
-[[image:VLINE-2.png|VLINE example 2]]
+[[images/VLINE-2.png|VLINE example 2]]
 
 <br>
 

@@ -64,7 +64,7 @@ Sets the color gradient for area filling. The gradient can be defined by up to 2
 grad-pen linear 100x100 0 200 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
 </pre></code>
-[[image:GRAD-PEN-1.png|GRAD-PEN example 1]]
+[[images/GRAD-PEN-1.png|GRAD-PEN example 1]]
 
 <br>
 <p>Linear gradient with compressed range</p>
@@ -72,7 +72,7 @@ box 100x100 300x300
 grad-pen linear 100x100 0 50 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
 </pre></code>
-[[image:GRAD-PEN-2.png|GRAD-PEN example 2]]
+[[images/GRAD-PEN-2.png|GRAD-PEN example 2]]
 
 <br>
 <p>Linear gradient in '''repeat''' mode</p>
@@ -80,7 +80,7 @@ box 100x100 300x300
 grad-pen linear repeat 100x100 0 50 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
 </pre></code>
-[[image:GRAD-PEN-3.png|GRAD-PEN example 3]]
+[[images/GRAD-PEN-3.png|GRAD-PEN example 3]]
 
 <br>
 <p>Linear gradient in '''reflect''' mode</p>
@@ -88,7 +88,7 @@ box 100x100 300x300
 grad-pen linear reflect 100x100 0 50 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
 </pre></code>
-[[image:GRAD-PEN-4.png|GRAD-PEN example 4]]
+[[images/GRAD-PEN-4.png|GRAD-PEN example 4]]
 
 <br>
 <p>Linear gradient with more colors</p>
@@ -96,7 +96,7 @@ box 100x100 300x300
 grad-pen linear 100x100 0 200 [255.0.0 255.255.0 0.255.0 0.255.255 0.0.255 255.0.255]
 box 100x100 300x300
 </pre></code>
-[[image:GRAD-PEN-5.png|GRAD-PEN example 5]]
+[[images/GRAD-PEN-5.png|GRAD-PEN example 5]]
 
 <br>
 <p>Linear gradient with color offsets</p>
@@ -104,7 +104,7 @@ box 100x100 300x300
 grad-pen linear 100x100 0 200 [255.0.0 0.1 255.255.0 0.2 0.255.0 0.4 0.255.255 0.8 0.0.255 .9 255.0.255 1.0]
 box 100x100 300x300
 </pre></code>
-[[image:GRAD-PEN-6.png|GRAD-PEN example 6]]
+[[images/GRAD-PEN-6.png|GRAD-PEN example 6]]
 
 <br>
 <p>Simple radial gradient</p>
@@ -112,7 +112,7 @@ box 100x100 300x300
 grad-pen radial 200x200 0 100 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
 </pre></code>
-[[image:GRAD-PEN-7.png|GRAD-PEN example 7]]
+[[images/GRAD-PEN-7.png|GRAD-PEN example 7]]
 
 <br>
 <p>Diamond gradient with applied rotation</p>
@@ -120,7 +120,7 @@ box 100x100 300x300
 grad-pen diamond 200x200 0 100 30 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
 </pre></code>
-[[image:GRAD-PEN-8.png|GRAD-PEN example 8]]
+[[images/GRAD-PEN-8.png|GRAD-PEN example 8]]
 
 <br>
 <p>Diamond gradient with applied rotation and scaling</p>
@@ -128,7 +128,7 @@ box 100x100 300x300
 grad-pen diamond 200x200 0 100 30 3.0 1.5 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
 </pre></code>
-[[image:GRAD-PEN-9.png|GRAD-PEN example 9]]
+[[images/GRAD-PEN-9.png|GRAD-PEN example 9]]
 
 <br>
 
@@ -140,7 +140,7 @@ box 100x100 300x300
 grad-pen off
 box 150x150 250x250
 </pre></code>
-[[image:GRAD-PEN-10.png|GRAD-PEN example 10]]
+[[images/GRAD-PEN-10.png|GRAD-PEN example 10]]
 
 <br>
 

@@ -32,7 +32,7 @@ The line command draws a line between two points using the current pen, line-wid
 <code><pre>
 line 10x10 100x50
 </pre></code>
-[[image:LINE-1.png|LINE example 1]]
+[[images/LINE-1.png|LINE example 1]]
 
 <br>
 <p>If more than two points are given multiple lines are drawn in a
@@ -40,7 +40,7 @@ connected fashion:</p>
 <code><pre>
 line 10x10 20x50 30x0 4x40
 </pre></code>
-[[image:LINE-2.png|LINE example 2]]
+[[images/LINE-2.png|LINE example 2]]
 
 <br>
 <p>Note that the end point is not connected to the first point. To
@@ -53,6 +53,6 @@ line 10x10 20x50 30x0 4x40
 pen yellow  line-width 5  line-cap round
 line 100x100 100x200 200X100 200X200
 </pre></code>
-[[image:LINE-3.png|LINE example 3]]
+[[images/LINE-3.png|LINE example 3]]
 
 <br>

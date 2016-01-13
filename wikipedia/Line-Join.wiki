@@ -38,7 +38,7 @@ translate 0x140
 line-join bevel
 polygon 20x20 180x130 10x100
 </pre></code>
-[[image:LINE-JOIN-1.png|LINE-JOIN example 1]]
+[[images/LINE-JOIN-1.png|LINE-JOIN example 1]]
 
 <br>
 

@@ -30,7 +30,7 @@ Simple Color Fill
    box 100x100 300x300
 </PRE>
 </TD><TD WIDTH=40% VALIGN=MIDDLE ALIGN=CENTER>
-[[image:FILL-PEN-1b.png|FILL-PEN example 1]]
+[[images/FILL-PEN-1b.png|FILL-PEN example 1]]
 </TD></TR></TABLE>
 
 
@@ -44,7 +44,7 @@ Image Pattern Fill
    box 100x100 300x300
 </PRE>
 </TD><TD WIDTH=40% VALIGN=MIDDLE ALIGN=CENTER>
-[[image:FILL-PEN-2b.png|FILL-PEN example 2]]
+[[images/FILL-PEN-2b.png|FILL-PEN example 2]]
 </TD></TR></TABLE>
 
 
@@ -63,7 +63,7 @@ Switching the '''fill-pen''' states
    box 50x50 350x350
 </PRE>
 </TD><TD WIDTH=40% VALIGN=MIDDLE ALIGN=CENTER>
-[[image:FILL-PEN-3b.png|FILL-PEN example 3]]
+[[images/FILL-PEN-3b.png|FILL-PEN example 3]]
 </TD></TR></TABLE>
 
 

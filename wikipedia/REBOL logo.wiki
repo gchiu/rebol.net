@@ -1,10 +1,10 @@
 There have been two different icons used for Rebol.  One is white letters in a Rounded rectangle, with a white target for the O:
 
-:[[Image:Rebol-classic-logo-bw.gif]]
+:[[images/Rebol-classic-logo-bw.gif|No Description]]
 
 The second one is a white R inside of a red square.  It is used for the program icons on installation, as well as the little 16x16 "favicon" that appears in web browser tabs when visiting rebol.com, .net, etc.
 
-:[[Image:Rebol-historic-red-program-icon.png]]
+:[[images/Rebol-historic-red-program-icon.png|No Description]]
 
 Logos can go a long way in communicating something about one's image nonverbally.  If one is going to spend a decade developing a programming system then it's worth taking some time thinking about what an effective logo for that language would be.  This page is for discussions of a new logo design that would be property of Rebol Technologies and the same control over using it would apply as in using the Rebol trademark, so please only contribute suggestions that you are willing to release under that understanding.
 
@@ -14,7 +14,7 @@ Logos can go a long way in communicating something about one's image nonverbally
 
 What should immediately grab anyone is that Target has already made the target-like visual element a very recognizable national brand (furthermore they have built that brand up as "affordable" and not "Quality", so not the kind of image you want.)
 
-:[[Image:Target-store-logo.jpg|100px]]
+:[[images/Target-store-logo.jpg|100px]]
 
 Any graphics effort for R3 which carries this motif forward should be sensitive to that similarity and excise it wherever possible.
 
@@ -22,7 +22,7 @@ Any graphics effort for R3 which carries this motif forward should be sensitive 
 
 The Purple target is difficult to see in the red, but more generally, it's just not emotive.  For many, this evokes power-ups from old shoot-em-up games:
 
-:[[Image:Icon-comparison-to-powerups.jpg|200px]]
+:[[images/Icon-comparison-to-powerups.jpg|200px]]
 
 It would be nice to give people a metaphor to hold onto...some visual allusion to an idea.  With a name like "Ruby" and a graphic that is a Ruby, programmers can at least think the code they make is precious... hardened.  The back-to-back snakes in the Python are suggestive of a yin-yang almost, "programming as spiritual act".  So something to hold onto here that communicated more than "Rebol starts with R" is important.
 
@@ -48,13 +48,13 @@ Also, there is yet another case to consider: the language name is not pronouced 
 
 As a way of carrying forward history and adding a bit of pizzaz, [[User:Fork|Fork]] has proposed the following concept art:
 
-:[[Image:Fork-logo-3d-draft.png]]
+:[[images/Fork-logo-3d-draft.png|No Description]]
 
 This design represents an extraction of the portion of the classic logo near the "o", and would replace the white-R-in-a-red-square entirely.  The more subtle curve around the "o" than in the original black and white logo leads the edges to look more like brackets, and de-emphasizes the similarity to the Target bullseye.
 
 It can be scaled down and still be seen clearly, here it is around 160x160:
 
-:[[Image:rebol-3d-160x160.png]]
+:[[images/rebol-3d-160x160.png|No Description]]
 
 Depending on context, the shadow may be desired or not...and possibly done with alpha.
 
@@ -62,23 +62,23 @@ Depending on context, the shadow may be desired or not...and possibly done with 
 
 There are some fun visual suggestions here. ''(Note: images were made using an earlier prototype of the logo.)''
 
-:[[Image:Rebol-metaphor.png]]
+:[[images/Rebol-metaphor.png|No Description]]
 
 == Color and Stylistic Variations ==
 
 Variations can exist for core (green screen or "Tron" outline looking?)...alphas (red, dangerous looking?).  It's possible to and it is something that has its own look and motif while still being rather simple.  (Note: kbyte numbers fictitious as who knows what the finals will be):
 
-:[[Image:Fork-logo-cli-vs-gui.png]]
+:[[images/Fork-logo-cli-vs-gui.png|No Description]]
 
 Being three-dimensional is not critical to the design, as it works well in two dimensions also.  [http://www.ross-gill.com/ Christopher Ross-Gill] offered this sketched frontal perspective, showing another stylistic interpretation.
 
-:[[Image:forklogo-sketch.png]]
+:[[images/forklogo-sketch.png|No Description]]
 
 == Why curves not brackets? ==
 
 As for why not to go all the way to brackets, that doesn't look good in context:
 
-:[[Image:Fork-logo-bracket-comparison.png]]
+:[[images/Fork-logo-bracket-comparison.png|No Description]]
 
 '''HOWEVER''' it would be good to make the curves subtler to hide that Target resemblance.
 
@@ -86,13 +86,13 @@ As for why not to go all the way to brackets, that doesn't look good in context:
 
 The iconography can be reduced to a favicon reasonably, like this:
 
-:[[Image:Fork-favicon-proposal.png]]
+:[[images/Fork-favicon-proposal.png|No Description]]
 
 While in general Fork favors bracketing which lies on the spectrum between completely squared and rounded, the favicon is a very limited 16x16 medium.  Accepting the limitation and squaring them is probably for the best to get a decent image, and it makes a stronger mark.  Kind of like how in text mediums it might be rendered as '''[o]''' and still convey the idea in a non-ideal way.  A refresh of the classic logo to excise the Target mark and strengthen the bracketing association would be nice.
 
 Here is a closeup of the [http://hostilefork.com/shared/rebol/rebol-thick-favicon.ico actual .ico file].  Hand-drawn antialiasing is used to kind of extend the brackets up a bit to extrude, while leaving a transparent gap for the browser's (usually-but-not-always-gray) background to show through.
 
-:[[Image:Fork-logo-favicon-closeup.png]]
+:[[images/Fork-logo-favicon-closeup.png|No Description]]
 
 == Font Used in Classic Logo ==
 
@@ -100,13 +100,13 @@ In researching variants of an updated logo, questions have come up as to what th
 
 Here is a large rendering of Dialog Extra Bold that has been tweaked to more of the balance of the original:
 
-:[[Image:rebol-typography-approximate.png]]
+:[[images/rebol-typography-approximate.png|No Description]]
 
 == Other Angles ==
 
 A balance needs to be chosen of what looks good in the OS/X dock, and maybe a more frontal perspective, e.g.
 
-:[[Image:Fork-logo-view-front.png]] [[Image:Fork-logo-core-front.png]]
+:[[images/Fork-logo-view-front.png|No Description]] [[images/Fork-logo-core-front.png|No Description]]
 
 = Proposal #2? =
 

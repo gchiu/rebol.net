@@ -34,14 +34,14 @@ Draws a circle or ellipse
     line-width 5
     circle 200x200 150
 </TD>
-<TD align=center valign=MIDDLE>[[image:CIRCLE-1b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/CIRCLE-1b.png|No Description]]</TD>
 </TR><TR>
 
 <TD WIDTH=60%>
     pen logo.gif
     circle 200x200 150
 </TD>
-<TD align=center valign=MIDDLE>[[image:CIRCLE-2b.png]] <BR>
+<TD align=center valign=MIDDLE>[[images/CIRCLE-2b.png|No Description]] <BR>
 A circle using an image as the pen.</TD>
 </TR><TR>
 
@@ -51,7 +51,7 @@ A circle using an image as the pen.</TD>
     fill-pen logo.gif
     circle 200x200 150
 </TD>
-<TD align=center valign=MIDDLE>[[image:CIRCLE-3b.png]] <br>
+<TD align=center valign=MIDDLE>[[images/CIRCLE-3b.png|No Description]] <br>
 Circle using an image as the fill-pen.</p> </TD>
 </TR>
 </TABLE>

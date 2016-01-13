@@ -41,12 +41,12 @@ points. Additional points are needed for complicated curves like circular and el
 <TD WIDTH=60%>
     curve 20x150 60x250 200x50
 </TD>
-<TD align=center valign=MIDDLE>[[image:CURVE-1b.png]]<BR>
+<TD align=center valign=MIDDLE>[[images/CURVE-1b.png|No Description]]<BR>
 Curve With One Control Point</TD></TR><TR>
 <TD WIDTH=60%>
     curve 20x20 80x300 140x20 200x300
 </TD>
-<TD align=center valign=MIDDLE>[[image:CURVE-2b.png]]<BR>
+<TD align=center valign=MIDDLE>[[images/CURVE-2b.png|No Description]]<BR>
 Curve With Two Control Points</TD></TR><TR>
 
 <TD WIDTH=60%>
@@ -55,7 +55,7 @@ Curve With Two Control Points</TD></TR><TR>
     line-width 4
     curve 20x150 60x250 200x50
 </TD>
-<TD align=center valign=MIDDLE>[[image:CURVE-3b.png]]<BR>
+<TD align=center valign=MIDDLE>[[images/CURVE-3b.png|No Description]]<BR>
 Thick Curve With Patterned Line</TD></TR><TR>
 
 <TD WIDTH=60%>
@@ -65,7 +65,7 @@ Thick Curve With Patterned Line</TD></TR><TR>
     fill-pen blue
     curve 20x20 80x300 140x20 200x300
 </TD>
-<TD align=center valign=MIDDLE>[[image:CURVE-4b.png]]<BR>
+<TD align=center valign=MIDDLE>[[images/CURVE-4b.png|No Description]]<BR>
 With Fill Pen</TD></TR><TR>
 <TABLE>
 

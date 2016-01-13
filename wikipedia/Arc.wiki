@@ -50,7 +50,7 @@ The ARC command draws a partial section of an ellipse (or circle).
     arc 200x125 100x100 0 135
     arc 200x250 100x100 0 180
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARC-1b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARC-1b.png|No Description]]</TD>
 </TR></TABLE>
 
 
@@ -63,7 +63,7 @@ The ARC command draws a partial section of an ellipse (or circle).
     arc 200x125 100x100 45 120
     arc 200x250 100x100 90 120
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARC-2b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARC-2b.png|No Description]]</TD>
 </TR></TABLE>
 
 <br>
@@ -80,7 +80,7 @@ that defines the arc.</p>
 <TD WIDTH=60%>
     arc 100x100 100x100 0 90  closed
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARC-3b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARC-3b.png|No Description]]</TD>
 </TR></TABLE>
 
 <br>
@@ -96,7 +96,7 @@ that defines the arc.</p>
     fill-pen yellow
     arc 300x300 90x90 315 180
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARC-4b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARC-4b.png|No Description]]</TD>
 </TR></TABLE>
 
 <br>
@@ -112,7 +112,7 @@ that defines the arc.</p>
     fill-pen yellow
     arc 250x250 90x90 270 180
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARC-5b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARC-5b.png|No Description]]</TD>
 </TR></TABLE>
 
 <br>
@@ -132,7 +132,7 @@ that defines the arc.</p>
     fill-pen yellow
     arc 200x200 90x90 270 90 closed
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARC-6b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARC-6b.png|No Description]]</TD>
 </TR></TABLE>
 
 
@@ -152,7 +152,7 @@ that defines the arc.</p>
     fill-pen yellow
     arc 204x196 150x150 270  90 closed
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARC-7b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARC-7b.png|No Description]]</TD>
 </TR></TABLE>
 
 

@@ -28,7 +28,7 @@ ellipse 100x100 200x200
 fill-pen blue
 ellipse 175x250 200x100
 </pre></code>
-[[image:ELLIPSE-1.png|ELLIPSE example 1]]
+[[images/ELLIPSE-1.png|ELLIPSE example 1]]
 
 <br>
 

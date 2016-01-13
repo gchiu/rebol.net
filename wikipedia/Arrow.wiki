@@ -35,42 +35,42 @@ that closes polygons, closed splines, etc.</p>
 <TD WIDTH=60%>
     line 20x20 100x100
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARROW-1.png|200px 200px]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARROW-1.png|200px 200px]]</TD>
 </TR><<TR>
 
 <TD WIDTH=60%>
     arrow 1x2
     curve 50x50 300x50 50x300 300x300
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARROW-2.png|200px 200px]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARROW-2.png|200px 200px]]</TD>
 </TR><TR>
 
 <TD WIDTH=60%>
     arrow 1x2
     spline 3 20x20 200x70 150x200 50x300 80x300 200x200
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARROW-3.png|200px 200px]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARROW-3.png|200px 200px]]</TD>
 </TR><TR>
 
 <TD WIDTH=60%>
     arrow 1x2
     spline closed 3 20x20 200x70 150x200 50x300 80x300 200x200
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARROW-4.png|200px 200px]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARROW-4.png|200px 200px]]</TD>
 </TR><TR>
 
 <TD WIDTH=60%>
     arrow 1x2
     box 20x20 150x200
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARROW-5.png|200px 200px]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARROW-5.png|200px 200px]]</TD>
 </TR><TR>
 
 <TD WIDTH=60%>
     arrow 1x2
     polygon 20x20 200x70 150x200 50x300
 </TD>
-<TD align=center valign=MIDDLE>[[image:ARROW-6b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/ARROW-6b.png|No Description]]</TD>
 </TR></TABLE>
 
 

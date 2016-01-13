@@ -34,7 +34,7 @@ the left.</p>
 	fill-pen yellow
 	box 120x230 220x330
 </pre></code>
-[[image:SKEW-1.png|SKEW example 1]]
+[[images/SKEW-1.png|SKEW example 1]]
 
 <br>
 <p>Another way to reset the skew is to use the PUSH command:</p>
@@ -55,7 +55,7 @@ the left.</p>
 	fill-pen yellow
 	box 120x230 220x330
 </pre></code>
-[[image:SKEW-2.png|SKEW example 2]]
+[[images/SKEW-2.png|SKEW example 2]]
 
 <br>
 <p>See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>

@@ -20,7 +20,7 @@ fill-pen blue box 50x50 150x150
 translate 50x50 fill-pen red box 50x50 150x150
 translate 50x50 fill-pen yellow box 50x50 150x150
 </pre></code>
-[[image:TRANSLATE-1.png|TRANSLATE example 1]]
+[[images/TRANSLATE-1.png|TRANSLATE example 1]]
 
 <br>
 <p>You can use RESET-MATRIX to avoid that if you want:</p>
@@ -30,7 +30,7 @@ translate 50x50 fill-pen red box 50x50 150x150
 reset-matrix
 translate 50x50 fill-pen yellow box 100x100 300x300
 </pre></code>
-[[image:TRANSLATE-2.png|TRANSLATE example 2]]
+[[images/TRANSLATE-2.png|TRANSLATE example 2]]
 
 <br>
 <p>Another way to reset the matrix is to use the PUSH command:</p>
@@ -39,7 +39,7 @@ fill-pen blue box 50x50 150x150
 push [translate 50x50 fill-pen red box 50x50 150x150]
 translate 50x50 fill-pen yellow box 100x100 300x300
 </pre></code>
-[[image:TRANSLATE-3.png|TRANSLATE example 3]]
+[[images/TRANSLATE-3.png|TRANSLATE example 3]]
 
 <br>
 <p>See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>

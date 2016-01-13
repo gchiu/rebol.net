@@ -33,14 +33,14 @@ The BOX command provides a shortcut for a rectangular polygon. Only the upper-le
     fill-pen blue
     box 20x20 200x200
 </TD>
-<TD align=center valign=MIDDLE>[[image:BOX-1b.png]]</TD>
+<TD align=center valign=MIDDLE>[[images/BOX-1b.png|No Description]]</TD>
 </TR><TR>
 
 <TD WIDTH=60%>
     fill-pen logo.gif
     box 20x20 200x200
 </TD>
-<TD align=center valign=MIDDLE>[[image:BOX-2b.png]] <BR>
+<TD align=center valign=MIDDLE>[[images/BOX-2b.png|No Description]] <BR>
 Repititions of Small Image.</TD>
 </TR><TR>
 
@@ -51,7 +51,7 @@ Repititions of Small Image.</TD>
     line-join round
     box 50x50 350x350
 </TD>
-<TD align=center valign=MIDDLE>[[image:BOX-3b.png]]<BR>
+<TD align=center valign=MIDDLE>[[images/BOX-3b.png|No Description]]<BR>
 Line widths, patterns, joins are fully supported.</TD>
 </TR>
 </TABLE>

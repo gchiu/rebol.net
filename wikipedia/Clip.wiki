@@ -31,7 +31,7 @@ Specifies a clipping region; drawing will only occur inside the region.
     clip 10x10 70x90
     box 20x20 200x200
 </TD>
-<TD align=center valign=MIDDLE>[[image:CLIP-1b.png]]<BR>
+<TD align=center valign=MIDDLE>[[images/CLIP-1b.png|No Description]]<BR>
 The box would go to 200x200, but we <b><tt>clip</tt></b> it.</TD>
 </TR><TR>
 
@@ -41,7 +41,7 @@ The box would go to 200x200, but we <b><tt>clip</tt></b> it.</TD>
     clip 50x50 125x200
     circle 50x50 100
 </TD>
-<TD align=center valign=MIDDLE>[[image:CLIP-2b.png]] <BR>
+<TD align=center valign=MIDDLE>[[images/CLIP-2b.png|No Description]] <BR>
 Clipping other shapes can produce interesting effects.</TD>
 </TR><TR>
 
@@ -55,7 +55,7 @@ Clipping other shapes can produce interesting effects.</TD>
     clip off
     circle 125x75 50
 </TD>
-<TD align=center valign=MIDDLE>[[image:CLIP-3b.png]] <br>
+<TD align=center valign=MIDDLE>[[images/CLIP-3b.png|No Description]] <br>
 To turn clipping off, use <b><tt>off</tt></b> as the argument to <b><tt>clip</tt></b>.</TD>
 </TR>
 </TABLE>

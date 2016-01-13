@@ -21,7 +21,7 @@ Turns anti-aliasing on or off; it is on by default
 <TD WIDTH=60%>
     anti-alias on   line-width 10  circle 200x200 100
 </TD>
-<TD align=center valign=MIDDLE>[[image:ANTI-ALIAS-2.png|200px 200px]]</TD>
+<TD align=center valign=MIDDLE>[[images/ANTI-ALIAS-2.png|200px 200px]]</TD>
 </TR></TABLE>
 
 
@@ -31,7 +31,7 @@ Turns anti-aliasing on or off; it is on by default
 <TD WIDTH=60%>
     anti-alias off  line-width 10  circle 200x200 100
 </TD>
-<TD align=center valign=MIDDLE>[[image:ANTI-ALIAS-1.png|200px 200px]]</TD>
+<TD align=center valign=MIDDLE>[[images/ANTI-ALIAS-1.png|200px 200px]]</TD>
 </TR></TABLE>
 
 
@@ -46,7 +46,7 @@ The ANTI-ALIAS command can be used multiple times in DRAW block to easily switch
     line-width 10
     circle 250x250 100
 </TD>
-<TD align=center valign=MIDDLE>[[image:ANTI-ALIAS-3.png|200px 200px]]</TD>
+<TD align=center valign=MIDDLE>[[images/ANTI-ALIAS-3.png|200px 200px]]</TD>
 </TR></TABLE>
 
 

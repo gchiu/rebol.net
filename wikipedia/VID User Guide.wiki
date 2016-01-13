@@ -310,13 +310,13 @@ Would build a button in the layout with more rounded corners than the default, a
 !Look
 |-
 |button "Rounding 10" options [rounding: 10]
-|[[Image:vid-options-button-rounding10.png]]
+|[[images/vid-options-button-rounding10.png|No Description (Not Found)]]
 |-
 |button "Rounding 0" options [rounding: 0]
-|[[Image:vid-options-button-rounding0.png]]
+|[[images/vid-options-button-rounding0.png|No Description (Not Found)]]
 |-
 |button "50x20" options [size: 50x20 rounding: 10]
-|[[Image:vid-options-button-size50x20.png]]
+|[[images/vid-options-button-size50x20.png|No Description (Not Found)]]
 |}
 
 === material gradients ===
@@ -325,19 +325,19 @@ Would build a button in the layout with more rounded corners than the default, a
 !Example
 |-
 !aluminum
-|[[Image:vid-button-aluminum.png]]
+|[[images/vid-button-aluminum.png|No Description (Not Found)]]
 |-
 !blue-aluminum
-|[[Image:vid-button-blue-aluminum.png]]
+|[[images/vid-button-blue-aluminum.png|No Description (Not Found)]]
 |-
 !dark-aluminum
-|[[Image:vid-button-dark-aluminum.png]]
+|[[images/vid-button-dark-aluminum.png|No Description (Not Found)]]
 |-
 !gloss
-|[[Image:vid-button-gloss.png]]
+|[[images/vid-button-gloss.png|No Description (Not Found)]]
 |-
 !sand
-|[[Image:vid-button-sand.png]]
+|[[images/vid-button-sand.png|No Description (Not Found)]]
 |}
 
 <!-- End of two-column page -->

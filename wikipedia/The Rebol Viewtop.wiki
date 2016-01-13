@@ -10,7 +10,7 @@ The collection of Rebsites is an interesting conglomeration - but it may also be
 
 This first viewtop skin illustrated below is an incomplete work, a bad hack at best, but it does provide a starting point or perhaps an incentive for others to do better.   I hope that they may post their viewtops  below this one and that in time a consensus  of what a better viewtop ought to be may develop.
 
-[[Image:screen.png]]
+[[images/screen.png|No Description]]
 
 
 This viewtop includes major services like the Cheyenne web server and the Altme messaging application. 

@@ -52,7 +52,7 @@ The TRIANGLE command provides a shortcut for a triangular polygon with optional 
    triangle 50x1
 </pre>
 </TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
-[[image:TRIANGLE-1.png|150px]]
+[[images/TRIANGLE-1.png|150px]]
 </TD></TR></TABLE>
 ----
 A group of triangles. This should make it easy to see where each triangle is:
@@ -66,7 +66,7 @@ A group of triangles. This should make it easy to see where each triangle is:
    translate 200x-15
 </pre>
 </TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
-[[image:TRIANGLE-2b.png]]
+[[images/TRIANGLE-2b.png|No Description]]
 </TD></TR></TABLE>
 ----
 
@@ -86,7 +86,7 @@ The same triangle group but slightly rotated illustrating the dilation parameter
    triangle 150x350 50x150 150x150 orange red blue 0.33
 </pre>
 </TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
-[[image:TRIANGLE-3b.png|TRIANGLE example 3]]
+[[images/TRIANGLE-3b.png|TRIANGLE example 3]]
 </TD></TR></TABLE>
 ----
 This gives you a much more subtle blending in the middle:
@@ -99,7 +99,7 @@ This gives you a much more subtle blending in the middle:
    triangle 150x350 50x150  150x150 orange red    gray
 </pre>
 </TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
-[[image:TRIANGLE-4b.png|TRIANGLE example 4]]
+[[images/TRIANGLE-4b.png|TRIANGLE example 4]]
 </TD></TR></TABLE>
 ----
 
@@ -113,7 +113,7 @@ And this shows simple highlighting/shading:
    triangle 150x350 50x150  150x150 coal  water sky
 </pre>
 </TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
-[[image:TRIANGLE-5b.png|TRIANGLE example 5]]
+[[images/TRIANGLE-5b.png|TRIANGLE example 5]]
 </TD></TR></TABLE>
 
 

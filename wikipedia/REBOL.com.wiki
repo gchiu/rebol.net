@@ -164,7 +164,7 @@ If you look at our site typical subpage, we choosed 3 column design. The right c
 
 I would like to see us to start with a '''wireframe''' model, so that we can see, how main site is divided:
 
-[[Image:walmark_wireframe.jpg]]
+[[images/walmark_wireframe.jpg|No Description]]
 
 Note: fixed link Carl reacts to below ...
 

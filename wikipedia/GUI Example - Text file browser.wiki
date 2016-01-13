@@ -15,7 +15,7 @@ view/across [
 
 Note: uses development skin, not the final skin.
 
-[[Image:Filebrowse.png]]
+[[images/Filebrowse.png|No Description]]
 
 Resizing is automatic. If you change the window size, the text-list and code-area will change.
 

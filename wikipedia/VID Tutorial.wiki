@@ -57,7 +57,7 @@ Now try this:
 </pre>
 You will see a vertical layout of the buttons:
 
-[[Image:Vid-tutorial-buttons1.png|center]]
+[[images/Vid-tutorial-buttons1.png|center]]
 
 
 If instead you want horizontal buttons, you use ''group'' such as this:
@@ -73,7 +73,7 @@ If instead you want horizontal buttons, you use ''group'' such as this:
 </pre>
 It will display:
 
-[[Image:Vid-tutorial-buttons2.png|center]]
+[[images/Vid-tutorial-buttons2.png|center]]
 
 
 Here, '''group''' is a special type of style that creates a panel in which the buttons are placed.
@@ -93,7 +93,7 @@ You can also use groups to organize your layout into columns. Here we request tw
 </pre>
 It looks like &rarr;
 
-[[Image:Vid-tutorial-buttons3.png|center]]
+[[images/Vid-tutorial-buttons3.png|center]]
 
 
 This column-alignment feature is very useful for creating forms and many other page layouts.
@@ -115,7 +115,7 @@ That makes sense. It is just one column.
 
 It will appear as &rarr;
 
-[[Image:Vid-tutorial-buttons1.png|center]]
+[[images/Vid-tutorial-buttons1.png|center]]
 
 '''So, now you know the basics of layout.''' Easy!
 
@@ -200,7 +200,7 @@ view [
 </pre>
 
 Displays as:
-[[Image:Vid-tutorial-style-examples.png|center]]
+[[images/Vid-tutorial-style-examples.png|center]]
 
 ===Styles Defined===
 
@@ -234,7 +234,7 @@ For example, to change the color of a button, just specify it. In the example be
 
 It looks like this:
 
-[[Image:vid-tutorial-style-variations1.png|center]]
+[[images/vid-tutorial-style-variations1.png|center]]
 
 For text, you can write:
 
@@ -245,7 +245,7 @@ The second line of text is an example of rich-text, where you can control precis
 
 The result is:
 
-[[Image:Vid-tutorial-style-variations2.png|center]]
+[[images/Vid-tutorial-style-variations2.png|center]]
 
 To get even greater control over a style, you can specify precise ''options''. Here's an example:
 
@@ -271,7 +271,7 @@ Here, the ''options'' block tells VID how to modify the style.
 
 It will look like this:
 
-[[Image:Vid-tutorial-style-variations3.png|center]]
+[[images/Vid-tutorial-style-variations3.png|center]]
 
 
 ===Drawings===
@@ -290,11 +290,11 @@ view [
 ]
 </pre>
 
-[[Image:Vid-tutorial-style-resize1.png|center]]
+[[images/Vid-tutorial-style-resize1.png|center]]
 
 Now, resize the window.
 
-[[Image:Vid-tutorial-style-resize2.png|center]]
+[[images/Vid-tutorial-style-resize2.png|center]]
 
 ==Combining Layouts and Styles==
 
@@ -325,7 +325,7 @@ Now that you know the main concepts for layouts and styles, it's time to combine
 
 It will display like this:
 
-[[Image:Vid-tutorial-style-form1.png|center]]
+[[images/Vid-tutorial-style-form1.png|center]]
 
 Notice how the buttons are indented to fit under the fields. This is done by using the ''blank'' style. It's just a space filler to skip the space used by the labels above it.
 

@@ -34,6 +34,6 @@ box 180x180 220x220
 pen white
 box 150x150 250x250
 </pre></code>
-[[image:PUSH-1.png|PUSH example 1]]
+[[images/PUSH-1.png|PUSH example 1]]
 
 <br>
