@@ -40,7 +40,7 @@ You can also modify the state of tickets that you've submitted earlier.
 
 CureCode API URLs must be in the following format:
 <pre>
-    http&#58;//curecode.org/rebol3/api.rsp?<parameter 1>&<parameter 2>&<parameter n> 
+    http://curecode.org/rebol3/api.rsp?<parameter 1>&<parameter 2>&<parameter n> 
 </pre>
 Parameters are separated using the ampersand character (&). You can specify as many parameters as you like, in any order. Parameters can be passed in URL or as POST data.
 

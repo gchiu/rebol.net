@@ -9,16 +9,16 @@ Example:
  a*bc*
 
 There is another definition: A regular grammar is a grammar that can be described by a [http://en.wikipedia.org/wiki/Formal_grammar generative grammar] having every rule of the kind:
- X &rarr; wY
+ X → wY
 or
- X &rarr; w
+ X → w
 , where X and Y are nonterminal symbols, while w is a word containing only terminal symbols. That is why regular grammars are called "right linear grammars" too.
 
 The above example grammar can be translated to:
- S &rarr; aS
- S &rarr; bC
- C &rarr; cC
- C &rarr; &epsilon;
+ S → aS
+ S → bC
+ C → cC
+ C → ε
 
 Every regular expression can be easily transliterated to obtain the corresponding right-linear grammar as well as the corresponding parse expression.
 
@@ -82,12 +82,12 @@ Terminal symbols:
 Non terminal symbols and their meaning:
  S - start
 Rules:
- S &rarr; "("S")"S
- S &rarr; &epsilon;
+ S → "("S")"S
+ S → ε
 A PEG description of such a grammar is:
- S &larr; "("S")"S/&epsilon;
+ S ← "("S")"S/ε
 , or, alternatively:
- S &larr; ("("S")")*
+ S ← ("("S")")*
 
 ===Purely recursive Parse dialect description===
  expression: ["(" expression ")" expression | none]
@@ -122,9 +122,9 @@ Terminal symbols:
 Non terminal symbols and their meaning:
  S - start
 Rules:
- S &rarr; "("S")"S
- S &rarr; "["S"]"S
- S &rarr; &epsilon;
+ S → "("S")"S
+ S → "["S"]"S
+ S → ε
 
 ===PARSE dialect===
  <nowiki>expression2: [
@@ -180,25 +180,25 @@ Non-terminal symbols:
  T - transport marker
 Rules:
  ; the string can start with any number of terminal symbols:
- S &rarr; aS
- S &rarr; bS
+ S → aS
+ S → bS
  ; we need two equal non-empty groups at the end
- S &rarr; aEaF
- S &rarr; bEbF
+ S → aEaF
+ S → bEbF
  ; we can add a terminal symbol to the end of the first group,
  ; which has to be added to the end of the second group:
- E &rarr; aEaT
- E &rarr; bEbT
+ E → aEaT
+ E → bEbT
  ; T "transports" terminals towards the end of the second group:
- aTa &rarr; aaT
- aTb &rarr; baT
- bTa &rarr; abT
- bTb &rarr; bbT
+ aTa → aaT
+ aTb → baT
+ bTa → abT
+ bTb → bbT
  ; the transport stops at the end of the second group:
- TF &rarr; F
+ TF → F
  ; we can erase group end markers when done:
- E &rarr; &epsilon;
- F &rarr; &epsilon;
+ E → ε
+ F → ε
 
 ==Summary==
 Although somebody may say that the generative grammars are purely descriptive means for language definition, it isn’t always so. In the previous section we have seen that the generative grammar had some “procedural” properties.
