@@ -54,7 +54,7 @@ This design represents an extraction of the portion of the classic logo near the
 
 It can be scaled down and still be seen clearly, here it is around 160x160:
 
-:[[images/rebol-3d-160x160.png|No Description]]
+:[[images/Rebol-3d-160x160.png|No Description]]
 
 Depending on context, the shadow may be desired or not...and possibly done with alpha.
 
@@ -72,7 +72,7 @@ Variations can exist for core (green screen or "Tron" outline looking?)...alphas
 
 Being three-dimensional is not critical to the design, as it works well in two dimensions also.  [http://www.ross-gill.com/ Christopher Ross-Gill] offered this sketched frontal perspective, showing another stylistic interpretation.
 
-:[[images/forklogo-sketch.png|No Description]]
+:[[images/Forklogo-sketch.png|No Description]]
 
 == Why curves not brackets? ==
 
@@ -100,7 +100,7 @@ In researching variants of an updated logo, questions have come up as to what th
 
 Here is a large rendering of Dialog Extra Bold that has been tweaked to more of the balance of the original:
 
-:[[images/rebol-typography-approximate.png|No Description]]
+:[[images/Rebol-typography-approximate.png|No Description]]
 
 == Other Angles ==
 

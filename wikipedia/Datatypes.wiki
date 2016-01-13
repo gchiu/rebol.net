@@ -532,7 +532,7 @@ You can also create image using binary data directly, like:
     view layout [image img 200x80]
 
 
-[[images/hello-world-encoded-as-an-image.png|No Description]]
+[[images/Hello-world-encoded-as-an-image.png|No Description]]
 
 If you have raw RGBA binary data, you can create image! from it using:
    img: to image! #{FFFFFFC0000000C0}

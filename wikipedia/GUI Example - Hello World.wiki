@@ -13,7 +13,7 @@ view [
 
 Note: uses development skin, not the final skin.
 
-[[images/hellorebol.png|No Description]]
+[[images/Hellorebol.png|No Description]]
 
 ==Description==
 

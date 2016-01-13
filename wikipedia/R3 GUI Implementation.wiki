@@ -138,7 +138,7 @@ These functions are used in the general functions below:
 # If the face is the last in the parent's faces block and the face has no faces block, proceed outwards, until it's possible to find a faces block which isn't at the last face.
 # If reaching the root-face, next possible face is same as rule 1, to allow continually to loop through the face tree.
 
-[[images/next-face-loop.png|center|caption]]
+[[images/Next-face-loop.png|center|caption]]
 <center>A demonstration of how NEXT-FACE? runs through all faces in the tree.</center>
 
 ===== BACK-FACE? =====
@@ -147,7 +147,7 @@ These functions are used in the general functions below:
 ## If the face parent
 ## If reaching the root-face, the next face is the tip-face of the root-face, to allow continually to loop through the face tree.
 
-[[images/back-face-loop.png|center|caption]]
+[[images/Back-face-loop.png|center|caption]]
 <center>A demonstration of how BACK-FACE? runs through all faces in the tree.</center>
 
 === Files ===
@@ -173,7 +173,7 @@ TBD.
 
 # '''find-tab-face?''' - This locates the next or previous tab-face in the window from the current tab-face. This is the basic function triggered by tab navigation.
 
-[[images/next-tab-face-loop.png|center|caption]]
+[[images/Next-tab-face-loop.png|center|caption]]
 <center>Tab navigation moves using FIND-TAB-FACE? to faces with the TAB tag.</center>
 
 === Files ===

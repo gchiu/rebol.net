@@ -148,11 +148,11 @@ While the outer world tries to copy our declarative aproach (hello, JavaFX guys!
 
 So in order to get this (right pane of the demo screen):
 
-[[images/r3-gui-test.jpg|No Description]]
+[[images/R3-gui-test.jpg|No Description]]
 
 ... all you need to do is:
 
-[[images/r3-gui-test-source.jpg|No Description]]
+[[images/R3-gui-test-source.jpg|No Description]]
 
 Quite impressive, isn't it? Also - don't mind the skin. Yes, skin. We will have skin system too, and default skin will be different.
 

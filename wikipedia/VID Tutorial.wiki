@@ -234,7 +234,7 @@ For example, to change the color of a button, just specify it. In the example be
 
 It looks like this:
 
-[[images/vid-tutorial-style-variations1.png|center]]
+[[images/Vid-tutorial-style-variations1.png|center]]
 
 For text, you can write:
 
