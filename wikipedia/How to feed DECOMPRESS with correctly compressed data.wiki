@@ -8,7 +8,7 @@ It looks that REBOL can decompress any ZLIB data. It just requires to append kno
 
   zlib-decompress: func [
       zlibData [binary!]
-      length [integer!] &quot;known uncompressed zlib data length&quot;
+      length [integer!] "known uncompressed zlib data length"
   ][
       decompress head insert tail zlibData third make struct! [value [integer!]] reduce [length]
   ]

@@ -34,13 +34,13 @@ In R3, object! contexts are like the R2 system/words context: They can expand, b
 
 A quick examination of variable access of a function versus closure reveals the following:
 
-  &gt;&gt; do func [x] [dt [loop 100'000'000 [x: x]]] 1
+  >> do func [x] [dt [loop 100'000'000 [x: x]]] 1
   == 0:00:17.563
   
-  &gt;&gt; do closure [x] [dt [loop 100'000'000 [x: x]]] 1
+  >> do closure [x] [dt [loop 100'000'000 [x: x]]] 1
   == 0:00:13.641
   
-  &gt;&gt; dt in context [x: 1] [loop 100'000'000 [x: x]]
+  >> dt in context [x: 1] [loop 100'000'000 [x: x]]
   == 0:00:13.563
 
 A closure! will access variables faster than a normal function!, because on invocation of the closure function, its variables get directly bound to a context, just like an object.
@@ -51,19 +51,19 @@ But note, '''it is not good to use closures all the time!''' A closure pays a ve
 
 So, the cost of closure! is hidden, and can be much higher than that of function!. Let's turn the access tests into creation of functions and closures:
 
-  &gt;&gt; f: func [a] [a: a]
-  &gt;&gt; c: closure [a] [a: a]
+  >> f: func [a] [a: a]
+  >> c: closure [a] [a: a]
   
-  &gt;&gt; dt [loop 1'000'000 [f 10]]
+  >> dt [loop 1'000'000 [f 10]]
   == 0:00:00.468
   
-  &gt;&gt; dt [loop 1'000'000 [c 10]]
+  >> dt [loop 1'000'000 [c 10]]
   == 0:00:01.343
   
-  &gt;&gt; dt [loop 10'000'000 [f 10]]
+  >> dt [loop 10'000'000 [f 10]]
   == 0:00:04.437
   
-  &gt;&gt; dt [loop 10'000'000 [c 10]]
+  >> dt [loop 10'000'000 [c 10]]
   == 0:00:29.39
 
 Notice the non-linear time for C. This is caused by the 10 million new contexts created, which means a lot of garbage collection, when they need to be removed.

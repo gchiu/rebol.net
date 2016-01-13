@@ -1,46 +1,46 @@
-&lt;!-- The REBOL people wiki page --&gt;
-{| align=&quot;right&quot;
+<!-- The REBOL people wiki page -->
+{| align="right"
 | __TOC__
 |}
 {{alphanumeric index}}
 
-&lt;span id=&quot;0&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;1&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;2&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;3&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;4&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;5&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;6&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;7&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;8&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;9&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;A&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;B&quot;&gt;&lt;/span&gt;
+<span id="0"></span>
+<span id="1"></span>
+<span id="2"></span>
+<span id="3"></span>
+<span id="4"></span>
+<span id="5"></span>
+<span id="6"></span>
+<span id="7"></span>
+<span id="8"></span>
+<span id="9"></span>
+<span id="A"></span>
+<span id="B"></span>
 ==Brian Tiffin==
 
 Self employed REBOL developer.  Cheerleader.
 
-&lt;span id=&quot;C&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;D&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;E&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;F&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;G&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;H&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;I&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;J&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;K&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;L&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;M&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;N&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;O&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;P&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;Q&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;R&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;S&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;T&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;U&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;V&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;W&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;X&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;Y&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;Z&quot;&gt;&lt;/span&gt;
+<span id="C"></span>
+<span id="D"></span>
+<span id="E"></span>
+<span id="F"></span>
+<span id="G"></span>
+<span id="H"></span>
+<span id="I"></span>
+<span id="J"></span>
+<span id="K"></span>
+<span id="L"></span>
+<span id="M"></span>
+<span id="N"></span>
+<span id="O"></span>
+<span id="P"></span>
+<span id="Q"></span>
+<span id="R"></span>
+<span id="S"></span>
+<span id="T"></span>
+<span id="U"></span>
+<span id="V"></span>
+<span id="W"></span>
+<span id="X"></span>
+<span id="Y"></span>
+<span id="Z"></span>

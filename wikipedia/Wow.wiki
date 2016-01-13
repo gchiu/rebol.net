@@ -1,7 +1,7 @@
 = Top things that make you say WOW =
 
 #Rich in Datatype Literals.
-#Meta Programming Made Easy. &quot;Dialecting&quot; (DSL - Domain Specific Languages) is Productive.
+#Meta Programming Made Easy. "Dialecting" (DSL - Domain Specific Languages) is Productive.
 #Tiny Footprint, Giant Leap.
 #Graphics Dialect Included (VID - Visual Interface Dialect) (No more TK or something like that, Please)
 #Do More With Less.

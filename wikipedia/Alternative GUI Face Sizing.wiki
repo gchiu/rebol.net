@@ -154,10 +154,10 @@ The group resizes according to the largest fixed face, which is the sum of all f
 A typical layout scheme would not need any spring information, since the styles would be well designed and all size reasonably. The standard for a BUTTON would be not to spring and a standard FIELD would spring horizontally.
 
   view [
-    message &quot;Quit Program?&quot;
+    message "Quit Program?"
     group [
-      button &quot;Yes&quot;
-      button &quot;No&quot;
+      button "Yes"
+      button "No"
     ]
   ]
 
@@ -167,16 +167,16 @@ When the window resizes, the MESSAGE face scales accordingly. The group in which
 So to make the buttons move properly as the layout is resized in the window, add a PAD:
 
   group [
-    button &quot;Yes&quot;
+    button "Yes"
     pad
-    button &quot;No&quot;
+    button "No"
   ]
 
 or if you want the buttons to stretch evenly in the group:
 
   group [
-    button spring-x &quot;Yes&quot;
-    button spring-x &quot;No&quot;
+    button spring-x "Yes"
+    button spring-x "No"
   ]
 
 Since there would be no vertical spring information, the buttons will stay the same height, when the window is resized.
@@ -184,21 +184,21 @@ Since there would be no vertical spring information, the buttons will stay the s
 A more complex example:
 
   view [
-    title &quot;Enter Information&quot;
+    title "Enter Information"
     bar
     group 2 [
-      label &quot;Name&quot;
+      label "Name"
       field
-      label &quot;Address&quot;
+      label "Address"
       field
-      label &quot;Age&quot;
+      label "Age"
       field
     ]
     bar
     group [
-      button &quot;Send&quot;
+      button "Send"
       pad
-      button &quot;Cancel&quot;
+      button "Cancel"
     ]
   ]
 

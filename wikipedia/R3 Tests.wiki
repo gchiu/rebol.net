@@ -25,7 +25,7 @@ That has lead us to where we are today. We know from experience:
 
 Also, we know that we want the test system to be:
 
-#'''Fast to access'''. There needs to be zero overhead in adding a test, after all many tests come from an &quot;ah-ha let's test that&quot; so anything that slows it down will stop it.
+#'''Fast to access'''. There needs to be zero overhead in adding a test, after all many tests come from an "ah-ha let's test that" so anything that slows it down will stop it.
 #'''Accessible to all'''. A user who needs decimals to work right might only want to contribute decimal tests. Don't block that desire!
 #'''Always online'''. The R3 community is worldwide. While we sleep, others are contributing.
 
@@ -51,7 +51,7 @@ Main structure: management, engine, tests.
 
 ==Test management==
 
-Essentially everyone should be allowed to contribute a new test vector, approval is needed for a contributed test vector to be included into the &quot;official test suite&quot;.
+Essentially everyone should be allowed to contribute a new test vector, approval is needed for a contributed test vector to be included into the "official test suite".
 
 ==Test data==
 

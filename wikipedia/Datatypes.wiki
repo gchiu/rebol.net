@@ -1,6 +1,6 @@
 =List of Datatypes=
 Preliminary list as grabbed from the console:
-&lt;TABLE background-color=#CCCCCC&gt;&lt;TR&gt;&lt;TD VALIGN=TOP&gt;
+<TABLE background-color=#CCCCCC><TR><TD VALIGN=TOP>
 {| cellpadding=1 cellspacing=1
 |-
 |'''[http://rebol.com/r3/docs/datatypes/action.html action!]'''
@@ -18,8 +18,8 @@ Preliminary list as grabbed from the console:
 |'''char!'''
 |8bit and 16bit character
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
 |'''closure!'''
 |function with persistent local values (indefinite)
@@ -36,8 +36,8 @@ Preliminary list as grabbed from the console:
 |'''email!'''
 |email address
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
 |'''end!'''
 |internal marker for end of block
@@ -54,8 +54,8 @@ Preliminary list as grabbed from the console:
 |'''frame!'''
 |internal context frame
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
 |'''function!'''
 |interpreted function (user-defined or mezzanine)
@@ -72,8 +72,8 @@ Preliminary list as grabbed from the console:
 |'''handle!'''
 |arbitrary internal object or value
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
 |'''image!'''
 |RGB image with alpha channel
@@ -90,8 +90,8 @@ Preliminary list as grabbed from the console:
 |'''lit-path!'''
 |literal path value
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
 |'''lit-word!'''
 |literal word value
@@ -105,7 +105,7 @@ Preliminary list as grabbed from the console:
 |'''module!'''
 |loadable context of code and data
 |}
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 {|cellpadding=1 cellspacing=1
 |-
 |'''money!'''
@@ -123,8 +123,8 @@ Preliminary list as grabbed from the console:
 |'''op!'''
 |infix operator (special evaluation exception)
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
 |'''pair!'''
 |two dimensional point or size
@@ -141,8 +141,8 @@ Preliminary list as grabbed from the console:
 |'''port!'''
 |external series, an I/O channel
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
 |'''rebcode!'''
 |virtual machine function
@@ -159,8 +159,8 @@ Preliminary list as grabbed from the console:
 |'''set-word!'''
 |definition of a word's value
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
 |'''string!'''
 |string series of characters
@@ -177,10 +177,10 @@ Preliminary list as grabbed from the console:
 |'''time!'''
 |time of day or duration
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
-|style=&quot;valign=top&quot;|'''tuple!'''
+|style="valign=top"|'''tuple!'''
 |integers sequence (colors, versions, IP addresses)
 |-
 |'''typeset!'''
@@ -195,8 +195,8 @@ Preliminary list as grabbed from the console:
 |'''url!'''
 |uniform resource locator or identifier
 |-
-|style=&quot;background-color: #CCCCCC&quot; |
-|style=&quot;background-color: #CCCCCC&quot; |
+|style="background-color: #CCCCCC" |
+|style="background-color: #CCCCCC" |
 |-
 |'''utype!'''
 |user defined datatype
@@ -207,7 +207,7 @@ Preliminary list as grabbed from the console:
 |'''word!'''
 |word (symbol or variable)
 |}
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 =Arranged List of Datatypes=
 All datatypes except end! are arranged in typesets.
@@ -218,27 +218,27 @@ All datatypes except end! are arranged in typesets.
 ==any-type!==
 
 '''any-type! is  typeset of all of these datatypes:'''
-&lt;TABLE CELLPADING=2 CELLSPACING=1&gt;&lt;TR&gt;&lt;TD WIDTH=11%&gt;
-unset!&lt;BR&gt; none!&lt;BR&gt; logic!&lt;BR&gt; integer!&lt;BR&gt;decimal!&lt;BR&gt;percent!
-&lt;/TD&gt;&lt;TD WIDTH=11%&gt;
-money!&lt;BR&gt;char!&lt;BR&gt; pair!&lt;BR&gt;tuple!&lt;BR&gt;time!&lt;BR&gt;date!
-&lt;/TD&gt;&lt;TD WIDTH=11%&gt;
-string!&lt;BR&gt; binary!&lt;BR&gt; file!&lt;BR&gt;email!&lt;BR&gt;url!&lt;BR&gt;tag!
-&lt;/TD&gt;&lt;TD WIDTH=11%&gt;
-issue!&lt;BR&gt;bitset!&lt;BR&gt; unicode!&lt;BR&gt;vector!&lt;BR&gt;image!&lt;BR&gt;block!
-&lt;/TD&gt;&lt;TD WIDTH=11%&gt;
-paren!&lt;BR&gt; map!&lt;BR&gt; path!&lt;BR&gt; set-path!&lt;BR&gt;get-path!&lt;BR&gt;lit-path!
-&lt;/TD&gt;&lt;TD WIDTH=11%&gt;
-datatype!&lt;BR&gt; typeset!&lt;BR&gt;word!&lt;BR&gt;set-word!&lt;BR&gt;get-word!&lt;BR&gt;lit-word!
-&lt;/TD&gt;&lt;TD WIDTH=11%&gt;
-refinement!&lt;BR&gt; native!&lt;BR&gt;action!&lt;BR&gt;routine!&lt;BR&gt;rebcode!&lt;BR&gt;op!
-&lt;/TD&gt;&lt;TD WIDTH=11%&gt;
-closure!&lt;BR&gt; function!&lt;BR&gt; frame!&lt;BR&gt;object!&lt;BR&gt;module!&lt;BR&gt;error!
-&lt;/TD&gt;&lt;TD WIDTH=11%&gt;
-task!&lt;BR&gt;port!&lt;BR&gt;gob!&lt;BR&gt;event!&lt;BR&gt;handle!&lt;BR&gt;struct!
-&lt;/TD&gt;&lt;TD WIDTH=11% VALIGN=TOP&gt;
-library!&lt;BR&gt; utype!
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+<TABLE CELLPADING=2 CELLSPACING=1><TR><TD WIDTH=11%>
+unset!<BR> none!<BR> logic!<BR> integer!<BR>decimal!<BR>percent!
+</TD><TD WIDTH=11%>
+money!<BR>char!<BR> pair!<BR>tuple!<BR>time!<BR>date!
+</TD><TD WIDTH=11%>
+string!<BR> binary!<BR> file!<BR>email!<BR>url!<BR>tag!
+</TD><TD WIDTH=11%>
+issue!<BR>bitset!<BR> unicode!<BR>vector!<BR>image!<BR>block!
+</TD><TD WIDTH=11%>
+paren!<BR> map!<BR> path!<BR> set-path!<BR>get-path!<BR>lit-path!
+</TD><TD WIDTH=11%>
+datatype!<BR> typeset!<BR>word!<BR>set-word!<BR>get-word!<BR>lit-word!
+</TD><TD WIDTH=11%>
+refinement!<BR> native!<BR>action!<BR>routine!<BR>rebcode!<BR>op!
+</TD><TD WIDTH=11%>
+closure!<BR> function!<BR> frame!<BR>object!<BR>module!<BR>error!
+</TD><TD WIDTH=11%>
+task!<BR>port!<BR>gob!<BR>event!<BR>handle!<BR>struct!
+</TD><TD WIDTH=11% VALIGN=TOP>
+library!<BR> utype!
+</TD></TR></TABLE>
 ===unset!===
 
 No value returned or set. The functions GET and SET have special treatment of unset! values with their /any refinements:
@@ -253,7 +253,7 @@ If functions should be allowed to handle unset! arguments, it should be specifie
 
 ===none!===
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 |-
 |'''value'''
 |#[none]
@@ -261,7 +261,7 @@ If functions should be allowed to handle unset! arguments, it should be specifie
 
 ===logic!===
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 |-
 |'''value'''
 |#[true]
@@ -270,12 +270,12 @@ If functions should be allowed to handle unset! arguments, it should be specifie
 |#[false]
 |}
 
- &gt;&gt; to integer! true
+ >> to integer! true
  == 1
- &gt;&gt; to integer! false
+ >> to integer! false
  == 0
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 |+ Predefined logics
 ! Word || Value
 |-
@@ -309,69 +309,69 @@ integer! decimal! percent! money! char! pair! tuple! time!
 
 =====percent!=====
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 ! bgcolor=silver|  
 ! bgcolor=silver|integer! 
 ! bgcolor=silver|decimal!
 !bgcolor=silver |percent!
 |-
 |'''Minimum'''
-|align=&quot;right&quot;| -9'223'372'036'854'775'808
-|align=&quot;right&quot;| -1.797'693'134'862'315'7E+308
-|align=&quot;right&quot;| -1.797'693'134'862'315'7E+310%
+|align="right"| -9'223'372'036'854'775'808
+|align="right"| -1.797'693'134'862'315'7E+308
+|align="right"| -1.797'693'134'862'315'7E+310%
 |-
 |'''Maximum'''
 |align=right|9'223'372'036'854'775'807
 |align=right|1.797'693'134'862'315'7E+308
-|align=&quot;right&quot;|1.797'693'134'862'315'7E+310%
+|align="right"|1.797'693'134'862'315'7E+310%
 |-
 |'''Minimal positive normalized'''
 |
-|align=&quot;right&quot;| 2.225'073'858'507'201'4E-308
-|align=&quot;right&quot;| 2.225'073'858'507'201'4E-306%
+|align="right"| 2.225'073'858'507'201'4E-308
+|align="right"| 2.225'073'858'507'201'4E-306%
 |-
 |'''Maximal positive denormalized'''
 |
-|align=&quot;right&quot;| 2.225'073'858'507'200'9E-308
-|align=&quot;right&quot;| 2.225'073'858'507'200'9E-306%
+|align="right"| 2.225'073'858'507'200'9E-308
+|align="right"| 2.225'073'858'507'200'9E-306%
 |-
 |'''Minimal positive denormalized'''
 |
-|align=&quot;right&quot;| 4.940'656'458'412'465'4E-324
-|align=&quot;right&quot;| 4.940'656'458'412'465'4E-322%
+|align="right"| 4.940'656'458'412'465'4E-324
+|align="right"| 4.940'656'458'412'465'4E-322%
 |-
 |'''Maximal negative normalized'''
 |
-|align=&quot;right&quot;| -2.225'073'858'507'201'4E-308
-|align=&quot;right&quot;| -2.225'073'858'507'201'4E-306%
+|align="right"| -2.225'073'858'507'201'4E-308
+|align="right"| -2.225'073'858'507'201'4E-306%
 |-
 |'''Minimal negative denormalized'''
 |
-|align=&quot;right&quot;| -2.225'073'858'507'200'9E-308
-|align=&quot;right&quot;| -2.225'073'858'507'200'9E-306%
+|align="right"| -2.225'073'858'507'200'9E-308
+|align="right"| -2.225'073'858'507'200'9E-306%
 |-
 |'''Maximal negative denormalized'''
 |
-|align=&quot;right&quot;| -4.940'656'458'412'465'4E-324
-|align=&quot;right&quot;| -4.940'656'458'412'465'4E-322%
+|align="right"| -4.940'656'458'412'465'4E-324
+|align="right"| -4.940'656'458'412'465'4E-322%
 |}
- &gt;&gt; min-integer: to integer! #{8000 0000 0000 0000}
+ >> min-integer: to integer! #{8000 0000 0000 0000}
  == -9223372036854775808
- &gt;&gt; max-integer: to integer! #{7FFF FFFF FFFF FFFF}
+ >> max-integer: to integer! #{7FFF FFFF FFFF FFFF}
  == 9223372036854775807
 
 ====money!====
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 |-
 ! bgcolor=silver | 
 ! bgcolor=silver | money!
 |-
 |'''Minimum'''
-|align=&quot;right&quot;| -$99'999'999'999'999'999'999'999'999e127
+|align="right"| -$99'999'999'999'999'999'999'999'999e127
 |-
 |'''Maximum'''
-|align=&quot;right&quot;| $99'999'999'999'999'999'999'999'999e127
+|align="right"| $99'999'999'999'999'999'999'999'999e127
 |-
 |'''Minimal positive'''
 | $1e-128
@@ -382,40 +382,40 @@ integer! decimal! percent! money! char! pair! tuple! time!
 
 ====char!====
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 |-
 |'''Minimum'''
-|#&quot;^(00)&quot;
+|#"^(00)"
 |-
 |'''Maximum'''
-|#&quot;^(FFFF)&quot;
+|#"^(FFFF)"
 |}
 
- &gt;&gt; min-char: to char! 0
- == #&quot;^@&quot;
- &gt;&gt; max-char: to char! 65535
- == #&quot;?&quot;
+ >> min-char: to char! 0
+ == #"^@"
+ >> max-char: to char! 65535
+ == #"?"
 
 ====pair!====
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 |-
 |'''Minimum'''
-|align=&quot;center&quot;| -2147483648x-2147483648
+|align="center"| -2147483648x-2147483648
 |-
 |'''Maximum'''
-|align=&quot;center&quot;| 2147483647x2147483647
+|align="center"| 2147483647x2147483647
 |}
 
- &gt;&gt; min-pair: as-pair to integer! #{8000 0000} to integer! #{8000 0000}
+ >> min-pair: as-pair to integer! #{8000 0000} to integer! #{8000 0000}
  == -2147483648x-2147483648
- &gt;&gt; max-pair: as-pair to integer! #{7FFF FFFF} to integer! #{7FFF FFFF}
+ >> max-pair: as-pair to integer! #{7FFF FFFF} to integer! #{7FFF FFFF}
  == 2147483647x2147483647
 
 
 ====tuple!====
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 !bgcolor=silver |
 !bgcolor=silver | tuple!
 |-
@@ -428,24 +428,24 @@ integer! decimal! percent! money! char! pair! tuple! time!
 
 ====time!====
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 |-
 |'''Minimum'''
-|align=&quot;right&quot;| -596523:14:07.999999999
+|align="right"| -596523:14:07.999999999
 |-
 |'''Maximum'''
-|align=&quot;right&quot;| 596523:14:07.999999999
+|align="right"| 596523:14:07.999999999
 |}
 
- &gt;&gt; min-time: (to time! to integer! #{8000 0001}) - 0.999999999
+ >> min-time: (to time! to integer! #{8000 0001}) - 0.999999999
  == -596523:14:07.999999999
- &gt;&gt; max-time: (to time! to integer! #{7FFF FFFF}) + 0.999999999
+ >> max-time: (to time! to integer! #{7FFF FFFF}) + 0.999999999
  == 596523:14:07.999999999
 
 
 ===date!===
 
-{|border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot;
+{|border="1" cellpadding="5" cellspacing="0"
 |-
 |'''Minimum'''
 |1-Jan-0000
@@ -527,8 +527,8 @@ To draw into image you can use something like:
 
 You can also create image using binary data directly, like:
 
-    img: make image! reduce [4x1 as-binary &quot;Hello world!&quot;]
-    probe as-string img/rgb ;== &quot;Hello world!&quot;
+    img: make image! reduce [4x1 as-binary "Hello world!"]
+    probe as-string img/rgb ;== "Hello world!"
     view layout [image img 200x80]
 
 

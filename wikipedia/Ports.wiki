@@ -1,4 +1,4 @@
-{| align=&quot;right&quot;
+{| align="right"
 | __TOC__
 |}
 '''Ports are used to access external series such as files, networks, consoles, events, databases, and more.'''
@@ -13,7 +13,7 @@ Most ports are implemented at the OS layer using [[Devices]] and are not necessa
 
 === Motivation ===
 
-You may be asking yourself, &quot;Why do I need to know this?&quot; The answer is as simple as asking yourself, is a program useful without I/O (input and output)? In REBOL, it is through ports that all I/O happens.
+You may be asking yourself, "Why do I need to know this?" The answer is as simple as asking yourself, is a program useful without I/O (input and output)? In REBOL, it is through ports that all I/O happens.
 
 Yes, often the usage of a port will be hidden behind some other function. For example, when you use the '''load''' function to obtain code, such as a script, or data, such as a JPEG image, a port is being used at a lower level.
 
@@ -183,7 +183,7 @@ is equally valid. Think of the file datatype as an abbreviation for that. Both m
 
 Other schemes do not support implicit usage. For example:
 
-    &gt;&gt; data: read tcp://www.rebol.com
+    >> data: read tcp://www.rebol.com
     ** Access error: Port is not open: tcp://www.rebol.com
     ** Where: read
     ** Near: read tcp://www.rebol.com
@@ -249,7 +249,7 @@ All of these can be used as port specs:
 
     %file.txt  ; a file name
     tcp://www.rebol.com ; a URL
-    [scheme: 'tcp host: &quot;www.rebol.net&quot;] ; a block
+    [scheme: 'tcp host: "www.rebol.net"] ; a block
     'tcp  ; just the port's scheme name
     object ; an object that specifies the port
     port ; a existing port
@@ -266,7 +266,7 @@ Here are some examples:
 
     port1: make port! %file.txt
     port2: make port! tcp://www.rebol.net
-    port3: make port! [scheme: 'tcp host: &quot;www.rebol.net&quot;]
+    port3: make port! [scheme: 'tcp host: "www.rebol.net"]
 
 These examples will create a port object and initialize its various fields.
 
@@ -286,7 +286,7 @@ More precisely, port actions are ''polymorphic datatype actions'' similar to tho
 
 The actions defined for ports are:
 
-&lt;blockquote&gt;
+<blockquote>
 ;make: make a new port object
 ;to: special (convert an object to a port)
 ;open: initialize external operations
@@ -298,21 +298,21 @@ The actions defined for ports are:
 ;create: create an external object of port type
 ;delete: delete an external object of port type
 ;rename: rename an external object of port type
-&lt;/blockquote&gt;
+</blockquote>
 
 Note that not all port actions can be used on all port schemes. For example, the '''rename''' action has no purpose when used on a ''sound'' port scheme.
 
 Ports also allow basic equality comparisons:
 
-&lt;blockquote&gt;
+<blockquote>
 ;equal?: ports are the same object
 ;not-equal?: ports are not the same object
-&lt;/blockquote&gt;
+</blockquote>
 
 For the exact usage of each action use REBOL's built-in help function. (In this way the action information is always accurate.)
 
-&lt;pre&gt;
-&gt;&gt; ? open
+<pre>
+>> ? open
 USAGE:
         OPEN spec /new /read /write /seek /allow access
 
@@ -330,7 +330,7 @@ REFINEMENTS:
         /seek -- Optimize for random access
         /allow -- Specifies protection attributes
                 access (block!)
-&lt;/pre&gt;
+</pre>
 
 All of the port actions are provided with the port (or spec in the case of implicit port usage) as their first argument.
 
@@ -372,7 +372,7 @@ A shorthand method is to use '''attempt''':
     either port: attempt [open spec] [
         perform-io...
     ][
-        print [&quot;Cannot open&quot; spec]
+        print ["Cannot open" spec]
     ]
 
 So, you can wrap each separate port action in an error handler, or you can wrap all of your port actions together in a single error handler:
@@ -386,7 +386,7 @@ So, you can wrap each separate port action in an error handler, or you can wrap 
     close file
 
     if error? err [
-        print [&quot;Port error:&quot; form err]
+        print ["Port error:" form err]
     ]
 
 For asynchronous port operation, error handling can be a bit more complicated. ''(And more work is needed here.)''

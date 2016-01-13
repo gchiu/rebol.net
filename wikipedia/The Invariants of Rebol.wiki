@@ -4,29 +4,29 @@ Building a mental model of a language is easiest if there are rules you can use 
 
 Rebol uses the TO function in order to convert one type to another.  Its first parameter is the type you want to convert to, and the second parameter is the source value.
 
-&lt;pre&gt;
-&gt;&gt; to integer! &quot;42&quot;
+<pre>
+>> to integer! "42"
 == 42
 
-&gt;&gt; to date! &quot;1-Jan-2010&quot;  
+>> to date! "1-Jan-2010"  
 == 1-Jan-2010
 
-&gt;&gt; to block! &lt;a href=&quot;http://rebol.com&quot;&gt;
-== [&lt;a href=&quot;http://rebol.com&quot;&gt;]
-&lt;/pre&gt;
+>> to block! <a href="http://rebol.com">
+== [<a href="http://rebol.com">]
+</pre>
 
 There are convenience functions for each type which are a hyphenation of the word TO and the type without its exclamation mark:
 
-&lt;pre&gt;
-&gt;&gt; to-integer &quot;42&quot;
+<pre>
+>> to-integer "42"
 == 42
 
-&gt;&gt; to-date &quot;1-Jan-2010&quot;  
+>> to-date "1-Jan-2010"  
 == 1-Jan-2010
 
-&gt;&gt; to-block &lt;a href=&quot;http://rebol.com&quot;&gt;
-== [&lt;a href=&quot;http://rebol.com&quot;&gt;]
-&lt;/pre&gt;
+>> to-block <a href="http://rebol.com">
+== [<a href="http://rebol.com">]
+</pre>
 
 == Success and Failure ==
 
@@ -34,17 +34,17 @@ There are convenience functions for each type which are a hyphenation of the wor
 
 Some target types are too narrow to express an arbitrary value of the source type, which means conversions will not always succeed:
 
-&lt;pre&gt;
-&gt;&gt; to-integer &quot;Hello&quot;      
-** Script error: cannot MAKE/TO integer! from: &quot;Hello&quot;
+<pre>
+>> to-integer "Hello"      
+** Script error: cannot MAKE/TO integer! from: "Hello"
 ** Where: to to-integer
 ** Near: to integer! :value
 
-&gt;&gt; to-date &quot;99-Apr-9999&quot; 
-** Script error: cannot MAKE/TO date! from: &quot;99-Apr-9999&quot;
+>> to-date "99-Apr-9999" 
+** Script error: cannot MAKE/TO date! from: "99-Apr-9999"
 ** Where: to to-date
 ** Near: to date! :value
-&lt;/pre&gt;
+</pre>
 
 == One-Way Conversions ==
 
@@ -54,54 +54,54 @@ The ability to successfully convert from one type to another does not mean that 
 
 A wide variety of input formats are supported for dates, yet there is only one default output format:
 
-&lt;pre&gt;
-&gt;&gt; to-string to-date &quot;1-1-2009&quot;
-== &quot;1-Jan-2009&quot;
-&lt;/pre&gt;
+<pre>
+>> to-string to-date "1-1-2009"
+== "1-Jan-2009"
+</pre>
 
 This default is the ISO standard covering the exchange of date and time-related data ([http://en.wikipedia.org/wiki/ISO_8601 ISO-8601]).
 
 === BLOCK! via STRING! ===
 
-In the first step of the conversion (from block to string), the words in the block are converted to strings using FORM and then the strings are concatenated together.  But there are no spaces between the words of the block - the spaces that appear to be there are really just artifacts of Rebol syntax, not really there once the value is loaded.  So the resulting string is &lt;tt&gt;&quot;abc&quot;&lt;/tt&gt;.
+In the first step of the conversion (from block to string), the words in the block are converted to strings using FORM and then the strings are concatenated together.  But there are no spaces between the words of the block - the spaces that appear to be there are really just artifacts of Rebol syntax, not really there once the value is loaded.  So the resulting string is <tt>"abc"</tt>.
 
-&lt;pre&gt;
-&gt;&gt; to-string [a b c]
-== &quot;abc&quot;
-&lt;/pre&gt;
+<pre>
+>> to-string [a b c]
+== "abc"
+</pre>
 
 Then TO-BLOCK of that string effectively treats the string as Rebol syntax - a special case of TO-BLOCK for STRING! and BINARY! input.  
 
-&lt;pre&gt;
-&gt;&gt; to-block to-string [a b c]
+<pre>
+>> to-block to-string [a b c]
 == [abc]
-&lt;/pre&gt;
+</pre>
 
-This results in the word &lt;tt&gt;'abc&lt;/tt&gt; in the block.
+This results in the word <tt>'abc</tt> in the block.
 
 === Other Types via BLOCK! ===
 
-TO-BLOCK of a value other than the special cases of STRING! and BINARY! simply wraps the value in a block.  Let's see this with content &lt;tt&gt;&lt;nowiki&gt;a href=&quot;http://rebol.com&quot;&lt;/nowiki&gt;&lt;/tt&gt; (the angle brackets are part of the syntax, but not actually in the series data):
+TO-BLOCK of a value other than the special cases of STRING! and BINARY! simply wraps the value in a block.  Let's see this with content <tt><nowiki>a href="http://rebol.com"</nowiki></tt> (the angle brackets are part of the syntax, but not actually in the series data):
 
-&lt;pre&gt;
-&gt;&gt; to-block &lt;a href=&quot;http://rebol.com&quot;&gt;
-== [&lt;a href=&quot;http://rebol.com&quot;&gt;]
-&lt;/pre&gt;
+<pre>
+>> to-block <a href="http://rebol.com">
+== [<a href="http://rebol.com">]
+</pre>
 
 TO-TAG treats that block like TO-STRING does.  The reason is that they use the same code, which is to FORM the contents of the block and then concatenate them. 
 
-&lt;pre&gt;
-&gt;&gt; to-tag to-block &lt;a href=&quot;http://rebol.com&quot;&gt;
-== &lt;&lt;a href=&quot;http://rebol.com&quot;&gt;&gt;
-&lt;/pre&gt;
+<pre>
+>> to-tag to-block <a href="http://rebol.com">
+== <<a href="http://rebol.com">>
+</pre>
 
-Our result is a TAG! whose contents literally have a set of angle brackets inside of it: &lt;tt&gt;&lt;nowiki&gt;&lt;a href=&quot;http://rebol.com&quot;&gt;&lt;/nowiki&gt;&lt;/tt&gt;. The syntax of the tag! type then displays that value with ''another'' pair of angle brackets around it.
+Our result is a TAG! whose contents literally have a set of angle brackets inside of it: <tt><nowiki><a href="http://rebol.com"></nowiki></tt>. The syntax of the tag! type then displays that value with ''another'' pair of angle brackets around it.
 
 == Reversible Conversions ==
 
-In the following sections, we define a ''reversible conversion'' of a &lt;tt&gt;value&lt;/tt&gt; by way of an &lt;tt&gt;intermediate-type&lt;/tt&gt; in the following way:
+In the following sections, we define a ''reversible conversion'' of a <tt>value</tt> by way of an <tt>intermediate-type</tt> in the following way:
 
-&lt;pre&gt;
+<pre>
 reversible-conversion: func [value intermediate-type /weak /local value-type result] [
     value-type: type? value
     result: TO value-type TO intermediate-type value
@@ -114,50 +114,50 @@ reversible-conversion: func [value intermediate-type /weak /local value-type res
         return value == result
     ]
 ]
-&lt;/pre&gt;
+</pre>
 
-For the default, we use the &lt;tt&gt;==&lt;/tt&gt; (aka STRICT-EQUAL?) operator so that case sensitivity and binding are taken into account.  If we use the &lt;tt&gt;/weak&lt;/tt&gt; refinement then we use the &lt;tt&gt;=&lt;/tt&gt; (a.k.a. EQUALS?) operator, which is more lax:
+For the default, we use the <tt>==</tt> (aka STRICT-EQUAL?) operator so that case sensitivity and binding are taken into account.  If we use the <tt>/weak</tt> refinement then we use the <tt>=</tt> (a.k.a. EQUALS?) operator, which is more lax:
 
-&lt;pre&gt;
-&gt;&gt; &quot;AbCdE&quot; = &quot;ABCDE&quot;
+<pre>
+>> "AbCdE" = "ABCDE"
 == true
-&lt;/pre&gt;
+</pre>
 
 (You can read more about the equality heirarchy in the [[Comparisons]] article.)
 
 === ANY-STRING! via ANY-STRING! ===
 
-&lt;pre&gt;
+<pre>
 if (any-string? value) and (find any-string! intermediate-type) [
     assert [reversible-conversion value intermediate-type]
 ]
-&lt;/pre&gt;
+</pre>
 
 === ANY-WORD! via ANY-WORD! ===
 
-&lt;pre&gt;
+<pre>
 if (any-word? value) and (find any-word! intermediate-type) [
     assert [reversible-conversion value intermediate-type]
 ]
-&lt;/pre&gt;
+</pre>
 
 === DATE! via ANY-STRING! ===
 
-&lt;pre&gt;
+<pre>
 if (date? value) and (find any-string! intermediate-type) [
     assert [reversible-conversion value intermediate-type]
 ]
-&lt;/pre&gt;
+</pre>
 
 === ANY-WORD! *weak* via ANY-STRING! ===
 
 Both words and strings contain character data, but there are some strings that aren't legal words.  Words cannot have spaces or colons in them, for example.  Yet converting from an ANY-WORD! into an ANY-STRING! and back preserves the spelling of the word in a weak sense:
 
-&lt;pre&gt;
+<pre>
 if (any-word? value) and (find any-string! intermediate-type) [
     assert [reversible-conversion/weak value intermediate-type]
 ]
-&lt;/pre&gt;
+</pre>
 
 Do note that for most uses of words, one of their most important attributes is their [[Bindology|binding]].  This conversion loses that.
 
@@ -165,32 +165,32 @@ Do note that for most uses of words, one of their most important attributes is t
 
 It is important to bear in mind that the structures which can be specified through Rebol's source notation are a subset of what can be constructed at runtime.  To see an example of this, note that executing the following Rebol code builds a structure with an aliased block:
 
-&lt;pre&gt;
-&gt;&gt; foo: [a]
+<pre>
+>> foo: [a]
 == [a]
 
-&gt;&gt; bar: reduce [foo foo]
+>> bar: reduce [foo foo]
 == [[a] [a]]
 
-&gt;&gt; append first bar 'b
+>> append first bar 'b
 == [a b]
 
-&gt;&gt; probe bar
+>> probe bar
 == [[a b] [a b]]
-&lt;/pre&gt;
+</pre>
 
-Had you simply defined bar in source as &lt;tt&gt;[[a] [a]]&lt;/tt&gt; it would lead to an object that looks like it has the same structure, but it behaves differently:
+Had you simply defined bar in source as <tt>[[a] [a]]</tt> it would lead to an object that looks like it has the same structure, but it behaves differently:
 
-&lt;pre&gt;
-&gt;&gt; bar: [[a] [a]]
+<pre>
+>> bar: [[a] [a]]
 == [[a] [a]]
 
-&gt;&gt; append first bar 'b
+>> append first bar 'b
 == [a b]
 
-&gt;&gt; probe bar
+>> probe bar
 == [[a b] [a]]
-&lt;/pre&gt;
+</pre>
 
 There tend to be limits to what can be specified as literal declarative values, and Rebol is not a declarative language.  The native way of specifying runtime values is through specifying the procedural code that should be run to construct them in memory.  
 
@@ -200,7 +200,7 @@ Some other examples of information that isn't possible to concretize as source i
 
 The following is true for any string with no serialized syntax in it:
 
-&lt;pre&gt;
+<pre>
 assert [string? str]
 
 wasValidRebol: try/except [
@@ -212,7 +212,7 @@ wasValidRebol: try/except [
 ]
 
 if wasValidRebol [
-    strFromStructure: copy &quot;&quot;
+    strFromStructure: copy ""
     save strFromStructure value
 
     ; uncertain if this is true...?
@@ -223,4 +223,4 @@ if wasValidRebol [
     ; but this is, correct?
     assert [structure = load strFromStructure]
 ]
-&lt;/pre&gt;
+</pre>

@@ -1,23 +1,23 @@
-Minimum value: -9'223'372'036'854'775'808&lt;br&gt;
-equal to: - (2 ** 63)&lt;br&gt;
-Maximum value: 9'223'372'036'854'775'807&lt;br&gt;
+Minimum value: -9'223'372'036'854'775'808<br>
+equal to: - (2 ** 63)<br>
+Maximum value: 9'223'372'036'854'775'807<br>
 equal to: (2 ** 63) - 1
 
 It's problematic to produce those values with the help of decimals, because of decimal precision. This works:
 
-&lt;pre&gt;min-int: to integer! negate 2 ** 63&lt;/pre&gt;
+<pre>min-int: to integer! negate 2 ** 63</pre>
 
 While this produces a number overflow:
 
-&lt;pre&gt;max-int: to integer! 2 ** 63 - 1&lt;/pre&gt;
+<pre>max-int: to integer! 2 ** 63 - 1</pre>
 
 The reason is, that the power operator (**) returns a decimal, which doesn't have all the precision needed.
 
 Other ways that work:
 
-&lt;pre&gt;min-int: to integer! #8000000000000000
+<pre>min-int: to integer! #8000000000000000
 min-int: to integer! #{8000 0000 0000 0000}
 min-int: (negate to integer! 2 ** 62) - (to integer! 2 ** 62)
 max-int: to integer! #7FFFFFFFFFFFFFFF
 max-int: to integer! #{7FFF FFFF FFFF FFFF}
-max-int: (to integer! 2 ** 62) - 1 + (to integer! 2 ** 62)&lt;/pre&gt;
+max-int: (to integer! 2 ** 62) - 1 + (to integer! 2 ** 62)</pre>

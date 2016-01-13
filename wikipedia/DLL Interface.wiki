@@ -41,7 +41,7 @@ Similar to option 2, except that a REBOL script loads a plugin (which is a DLL t
 
 ;Cons: Requires that a plugin be made for any external DLL that is needed. Less flexible than option 1 (because C code must be compiled), but more flexible than option 2 (because it is dynamic).
 
-It may be possible to write a &quot;generalized&quot; plugin method that can handle all external DLLs, but it would require a method to identify or input the function specifications for each DLL interface. This specification could be a simple declarative dialect if we carefully limit its capabilities to only handle simple C-like APIs, as with R2 - as long as we have the full plugin model to fall back on. This generalized plugin would be equivalent to option 1.
+It may be possible to write a "generalized" plugin method that can handle all external DLLs, but it would require a method to identify or input the function specifications for each DLL interface. This specification could be a simple declarative dialect if we carefully limit its capabilities to only handle simple C-like APIs, as with R2 - as long as we have the full plugin model to fall back on. This generalized plugin would be equivalent to option 1.
 
 It could also be possible to write plugins for different particular programming platforms that use the discovery and/or reflection capabilities specific to the platform. On Windows this would mean plugins for .NET, Java, ActiveX/COM, and maybe C++ or Delphi. These plugins could be community projects.
 
@@ -83,26 +83,26 @@ Nevertheless, we should be possible to support all kind of patterns:
 == R2 DLL Interface Feedback ==
 This is a collection of feedback, ideas and proposals based on the R2 DLL interface. It will help us to get an overview of problems, quirks etc. to finally design a good R3 DLL interface
 
-I (Ladislav) support the variant 1, i.e. the variant based on REBOL dialect, a.k.a. improved R2 DLL interface. Reason: this is the way how to &quot;drink our own wine&quot;, helping REBOL popularity, although it may not be the way offering the highest speed.
+I (Ladislav) support the variant 1, i.e. the variant based on REBOL dialect, a.k.a. improved R2 DLL interface. Reason: this is the way how to "drink our own wine", helping REBOL popularity, although it may not be the way offering the highest speed.
 
 ===Structs are for interfacing with C===
 
 Therefore, I think, that a definition like:
 
-&lt;pre&gt;a-struct: make struct! [
+<pre>a-struct: make struct! [
     number [integer!]
     character [char!]
-] none&lt;/pre&gt;
+] none</pre>
 
 is actually an error. What is needed, is to be able to define structs containing C datatypes, like:
 
-&lt;pre&gt;a-struct: make struct! [
+<pre>a-struct: make struct! [
     a-32-bit-integer [int]
     a-64-bit-integer [I64]
     a-float [float]
     a-double [double]
     a-character [char]
-] none&lt;/pre&gt;
+] none</pre>
 
 This change will make the interface less confusing, especially for newcomers.
 
@@ -110,84 +110,84 @@ This change will make the interface less confusing, especially for newcomers.
 
 In C, it is possible to nest structs. This means, that it is possible to write something like:
 
-&lt;pre&gt;a-struct: make struct! [
+<pre>a-struct: make struct! [
     innner-struct [struct! [i [int] c [char]]]
-] none&lt;/pre&gt;
+] none</pre>
 
 having essentially the same meaning as:
 
-&lt;pre&gt;a-struct: make struct! [
+<pre>a-struct: make struct! [
     i [int] c [char]
-] none&lt;/pre&gt;
+] none</pre>
 
-with the exception, that in the former case the items are seen as &quot;grouped together&quot;, even though they occupy exactly the same places in the resulting structure.
+with the exception, that in the former case the items are seen as "grouped together", even though they occupy exactly the same places in the resulting structure.
 
 As opposed to that, the current (R2) behaviour is, that the former case is interpreted as a struct containing a pointer to struct, which should have been rather described as:
 
-&lt;pre&gt;a-struct: make struct! [
+<pre>a-struct: make struct! [
     innner-struct [struct*! [i [int] c [char]]]
-] none&lt;/pre&gt;
+] none</pre>
 
 ===Structs can be returned from C===
 
 This means, that we should be able to write:
 
-&lt;pre&gt;ret-struct: make routine! [
+<pre>ret-struct: make routine! [
     return: [struct! [x [float] y [float]]]
-] lib &quot;ret_struct&quot;&lt;/pre&gt;
+] lib "ret_struct"</pre>
 
 Meaning, that the ret_struct function returns a structure, not a pointer to structure. Currently, there is no way how to circumvent this problem.
 
 When expecting a pointer to structure, we should write:
 
-&lt;pre&gt;ret-struct: make routine! [
+<pre>ret-struct: make routine! [
     return: [struct*! [a [int] b [float]]]
-] lib &quot;ret_struct&quot;&lt;/pre&gt;
+] lib "ret_struct"</pre>
 
 ===Fixed length arrays===
 
 In C it is possible to define fixed length arrays in a structure. I suggest to support that using a syntax:
 
-&lt;pre&gt;a-struct: make struct! [
+<pre>a-struct: make struct! [
     ca [char [10]]
-] none&lt;/pre&gt;
+] none</pre>
 
 Note: This is not the same as the current behaviour of the char-array construct in R2. Char-array actually inserts into the structure just a pointer, i.e. the current R2 construct:
 
-&lt;pre&gt;a-struct: make struct! [
+<pre>a-struct: make struct! [
     ca [char-array 10]
-] none&lt;/pre&gt;
+] none</pre>
 
 Actually corresponds to the declaration below, which I propose as a more adequate replacement, having greater flexibility:
 
-&lt;pre&gt;a-struct: make struct! [
+<pre>a-struct: make struct! [
     ca [struct*! [char [10]]]
-] none&lt;/pre&gt;
+] none</pre>
 
 ===C pointers===
 
 I propose to use a new struct*! datatype to represent C pointers, i.e. to represent a C pointer like:
 
-&lt;pre&gt;void *p;&lt;/pre&gt;
+<pre>void *p;</pre>
 
 I suggest to use the syntax:
 
-&lt;pre&gt;p [struct*!]&lt;/pre&gt;
+<pre>p [struct*!]</pre>
 
 The same holds for
 
-&lt;pre&gt;char *ptr;&lt;/pre&gt;
+<pre>char *ptr;</pre>
 
 , which may be represented by
 
-&lt;pre&gt;ptr [struct*! [c [char]]]&lt;/pre&gt;
+<pre>ptr [struct*! [c [char]]]</pre>
 
 To be as user-friendly as possible we need to allow for struct*! conversions like:
 
-&lt;pre&gt;to string! ptr ; converts char* to REBOL string using the nul-character convention
+<pre>to string! ptr ; converts char* to REBOL string using the nul-character convention
 bp: to #[struct*! [char [10]]] p ; converts void *p to a pointer to array of 10 characters
 to binary! bp ; converts the pointer to REBOL binary! having length (10)
-op: to #[struct*! [x [float] y [float]]] p ; converts p to a pointer to a structure containing two floats&lt;/pre&gt;
+op: to #[struct*! [x [float] y [float]]] p ; converts p to a pointer to a structure containing two floats</pre>
 
 ===Existing code===
 

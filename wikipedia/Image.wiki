@@ -2,146 +2,146 @@
 
 Draws an image, with optional scaling, borders, and color keying.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | image
-| bgcolor=&quot;white&quot; | [image!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | image
+| bgcolor="white" | [image!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | upper-left-point
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | Optional
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | upper-left-point
+| bgcolor="white" | [pair!]
+| bgcolor="white" | Optional
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | upper-right-point
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | Optional; this is the lower-right point if only two points are provided
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | upper-right-point
+| bgcolor="white" | [pair!]
+| bgcolor="white" | Optional; this is the lower-right point if only two points are provided
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | lower-left-point
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | Optional
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | lower-left-point
+| bgcolor="white" | [pair!]
+| bgcolor="white" | Optional
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | lower-right-point
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | Optional
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | lower-right-point
+| bgcolor="white" | [pair!]
+| bgcolor="white" | Optional
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | key-color
-| bgcolor=&quot;white&quot; | [tuple!]
-| bgcolor=&quot;white&quot; | Optional; color to be rendered as transparent
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | key-color
+| bgcolor="white" | [tuple!]
+| bgcolor="white" | Optional; color to be rendered as transparent
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | border
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | Optional; must be the word '''border'''
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | border
+| bgcolor="white" | [word!]
+| bgcolor="white" | Optional; must be the word '''border'''
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | pattern-mode
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | Optional
-| bgcolor=&quot;white&quot; | can be '''reflect''' or '''repeat'''
+| bgcolor="white" | pattern-mode
+| bgcolor="white" | [word!]
+| bgcolor="white" | Optional
+| bgcolor="white" | can be '''reflect''' or '''repeat'''
 |- 
-| bgcolor=&quot;white&quot; | pattern-x
-| bgcolor=&quot;white&quot; | [integer!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | pattern-x
+| bgcolor="white" | [integer!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | pattern-y
-| bgcolor=&quot;white&quot; | [integer!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | pattern-y
+| bgcolor="white" | [integer!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | pattern-w
-| bgcolor=&quot;white&quot; | [integer!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | pattern-w
+| bgcolor="white" | [integer!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | pattern-h
-| bgcolor=&quot;white&quot; | [integer!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | pattern-h
+| bgcolor="white" | [integer!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;A normal image:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<p>A normal image:</p>
+<code><pre>
 image logo.gif
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:IMAGE-1.png|IMAGE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;An image at a specific location:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>An image at a specific location:</p>
+<code><pre>
 image logo.gif 100x100
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:IMAGE-2.png|IMAGE example 2]]
 
-&lt;br&gt;
-&lt;p&gt;An scaled image at a specific location:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>An scaled image at a specific location:</p>
+<code><pre>
 image logo.gif 100x100 300x200
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:IMAGE-3.png|IMAGE example 3]]
 
-&lt;br&gt;
-&lt;p&gt;An image with a border using line attributes.&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>An image with a border using line attributes.</p>
+<code><pre>
 pen yellow line-width 5 line-pattern red 5 5
 image logo.gif 100x100 border
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:IMAGE-4.png|IMAGE example 4]]
 
-&lt;br&gt;
-&lt;p&gt;An image with a patterened border and a key color.&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>An image with a patterened border and a key color.</p>
+<code><pre>
 pen yellow line-width 5 line-pattern red 5 5
 image logo.gif 100x100 254.254.254 border
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:IMAGE-5.png|IMAGE example 5]]
 
-&lt;br&gt;
-&lt;p&gt;An image used as pattern fill in REPEAT mode. The first two integers are offset of the pattern the next two defines virtual pattern width and height.&lt;/p&gt;
-&lt;p&gt;(In this case the logo.gif image has size 100x24 pixels so given the specified virtual pattern width and height it will be rendered in 6 rows and 5 columns.)&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>An image used as pattern fill in REPEAT mode. The first two integers are offset of the pattern the next two defines virtual pattern width and height.</p>
+<p>(In this case the logo.gif image has size 100x24 pixels so given the specified virtual pattern width and height it will be rendered in 6 rows and 5 columns.)</p>
+<code><pre>
 	line-width 3
 	pen yellow
 	image logo.gif 100x100 300x300 border repeat 0 0 500 144
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:IMAGE-6.png|IMAGE example 6]]
 
-&lt;br&gt;
-&lt;p&gt;The same pattern fill but with shifted offset.&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>The same pattern fill but with shifted offset.</p>
+<code><pre>
 	line-width 3
 	pen yellow
 	image logo.gif 100x100 300x300 border repeat 50 12 500 144
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:IMAGE-7.png|IMAGE example 7]]
 
-&lt;br&gt;
-&lt;p&gt;The same pattern fill but in REFLECT mode.&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>The same pattern fill but in REFLECT mode.</p>
+<code><pre>
 	line-width 3
 	pen yellow
 	image logo.gif 100x100 300x300 border reflect 0 0 500 144
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:IMAGE-8.png|IMAGE example 8]]
 
-&lt;br&gt;
-&lt;p&gt;If you provide four points, the image will be scaled to
+<br>
+<p>If you provide four points, the image will be scaled to
 fit those positions. This can be use to create perspective
-images or other simple distortions:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+images or other simple distortions:</p>
+<code><pre>
 image logo.gif 50x100 400x00 400x400 50x200
 
 image logo.gif 10x10 350x200 250x300 50x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:IMAGE-9.png|IMAGE example 9]]
 
-&lt;br&gt;
+<br>

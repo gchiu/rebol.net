@@ -4,15 +4,15 @@ Just a few notes to remember incorporating into a Git tutorial targeted at R3 de
 
 == Line endings / msysGit option ==
 
-Proposed policy: text files in the official repository always use LF (&quot;Unix&quot;) line endings.
+Proposed policy: text files in the official repository always use LF ("Unix") line endings.
 
-For the Win32 msysgit installer, that means two options in &quot;Choosing CR/LF behavior&quot;:
+For the Win32 msysgit installer, that means two options in "Choosing CR/LF behavior":
 
-* Select the &quot;Commit line endings as they are&quot; option, if you can set up your editor and remaining toolchain to properly work with LF line endings. This way Git won't interfere with your text files, but you'll have to ensure yourself that you don't commit text with CRLF lines endings.
+* Select the "Commit line endings as they are" option, if you can set up your editor and remaining toolchain to properly work with LF line endings. This way Git won't interfere with your text files, but you'll have to ensure yourself that you don't commit text with CRLF lines endings.
 
-* Select the &quot;Use Windows style line endings&quot; option to have Git automatically convert from LF to CRLF on checkout, and from CRLF to LF on commit. The primary disadvantage to that is that some people really do not like it if software &quot;automagically&quot; interferes with their files. If you are one of those people, chose the other option.
+* Select the "Use Windows style line endings" option to have Git automatically convert from LF to CRLF on checkout, and from CRLF to LF on commit. The primary disadvantage to that is that some people really do not like it if software "automagically" interferes with their files. If you are one of those people, chose the other option.
 
-The underlying Git config set by this is &lt;tt&gt;core.autocrlf&lt;/tt&gt;.
+The underlying Git config set by this is <tt>core.autocrlf</tt>.
 
 == Github Zip/Tgz Downloads ===
 
@@ -23,7 +23,7 @@ Download the latest hostkit sources as .tgz or .zip (does not need Git at all; a
 
 == Access the repository via Git ==
 
-Clone (&quot;check out&quot;) the host-kit repository:
+Clone ("check out") the host-kit repository:
 
   $ git clone git://github.com/rebolsource/r3-hostkit.git
 
@@ -44,7 +44,7 @@ Primary Git download page: http://git-scm.com/download
 
 - msysGit: http://code.google.com/p/msysgit/downloads/list?can=3
 
-Includes the graphical Git tools gitk and git-gui. At the time of this writing, the suggeste download to use was named &lt;tt&gt;Git-1.7.3.1-preview20101002.exe&lt;/tt&gt;.
+Includes the graphical Git tools gitk and git-gui. At the time of this writing, the suggeste download to use was named <tt>Git-1.7.3.1-preview20101002.exe</tt>.
 
 - TortoiseGit: http://code.google.com/p/tortoisegit/downloads/list
 
@@ -52,7 +52,7 @@ If you need (or are used to) more advanced explorer integration and GUIs a'la th
 
 == Linux ==
 
-For many reasonably modern distributions, simply install Git via your package manager. The package is probably called &lt;tt&gt;git&lt;/tt&gt; or &lt;tt&gt;git-core&lt;/tt&gt;. Make sure you get a Git &gt;= 1.6, though, as there have been many improvements in the CLI. For Debian Lenny, that means you'll have to use lenny-backports. Or build from the sources.
+For many reasonably modern distributions, simply install Git via your package manager. The package is probably called <tt>git</tt> or <tt>git-core</tt>. Make sure you get a Git >= 1.6, though, as there have been many improvements in the CLI. For Debian Lenny, that means you'll have to use lenny-backports. Or build from the sources.
 
 == OS X ==
 
@@ -60,11 +60,11 @@ Use the official installers: http://code.google.com/p/git-osx-installer/download
 
 == FreeBSD ==
 
-Either use the &lt;tt&gt;git&lt;/tt&gt; package:
+Either use the <tt>git</tt> package:
 
   pkg_add -r git
 
-Or use the &lt;tt&gt;devel/git&lt;/tt&gt; port:
+Or use the <tt>devel/git</tt> port:
 
   cd /usr/src/ports/devel/git
   make install

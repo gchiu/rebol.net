@@ -82,11 +82,11 @@ Well, there ''are going to be times'' when a user needs to read the documentatio
 
 Yes, we've tried to build it so simple things are simple. You ''can'' write:
 
-  view [text &quot;Hello World&quot;]
+  view [text "Hello World"]
 
 and that will display! Also, simple changes to that are simple:
 
-  view/options [text &quot;Hello World&quot;] [color: gold]
+  view/options [text "Hello World"] [color: gold]
 
 In my book, that's quite clean and easy. But still, there are times when you must read the docs.
 
@@ -107,7 +107,7 @@ There may also be some way to store a summary of the fields in autodoc format so
 The reasons to require them would be:
 
 #Helps make code more clear to users.
-#Gives us an &quot;escape route&quot; in the future if we want to allow other word types (perhaps for boolean options, etc.)
+#Gives us an "escape route" in the future if we want to allow other word types (perhaps for boolean options, etc.)
 
 == Should VID be relaxed about errors? ==
 
@@ -119,9 +119,9 @@ Relaxing errors in GUI descriptions comes from this premise: '''it is thought to
 
 That premise may or may not be true. Some errors are so subtle that you may not see them visually, then all of sudden when a new skin is used, there are problems. Also, if you write bad GUI code, it's not going to go far, because you'll be forced to fix it.
 
-I think the main problem we have is that ''it can be very difficult to determine what the VID error message means!'' For example, it often tells me &quot;attempt to divide by zero.&quot; That's not very useful information. In fact, many times we don't even look at the error info, because we think we cannot figure it out!
+I think the main problem we have is that ''it can be very difficult to determine what the VID error message means!'' For example, it often tells me "attempt to divide by zero." That's not very useful information. In fact, many times we don't even look at the error info, because we think we cannot figure it out!
 
-'''So, I think we have some work to do... we need to create a nice collection of VID errors and trap things like &quot;divide by zero&quot; to provide more useful error output to users.'''
+'''So, I think we have some work to do... we need to create a nice collection of VID errors and trap things like "divide by zero" to provide more useful error output to users.'''
 
 == How to refresh the background on resize? ==
 
@@ -133,7 +133,7 @@ I think the main problem we have is that ''it can be very difficult to determine
 
 To understand the long answer, you should know the reason we allow GOB's to be passed to VIEW. It is to help programmers test out small parts of code without requiring a lot of setup.
 
-This raw GOB mode is a &quot;low level dumb mode&quot;. The fact that it draws a background at all is just to help keep the test scripts smaller.  But, other than draw it, the code does nothing else. It knows nothing about how to resize anything. You must provide those extras when working at this lower level.
+This raw GOB mode is a "low level dumb mode". The fact that it draws a background at all is just to help keep the test scripts smaller.  But, other than draw it, the code does nothing else. It knows nothing about how to resize anything. You must provide those extras when working at this lower level.
 
 This is the same as with the default event handler, and I will describe that below.
 
@@ -155,7 +155,7 @@ Therefore, SIZE will be something that we can add to the VIEW /options spec bloc
 
 '''A:''' Yes. This is where I get to say: ''think about it!'' How does the default handler know ''anything'' about the events required by your application? It cannot!
 
-The default handler is provided just to let you write simple test scripts using a few GOBs and not let it blow out due to lack of event handling. '''It serves no other purpose.''' Any real script will need to provide its own handler. Search the examples for &quot;handler&quot; to see how that is done.
+The default handler is provided just to let you write simple test scripts using a few GOBs and not let it blow out due to lack of event handling. '''It serves no other purpose.''' Any real script will need to provide its own handler. Search the examples for "handler" to see how that is done.
 
 That is also why the default handler prints events. This is a low level developer mode. Most of the time, you want to see those events.
 
@@ -175,7 +175,7 @@ You can just add your own handler with HANDLE-EVENTS, give it a pri of 50, and y
 
 == New Questions ==
 
-Add new questions here. If you follow the question with 4 &quot;~&quot; chars, then your name and the date will be inserted.
+Add new questions here. If you follow the question with 4 "~" chars, then your name and the date will be inserted.
 
 ==Cookbook References==
 

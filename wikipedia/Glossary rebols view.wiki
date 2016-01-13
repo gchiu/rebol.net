@@ -1,16 +1,16 @@
-&lt;div style=&quot;background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid;&quot;&gt;
+<div style="background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid;">
 == The REBOL User Community Glossary ==
-Add your own definitions of existing topic, or add new topics.&lt;br&gt;
+Add your own definitions of existing topic, or add new topics.<br>
 The objective is to paint a picture of many colours regarding the understanding of some crucial REBOL concepts.
-&lt;/div&gt;
-{| style=&quot;background:#F5FAFF;&quot; align=&quot;right&quot;
+</div>
+{| style="background:#F5FAFF;" align="right"
 | __TOC__
 |}
-&lt;div style=&quot;background:#F5FAFF; padding:1.2em;&quot;&gt;
-&lt;!-- Add a topic, or add to a topic.  Signed if you'd like, or not, your choice --&gt;
+<div style="background:#F5FAFF; padding:1.2em;">
+<!-- Add a topic, or add to a topic.  Signed if you'd like, or not, your choice -->
 ==== words ====
 
-&lt;hr&gt;
+<hr>
 =====Bluey=====
 {{hilight|This entry is not correct, but it is left here as an example of a rebol's changing view.  Update starts [[#bluey-update-1|below]].}}
 A note about words.  REBOL uses multiple phases during interpretation of scripts.  Words are only symbols until
@@ -45,9 +45,9 @@ Furthering the above example;
 assigns the '''''value''''' '''none''' to the word '''c'''.
 
 [[User:BTiffin|Bluey]] 16:55, 25 August 2007 (EDT)
-&lt;hr&gt;
+<hr>
 =====Bluey correction 1=====
-&lt;span id=&quot;bluey-update-1&quot;&gt;&lt;/span&gt;
+<span id="bluey-update-1"></span>
 {{hilight|Updated view}}
 Ok, so I've had an incorrect view of REBOL pretty much since day 1.
 
@@ -59,13 +59,13 @@ is a ''value'' with a type of '''integer!''' and a content of '''1'''.  The sour
 
  a: 1
 
-is two values.  The first is '''a:''', and this value is of type '''set-word!''' and the content is '''a''' &lt;small&gt;or is it '''a:'''?&lt;/small&gt;.  Now this leads to the content of the set-word! '''a:''' becoming another value of type '''word!''', with a ''spelling'' of '''a'''.  This '''word!''' value, refers to some value slots; one for spelling and one for ''context''.  The context is used by REBOL to keeping track of the various word spellings, much like a dictionary.  In this '''a: 1''' case, the value with a type of '''word!''' will refer to a value of type '''integer!''' with a content of '''1'''.
+is two values.  The first is '''a:''', and this value is of type '''set-word!''' and the content is '''a''' <small>or is it '''a:'''?</small>.  Now this leads to the content of the set-word! '''a:''' becoming another value of type '''word!''', with a ''spelling'' of '''a'''.  This '''word!''' value, refers to some value slots; one for spelling and one for ''context''.  The context is used by REBOL to keeping track of the various word spellings, much like a dictionary.  In this '''a: 1''' case, the value with a type of '''word!''' will refer to a value of type '''integer!''' with a content of '''1'''.
 
 I'm leaving the previous definition in the document, but I think it can safely be ignored as wrong minded.  The concepts mentioned for '''none''' as still worthy, but needs to be defined in terms of values as described in this update.  My view may change still.  REBOL is deep and understanding comes in small steps somedays and leaps and bounds on others.
 
 {{hilight|It's all part of the reason for the '''rebols view''' page.  To correct the misconceptions}}
 [[User:BTiffin|Bluey]] 03:51, 27 August 2007 (EDT) 
-&lt;hr&gt;
+<hr>
 =====Ladislav=====
 My (Ladislav) take:
 
@@ -73,11 +73,11 @@ REBOL source text is converted (by the '''load''' function) to a REBOL block con
 
  1
 
-is converted by '''load''' to a block containing one ''value'' with a type of '''integer!''' and a numeric value of &lt;tt&gt;1&lt;/tt&gt;. The source text that looks like
+is converted by '''load''' to a block containing one ''value'' with a type of '''integer!''' and a numeric value of <tt>1</tt>. The source text that looks like
 
  a: 1
 
-is converted to a block containing two values. The first one is &lt;tt&gt;a:&lt;/tt&gt;; this value is of the '''set-word!''' type and its other contents are its spelling &lt;tt&gt;&quot;a&quot;&lt;/tt&gt; and its binding to the global context. After the block is interpreted by the '''do''' function, the word '''''a''''' is caused to refer to the integer value &lt;tt&gt;1&lt;/tt&gt;, which actually means, that the &quot;global context slot&quot; corresponding to the word '''''a''''' is caused to refer to the integer.
+is converted to a block containing two values. The first one is <tt>a:</tt>; this value is of the '''set-word!''' type and its other contents are its spelling <tt>"a"</tt> and its binding to the global context. After the block is interpreted by the '''do''' function, the word '''''a''''' is caused to refer to the integer value <tt>1</tt>, which actually means, that the "global context slot" corresponding to the word '''''a''''' is caused to refer to the integer.
 
-&lt;!-- Ending div for all the entries --&gt;
-&lt;/div&gt;
+<!-- Ending div for all the entries -->
+</div>

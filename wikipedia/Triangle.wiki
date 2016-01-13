@@ -1,78 +1,78 @@
 == TRIANGLE== 
-&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=60% VALIGN=TOP&gt;
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+<TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=60% VALIGN=TOP>
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | vertex1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | vertex1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | vertex2
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | vertex2
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | vertex3
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | vertex3
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | color1
-| bgcolor=&quot;white&quot; | [tuple!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | color1
+| bgcolor="white" | [tuple!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | color2
-| bgcolor=&quot;white&quot; | [tuple!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | color2
+| bgcolor="white" | [tuple!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | color3
-| bgcolor=&quot;white&quot; | [tuple!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | color3
+| bgcolor="white" | [tuple!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | dilation
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | Useful for eliminating anitaliased edges
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | dilation
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | Useful for eliminating anitaliased edges
+| bgcolor="white" | 
 |}
-&lt;/TD&gt;&lt;TD WIDTH=40% VALIGN=TOP&gt;
+</TD><TD WIDTH=40% VALIGN=TOP>
 The TRIANGLE command provides a shortcut for a triangular polygon with optional shading parameters (Gouraud shading). The three vertices of the triangle are used to specify it.
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
-&lt;br&gt;'''Notes and Examples'''
-&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=50% VALIGN=TOP&gt;
-&lt;p&gt;Simple triangle:&lt;/p&gt;
-&lt;pre&gt;
+</TD></TR></TABLE>
+<br>'''Notes and Examples'''
+<TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=50% VALIGN=TOP>
+<p>Simple triangle:</p>
+<pre>
    fill-pen red
    triangle 50x1
-&lt;/pre&gt;
-&lt;/TD&gt;&lt;TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER&gt;
+</pre>
+</TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
 [[image:TRIANGLE-1.png|150px]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 ----
 A group of triangles. This should make it easy to see where each triangle is:
-&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=50% VALIGN=TOP&gt;
-&lt;pre&gt;
+<TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=50% VALIGN=TOP>
+<pre>
    pen off
    triangle 50x150 150x50 150x150 red green blue
    triangle 150x50 250x150 150x150 green yellow blue
    triangle 250x150 150x350 150x150 yellow orange blue
    triangle 150x350 50x150 150x150 orange red blue
    translate 200x-15
-&lt;/pre&gt;
-&lt;/TD&gt;&lt;TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER&gt;
+</pre>
+</TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
 [[image:TRIANGLE-2b.png]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 ----
 
 The same triangle group but slightly rotated illustrating the dilation parameter:
-&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=50% VALIGN=TOP&gt;
-&lt;pre&gt;
+<TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=50% VALIGN=TOP>
+<pre>
    pen off
    rotate 5
    triangle 50x150 150x50 150x150 red green blue
@@ -84,44 +84,44 @@ The same triangle group but slightly rotated illustrating the dilation parameter
    triangle 150x50 250x150 150x150 green yellow blue 0.33
    triangle 250x150 150x350 150x150 yellow orange blue 0.33
    triangle 150x350 50x150 150x150 orange red blue 0.33
-&lt;/pre&gt;
-&lt;/TD&gt;&lt;TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER&gt;
+</pre>
+</TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
 [[image:TRIANGLE-3b.png|TRIANGLE example 3]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 ----
 This gives you a much more subtle blending in the middle:
-&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=50% VALIGN=TOP&gt;
-&lt;pre&gt;
+<TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=50% VALIGN=TOP>
+<pre>
    pen off
    triangle 50x150  150x50  150x150 red    green  gray
    triangle 150x50  250x150 150x150 green  yellow gray
    triangle 250x150 150x350 150x150 yellow orange gray
    triangle 150x350 50x150  150x150 orange red    gray
-&lt;/pre&gt;
-&lt;/TD&gt;&lt;TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER&gt;
+</pre>
+</TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
 [[image:TRIANGLE-4b.png|TRIANGLE example 4]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 ----
 
 And this shows simple highlighting/shading:
-&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=50% VALIGN=TOP&gt;
-&lt;pre&gt;
+<TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=50% VALIGN=TOP>
+<pre>
    pen off
    triangle 50x150  150x50  150x150 water sky   sky
    triangle 150x50  250x150 150x150 water coal  sky
    triangle 250x150 150x350 150x150 coal  coal  sky
    triangle 150x350 50x150  150x150 coal  water sky
-&lt;/pre&gt;
-&lt;/TD&gt;&lt;TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER&gt;
+</pre>
+</TD><TD WIDTH=50% VALIGN=MIDDLE ALIGN=CENTER>
 [[image:TRIANGLE-5b.png|TRIANGLE example 5]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Draw]]
 *[[Anti-Alias]]
 *[[Arc]]
@@ -131,14 +131,14 @@ Pages
 *[[Clip]]
 *[[Curve]]
 *[[Ellipse]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Fill-Pen]]
 *[[Fill-Rule]]
 *[[Gamma]]
@@ -149,13 +149,13 @@ Pages
 *[[Line]]
 *[[Line-Cap]]
 
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Line-Join]]
 *[[Line-Pattern]]
 *[[Line-Width]]
@@ -165,14 +165,14 @@ Pages
 *[[Push]]
 *[[Reset-Matrix]]
 *[[Rotate]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Scale]]
 *[[Shape]]
 *[[Skew]]
@@ -181,20 +181,20 @@ Pages
 *[[Transform]]
 *[[Translate]]
 *[[Triangle]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP width=25%&gt;
+<TD ALIGN=LEFT VALIGN=TOP width=25%>
 Chapters
-&lt;font size=1&gt;
+<font size=1>
 *[[R3 Introduction]]
 *[[Getting Started With R3]]
 *[[The Graphical User Interface]]
 *[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
 *'''Script Writing With Draw'''
-*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+*[[The Graphic Object]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP &gt;
-&lt;font size=1&gt;
+<TD ALIGN=LEFT VALIGN=TOP >
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</font></TD>
+</TR></TABLE>

@@ -1,6 +1,6 @@
 ''This is an old page that will be replaced.''
 
-*[[Features &amp; Objectives]]
+*[[Features & Objectives]]
 *[[Getting Started With R3]]
-*[[News &amp; Changes]]
+*[[News & Changes]]
 *[[R3 Development Discussions]]

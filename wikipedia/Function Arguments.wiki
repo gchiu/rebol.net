@@ -5,7 +5,7 @@ This page specifies how function arguments are defined.
 
 When defining a function, its ''formal arguments'' are specified by a block of the form:
 
- [arg [datatypes] &quot;comment&quot; ...]
+ [arg [datatypes] "comment" ...]
 
 The ''arg'' is a word that provides the name of the argument. It can be one of several word possibilities, as listed below.
 
@@ -48,7 +48,7 @@ Or, you can explicitly specify that unset! is allowed as a value:
 
 To help show how it works, here are examples of arg as a 'word. These are all true expressions.
 
-&lt;pre&gt;
+<pre>
 ; Arg as 'word:
 f: func ['arg] [:arg]
 1 = f 1
@@ -60,11 +60,11 @@ n: 3  3 = f :n
 ; Allows unset value:
 f: func ['arg [integer! unset!]] [:arg]
 do [unset? f]
-&lt;/pre&gt;
+</pre>
 
 And, here are examples of arg as a :word. These are all true expressions.
 
-&lt;pre&gt;
+<pre>
 ; Arg as :word:
 f: func [:arg] [:arg]
 1 = f 1
@@ -76,7 +76,7 @@ get-word? f :n
 ; Allows unset value:
 f: func [:arg [integer! unset!]] [:arg]
 do [unset? f]
-&lt;/pre&gt;
+</pre>
 
 ==Pending==
 

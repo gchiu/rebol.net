@@ -6,8 +6,8 @@ Although it's just a starting point (more is needed), it can provide useful info
 
 Statistics information is returned from the STATS function.
 
-&lt;pre&gt;
-&gt;&gt; ? stats
+<pre>
+>> ? stats
 USAGE:
         STATS /show /profile /timer /evals
 
@@ -20,16 +20,16 @@ REFINEMENTS:
         /profile -- Returns profiler object
         /timer -- Returns high resolution timer (nanoseconds)
         /evals -- Returns number of values evaluated
-&lt;/pre&gt;
+</pre>
 
-&lt;b&gt;NOTE: The timer only works on hardware that provides a high performance timer.&lt;/b&gt;
+<b>NOTE: The timer only works on hardware that provides a high performance timer.</b>
 
 ==Profile Examples==
 
 Here is an example that shows profile information as of the first prompt after boot:
 
-&lt;pre&gt;
-&gt;&gt; stats/profile
+<pre>
+>> stats/profile
 == make object! [
     timer: 1558343515056	; timer in nanoseconds (since OS boot)
     evals: 16513		; number of values evaluated
@@ -44,66 +44,66 @@ Here is an example that shows profile information as of the first prompt after b
     made-objects: 69		; objects created
     recycles: 1                 ; garbage collections
 ]
-&lt;/pre&gt;
+</pre>
 
 So, this is what the boot required. Note that the time is not the startup time, it is your computer's high-performance timer value.
 
 Now, call the HELP function and then check STATS again:
 
-&lt;pre&gt;
-&gt;&gt; help
+<pre>
+>> help
 To use HELP, supply a word or value as
 
         help insert
 
 ...
 
-&gt;&gt; stats/profile
+>> stats/profile
 == make object! [
     timer: 1558351665864
     evals: 16524
-    eval-natives: 1839  &lt;-- 7 natives evaluated
-    eval-functions: 285 &lt;-- help function itself
+    eval-natives: 1839  <-- 7 natives evaluated
+    eval-functions: 285 <-- help function itself
     series-made: 5629
     series-freed: 1427
     series-expanded: 30
     series-bytes: 819566
     series-recycled: 1396  
-    made-blocks: 3796   &lt;-- 3 blocks used
+    made-blocks: 3796   <-- 3 blocks used
     made-objects: 69
     recycles: 1
 ]
-&lt;/pre&gt;
+</pre>
 
 Here, let's try listing the directory:
 
-&lt;pre&gt;
-&gt;&gt; ls
+<pre>
+>> ls
 1000cows.r ... (about 55 files)
 
-&gt;&gt; stats/profile
+>> stats/profile
 == make object! [
     timer: 1558361784940
     evals: 18248
-    eval-natives: 2584  &lt;-- 745 natives evaluated
-    eval-functions: 290 &lt;-- 5 functions evaluated
+    eval-natives: 2584  <-- 745 natives evaluated
+    eval-functions: 290 <-- 5 functions evaluated
     series-made: 5758
     series-freed: 1433
     series-expanded: 36
     series-bytes: 823812
     series-recycled: 1396
-    made-blocks: 3818   &lt;-- 22 blocks used
-    made-objects: 70    &lt;-- 1 object used
+    made-blocks: 3818   <-- 22 blocks used
+    made-objects: 70    <-- 1 object used
     recycles: 1
 ]
-&lt;/pre&gt;
+</pre>
 
 ==DP - Delta Profile Mezzanine==
 
 Similar to DT for time, there is a DP function for showing differences in the profile when evaluating a specific block:
 
-&lt;pre&gt;
-&gt;&gt; dp [loop 10 [a: 10]]
+<pre>
+>> dp [loop 10 [a: 10]]
 == make object! [
     timer: 11
     evals: 31
@@ -118,12 +118,12 @@ Similar to DT for time, there is a DP function for showing differences in the pr
     made-objects: 0
     recycles: 0
 ]
-&lt;/pre&gt;
+</pre>
 
 Let's check the tiger.r SVG for a few hundred frames:
 
-&lt;pre&gt;
-&gt;&gt; dp [do %tiger.r]
+<pre>
+>> dp [do %tiger.r]
 == make object! [
     timer: 4989979
     evals: 7085
@@ -138,19 +138,19 @@ Let's check the tiger.r SVG for a few hundred frames:
     made-objects: 3
     recycles: 0
 ]
-&lt;/pre&gt;
+</pre>
 
 Useful info! It shows that REBOL's graphics system is quite efficient.
 
 ==Useful Observations==
 
-The &lt;b&gt;series-expanded&lt;/b&gt; field is a useful measurement of how well a programmer did in determining the sizes required for series.
+The <b>series-expanded</b> field is a useful measurement of how well a programmer did in determining the sizes required for series.
 
 Note the difference between these two examples:
 
-&lt;pre&gt;
-&gt;&gt; str: &quot;&quot;
-&gt;&gt; dp [loop 10000 [append str &quot;a&quot;]]
+<pre>
+>> str: ""
+>> dp [loop 10000 [append str "a"]]
 == make object! [
     timer: 4516
     evals: 30011
@@ -165,11 +165,11 @@ Note the difference between these two examples:
     made-objects: 0
     recycles: 0
 ]
-&lt;/pre&gt;
+</pre>
 
-&lt;pre&gt;
-&gt;&gt; str: make string! 15000
-&gt;&gt; dp [loop 10000 [append str &quot;a&quot;]]
+<pre>
+>> str: make string! 15000
+>> dp [loop 10000 [append str "a"]]
 == make object! [
     timer: 4351
     evals: 30011
@@ -183,6 +183,6 @@ Note the difference between these two examples:
     made-blocks: 1
     made-objects: 0
     recycles: 0
-&lt;/pre&gt;
+</pre>
 
 Notice that the second method did not require any series expansions.

@@ -42,9 +42,9 @@ Explanation:
 **'''any''' - loops zero or more times on matching what follows
 **'''space''' - matches against space character
 
-In R3 space is defined as #&quot; &quot; (space char). You can modify this code to match on spaces and tabs with:
+In R3 space is defined as #" " (space char). You can modify this code to match on spaces and tabs with:
 
- wspace: charset &quot; ^-&quot;  ; space and tab char
+ wspace: charset " ^-"  ; space and tab char
  parse text [some [thru wspace remove any wspace]]
 
 However, for most text files, it's better to first convert tabs to spaces with '''detab'''.
@@ -58,7 +58,7 @@ Makes a sequence of adjacent lines into a single long line:
  parse doc [
      some [
          not lf thru lf
-         some [s: not lf (change back s #&quot; &quot;) thru lf]
+         some [s: not lf (change back s #" ") thru lf]
      |
          thru lf
      ]
@@ -122,7 +122,7 @@ Also, if you put this in a function, make '''s''' a local variable.
     open-tag: none
     close-tag: none
     rules: [
-        copy open-tag tag! (close-tag: to-tag append &quot;/&quot; to-string body-open-tag)
+        copy open-tag tag! (close-tag: to-tag append "/" to-string body-open-tag)
         thru close-tag
     ]
 

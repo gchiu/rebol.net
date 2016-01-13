@@ -4,7 +4,7 @@
 
 ==Purpose==
 
-In R3, graphical objects (gobs) are easy to create and display; however, most programs need to create a complex arrangement of such objects and fully specifying such &quot;layouts&quot; can get pretty complicated at times.
+In R3, graphical objects (gobs) are easy to create and display; however, most programs need to create a complex arrangement of such objects and fully specifying such "layouts" can get pretty complicated at times.
 
 The MAKE-GOBS function was designed to help ease that burden. It provides an quick way to specify any number of gobs, as well as the graphical relationships between those gobs.
 
@@ -42,7 +42,7 @@ Examples of types:
 
     draw [fill-pen ... circle ...]
     image my-image
-    text &quot;Something&quot;
+    text "Something"
 
 ==Gob constraints==
 
@@ -97,7 +97,7 @@ will position the left offset of the next gob two pixels (to the right). A negat
 
     left - 4
 
-In addition, you can specify that a gob &quot;follows&quot; the previous one. For example, it is to the right of the prior gob:
+In addition, you can specify that a gob "follows" the previous one. For example, it is to the right of the prior gob:
 
     left follow 2
 
@@ -156,7 +156,7 @@ In this spec:
        left 10
        image photo1
        left + 2
-       text &quot;Description&quot;
+       text "Description"
        before 1
        left + 2
        image photo2
@@ -187,9 +187,9 @@ For example:
 
 To create an icon consisting of an image with a text name under it:
 
-&lt;pre&gt;
+<pre>
     icon: make image! 32x32
-    icon-text: &quot;Icon name&quot;
+    icon-text: "Icon name"
 
     icon: make-gobs [
         ; first gob:
@@ -202,7 +202,7 @@ To create an icon consisting of an image with a text name under it:
         top 36
         text [anti-alias on center icon-text]
     ]
-&lt;/pre&gt;
+</pre>
 
 Let's look at each gob separately.
 
@@ -239,7 +239,7 @@ Both width and height are recomputed during resize, so if the width changes, the
 
 The next example creates an icon with some effects to highlight the selection:
 
-&lt;pre&gt;
+<pre>
     selected-icon: make-gobs [
         center 0
         top 4
@@ -264,7 +264,7 @@ The next example creates an icon with some effects to highlight the selection:
         before 1
         draw [pen blue fill-pen 0.0.255.200 box 0x0 bottom-right/0x0 5]
     ]
-&lt;/pre&gt;
+</pre>
 
 Note in the first gob, note the parens. These values are computed only once (when the spec is first processed by DELECT). Those results will remain static for subsequent resize calls. Above, we use parens to set the WIDTH and HEIGHT.
 

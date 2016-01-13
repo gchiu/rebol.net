@@ -1,6 +1,6 @@
 === Components ===
 
-Rebol version 3.0 transitioned to open source for its library code, a.k.a. the &quot;Mezzanine&quot;.
+Rebol version 3.0 transitioned to open source for its library code, a.k.a. the "Mezzanine".
 
 (link?)
 

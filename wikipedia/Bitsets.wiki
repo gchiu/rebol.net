@@ -41,13 +41,13 @@ For example, in R2 if you created a bitset:
 
 a 160 bit set would be created. However, if you wrote:
 
-   space: make bitset! &quot; ^-^/&quot;
+   space: make bitset! " ^-^/"
 
 a 256 bitset would be created (because it assumed you wanted an 8-bit character-based bitset).
 
 '''In R3, this is no longer true. A bitset is only as long as needed to hold its maximum bit value.''' The line:
 
-   space: make bitset! &quot; ^-^/&quot;
+   space: make bitset! " ^-^/"
 
 creates a 40 bit set that looks like this:
 
@@ -57,13 +57,13 @@ The bitset is only as long as it needs to be.
 
 If you check for a bit outside its range, such a request is valid:
 
-   if find space &quot;a&quot; [print &quot;found&quot;]
+   if find space "a" [print "found"]
 
 In R2, this line would have caused an error, but it is fine in R3. All virtual bits are zero.
 
 In addition, a bitset will auto-extend as needed. For example:
 
-   append space &quot;.:;&quot;
+   append space ".:;"
 
 will expand the space bitset to be:
 
@@ -103,26 +103,26 @@ Notes:
 
 Most of the series access functions above allow the bits in a bitset to be specified with:
 
-*CHAR! - such as #&quot; &quot;
+*CHAR! - such as #" "
 *INTEGER! - such as 123
-*STRING! - such as &quot;abc&quot;
+*STRING! - such as "abc"
 *BINARY! - only for MAKE and TO
 *BLOCK! - for combinations
 
 A block allows multiple bits to be specified using integers, chars, and strings. For example:
 
-   bits: make bitset! [#&quot;-&quot; #&quot;a&quot; - #&quot;z&quot; &quot;!@#$&quot; 201 - 220]
+   bits: make bitset! [#"-" #"a" - #"z" "!@#$" 201 - 220]
 
 Note that characters and integers can specify inclusive ranges.
 
 Other examples:
 
-   append bits &quot;ABC&quot;
-   append bits [#&quot;A&quot; - #&quot;Z&quot;]
-   find bits &quot;abc&quot;
-   find bits [#&quot;C&quot; - #&quot;X&quot;]
-   remove/part bits &quot;abc&quot;
-   remove/part bits [#&quot;a&quot; - #&quot;z&quot;]
+   append bits "ABC"
+   append bits [#"A" - #"Z"]
+   find bits "abc"
+   find bits [#"C" - #"X"]
+   remove/part bits "abc"
+   remove/part bits [#"a" - #"z"]
 
 ==Bitset Binary Order==
 
@@ -130,12 +130,12 @@ The binary representation for bitsets has changed. It is now left-to-right bit c
 
 For example, in R3:
 
-  &gt;&gt; make bitset! &quot;abcd&quot;
+  >> make bitset! "abcd"
   == make bitset! #{00000000000000000000000078}
 
 but, in R2:
 
-  &gt;&gt; make bitset! &quot;abcd&quot;
+  >> make bitset! "abcd"
   == make bitset! #{
   0000000000000000000000001E00000000000000000000000000000000000000
   }
@@ -174,7 +174,7 @@ So, to distinguish if we must use a bitset in replacement of a block, we can do 
 V = value of the biggest integer.
 N = Number of integers.
 
-If the equation V/8 &lt; N*16 is true, we should use a bitset instead of a block of integers!.
+If the equation V/8 < N*16 is true, we should use a bitset instead of a block of integers!.
 
 All native operations like insert, find, remove, are much faster when acting on bitsets (instead of blocks).
 

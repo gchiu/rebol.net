@@ -6,7 +6,7 @@ Feel free to add yourself into these lists if you are a company or a developer w
 Please note this is not a full list as it is maintained under a volunteer basis. 
 
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Company and homepage
 ! Project
 |-
@@ -28,7 +28,7 @@ Please note this is not a full list as it is maintained under a volunteer basis.
 |[http://www.easybraine.be EasyBraine SA]
 |Custom ERP solutions written in REBOL
 |-
-|[http://www.saphirion.com Saphirion Ltd. &amp; Co. KG]
+|[http://www.saphirion.com Saphirion Ltd. & Co. KG]
 |Producer of myValueDriver, Cost Analisys tool for goods and product to achive knowledge and conduct negotiations.
 |-
 |[http://www.refaktor.si Refaktor Ltd.]
@@ -41,7 +41,7 @@ Please note this is not a full list as it is maintained under a volunteer basis.
 |Professional services, IT developments and management softwares in REBOL (French Company)
 |}
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Developer
 ! Projects an Skills
 ! Contact

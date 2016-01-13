@@ -7,14 +7,14 @@ REBOL has many resources on the net and in different languages. Start here to fi
 
 AltMe is a decentralized messaging and collaboration program completely written in REBOL.
 Go to http://www.altme.com and download the client.
-Ask for an account to be created for you by posting to the REBOL Mailing list (see below) and then connect to the REBOL3 AltMe world to meet Rebolers. Once you are logged into this world, you can ask for additional accounts to be created for others by posting a request in the '''Accounts''' group.&lt;br&gt;
+Ask for an account to be created for you by posting to the REBOL Mailing list (see below) and then connect to the REBOL3 AltMe world to meet Rebolers. Once you are logged into this world, you can ask for additional accounts to be created for others by posting a request in the '''Accounts''' group.<br>
 A weblog of the public discussions in the REBOL3 (discussions include REBOL 2) world can be found at http://www.rebol.net/altweb/rebol3/
 
 ==REBOL 2 Forums and Mailing Lists==
 
 
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Address
 ! Type
 ! Language
@@ -46,7 +46,7 @@ To subscribe to the mailing list, send and e-mail to ''rebol-request@rebol.com''
 ===REBOL 2 Blogs===
 
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Name
 ! Description
 |+
@@ -59,12 +59,12 @@ To subscribe to the mailing list, send and e-mail to ''rebol-request@rebol.com''
 ==Various REBOL Sites==
 
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Site
 ! Description
 |-
 |[http://www.codeconscious.com/rebol Codeconscious]
-|Quote from the site: &quot;The purpose of this site is to share information, programming tips, techniques and scripts I've found useful&quot;&lt;BR&gt;
+|Quote from the site: "The purpose of this site is to share information, programming tips, techniques and scripts I've found useful"<BR>
 Many interesting articles and tutorials can be found here
 |-
 |[http://www.rebdocproj.net/ Rebol Doc. Project]

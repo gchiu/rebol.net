@@ -1,6 +1,6 @@
 Here is a list of useful REBOL articles.
 
-{| class=&quot;wikitable&quot; width=&quot;100%&quot;
+{| class="wikitable" width="100%"
 ! Article
 ! Category
 ! Author
@@ -111,7 +111,7 @@ Here is a list of useful REBOL articles.
 |Carl Sassenrath
 |You can write your programs to be as clear as possible.
 |-
-|[http://www.rebol.net/blogs/0104.html Context-dependent vs. &lt;br&gt; Context-independent Computer Languages]
+|[http://www.rebol.net/blogs/0104.html Context-dependent vs. <br> Context-independent Computer Languages]
 |Language
 |Carl Sassenrath
 |Description to be written
@@ -170,7 +170,7 @@ Here is a list of useful REBOL articles.
 '''Advanced topics'''
 
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Article
 ! Category
 ! Author

@@ -12,7 +12,7 @@ First off, I want to say that we've created many websites over the years, and we
 
 Part of the problem is that REBOL.com is a major website. It may not seem like that on the surface, but it contains more than 10000 files, not even including thousands more on REBOL.net.
 
-I think it is important to note that '''a good website involves more than just nice looking graphics and layout'''. Although the look of a website helps make it more professional, for major websites the content management is the majority of the work. In other words, people visit the site for the content. The look provides only the &quot;feeling&quot; one might get about the site.
+I think it is important to note that '''a good website involves more than just nice looking graphics and layout'''. Although the look of a website helps make it more professional, for major websites the content management is the majority of the work. In other words, people visit the site for the content. The look provides only the "feeling" one might get about the site.
 
 The job of organizing, structuring, and writing the content is not something that can be delegated to a website design agency. It's our burden... because we know the content, and more importantly we know the typical visitor to the site.
 
@@ -55,9 +55,9 @@ That means it's better to provide a minimal home page that's well organized. It 
 With this in mind, the home page can be divided like this:
 
 *'''Main message''' - projects the main marketing persona of REBOL: We rebel against software complexity. That's our statement. A good graphic along with it will help make it stand out.
-*'''New to REBOL''' - gives visitors a way to find out what REBOL is and why they want it. ''However, this is dependent on the visitor's subclass,'' so there are multiple links here: for &quot;students &amp; hobbyists&quot;, for &quot;Programmers&quot;, for &quot;Engineers&quot; etc. Each link takes the visitor to a page specific to their background.
-*'''What's new''' - has two purposes: first, it shows that something is happening, there is momentum. Second, it's a &quot;news feed&quot; for people who have an interest and are following REBOL more closely. This feed must change every day, or at least a couple times a week.
-*'''Promoted content''' - these are pitches and links for capturing interest. For example a &quot;Download 3.0&quot; button, &quot;Buy the Book&quot;, &quot;AMD adopts REBOL&quot;, &quot;New SDK released&quot;, &quot;REBOL in your Phone!&quot; etc. These links are more permanent than the news feed.
+*'''New to REBOL''' - gives visitors a way to find out what REBOL is and why they want it. ''However, this is dependent on the visitor's subclass,'' so there are multiple links here: for "students & hobbyists", for "Programmers", for "Engineers" etc. Each link takes the visitor to a page specific to their background.
+*'''What's new''' - has two purposes: first, it shows that something is happening, there is momentum. Second, it's a "news feed" for people who have an interest and are following REBOL more closely. This feed must change every day, or at least a couple times a week.
+*'''Promoted content''' - these are pitches and links for capturing interest. For example a "Download 3.0" button, "Buy the Book", "AMD adopts REBOL", "New SDK released", "REBOL in your Phone!" etc. These links are more permanent than the news feed.
 
 ===Head bar===
 
@@ -67,7 +67,7 @@ At the top of the page, the head bar contains the standard elements:
 *Main menu bar
 *Search box
 
-An optional &quot;slogon&quot; can also be part of the head bar, either within its graphical background or as text on top of it.
+An optional "slogon" can also be part of the head bar, either within its graphical background or as text on top of it.
 
 ===Menu bar===
 
@@ -81,7 +81,7 @@ The menu bar will include buttons for:
 *Community
 *Support
 
-Links like &quot;Contact&quot; can be placed in the tail-bar, not in the main menu.
+Links like "Contact" can be placed in the tail-bar, not in the main menu.
 
 These menu links may be revised as needed.
 
@@ -148,9 +148,9 @@ As for top menu, I would probably add Services. This item is rather typical, and
 
 Please look at our company's [http://www.walmark.cz website]. We used principle of visitor segmentation - 4 pillars. Such info is normally available also elsewhere, but you simply just choose what to put directly in front of user's eyes. Now you have basically two options, how to segment it:
 
-# Target visitors - that is what probably fits REBOL best. You basically try to imagine user asking the question - &quot;Who I am?&quot; ... and you can relate - new user, student, programmer, scientist, IT manager
+# Target visitors - that is what probably fits REBOL best. You basically try to imagine user asking the question - "Who I am?" ... and you can relate - new user, student, programmer, scientist, IT manager
 
-# Target aims - our company choosed this one. You basically try to imagine user asking the question - &quot;What I am getting here?&quot; It felt more natural to us - so we choosed - Products, Health Club, Walmark Quality, Carreer
+# Target aims - our company choosed this one. You basically try to imagine user asking the question - "What I am getting here?" It felt more natural to us - so we choosed - Products, Health Club, Walmark Quality, Carreer
 
 * '''Subpage'''
 
@@ -172,7 +172,7 @@ Note: fixed link Carl reacts to below ...
 
 ;Top Menu: the menu text will be HTML (not image), so changes are easy. Services would be part of Products, and also include a link from Support. The menus are currently JS, but not popups.
 
-;Home Page (critical): Pekr, the link you posted (www.rebol.cz) is redirected to REBOL Week! That's not what you wanted, is it?  Anyway, the plan segs are for target visitors and will be in a &quot;New to REBOL?&quot; column.
+;Home Page (critical): Pekr, the link you posted (www.rebol.cz) is redirected to REBOL Week! That's not what you wanted, is it?  Anyway, the plan segs are for target visitors and will be in a "New to REBOL?" column.
 
 ;Subpages: The home will be three col, but I've not decided on typical subpage cols. Three seems like too many for most sites. The main content col is all that people really want. Context col might be ok, but anything else is noise -- unless we decide to show ads.
 

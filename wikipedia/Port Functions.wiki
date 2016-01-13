@@ -62,7 +62,7 @@ This tells READ to decode the file into a string. Note that the WRITE does not r
 
 The READ function is currently defined as:
 
-&lt;pre&gt;
+<pre>
 USAGE:
         READ source /binary /string /as encoding /lines /part size /skip length
 
@@ -83,7 +83,7 @@ REFINEMENTS:
                 size (number!)
         /skip -- Skip a number of bytes (not chars)
                 length -- Byte offset, negative end offset, or 'end (number!)
-&lt;/pre&gt;
+</pre>
 
 As stated above, the /binary refinement is the default.
 

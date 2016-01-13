@@ -1,16 +1,16 @@
-{{Caution|Alpha Testers '''PLEASE NOTE:''' This document is ''out of date and inaccurate''.&lt;br&gt;We are working on new and totally revised documentation.}}
-&amp;nbsp;
+{{Caution|Alpha Testers '''PLEASE NOTE:''' This document is ''out of date and inaccurate''.<br>We are working on new and totally revised documentation.}}
+&nbsp;
 {{banner}}
-{| id=&quot;VIDGuide&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;width:100%; margin-top: 1em; border:2px #A3B1BF solid;&quot;
+{| id="VIDGuide" cellspacing="0" cellpadding="0" style="width:100%; margin-top: 1em; border:2px #A3B1BF solid;"
 |-
-| colspan=&quot;2&quot; style=&quot;background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid;&quot; |
-&lt;h2 style=&quot;margin-top:.1em; border-bottom:0; font-weight:bold;&quot;&gt;
+| colspan="2" style="background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid;" |
+<h2 style="margin-top:.1em; border-bottom:0; font-weight:bold;">
 REBOL Visual Interface Dialect User Guide
-&lt;/h2&gt; &lt;!-- 3 line spacing of h2 is important for subsection edit links to work correctly, PLEASE DO NOT FIX --&gt;
+</h2> <!-- 3 line spacing of h2 is important for subsection edit links to work correctly, PLEASE DO NOT FIX -->
 Copyright 2007 REBOL Technologies
 |-
-| style=&quot;width:60%; background:#F5FAFF; padding:1.2em;&quot; valign=&quot;top&quot; |
-&lt;!-- LEFT COLUMN --&gt;
+| style="width:60%; background:#F5FAFF; padding:1.2em;" valign="top" |
+<!-- LEFT COLUMN -->
 
 ==Welcome==
 
@@ -31,15 +31,15 @@ Point your web browser to rebol.com and from there follow the Download link, cli
 
 Starting small; from the REBOL console, try typing
 
- view [text &quot;Hello World&quot;]
+ view [text "Hello World"]
 
 and you will have a graphical window of REBOL VID announcing itself to the world.
 
-You'll have to close the window using the system menu that comes with your windowing system, usually an &amp;times; in the very top left or top right corner.  So let's fix that, and add our own close button.
+You'll have to close the window using the system menu that comes with your windowing system, usually an &times; in the very top left or top right corner.  So let's fix that, and add our own close button.
 
  view [
-     text &quot;Hello World&quot;
-     button &quot;Goodbye&quot; [unview none]
+     text "Hello World"
+     button "Goodbye" [unview none]
  ]
 
 Press the goodbye button and the window will go away.
@@ -73,7 +73,7 @@ And yet, it still needs a close button.
 
  view [
      progress slider attach
-     button &quot;Goodbye&quot; [unview none]
+     button "Goodbye" [unview none]
  ]
 
 The Goodbye button is fairly easy code to type, somewhat easy to remember, but there may be a better way. VID allows for certain customizations that enable consistent look and feel within and across applications.
@@ -93,7 +93,7 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
          [
              on-init: override :on-init [
                  super face spec
-                 spec/text: copy &quot;Goodbye&quot;
+                 spec/text: copy "Goodbye"
                  spec/action: [unview none]
              ]
          ]
@@ -101,18 +101,18 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
      ]
  ]
 
-| style=&quot;width:40%; background:#F8FFF8; border-left:1px solid #A3B1BF; padding:1.2em;&quot; valign=&quot;top&quot; |
-&lt;!-- RIGHT COLUMN --&gt;
+| style="width:40%; background:#F8FFF8; border-left:1px solid #A3B1BF; padding:1.2em;" valign="top" |
+<!-- RIGHT COLUMN -->
 
 ==Style Quick Reference==
 
 {{Alphabetic index}}
 
-{| class=&quot;wikitable&quot; width=100%
+{| class="wikitable" width=100%
 |-
 !Style !! elements
 |-
-&lt;span id=&quot;A&quot;&gt;&lt;/span&gt;
+<span id="A"></span>
 !area
 |
 * action: ''block!''
@@ -121,7 +121,7 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 * text: ''string!''
 * text-mask: ''string!''
 |-
-&lt;span id=&quot;B&quot;&gt;&lt;/span&gt;
+<span id="B"></span>
 !blank
 |
 * color: ''tuple!''
@@ -134,21 +134,21 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 |-
 !btn
 |
-&amp;nbsp; Based on '''button'''
+&nbsp; Based on '''button'''
 |-
 !button
 |
 * text: ''string!''
 * action: ''block!''
 |-
-&lt;span id=&quot;C&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;D&quot;&gt;&lt;/span&gt;
+<span id="C"></span>
+<span id="D"></span>
 !draw
 |
-&amp;nbsp; Based on '''blank'''
+&nbsp; Based on '''blank'''
 |-
-&lt;span id=&quot;E&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;F&quot;&gt;&lt;/span&gt;
+<span id="E"></span>
+<span id="F"></span>
 !field
 |
 * text: ''string!''
@@ -157,9 +157,9 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 |-
 !filler
 |
-&amp;nbsp; Based on '''blank'''
+&nbsp; Based on '''blank'''
 |-
-&lt;span id=&quot;G&quot;&gt;&lt;/span&gt;
+<span id="G"></span>
 !group
 |
 * columns: ''integer!''
@@ -169,16 +169,16 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 * background-draw: ''block!''
 * padding: ''pair!''
 |-
-&lt;span id=&quot;H&quot;&gt;&lt;/span&gt;
+<span id="H"></span>
 !h1
 |
-&amp;nbsp; Based on '''text'''
+&nbsp; Based on '''text'''
 |-
 !h2
 |
-&amp;nbsp; Based on '''text'''
+&nbsp; Based on '''text'''
 |-
-&lt;span id=&quot;I&quot;&gt;&lt;/span&gt;
+<span id="I"></span>
 !icon-list
 |
 * size: ''pair!''
@@ -190,36 +190,36 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 |-
 !image
 |
-&amp;nbsp; Based on '''blank'''
+&nbsp; Based on '''blank'''
 |-
-&lt;span id=&quot;J&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;K&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;L&quot;&gt;&lt;/span&gt;
+<span id="J"></span>
+<span id="K"></span>
+<span id="L"></span>
 !label
 |
-&amp;nbsp; Based on '''text'''
+&nbsp; Based on '''text'''
 |-
 !led
 |
 * state: ''logic!''
 * color: ''tuple!''
 |-
-&lt;span id=&quot;M&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;N&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;O&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;P&quot;&gt;&lt;/span&gt;
+<span id="M"></span>
+<span id="N"></span>
+<span id="O"></span>
+<span id="P"></span>
 !pad
 |
-&amp;nbsp; Based on '''blank'''
+&nbsp; Based on '''blank'''
 |-
 !progress
 |
 * size: ''pair!''
 * value: ''percent!''
 |-
-&lt;span id=&quot;Q&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;R&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;S&quot;&gt;&lt;/span&gt;
+<span id="Q"></span>
+<span id="R"></span>
+<span id="S"></span>
 !scroll-panel
 |
 * columns: ''integer!''
@@ -231,7 +231,7 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 |-
 !scroller
 |
-&amp;nbsp; Based on '''slider'''
+&nbsp; Based on '''slider'''
 |-
 !slider
 |
@@ -239,7 +239,7 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 * value: ''percent!''
 * size: ''pair!''
 |-
-&lt;span id=&quot;T&quot;&gt;&lt;/span&gt;
+<span id="T"></span>
 !text
 |
 * text: ''string!''
@@ -254,25 +254,25 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 * background: ''tuple!''
 * background-draw: ''block!''
 |}
-&lt;!-- Tip of the Day --&gt;
+<!-- Tip of the Day -->
 {{Tip of the day - community portal}}
 |-
-| colspan=&quot;2&quot; style=&quot;background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid; border-top:1px #A3B1BF solid;&quot; |
-&lt;h2 style=&quot;margin-top:.1em; border-bottom:0; font-weight:bold;&quot;&gt;
+| colspan="2" style="background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid; border-top:1px #A3B1BF solid;" |
+<h2 style="margin-top:.1em; border-bottom:0; font-weight:bold;">
 Style Options
-&lt;/h2&gt; &lt;!-- 3 line spacing of h2 is important for subsection edit links to work correctly, PLEASE DO NOT FIX --&gt;
+</h2> <!-- 3 line spacing of h2 is important for subsection edit links to work correctly, PLEASE DO NOT FIX -->
 |-
-| colspan=&quot;2&quot; style=&quot;background:#F5FAFF; padding:1.2em;&quot; valign=&quot;top&quot; |
-&lt;!-- Style Option table spans the whole page --&gt;
+| colspan="2" style="background:#F5FAFF; padding:1.2em;" valign="top" |
+<!-- Style Option table spans the whole page -->
 == Style Option Reference ==
 VID offers a lot.  There are many styles and each have a variety of options.  Options are applied to styles using the '''options''' keyword and a block! holding the option specification.  For example
 
-  button &quot;Quit&quot; options [rounding: 10  material: 'sand]
+  button "Quit" options [rounding: 10  material: 'sand]
 
 Would build a button in the layout with more rounded corners than the default, and a white beach sand look.
 
 === button options ===
-{|class=&quot;wikitable&quot; width=&quot;100%&quot;
+{|class="wikitable" width="100%"
 !Option
 !Accepts
 !Default
@@ -304,23 +304,23 @@ Would build a button in the layout with more rounded corners than the default, a
 |The amount of stretch in the button
 |}
 
-{|class=&quot;wikitable&quot; width=&quot;75%&quot;
+{|class="wikitable" width="75%"
 |+Some Examples
 !Example
 !Look
 |-
-|button &quot;Rounding 10&quot; options [rounding: 10]
+|button "Rounding 10" options [rounding: 10]
 |[[Image:vid-options-button-rounding10.png]]
 |-
-|button &quot;Rounding 0&quot; options [rounding: 0]
+|button "Rounding 0" options [rounding: 0]
 |[[Image:vid-options-button-rounding0.png]]
 |-
-|button &quot;50x20&quot; options [size: 50x20 rounding: 10]
+|button "50x20" options [size: 50x20 rounding: 10]
 |[[Image:vid-options-button-size50x20.png]]
 |}
 
 === material gradients ===
-{|class=&quot;wikitable&quot; width=&quot;75%&quot;
+{|class="wikitable" width="75%"
 !Material
 !Example
 |-
@@ -340,7 +340,7 @@ Would build a button in the layout with more rounded corners than the default, a
 |[[Image:vid-button-sand.png]]
 |}
 
-&lt;!-- End of two-column page --&gt;
+<!-- End of two-column page -->
 |}
 
 {{Links|

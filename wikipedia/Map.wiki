@@ -14,15 +14,15 @@ A key can be any type of word or string. Other datatypes are not allowed at this
 
 Note that when a string is used for a key:
 
-*the dataype of the string is also part of the key. For example, the string &quot;test&quot; is not the same as the file name %test or the issue #test.
+*the dataype of the string is also part of the key. For example, the string "test" is not the same as the file name %test or the issue #test.
 *the string is copied into the map. It is not by reference. This prevents the problem where a string is modified after the association has been made.
 
 
 Map allows integers as keys. They are not indexes.
 
-    &gt;&gt; m: make map! [x a 1 b 2 c 3 y]
+    >> m: make map! [x a 1 b 2 c 3 y]
     == make map! [x a 1 b 2 c 3 y]
-    &gt;&gt; m/2
+    >> m/2
     == c
 
 ==Values==
@@ -61,7 +61,7 @@ General usage has been kept very simple -- to be on par (or better) with what ot
 
 Here is an example that shows the most common usage patterns:
 
-&lt;pre&gt;
+<pre>
     d: make map! 1000
 
     d/test: 10
@@ -74,7 +74,7 @@ Here is an example that shows the most common usage patterns:
     d/test: 20
     print d/test
     20
-&lt;/pre&gt;
+</pre>
 
 The above example shows that you can directly create new map keys and values.
 
@@ -88,20 +88,20 @@ The PICK and POKE series functions also allow access to the map:
 
 PICK and POKE are also necessary when strings are used as keys:
 
-    poke d &quot;text&quot; [1 2 3 4]
+    poke d "text" [1 2 3 4]
     poke d %file 1234
-    print pick d &quot;text&quot;
+    print pick d "text"
     1 2 3 4
     print pick d %file
     1234
-    print pick d &quot;file&quot;
+    print pick d "file"
     none
 
 That last case is used to show that the datatype of strings is part of the key when using maps.
 
 Note that instead of PICK and POKE it's also possible to use path evaluation:
 
-    key: &quot;id&quot;
+    key: "id"
     d/(key): 5678
     print d/(key)
     5678
@@ -111,9 +111,9 @@ Note that instead of PICK and POKE it's also possible to use path evaluation:
     9
 
     keys: [name job]
-    d/(keys/1): &quot;Carl&quot;
-    d/(keys/2): &quot;Guru&quot;
-    print reduce [d/name &quot;is&quot; d/job]
+    d/(keys/1): "Carl"
+    d/(keys/2): "Guru"
+    print reduce [d/name "is" d/job]
     Carl is Guru
 
 ==Make Map==

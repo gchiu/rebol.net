@@ -1,5 +1,5 @@
-&lt;TABLE width=&quot;600&quot;&gt;&lt;TR&gt;&lt;TD&gt;
-''Last year of development of R3 has shown us we are moving forward in a steadily pace. Even if R3 seems to be much more precisely defined, and contains strategic architecture changes and some nice new features, the community is not giving R3 much of an attention. A &quot;wait and see&quot; strategy? Or does R3 still lacks anything fundamental for devs to switch to the next generation of REBOL? Let's find out ... what defines a good beta ...
+<TABLE width="600"><TR><TD>
+''Last year of development of R3 has shown us we are moving forward in a steadily pace. Even if R3 seems to be much more precisely defined, and contains strategic architecture changes and some nice new features, the community is not giving R3 much of an attention. A "wait and see" strategy? Or does R3 still lacks anything fundamental for devs to switch to the next generation of REBOL? Let's find out ... what defines a good beta ...
 ''
 
 == A definition? ==
@@ -20,8 +20,8 @@ The whole world is preaching open source mantra. They preach so loudly, that eve
 
 Taken from the [http://rebol.com/r3/docs/project.html Project plan] description:
 
- &quot;Also, this list is only for R3 core operation and does not include community-based projects such as graphics, GUI, protocols, documentation,
-  and other features that can be developed externally, depending on the needs of the community.&quot;
+ "Also, this list is only for R3 core operation and does not include community-based projects such as graphics, GUI, protocols, documentation,
+  and other features that can be developed externally, depending on the needs of the community."
 
 Rebol Technologies is the product owner. And as such, RT should assure, those things get delivered, but this is not happening.
 
@@ -29,7 +29,7 @@ Rebol Technologies is the product owner. And as such, RT should assure, those th
 
 * R3 port model is stable for at least 2 years. Yet there was no single enhancement to '''networking protocols''' coming from the community, to fix the situation. Why are people screaming for stuff being open-sourced, when they actually do not care to contribute? It doesn't matter. All that does matter is - it is not done yet!
 
-* Those paying attention could also notice, that Rebol Technologies also sends '''tasking''' to the same group of ''&quot;might be delivered by the community one day&quot;'' features group. Why I have just a bad feeling, that it all just means freeing a hands of a busy man (Rebol Technologies), but without any sign of the project coordination? Yes, I believe, that some people are able to experiment with various tasking/threading models. But - do we really want to be dependant upon such work being ever delivered by anyone from the community, if noone touched networking protocols in 2 years? This is really a fundamental part of R3, and as for me, I would expect such feature being delivered or at least defined/outlined by the creator of the first multitasking OS - AmigaOS, Carl Sassenrath himself.
+* Those paying attention could also notice, that Rebol Technologies also sends '''tasking''' to the same group of ''"might be delivered by the community one day"'' features group. Why I have just a bad feeling, that it all just means freeing a hands of a busy man (Rebol Technologies), but without any sign of the project coordination? Yes, I believe, that some people are able to experiment with various tasking/threading models. But - do we really want to be dependant upon such work being ever delivered by anyone from the community, if noone touched networking protocols in 2 years? This is really a fundamental part of R3, and as for me, I would expect such feature being delivered or at least defined/outlined by the creator of the first multitasking OS - AmigaOS, Carl Sassenrath himself.
 
 * Ditto for the '''GUI'''. Yes, devs can go into their caves, and come-up to the surface with some cool stuff. But the project still needs an organisation. It needs a proposal. I really liked how we did it with [http://www.rebol.net/wiki/Parse_Project Parse project], and so I set-up [http://www.rebol.net/wiki/View_Project View project] page some time ago.
 
@@ -65,7 +65,7 @@ I mentioned some organisational aspects of the project I worry about. But let th
 
 I think that R3, as a language, is in more mature state than R2. The language - its semantics - is much better defined, especially in regards to datatypes and their transitions, we have also got some very cool new features inside and overall architecture is now closer to being an OS, than just a language interpreter. 
 
-So why do I worry about the feature set of the beta? Why is not REBOL community using R3 yet? Does placing a &quot;This is a beta&quot; sticker make the product or situation any better? I think - not ...
+So why do I worry about the feature set of the beta? Why is not REBOL community using R3 yet? Does placing a "This is a beta" sticker make the product or situation any better? I think - not ...
 
  '''If we want developers to move to R3, we have to at least provide them with R2 level features! So where do we stand?'''
 
@@ -90,7 +90,7 @@ With the move to R3 we lost MySQL and PostgreSQL protocols, as those were not po
 
 == CGI ==
 
-CGI got fixed on Windows in the meantime I suggested that this be a crucial feature too. But - R3 is lacking decode-cgi and read-cgi functions (with once again a strange attitude to me) - &quot;it can be added as a module&quot; - yes, it can, and maybe it happens in 100 years. Nothing against modules - but this one has to come with default distro imo ...
+CGI got fixed on Windows in the meantime I suggested that this be a crucial feature too. But - R3 is lacking decode-cgi and read-cgi functions (with once again a strange attitude to me) - "it can be added as a module" - yes, it can, and maybe it happens in 100 years. Nothing against modules - but this one has to come with default distro imo ...
 
 == Console ==
 
@@ -100,10 +100,10 @@ First we removed R2 console, in order to allow admins to use R3 via SSH/Telnet/S
 
 == Shell ==
 
-Shell is an easy deployment tool. It can be even used to wrap some DBs by calling their particular executables. R3 shell is pretty much [http://curecode.org/rebol3/ticket.rsp?id=1223&amp;cursor=22 broken]. I really don't care if it is more low level and more right, if I can't do two fundamental things:
+Shell is an easy deployment tool. It can be even used to wrap some DBs by calling their particular executables. R3 shell is pretty much [http://curecode.org/rebol3/ticket.rsp?id=1223&cursor=22 broken]. I really don't care if it is more low level and more right, if I can't do two fundamental things:
 
 *'''Ability to trap 'call/output into variable'''
-*'''Ability to 'call/wait for the output''' (call &quot;cmd /c start /wait excel&quot; does not wait)
+*'''Ability to 'call/wait for the output''' (call "cmd /c start /wait excel" does not wait)
 
 == Unicode ==
 
@@ -123,4 +123,4 @@ Such stuff is saved for the [http://www.rebol.net/wiki/REBOL_adoption next doc],
 
 You can put your comments here:
 
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>

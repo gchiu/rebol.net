@@ -16,13 +16,13 @@ Should you decide that you absolutely need to use a SHAPE definition that contai
 
 For example, within the style:
 
-&lt;pre&gt;
+<pre>
 draw: [
     pen red
     box
     shape shape-box
 ]
-&lt;/pre&gt;
+</pre>
 
 Where shape-box is a reduced block built by your ON-MAKE function.
 

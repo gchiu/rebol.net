@@ -2,27 +2,27 @@
 
 Premultiply the current transformation matrix with the given block.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | matrix-setup
-| bgcolor=&quot;white&quot; | [block!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | content must be 6 number!s
+| bgcolor="white" | matrix-setup
+| bgcolor="white" | [block!]
+| bgcolor="white" | 
+| bgcolor="white" | content must be 6 number!s
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;div class=&quot;note&quot;&gt;&lt;p&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;MATRIX [a b c d e f]&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;The block values are used internally for building following 
-transformation matrix:&lt;/p&gt;
-&lt;div class=&quot;note&quot;&gt;&lt;p&gt;&lt;b&gt;&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;|a c e|&lt;br&gt;
-|b d f|&lt;br&gt;
-|0 0 1|&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;For more information about transformations see:
-http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace&lt;/p&gt;
+<br>'''Notes and Examples'''
+<div class="note"><p><b></b></p>
+<p>MATRIX [a b c d e f]</p>
+</div>
+<p>The block values are used internally for building following 
+transformation matrix:</p>
+<div class="note"><p><b></b></p>
+<p>|a c e|<br>
+|b d f|<br>
+|0 0 1|</p>
+</div>
+<p>For more information about transformations see:
+http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>

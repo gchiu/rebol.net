@@ -1,12 +1,12 @@
 __NOTOC__
 
-&lt;!-- BEGIN CONTENTS BOX --&gt;
-{| style=&quot;width:85%; border:1px solid SlateBlue; background:Cornsilk; color:black; padding:1em; font-size:120%; margin:1px auto;&quot;
+<!-- BEGIN CONTENTS BOX -->
+{| style="width:85%; border:1px solid SlateBlue; background:Cornsilk; color:black; padding:1em; font-size:120%; margin:1px auto;"
  |-
  |
 '''[[REBOL_2#What Is REBOL|Introduction]]''' 
 
-'''[[R2_Getting_Started|Getting Started With REBOL]] &lt;small&gt;''start here''&lt;/small&gt;
+'''[[R2_Getting_Started|Getting Started With REBOL]] <small>''start here''</small>
 
 '''[[R2_Documentation|Documentation]]'''
 
@@ -14,7 +14,7 @@ __NOTOC__
 
 '''[[R2_code|REBOL2 Examples]]'''
 
-'''[http://www.rebol.net/builds/ Alpha &amp; Beta Releases]
+'''[http://www.rebol.net/builds/ Alpha & Beta Releases]
  |
 '''[[R2_projects|REBOL Projects]]'''
 
@@ -29,26 +29,26 @@ __NOTOC__
 '''[[R2_other|Other topics]]'''
 
  |-
- | colspan=&quot;2&quot; align=&quot;center&quot; |
+ | colspan="2" align="center" |
 '''[[DocBase:Community_Portal|Community portal]]'''
  |}
-&lt;!-- END CONTENTS BOX --&gt;
+<!-- END CONTENTS BOX -->
 
 
 ==What is REBOL==
 
-REBOL is a data exchange language and a programming language, but if you are here you probably already know this.&lt;BR&gt;
-It is an interpreted language in which the interpreter loads your program (henceforth called a script) in memory and executes it.&lt;BR&gt;&lt;BR&gt;
-Some points about REBOL:&lt;BR&gt;
+REBOL is a data exchange language and a programming language, but if you are here you probably already know this.<BR>
+It is an interpreted language in which the interpreter loads your program (henceforth called a script) in memory and executes it.<BR><BR>
+Some points about REBOL:<BR>
 
-REBOL 2 was released in 1999.&lt;BR&gt;
+REBOL 2 was released in 1999.<BR>
 *REBOL scripts are short and expressive. In a single line you can write an entire program.
-*The language can be extended with &quot;dialects&quot; that enable the programmer to add new WORDS for specific domains.
+*The language can be extended with "dialects" that enable the programmer to add new WORDS for specific domains.
 *It is multi-platform. The same script can run on many OS's with no changes.
 *It includes a GUI system for light or heavy applications.
 *It is FAST. With a single loop you can search for an entry in a million of records in less than a second.
 
-REBOL has been created by one of the gurus of the computing world - [[User:Carl|'''Carl Sassenrath''']].&lt;BR&gt;&lt;BR&gt;
+REBOL has been created by one of the gurus of the computing world - [[User:Carl|'''Carl Sassenrath''']].<BR><BR>
 
 See http://en.wikipedia.org/wiki/Rebol
 

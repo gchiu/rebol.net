@@ -6,30 +6,30 @@
 
 Here is an example TCP server that opens port 8080 and receives new connections. Each connection then gets its own asynchronous handler function (which in this case, simply reads and writes text.)
 
-&lt;pre&gt;
-print &quot;Serving port 8080...&quot;
+<pre>
+print "Serving port 8080..."
 
 open-subport: func [port] [
-    print &quot;=== Creating sub-port&quot;
+    print "=== Creating sub-port"
     port/awake: func [event /local port] [
-        print [&quot;=== Subport event:&quot; event/type]
+        print ["=== Subport event:" event/type]
         port: event/port
         switch event/type [
             read [
-                print [&quot;    &quot; to-string port/data]
-                write port to-binary &quot;got it!&quot;
+                print ["    " to-string port/data]
+                write port to-binary "got it!"
             ]
             wrote [read port]
             close [close port]
         ]
     ]
-    write port to-binary &quot;connected^/&quot;
+    write port to-binary "connected^/"
 ]
 
 server: open tcp://:8080
 
 server/awake: func [event] [
-    print [&quot;*** Server event:&quot; event/type]
+    print ["*** Server event:" event/type]
     if event/type = 'accept [
         open-subport first event/port
     ]
@@ -38,32 +38,32 @@ server/awake: func [event] [
 
 wait 30
 close server
-print &quot;Done serving&quot;
+print "Done serving"
 halt
-&lt;/pre&gt;
+</pre>
 
 == TCP Client ==
 
 Here is a client that connects to port 8080, then sends strings to the server, and receives a response back from the server.
 
-&lt;pre&gt;
-print &quot;Connecting to port 8080...&quot;
+<pre>
+print "Connecting to port 8080..."
 
 msg-count: 0
 
 client: open tcp://localhost:8080
 
 client/awake: func [event /local port] [
-    print [&quot;=== Client event:&quot; event/type]
+    print ["=== Client event:" event/type]
     port: event/port
     switch event/type [
         lookup [open port]
-        connect [write port to-binary &quot;hello&quot;]
+        connect [write port to-binary "hello"]
         read [
-            print [&quot;    &quot; to-string port/data]
+            print ["    " to-string port/data]
             ++ msg-count
-            either msg-count &lt; 10 [
-                write port to-binary reform [&quot;ok&quot; msg-count]
+            either msg-count < 10 [
+                write port to-binary reform ["ok" msg-count]
             ][
                 close port
                 return true
@@ -76,9 +76,9 @@ client/awake: func [event /local port] [
 
 wait [client 30]
 close client
-print &quot;Done&quot;
+print "Done"
 halt
-&lt;/pre&gt;
+</pre>
 
 == Notes ==
 
@@ -95,7 +95,7 @@ halt
 
 Here's what you will see. First, run the server, then run the client.
 
-&lt;pre&gt;
+<pre>
 Serving port 8080...
 *** Server event: accept
 === Creating sub-port
@@ -132,11 +132,11 @@ Serving port 8080...
 === Subport event: wrote
 === Subport event: close
 Done serving
-&lt;/pre&gt;
+</pre>
 
 The client will show:
 
-&lt;pre&gt;
+<pre>
 Connecting to port 8080...
 === Client event: lookup
 === Client event: connect
@@ -172,7 +172,7 @@ got it!
 === Client event: read
      got it!
 Done
-&lt;/pre&gt;
+</pre>
 
 == Cookbook References ==
 

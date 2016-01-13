@@ -2,7 +2,7 @@
 ; [http://www.rebol.com/docs/view-guide.html VID, Visual Interface Dialect]
 : using existing VID styles, working with facets of faces
 : making a GUI layout
-&lt;BR&gt;
+<BR>
 
 ; [http://www.rebol.com/docs/view-system.html View System] 
 : Introduction
@@ -17,7 +17,7 @@
 : - [http://www.rebol.com/docs/view-face-hier.html#section-6 window faces]
 : - [http://www.rebol.com/docs/view-face-hier.html#section-7 panels]
 
-&lt;BR&gt;
+<BR>
 
 ; - [http://www.rebol.com/docs/view-face-funcs.html#section-1 Face Functions]
 : - [http://www.rebol.com/docs/view-face-funcs.html#section-2 Show Function for Display and Refresh]
@@ -35,64 +35,64 @@
 :: - restore	restore to the prior window size.
 : - [http://www.rebol.com/docs/view-face-funcs.html#section-8 Window Face Options]
 : - [http://www.rebol.com/docs/view-face-funcs.html#section-9 Other Functions]
-&lt;BR&gt;
+<BR>
 ; - [http://www.rebol.com/docs/view-face-content.html Face Contents]
 : - the text, images, and edges that go inside a face.
-&lt;BR&gt;
+<BR>
 ; - [http://www.rebol.com/docs/view-face-effects.html Face Effects]
 : - dynamic modifications that can be made to faces.
-&lt;BR&gt;
+<BR>
 ; - [http://www.rebol.com/docs/view-face-other.html Other Special Features] Iterated, Image, Scrolling Face
-&lt;BR&gt;
+<BR>
 
 ----
-; Draw &lt;BR&gt;
+; Draw <BR>
 [http://www.rebol.com/docs/draw-ref.html Draw]  Using Scalar Vector Graphics
-&lt;BR&gt;
+<BR>
 [http://www.rebol.org/view-script.r?script=draw-examples.r Draw Examples]  Library Script Of Examples 
-&lt;BR&gt;
+<BR>
 [http://reboltutorial.com/how-to-create-graphics-banner-badge-with-rebol/ How To Create A Graphics Banner]
-&lt;BR&gt;
+<BR>
 ----
 ;Images
 [http://www.rebol.net/cookbook/recipes/0048.html Storing Image Files In A Script] Embedded Images
-&lt;BR&gt;
+<BR>
 [http://www.rebol.com/docs/view-face-other.html#section-7 Converting A Face To An Image]  
-&lt;BR&gt;
+<BR>
 [http://www.rebol.net/cookbook/recipes/0035.html Scrolling An Image]
-&lt;BR&gt;
+<BR>
 [http://www.rebol.com/docs/words/wto-image.html To-Image Function Summary]
-&lt;BR&gt;
+<BR>
 [http://www.rebol.com/view/demos/effect-lab.r Effect Lab] Explore Image Effects
-&lt;BR&gt;
+<BR>
 [http://www.rebol.com/docs/words/wimageq.html Image?] Verify Data Is Image
-&lt;BR&gt;
+<BR>
 [http://www.rebol.org/view-script.r?script=animated-gif.r Animation] Library Script
-&lt;BR&gt;
+<BR>
 [http://re-bol.com/rebol.html#section-9.5 Using Animated Gif Images]
-&lt;BR&gt;
+<BR>
 [http://www.rebol.org/view-script.r?script=animresize.r Zoom Animation] Script By Maxim Olivier-Adlhoch
-&lt;BR&gt;
+<BR>
 
 
 ----
 ;User Interface Events
 [http://www.rebol.com/docs/view-face-events.html All About Graphics System Events And How They Are Processed] 
-&lt;BR&gt;
-[http://www.rebol.com/how-to/feel.html#section-13 How To Handle User Interface Events] Mouse, Drag &amp; Drop, Keyboard (older)
-&lt;BR&gt;
+<BR>
+[http://www.rebol.com/how-to/feel.html#section-13 How To Handle User Interface Events] Mouse, Drag & Drop, Keyboard (older)
+<BR>
 [http://www.rebol.com/pre-view.html Drag And Drop] See Gel Demo Example
-&lt;BR&gt;
+<BR>
 [http://www.rebol.net/cookbook/recipes/0056.html Mouse Over Events]
-&lt;BR&gt;
-[http://re-bol.com/rebol.html#section-7.6 Responding To Special Events In GUI - &quot;Feel&quot;]
-&lt;BR&gt;
+<BR>
+[http://re-bol.com/rebol.html#section-7.6 Responding To Special Events In GUI - "Feel"]
+<BR>
 
 ----
-; Working With Text &lt;BR&gt;
+; Working With Text <BR>
 [http://www.rebol.com/how-to/fields.html  Text In Fields] Creating and using text fields.
-&lt;BR&gt;
-[http://www.rebol.com/docs/view-face-content.html Face Contents]  About the text, images, and edges that go inside a face. &lt;BR&gt;
+<BR>
+[http://www.rebol.com/docs/view-face-content.html Face Contents]  About the text, images, and edges that go inside a face. <BR>
 : - font face
 : - para facet object
 : - text caret
@@ -101,63 +101,63 @@
 : - text scrolling
 : - text sizing
 
-&lt;BR&gt;
+<BR>
 [http://www.rebol.net/cookbook/recipes/0029.html Adding A Scrollbar To Text]
-&lt;BR&gt;
+<BR>
 [http://www.rebol.net/cookbook/recipes/0041.html HTML To Text]
-&lt;P&gt;
+<P>
 ----
 
-; Styles &lt;BR&gt;
-[http://www.rebol.com/article/0496.html Quick Way To List Vid Gui Styles]&lt;BR&gt;
+; Styles <BR>
+[http://www.rebol.com/article/0496.html Quick Way To List Vid Gui Styles]<BR>
 [http://www.rebol.com/how-to/fields.html How To Create And Use Fields]
-&lt;BR&gt;
+<BR>
 [http://www.rebol.net/cookbook/recipes/0010.html Simple Text Form Window]
-&lt;BR&gt;
+<BR>
 
 [http://re-bol.com/rebol.html#section-9.13 Menus]
-&lt;BR&gt;
+<BR>
 
 
-[[Text-Lists| Text-Lists]] The Text-List &amp; List
-&lt;BR&gt;
+[[Text-Lists| Text-Lists]] The Text-List & List
+<BR>
 [[Buttons | Buttons]]
-&lt;BR&gt;
+<BR>
 [http://www.rebol.net/cookbook/recipes/0039.html Progess Bar]
-&lt;BR&gt;
+<BR>
 
 [http://www.rebol.net/cookbook/recipes/0016.html Changing Text Font Attributes]
 ----
 ; Layouts
 [http://www.rebol.com/docs/words/wlayout.html Layout Function Summary] The GUI face, a pane built from style description dialect.
-&lt;BR&gt;
+<BR>
 [http://www.rebol.com/how-to/subpanels.html Subpanels] Multiple Layouts 
-&lt;BR&gt;
+<BR>
 [http://www.rebol.net/cookbook/recipes/0036.html Scrolling Panels] Cookbook script to scroll a panel.
-&lt;BR&gt;
+<BR>
 [http://www.rebol.com/docs/view-face-funcs.html#section-9 View Function]
-&lt;BR&gt;
-[http://www.rebol.com/docs/quick-start.html Resize - Digital Clock Example] &lt;BR&gt;
+<BR>
+[http://www.rebol.com/docs/quick-start.html Resize - Digital Clock Example] <BR>
 
 
-&lt;BR&gt;
+<BR>
 ----
 ; Related
 [http://www.rebol.org/view-script.r?script=vid-usage.r VID Usage Tutorial with Runnable Examples]
-&lt;BR&gt;
+<BR>
 
 [http://reboltutorial.com/visual-dynamic-layout-build-a-youtube-thumbnails-gallery/ Dynamic Layouts] By Reboltutorial.com
-&lt;BR&gt;
+<BR>
 [http://www.codeconscious.com/rebol/view-tips.html View Usage Tips] By codeconscious.com
-&lt;BR&gt;
+<BR>
 [http://www.rebol.com/docs/quick-start.html Updating A Face In A Layout] Clock Example, With do-events
-&lt;BR&gt;
+<BR>
 [http://www.rebol.com/docs/quick-start.html Resizing Layouts] Clock Example
-&lt;BR&gt;
+<BR>
 [http://www.rebol.org/view-script.r?script=color-names.r In-built Colors] Library Script
-&lt;BR&gt;
+<BR>
 These scripts may be run directly from the  Rebol Viewtop, the REBOL Folder, Tools:
-&lt;BR&gt;
+<BR>
 : [http://www.rebol.com/view/demos/font-lab.r Font Lab] Script By Carl Sassenrath
 : [http://www.rebol.com/view/tools/grad-lab.r Gradient Lab] Script By Carl Sassenrath
 [http://www.codeconscious.com/rebol/view-notes.html View Notes] By codeconscious.com
@@ -165,6 +165,6 @@ These scripts may be run directly from the  Rebol Viewtop, the REBOL Folder, Too
 : - global event handler, persistent handlers, multiple windows
 : - trapping on window close
 : - scroll para, function creating text and scrolling text with scroll-para
-&lt;BR&gt;
+<BR>
 [http://www.rebol.net/cookbook/recipes/0014.html Open Two Windows]
-&lt;BR&gt;
+<BR>

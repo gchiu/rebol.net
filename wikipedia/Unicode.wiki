@@ -22,61 +22,61 @@ In addition, if you are accustomed to using codepages (upper-half of 8-bit chars
 
 A few examples will help you quickly understand the general idea of Unicode in REBOL.
 
-Here we use the Greek character alpha (&amp;alpha;), which you can see in this [http://en.wikibooks.org/wiki/Windows_Programming/Unicode/Character_reference/0000-0FFF&gt; handy Unicode table] is character U+03B1, or 945 as integer. We use this character for the example because it is far beyond the Latin-1 8-bit range.
+Here we use the Greek character alpha (&alpha;), which you can see in this [http://en.wikibooks.org/wiki/Windows_Programming/Unicode/Character_reference/0000-0FFF> handy Unicode table] is character U+03B1, or 945 as integer. We use this character for the example because it is far beyond the Latin-1 8-bit range.
 
-&lt;pre&gt;
-&gt;&gt; #&quot;^(3B1)&quot;     ; char as a hex encoded literal
-== #&quot;α&quot;
+<pre>
+>> #"^(3B1)"     ; char as a hex encoded literal
+== #"α"
 
-&gt;&gt; to-char #3b1
-== #&quot;α&quot;
+>> to-char #3b1
+== #"α"
 
-&gt;&gt; to-char 945
-== #&quot;α&quot;
+>> to-char 945
+== #"α"
 
-&gt;&gt; &quot;testα&quot;
-== &quot;testα&quot;
+>> "testα"
+== "testα"
 
-&gt;&gt; &quot;test^(3b1)&quot;  ; string containing hex char literal
-== &quot;testα&quot;
+>> "test^(3b1)"  ; string containing hex char literal
+== "testα"
 
-&gt;&gt; str: append &quot;test&quot; to-char 945
-== &quot;testα&quot;
+>> str: append "test" to-char 945
+== "testα"
 
-&gt;&gt; length? str
+>> length? str
 == 5
 
-&gt;&gt; last str
-== #&quot;α&quot;
+>> last str
+== #"α"
 
-&gt;&gt; to-binary str
+>> to-binary str
 == #{74657374CEB1}  ; note, it is UTF-8 encoded!
 
-&gt;&gt; to-string to-binary str  ; to UTF-8 and back again
-== &quot;testα&quot;
+>> to-string to-binary str  ; to UTF-8 and back again
+== "testα"
 
-&gt;&gt; uppercase str
-== &quot;TESTΑ&quot;
+>> uppercase str
+== "TESTΑ"
 
-&gt;&gt; testα: 10
+>> testα: 10
 == 10
 
-&gt;&gt; testα
+>> testα
 == 10
 
-&gt;&gt; write %testα.txt &quot;example&quot;
+>> write %testα.txt "example"
 == port!
 
-&gt;&gt; read %.
+>> read %.
 == [%abc.r %testα.txt]
-&lt;/pre&gt;
+</pre>
 
 Of course, if we use an eastern character, what I see in my console is just a box; no character is rendered because it's not available in the current font. However, if I cut and paste it here:
 
-&lt;pre&gt;
-&gt;&gt; #&quot;^(905)&quot;
-== #&quot;अ&quot;
-&lt;/pre&gt;
+<pre>
+>> #"^(905)"
+== #"अ"
+</pre>
 
 You will see the character in the browser (if your current browser font supports it). So it's correct value is being preserved, even if it does not display properly.
 
@@ -94,11 +94,11 @@ Other encodings such as the popular Latin-1 (ISO-8859-1) are supported, but such
 
 Script headers can specify the encoding of the script. For example:
 
-&lt;pre&gt;
+<pre>
 REBOL [
     encoding: latin-1
 ]
-&lt;/pre&gt;
+</pre>
 
 {{more}}
 
@@ -144,8 +144,8 @@ This release should properly handle UTF8 encoded scripts. This is the new standa
 
 *This release '''does not include the Unicode! datatype or any other special unicode handling or APIs'''. It only implements the UTF8 load of scripts.
 *This means that words within your code can contain '''any valid unicode characters''', upper and lower case, and the correct word handling should happen.
-*If your scripts are ASCII (do not use chars &gt; 127) then they are UTF8 valid, and no changes are needed.
-*If your scripts use chars &gt; 127 (e.g. accents, circumflex) then they must be UTF8 encoded. '''Do not try to run scripts that are latin (or any other charset page) encoded.'''
+*If your scripts are ASCII (do not use chars > 127) then they are UTF8 valid, and no changes are needed.
+*If your scripts use chars > 127 (e.g. accents, circumflex) then they must be UTF8 encoded. '''Do not try to run scripts that are latin (or any other charset page) encoded.'''
 *If your UTF8 script uses a BOM (a 3 byte signature), '''you must strip it prior to loading or doing the script'''.  We plan to handle this automatically, but for now, you must remove it or your script may not load properly. For example: If you are using MS Notepad (and other products) in UTF8 encoding, be aware that the BOM will be prepended to your text.
 *Scripts that are UTF16 encoded are not supported in this release, but we plan to handle UTF16 auto-conversion later.
 
@@ -156,7 +156,7 @@ Unicode affects the REBOL language in several major ways:
 *'''source encoding''' - R3 assumes that source code is UTF8 encoded. This means that REBOL words and quoted strings are also UTF8 encoded by default. If source is UTF16 encoded, it will be converted to UTF8 automatically.
 *'''string encoding''' - Strings are assumed to be UTF8 encoded; however, most of the string datatype actions are byte oriented, not character oriented. (We need to think about this more deeply.)
 *'''unicode datatype''' - The new UNICODE! datatype supports actions on code-points, providing an easier way to manipulate unicode than dealing with UTF8 encoding.
-*'''unicode OS API''' - Calls to various OS API functions must use the native unicode character encoding. For example on Win32, &quot;wide character&quot; functions are supported.
+*'''unicode OS API''' - Calls to various OS API functions must use the native unicode character encoding. For example on Win32, "wide character" functions are supported.
 *'''unicode fonts''' - When displaying fonts in R3 graphics, support for unicode characters is needed. This has yet to be defined, and it is likely to be implemented in separate stages.
 *'''unicode input''' - User input from various devices requires unicode.
 

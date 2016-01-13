@@ -9,7 +9,7 @@ See also: [[Marketing_Strategy_Websites]]
 
 http://www.rebol.com/rebol3/motivation.html#section-2
 
-While the above link goes to &quot;The Target Market&quot;, there is really no target market defined. There is a broad intended use laid out: lightweight distributed applications. It's important to read the actual description for that as RT defines it, because your interpretation may differ. For example, 'distributed' does not have anything to do with distributed computing and 'applications' means small, single-purpose tools. It says larger apps are just frameworks to hold many smaller apps, but it doesn't say if REBOL is intended to be used to build those larger apps/frameworks.
+While the above link goes to "The Target Market", there is really no target market defined. There is a broad intended use laid out: lightweight distributed applications. It's important to read the actual description for that as RT defines it, because your interpretation may differ. For example, 'distributed' does not have anything to do with distributed computing and 'applications' means small, single-purpose tools. It says larger apps are just frameworks to hold many smaller apps, but it doesn't say if REBOL is intended to be used to build those larger apps/frameworks.
 
 ==Who is the audience?==
 
@@ -22,15 +22,15 @@ This section can be a simple list of target audiences and what is needed to mark
 
 ==Take care in how you say it==
 
-'''This is an important point to understand:''' Over the years, many of us think very highly of REBOL; however, programmers tend to get upset if you blatantly state &quot;language A is better than language B,&quot; ''especially if it's on their forum or wiki''.
+'''This is an important point to understand:''' Over the years, many of us think very highly of REBOL; however, programmers tend to get upset if you blatantly state "language A is better than language B," ''especially if it's on their forum or wiki''.
 
-It becomes even worse if they don't understand how REBOL works and just compare REBOL with what they know about their language -- a shallow comparison that does not consider semantics, symbolics, size, complexity management, or expressive power. For example, Ruby programmers will tell you that Ruby does everything that REBOL does (they don't understand the full depth of REBOL, because they've never experienced it.) So, don't be harsh, because it will just backfire. It's better to use more of a &quot;have you ever considered&quot; type of attitude.
+It becomes even worse if they don't understand how REBOL works and just compare REBOL with what they know about their language -- a shallow comparison that does not consider semantics, symbolics, size, complexity management, or expressive power. For example, Ruby programmers will tell you that Ruby does everything that REBOL does (they don't understand the full depth of REBOL, because they've never experienced it.) So, don't be harsh, because it will just backfire. It's better to use more of a "have you ever considered" type of attitude.
 
 ==REBOL is not Lisp==
 
 When promoting REBOL, '''I wouldn't take the strategy of saying it's like Lisp''', because actually, it's not that much like Lisp, ''especially to a Lisper''. Certainly, it has many of the characteristics of Lisp, like taking a functional and symbolic language approach, but under the hood, there's actually nothing implementationally in common between the languages (at the core, Lisp is ''node-based'' and REBOL is ''vector-based''). Saying REBOL is like Lisp may scare away more perspective users (who had bad experiences with Lisp) than it will add. And, quite frankly, you won't make any converts out of Lispers. They tend to be very well rooted in their methods.
 
-Also, don't be tempted to get into the &quot;vectors are better than nodes&quot; debate. Although vectors are better suited toward modern high-speed parallel processing architectures, nodes have a clear win in the domain of list insertion and removal costs.
+Also, don't be tempted to get into the "vectors are better than nodes" debate. Although vectors are better suited toward modern high-speed parallel processing architectures, nodes have a clear win in the domain of list insertion and removal costs.
 
 ==A good place to start==
 
@@ -102,7 +102,7 @@ Lispers talk a lot about building their own languages, which is what REBOL is al
 
     defun dbl (n) (n * 2)
 
-====Logo, Forth, other &quot;specialized&quot; languages====
+====Logo, Forth, other "specialized" languages====
 
 ====.NET (C#, VB)====
 
@@ -127,7 +127,7 @@ Lispers talk a lot about building their own languages, which is what REBOL is al
 
 ====Agile and TDD developers====
 
-==Q&amp;A==
+==Q&A==
 We should build an exhaustive list of high and low-level questions (with answers, of course) regarding the language which will server to better identify what is different about Rebol and many of its different and fundamental idioms.
 
 Some of these might simply be useful as a historic reference to pointy decisions which had to be taken that might seem odd to newcomers to the language or even as a reminder to experts.
@@ -139,7 +139,7 @@ Q: What are the main features of Rebol?
 
 *Human readable syntax
 *Its expressiveness, via many native datatypes
-*Transparent network &amp; device messaging
+*Transparent network & device messaging
 *Dialects (our term for DSLs, Domain Specific Languages)
 *Simplicity in creating GUIs
 *Parsing
@@ -172,7 +172,7 @@ Rebol/View, the GUI engine, is understandably more structured, but is easy to us
 
 
 
-===Odds &amp; Ends===
+===Odds & Ends===
 Q: How Old is Rebol?
 
 

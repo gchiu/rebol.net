@@ -2,26 +2,26 @@
 
 Sets the line width.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | width
-| bgcolor=&quot;white&quot; | [number!]
-| bgcolor=&quot;white&quot; | Zero, or negative values, produce a line-width of 1
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | width
+| bgcolor="white" | [number!]
+| bgcolor="white" | Zero, or negative values, produce a line-width of 1
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | fixed-width
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | If '''fixed''' is specified. Line width is not changed during scaling
-| bgcolor=&quot;white&quot; | '''fixed'''
+| bgcolor="white" | fixed-width
+| bgcolor="white" | [word!]
+| bgcolor="white" | If '''fixed''' is specified. Line width is not changed during scaling
+| bgcolor="white" | '''fixed'''
 |}
-&lt;br&gt;'''Notes and Examples'''
+<br>'''Notes and Examples'''
 
 Default dynamic line width example:
-&lt;code&gt;&lt;pre&gt;
+<code><pre>
 		line-width 3
 		pen yellow
 		
@@ -43,14 +43,14 @@ Default dynamic line width example:
 		scale .2 .2
 		translate 100x100
 		polygon 50x5 62x40 95x40 68x60 80x95 50x74 20x95 32x60 5x40 38x40
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:LINE-WIDTH-1.png|LINE-WIDTH example 1]]
 
-&lt;br&gt;
+<br>
 
 Fixed line width example:
 
-&lt;code&gt;&lt;pre&gt;
+<code><pre>
 		line-width 3 fixed
 		pen yellow
 		
@@ -72,7 +72,7 @@ Fixed line width example:
 		scale .2 .2
 		translate 100x100
 		polygon 50x5 62x40 95x40 68x60 80x95 50x74 20x95 32x60 5x40 38x40
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:LINE-WIDTH-2.png|LINE-WIDTH example 2]]
 
-&lt;br&gt;
+<br>

@@ -4,13 +4,13 @@ This is the readme file from the release distribution.
 
 ===What is it?===
 
-&lt;b&gt;This is an alpha release of REBOL 3.0.&lt;/b&gt;
+<b>This is an alpha release of REBOL 3.0.</b>
 
 An alpha release is an unfinished prototype. It contains many of the
 features of the final product, but it is not final, and it is not a
 product.
 
-&lt;b&gt;This is not a general release.&lt;/b&gt;
+<b>This is not a general release.</b>
 
 It is limited and we know that. So, please do not use it to control a
 space station, power plant, or assembly line. This release is just for
@@ -35,7 +35,7 @@ R3 has a long list of objectives, and here are a few of the main ones...
 
 ===License===
 
-&lt;b&gt;This release is licensed to you for testing purposes only.&lt;/b&gt; Please
+<b>This release is licensed to you for testing purposes only.</b> Please
 note:
 
 *Use at your own risk. There are no warranties of any kind.
@@ -69,7 +69,7 @@ You can run scripts in severals ways:
 
 Notes:
 
-#this release has &lt;b&gt;no security or sandbox&lt;/b&gt;. Do not run scripts that you do not trust or understand. If in doubt, examine the script.
+#this release has <b>no security or sandbox</b>. Do not run scripts that you do not trust or understand. If in doubt, examine the script.
 #this release is missing some logic for changing directories, and it may not find all the necessary files for a script. If there is a problem, put all your files in the same directory.
 
 ===Console===
@@ -86,8 +86,8 @@ Here's how:
 #expand command history buffer and number of buffers, as needed
 #in the layout tab, set screen buffer size width and height to something reasonable like 100x1000.
 #set window size to 100x50 or similar
-#disable the &quot;Let system position window&quot; if you want it in the same place each time (then set position)
-#close the panel, and &quot;Save properties for future windows&quot; on exit.
+#disable the "Let system position window" if you want it in the same place each time (then set position)
+#close the panel, and "Save properties for future windows" on exit.
 
 Now the console will be a bit more usable.
 

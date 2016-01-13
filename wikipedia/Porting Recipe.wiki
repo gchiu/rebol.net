@@ -12,7 +12,7 @@ This is what's happening at startup, when a user run a REBOL exe:
 
 The file src/include/host-lib.h show the list of OS dependent callback functions.
 
-&lt;pre&gt;extern void *OS_Make(size_t size);    // host-lib.c
+<pre>extern void *OS_Make(size_t size);    // host-lib.c
 extern void OS_Free(void *mem);    // host-lib.c
 extern void OS_Exit(int code);    // host-lib.c
 extern void OS_Crash(const char *title, const char *content);    // host-lib.c
@@ -55,7 +55,7 @@ extern REBINT OS_Gob_To_Image(REBSER *image, REBGOB *gob);    // host-window.c
 extern REBINT OS_Draw_Image(REBSER *image, REBSER *block);    // host-window.c
 extern REBINT OS_Effect_Image(REBSER *image, REBSER *block);    // host-window.c
 extern void OS_Cursor_Image(REBINT n, REBSER *image);    // host-window.c
-&lt;/pre&gt;
+</pre>
 
 ===POSIX===
 
@@ -83,7 +83,7 @@ Translate OS error into a string.
 
 ====Get_Boot_Path====
 
-Used to determine the program file path for REBOL. This is the path stored in system-&gt;options-&gt;boot and it is used for finding default boot files.
+Used to determine the program file path for REBOL. This is the path stored in system->options->boot and it is used for finding default boot files.
 
 ====Get_Locale====
 

@@ -5,47 +5,47 @@
 
 Specifies a clipping region; drawing will only occur inside the region.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | upper-left-point
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | The upper-left point of the bounding box defining the clipping region.
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | upper-left-point
+| bgcolor="white" | [pair!]
+| bgcolor="white" | The upper-left point of the bounding box defining the clipping region.
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | lower-right-point
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | The lower-right point of the bounding box defining the clipping region.
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | lower-right-point
+| bgcolor="white" | [pair!]
+| bgcolor="white" | The lower-right point of the bounding box defining the clipping region.
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
+<br>'''Notes and Examples'''
 
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     line-width 2
     pen yellow
     fill-pen blue
     clip 10x10 70x90
     box 20x20 200x200
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:CLIP-1b.png]]&lt;BR&gt;
-The box would go to 200x200, but we &lt;b&gt;&lt;tt&gt;clip&lt;/tt&gt;&lt;/b&gt; it.&lt;/TD&gt;
-&lt;/TR&gt;&lt;TR&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:CLIP-1b.png]]<BR>
+The box would go to 200x200, but we <b><tt>clip</tt></b> it.</TD>
+</TR><TR>
 
-&lt;TD WIDTH=60%&gt;
+<TD WIDTH=60%>
     pen yellow
     fill-pen red
     clip 50x50 125x200
     circle 50x50 100
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:CLIP-2b.png]] &lt;BR&gt;
-Clipping other shapes can produce interesting effects.&lt;/TD&gt;
-&lt;/TR&gt;&lt;TR&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:CLIP-2b.png]] <BR>
+Clipping other shapes can produce interesting effects.</TD>
+</TR><TR>
 
-&lt;TD WIDTH=60%&gt;
+<TD WIDTH=60%>
     pen yellow
     fill-pen red
     clip 50x50 125x200
@@ -54,20 +54,20 @@ Clipping other shapes can produce interesting effects.&lt;/TD&gt;
     fill-pen blue
     clip off
     circle 125x75 50
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:CLIP-3b.png]] &lt;br&gt;
-To turn clipping off, use &lt;b&gt;&lt;tt&gt;off&lt;/tt&gt;&lt;/b&gt; as the argument to &lt;b&gt;&lt;tt&gt;clip&lt;/tt&gt;&lt;/b&gt;.&lt;/TD&gt;
-&lt;/TR&gt;
-&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:CLIP-3b.png]] <br>
+To turn clipping off, use <b><tt>off</tt></b> as the argument to <b><tt>clip</tt></b>.</TD>
+</TR>
+</TABLE>
 
 
 
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Draw]]
 *[[Anti-Alias]]
 *[[Arc]]
@@ -77,14 +77,14 @@ Pages
 *[[Clip]]
 *[[Curve]]
 *[[Ellipse]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Fill-Pen]]
 *[[Fill-Rule]]
 *[[Gamma]]
@@ -95,13 +95,13 @@ Pages
 *[[Line]]
 *[[Line-Cap]]
 
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Line-Join]]
 *[[Line-Pattern]]
 *[[Line-Width]]
@@ -111,14 +111,14 @@ Pages
 *[[Push]]
 *[[Reset-Matrix]]
 *[[Rotate]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Scale]]
 *[[Shape]]
 *[[Skew]]
@@ -127,20 +127,20 @@ Pages
 *[[Transform]]
 *[[Translate]]
 *[[Triangle]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP width=30%&gt;
+<TD ALIGN=LEFT VALIGN=TOP width=30%>
 Chapters
-&lt;font size=1&gt;
+<font size=1>
 *[[R3 Introduction]]
 *[[Getting Started With R3]]
 *[[The Graphical User Interface]]
 *[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
 *'''Script Writing With The Draw Dialect'''
-*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+*[[The Graphic Object]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
-&lt;font size=1&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</font></TD>
+</TR></TABLE>

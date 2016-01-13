@@ -2,22 +2,22 @@
 
 Sets a coordinate system skewed from the original by the given number of degrees.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | val
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | val
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;Positive numbers skew to the right; negative numbers skew to
-the left.&lt;/p&gt;
-&lt;p&gt;Note: Currently the skewing transformation has effect on the line width in case '''fixed''' is not specified&lt;/p&gt; 
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<p>Positive numbers skew to the right; negative numbers skew to
+the left.</p>
+<p>Note: Currently the skewing transformation has effect on the line width in case '''fixed''' is not specified</p> 
+<code><pre>
 	line-width 1 fixed
 	pen white
 
@@ -33,12 +33,12 @@ the left.&lt;/p&gt;
 	skew -15
 	fill-pen yellow
 	box 120x230 220x330
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SKEW-1.png|SKEW example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Another way to reset the skew is to use the PUSH command:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Another way to reset the skew is to use the PUSH command:</p>
+<code><pre>
 	line-width 1 fixed
 	pen white
 
@@ -54,8 +54,8 @@ the left.&lt;/p&gt;
 	skew -15
 	fill-pen yellow
 	box 120x230 220x330
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SKEW-2.png|SKEW example 2]]
 
-&lt;br&gt;
-&lt;p&gt;See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace&lt;/p&gt;
+<br>
+<p>See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>

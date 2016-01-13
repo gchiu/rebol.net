@@ -2,7 +2,7 @@
 
 This is a new document that is intended to describe the primary changes between R2 and R3.
 
-'''This document must remain accurate. If you want to add items here, please do not &quot;guess&quot; at changes because what appears as a change may be a bug or oversight, not the way we really want it.'''
+'''This document must remain accurate. If you want to add items here, please do not "guess" at changes because what appears as a change may be a bug or oversight, not the way we really want it.'''
 
 ==Data Set (collections) Comparison Functions==
 
@@ -29,7 +29,7 @@ The MAP datatype works like a normal dictionary (associative array) type. Key va
 
 I don't think anyone uses it (but maybe I am wrong? Let me know.) It is equivalent to:
 
-  intchars: charset &quot;0123456789&quot;
+  intchars: charset "0123456789"
 
 So, that's a better approach anyway. (And we should make some default charsets like that defined from boot.)
 
@@ -41,13 +41,13 @@ The change from 32 bit to 64 bit integer! influences:
 
 Care must be taken with any code that assumes the length of the ISSUE! data returned by to-hex.
 ;REBOL2
- &gt;&gt; to-hex 80
+ >> to-hex 80
  == #00000050
 ;REBOL3
- &gt;&gt; to-hex 80
+ >> to-hex 80
  == #0000000000000050
 
-See [http://www.rebol.net/cgi-bin/r3blog.r?view=0031 R3 Blog article] for options and information on the &lt;span style=&quot;background-color:yellow; color:black;&quot;&gt;new&lt;/span&gt; '''/size''' refinement.
+See [http://www.rebol.net/cgi-bin/r3blog.r?view=0031 R3 Blog article] for options and information on the <span style="background-color:yellow; color:black;">new</span> '''/size''' refinement.
 
 ==Much More==
 

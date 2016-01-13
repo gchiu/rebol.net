@@ -1,5 +1,5 @@
-{| class=&quot;wikitable&quot;
-! width=&quot;10%&quot; | Command !! width=&quot;30%&quot; | arguments !! width=&quot;60%&quot; | Description
+{| class="wikitable"
+! width="10%" | Command !! width="30%" | arguments !! width="60%" | Description
 |-
 !ADD
 |image! image!

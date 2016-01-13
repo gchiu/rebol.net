@@ -17,7 +17,7 @@ and a BUTTON style may specify:
     facets: [
         area-color: 60.70.150
         edge-color: 96.96.96
-        text-body: &quot;Button&quot;
+        text-body: "Button"
         text-style: 'button
     ]
 
@@ -28,11 +28,11 @@ If a style is derived from a parent style, the parent facets are cloned so they 
 The style/facets are used for all face instances of the style, unless the style redefines (overloads) one or more of them (see the style/faced field below).
 ----------------------------------------------------------------------------
 
-&lt;TABLE CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=50% VALIGN=TOP&gt;
+<TABLE CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=50% VALIGN=TOP>
 '''Face/facets''' is an object that holds attributes and properties that are unique to the face as an instance of a style.
 
 This object is optimized to hold only those values that are different from the style itself, or that change based on changes in the state of the object (such as when over or selected).
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 Example, a button would have these face facets:
 
   area-size: ; set by resize
@@ -40,4 +40,4 @@ Example, a button would have these face facets:
   area-fill: ; set by on-draw
 
 The face/facets field is merged with the style/facets field during the processing of the DRAW dialect. The face/facets always take precedence over the style/facets.
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>

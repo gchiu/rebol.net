@@ -45,7 +45,7 @@ The top bar will be:
 
 Most of this is obvious to everyone; however, the purpose of the opts button is clarified below.
 
-In general, I (Carl) want a general method of jumping to the &quot;meta layer&quot; of the browser. The opts are a panel that provides two main things: information and preferences.
+In general, I (Carl) want a general method of jumping to the "meta layer" of the browser. The opts are a panel that provides two main things: information and preferences.
 
 *Opts information includes panels about the browser and the current reblet, including REBOL header info such as purpose, author, date, version, size, signature, links to documentation, etc.
 *Opts preferences include a section for general browser options, but also any special preferences needed by current reblet.

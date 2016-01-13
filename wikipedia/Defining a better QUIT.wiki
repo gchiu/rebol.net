@@ -11,7 +11,7 @@ There are four general environments for running REBOL programs. It is best to cl
 
 We will include running as a browser (or embedded app) plugin as the first case: an application. It is also possible that it may be run as a plugin in the second case too.
 
-In addition, we will define &lt;b&gt;Console&lt;/b&gt; to mean the REBOL interactive session (prompt, evaluate, and show result).
+In addition, we will define <b>Console</b> to mean the REBOL interactive session (prompt, evaluate, and show result).
 
 ==Importance of Console Varies==
 
@@ -24,7 +24,7 @@ The importance of the console varies quite a lot, depending on the above environ
 
 The first two cases are easy to handle. A developer just wraps sections of their code with TRY functions that will handle all error conditions. Unless you are developing an app, you should not throw errors out to the console.
 
-The third and fourth cases are different, because the console &quot;belongs to the user&quot; and not the script. It should be possible for the user to keep the console open, regardless of what scripts and code is being evaluated.
+The third and fourth cases are different, because the console "belongs to the user" and not the script. It should be possible for the user to keep the console open, regardless of what scripts and code is being evaluated.
 
 ==Special Cases==
 
@@ -67,8 +67,8 @@ So, it appears that an important case is missing from the above exceptions.  We 
 
 There are a few solutions to this problem, but we can narrow them down to the best two choices:
 
-#Define a new function (or refinement) for the desired &quot;script wants to quit&quot; action.
-#Modify the behavior of the QUIT function itself - making it &quot;modal&quot; - that is, what it does depends on a special mode of operation.
+#Define a new function (or refinement) for the desired "script wants to quit" action.
+#Modify the behavior of the QUIT function itself - making it "modal" - that is, what it does depends on a special mode of operation.
 
 The first is practical, but it would require scripts to use the new function or special quit refinement. I think we know that's not likely to happen. Many scripts will still use QUIT.
 

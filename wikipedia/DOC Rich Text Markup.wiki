@@ -1,14 +1,14 @@
 ===The DOC Style===
-&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=40% VALIGN=TOP&gt;
+<TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=40% VALIGN=TOP>
 The DOC style is  a simple rich-text document markup method to easily format
 the text of display notes, instructions, and comments.
 
 The DOC style uses the same basic rules as REBOL'S '''MakeDoc'''.
 
-Examples may be found by running '''Demo''' at the R3 console, then &quot;Run Test&quot;
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+Examples may be found by running '''Demo''' at the R3 console, then "Run Test"
+</TD><TD VALIGN=TOP>
 
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 
 

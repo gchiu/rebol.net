@@ -1,19 +1,19 @@
 These can save you some code and maybe some time too.
 
-''Know a good idiom? Please &lt;span class=&quot;plainlinks&quot;&gt;[http://rebol.net/w/index.php?title=Handy_Idioms&amp;action=edit&amp;section=new add]&lt;/span&gt; it here.''
+''Know a good idiom? Please <span class="plainlinks">[http://rebol.net/w/index.php?title=Handy_Idioms&action=edit&section=new add]</span> it here.''
 
-See &amp;bull; [[Forgoing faux pas]] &amp;bull; to avoid some common mistakes.
+See &bull; [[Forgoing faux pas]] &bull; to avoid some common mistakes.
 
 ==To-block works for words too==
 
 This is handy to know:
 
- &gt;&gt; to-block 'word
+ >> to-block 'word
  == [word]
 
 because also:
 
- &gt;&gt; to-block [word1 word2]
+ >> to-block [word1 word2]
  == [word1 word2]
 
 So, in some cases, you don't need to write:

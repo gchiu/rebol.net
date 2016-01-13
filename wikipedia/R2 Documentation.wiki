@@ -1,4 +1,4 @@
-{| align=&quot;right&quot;
+{| align="right"
 | __TOC__
 |}
 
@@ -6,11 +6,11 @@
 
 REBOL Technologies has produced many manuals and guides for the REBOL platform. In the following table you will find links to this documentation.
 
-{| class=&quot;wikitable&quot; width=&quot;100%&quot; style=&quot;clear:right;&quot;
+{| class="wikitable" width="100%" style="clear:right;"
 ! Documentation
 ! Description
 |-
-|td colspan=&quot;2&quot; align=&quot;center&quot;|'''Documentation for the REBOL Language'''
+|td colspan="2" align="center"|'''Documentation for the REBOL Language'''
 |-
 |[http://www.rebol.com/docs.html Rebol Main Documentation page]
 |This is the homepage for the documentation you find listed here
@@ -27,9 +27,9 @@ REBOL Technologies has produced many manuals and guides for the REBOL platform. 
 |[http://www.rebol.com/faq.html REBOL Language FAQ]
 |A '''F'''requently '''A'''sked '''Q'''uestions page
 |-
-|td colspan=&quot;2&quot; align=&quot;center&quot;|'''Documentation for the REBOL Graphics subsystem'''
+|td colspan="2" align="center"|'''Documentation for the REBOL Graphics subsystem'''
 |-
-|[http://www.rebol.com/docs/easy-vid.html Beginners Guides to &lt;br&gt;REBOL Visual Interfaces]
+|[http://www.rebol.com/docs/easy-vid.html Beginners Guides to <br>REBOL Visual Interfaces]
 |VID Is the Visual Interface Dialect. This is the first guide written by REBOL Technologies on VID.
 |-
 |[http://www.rebol.com/docs/view-guide.html Concepts and Features of REBOL/View]
@@ -41,7 +41,7 @@ REBOL Technologies has produced many manuals and guides for the REBOL platform. 
 |[http://www.rebol.com/docs/changes-view.html Updates to View 1.3]
 |All the updates to REBOL View 1.3
 |-
-|[http://www.rebol.com/docs/draw-ref.html REBOL/View DRAW Dialect] &lt;BR&gt; (Older Docs:[http://www.rebol.com/docs/draw.html Here])
+|[http://www.rebol.com/docs/draw-ref.html REBOL/View DRAW Dialect] <BR> (Older Docs:[http://www.rebol.com/docs/draw.html Here])
 |Documentation of the REBOL Draw dialect
 |-
 |[http://www.rebol.com/docs/image.html REBOL Image Datatype]
@@ -50,11 +50,11 @@ REBOL Technologies has produced many manuals and guides for the REBOL platform. 
 
 ==Other Documentation==
 
-{| class=&quot;wikitable&quot; width=&quot;100%&quot; style=&quot;clear:right;&quot;
+{| class="wikitable" width="100%" style="clear:right;"
 ! Documentation
 ! Description
 |-
-|td colspan=&quot;2&quot; align=&quot;center&quot;|'''Other Documentation for REBOL'''
+|td colspan="2" align="center"|'''Other Documentation for REBOL'''
 |-
 |[http://www.rebol.net/docs/async-ports.html Async Port]
 |REBOL Async (Asynchronous) Network Ports
@@ -65,7 +65,7 @@ REBOL Technologies has produced many manuals and guides for the REBOL platform. 
 
 ==REBOL 2 Online Books/Guides==
 
-{| class=&quot;wikitable&quot; width=&quot;100%&quot; align=&quot;left&quot; style=&quot;clear:all;&quot;
+{| class="wikitable" width="100%" align="left" style="clear:all;"
 ! Name
 ! Type
 ! Description
@@ -86,7 +86,7 @@ REBOL Technologies has produced many manuals and guides for the REBOL platform. 
 |Guide
 |What REBOL can do for you in one line
 |-
-|[http://musiclessonz.com/rebol_tutorial.html REBOL Programming for&lt;br&gt;the Absolute Beginner]
+|[http://musiclessonz.com/rebol_tutorial.html REBOL Programming for<br>the Absolute Beginner]
 |Guide
 |Read this guide by Nick Antonaccio if you have never programmed in REBOL
 |-
@@ -94,7 +94,7 @@ REBOL Technologies has produced many manuals and guides for the REBOL platform. 
 |Guide
 |Another guide by Nick Antonaccio more concise, oriented to experienced programmers
 |-
-|[http://www.rebol.com/docs/rebol-tutorial-3109.pdf REBOL Essential&lt;br&gt;(PDF Version)]
+|[http://www.rebol.com/docs/rebol-tutorial-3109.pdf REBOL Essential<br>(PDF Version)]
 |Guide
 |Another nice guide for REBOL
 |-
@@ -106,14 +106,14 @@ REBOL Technologies has produced many manuals and guides for the REBOL platform. 
 |Guide
 |Japanese Documents　for REBOL. It contains some R3 Documents too.
 |}
-&lt;br clear=&quot;all&quot;/&gt;
+<br clear="all"/>
 
 ==REBOL 2 Commercial Books==
 
 Here is a list of commercial and non commercial REBOL books available
 
-&lt;!-- {| border=&quot;1&quot; cellspacing=&quot;1&quot; cellpadding=&quot;5&quot; align=&quot;right&quot; --&gt;
-{| class=&quot;wikitable&quot; width=&quot;100%&quot;
+<!-- {| border="1" cellspacing="1" cellpadding="5" align="right" -->
+{| class="wikitable" width="100%"
 ! Book
 ! Language
 ! Author
@@ -129,7 +129,7 @@ Here is a list of commercial and non commercial REBOL books available
 |Ralph Roberts
 |A reference for the rest of us.
 |-
-|[http://www.a1books.com/cgi-bin/mktSearch?act=showDesc&amp;code=froogle&amp;ISBN=007212279X REBOL: The Official Guide]
+|[http://www.a1books.com/cgi-bin/mktSearch?act=showDesc&code=froogle&ISBN=007212279X REBOL: The Official Guide]
 |EN
 |Elan Goldman, John Blanton
 |An introduction to the language containing an online db example.
@@ -154,11 +154,11 @@ Here is a list of commercial and non commercial REBOL books available
 |Olivier Auverlot
 |REBOL Guide du Programmeur translated to English by Peter W. A. Wood
 |}
-&lt;br clear=&quot;all&quot;/&gt;
+<br clear="all"/>
 
 ==REBOL Tutorials==
 
-{| class=&quot;wikitable&quot; width=&quot;100%&quot; align=&quot;left&quot; style=&quot;clear:all;&quot;
+{| class="wikitable" width="100%" align="left" style="clear:all;"
 ! Name
 ! Description
 |-
@@ -171,12 +171,12 @@ Here is a list of commercial and non commercial REBOL books available
 |[http://www.reboltutorial.com REBOL Tutorial]
 |Learn Rebol day by day with Real World Examples
 |}
-&lt;br clear=&quot;all&quot;/&gt;
+<br clear="all"/>
 
 ==REBOL Professional and Commercial Programming==
 
-&lt;!-- {| border=&quot;1&quot; cellspacing=&quot;1&quot; cellpadding=&quot;5&quot; style=&quot;clear:all;&quot; align=&quot;right&quot; --&gt;
-{| class=&quot;wikitable&quot; width=&quot;100%&quot;
+<!-- {| border="1" cellspacing="1" cellpadding="5" style="clear:all;" align="right" -->
+{| class="wikitable" width="100%"
 ! Documentation
 ! Description
 |-
@@ -189,13 +189,13 @@ Here is a list of commercial and non commercial REBOL books available
 |[http://www.reboltech.com/express/docs/index.html REBOL/IOS]
 |REBOL/IOS - Collaboration Platform - Index page for all IOS documents 
 |}
-&lt;br clear=&quot;all&quot;/&gt;
+<br clear="all"/>
 
 ==REBOL 2 Articles==
 
 {{:R2_Articles}}
 
-&lt;!-- Go to [[R2_Articles|this page]] to see a collection of rebol articles. --&gt;
+<!-- Go to [[R2_Articles|this page]] to see a collection of rebol articles. -->
 
 [[Category:REBOL2]]
 [[Category:Documentation]]

@@ -49,9 +49,9 @@ In the future, messages will be allowed for projects, tasks, calendar events, an
 
 Alerts and banners are special messages designed to get the attention of users.
 
-An alert is a message of urgent importance and will &quot;popup&quot; to be sure that the user sees it. In the CLI client, it will be shown automatically.
+An alert is a message of urgent importance and will "popup" to be sure that the user sees it. In the CLI client, it will be shown automatically.
 
-A banner is a message that labels or defines a section, such as a heading. It's main purpose is to help keep a discussion on a defined topic. For example, a heading called &quot;Button Shapes&quot; in a GUI section may have a banner that says &quot;This section explains how to make different button shapes.&quot;
+A banner is a message that labels or defines a section, such as a heading. It's main purpose is to help keep a discussion on a defined topic. For example, a heading called "Button Shapes" in a GUI section may have a banner that says "This section explains how to make different button shapes."
 
 ===Private messages===
 
@@ -59,7 +59,7 @@ Private messages are those that can be read only by specific users.
 
 Note that '''private messages can be posted in any discussion thread''', even in public discussions. This allows users to make comments to other users, but keep them within the context of the discussion.
 
-For example, in the Button Shapes discussion above, Mario might privately tell Luke: &quot;I prefer to make buttons with rounded corners.&quot; Only Mario and Luke will see that message.
+For example, in the Button Shapes discussion above, Mario might privately tell Luke: "I prefer to make buttons with rounded corners." Only Mario and Luke will see that message.
 
 ===Tagging===
 
@@ -75,7 +75,7 @@ Also, a message can have any number of tags, tags also include the user who issu
 
 The ability to see ''all new messages'' regardless of heading or type.
 
-This provides a simple way to say, &quot;show me everything that's been posted recently&quot;. You will see not only messages, but new headings, new users, new alerts, new files, etc.
+This provides a simple way to say, "show me everything that's been posted recently". You will see not only messages, but new headings, new users, new alerts, new files, etc.
 
 Selecting an item (message or heading) from the list will automatically locate you to that context directly (under the relevant headings.)
 
@@ -83,7 +83,7 @@ Selecting an item (message or heading) from the list will automatically locate y
 
 Any message, heading, alert, and everything else is referenced by a unique number.
 
-For example, you can tell a user to &quot;please read message #1020&quot; or &quot;go to heading #320&quot;.
+For example, you can tell a user to "please read message #1020" or "go to heading #320".
 
 In addition, these numbers provide each entry a unique URL address, allowing it to be referenced throughout the Internet.
 
@@ -154,31 +154,31 @@ Goto [[RebDev Quick Start]]
 
 Default ranks for specific server commands (roughly similar to the client commands, but not identical). Some exceptions exist for modification commands if user did not post the original message.
 
-&lt;table border=1 cellpadding=4 cellspacing=0&gt;
-&lt;tr&gt; &lt;td&gt; info: &lt;/td&gt; &lt;td&gt; 1 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; get: &lt;/td&gt; &lt;td&gt; 5 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; users: &lt;/td&gt; &lt;td&gt; 5 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; logout: &lt;/td&gt; &lt;td&gt; 1 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; pass: &lt;/td&gt; &lt;td&gt; 1 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; post: &lt;/td&gt; &lt;td&gt; 10 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; head: &lt;/td&gt; &lt;td&gt; 50 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; banner: &lt;/td&gt; &lt;td&gt; 50 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; alert: &lt;/td&gt; &lt;td&gt; 65 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; move: &lt;/td&gt; &lt;td&gt; 10 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; remove: &lt;/td&gt; &lt;td&gt; 10 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; tag: &lt;/td&gt; &lt;td&gt; 50 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; name: &lt;/td&gt; &lt;td&gt; 50 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; rename: &lt;/td&gt; &lt;td&gt; 50 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; submit: &lt;/td&gt; &lt;td&gt; 20 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; accept: &lt;/td&gt; &lt;td&gt; 70 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; deny: &lt;/td&gt; &lt;td&gt; 70 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; rank: &lt;/td&gt; &lt;td&gt; 50 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; log: &lt;/td&gt; &lt;td&gt; 50 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; stats: &lt;/td&gt; &lt;td&gt; 30 &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; quit: &lt;/td&gt; &lt;td&gt; admin &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; sessions: &lt;/td&gt; &lt;td&gt; admin &lt;/td&gt; &lt;/tr&gt;
-&lt;tr&gt; &lt;td&gt; errors: &lt;/td&gt; &lt;td&gt; admin &lt;/td&gt; &lt;/tr&gt;
-&lt;/table&gt;
+<table border=1 cellpadding=4 cellspacing=0>
+<tr> <td> info: </td> <td> 1 </td> </tr>
+<tr> <td> get: </td> <td> 5 </td> </tr>
+<tr> <td> users: </td> <td> 5 </td> </tr>
+<tr> <td> logout: </td> <td> 1 </td> </tr>
+<tr> <td> pass: </td> <td> 1 </td> </tr>
+<tr> <td> post: </td> <td> 10 </td> </tr>
+<tr> <td> head: </td> <td> 50 </td> </tr>
+<tr> <td> banner: </td> <td> 50 </td> </tr>
+<tr> <td> alert: </td> <td> 65 </td> </tr>
+<tr> <td> move: </td> <td> 10 </td> </tr>
+<tr> <td> remove: </td> <td> 10 </td> </tr>
+<tr> <td> tag: </td> <td> 50 </td> </tr>
+<tr> <td> name: </td> <td> 50 </td> </tr>
+<tr> <td> rename: </td> <td> 50 </td> </tr>
+<tr> <td> submit: </td> <td> 20 </td> </tr>
+<tr> <td> accept: </td> <td> 70 </td> </tr>
+<tr> <td> deny: </td> <td> 70 </td> </tr>
+<tr> <td> rank: </td> <td> 50 </td> </tr>
+<tr> <td> log: </td> <td> 50 </td> </tr>
+<tr> <td> stats: </td> <td> 30 </td> </tr>
+<tr> <td> quit: </td> <td> admin </td> </tr>
+<tr> <td> sessions: </td> <td> admin </td> </tr>
+<tr> <td> errors: </td> <td> admin </td> </tr>
+</table>
 
 ==File Sharing==
 
@@ -196,10 +196,10 @@ However, during development, you may want to work on files outside of the primar
 
 Here is the example structure:
 
- r3/  &lt;-- don't put files here
-     mezzanines/ &lt;-- for official mezzanine files (releases)
-         load/   &lt;-- for development work, experiments, etc.
-         save/   &lt;-- for development work, experiments, etc.
+ r3/  <-- don't put files here
+     mezzanines/ <-- for official mezzanine files (releases)
+         load/   <-- for development work, experiments, etc.
+         save/   <-- for development work, experiments, etc.
 
 '''To reduce the load on the submissions acceptance process, it is advised that you develop code like this.''' It also takes less space and network bandwidth.
 
@@ -208,7 +208,7 @@ Here is the example structure:
 File sharing uses a name, submit, status mechanism.
 
 *'''Name''' is a file name. It is not a file; it has no contents, it is only a label to which one or more file submissions are attached.
-*'''Submit''' is the file contents. It is attached to a name, as its &quot;parent&quot;. As changes to a file are made, they are submitted to the same name. This is how versioning is done.
+*'''Submit''' is the file contents. It is attached to a name, as its "parent". As changes to a file are made, they are submitted to the same name. This is how versioning is done.
 *'''Status''' tags that a previous submit was accepted or denied. It is only a tag, attached to a submit (as it's parent), and should include a comment (a reason for it).
 
 Note that all names, submissions, and status records are marked with a date, user id, and comment field.
@@ -241,7 +241,7 @@ These commands currently require very high ranking:
 
 First, goto a topic section that has files.
 
-  &gt;&gt; 26
+  >> 26
   R3/Mezzanines:
 
 Now type:

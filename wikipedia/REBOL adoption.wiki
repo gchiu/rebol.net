@@ -1,4 +1,4 @@
-''While even R2 was found being a cool language, REBOL never attracted enough of developers, nor broader public attention. There were some past marketing/strategic mistakes in the past. Let's find out, where we are today, how to &quot;reboot&quot; our points of view, and how to get under the radar once again ...'' 
+''While even R2 was found being a cool language, REBOL never attracted enough of developers, nor broader public attention. There were some past marketing/strategic mistakes in the past. Let's find out, where we are today, how to "reboot" our points of view, and how to get under the radar once again ...'' 
 
 = REBOL (R2) - the world most ignored Beauty =
 
@@ -8,15 +8,15 @@ Back in 1997-8, REBOL was still new. It was brought to the world by world respec
 
 When you introduce new product, you have some limited time to get people's attention. It felt all new and fresh, people gave it a try. But the so called momentum did not last forever. As time went by, people became less interested, and you often have to run expensive marketing campaigns to prolong the momentum period. Back then, there was a team at Rebol Technologies, including some marketing staff IIRC, but the momentum was wasted, because of a wrong business model.
 
-== A &quot;killer&quot; app ==
+== A "killer" app ==
 
-What eventually might help in the case of new technology, is existance of so called &quot;killer app&quot;, which is so significant, that it causes some movement/following in and of itself. 
+What eventually might help in the case of new technology, is existance of so called "killer app", which is so significant, that it causes some movement/following in and of itself. 
 
 In SW technology world, let's name a few - an Amiga, ICQ, Skype, Linux, LAMP, FaceBook, Twitter, Ruby on Rails. I mentioned Ruby on Rails, because Ruby is another programming language, which started its development approximately at the same time as REBOL did. Do you think it is really any special, considering the [http://en.wikipedia.org/wiki/List_of_programming_languages list] of all possible programming languages out there? 
 
 Remember - there would be no Ruby, without Rails.
 
-And REBOL's killer app? Back in the early days of P2P networks, REBOL was choosen as a platform for a new, upcoming Morpheus P2P client. But the company behind the Morpheus got sued, so the project was cancelled. Another attempt at a killer app was  - AltME. While there is something like 10K of AltME worlds running, it never won much of the public's attention, mainly because of its &quot;darknet&quot; aspects (no web visibility of ongoing communication).
+And REBOL's killer app? Back in the early days of P2P networks, REBOL was choosen as a platform for a new, upcoming Morpheus P2P client. But the company behind the Morpheus got sued, so the project was cancelled. Another attempt at a killer app was  - AltME. While there is something like 10K of AltME worlds running, it never won much of the public's attention, mainly because of its "darknet" aspects (no web visibility of ongoing communication).
 
 == Open source vs free ==
 
@@ -24,11 +24,11 @@ Back in 1997-8, open-source movement was not still regarded being a significant 
 
 So REBOL was free, but not open-sourced. Why open-sourcing R2 would cause us harm? You can find the answer in following two categories:
 
-=== Technical &quot;support&quot; ===
+=== Technical "support" ===
 
 Back at those times of R2, there was just mailing list and feedback email adress, from which you got only sporadic replies. No bug database (later fixed with RAMBO bugbase), no web forum. RT got its commercial product called IOS (Internet Operating System). It was nice system for enterprises, but it dragged all RT's resources. Product as REBOL/View was not updated in 18 months. Many people felt frustration, because it contained some significant bugs, which were not fixed.
 
-So - it was like throwing gasoline on a fire - &quot;'''if R2 was open sourced, we could fix it ourselves'''&quot; could be heard so often. '''Technical support was one of the biggest problems back then'''.
+So - it was like throwing gasoline on a fire - "'''if R2 was open sourced, we could fix it ourselves'''" could be heard so often. '''Technical support was one of the biggest problems back then'''.
 
 === Problem of deployment ===
 
@@ -40,7 +40,7 @@ But that was not the only deployment problem - if you wanted to use R2 in the en
 
 Remember - many programmers do use REBOL as a hobby. But they have got their daily jobs too. And if you like REBOL (as many of us do), you can't use it at your work by showing your boss that the job can be done in few lines of code. The situation gets even more denerving and frustrating.
 
-There was also another &quot;enemy&quot; starting to emerge. The web. It got more and more useful for applications. No matter what I think about all that junk combination of JS, HTML, XML, CSS, PHP or other stuff on the server side - the web has won. Back in 1998 REBOL/View was one of the first RIAs. We should have got to the browser a long time ago. Sadly - REBOL browser plug-in never went out of the beta.
+There was also another "enemy" starting to emerge. The web. It got more and more useful for applications. No matter what I think about all that junk combination of JS, HTML, XML, CSS, PHP or other stuff on the server side - the web has won. Back in 1998 REBOL/View was one of the first RIAs. We should have got to the browser a long time ago. Sadly - REBOL browser plug-in never went out of the beta.
 
 == Documentation ==
 
@@ -50,9 +50,9 @@ But I am not so critical here - if you need help, you can find help.
 
 == Website ==
 
-I don't want to hurt anyone's feelings, but rebol.com and rebol.net look like old bad MS Word 1998 joke :-) Don't you know the old marketing claim, that &quot;design sells&quot;? I am glad there is an ongoing effort to redefine the rebol.com website (content adaptation has started), but I somehow feel, there's something wrong in the air once again - RT [http://www.rebol.com/article/0443.html looking for a designer] in the community. I think that our community has 2-3 capable people in the webdesign area, but other than that - you have been warned - programmers should not be allowed to touch the design work!
+I don't want to hurt anyone's feelings, but rebol.com and rebol.net look like old bad MS Word 1998 joke :-) Don't you know the old marketing claim, that "design sells"? I am glad there is an ongoing effort to redefine the rebol.com website (content adaptation has started), but I somehow feel, there's something wrong in the air once again - RT [http://www.rebol.com/article/0443.html looking for a designer] in the community. I think that our community has 2-3 capable people in the webdesign area, but other than that - you have been warned - programmers should not be allowed to touch the design work!
 
-== &quot;You can code it in few lines&quot; attitude ==
+== "You can code it in few lines" attitude ==
 
 How often have I hear the phrase? Quite often. While it is true that you can do many usefull things in few lines of REBOL code,the  community should learn one thing - there are many people, which might hear about REBOL for the first time and will like to eventually give it a try. But - those people are looking for solutions. They want to '''use the solution, not create one''' themselves.
 
@@ -80,7 +80,7 @@ The rewrite, however, is done on purpose. It is done to allow us to adress most 
 
 == Hybrid open-source model? What is that? ==
 
-RT redesigned R3 so that a language interpreter is platform agnostic DLL (dynamic library). I am not sure I even used the right term - &quot;language interpreter&quot;, because some ppl might think - well, so REBOL is now mostly a dll, so what? But - that '''DLL contains ONLY a platform agnostic code''' of what we generally understand as a REBOL language.
+RT redesigned R3 so that a language interpreter is platform agnostic DLL (dynamic library). I am not sure I even used the right term - "language interpreter", because some ppl might think - well, so REBOL is now mostly a dll, so what? But - that '''DLL contains ONLY a platform agnostic code''' of what we generally understand as a REBOL language.
 
 Why is it important? Because the '''rest actually IS open-sourced'''. Yes, stuff like networking, console, files, events (devices), gui, all OS related layers, everything sits in so called Host code, which is [http://www.rebol.net/wiki/Host-Builds open-sourced and released] to first members of REBOL community as we speak.
 
@@ -90,7 +90,7 @@ And to die-hard open source followers - please think why you want REBOL being fu
 
 == Few bits about the architecture ==
 
-=== R3 DLL, Host ---&gt; R3 product ===
+=== R3 DLL, Host ---> R3 product ===
 
 With R2, you either could use the free REBOL products, or you bought an SDK that contained a packager (Encap), which allowed you to produce your own executables. I think that with R3 the situation is going to be a bit different. What you actually get is the R3 language interpreter in the form of a DLL, and [http://www.rebol.net/wiki/Host-Builds Host source codes].
 
@@ -110,7 +110,7 @@ Amiga developers are surely familiar with async devices model. [http://www.rebol
 
 === Port model ===
 
-Once again. Amigans will know &quot;ports&quot;. We have ports for files, networking, sound, encryption, console, events, DB acess, etc. With R3, Port model was completly [http://www.rebol.net/r3blogs/0069.html reimplemented] for greater flexibility. More on R2 to R3 port changes [http://www.rebol.net/wiki/Ports here].
+Once again. Amigans will know "ports". We have ports for files, networking, sound, encryption, console, events, DB acess, etc. With R3, Port model was completly [http://www.rebol.net/r3blogs/0069.html reimplemented] for greater flexibility. More on R2 to R3 port changes [http://www.rebol.net/wiki/Ports here].
 
 === Codecs. Amiga datatypes, anyone? ===
 
@@ -142,7 +142,7 @@ For R3, REBOL/View was pretty much rewritten. The most significant change was th
 
 But - REBOL GUI = VID. And what VID lacked most was quality styles, although [http://www.dobeash.com/rebgui.html RebGUI] is available, it still does not feel natural on the target platforms. I think that users might be forgiving as for the look, but not so to the app behaviour and its OS deployment.
 
-Well - to all naysayers - we know web kind of won, but there is still some area (e.g. embedded), where a small, lean&amp;mean GUI system might be useful. Remember - REBOL + GUI is still &lt; 1MB!
+Well - to all naysayers - we know web kind of won, but there is still some area (e.g. embedded), where a small, lean&mean GUI system might be useful. Remember - REBOL + GUI is still < 1MB!
 
 While the outer world tries to copy our declarative aproach (hello, JavaFX guys! :-), we will take it to the next level once again. 
 
@@ -182,7 +182,7 @@ I know it is difficult to ask for a patience after more than 3 years of waiting,
 
 I will just restate: 
 
-''I don't want to hurt anyone's feelings, but rebol.com and rebol.net look like old bad MS Word 1998 joke :-) Don't you know the old marketing claim, that &quot;design sells&quot;? I am glad there is an ongoing effort to redefine the rebol.com website (content adaptation has started), but I somehow feel, there's something wrong in the air once again - RT [http://www.rebol.com/article/0443.html looking for a designer] in the community. I think that our community has 2-3 capable ppl in the webdesign area, but other than that - you have been warned - programmers should not be allowed to touch the design work!''
+''I don't want to hurt anyone's feelings, but rebol.com and rebol.net look like old bad MS Word 1998 joke :-) Don't you know the old marketing claim, that "design sells"? I am glad there is an ongoing effort to redefine the rebol.com website (content adaptation has started), but I somehow feel, there's something wrong in the air once again - RT [http://www.rebol.com/article/0443.html looking for a designer] in the community. I think that our community has 2-3 capable ppl in the webdesign area, but other than that - you have been warned - programmers should not be allowed to touch the design work!''
 
 I will try to provide my point of view, what should be rebol.com about, in a separate [http://www.rebol.net/wiki/REBOL.com document]. But - RT already started preparation work for the new website. Its current content is more streamlined, Community page got added, etc.
 
@@ -192,7 +192,7 @@ I would let community and support be spread upon several communication channels.
 
 === AltME ===
 
-AltME is still nice community channel. It is kind of a &quot;REBOL pub&quot;. Chat is happening not only on REBOL topics, but you can also find out more about who your REBOL friends are. One advantage of AltME is, that you can get usefull answer to your REBOL problem in seconds/minutes, and it really has IM (instant messaging) nature. Other advantage is, that whoever can start new AltME world, e.g. related to specific topic, it provides us with file-sharing, hidden groups, etc.
+AltME is still nice community channel. It is kind of a "REBOL pub". Chat is happening not only on REBOL topics, but you can also find out more about who your REBOL friends are. One advantage of AltME is, that you can get usefull answer to your REBOL problem in seconds/minutes, and it really has IM (instant messaging) nature. Other advantage is, that whoever can start new AltME world, e.g. related to specific topic, it provides us with file-sharing, hidden groups, etc.
 
 === ML (mailing list) ===
 
@@ -248,14 +248,14 @@ In order to lower entrance barrier for new users, we have to really care more ab
 
 I would also like to say, that following categories should be reflected on rebol.com - a corporate website.
 
-* '''Users &amp; visitors''' who want to try some applications
+* '''Users & visitors''' who want to try some applications
 * '''Programmers'''
-* '''IT managers&amp;CEOS''' who want to check what is his technical staff talking about, what technical support they need to buy
+* '''IT managers&CEOS''' who want to check what is his technical staff talking about, what technical support they need to buy
 
 === Make life easier for - Users ===
 
 * '''Web browser plugin - absolutly strategic product!''' Release its source to the community along with Host code. This one lowers the entrance barrier, as some ppl think that if they install something to the browser, they don't do installation :-) 
-* '''Screenshots &amp; Videos''' - screenshot is worth a 1000 words. Whatever product page I reach, if it does not provide me with screenshots, my interest rate goes down to 20% - only a common sense prevents me from leaving the site altogether
+* '''Screenshots & Videos''' - screenshot is worth a 1000 words. Whatever product page I reach, if it does not provide me with screenshots, my interest rate goes down to 20% - only a common sense prevents me from leaving the site altogether
 * '''AppStore (catalog)''' - provide usefull extensions, apps (widgets), introduce ranking, most popular, most recent, etc. categories. This is really a trend we should follow
 
 === Make life easier for - Programmers ===
@@ -263,7 +263,7 @@ I would also like to say, that following categories should be reflected on rebol
 * '''How do I ...''' - use front page banner to show either cute one-liners, very short stories about how to solve contrete stuff
 * '''DBs supported'''
 * '''Libraries supported''' - wrappers for popular existing libraries
-* '''Usefull extensions/connectors''' - extensions for specific areas - free &amp; paid.
+* '''Usefull extensions/connectors''' - extensions for specific areas - free & paid.
 * '''Special support''' - possibility to buy special tech support
 * '''Support channels''' - easy to reach support channels
 * '''Good official docs'''
@@ -271,7 +271,7 @@ I would also like to say, that following categories should be reflected on rebol
 === Make life easier for - IT managers, CEOs ===
 
 * '''Success stories''' - how someone choosed REBOL to solve xyz - make them feel safe, if their team uses REBOL
-* '''Deployment scenarios &amp; Integrations''' - reworded for managers, but generally this one is the same as Connectors area for Programmers. Those people need to know, they can access SAP, they can access AD (Active Directory), they can script Windows server, access their DBs
+* '''Deployment scenarios & Integrations''' - reworded for managers, but generally this one is the same as Connectors area for Programmers. Those people need to know, they can access SAP, they can access AD (Active Directory), they can script Windows server, access their DBs
 
 == Marketing REBOL ==
 

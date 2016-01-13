@@ -1,92 +1,92 @@
 == ARC== 
 
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;
-&lt;TD ALIGN=RIGHT WIDTH=75%&gt;Next Page: '''[[Arrow]]'''&lt;/TD&gt;&lt;TD ALIGN=CENTER&gt;Return To '''[[Draw]] Contents'''&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+<TABLE WIDTH=100%><TR>
+<TD ALIGN=RIGHT WIDTH=75%>Next Page: '''[[Arrow]]'''</TD><TD ALIGN=CENTER>Return To '''[[Draw]] Contents'''</TD>
+</TR></TABLE>
 
 The ARC command draws a partial section of an ellipse (or circle).
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | center
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | The center of the circle
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | center
+| bgcolor="white" | [pair!]
+| bgcolor="white" | The center of the circle
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | radius
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | The radius of the circle
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | radius
+| bgcolor="white" | [pair!]
+| bgcolor="white" | The radius of the circle
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | angle-begin
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | The angle where the arc begins, in degrees
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | angle-begin
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | The angle where the arc begins, in degrees
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | angle-length
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | The length of the arc in degrees
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | angle-length
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | The length of the arc in degrees
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | closed
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | Optional, must be the word '''closed'''
-| bgcolor=&quot;white&quot; | '''closed''' - close the arc
+| bgcolor="white" | closed
+| bgcolor="white" | [word!]
+| bgcolor="white" | Optional, must be the word '''closed'''
+| bgcolor="white" | '''closed''' - close the arc
 |}
 
 
 
-&lt;p&gt;For &lt;b&gt;&lt;tt&gt;angle-begin&lt;/tt&gt;&lt;/b&gt;, 0° is to right of the center point, on the horizontal axis.&lt;/p&gt;
-&lt;p&gt;Arcs are drawn in a clockwise direction from the &lt;b&gt;&lt;tt&gt;angle-begin&lt;/tt&gt;&lt;/b&gt; point.&lt;/p&gt;
-&lt;p&gt;Simple open arcs, beginning at 0°.&lt;/p&gt;
+<p>For <b><tt>angle-begin</tt></b>, 0° is to right of the center point, on the horizontal axis.</p>
+<p>Arcs are drawn in a clockwise direction from the <b><tt>angle-begin</tt></b> point.</p>
+<p>Simple open arcs, beginning at 0°.</p>
 
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     arc 200x25  100x100 0  90
     arc 200x125 100x100 0 135
     arc 200x250 100x100 0 180
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ARC-1b.png]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ARC-1b.png]]</TD>
+</TR></TABLE>
 
 
-&lt;br&gt;
-&lt;p&gt;Simple open arcs, beginning at different angles, but all with the same length.&lt;/p&gt;
+<br>
+<p>Simple open arcs, beginning at different angles, but all with the same length.</p>
 
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     arc 200x25  100x100 0  120 
     arc 200x125 100x100 45 120
     arc 200x250 100x100 90 120
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ARC-2b.png]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ARC-2b.png]]</TD>
+</TR></TABLE>
 
-&lt;br&gt;
+<br>
 
 
 '''Closed Arcs'''
 
 
-&lt;p&gt;A closed arc. The arcs is closed by drawing lines to the center point of the circle
-that defines the arc.&lt;/p&gt;
+<p>A closed arc. The arcs is closed by drawing lines to the center point of the circle
+that defines the arc.</p>
 
 
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     arc 100x100 100x100 0 90  closed
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ARC-3b.png]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ARC-3b.png]]</TD>
+</TR></TABLE>
 
-&lt;br&gt;
+<br>
 
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     fill-pen red
     arc 100x100 90x90 135 180
     fill-pen green
@@ -95,14 +95,14 @@ that defines the arc.&lt;/p&gt;
     arc 100x300 90x90 45  180
     fill-pen yellow
     arc 300x300 90x90 315 180
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ARC-4b.png]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ARC-4b.png]]</TD>
+</TR></TABLE>
 
-&lt;br&gt;
+<br>
 
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     fill-pen red
     arc 150x250 90x90 0   180
     fill-pen green
@@ -111,18 +111,18 @@ that defines the arc.&lt;/p&gt;
     arc 250x150 90x90 180 180
     fill-pen yellow
     arc 250x250 90x90 270 180
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ARC-5b.png]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ARC-5b.png]]</TD>
+</TR></TABLE>
 
-&lt;br&gt;
-
-
-&lt;p&gt;Closed arcs are an easy way to draw wedges for pie charts.&lt;/p&gt;
+<br>
 
 
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<p>Closed arcs are an easy way to draw wedges for pie charts.</p>
+
+
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     fill-pen red
     arc 200x200 90x90 0   90 closed
     fill-pen green
@@ -131,17 +131,17 @@ that defines the arc.&lt;/p&gt;
     arc 200x200 90x90 180 90 closed
     fill-pen yellow
     arc 200x200 90x90 270 90 closed
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ARC-6b.png]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ARC-6b.png]]</TD>
+</TR></TABLE>
 
 
-&lt;br&gt;
-&lt;p&gt;By changing the center point, you can draw exploded pie charts.&lt;/p&gt;
+<br>
+<p>By changing the center point, you can draw exploded pie charts.</p>
 
 
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     pen white line-width 2
     fill-pen red
     arc 204x204 150x150   0  90 closed
@@ -151,18 +151,18 @@ that defines the arc.&lt;/p&gt;
     arc 180x190 150x150 120 150 closed
     fill-pen yellow
     arc 204x196 150x150 270  90 closed
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ARC-7b.png]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ARC-7b.png]]</TD>
+</TR></TABLE>
 
 
 
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Draw]]
 *[[Anti-Alias]]
 *[[Arc]]
@@ -172,14 +172,14 @@ Pages
 *[[Clip]]
 *[[Curve]]
 *[[Ellipse]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Fill-Pen]]
 *[[Fill-Rule]]
 *[[Gamma]]
@@ -190,13 +190,13 @@ Pages
 *[[Line]]
 *[[Line-Cap]]
 
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Line-Join]]
 *[[Line-Pattern]]
 *[[Line-Width]]
@@ -206,14 +206,14 @@ Pages
 *[[Push]]
 *[[Reset-Matrix]]
 *[[Rotate]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Scale]]
 *[[Shape]]
 *[[Skew]]
@@ -222,20 +222,20 @@ Pages
 *[[Transform]]
 *[[Translate]]
 *[[Triangle]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP width=25%&gt;
+<TD ALIGN=LEFT VALIGN=TOP width=25%>
 Chapters
-&lt;font size=1&gt;
+<font size=1>
 *[[R3 Introduction]]
 *[[Getting Started With R3]]
 *[[The Graphical User Interface]]
 *[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
 *'''Script Writing With Draw '''
-*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+*[[The Graphic Object]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP&gt;
-&lt;font size=1&gt;
+<TD ALIGN=LEFT VALIGN=TOP>
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</font></TD>
+</TR></TABLE>

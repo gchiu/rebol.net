@@ -41,8 +41,8 @@ The concept of rebcode is consistent with the design principles of REBOL. Rebcod
 
 The current test versions of REBOL with Rebcode can be found in the REBOL Test Releases area.
 
-The current Windows beta release is [http://www.rebol.net/builds/031/rebview1361031.exe rebview1361031.exe&quot;].  
-The current Linux beta release is [http://www.rebol.net/builds/042/rebview1350042.tar.gz rebview1350042.tar.gz&quot;].
+The current Windows beta release is [http://www.rebol.net/builds/031/rebview1361031.exe rebview1361031.exe"].  
+The current Linux beta release is [http://www.rebol.net/builds/042/rebview1350042.tar.gz rebview1350042.tar.gz"].
 
 ===More Information and Examples===
 
@@ -52,7 +52,7 @@ We will be posting links to more information and examples here soon.
 
 ===What is Rebcode?===
 
-Rebcode is a dialect of REBOL. It is a sequence of words and values that is interpreted in an extremely efficient manner, similar to how instructions are executed on an actual processor. (This is the reason why rebcode is said to be processed by a &quot;virtual machine&quot;.)
+Rebcode is a dialect of REBOL. It is a sequence of words and values that is interpreted in an extremely efficient manner, similar to how instructions are executed on an actual processor. (This is the reason why rebcode is said to be processed by a "virtual machine".)
 
 Rebcode is written in a block, just like normal REBOL code. However, unlike REBOL code that gets evaluated as a series of functions, rebcode consists of a sequence of opcodes. Each opcode performs a small, low-level action on a fixed set of arguments. For example, an opcode may do nothing more than add two integers. If you are familiar with the concept of assembly code, rebcode is very similar.
 
@@ -65,7 +65,7 @@ Here is an example rebcode block:
     div.i val 50
  ]
 
-The words '''div.i''', '''add.i''', and '''mul.i''' are opcodes; they are low level functions that perform integer math operations. Each opcode is followed by two arguments that are used in the operation, and the result is stored back into the first argument (val). Thus, rebcode is implemented in what is known as the &quot;two-address&quot; model of computation. This technique permits optimal performance within the virtual machine.
+The words '''div.i''', '''add.i''', and '''mul.i''' are opcodes; they are low level functions that perform integer math operations. Each opcode is followed by two arguments that are used in the operation, and the result is stored back into the first argument (val). Thus, rebcode is implemented in what is known as the "two-address" model of computation. This technique permits optimal performance within the virtual machine.
 
 Rebcode is a statement-based language, not an expression-based language like REBOL. Opcodes perform actions, but do not return results.
 
@@ -78,7 +78,7 @@ All rebcode must be written within a special type of function, called a rebcode 
 Here is a simple example that makes a rebcode function:
 
  md32: rebcode [
-    &quot;Returns two integers multiplied then divided by 32.&quot;
+    "Returns two integers multiplied then divided by 32."
     a [integer!]
     b [integer!]
  ][
@@ -200,7 +200,7 @@ Rule 3: Beware of opcodes that may modify the datatype of a variable. Some opcod
 
 Here is an example:
 
- block: [123 &quot;name&quot; 1.2]
+ block: [123 "name" 1.2]
  
  code: rebcode [arg series /local sum] [
     set   sum 0
@@ -298,7 +298,7 @@ How to remember gett and sett. Read them as:
  SET T flag from a variable
  GET T flag and put it in a variable
 
-These two opcodes will be a source of problems unless this rule is memorized. If you just remember SET T it will be enough. An easy way to remember it is this: SETT is the same as &quot;SET T&quot;.
+These two opcodes will be a source of problems unless this rule is memorized. If you just remember SET T it will be enough. An easy way to remember it is this: SETT is the same as "SET T".
 
 Note that SETT sets false flag also for zero integer!
 
@@ -334,7 +334,7 @@ The brab opcode allows you to branch to an offset selected at runtime by an inde
 Here is an example:
 
  brab  [4 6 8] n
- print &quot;default&quot;
+ print "default"
  bra   done
  print 1
  print 2
@@ -386,7 +386,7 @@ It can be called from rebcode with a line such as:
 
 If a function allows refinements, they can also be specified in the argument block. The position of the refinement arguments is that specified by the function interface. For example, if you ask for help on checksum, you see:
 
- &gt;&gt; ? checksum
+ >> ? checksum
  USAGE:
     CHECKSUM data /tcp /secure /hash size /method word /key key-value
  To invoke the checksum function with the /secure refinement, you would write:
@@ -413,7 +413,7 @@ Without affecting normal REBOL code. However, it will have an affect on rebcode 
 
 ===The DO Opcode===
 
-The do opcode is used to invoke the normal REBOL interpreter. This allows your rebcode to evaluate any REBOL expression from within your rebcode function. This is a useful &quot;escape&quot; when your code needs to perform more complicated actions or access functions or objects that are not easy to use directly in rebcode.
+The do opcode is used to invoke the normal REBOL interpreter. This allows your rebcode to evaluate any REBOL expression from within your rebcode function. This is a useful "escape" when your code needs to perform more complicated actions or access functions or objects that are not easy to use directly in rebcode.
 
  do plat [reduce [system/version/4 system/version/3]]
 
@@ -426,7 +426,7 @@ The do opcode escapes to REBOL, meaning it is much slower than the rebcode VM. I
 As described above, rebcode functions are created with rebcode function such as:
 
  md32: rebcode [
-    &quot;Returns two integers multiplied then divided by 100.&quot;
+    "Returns two integers multiplied then divided by 100."
     a [integer!]
     b [integer!]
  ][
@@ -504,11 +504,11 @@ The save/all function also creates a properly formed rebcode literal block.
 
 ===Embedded Comments===
 
-The comment opcode lets you embed comments into your code. They differ from normal &quot;;&quot; comments because they remain within the body of the code and will appear if the code is printed, molded, or saved.
+The comment opcode lets you embed comments into your code. They differ from normal ";" comments because they remain within the body of the code and will appear if the code is printed, molded, or saved.
 
 For example, to add a string comment to your code:
 
- comment &quot;This is a comment&quot;
+ comment "This is a comment"
 
 You can also use a comment to temporarily remove sections of code by putting it within a block:
 
@@ -619,7 +619,7 @@ Here it is written in rebcode:
 
 ===Power (**)===
 
- power: rebcode [val [decimal!] exp [decimal!] &quot;Exponent&quot;] [
+ power: rebcode [val [decimal!] exp [decimal!] "Exponent"] [
     log-e  val
     mul.d  val exp
     exp    val
@@ -628,7 +628,7 @@ Here it is written in rebcode:
 
 ===Root===
 
- root: rebcode [val [decimal!] exp [decimal!] &quot;Exponent&quot;] [
+ root: rebcode [val [decimal!] exp [decimal!] "Exponent"] [
     log-e  val
     div.d  val exp
     exp    val
@@ -685,7 +685,7 @@ Here is a function that will convert separate RGBA components into a single RGBA
 Converts a string of binary digits, zeros or ones, to a signed integer value. The first digit represents the sign bit.
 
  bin-str-to-int: rebcode [
-    s &quot;string of binary digits; up to 32 chars&quot;
+    s "string of binary digits; up to 32 chars"
     /local len res dig bit
  ] [
     tail? s
@@ -701,7 +701,7 @@ Converts a string of binary digits, zeros or ones, to a signed integer value. Th
     until [
         back s
         pick dig s 1
-        eq.i dig 49     ; 49 = #&quot;1&quot;
+        eq.i dig 49     ; 49 = #"1"
         braf not-a-one  ; not a 1, skip bit flipping
         or   res bit    ; it's a 1; flip the bit
  
@@ -722,7 +722,7 @@ Converts a signed integer value to a string of binary digits; zeros or ones; the
     val [integer!]
     /local res tmp bit
  ] [
-    copy res &quot;00000000000000000000000000000000&quot; -1
+    copy res "00000000000000000000000000000000" -1
  
     tail res            ; we'll be walking the string backwards
     set bit 1           ; which bit are we going to flip for 1's
@@ -733,7 +733,7 @@ Converts a signed integer value to a string of binary digits; zeros or ones; the
         and    tmp bit
         neq.i  tmp 0
         braf not-a-one  ; not a 1, skip digit setting
-        poke res 1 49   ; 49 = #&quot;1&quot;
+        poke res 1 49   ; 49 = #"1"
 
     label not-a-one
         lsl   bit 1     ; shift our bit so we flip the next one  
@@ -855,8 +855,8 @@ See Also: Compare Opcodes/Series Comparisons
 ====Integer Comparisons====
 
  	eq.i	Sets the TRUE flag if the values are equal.
- 	glt.i	Sets the TRUE flag if: value1 &lt; operand &lt; value2.
- 	glte.i	Sets the TRUE flag if: value1 &lt;= operand &lt;= value2.
+ 	glt.i	Sets the TRUE flag if: value1 < operand < value2.
+ 	glte.i	Sets the TRUE flag if: value1 <= operand <= value2.
  	gt.i	Sets the TRUE flag if the first value is greater than the second value.
  	gteq.i	Sets the TRUE flag if the first value is greater than or equal to the second value.
  	lt.i	Sets the TRUE flag if the first value is less than the second value.
@@ -866,8 +866,8 @@ See Also: Compare Opcodes/Series Comparisons
 ====Decimal Comparisons====
 
  	eq.d	Sets the TRUE flag if the values are equal.
- 	glt.d	Sets the TRUE flag if: value1 &lt; operand &lt; value2.
- 	glte.d	Sets the TRUE flag if: value1 &lt;= operand &lt;= value2.
+ 	glt.d	Sets the TRUE flag if: value1 < operand < value2.
+ 	glte.d	Sets the TRUE flag if: value1 <= operand <= value2.
  	gt.d	Sets the TRUE flag if the first value is greater than the second value.
  	gteq.d	Sets the TRUE flag if the first value is greater than or equal to the second value.
  	lt.d	Sets the TRUE flag if the first value is less than the second value.

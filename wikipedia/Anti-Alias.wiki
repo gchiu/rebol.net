@@ -1,53 +1,53 @@
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;
-&lt;TD ALIGN=RIGHT WIDTH=75%&gt;Next Page: '''[[Arc]]'''&lt;/TD&gt;&lt;TD ALIGN=CENTER&gt;Return To '''[[Draw]] Contents'''&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+<TABLE WIDTH=100%><TR>
+<TD ALIGN=RIGHT WIDTH=75%>Next Page: '''[[Arc]]'''</TD><TD ALIGN=CENTER>Return To '''[[Draw]] Contents'''</TD>
+</TR></TABLE>
 
 Turns anti-aliasing on or off; it is on by default
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | active
-| bgcolor=&quot;white&quot; | [logic!]
-| bgcolor=&quot;white&quot; | The new value for anti-aliasing behavior
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | active
+| bgcolor="white" | [logic!]
+| bgcolor="white" | The new value for anti-aliasing behavior
+| bgcolor="white" | 
 |}
 
 '''Anti-Alias On'''
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     anti-alias on   line-width 10  circle 200x200 100
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ANTI-ALIAS-2.png|200px 200px]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ANTI-ALIAS-2.png|200px 200px]]</TD>
+</TR></TABLE>
 
 
 
 '''Anti-Alias Off'''
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     anti-alias off  line-width 10  circle 200x200 100
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ANTI-ALIAS-1.png|200px 200px]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ANTI-ALIAS-1.png|200px 200px]]</TD>
+</TR></TABLE>
 
 
 
 The ANTI-ALIAS command can be used multiple times in DRAW block to easily switch between rendering modes.
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     anti-alias off
     line-width 10
     circle 150x150 100
     anti-alias on
     line-width 10
     circle 250x250 100
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:ANTI-ALIAS-3.png|200px 200px]]&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:ANTI-ALIAS-3.png|200px 200px]]</TD>
+</TR></TABLE>
 
 
 
@@ -56,16 +56,16 @@ The ANTI-ALIAS command can be used multiple times in DRAW block to easily switch
 
 ----
 
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;
-&lt;TD ALIGN=RIGHT WIDTH=75%&gt;Next Page: '''[[Arc]]'''&lt;/TD&gt;&lt;TD ALIGN=CENTER&gt;Return To '''[[Draw]] Contents'''&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+<TABLE WIDTH=100%><TR>
+<TD ALIGN=RIGHT WIDTH=75%>Next Page: '''[[Arc]]'''</TD><TD ALIGN=CENTER>Return To '''[[Draw]] Contents'''</TD>
+</TR></TABLE>
 
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Draw]]
 *[[Anti-Alias]]
 *[[Arc]]
@@ -75,14 +75,14 @@ Pages
 *[[Clip]]
 *[[Curve]]
 *[[Ellipse]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Fill-Pen]]
 *[[Fill-Rule]]
 *[[Gamma]]
@@ -93,13 +93,13 @@ Pages
 *[[Line]]
 *[[Line-Cap]]
 
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Line-Join]]
 *[[Line-Pattern]]
 *[[Line-Width]]
@@ -109,14 +109,14 @@ Pages
 *[[Push]]
 *[[Reset-Matrix]]
 *[[Rotate]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Scale]]
 *[[Shape]]
 *[[Skew]]
@@ -125,20 +125,20 @@ Pages
 *[[Transform]]
 *[[Translate]]
 *[[Triangle]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP width=25%&gt;
+<TD ALIGN=LEFT VALIGN=TOP width=25%>
 Chapters
-&lt;font size=1&gt;
+<font size=1>
 *[[R3 Introduction]]
 *[[Getting Started With R3]]
 *[[The Graphical User Interface]]
 *[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
 *'''Script Writing With Draw'''
-*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+*[[The Graphic Object]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP &gt;
-&lt;font size=1&gt;
+<TD ALIGN=LEFT VALIGN=TOP >
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</font></TD>
+</TR></TABLE>

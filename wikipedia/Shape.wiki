@@ -2,100 +2,100 @@
 
 Draws shapes using the SHAPE sub-dialect
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | shape-cmd-block
-| bgcolor=&quot;white&quot; | [block!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | shape-cmd-block
+| bgcolor="white" | [block!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;For examples of specific SHAPE commands see &lt;u&gt;[[shape|HERE]]&lt;/u&gt;&lt;/p&gt;
+<br>'''Notes and Examples'''
+<p>For examples of specific SHAPE commands see <u>[[shape|HERE]]</u></p>
 
 
 == ARC== 
 
 Draws an elliptical arc from the current point.
-&lt;TABLE WIDTH=100% CELLSPACING=10&gt;&lt;TR&gt;
-&lt;TD WIDTH=45% VALIGN=TOP&gt;
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+<TABLE WIDTH=100% CELLSPACING=10><TR>
+<TD WIDTH=45% VALIGN=TOP>
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | end-point
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | end-point
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | radius-x
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | radius-x
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | radius-y
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | radius-y
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | angle
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | angle
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | sweep
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; |  &quot;positive angle&quot; arc 
-| bgcolor=&quot;white&quot; | '''sweep'''
+| bgcolor="white" | sweep
+| bgcolor="white" | [word!]
+| bgcolor="white" |  "positive angle" arc 
+| bgcolor="white" | '''sweep'''
 |- 
-| bgcolor=&quot;white&quot; | large
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | large arc sweep
-| bgcolor=&quot;white&quot; | '''large'''
+| bgcolor="white" | large
+| bgcolor="white" | [word!]
+| bgcolor="white" | large arc sweep
+| bgcolor="white" | '''large'''
 |}
-&lt;/TD&gt;&lt;TD WIDTH=25% VALIGN=MIDDLE&gt;
+</TD><TD WIDTH=25% VALIGN=MIDDLE>
    pen yellow
    line-width 3
    shape [
       move 100x200
       arc 300x200 120 50 0
    ]
-&lt;/TD&gt;&lt;TD WIDTH=30% VALIGN=MIDDLE ALIGN=CENTER&gt;
+</TD><TD WIDTH=30% VALIGN=MIDDLE ALIGN=CENTER>
 [[image:SARC-1.png|200px]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
-&lt;p&gt;Set SWEEP to draw arcs in a &quot;positive-angle&quot; direction:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<p>Set SWEEP to draw arcs in a "positive-angle" direction:</p>
+<code><pre>
 	pen yellow
 	line-width 3
 	shape [
 		move 100x200
 		arc 300x200 120 50 0 sweep
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SARC-2.png |200px]]
 
-&lt;br&gt;
-&lt;p&gt;Set LARGE for arc sweeps greater than 180°:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Set LARGE for arc sweeps greater than 180°:</p>
+<code><pre>
 	pen yellow
 	line-width 3
 	shape [
 		move 100x200
 		arc 300x200 120 50 0 sweep large
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SARC-3.png|ARC example 3]]
 
-&lt;br&gt;
+<br>
 
-&lt;p&gt;More complex usage of '''arc''':&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<p>More complex usage of '''arc''':</p>
+<code><pre>
 	pen yellow
 	line-width 3
 	shape [
@@ -111,12 +111,12 @@ Draws an elliptical arc from the current point.
 		line 399x0
 		move 0x0 
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SARC-4.png|ARC example 4]]
 
-&lt;br&gt;
-&lt;p&gt;Same complex example but with relative positioning commands:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Same complex example but with relative positioning commands:</p>
+<code><pre>
 	pen red
 	line-width 3
 	translate 0x399
@@ -133,22 +133,22 @@ Draws an elliptical arc from the current point.
 		'line 63x-63
 		move 0x0
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SARC-5.png|ARC example 5]]
 
-&lt;br&gt;
+<br>
 
 == CLOSE== 
 
 Closes previously defined set of lines in the SHAPE block.
 
 This command has no arguments.
-&lt;br&gt;'''Notes and Examples'''
+<br>'''Notes and Examples'''
 
-&lt;p&gt;In some case it is easier to use the CLOSE command as a shortcut instead of calculating the closing lines.&lt;/p&gt;
+<p>In some case it is easier to use the CLOSE command as a shortcut instead of calculating the closing lines.</p>
 
-&lt;p&gt;This is without CLOSE commands:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<p>This is without CLOSE commands:</p>
+<code><pre>
 	line-width 3
 	pen yellow
 	shape [
@@ -159,12 +159,12 @@ This command has no arguments.
 		move 0x160
 		line 200x160 200x0 0x0
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:CLOSE-1.png|CLOSE example 1]]
 
-&lt;br&gt;	
-&lt;p&gt;And here with CLOSE commands:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;	
+<br>	
+<p>And here with CLOSE commands:</p>
+<code><pre>	
 	line-width 3
 	pen yellow
 	shape [
@@ -177,50 +177,50 @@ This command has no arguments.
 		move 0x160
 		line 200x160 200x0 0x0
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:CLOSE-2.png|CLOSE example 2]]
 
-&lt;br&gt;
+<br>
 
 == CURV== 
 
 Smooth '''CURVE''' command shortcut.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | point1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point2
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point2
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | ...
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | ...
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;From http://www.w3.org/TR/SVG11/paths.html:&lt;/p&gt;
-&lt;p&gt;&quot;The first control point is assumed to be the reflection of
+<br>'''Notes and Examples'''
+<p>From http://www.w3.org/TR/SVG11/paths.html:</p>
+<p>"The first control point is assumed to be the reflection of
 the second control point on the previous command relative to
 the current point. (If there is no previous curve command,
-the first control point is the current point.)&quot;&lt;/p&gt;
+the first control point is the current point.)"</p>
 
-&lt;p&gt;Simple example:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<p>Simple example:</p>
+<code><pre>
 	line-width 3
 	pen yellow
 	shape [
@@ -229,12 +229,12 @@ the first control point is the current point.)&quot;&lt;/p&gt;
 		curv 300x150 300x50
 		move 0x0
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:CURV-1.png|CURV example 1]]
 
-&lt;br&gt;	
-&lt;p&gt;Same example but with relative positioning commands:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;	
+<br>	
+<p>Same example but with relative positioning commands:</p>
+<code><pre>	
 	line-width 3
 	pen red
 	shape [
@@ -243,51 +243,51 @@ the first control point is the current point.)&quot;&lt;/p&gt;
 		'curv 200x0 200x-100
 		move 0x0
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:CURV-2.png|CURV example 2]]
 
-&lt;br&gt;
+<br>
 
 == CURVE== 
 
 Draws a cubic Bézier curve.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | point1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point2
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point2
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point3
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point3
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point4
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point4
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | ...
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | ...
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;A cubic Bézier curve is defined by a start point, an end point,
-and two control points.&lt;/p&gt;
+<br>'''Notes and Examples'''
+<p>A cubic Bézier curve is defined by a start point, an end point,
+and two control points.</p>
 
-&lt;code&gt;&lt;pre&gt;
+<code><pre>
 	line-width 3
 	pen yellow
 	shape [
@@ -295,41 +295,41 @@ and two control points.&lt;/p&gt;
 		curve 100x150 300x150 300x50
 		move 0x0
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SCURVE-1.png|CURVE example 1]]
 
-&lt;br&gt;	
-&lt;p&gt;Same example but with relative positioning commands:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;	
+<br>	
+<p>Same example but with relative positioning commands:</p>
+<code><pre>	
 	line-width 3
 	pen red
 	shape [
 		move 100x50 'curve 0x100 200x100 200x0
 		move 0x0
 	]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SCURVE-2.png|CURVE example 2]]
 
-&lt;br&gt;
+<br>
 
 == HLINE== 
 
 Draws a horizontal line from the current point.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | end-x
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | end-x
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;Using absolute coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<p>Using absolute coordinates:</p>
+<code><pre>
 pen yellow
 line-width 4
 shape [
@@ -340,12 +340,12 @@ shape [
     move 100x200
 	hline 200
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:HLINE-1.png|HLINE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Using relative coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Using relative coordinates:</p>
+<code><pre>
 pen red
 line-width 4
 shape [
@@ -356,50 +356,50 @@ shape [
     'move -150x50
 	'hline 100
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:HLINE-2.png|HLINE example 2]]
 
-&lt;br&gt;
+<br>
 
 
 == LINE== 
 
 Draws a line from the current point through the given points,	the last of which becomes the new current point.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | point1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point2
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point2
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point3
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point3
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point4
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point4
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | ...
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | ...
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;Using absolute coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<p>Using absolute coordinates:</p>
+<code><pre>
 pen yellow
 line-width 4
 shape [
@@ -407,12 +407,12 @@ shape [
 	line 300x120 50x120 300x50
 	move 0x0
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SLINE-1.png|LINE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Using relative coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Using relative coordinates:</p>
+<code><pre>
 pen red
 line-width 4
 shape [
@@ -420,35 +420,35 @@ shape [
 	move 50x50 'line 250x70 -250x0 250x-70
 	move 0x0
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:SLINE-2.png|LINE example 2]]
 
-&lt;br&gt;
+<br>
 
 == MOVE== 
 
 Set's the starting point for a new path without drawing anything.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | point1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
+<br>'''Notes and Examples'''
 
-&lt;p&gt;The effect is as if the &quot;pen&quot; were lifted and moved to a new
-location.&lt;/p&gt;
-&lt;p&gt;Used at the end of a SHAPE command, MOVE prevents the shape
-from being drawn as a closed polygon.&lt;/p&gt;
+<p>The effect is as if the "pen" were lifted and moved to a new
+location.</p>
+<p>Used at the end of a SHAPE command, MOVE prevents the shape
+from being drawn as a closed polygon.</p>
 
-&lt;p&gt;Note: Every path defined in SHAPE block is automatically closed. To disable the auto-close feature just put at the end of the SHAPE block: '''move 0x0'''&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<p>Note: Every path defined in SHAPE block is automatically closed. To disable the auto-close feature just put at the end of the SHAPE block: '''move 0x0'''</p>
+<code><pre>
 line-width 4
 pen red
 shape [
@@ -461,12 +461,12 @@ shape [
     move 100x200
     line 20x120 150x150
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:MOVE-1.png|MOVE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Using relative coordinates for the second shape:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Using relative coordinates for the second shape:</p>
+<code><pre>
 line-width 4
 pen red
 shape [
@@ -481,33 +481,33 @@ shape [
     'line -80x-80 130x30
     'move 0x0
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:MOVE-2.png|MOVE example 2]]
 
-&lt;br&gt;
+<br>
 
 
 == QCURV== 
 
 Smooth '''QCURVE''' command shortcut.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | point1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;Draws a cubic Bézier curve from the current point to point1.&lt;/p&gt;
-&lt;p&gt;See: http://www.w3.org/TR/SVG11/paths.html and CURV&lt;/p&gt;
+<br>'''Notes and Examples'''
+<p>Draws a cubic Bézier curve from the current point to point1.</p>
+<p>See: http://www.w3.org/TR/SVG11/paths.html and CURV</p>
 
-&lt;p&gt;Using absolute coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<p>Using absolute coordinates:</p>
+<code><pre>
 pen yellow
 line-width 4
 shape [
@@ -516,12 +516,12 @@ shape [
 	qcurv 400x150
 	move 0x0
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:QCURV-1.png|QCURV example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Using relative coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Using relative coordinates:</p>
+<code><pre>
 pen red
 line-width 4
 shape [
@@ -530,47 +530,47 @@ shape [
 	'qcurv 200x0
 	move 0x0
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:QCURV-2.png|QCURV example 2]]
 
-&lt;br&gt;
+<br>
 
 == QCURVE== 
 
 Draws quadratic Bézier curve.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | point1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point2
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point2
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point3
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point3
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | ...
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | ...
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;A quadratic Bézier curve is defined by a start point, an end
-point, and one control point.&lt;/p&gt;
+<br>'''Notes and Examples'''
+<p>A quadratic Bézier curve is defined by a start point, an end
+point, and one control point.</p>
 
-&lt;p&gt;Using absolute coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<p>Using absolute coordinates:</p>
+<code><pre>
 pen yellow
 line-width 4
 shape [
@@ -578,12 +578,12 @@ shape [
 	qcurve 200x150 300x50
 	move 0x0
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:QCURVE-1.png|QCURVE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Using relative coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Using relative coordinates:</p>
+<code><pre>
 pen red
 line-width 4
 shape [
@@ -591,29 +591,29 @@ shape [
 	'qcurve 100x100 200x0
 	move 0x0
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:QCURVE-2.png|QCURVE example 2]]
 
-&lt;br&gt;
+<br>
 
 == VLINE== 
 
 Draws a vertical line from the current point.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | end-y
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | end-y
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;Using absolute coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<p>Using absolute coordinates:</p>
+<code><pre>
 pen yellow
 line-width 4
 shape [
@@ -621,12 +621,12 @@ shape [
     move 150x100  vline 250
     move 200x100  vline 200
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:VLINE-1.png|VLINE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Using relative coordinates:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Using relative coordinates:</p>
+<code><pre>
 pen red
 line-width 4
 shape [
@@ -634,17 +634,17 @@ shape [
     'move 50x-200  'vline 150
     'move 50x-150  'vline 100
 ]
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:VLINE-2.png|VLINE example 2]]
 
-&lt;br&gt;
+<br>
 
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Draw]]
 *[[Anti-Alias]]
 *[[Arc]]
@@ -654,14 +654,14 @@ Pages
 *[[Clip]]
 *[[Curve]]
 *[[Ellipse]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Fill-Pen]]
 *[[Fill-Rule]]
 *[[Gamma]]
@@ -672,13 +672,13 @@ Pages
 *[[Line]]
 *[[Line-Cap]]
 
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Line-Join]]
 *[[Line-Pattern]]
 *[[Line-Width]]
@@ -688,14 +688,14 @@ Pages
 *[[Push]]
 *[[Reset-Matrix]]
 *[[Rotate]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Scale]]
 *[[Shape]]
 *[[Skew]]
@@ -704,20 +704,20 @@ Pages
 *[[Transform]]
 *[[Translate]]
 *[[Triangle]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP width=30%&gt;
+<TD ALIGN=LEFT VALIGN=TOP width=30%>
 Chapters
-&lt;font size=1&gt;
+<font size=1>
 *[[R3 Introduction]]
 *[[Getting Started With R3]]
 *[[The Graphical User Interface]]
 *[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
 *'''Script Writing With The Draw Dialect'''
-*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+*[[The Graphic Object]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
-&lt;font size=1&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</font></TD>
+</TR></TABLE>

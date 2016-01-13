@@ -58,8 +58,8 @@ And the LMFC size is:
 
 Here is a tested example that computes the LM sizes for an application that consists of several files:
 
-&lt;pre&gt;
-    REBOL [Title: &quot;Compute LMFC for a set of files.&quot;]
+<pre>
+    REBOL [Title: "Compute LMFC for a set of files."]
 
     block: make block! 100
 
@@ -81,16 +81,16 @@ Here is a tested example that computes the LM sizes for an application that cons
     kb?: func [d] [round/to (length? d) / 1024 .1]
 
     print [
-        &quot;LM:&quot; kb? molded lf
-        &quot;LMF:&quot; kb? mold-flat lf
-        &quot;LMFC:&quot; kb? compress mold-flat lf
+        "LM:" kb? molded lf
+        "LMF:" kb? mold-flat lf
+        "LMFC:" kb? compress mold-flat lf
     ]
-&lt;/pre&gt;
+</pre>
 
 The results are:
 
-&lt;pre&gt;
+<pre>
     LM: 48.3
     LMF: 32.1
     LMFC: 11.0
-&lt;/pre&gt;
+</pre>

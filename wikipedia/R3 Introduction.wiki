@@ -1,4 +1,4 @@
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=70%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=70%>
 The DocBase Wiki is a compendium of  developer-oriented, articles, notes, specs, etc. - of all things of interest to the R3 community!
 
 Contributions are welcome.  New content does not have to conform to existing format.   
@@ -6,8 +6,8 @@ Contributions are welcome.  New content does not have to conform to existing for
 As seen below, the navigation system can be found at the bottom of each page.
 
 The Docbase Wiki is constantly evolving, not many pages should be considered to be completed.  It is possible then, that errors may occur from time to time.      
-&lt;/TD&gt;&lt;TD ALIGN=LEFT VALIGN=TOP width=30%&gt;
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD><TD ALIGN=LEFT VALIGN=TOP width=30%>
+</TD></TR></TABLE>
 
 
 

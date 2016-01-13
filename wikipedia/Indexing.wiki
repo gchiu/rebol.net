@@ -4,15 +4,15 @@ This article is meant as an illustration of the principles behind indexing. Unle
 
     rebol/version ; == 2.7.8.3.1
 
-==Does 0 &quot;exist&quot;?==
+==Does 0 "exist"?==
 
-To start the discussion in a &quot;philosophical&quot; way, let's discuss one of the &quot;philosophical&quot; themes first.
+To start the discussion in a "philosophical" way, let's discuss one of the "philosophical" themes first.
 
-Some opponents of 0 state: &quot;0 does not even exist, it should not be allowed as an index, then&quot;
+Some opponents of 0 state: "0 does not even exist, it should not be allowed as an index, then"
 
-It is fair to admit that the question whether 0 &quot;exists&quot; may indeed be resolved by stating that it actually does not &quot;exist&quot;. However, that does not mean the opponents of 0 could start to celebrate. The situation is the same as with the number 1, e.g. Does 1 &quot;exist&quot;? Not &quot;much&quot;, we cannot find it in the real world any easier than we can find 0. Note that many Greek mathematicians did not consider 1 to be &quot;a number&quot;, so to them 2 was &quot;the smallest number&quot; (they used the term &quot;multitude&quot; and it is easy to see why they considered inappropriate to call 1 &quot;multitude&quot;).
+It is fair to admit that the question whether 0 "exists" may indeed be resolved by stating that it actually does not "exist". However, that does not mean the opponents of 0 could start to celebrate. The situation is the same as with the number 1, e.g. Does 1 "exist"? Not "much", we cannot find it in the real world any easier than we can find 0. Note that many Greek mathematicians did not consider 1 to be "a number", so to them 2 was "the smallest number" (they used the term "multitude" and it is easy to see why they considered inappropriate to call 1 "multitude").
 
-It suffices to say that 1 is not something that &quot;exists&quot; in the common sense of the word, it is just an abstract notion invented by clever people to point to the common property of a hand containing one apple, a letter consisting of one page, a room in which one man is sitting, a net containing just one fish, a purse containing just one coin, etc.
+It suffices to say that 1 is not something that "exists" in the common sense of the word, it is just an abstract notion invented by clever people to point to the common property of a hand containing one apple, a letter consisting of one page, a room in which one man is sitting, a net containing just one fish, a purse containing just one coin, etc.
 
 In a similar sense 0 is as an abstract notion pointing to the common property of a hand containing no apple, an empty envelope, a room in which nobody is sitting, a net containing no fish, an empty purse, etc.
 
@@ -26,7 +26,7 @@ An element in a series may have a next element, its successor in the series. The
 
 In integer arithmetic there is also a successor operation. The successor of an integer is the integer increased by one.
 
-The correspondence between the successor operations in the series and in the range of integers (the &quot;successor to successor correspondence&quot;) is the reason why integers are used for indexing.
+The correspondence between the successor operations in the series and in the range of integers (the "successor to successor correspondence") is the reason why integers are used for indexing.
 
 When the successor to successor correspondence is maintained, other operations are in correspondence as well, for example:
 
@@ -40,15 +40,15 @@ This also illustrates that when the successor to successor correspondence is kep
 
 ==X-based indices==
 
-If the successor to successor correspondence is kept, knowing the index of one element in a series determines the indices of all other elements. Usually, the element with the smallest index value is called the ''base element''. If the index of the &quot;base element&quot; is &lt;code&gt;x&lt;/code&gt;, the index is called ''x-based''.
+If the successor to successor correspondence is kept, knowing the index of one element in a series determines the indices of all other elements. Usually, the element with the smallest index value is called the ''base element''. If the index of the "base element" is <code>x</code>, the index is called ''x-based''.
 
 ==The NEXT function==
 
-The &lt;code&gt;next&lt;/code&gt; function is not an &quot;indexing operator&quot; not doing any indexing for us (not defining any correspondence between indices and positions in a series). However, as discussed above, the &quot;successor to successor correspondence&quot; is crucial for indexing. Therefore, it is wise to examine whether the NEXT function can serve as a successor operator.
+The <code>next</code> function is not an "indexing operator" not doing any indexing for us (not defining any correspondence between indices and positions in a series). However, as discussed above, the "successor to successor correspondence" is crucial for indexing. Therefore, it is wise to examine whether the NEXT function can serve as a successor operator.
 
-The help string of the &lt;code&gt;next&lt;/code&gt; function says:
+The help string of the <code>next</code> function says:
 
-    &quot;Returns the series at its next position.&quot;
+    "Returns the series at its next position."
 
 Let's test how it works:
 
@@ -60,13 +60,13 @@ Let's test how it works:
     mold/all next-s ; == #[block! [a] 2]
     same? next-s s ; == false
 
-In this case we took series &lt;code&gt;s&lt;/code&gt; and used the &lt;code&gt;next&lt;/code&gt; function to obtain its successor &lt;code&gt;next-s&lt;/code&gt;. We obtained a new, distinct, &quot;successor&quot; series, as all our examinations proved.
+In this case we took series <code>s</code> and used the <code>next</code> function to obtain its successor <code>next-s</code>. We obtained a new, distinct, "successor" series, as all our examinations proved.
 
-Also, there is one more property worth mentioning. The &lt;code&gt;next-s&lt;/code&gt; series is a tail, as the following test reveals:
+Also, there is one more property worth mentioning. The <code>next-s</code> series is a tail, as the following test reveals:
 
     same? next-s tail next-s ; == true
 
-However, if we continue using the &lt;code&gt;next&lt;/code&gt; function on &lt;code&gt;next-s&lt;/code&gt;:
+However, if we continue using the <code>next</code> function on <code>next-s</code>:
 
     next-next-s: next next-s
 
@@ -76,45 +76,45 @@ we get:
     mold/all next-next-s ; == #[block! [a] 2]
     same? next-next-s next-s ; == true
 
-This illustrates that when supplying the tail series, the &lt;code&gt;next&lt;/code&gt; function does not yield its successor, instead it just yields the series tail.
+This illustrates that when supplying the tail series, the <code>next</code> function does not yield its successor, instead it just yields the series tail.
 
 ==The SUCC function==
 
-To determine whether the &lt;code&gt;next&lt;/code&gt; function is the successor operator we need to find out whether it ''could'' yield the successor of the &lt;code&gt;next-s&lt;/code&gt; series. If yes, then the &lt;code&gt;next&lt;/code&gt; function isn't actually the successor operator, and its help string is misleading.
+To determine whether the <code>next</code> function is the successor operator we need to find out whether it ''could'' yield the successor of the <code>next-s</code> series. If yes, then the <code>next</code> function isn't actually the successor operator, and its help string is misleading.
 
 It turns out that our concerns are justified. To prove it, let's define:
 
-&lt;pre&gt;succ: func [
-    &quot;Returns the series at its next position.&quot;
+<pre>succ: func [
+    "Returns the series at its next position."
     series [series!]
     /local t
 ] [
     t: tail :series
-    insert/dup t #&quot;^(00)&quot; 1 + (index? :series) - (index? :t)
+    insert/dup t #"^(00)" 1 + (index? :series) - (index? :t)
     series: next :series
     clear :t
     :series
-]&lt;/pre&gt;
+]</pre>
 
 Now our testing reveals:
 
     succ-next-s: succ next-s
-    mold/all succ-next-s ; == &quot;#[block![a]3]&quot;
+    mold/all succ-next-s ; == "#[block![a]3]"
     same? succ-next-s next-s ; == false
 
 , i.e., we really obtained the successive position confirming our concerns.
 
 ===The benefits of the SUCC function===
 
-Our new &lt;code&gt;succ&lt;/code&gt; function is actually our proposal how the new &lt;code&gt;next&lt;/code&gt; function implementation should behave. Let's list some of the advantages of the new behaviour.
+Our new <code>succ</code> function is actually our proposal how the new <code>next</code> function implementation should behave. Let's list some of the advantages of the new behaviour.
 
 ====Help string====
 
-The help string of the &lt;code&gt;succ&lt;/code&gt; function isn't misleading. This is not a big advantage, however. For the original &lt;code&gt;next&lt;/code&gt; function implementation to not have a misleading help string it would suffice to adjust the help string to &quot;Returns the series at its next position, stops at tail.&quot;
+The help string of the <code>succ</code> function isn't misleading. This is not a big advantage, however. For the original <code>next</code> function implementation to not have a misleading help string it would suffice to adjust the help string to "Returns the series at its next position, stops at tail."
 
 ====BACK function compatibility====
 
-This is a bigger advantage. To demonstrate it, let's see how the current &lt;code&gt;next&lt;/code&gt; function behaves:
+This is a bigger advantage. To demonstrate it, let's see how the current <code>next</code> function behaves:
 
     same? s: tail [a] back next s ; == false
 
@@ -124,58 +124,58 @@ This is a bigger advantage. To demonstrate it, let's see how the current &lt;cod
 
 ====More flexible indexing====
 
-Together with the improved &lt;code&gt;back&lt;/code&gt; function it generates the new, improved &lt;code&gt;skip&lt;/code&gt; function, which definines new (essentially &quot;any base&quot;) indexing. (see the discussion in the SKIP section)
+Together with the improved <code>back</code> function it generates the new, improved <code>skip</code> function, which definines new (essentially "any base") indexing. (see the discussion in the SKIP section)
 
 ====PICK function compatibility====
 
-Defining the new &lt;code&gt;curr&lt;/code&gt; function and &lt;code&gt;pick&lt;/code&gt; function different index access methods become compatible (finally).
+Defining the new <code>curr</code> function and <code>pick</code> function different index access methods become compatible (finally).
 
 ==The BACK function==
 
-The &lt;code&gt;back&lt;/code&gt; function help string states:
+The <code>back</code> function help string states:
 
-    &quot;Returns the series at its previous position.&quot;
+    "Returns the series at its previous position."
 
-Similarly as with the &lt;code&gt;next&lt;/code&gt; function we may want to determine whether the help string is misleading or not. We can find out that the &lt;code&gt;back&lt;/code&gt; function does not yield the preceding position in case it obtains a head series.
+Similarly as with the <code>next</code> function we may want to determine whether the help string is misleading or not. We can find out that the <code>back</code> function does not yield the preceding position in case it obtains a head series.
 
-Now we may want to find out whether it is actually possible to obtain a position preceding the head. Like in the case of the &lt;code&gt;next&lt;/code&gt; function, such series exist in REBOL:
+Now we may want to find out whether it is actually possible to obtain a position preceding the head. Like in the case of the <code>next</code> function, such series exist in REBOL:
 
     index? #[block! [1 2] -2] ; == -2
 
-Therefore, it makes sense to redefine the &lt;code&gt;back&lt;/code&gt; function as proposed for the &lt;code&gt;next&lt;/code&gt; function, i.e., so that the function yields a predecessor of the given &lt;code&gt;series&lt;/code&gt; without stopping at head.
+Therefore, it makes sense to redefine the <code>back</code> function as proposed for the <code>next</code> function, i.e., so that the function yields a predecessor of the given <code>series</code> without stopping at head.
 
 ==Getting the value at the current position==
 
-Such a function already exists in R2, it is called &lt;code&gt;first&lt;/code&gt;, but there are several issues with it:
+Such a function already exists in R2, it is called <code>first</code>, but there are several issues with it:
 
-* the function name assumes that the current position is (relatively to itself) indexed by 1. If the successor to successor correspondence is kept, index 0 (relative to the current position) would need to be assigned to the position immediately preceding the current position. Opponents of this (relative) indexing method correctly object that it is counterintuitive and uncomfortable for 0 to &quot;point one step backwards from the current position&quot;. The simple indexing arithmetic example below demonstrates that such choice makes index arithmetic more complicated than necessary. Last but not least, the function name doesn't need to assume any (relative) index value.
-* the behaviour of the &lt;code&gt;first&lt;/code&gt; function was found uncomfortable when compared to the behaviour of the &lt;code&gt;pick&lt;/code&gt; function in that it triggered an error for out-of-range (past-head, tail or past-tail) positions.
+* the function name assumes that the current position is (relatively to itself) indexed by 1. If the successor to successor correspondence is kept, index 0 (relative to the current position) would need to be assigned to the position immediately preceding the current position. Opponents of this (relative) indexing method correctly object that it is counterintuitive and uncomfortable for 0 to "point one step backwards from the current position". The simple indexing arithmetic example below demonstrates that such choice makes index arithmetic more complicated than necessary. Last but not least, the function name doesn't need to assume any (relative) index value.
+* the behaviour of the <code>first</code> function was found uncomfortable when compared to the behaviour of the <code>pick</code> function in that it triggered an error for out-of-range (past-head, tail or past-tail) positions.
 
 ==The INDEX? function==
 
-The &lt;code&gt;index?&lt;/code&gt; function uses 1-based indexing, the &quot;base element&quot; being the series head. The series head has index 1. The correspondence between series successor and the integer successor (addition of 1) looks like being kept.
+The <code>index?</code> function uses 1-based indexing, the "base element" being the series head. The series head has index 1. The correspondence between series successor and the integer successor (addition of 1) looks like being kept.
 
-When testing the above &lt;code&gt;succ-next-s&lt;/code&gt; series we obtain:
+When testing the above <code>succ-next-s</code> series we obtain:
 
     index? succ-next-s ; == 2
 
-, while we know that all other indicators (the &lt;code&gt;mold/all&lt;/code&gt; output, the &lt;code&gt;same?&lt;/code&gt; function) demonstrate that it is not true.
+, while we know that all other indicators (the <code>mold/all</code> output, the <code>same?</code> function) demonstrate that it is not true.
 
-Similarly as we patched the &lt;code&gt;next&lt;/code&gt; function we can patch also the &lt;code&gt;index?&lt;/code&gt; function:
+Similarly as we patched the <code>next</code> function we can patch also the <code>index?</code> function:
 
-&lt;pre&gt;index?': func [
+<pre>index?': func [
     {Returns the index number of the current position in the series.}
     series [series! port!]
     /local t i
 ] [
     t: tail :series
     while [all [tail? :series not :series =? :t]] [
-        insert tail :series #&quot;^(00)&quot;
+        insert tail :series #"^(00)"
     ]
     i: index? :series
     clear :t
     i
-]&lt;/pre&gt;
+]</pre>
 
 Now we obtain:
 
@@ -184,13 +184,13 @@ Now we obtain:
 
 ==The AT function==
 
-This function uses different indexing than the &lt;code&gt;index?&lt;/code&gt; function, the indexing of positions is &quot;relative to the given &lt;code&gt;series&lt;/code&gt; argument&quot;. If we examine the function thoroughly, we find that &quot;the base element&quot; (the element with the smallest index) can actually (depending on the situation) have any index not exceeding 1. Example:
+This function uses different indexing than the <code>index?</code> function, the indexing of positions is "relative to the given <code>series</code> argument". If we examine the function thoroughly, we find that "the base element" (the element with the smallest index) can actually (depending on the situation) have any index not exceeding 1. Example:
 
     s: skip [a b c d e f] 3
     at s -2 ; == [b c d e f]
     at s -3 ; == [a b c d e f]
 
-However, the &lt;code&gt;at&lt;/code&gt; function uses &quot;ambiguous indexing&quot;:
+However, the <code>at</code> function uses "ambiguous indexing":
 
     at s 1 ; == [d e f g]
     at s 0 ; == [d e f g]
@@ -199,57 +199,57 @@ However, the &lt;code&gt;at&lt;/code&gt; function uses &quot;ambiguous indexing&
 
 ==The SKIP function==
 
-The &lt;code&gt;skip&lt;/code&gt; function uses indexing relative to the &lt;code&gt;series&lt;/code&gt; argument as well, but, fortunately, it does not use ambiguous indexing like the &lt;code&gt;at&lt;/code&gt; function. Maintains the correspondence between series positions and integers (its integer argument is called &quot;offset&quot;, but the argument name is not relevant).
+The <code>skip</code> function uses indexing relative to the <code>series</code> argument as well, but, fortunately, it does not use ambiguous indexing like the <code>at</code> function. Maintains the correspondence between series positions and integers (its integer argument is called "offset", but the argument name is not relevant).
 
-Similarly as the &lt;code&gt;next&lt;/code&gt; function, though, it does not skip past tail, nor does it skip past head (interestingly, past-head positions are equally possible in R2 as past-tail positions). While this property looks like logically justifiable, there is a problem that this property is not compatible with indexing used by the &lt;code&gt;pick&lt;/code&gt; function indexing.
+Similarly as the <code>next</code> function, though, it does not skip past tail, nor does it skip past head (interestingly, past-head positions are equally possible in R2 as past-tail positions). While this property looks like logically justifiable, there is a problem that this property is not compatible with indexing used by the <code>pick</code> function indexing.
 
-Note that if &lt;code&gt;skip&lt;/code&gt; were able to skip past head as well as past tail, any-based indexing would be possible. That is of advantage for some code, REBOL would be one of languages allowing any bounds for series (when using the appropriate skip), not just nonpositive minimal index and positive maximal index.
+Note that if <code>skip</code> were able to skip past head as well as past tail, any-based indexing would be possible. That is of advantage for some code, REBOL would be one of languages allowing any bounds for series (when using the appropriate skip), not just nonpositive minimal index and positive maximal index.
 
 ==The PICK function==
 
-The &lt;code&gt;pick&lt;/code&gt; function uses indexing relative to the given &lt;code&gt;series&lt;/code&gt;. It is able to refer to the past-head:
+The <code>pick</code> function uses indexing relative to the given <code>series</code>. It is able to refer to the past-head:
 
     pick [a b] -1 ; == none
 
-yielding &lt;code&gt;#[none]&lt;/code&gt; in such case or past tail:
+yielding <code>#[none]</code> in such case or past tail:
 
     pick [a b] 3 ; == none
 
-yielding &lt;code&gt;#[none]&lt;/code&gt; as well.
+yielding <code>#[none]</code> as well.
 
-However, the &lt;code&gt;pick&lt;/code&gt; function does not maintain the successor to successor correspondence. Example:
+However, the <code>pick</code> function does not maintain the successor to successor correspondence. Example:
 
     s: skip [a b c d e f g] 3
     pick s -1 ; == c
     pick s 1 ; == d
 
-R2 assigns index -1 to the &lt;code&gt;c&lt;/code&gt; element, while it does not assign 0 (the successor of -1) to the &lt;code&gt;d&lt;/code&gt; element, assigning 1 to it instead. Because of that, the index arithmetic (the arithmetic correspondence between indices and positions in the series) is broken.
+R2 assigns index -1 to the <code>c</code> element, while it does not assign 0 (the successor of -1) to the <code>d</code> element, assigning 1 to it instead. Because of that, the index arithmetic (the arithmetic correspondence between indices and positions in the series) is broken.
 
 ==Simple index arithmetic task==
 
-Define a &lt;code&gt;head-index?&lt;/code&gt; function obtaining a series &lt;code&gt;s&lt;/code&gt; and an index value &lt;code&gt;i&lt;/code&gt; yielding an index value &lt;code&gt;j&lt;/code&gt; such that the &lt;code&gt;pick s i&lt;/code&gt; expression will be equivalent to the &lt;code&gt;pick head s j&lt;/code&gt; expression. Here are the solutions comparing different approaches:
+Define a <code>head-index?</code> function obtaining a series <code>s</code> and an index value <code>i</code> yielding an index value <code>j</code> such that the <code>pick s i</code> expression will be equivalent to the <code>pick head s j</code> expression. Here are the solutions comparing different approaches:
 
-The solution working when the &lt;code&gt;index?&lt;/code&gt; function and the &lt;code&gt;pick&lt;/code&gt; function both use indexing method compatible with the &lt;code&gt;skip&lt;/code&gt; function indexing method:
+The solution working when the <code>index?</code> function and the <code>pick</code> function both use indexing method compatible with the <code>skip</code> function indexing method:
 
-&lt;pre&gt;head-index?: func [s [series!] i [integer!]] [i + index? s]&lt;/pre&gt;
+<pre>head-index?: func [s [series!] i [integer!]] [i + index? s]</pre>
 
 (This solution is the simplest.)
 
-The solution working when the &lt;code&gt;index?&lt;/code&gt; function and the &lt;code&gt;pick&lt;/code&gt; function use the indexing methods from R3:
+The solution working when the <code>index?</code> function and the <code>pick</code> function use the indexing methods from R3:
 
-&lt;pre&gt;head-index?: func [s [series!] i [integer!]] [i - 1 + index? s]&lt;/pre&gt;
+<pre>head-index?: func [s [series!] i [integer!]] [i - 1 + index? s]</pre>
 
 (This solution is the second simplest.)
 
 The solution working in the present state of R2:
 
-&lt;pre&gt;head-index?: func [s [series!] i [integer!]] [case [i &lt; 0 [i - index? s] i &gt; 0 [i - 1 + index? s] i = 0 [0]]]&lt;/pre&gt;
+<pre>head-index?: func [s [series!] i [integer!]] [case [i < 0 [i - index? s] i > 0 [i - 1 + index? s] i = 0 [0]]]</pre>
 
-(This solution is the most complicated and it is neither &quot;simple&quot; nor &quot;arithmetic&quot;. Neither it can be, having to deal with a successor to successor incompatible non-arithmetic indexing method.)
+(This solution is the most complicated and it is neither "simple" nor "arithmetic". Neither it can be, having to deal with a successor to successor incompatible non-arithmetic indexing method.)
 
 ==Summary==
 
-{| class = &quot;wikitable&quot; border = &quot;1&quot;
+{| class = "wikitable" border = "1"
 |-
 ! Function
 ! Properties
@@ -284,24 +284,24 @@ The solution working in the present state of R2:
 | not s-to-s
 |}
 
-The &lt;code&gt;next&lt;/code&gt; and &lt;code&gt;back&lt;/code&gt; functions are not indexing functions. However, if they don't yield true successor and predecessor, they cannot be used for construction of a successor to successor compatible index, i.e. of a system with fundamentally correct indexing arithmetic.
+The <code>next</code> and <code>back</code> functions are not indexing functions. However, if they don't yield true successor and predecessor, they cannot be used for construction of a successor to successor compatible index, i.e. of a system with fundamentally correct indexing arithmetic.
 
-The &lt;code&gt;skip&lt;/code&gt; function based on true successor and predecessor functions would generate the proper indexing arithmetic automatically, but when based on incorrect principles, the indexing arithmetic generated by this function will also become incorrect (having to handle many unnecessary and incomfortable exceptions).
+The <code>skip</code> function based on true successor and predecessor functions would generate the proper indexing arithmetic automatically, but when based on incorrect principles, the indexing arithmetic generated by this function will also become incorrect (having to handle many unnecessary and incomfortable exceptions).
 
-The &lt;code&gt;at&lt;/code&gt; function is even worse:
+The <code>at</code> function is even worse:
 
-* it generates ambiguous indexing adding more exceptions to the already existing set of exceptions from the &lt;code&gt;skip&lt;/code&gt; function
+* it generates ambiguous indexing adding more exceptions to the already existing set of exceptions from the <code>skip</code> function
 * it uses index shift (addition of 1) of the series position generating some new boundary exceptions
-* due to the newly introduced sets of exceptions and due to shifting indexing generated by the &lt;code&gt;at&lt;/code&gt; function is also incompatible with the indexing generated by the &lt;code&gt;skip&lt;/code&gt; function
+* due to the newly introduced sets of exceptions and due to shifting indexing generated by the <code>at</code> function is also incompatible with the indexing generated by the <code>skip</code> function
 
-The &lt;code&gt;pick&lt;/code&gt; function is similarly bad as the indexing generated by the &lt;code&gt;at&lt;/code&gt; function:
+The <code>pick</code> function is similarly bad as the indexing generated by the <code>at</code> function:
 
-* it generates &quot;indexing hole&quot; introducing new exceptions to the already existing set of exceptions from the &lt;code&gt;skip&lt;/code&gt; function
-* it uses index shift (addition of 1) of the series position generating the same additional boundary exceptions as the &lt;code&gt;at&lt;/code&gt; function
-* the &lt;code&gt;head-index?&lt;/code&gt; function is quite complicated, most probably not circumventing all the indexing bugs nevertheless
-* the indexing is incompatible with the indexing generated by the &lt;code&gt;skip&lt;/code&gt; function
-* the indexing is incompatible with the indexing generated by the &lt;code&gt;at&lt;/code&gt; function
+* it generates "indexing hole" introducing new exceptions to the already existing set of exceptions from the <code>skip</code> function
+* it uses index shift (addition of 1) of the series position generating the same additional boundary exceptions as the <code>at</code> function
+* the <code>head-index?</code> function is quite complicated, most probably not circumventing all the indexing bugs nevertheless
+* the indexing is incompatible with the indexing generated by the <code>skip</code> function
+* the indexing is incompatible with the indexing generated by the <code>at</code> function
 
-The &lt;code&gt;index?&lt;/code&gt; function is less general than other functions (not defining relative indexing, just absolute indexing, both the indexing generated by the &lt;code&gt;at&lt;/code&gt; function as well as the indexing generated by the &lt;code&gt;pick&lt;/code&gt; function generalize it, although they are mutually incompatible), yet it introduces unacceptable bugs for past-tail positions.
+The <code>index?</code> function is less general than other functions (not defining relative indexing, just absolute indexing, both the indexing generated by the <code>at</code> function as well as the indexing generated by the <code>pick</code> function generalize it, although they are mutually incompatible), yet it introduces unacceptable bugs for past-tail positions.
 
 For the mathematical model of REBOL series and for the definitions of the new, improved indexing system see the [[Mathematical_model_of_REBOL_series]] article.

@@ -2,29 +2,29 @@
 
 ==Suggested conventions for documenting REBOL==
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 !Category !!Style !!How to do it in WikiText
 |-
-| emphasized text || ''emphasized text'' || &lt;nowiki&gt; ''emphasized text''&lt;/nowiki&gt; (double apostrophe)
+| emphasized text || ''emphasized text'' || <nowiki> ''emphasized text''</nowiki> (double apostrophe)
 |-
-| REBOL words || '''''bold-and-italic''''' || &lt;nowiki&gt;'''''bold-and-italic'''''&lt;/nowiki&gt; (quintuple apostrophe)
+| REBOL words || '''''bold-and-italic''''' || <nowiki>'''''bold-and-italic'''''</nowiki> (quintuple apostrophe)
 |-
-| values of REBOL variables|| '''bold''' || &lt;nowiki&gt;'''bold'''&lt;/nowiki&gt; (triple apostrophe)
+| values of REBOL variables|| '''bold''' || <nowiki>'''bold'''</nowiki> (triple apostrophe)
 |-
-| embedded REBOL expression || &lt;tt&gt;typewriter text&lt;/tt&gt; || &amp;lt;tt&amp;gt;typewriter text&amp;lt;/tt&amp;gt;
+| embedded REBOL expression || <tt>typewriter text</tt> || &lt;tt&gt;typewriter text&lt;/tt&gt;
 |}
 
 Note: REBOL variables are REBOL words that are bound to a context, unbound words don't have values.
 
 Use:
 #'''do''' to represent the value of the '''''do''''' variable - in a fresh console this is a native that does not have a serialized form
-#'''none''' to represent the value of the '''''none''''' variable - in a fresh console this is the value that can be literally represented as &lt;tt&gt;#[none]&lt;/tt&gt; or &lt;tt&gt;#[none!]&lt;/tt&gt;
-#'''true''' to represent the value of the '''''true''''' variable - in a fresh console this is the value that can be literally represented as &lt;tt&gt;#[true]&lt;/tt&gt;
-#'''unset!''' to represent the value of the '''''unset!''''' variable - in a fresh console this is the value that can be literally represented as &lt;tt&gt;#[datatype! unset!]&lt;/tt&gt;
+#'''none''' to represent the value of the '''''none''''' variable - in a fresh console this is the value that can be literally represented as <tt>#[none]</tt> or <tt>#[none!]</tt>
+#'''true''' to represent the value of the '''''true''''' variable - in a fresh console this is the value that can be literally represented as <tt>#[true]</tt>
+#'''unset!''' to represent the value of the '''''unset!''''' variable - in a fresh console this is the value that can be literally represented as <tt>#[datatype! unset!]</tt>
 #'''unset''' to represent the value of the '''''unset''''' variable - in a fresh console this is a native that does not have a serialized form
 , etc.
 
-The above rules mean, that the &lt;tt&gt;#[unset!]&lt;/tt&gt; value should be represented using neither of '''''unset''''' (the word), '''unset''' (the native), '''''unset!''''' (the word), '''unset!''' (the datatype).
+The above rules mean, that the <tt>#[unset!]</tt> value should be represented using neither of '''''unset''''' (the word), '''unset''' (the native), '''''unset!''''' (the word), '''unset!''' (the datatype).
 
 == Cookbook References ==
 

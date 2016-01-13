@@ -20,7 +20,7 @@ Some of these may get turned into natives later by Carl if they are '''really'''
 
 ===Mezzanine vs. Library===
 
-REBOL 3 will be modular and you will be able to build your own host programs. This means that the old monolithic &quot;everything is built in and assigned to a global word&quot; model is gone. ''There will be no global words''. The closest equivalent to global words will be the exports of modules that get included by default, and the person who builds the host program picks which modules those are.
+REBOL 3 will be modular and you will be able to build your own host programs. This means that the old monolithic "everything is built in and assigned to a global word" model is gone. ''There will be no global words''. The closest equivalent to global words will be the exports of modules that get included by default, and the person who builds the host program picks which modules those are.
 
 However, some REBOL functions ''will'' be used by the most core of REBOL code, so they are probably going to be included in every REBOL build, and their modules are likely to be imported by most code. These are what we call mezzanines in R3. A good example is LOAD.
 
@@ -51,7 +51,7 @@ Go to R3 chat in the R3/Language/Options heading (#1097) for discussion of stand
 ===Properties of composition functions===
 
 For every composition function it is useful to know whether it provides support for
-*verbatim composition (leaving the components &quot;untouched&quot;, &quot;as is&quot;)
+*verbatim composition (leaving the components "untouched", "as is")
 *insertion of precomposed parts
 *composition of hierarchical structures
 
@@ -66,17 +66,17 @@ Here's some some information about the functions we are all familiar with, provi
 =====Verbatim composition=====
 
 REFORM ''partially supports verbatim composition''
- reform [&quot;U can't touch this&quot;] ; == &quot;U can't touch this&quot;
+ reform ["U can't touch this"] ; == "U can't touch this"
 , but
- reform [#&quot;U&quot; &quot; can't&quot; &quot; touch&quot; &quot; this&quot;] ; == &quot;U  can't  touch  this&quot;
-inserts &quot;unnecessary&quot; spaces into the result string.
+ reform [#"U" " can't" " touch" " this"] ; == "U  can't  touch  this"
+inserts "unnecessary" spaces into the result string.
 
 =====Precomposed parts=====
 
 REFORM ''supports insertion of precomposed parts''
- precomposed: &quot; touch this&quot;
- reform [&quot;U can't&quot; precomposed] ; == &quot;U can't  touch this&quot;
-, except for the insertion of &quot;unnecessary&quot; spaces like above.
+ precomposed: " touch this"
+ reform ["U can't" precomposed] ; == "U can't  touch this"
+, except for the insertion of "unnecessary" spaces like above.
 
 =====Hierarchy composition=====
 
@@ -87,14 +87,14 @@ Since strings are flat, ''no hierarchy composition is needed''.
 =====Verbatim composition=====
 
 REJOIN ''supports verbatim composition''
- rejoin [&quot;U can't touch this&quot;] ; == &quot;U can't touch this&quot;
- rejoin [#&quot;U&quot; &quot; can't&quot; &quot; touch&quot; &quot; this&quot;] ; == &quot;U can't touch this&quot;
+ rejoin ["U can't touch this"] ; == "U can't touch this"
+ rejoin [#"U" " can't" " touch" " this"] ; == "U can't touch this"
 
 =====Precomposed parts=====
 
 REJOIN ''supports insertion of precomposed parts''
- precomposed: &quot; touch this&quot;
- rejoin [&quot;U can't&quot; precomposed] ; == &quot;U can't touch this&quot;
+ precomposed: " touch this"
+ rejoin ["U can't" precomposed] ; == "U can't touch this"
 
 =====Hierarchy composition=====
 
@@ -184,21 +184,21 @@ Efficiency note: the last example is inefficient since the TO function copies th
 
 In R3 syntax:
 
- &lt;nowiki&gt;quote: func [
-    &quot;Returns the value thrown at it without evaluation&quot;
+ <nowiki>quote: func [
+    "Returns the value thrown at it without evaluation"
     :value [any-type!]
 ] [
     :value
-]&lt;/nowiki&gt;
+]</nowiki>
 
 In R2 syntax:
 
- &lt;nowiki&gt;quote: func [
-    &quot;Returns the value thrown at it without evaluation&quot;
+ <nowiki>quote: func [
+    "Returns the value thrown at it without evaluation"
     :value [any-type!]
 ] [
     get/any 'value
-]&lt;/nowiki&gt;
+]</nowiki>
 
 The R2 version doesn't work with word! arguments because get-word parameters get the value assigned to the word - there's no way to do a full QUOTE in R2. You just have to use lit-words instead of QUOTE word.
 
@@ -265,35 +265,35 @@ The Substitute dialect is meant as a data format representing constructed string
 
 ====Examples====
 
-&lt;pre&gt;; the #&quot;%&quot; character is considered &quot;ordinary character&quot; if not followed by a digit
-substitute [&quot;%&quot;] ; == &quot;%&quot; 
-substitute [&quot;%-1&quot;] ; == &quot;%-1&quot;
-substitute [&quot;%.&quot;] ; == &quot;%.&quot;
+<pre>; the #"%" character is considered "ordinary character" if not followed by a digit
+substitute ["%"] ; == "%" 
+substitute ["%-1"] ; == "%-1"
+substitute ["%."] ; == "%."
 
- ; the &quot;%1&quot; is taken as a reference to the first argument string
-substitute [&quot;%1&quot; &quot;x&quot;] ; == &quot;x&quot;
+ ; the "%1" is taken as a reference to the first argument string
+substitute ["%1" "x"] ; == "x"
 
-; the argument string is substituted &quot;as is&quot;, not processed further
-substitute [&quot;%1&quot; &quot;%1&quot;] ; == &quot;%1&quot;
+; the argument string is substituted "as is", not processed further
+substitute ["%1" "%1"] ; == "%1"
 
-; &quot;%0&quot; is a reference to the (unprocessed) template string
-substitute [&quot;%0&quot;] ; == &quot;%0&quot;
-substitute [&quot;a%0&quot;] ; == &quot;aa%0&quot;
+; "%0" is a reference to the (unprocessed) template string
+substitute ["%0"] ; == "%0"
+substitute ["a%0"] ; == "aa%0"
 
 ; the arguments have to be strings
-substitute [&quot;%1&quot; 12] ; triggers an error&lt;/pre&gt;
+substitute ["%1" 12] ; triggers an error</pre>
 
 A more typical example would be something like (generated using REDUCE):
 
-&lt;pre&gt;reduce [{
+<pre>reduce [{
     Das File '%1' kann nicht geloescht werden.
     Stellen Sie sicher, dass Sie ueber ausreichende Zugriffsrechte
     (schreiben und loeschen) auf Ihrem System verfuegen.
-} to-string tmp]&lt;/pre&gt;
+} to-string tmp]</pre>
 
 ====Terminology====
 
-The first element of the block is a string, which is called the &quot;template string&quot;, the other elements are &quot;argument strings&quot;.
+The first element of the block is a string, which is called the "template string", the other elements are "argument strings".
 
 ====Translation====
 
@@ -303,15 +303,15 @@ It seems that for the translation of a substitution block it shall suffice to re
 
 * The dialect was optimized to prefer the speed and ease of translation.
 * This format allows the translation of the template string as a whole.
-* It was observed that the approaches translating the constructed string &quot;per partes&quot; lead to:
+* It was observed that the approaches translating the constructed string "per partes" lead to:
 ** translation of strings that are too small to have a clear meaning necessary for them to be translated accurately
-** also, translation may change the order and placement of the argument strings, which is a problem for the &quot;per partes&quot; translation obtaining an unacceptable order of words in the result of the translation. This is not the case of the Substitute dialect.
-* The currently used approach is to translate constructed strings &quot;ad hoc&quot; using e.g. the ON-TRANSLATE function defined for the purpose or using the TRANSLATE function in the code. Both these instruments are inconvenient, intrusive (needing code adjustments) and may lead to the translation to not be performed &quot;just in time when it is needed&quot;, as well as to the above mentioned inaccuracies.
+** also, translation may change the order and placement of the argument strings, which is a problem for the "per partes" translation obtaining an unacceptable order of words in the result of the translation. This is not the case of the Substitute dialect.
+* The currently used approach is to translate constructed strings "ad hoc" using e.g. the ON-TRANSLATE function defined for the purpose or using the TRANSLATE function in the code. Both these instruments are inconvenient, intrusive (needing code adjustments) and may lead to the translation to not be performed "just in time when it is needed", as well as to the above mentioned inaccuracies.
 
 ====Other properties====
 
 Besides the declared purpose, it shall be possible to use the Substitute dialect for other purposes as well. When judged by the above mentioned criteria, the Substitute dialect supports:
 
-* verbatim composition (argument strings are used &quot;as is&quot;)
+* verbatim composition (argument strings are used "as is")
 * insertion of precomposed parts (argument strings can be precomposed, substitution blocks can be generated e.g. using REDUCE, or other functions)
 *it does not support the composition of hierarchical structures, since strings are not hierarchical in REBOL

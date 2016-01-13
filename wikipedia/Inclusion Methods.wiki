@@ -16,7 +16,7 @@ Here are the primary requirements:
 
 #Enable programs to include (execute) other functions and code.
 #Enable programs to include (load into memory) other data, such as databases, media (images, sounds, etc.).
-#The ability to build distributable programs that include the above within their distribution unit (as a &lt;code&gt;.r&lt;/code&gt; file or encapped executable).
+#The ability to build distributable programs that include the above within their distribution unit (as a <code>.r</code> file or encapped executable).
 #Testing support - the ability to run a distributable program during its development cycle.
 #To support PITL encapsulating parts of the program.
 #Comfort - use a search path.
@@ -113,7 +113,7 @@ Summary of usage:
 
     import 'module    ; converts to .r and will use search path
     import %module.r  ; will use search path
-    import &lt;nowiki&gt;http://www.rebol.com/module.r&lt;/nowiki&gt;
+    import <nowiki>http://www.rebol.com/module.r</nowiki>
 
 Imported modules are fully encapsulated when loaded. Exported functions are controlled via an export list (see below).
 
@@ -158,7 +158,7 @@ Summary of usage:
 
     REBOL [type: module imports: ['module]]   ; converts to .r and will use search path
     REBOL [type: module imports: [%module.r]] ; will use search path
-    REBOL [type: module imports: &lt;nowiki&gt;[http://www.rebol.com/module.r]&lt;/nowiki&gt;]
+    REBOL [type: module imports: <nowiki>[http://www.rebol.com/module.r]</nowiki>]
     REBOL [type: module exports: [myfunc myobject]] ; Exported words.
     REBOL [type: module exports: all] ; Export all locally set words.
 
@@ -227,10 +227,10 @@ Disadvantages:
 
 ===PREBOL (INCLUDE dialect) keywords===
 
-If the usage of #issue values as dialect keywords is undesirable, there is still a variant to use words. They just need to be somewhat &quot;outstanding&quot; to make them immediately visible and to suppress the probability, that the keywords will be used for other, incompatible purposes. For example, the INCLUDE function already took the &lt;code&gt;comment&lt;/code&gt; word (since it is highly unlikely that it can cause any undesirable interference) as its keyword to support automatic stripping of comments. The following alternatives look like being available:
+If the usage of #issue values as dialect keywords is undesirable, there is still a variant to use words. They just need to be somewhat "outstanding" to make them immediately visible and to suppress the probability, that the keywords will be used for other, incompatible purposes. For example, the INCLUDE function already took the <code>comment</code> word (since it is highly unlikely that it can cause any undesirable interference) as its keyword to support automatic stripping of comments. The following alternatives look like being available:
 
-&lt;pre&gt;!include
-&amp;include
+<pre>!include
+&include
 *include
 +include
 -include
@@ -244,7 +244,7 @@ _include
 ~include
 .include.
 *include*
-**include&lt;/pre&gt;
+**include</pre>
 
 etc.
 

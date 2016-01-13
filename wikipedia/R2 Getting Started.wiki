@@ -4,15 +4,15 @@ Getting started with REBOL is really simple.
 
 == Download REBOL 2 for your platform==
 
-Free downloads for students, educators, hobbyists, and small organizations:&lt;P&gt;
+Free downloads for students, educators, hobbyists, and small organizations:<P>
 
-'''REBOL/View 2.7 for Graphical Applications''' http://www.rebol.com/view-platforms.html &lt;BR&gt;
-Designed for graphical applications on end-user systems. &lt;BR&gt;&lt;BR&gt;
+'''REBOL/View 2.7 for Graphical Applications''' http://www.rebol.com/view-platforms.html <BR>
+Designed for graphical applications on end-user systems. <BR><BR>
 
-'''REBOL/Core 2.7 for Server Applications''' http://www.rebol.com/platforms.html&lt;BR&gt;
-Don't need graphics? Download REBOL/Core &lt;BR&gt;&lt;BR&gt;
+'''REBOL/Core 2.7 for Server Applications''' http://www.rebol.com/platforms.html<BR>
+Don't need graphics? Download REBOL/Core <BR><BR>
 
-Advanced commercial REBOL programming applications and services are at http://www.rebol.com/products.html&gt;
+Advanced commercial REBOL programming applications and services are at http://www.rebol.com/products.html>
 
 ==Setup==
 
@@ -31,13 +31,13 @@ You will be amazed of how small are all REBOL applications.
 
 ==Documentation==
 
-The main documentation source page is: [[R2_Documentation|Documentation]]&lt;BR&gt;&lt;BR&gt;
+The main documentation source page is: [[R2_Documentation|Documentation]]<BR><BR>
 [http://www.rebol.com/docs/quick-start.html Quick Start] By Carl Sassenrath.
-&lt;BR&gt;
+<BR>
 [http://www.rebol.com/docs/quick-start2.html Quick Start Part 2] By Carl Sassenrath.
-&lt;BR&gt;
+<BR>
 [http://musiclessonz.com/rebol_tutorial.html REBOL Programming For The Absolute Beginner] By Nick Antonaccio.
 
-&lt;BR&gt;
+<BR>
 [[Rebol2:TenMinutesGuide|Ten minutes with REBOL 2]]  A short introduction.
-&lt;BR&gt;
+<BR>

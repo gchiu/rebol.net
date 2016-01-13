@@ -20,14 +20,14 @@ If the concept of paths seems difficult to understand, perhaps just think of the
 In REBOL, a path is formed from root value and a list of refinements. Each refinement provides more specific information about how to select a value, starting from the root. Each refinement is separated by a slash (/) - a method that is identical to how URL's are written on the Internet.
 
 Here are a few example paths:
-&lt;pre&gt;
+<pre>
 names/12
 image/100x20
 account/balance
 source/images/globe.jpg
 USA/CA/Ukiah/size
 parse/all
-&lt;/pre&gt;
+</pre>
 
 So, there's nothing unusual about that. The slashes separate each refinement.
 
@@ -35,12 +35,12 @@ So, there's nothing unusual about that. The slashes separate each refinement.
 
 Although a path is normally written as shown above, there are some special formats that can be useful. Here is a list:
 
-&lt;pre&gt;
+<pre>
 a/b/c : - natural path - evaluates the value of the path
 a/b/c: : - set path - sets the value
 :a/b/c : - get path - get value, but do not evaluate it
 'a/b/c : - literal path - refer to the path itself
-&lt;/pre&gt;
+</pre>
 
 These formats are identical to those used by variables, as described in chapter NN of the REBOL User Guide.
 
@@ -50,7 +50,7 @@ As shown above, refinements can be a variety of datatypes. They can be integers,
 
 It is important to realize that the type of refinement can make a difference on how a path is interpreted. For example, you can write:
 
-&lt;pre&gt;
+<pre>
 ; If you have:
 nums: [a 10 b 20 c 30]
 ; And:
@@ -62,7 +62,7 @@ nums/b
 nums/:n
 nums/(n)
 nums/(6 - 2)
-&lt;/pre&gt;
+</pre>
 
 All of those return the same value, 20.
 

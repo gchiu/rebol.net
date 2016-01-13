@@ -1,4 +1,4 @@
-'''In a nutshell, UTF-8 encodes unicode strings into a sequence of bytes. A single codepoint (&quot;char&quot;) may be encoded as a single byte, two bytes, or up to as many as six bytes.'''
+'''In a nutshell, UTF-8 encodes unicode strings into a sequence of bytes. A single codepoint ("char") may be encoded as a single byte, two bytes, or up to as many as six bytes.'''
 
 ==General Benefits==
 
@@ -15,85 +15,85 @@ See the [[Unicode]] page for details.
 
 Here is an example of how the word préfére would be encoded as UTF-8:
 
-&lt;TABLE border=1 cellpadding=3 cellspacing=0&gt;&lt;TR&gt;
-&lt;TD BGCOLOR=&quot;silver&quot;&gt;
+<TABLE border=1 cellpadding=3 cellspacing=0><TR>
+<TD BGCOLOR="silver">
 1
-&lt;/TD&gt;
-&lt;TD BGCOLOR=&quot;silver&quot;&gt;
+</TD>
+<TD BGCOLOR="silver">
 2
-&lt;/TD&gt;
-&lt;TD BGCOLOR=&quot;silver&quot;&gt;
+</TD>
+<TD BGCOLOR="silver">
 3
-&lt;/TD&gt;
-&lt;TD BGCOLOR=&quot;silver&quot;&gt;
+</TD>
+<TD BGCOLOR="silver">
 4
-&lt;/TD&gt;
-&lt;TD BGCOLOR=&quot;silver&quot;&gt;
+</TD>
+<TD BGCOLOR="silver">
 5
-&lt;/TD&gt;
-&lt;TD BGCOLOR=&quot;silver&quot;&gt;
+</TD>
+<TD BGCOLOR="silver">
 6
-&lt;/TD&gt;
-&lt;TD BGCOLOR=&quot;silver&quot;&gt;
+</TD>
+<TD BGCOLOR="silver">
 7
-&lt;/TD&gt;
-&lt;TD BGCOLOR=&quot;silver&quot;&gt;
+</TD>
+<TD BGCOLOR="silver">
 8
-&lt;/TD&gt;
-&lt;TD BGCOLOR=&quot;silver&quot;&gt;
+</TD>
+<TD BGCOLOR="silver">
 9
-&lt;/TD&gt;
-&lt;/TR&gt;
-&lt;TR&gt;
-&lt;TD&gt;
-&lt;B&gt;p&lt;/B&gt;
-&lt;/TD&gt;
-&lt;TD&gt;
-&lt;B&gt;r&lt;/B&gt;
-&lt;/TD&gt;
-&lt;TD COLSPAN=&quot;2&quot; align=&quot;center&quot;&gt;
-&lt;B&gt;&amp;eacute;&lt;/B&gt;
-&lt;/TD&gt;
-&lt;TD&gt;
-&lt;B&gt;f&lt;/B&gt;
-&lt;/TD&gt;
-&lt;TD COLSPAN=&quot;2&quot; align=&quot;center&quot;&gt;
-&lt;B&gt;&amp;eacute;&lt;/B&gt;
-&lt;/TD&gt;
-&lt;TD&gt;
-&lt;B&gt;r&lt;/B&gt;
-&lt;/TD&gt;
-&lt;TD&gt;
-&lt;B&gt;e&lt;/B&gt;
-&lt;/TD&gt;
-&lt;/TR&gt;
-&lt;TR&gt;
-&lt;TD&gt;
+</TD>
+</TR>
+<TR>
+<TD>
+<B>p</B>
+</TD>
+<TD>
+<B>r</B>
+</TD>
+<TD COLSPAN="2" align="center">
+<B>&eacute;</B>
+</TD>
+<TD>
+<B>f</B>
+</TD>
+<TD COLSPAN="2" align="center">
+<B>&eacute;</B>
+</TD>
+<TD>
+<B>r</B>
+</TD>
+<TD>
+<B>e</B>
+</TD>
+</TR>
+<TR>
+<TD>
 70
-&lt;/TD&gt;
-&lt;TD&gt;
+</TD>
+<TD>
 72
-&lt;/TD&gt;
-&lt;TD&gt;
+</TD>
+<TD>
 C3
-&lt;/TD&gt;
-&lt;TD&gt;
+</TD>
+<TD>
 A9
-&lt;/TD&gt;
-&lt;TD&gt;
+</TD>
+<TD>
 66
-&lt;/TD&gt;
-&lt;TD&gt;
+</TD>
+<TD>
 C3
-&lt;/TD&gt;
-&lt;TD&gt;
+</TD>
+<TD>
 A9
-&lt;/TD&gt;
-&lt;TD&gt;
+</TD>
+<TD>
 72
-&lt;/TD&gt;
-&lt;TD&gt;
+</TD>
+<TD>
 65
-&lt;/TD&gt;
-&lt;/TR&gt;
-&lt;/TABLE&gt;
+</TD>
+</TR>
+</TABLE>

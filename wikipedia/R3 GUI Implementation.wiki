@@ -22,7 +22,7 @@ The intent is to use them during:
 # Window open to find and focus default buttons and to reset forms
 # Window close to validate and submit forms, return values from menu items or values from requesters
 
-Combining tags with other essential face functions to be implemented soon, the result is that much of the detail work that must be &quot;handcranked&quot; into a user interface, can take place automatically and helps to reduce the size and complexity of layouts, while keeping a good user experience.
+Combining tags with other essential face functions to be implemented soon, the result is that much of the detail work that must be "handcranked" into a user interface, can take place automatically and helps to reduce the size and complexity of layouts, while keeping a good user experience.
 
 ==== User Experience Example ====
 
@@ -139,7 +139,7 @@ These functions are used in the general functions below:
 # If reaching the root-face, next possible face is same as rule 1, to allow continually to loop through the face tree.
 
 [[Image:next-face-loop.png|center|caption]]
-&lt;center&gt;A demonstration of how NEXT-FACE? runs through all faces in the tree.&lt;/center&gt;
+<center>A demonstration of how NEXT-FACE? runs through all faces in the tree.</center>
 
 ===== BACK-FACE? =====
 
@@ -148,7 +148,7 @@ These functions are used in the general functions below:
 ## If reaching the root-face, the next face is the tip-face of the root-face, to allow continually to loop through the face tree.
 
 [[Image:back-face-loop.png|center|caption]]
-&lt;center&gt;A demonstration of how BACK-FACE? runs through all faces in the tree.&lt;/center&gt;
+<center>A demonstration of how BACK-FACE? runs through all faces in the tree.</center>
 
 === Files ===
 
@@ -174,7 +174,7 @@ TBD.
 # '''find-tab-face?''' - This locates the next or previous tab-face in the window from the current tab-face. This is the basic function triggered by tab navigation.
 
 [[image:next-tab-face-loop.png|center|caption]]
-&lt;center&gt;Tab navigation moves using FIND-TAB-FACE? to faces with the TAB tag.&lt;/center&gt;
+<center>Tab navigation moves using FIND-TAB-FACE? to faces with the TAB tag.</center>
 
 === Files ===
 

@@ -2,22 +2,22 @@
 
 Stores the current attribute setup in stack
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | draw-block
-| bgcolor=&quot;white&quot; | [block!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | draw-block
+| bgcolor="white" | [block!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;The PUSH command stores the whole DRAW attribute settings (including matrix and pen settings) into the stack. 
+<br>'''Notes and Examples'''
+<p>The PUSH command stores the whole DRAW attribute settings (including matrix and pen settings) into the stack. 
 You can then change the current transformation matrix, pens etc. inside the PUSH command block but all commands AFTER the PUSH command block
-will use the attribute setup setup stored by the PUSH command.&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+will use the attribute setup setup stored by the PUSH command.</p>
+<code><pre>
 line-width 3
 pen red
 transform 200x200 30 1 1 0x0
@@ -33,7 +33,7 @@ push [
 box 180x180 220x220
 pen white
 box 150x150 250x250
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:PUSH-1.png|PUSH example 1]]
 
-&lt;br&gt;
+<br>

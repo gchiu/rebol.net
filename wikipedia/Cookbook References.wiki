@@ -1,6 +1,6 @@
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 |+ Cookbook Reference Page
-! &lt;big&gt;Class&lt;/big&gt; !! &lt;big&gt;Documents&lt;/big&gt;
+! <big>Class</big> !! <big>Documents</big>
 |-
 ! Usage
 |

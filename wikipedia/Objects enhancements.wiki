@@ -24,6 +24,6 @@ Disadvantages:
 *The overhead of the accessor will be hidden, and look like a simple, efficient assignment when it's really a function call.
 *It won't help you at all with wrapping component code; you still have to use user-defined datatypes for those to work in some natural-seeming way.
 
-In their current design, neither REBOL 2 (e.g. R2) nor REBOL 3 (e.g. R3) have any real support for defining or manipulating access to object content or state. As R3 is intent on larger and more structured application development, support for Accessor methods feels like a logical &quot;next step&quot; for object! datatype evolution. [[User:Moliad|Moliad]] 20:42, 3 May 2010 (EDT)
+In their current design, neither REBOL 2 (e.g. R2) nor REBOL 3 (e.g. R3) have any real support for defining or manipulating access to object content or state. As R3 is intent on larger and more structured application development, support for Accessor methods feels like a logical "next step" for object! datatype evolution. [[User:Moliad|Moliad]] 20:42, 3 May 2010 (EDT)
 
 That is no longer so for R3: There is no declarative syntax support for access control, but plenty of procedural support. Note that since that blog post, the (UN)PROTECT changes have been made (or proposed in some cases), user-defined datatypes were proposed, and an entire GUI system ''with accessors'', was created without any language support for making those accessors look like assignments. The importance of this proposal has lessened accordingly. [[User:BrianH|BrianH]] 23:24, 3 May 2010 (EDT)

@@ -11,7 +11,7 @@
 *[[PreRebol30ManualGuideWritingCodeCodeDefiningFunctions/ja|Preliminary REBOL 3 Guide: Code: Defining functions]]を追加(11-Sep-2009(
 *[[What_is_Rebol(Jpn)|What is Rebol]]を6-Sep-2009版に合わせて再訳
 *[[PreRebol30ManualGuideWritingCodeCodeRepeatedEvaluation/ja|REBOL 3 Guide: Code: Repeated evaluation (loops)]] (01-Sep-2009)
-*キーワード辞書に&quot;series&quot;追加 (26-Aug.-2009)
+*キーワード辞書に"series"追加 (26-Aug.-2009)
 *Preliminary REBOL 3 Manual: Guide: Code: Conditional evaluation (30-July-2009)
 *Preliminary REBOL 3 Manual: Guide: Code: How code is evaluated (21-July-2009)
 *REBOL/Core User Manual (V 2.3.0) Chap. 5 Scripts (16-July-2009) 
@@ -52,8 +52,8 @@
 ===Special Contents for Japanese Version Documents===
 *[[Key_Words_Dictionary_for/ja|キーワード辞書]]
 *[[Characteristics_of_REBOL/ja|REBOLの特徴]]
-&lt;div style=&quot;background-color:#f0e090; border:thin solid black;&quot;&gt;
+<div style="background-color:#f0e090; border:thin solid black;">
 test
 
 test
-&lt;/div&gt;
+</div>

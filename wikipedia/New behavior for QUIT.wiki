@@ -13,33 +13,33 @@ It's easiest to show an example.
 Take the REBOL script quit.r below:
 
  REBOL []
- print &quot;hello&quot;
+ print "hello"
  quit
- print &quot;end&quot;
+ print "end"
 
 If you start REBOL with that script (on the command line or from an icon), the script will print hello, exit, and REBOL will terminate.
 
 However, if you start REBOL and type from the console, the script will return to the console when the QUIT is evaluated:
 
- &gt;&gt; do %quit.r
+ >> do %quit.r
  hello
- &gt;&gt;
+ >>
 
-Notice that &quot;end&quot; is not printed.
+Notice that "end" is not printed.
 
 ==QUIT/return==
 
 If you want the script above to return a value:
 
  REBOL []
- print &quot;hello&quot;
- quit/return &quot;done&quot;
+ print "hello"
+ quit/return "done"
 
 Now you can see that result:
 
- &gt;&gt; do %quit.r
+ >> do %quit.r
  hello
- == &quot;done&quot;
+ == "done"
 
 ==QUIT/now==
 

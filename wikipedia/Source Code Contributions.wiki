@@ -8,7 +8,7 @@ We will make it easy for developers to obtain source code online and to upload n
 
 All code contributions will be freely published and distributed. Everyone can use this codebase for their projects and products, without restriction.
 
-As a developer, your submission must agree to this condition. And, like other languages, we will be creating a &quot;legal entity&quot; to protect the source code base.
+As a developer, your submission must agree to this condition. And, like other languages, we will be creating a "legal entity" to protect the source code base.
 
 ==Standard Releases==
 
@@ -36,6 +36,6 @@ What can be done about these problems? I think a lot of this is '''related to ed
 
 I think all of this can be summarized by this simple statement:
 
-&lt;blockquote&gt;
+<blockquote>
 '''We will not accept code that we believe to be unsupportable.'''
-&lt;/blockquote&gt;
+</blockquote>

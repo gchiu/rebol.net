@@ -1,148 +1,148 @@
 == GRAD-PEN== 
 
-Sets the color gradient for area filling. The gradient can be defined by up to 256 colors. Each defined color &lt;BR&gt;can have specified color offset for creating gradients with asymmetric color ranges.
+Sets the color gradient for area filling. The gradient can be defined by up to 256 colors. Each defined color <BR>can have specified color offset for creating gradients with asymmetric color ranges.
 
-{| cellspacing=&quot;0&quot; cellpadding=&quot;4&quot; border=&quot;1&quot; style=&quot;background: white; color: black&quot;
-! bgcolor=&quot;silver&quot; width=&quot;9%&quot; | Argument
-! bgcolor=&quot;silver&quot; width=8%| Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="0" cellpadding="4" border="1" style="background: white; color: black"
+! bgcolor="silver" width="9%" | Argument
+! bgcolor="silver" width=8%| Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | grad-type
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | The gradient type
-| bgcolor=&quot;white&quot; | '''radial conic diamond linear diagonal cubic'''
+| bgcolor="white" | grad-type
+| bgcolor="white" | [word!]
+| bgcolor="white" | The gradient type
+| bgcolor="white" | '''radial conic diamond linear diagonal cubic'''
 |- 
-| bgcolor=&quot;white&quot; | grad-mode
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | The gradient rendering mode
-| bgcolor=&quot;white&quot; | '''normal repeat reflect'''
+| bgcolor="white" | grad-mode
+| bgcolor="white" | [word!]
+| bgcolor="white" | The gradient rendering mode
+| bgcolor="white" | '''normal repeat reflect'''
 |- 
-| bgcolor=&quot;white&quot; | grad-offset
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | offset from where should the gradient be rendered
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | grad-offset
+| bgcolor="white" | [pair!]
+| bgcolor="white" | offset from where should the gradient be rendered
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | grad-start-rng
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | beginning of the gradient range
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | grad-start-rng
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | beginning of the gradient range
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | grad-stop-rng
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | end of the gradient range
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | grad-stop-rng
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | end of the gradient range
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | grad-angle
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | rotation of the gradient in degrees
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | grad-angle
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | rotation of the gradient in degrees
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | grad-scale-x
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | scale X factor
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | grad-scale-x
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | scale X factor
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | grad-scale-y
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | scale Y factor
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | grad-scale-y
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | scale Y factor
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | grad-colors
-| bgcolor=&quot;white&quot; | [block!]
-| bgcolor=&quot;white&quot; | block containing up to 256 gradient colors (optionally with color offsets)
-| bgcolor=&quot;white&quot; | block content can be either:&lt;br&gt;
-[color1 [pair!] color2 [pair!] color3 [pair!] ...]  or: &lt;br&gt;
-[color1 [pair!] offset1 [decimal!] color2 [pair!] offset2 [decimal!] ...]&lt;br&gt;
-'''NOTE:''' Currently color values inside the block are reduced.&lt;br&gt;
+| bgcolor="white" | grad-colors
+| bgcolor="white" | [block!]
+| bgcolor="white" | block containing up to 256 gradient colors (optionally with color offsets)
+| bgcolor="white" | block content can be either:<br>
+[color1 [pair!] color2 [pair!] color3 [pair!] ...]  or: <br>
+[color1 [pair!] offset1 [decimal!] color2 [pair!] offset2 [decimal!] ...]<br>
+'''NOTE:''' Currently color values inside the block are reduced.<br>
 (in case '''word!''' references are used for colors)
 |}
-&lt;br&gt;'''Notes and Examples'''
+<br>'''Notes and Examples'''
 
-&lt;p&gt;Simple linear gradient&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<p>Simple linear gradient</p>
+<code><pre>
 grad-pen linear 100x100 0 200 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-1.png|GRAD-PEN example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Linear gradient with compressed range&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Linear gradient with compressed range</p>
+<code><pre>
 grad-pen linear 100x100 0 50 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-2.png|GRAD-PEN example 2]]
 
-&lt;br&gt;
-&lt;p&gt;Linear gradient in '''repeat''' mode&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Linear gradient in '''repeat''' mode</p>
+<code><pre>
 grad-pen linear repeat 100x100 0 50 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-3.png|GRAD-PEN example 3]]
 
-&lt;br&gt;
-&lt;p&gt;Linear gradient in '''reflect''' mode&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Linear gradient in '''reflect''' mode</p>
+<code><pre>
 grad-pen linear reflect 100x100 0 50 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-4.png|GRAD-PEN example 4]]
 
-&lt;br&gt;
-&lt;p&gt;Linear gradient with more colors&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Linear gradient with more colors</p>
+<code><pre>
 grad-pen linear 100x100 0 200 [255.0.0 255.255.0 0.255.0 0.255.255 0.0.255 255.0.255]
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-5.png|GRAD-PEN example 5]]
 
-&lt;br&gt;
-&lt;p&gt;Linear gradient with color offsets&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Linear gradient with color offsets</p>
+<code><pre>
 grad-pen linear 100x100 0 200 [255.0.0 0.1 255.255.0 0.2 0.255.0 0.4 0.255.255 0.8 0.0.255 .9 255.0.255 1.0]
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-6.png|GRAD-PEN example 6]]
 
-&lt;br&gt;
-&lt;p&gt;Simple radial gradient&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Simple radial gradient</p>
+<code><pre>
 grad-pen radial 200x200 0 100 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-7.png|GRAD-PEN example 7]]
 
-&lt;br&gt;
-&lt;p&gt;Diamond gradient with applied rotation&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Diamond gradient with applied rotation</p>
+<code><pre>
 grad-pen diamond 200x200 0 100 30 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-8.png|GRAD-PEN example 8]]
 
-&lt;br&gt;
-&lt;p&gt;Diamond gradient with applied rotation and scaling&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Diamond gradient with applied rotation and scaling</p>
+<code><pre>
 grad-pen diamond 200x200 0 100 30 3.0 1.5 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-9.png|GRAD-PEN example 9]]
 
-&lt;br&gt;
+<br>
 
-&lt;p&gt;To disable the '''grad-pen'''', set it to '''off'''. After that latest '''fill-pen''' state is used for filling the areas.&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<p>To disable the '''grad-pen'''', set it to '''off'''. After that latest '''fill-pen''' state is used for filling the areas.</p>
+<code><pre>
 fill-pen red
 grad-pen linear 100x100 0 200 [255.0.0 0.255.0 0.0.255]
 box 100x100 300x300
 grad-pen off
 box 150x150 250x250
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 [[image:GRAD-PEN-10.png|GRAD-PEN example 10]]
 
-&lt;br&gt;
+<br>
 
 ''Mention DIAGONAL gradient here.''
 

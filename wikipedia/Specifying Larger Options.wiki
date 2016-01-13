@@ -57,9 +57,9 @@ but internally, this is converted to a spec object (and that's what we call it, 
 
     make port! [
         scheme: 'http
-        host: &quot;www.rebol.com&quot;
+        host: "www.rebol.com"
         path: %file.html
-        user: &quot;luke&quot;
+        user: "luke"
     ]
 
 So, there can also be various other options within that port spec object.

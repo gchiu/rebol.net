@@ -28,72 +28,72 @@ These modes are implemented in the COPY API with two refinements:
 
 Here is a table of types copied by default on COPY/deep and MAKE object!:
 
-&lt;TABLE BORDER=&quot;1&quot; CELLPADDING=&quot;4&quot; CELLSPACING=&quot;0&quot;&gt;
-	&lt;TR&gt;
-		&lt;TD BGCOLOR=&quot;#99CCFF&quot;&gt;&lt;B&gt;Datatype&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD BGCOLOR=&quot;#99CCFF&quot;&gt;&lt;B&gt;COPY and MAKE&lt;/B&gt;&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;strings&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;yes&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;binary&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;yes&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;bitsets&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;no&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;vectors&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;no&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;images&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;no&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;gobs&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;no&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;blocks&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;yes&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;parens&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;yes&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;paths&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;yes&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;maps&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;no&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;functions&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;make object! only&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;closures&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;make object! only&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;objects&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;no&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;errors&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;no&lt;/TD&gt;
-	&lt;/TR&gt;
-	&lt;TR&gt;
-		&lt;TD&gt;&lt;B&gt;ports&lt;/B&gt;&lt;/TD&gt;
-		&lt;TD&gt;no&lt;/TD&gt;
-	&lt;/TR&gt;
-&lt;/TABLE&gt;
+<TABLE BORDER="1" CELLPADDING="4" CELLSPACING="0">
+	<TR>
+		<TD BGCOLOR="#99CCFF"><B>Datatype</B></TD>
+		<TD BGCOLOR="#99CCFF"><B>COPY and MAKE</B></TD>
+	</TR>
+	<TR>
+		<TD><B>strings</B></TD>
+		<TD>yes</TD>
+	</TR>
+	<TR>
+		<TD><B>binary</B></TD>
+		<TD>yes</TD>
+	</TR>
+	<TR>
+		<TD><B>bitsets</B></TD>
+		<TD>no</TD>
+	</TR>
+	<TR>
+		<TD><B>vectors</B></TD>
+		<TD>no</TD>
+	</TR>
+	<TR>
+		<TD><B>images</B></TD>
+		<TD>no</TD>
+	</TR>
+	<TR>
+		<TD><B>gobs</B></TD>
+		<TD>no</TD>
+	</TR>
+	<TR>
+		<TD><B>blocks</B></TD>
+		<TD>yes</TD>
+	</TR>
+	<TR>
+		<TD><B>parens</B></TD>
+		<TD>yes</TD>
+	</TR>
+	<TR>
+		<TD><B>paths</B></TD>
+		<TD>yes</TD>
+	</TR>
+	<TR>
+		<TD><B>maps</B></TD>
+		<TD>no</TD>
+	</TR>
+	<TR>
+		<TD><B>functions</B></TD>
+		<TD>make object! only</TD>
+	</TR>
+	<TR>
+		<TD><B>closures</B></TD>
+		<TD>make object! only</TD>
+	</TR>
+	<TR>
+		<TD><B>objects</B></TD>
+		<TD>no</TD>
+	</TR>
+	<TR>
+		<TD><B>errors</B></TD>
+		<TD>no</TD>
+	</TR>
+	<TR>
+		<TD><B>ports</B></TD>
+		<TD>no</TD>
+	</TR>
+</TABLE>
 
 ==Internal copy operations==
 

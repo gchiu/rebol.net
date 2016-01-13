@@ -6,24 +6,24 @@ WARNING: ''Various pages in this wiki may be obsolete.'' Your help is needed to 
 ===R3 Introduction===
 
 *[[R3 Introduction]]
-*[[Features &amp; Objectives]]
+*[[Features & Objectives]]
 
 ===Communicate===
 
 *[[Communicate]]
-*[http://www.rebol.com/r3/devbase/index.html R3 DevBase Forum] - &quot;R3 Chat&quot;
-*[[CureCode]] R3 bug reporting &amp; tracking
-*[[News &amp; Changes]]
+*[http://www.rebol.com/r3/devbase/index.html R3 DevBase Forum] - "R3 Chat"
+*[[CureCode]] R3 bug reporting & tracking
+*[[News & Changes]]
 *[[R3 Development Discussions]]
 *[[Marketing_Strategy_Websites|Marketing, Strategy, Websites]]
 
 ===Getting Started With R3===
 
 *[[Getting Started With R3]]
-*[[R3 Alpha|Alpha Release &amp; Downloads]]
+*[[R3 Alpha|Alpha Release & Downloads]]
 *[[R3 Commands vs. R2 Commands]]
-*[[Datatypes, Functions, Graphic &amp; Special Notes]]
-*[[Cookbooks, Dictionary, Glossary &amp; Other Resources]] 
+*[[Datatypes, Functions, Graphic & Special Notes]]
+*[[Cookbooks, Dictionary, Glossary & Other Resources]] 
 
 ===Graphics and GUI===
 

@@ -1,85 +1,85 @@
 == CURVE== 
 
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;
-&lt;TD ALIGN=RIGHT WIDTH=75%&gt;Next Page: '''[[Ellipse]]'''&lt;/TD&gt;&lt;TD ALIGN=CENTER&gt;Return To '''[[Draw]] Contents'''&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+<TABLE WIDTH=100%><TR>
+<TD ALIGN=RIGHT WIDTH=75%>Next Page: '''[[Ellipse]]'''</TD><TD ALIGN=CENTER>Return To '''[[Draw]] Contents'''</TD>
+</TR></TABLE>
 
 Draws a smooth Bezier curve to fit the points provided.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | point1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | End point A
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | End point A
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point2
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | Control point A
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point2
+| bgcolor="white" | [pair!]
+| bgcolor="white" | Control point A
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point3
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | End point B, or control point B
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point3
+| bgcolor="white" | [pair!]
+| bgcolor="white" | End point B, or control point B
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point4
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | End point B
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point4
+| bgcolor="white" | [pair!]
+| bgcolor="white" | End point B
+| bgcolor="white" | 
 |}
-&lt;p&gt;Either three or more points should be specified.
+<p>Either three or more points should be specified.
 Three points determines a cubic Bezier curve with two endpoints
 and one control point. Four points provides two control
-points. Additional points are needed for complicated curves like circular and elliptical arcs.&lt;/p&gt;
+points. Additional points are needed for complicated curves like circular and elliptical arcs.</p>
 
-&lt;TABLE style=&quot;color:green; background-color:#fffffcc;&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; border=&quot;1&quot; width=100%&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+<TABLE style="color:green; background-color:#fffffcc;" cellpadding="20" cellspacing="0" border="1" width=100%><TR>
+<TD WIDTH=60%>
     curve 20x150 60x250 200x50
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:CURVE-1b.png]]&lt;BR&gt;
-Curve With One Control Point&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;
-&lt;TD WIDTH=60%&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:CURVE-1b.png]]<BR>
+Curve With One Control Point</TD></TR><TR>
+<TD WIDTH=60%>
     curve 20x20 80x300 140x20 200x300
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:CURVE-2b.png]]&lt;BR&gt;
-Curve With Two Control Points&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:CURVE-2b.png]]<BR>
+Curve With Two Control Points</TD></TR><TR>
 
-&lt;TD WIDTH=60%&gt;
+<TD WIDTH=60%>
     pen yellow
     line-pattern red 5 5
     line-width 4
     curve 20x150 60x250 200x50
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:CURVE-3b.png]]&lt;BR&gt;
-Thick Curve With Patterned Line&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:CURVE-3b.png]]<BR>
+Thick Curve With Patterned Line</TD></TR><TR>
 
-&lt;TD WIDTH=60%&gt;
+<TD WIDTH=60%>
     pen yellow
     line-pattern red 5 5
     line-width 4
     fill-pen blue
     curve 20x20 80x300 140x20 200x300
-&lt;/TD&gt;
-&lt;TD align=center valign=MIDDLE&gt;[[image:CURVE-4b.png]]&lt;BR&gt;
-With Fill Pen&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;
-&lt;TABLE&gt;
+</TD>
+<TD align=center valign=MIDDLE>[[image:CURVE-4b.png]]<BR>
+With Fill Pen</TD></TR><TR>
+<TABLE>
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;
-&lt;TD ALIGN=RIGHT WIDTH=75%&gt;Next Page: '''[[Ellipse]]'''&lt;/TD&gt;&lt;TD ALIGN=CENTER&gt;Return To '''[[Draw]] Contents'''&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+<TABLE WIDTH=100%><TR>
+<TD ALIGN=RIGHT WIDTH=75%>Next Page: '''[[Ellipse]]'''</TD><TD ALIGN=CENTER>Return To '''[[Draw]] Contents'''</TD>
+</TR></TABLE>
 
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Draw]]
 *[[Anti-Alias]]
 *[[Arc]]
@@ -89,14 +89,14 @@ Pages
 *[[Clip]]
 *[[Curve]]
 *[[Ellipse]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Fill-Pen]]
 *[[Fill-Rule]]
 *[[Gamma]]
@@ -107,13 +107,13 @@ Pages
 *[[Line]]
 *[[Line-Cap]]
 
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Line-Join]]
 *[[Line-Pattern]]
 *[[Line-Width]]
@@ -123,14 +123,14 @@ Pages
 *[[Push]]
 *[[Reset-Matrix]]
 *[[Rotate]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Scale]]
 *[[Shape]]
 *[[Skew]]
@@ -139,20 +139,20 @@ Pages
 *[[Transform]]
 *[[Translate]]
 *[[Triangle]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP width=30%&gt;
+<TD ALIGN=LEFT VALIGN=TOP width=30%>
 Chapters
-&lt;font size=1&gt;
+<font size=1>
 *[[R3 Introduction]]
 *[[Getting Started With R3]]
 *[[The Graphical User Interface]]
 *[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
 *'''Script Writing With The Draw Dialect'''
-*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+*[[The Graphic Object]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
-&lt;font size=1&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</font></TD>
+</TR></TABLE>

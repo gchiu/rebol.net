@@ -1,4 +1,4 @@
-Rebol is a fusion and &quot;sweet spot&quot; sought by a careful blend of features tuned for over a decade, so it is hard to capture that in a single sentence (or several).  Yet choosing these carefully and using them purposefully is good because it helps people quickly understand what tasks the language shines at.  It also gives quotable guidance when helping give feedback to new users who might not have grasped the &quot;Zen&quot;.
+Rebol is a fusion and "sweet spot" sought by a careful blend of features tuned for over a decade, so it is hard to capture that in a single sentence (or several).  Yet choosing these carefully and using them purposefully is good because it helps people quickly understand what tasks the language shines at.  It also gives quotable guidance when helping give feedback to new users who might not have grasped the "Zen".
 
 = Marketing Slogans =
 
@@ -9,7 +9,7 @@ In this context, a marketing slogan is a higher-level capture of the philosophy.
 === REBOL rebels against software complexity ===
 
 * very solid and rings true with what Rebol is
-* is punchier as this simple statement rather than phrasing &quot;Rebelling against large, expensive, complex software&quot;
+* is punchier as this simple statement rather than phrasing "Rebelling against large, expensive, complex software"
 
 === Do it in 1MB, not 200MB. ===
 
@@ -29,13 +29,13 @@ In this context, a marketing slogan is a higher-level capture of the philosophy.
 
 === Make IT Simple ===
 
-* Not all software developers label themselves to be &quot;IT people&quot; (e.g. [http://ask.slashdot.org/story/09/11/28/2353241/Do-You-Hate-Being-Called-an-IT-Guy this article])
+* Not all software developers label themselves to be "IT people" (e.g. [http://ask.slashdot.org/story/09/11/28/2353241/Do-You-Hate-Being-Called-an-IT-Guy this article])
 * Made Rebol sound like it might be a sysadmin tool or some kind of virtual web host control panel
 
 === Web 3.0 Starts Here ===
 
-* people who would rally and use term &quot;Web 3.0&quot; would never agree Rebol is suited to be called this
-* people who understand what this is supposed to mean likely wouldn't use the term &quot;Web 3.0&quot;
+* people who would rally and use term "Web 3.0" would never agree Rebol is suited to be called this
+* people who understand what this is supposed to mean likely wouldn't use the term "Web 3.0"
 
 === Vive la REBOLution ===
 
@@ -43,22 +43,22 @@ In this context, a marketing slogan is a higher-level capture of the philosophy.
 
 === Relative Expression Based Object Language ===
 
-* a solid meaning behind word &quot;Rebol&quot;
+* a solid meaning behind word "Rebol"
 * unclear if presenting this to users early on causes more confusion than good
 * naming with acronyms and all caps not currently in vogue
 
 === The lightweight platform for Internet applications ===
 
-* &quot;lightweight&quot; has some positive and negative connotations
-* today's expectations of claiming &quot;platform&quot; for &quot;Internet applications&quot; is beyond just language scope (Rails, Django, Pylons, WebObjects)
-* better to sharpen focus on &quot;*Internet Included&quot;? ''(e.g. how many other languages can effectively #include libraries via http address)''
+* "lightweight" has some positive and negative connotations
+* today's expectations of claiming "platform" for "Internet applications" is beyond just language scope (Rails, Django, Pylons, WebObjects)
+* better to sharpen focus on "*Internet Included"? ''(e.g. how many other languages can effectively #include libraries via http address)''
 
 == Brainstorm New Marketing Slogans ==
 
 === Rebol is the rebellion against software complexity ===
 
 * Same sentiment as before but scans better than ''REBOL rebels against...''
-* ''&quot;It's not just '''a''' rebellion, it's '''the''' rebellion&quot;''
+* ''"It's not just '''a''' rebellion, it's '''the''' rebellion"''
 
 === Version 3: It's Rebol. Rebooted. ===
 
@@ -74,7 +74,7 @@ In this context, a marketing slogan is a higher-level capture of the philosophy.
 
 = Mottos =
 
-Mottos are something you can have an unlimited number of, if they ring true and are useful. There's a 20 line summary called [http://www.python.org/dev/peps/pep-0020/ The Zen of Python], which says things like: &quot;Explicit is better than implicit.&quot;, &quot;Readability counts.&quot;, &quot;Flat is better than nested.&quot;
+Mottos are something you can have an unlimited number of, if they ring true and are useful. There's a 20 line summary called [http://www.python.org/dev/peps/pep-0020/ The Zen of Python], which says things like: "Explicit is better than implicit.", "Readability counts.", "Flat is better than nested."
 
 So what is [[The Zen of Rebol]]?  How many premises from other languages can be said to apply equally well to Rebol, if not better?  Which are contentious with the Rebol worldview?  And which are completely new?  Each motto should be backed up by some code samples instead of just being abstract.  If someone asks what a motto means, just link to that page.
 
@@ -82,7 +82,7 @@ So what is [[The Zen of Rebol]]?  How many premises from other languages can be 
 
 === There Are No Keywords ===
 
-* Has this &quot;sold&quot; people and do they like hearing it?
+* Has this "sold" people and do they like hearing it?
 * Might be better to stress layering and levels of mutability/immutability, like, say, [http://en.wikipedia.org/wiki/Nomic Nomic]?
 * ''you can build your own variant of the language'' may sound better than something that sounds like ''we didn't build a language, so you'll have to''
 

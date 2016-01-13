@@ -7,7 +7,7 @@ This page will be deleted after completion of early test phase.
 
 '''Current release:''' core004
 
-Current test distribution contains only the kernel (&quot;core&quot;) of R3.
+Current test distribution contains only the kernel ("core") of R3.
 
 '''It includes:''' all datatypes, native functions, mezz functions, compression, checksums and hashes, PARSE, help strings, and system object.
 

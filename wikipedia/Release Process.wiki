@@ -44,7 +44,7 @@ The directories named '''Dev''', '''Test''' and '''Release''', each represent a 
 
 ==== 1. Development Stage (Dev) ====
 
-This stage is the first where the bleeding edge version of R3 is stored along with other distribution files. The R3 version here is built directly from the sources in DevBase, while examples and text files are uploaded or &quot;born&quot; in this directory. The content may therefore not be stable. When it is time for a release, the content is copied to the '''Test''' directory for last minute testing. Any developer, even those not assigned to the release process, can work in this directory.
+This stage is the first where the bleeding edge version of R3 is stored along with other distribution files. The R3 version here is built directly from the sources in DevBase, while examples and text files are uploaded or "born" in this directory. The content may therefore not be stable. When it is time for a release, the content is copied to the '''Test''' directory for last minute testing. Any developer, even those not assigned to the release process, can work in this directory.
 
 ==== 2. Testing Stage (Test) ====
 

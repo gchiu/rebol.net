@@ -1,1 +1,1 @@
-This log has moved to the [http://www.rebol.com/docs/changes.html &quot;REBOL Changes&quot;] area.
+This log has moved to the [http://www.rebol.com/docs/changes.html "REBOL Changes"] area.

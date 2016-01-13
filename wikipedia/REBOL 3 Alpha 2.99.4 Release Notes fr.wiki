@@ -1,14 +1,14 @@
 Il s'agit de la traduction française de la dernière version.
 
-Traduction réalisée par Jean-François &quot;Jeffrey&quot; Richard
+Traduction réalisée par Jean-François "Jeffrey" Richard
 
 ==Qu'est-ce que c'est==
 
-&lt;b&gt;C'est une version alpha de REBOL 3.0&lt;/b&gt;
+<b>C'est une version alpha de REBOL 3.0</b>
 
 Une version alpha est un prototype non finalisé. Il contient la plupart des caractéristiques de la version finale, mais ce n'est pas cette dernière, et ce n'est pas un produit en tant que tel.
 
-&lt;b&gt; Ce n'est pas une version normale&lt;/b&gt;
+<b> Ce n'est pas une version normale</b>
 
 C'est une version limitée et nous savons cela. Ainsi, s'il vous plaît, ne l'utilisez pas pour contrôler une station spatiale, une centrale électrique, ou une chaîne de montage. Cette sortie est juste pour vous. Cette version n'est pas re-distribuable, n'est pas destinées à être évaluée, n'est pas destinée aux utilisateurs finaux ou aux clients.
 
@@ -30,7 +30,7 @@ R3 a une longue liste d'objectifs, et ci-dessous en sont énumérés quelques un
 
 ===Licence===
 
-&lt;b&gt; Cette version vous est licencié pour des besoins de tests seulement.&lt;/b&gt; Veuillez noter:
+<b> Cette version vous est licencié pour des besoins de tests seulement.</b> Veuillez noter:
 
 *Vous l'utilisez à vos risques et périls. Il n'y a aucune garantie dessus de n'importe quelle sorte.
 *Vous pouvez créer des copies pour votre propre usage, mais vous ne devez pas publier ou distribuer ce logiciel à d'autres utilisateurs.
@@ -62,7 +62,7 @@ Vous pouvez lancer des scripts de plusieurs façons:
 
 Notes:
 
-#Cette version n'a pas de système de sécurité ou de &quot;sandbox&quot;. Ne lancez pas de scripts dans lesquels vous n'avez pas confiance ou que vous ne comprenez pas. Dans le doute, examinez-le.
+#Cette version n'a pas de système de sécurité ou de "sandbox". Ne lancez pas de scripts dans lesquels vous n'avez pas confiance ou que vous ne comprenez pas. Dans le doute, examinez-le.
 #Il manque une partie du mécanisme gérant le changement de répertoires dans cette version, et il est possible qu'elle ne trouve pas tous les fichiers nécessaires pour un script. S'il y a un problème, mettez tous vos fichiers dans le même répertoire.
 
 ===Invite de commande===
@@ -76,12 +76,12 @@ Voici comment faire:
 #Lancer rebhost.exe
 #Fermer la fenêtre d'acceuil
 #Clic droit sur la barre de titre de la fenêtre et sélectionnez le point de menu propriété
-#Dans l'onglet &quot;Options&quot;, activez le &quot;Mode d'édition rapide&quot; ainsi que le &quot;Mode insertion&quot;
+#Dans l'onglet "Options", activez le "Mode d'édition rapide" ainsi que le "Mode insertion"
 #Augmentez la mémoire tampon de l'historique des commandes et le nombre de tampons, comme vous l'entendez
-#Dans l'onglet &quot;Configuration&quot;, fixez la largeur et la hauteur de la mémoire tampon décran à quelquechose de raisonnable tel que 100x1000.
+#Dans l'onglet "Configuration", fixez la largeur et la hauteur de la mémoire tampon décran à quelquechose de raisonnable tel que 100x1000.
 #Mettre la taille de la fenêtre à 100x50 ou semblable
-#Décochez le paramètre &quot;Let system position window&quot; si vous désirez qu'elle reste à la même place à chaque lancement (après l'avoir positionnée)
-#Fermez le panneau de configuration, et cliquez sur &quot;Save properties for future windows&quot; en sortant.
+#Décochez le paramètre "Let system position window" si vous désirez qu'elle reste à la même place à chaque lancement (après l'avoir positionnée)
+#Fermez le panneau de configuration, et cliquez sur "Save properties for future windows" en sortant.
 
 Maintenant votre console est un peu plus utilisable.
 

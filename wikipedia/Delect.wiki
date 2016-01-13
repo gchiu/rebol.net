@@ -8,7 +8,7 @@ DELECT is implemented as a native function because an unordered parse can be com
 
 The basic function form of DELECT is:
 
-&lt;pre&gt;USAGE:
+<pre>USAGE:
     DELECT dialect input output
 
 DESCRIPTION:
@@ -23,7 +23,7 @@ ARGUMENTS:
 REFINEMENTS:
     /in -- Search for var words in specific objects (contexts)
     where -- Block of objects to search (non objects ignored) (block!)
-&lt;/pre&gt;
+</pre>
 
 ===Input Block===
 
@@ -58,34 +58,34 @@ If there are multiple contexts in the block, each is scanned until the word is f
 
 Here is an example of using DELECT to handle a very simple dialect.
 
-&lt;pre&gt;
+<pre>
 dialect: context [
     default: [tuple!]
     single: [string!]
     double: [integer! string!]
 ]
 
-inp: [1.2.3 single &quot;test&quot; double &quot;test&quot; 123]
+inp: [1.2.3 single "test" double "test" 123]
 out: make block! 4  ; (any initial size works)
 
 while [inp: delect dialect inp out] [
   ?? out
   ?? inp
 ]
-&lt;/pre&gt;
+</pre>
 
 The results will be:
 
-&lt;pre&gt;
+<pre>
 out: [default 1.2.3]
-inp: [single &quot;test&quot; double &quot;test&quot; 123]
+inp: [single "test" double "test" 123]
 
-out: [single &quot;test&quot;]
-inp: [double &quot;test&quot; 123]
+out: [single "test"]
+inp: [double "test" 123]
 
-out: [double 123 &quot;test&quot;]
+out: [double 123 "test"]
 inp: []
-&lt;/pre&gt;
+</pre>
 
 Of course, this is a very trivial case, but it gives you the idea.
 
@@ -93,7 +93,7 @@ Of course, this is a very trivial case, but it gives you the idea.
 
 A DELECT dialect is defined as an object. Here is an example that shows various cases:
 
-&lt;pre&gt;dil: context [
+<pre>dil: context [
 	default: [pair! binary!]
 	empty: []
 	single: [integer!]
@@ -109,7 +109,7 @@ A DELECT dialect is defined as an object. Here is an example that shows various 
 	ref: none
 	str: none
 ]
-&lt;/pre&gt;
+</pre>
 
 The words of the object define the keywords of the grammar. Words defined as blocks are commands. Words set to NONE are special keywords that can be used as flag words inside of commands).
 
@@ -133,17 +133,17 @@ even if no integer or string is provided (in which case NONE is the value).
 
 Here are examples of all combinations of arguments to double and what it returns:
 
-    double =&gt; double none none
-    double 1 =&gt; double 1 none
-    double &quot;abc&quot; =&gt; double none &quot;abc&quot;
-    double 1 &quot;abc&quot; =&gt; double 1 &quot;abc&quot;
-    double &quot;abc&quot; 1 =&gt; double 1 &quot;abc&quot;
+    double => double none none
+    double 1 => double 1 none
+    double "abc" => double none "abc"
+    double 1 "abc" => double 1 "abc"
+    double "abc" 1 => double 1 "abc"
 
 ==Numeric Type Conversion==
 
 Note that integers and decimal values will satisfy each other's type. If a decimal is provided for an integer:
 
-    double 1.2 =&gt; double 1 none
+    double 1.2 => double 1 none
 
 And, an integer can be used for a decimal. Keep that in mind.
 
@@ -151,9 +151,9 @@ And, an integer can be used for a decimal. Keep that in mind.
 
 Note: During the parse, NONE values in the input stream will be ignored. This is allowed because NONE is the value returned for missing arguments. For example:
 
-    double none =&gt; double none none
-    double &quot;abc&quot; none =&gt; double none &quot;abc&quot;
-    double none 1 =&gt; double 1 none
+    double none => double none none
+    double "abc" none => double none "abc"
+    double none 1 => double 1 none
 
 This is useful when preprocessing dialect input streams.
 
@@ -198,8 +198,8 @@ Literal commands are allowed as a variation of a normal command. This is used in
 
 So, for example:
 
-    double 1 &quot;a&quot; =&gt; double 1 &quot;a&quot;
-    'double 1 &quot;a&quot; =&gt; 'double 1 &quot;a&quot;
+    double 1 "a" => double 1 "a"
+    'double 1 "a" => 'double 1 "a"
 
 ==Default Types==
 
@@ -207,7 +207,7 @@ As noted above, the first word of the dialect can specify types that need no com
 
 For example, in the rich text dialect, you can write:
 
-   [red &quot;This text is red&quot;]
+   [red "This text is red"]
 
 This is allowed because both the red value (a tuple) and the string are defined as default types. Example may be:
 
@@ -215,20 +215,20 @@ This is allowed because both the red value (a tuple) and the string are defined 
 
 When the above input is parsed, the result will be:
 
-   [default 255.0.0 default &quot;This text is red&quot;]
+   [default 255.0.0 default "This text is red"]
 
 Each default value is identified by the default word and each value is returned separately.
 
 Be sure to watch out for this potential problem:
 
-&lt;pre&gt;
+<pre>
 dialect: context [
     default: [string!]
     cmd: [string!]
 ]
-&lt;/pre&gt;
+</pre>
 
-This is a valid dialect, but if you input [cmd &quot;test&quot;] the result will always be to cmd, never to default. However, [cmd &quot;test&quot; &quot;this&quot;] will work fine.
+This is a valid dialect, but if you input [cmd "test"] the result will always be to cmd, never to default. However, [cmd "test" "this"] will work fine.
 
 ==Binding==
 

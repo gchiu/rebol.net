@@ -1,4 +1,4 @@
-&lt;b&gt;All about the MONEY datatype - high-precision arithmetic for financial and scientific applications.&lt;/b&gt;
+<b>All about the MONEY datatype - high-precision arithmetic for financial and scientific applications.</b>
 
 ==Overview==
 
@@ -15,24 +15,24 @@ Externally, money is represented as it was on R2. Within code and data, a $ indi
 
 Unlike in R2, money remains accurate up to 26 digits:
 
- &gt;&gt; $123456789012345678901234.56 + $0.01
+ >> $123456789012345678901234.56 + $0.01
  == $123456789012345678901234.57
 
 Compare this with what happens when using Rebol decimal! (64-bit IEEE754 binary floating point) values:
 
- &gt;&gt; 123456789012345678901234.56 + 0.01
+ >> 123456789012345678901234.56 + 0.01
  == 1.2345678901234569E+23
 
 Many digits are lost in the original number, and the 0.01 addition is completely lost in rounding.
 
-The difference can be seen even &quot;sooner&quot;, as the following example shows:
+The difference can be seen even "sooner", as the following example shows:
 
- &gt;&gt; $0.30 - $0.20 - $0.10
+ >> $0.30 - $0.20 - $0.10
  == $0
 
 While using the Rebol decimal! datype we obtain:
 
- &gt;&gt; 0.30 - 0.20 - 0.10
+ >> 0.30 - 0.20 - 0.10
  == -2.77555756156289E-17
 
 The reason behind this is that numbers like 0.30, 0.20 or 0.10 can be exactly represented by the money! datatype, while they cannot be represented exactly by Rebol decimal! (64-bit IEEE754 binary floating point) datatype.
@@ -41,7 +41,7 @@ The reason behind this is that numbers like 0.30, 0.20 or 0.10 can be exactly re
 
 Additionally it is possible to use it when doing some integer arithmetic needing up to 26 decimal digits like in this example (exactly computing 2 ** 64, which cannot be done in Rebol integer format):
 
- &gt;&gt; a: $1 loop 64 [a: a * $2]
+ >> a: $1 loop 64 [a: a * $2]
  == $18446744073709551616
 
 The accurate result can be obtained for up to 2 ** 86, 2 ** 87 is the first power of two needing more than 26 decimal digits.
@@ -115,25 +115,25 @@ These conversions are supported:
 *binary to decimal
 *decimal to binary
 
-Auto conversion also occurs when the money type is mixed in functions with other numeric datatypes. Money is considered the &quot;stronger type&quot; -- producing the datatype of the result:
+Auto conversion also occurs when the money type is mixed in functions with other numeric datatypes. Money is considered the "stronger type" -- producing the datatype of the result:
 
- &gt;&gt; $1 + 1
+ >> $1 + 1
  == $2
- &gt;&gt; $1 + 1.0
+ >> $1 + 1.0
  == $2
- &gt;&gt; 1 + $1
+ >> 1 + $1
  == $2
- &gt;&gt; 1.0 + $1
+ >> 1.0 + $1
  == $2
- &gt;&gt; 1.2 &gt; $1
+ >> 1.2 > $1
  == true
 
 ==Precision==
 *Money values are designed to keep precision (they are not normalized). Example:
 
- &gt;&gt; a: $10
+ >> a: $10
  == $10
- &gt;&gt; b: $10.00
+ >> b: $10.00
  == $10.00
 
 ===Conversions===
@@ -154,30 +154,30 @@ The conversions from integer to money are exact, the money datatype can exactly 
 
 The conversions from money to integer are exact for an integral value, that fits into the range of 64-bit integers. Example:
 
- &gt;&gt; to integer! $100
+ >> to integer! $100
  == 100
 
 If the value does not fit into the integer range, an overflow occurs. Example:
 
- &gt;&gt; to integer! $9'999'999'999'999'999'999
+ >> to integer! $9'999'999'999'999'999'999
  ** Math error: math or number overflow
  ** Where: to
  ** Near: to integer! $9999999999999999999
 
 If the money value isn't integral, it is truncated. Example:
 
- &gt;&gt; to integer! $1.50
+ >> to integer! $1.50
  == 1
 
 ====Decimal to money====
 
 The conversions from decimal to money are usually exact, since the money datatype is more precise than the decimal datatype. To make sure the decimal value is represented exactly (i.e. that it is uniquely determined), the conversion uses 17 decimal digits. Example:
 
- &gt;&gt; a: 0.1
+ >> a: 0.1
  == 0.10000000000000001
- &gt;&gt; b: to money! a
+ >> b: to money! a
  == $0.10000000000000001
- &gt;&gt; same? a to decimal! b
+ >> same? a to decimal! b
  == true
 
 An overflow may occur, though, since the range of the decimal! datatatype is larger than the range of the money! datatype. When converting tiny decimal! values, a loss of precision (underflow) yielding $0 may occur too, when the decimal exponent is lower than -128.
@@ -186,25 +186,25 @@ An overflow may occur, though, since the range of the decimal! datatatype is lar
 
 Neither overflow nor underflow may occur, but the decimal values cannot exactly represent some money values. Example:
 
- &gt;&gt; a: $0.01
+ >> a: $0.01
  == $0.01
- &gt;&gt; b: to decimal! a
+ >> b: to decimal! a
  == 0.10000000000000001
- &gt;&gt; to money! b
+ >> to money! b
  == $0.10000000000000001
- &gt;&gt; same? a to money! b
+ >> same? a to money! b
  == false
 
 ===Rounding===
 
 When needing a different precision, we may use the ROUND action. Example:
 
- &gt;&gt; round/to $1.000 $0.01
+ >> round/to $1.000 $0.01
  == $1.00
 
 In the above example we rounded the number to a lower precision (cents). We can use the ROUND action to yield a higher precision, if we wish so:
 
- &gt;&gt; round/to $1.1 $0.01
+ >> round/to $1.1 $0.01
  == $1.10
 
 In the above example we rounded the number to obtain a higher precision (cents).
@@ -213,12 +213,12 @@ In the above example we rounded the number to obtain a higher precision (cents).
 
 It is not advisable to give the SCALE argument as a decimal value, since we frequently don't obtain an accurate result. Example:
 
- &gt;&gt; round/to $1.15 0.1
+ >> round/to $1.15 0.1
  == $1.10000000000000011
 
 , which is most probably not what we wanted to get. If we use an accurate SCALE given as a money value, we obtain:
 
-&gt;&gt; round/to $1.15 $0.10
+>> round/to $1.15 $0.10
 == $1.20
 
 Note also, that it may make sense to use $0.10 as a scale, instead of $0.1!
@@ -227,10 +227,10 @@ Note also, that it may make sense to use $0.10 as a scale, instead of $0.1!
 
 Multiplication and addition use the precision of their operands. Example:
 
- &gt;&gt; $10 + $10.50
+ >> $10 + $10.50
  == $20.50
 
- &gt;&gt; $2 * $1.10
+ >> $2 * $1.10
  == $2.20
 
 In case a different precision is needed, we can use the ROUND action as usual.
@@ -240,8 +240,8 @@ Similarly as with rounding scales, it is not advisable to use decimal values as 
 ===Division===
 As opposed to the above, division always generates all 26 digits to offer the full precision available. The idea is, that when dividing monetary values, we usually have to round the result according to some standard (which may depend on the circumstances). The result contains so many digits, that it is no problem to round it according to any standard currently in use and the ROUND action has many refinements available to suit user's needs.
 
- &gt;&gt; $2 / $3
+ >> $2 / $3
  == $0.66666666666666666666666667
 
- &gt;&gt; $3 / 1.5
+ >> $3 / 1.5
  == $2.0000000000000000000000000

@@ -1,5 +1,5 @@
 __NOTOC__
-&lt;big&gt;'''Welcome to REBOL Wiki, &quot;DocBase&quot;'''&lt;/big&gt;
+<big>'''Welcome to REBOL Wiki, "DocBase"'''</big>
 
 This wiki provides a community supported server for posting and commenting on design documentation, suggestions, draft concepts, preliminary specifications.
 

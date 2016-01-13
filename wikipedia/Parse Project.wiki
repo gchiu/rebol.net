@@ -20,7 +20,7 @@ There will be factors that affect these proposals that will be specific to chang
 
 When making proposals here, there are some things you should keep in mind:
 
-*People are going to use this dialect to do real work, so consider practical implications first as they are what make a feature &quot;important&quot;.
+*People are going to use this dialect to do real work, so consider practical implications first as they are what make a feature "important".
 *The scope of PARSE is language recognition. Going outside of that scope shouldn't be done lightly.
 *PARSE is implemented in native code, primarily by Carl. It doesn't change often. Carl's word on PARSE is the last word.
 *These changes are being proposed for REBOL 3.0, not 2.x. There are some semantic changes in REBOL 3 that may make some of these changes easier, and other changes required. If you have any confusion about REBOL 3's semantic changes, ask the editor, preferably in AltME. Testing the public alpha releases of R3 is not enough - some changes are still in the planning stage.
@@ -42,10 +42,10 @@ REBOL is designed as a practical language. It has been notoriously difficult to 
 
 (Editor's Note: Thanks to Peta for researching most of this section.)
 
-The PARSE dialect is an enhanced member of the family of Top-down parsing languages (TDPL family) including the [http://en.wikipedia.org/wiki/Top-down_parsing_language Top-down parsing language (TDPL)], the [http://en.wikipedia.org/wiki/Top-down_parsing_language#Generalized_TDPL Generalized top-down parsing language (GTDPL)] and the [http://en.wikipedia.org/wiki/Parsing_expression_grammar Parsing expression grammar (PEG)] and uses the same &quot;ordered choice&quot; parsing method as the other members of the family.
+The PARSE dialect is an enhanced member of the family of Top-down parsing languages (TDPL family) including the [http://en.wikipedia.org/wiki/Top-down_parsing_language Top-down parsing language (TDPL)], the [http://en.wikipedia.org/wiki/Top-down_parsing_language#Generalized_TDPL Generalized top-down parsing language (GTDPL)] and the [http://en.wikipedia.org/wiki/Parsing_expression_grammar Parsing expression grammar (PEG)] and uses the same "ordered choice" parsing method as the other members of the family.
 
-The prioritization of the ordered choice (a.k.a. &quot;alternative&quot;, but the &quot;ordered choice&quot; name is more appropriate since the order of rules matters) causes that the second choice in the
-  [&quot;a&quot; | &quot;ab&quot;]
+The prioritization of the ordered choice (a.k.a. "alternative", but the "ordered choice" name is more appropriate since the order of rules matters) causes that the second choice in the
+  ["a" | "ab"]
 rule never succeeds since the first one takes precedence. This causes the greediness of repetition operators, e.g.:
   repeated-rule: [any rule]
 has a recursive definition:
@@ -62,14 +62,14 @@ The membership of the PARSE dialect in the above language family brings the foll
 *PARSE makes a good replacement for an LL parser because it is strictly more powerful. For a grammar not recognizable by a LL parser see the Wikipedia example below.
 *Context free grammar parsers usually require a separate tokenization step because of the way they use lookahead. PARSE of string types does not require a separate tokenization step and the tokenization rules can be written in the same way as any other grammar rule.
 *When parsing block types, the data is actually in-memory datastructures that have been constructed at runtime or loaded by the LOAD function. No tokenizing is necessary because there is no lexical format in memory. This gives the block parsing dialect some additional operations that the string parsing dialect doesn't have. One of these, the INTO operation, is not shared with other members of the TDPL family. INTO allows PARSE to recognize already nested data structures that are out of scope for traditional parsers that are defined to operate on a series of elements. Within a given block, PARSE acts like a member of the TDPL family.
-*Many context free grammars contain inherent ambiguities, even when they're intended to describe unambiguous languages. The &quot;dangling else&quot; problem in C, C++, and Java is one example. These problems are often resolved by applying a rule outside of the grammar. In the PARSE dialect these ambiguities never arise because of prioritization.
+*Many context free grammars contain inherent ambiguities, even when they're intended to describe unambiguous languages. The "dangling else" problem in C, C++, and Java is one example. These problems are often resolved by applying a rule outside of the grammar. In the PARSE dialect these ambiguities never arise because of prioritization.
 *PARSE has an unlimited lookahead capability, brought to PARSE by the ordered choice operator.
 
 If your rules contain any modifying REBOL code that is executed in parentheses or modifying operations (that may be added as proposals here) then any changes made by those operations will not be undone on backtracking. (Editor's note: Just like that Icon code you couldn't debug.) You may need to consider this when trying to use modifying rules since they may interact with the unlimited lookahead capability PARSE has. As a result of modifying techniques, linear optimizations like those of [http://pdos.csail.mit.edu/~baford/packrat/ Packrat] parsers are likely impossible in REBOL PARSE (though one can hope).
 
 For those of you who are fans of REBOL history, it is no longer possible (even in REBOL 2) to explicitly set the parse position with a get-word to another series than the one being parsed already, a previously popular technique used for incremental parsing (and which crashed PARSE if misused). Another thing which won't crash anymore in REBOL 3 is off-the-end references to series - they get moved back to the nearest end. Safer, if more boring.
 
-(Editor's Note: When someone in the REBOL community says &quot;set the parse position&quot; they are referring to explicitly setting the parse position with get-words. All other changes to the parse position are implicit effects of the other operations, and thus not usually mentioned.)
+(Editor's Note: When someone in the REBOL community says "set the parse position" they are referring to explicitly setting the parse position with get-words. All other changes to the parse position are implicit effects of the other operations, and thus not usually mentioned.)
 
 ==Format==
 
@@ -144,7 +144,7 @@ Suggested by: Ladislav, BrianH
 
 Purpose: PARSE is able to perform either case-sensitive or case-insensitive matching depending on the /CASE refinement. This proposal allows to specify matching sensitivity in the PARSE rule.
 
-Importance: Makes the Parse dialect more expressive, the /CASE refinement is &quot;external&quot; to the dialect.
+Importance: Makes the Parse dialect more expressive, the /CASE refinement is "external" to the dialect.
 
 Syntax:
 
@@ -155,19 +155,19 @@ Using this syntax The CASE and NO-CASE keywords influence matching sensitivity i
 
 Example:
 
-    parse input [case &quot;my string&quot;]
+    parse input [case "my string"]
 
 should be equivalent to current
 
-    parse/case input [&quot;my string&quot;]
+    parse/case input ["my string"]
 
 On the other hand, a rule such as
 
-    parse input [case &quot;my string&quot; no-case &quot;another string&quot;]
+    parse input [case "my string" no-case "another string"]
 
 is not easily expressible in the current PARSE dialect. The last example looks like being equivalent to
 
-    parse input [case &quot;my string&quot; &quot;another string&quot;]
+    parse input [case "my string" "another string"]
 
 since the default mode in the RULE should be the NO-CASE state, because the /CASE refinement was not used.
 
@@ -197,22 +197,22 @@ Example:
 This accepts none or one of the specified datatypes in the input stream. Example matches would be:
 
   1
-  &quot;str&quot;
+  "str"
   word
-  1 &quot;str&quot;
-  &quot;str&quot; 1
-  1 &quot;str&quot; word
-  &quot;str&quot; 1 word
-  word 1 &quot;str&quot;
+  1 "str"
+  "str" 1
+  1 "str" word
+  "str" 1 word
+  word 1 "str"
   ...
 
 The output result of OF would be the a block with the captured values in the order specified.
 
 So:
 
-  1 --&gt; [1 none none]
-  1 &quot;str&quot; --&gt; [1 &quot;str&quot; none]
-  word 1 &quot;str&quot; -&gt; [1 &quot;str&quot; word]
+  1 --> [1 none none]
+  1 "str" --> [1 "str" none]
+  word 1 "str" -> [1 "str" word]
 
 Alternate syntax proposal by Steeve Luc:
 *OF [type or OPT type ...]
@@ -294,7 +294,7 @@ Examples:
 *To match a [1 2] sequence:
   parse [1 2] [lit [1 2]]
 *To match a subblock:
-  parse &lt;nowiki&gt;[[1]] [lit [[1]]]&lt;/nowiki&gt;
+  parse <nowiki>[[1]] [lit [[1]]]</nowiki>
 *To match a paren:
   parse [(1)] [lit [(1)]]
 
@@ -391,24 +391,24 @@ Examples:
 
 *Combine with modifying operations:
 
-  and insert &quot;a&quot; &quot;a&quot;
+  and insert "a" "a"
 
 AND in this case resets the parse position, but not the effect of the [[#INSERT|INSERT]]. This technique can be used to implement modify-then-verify or iterative processes.
 
-*(Advanced) Match an n #&quot;a&quot; n #&quot;b&quot; n #&quot;c&quot; string for any n &gt;= 1 (a PEG taken from the Wikipedia, an example of a non-context-free grammar, which cannot be parsed by an LL parser):
+*(Advanced) Match an n #"a" n #"b" n #"c" string for any n >= 1 (a PEG taken from the Wikipedia, an example of a non-context-free grammar, which cannot be parsed by an LL parser):
 
-  nanb: [#&quot;a&quot; opt nanb #&quot;b&quot;] ; the same number n &gt;= 1 of #&quot;a&quot;s and #&quot;b&quot;s
-  nbnc: [#&quot;b&quot; opt nbnc #&quot;c&quot;] ; the same number n &gt;= 1 of #&quot;b&quot;s and #&quot;c&quot;s
+  nanb: [#"a" opt nanb #"b"] ; the same number n >= 1 of #"a"s and #"b"s
+  nbnc: [#"b" opt nbnc #"c"] ; the same number n >= 1 of #"b"s and #"c"s
   nanbnc: [
-      and [nanb #&quot;c&quot;] ; look-ahead test of the same number of #&quot;a&quot;s and #&quot;b&quot;s followed by a #&quot;c&quot;
-      some #&quot;a&quot; ; skip all #&quot;a&quot;s
+      and [nanb #"c"] ; look-ahead test of the same number of #"a"s and #"b"s followed by a #"c"
+      some #"a" ; skip all #"a"s
       nbnc
   ]
 
 Explanation of the example:
 *The nanb rule makes sure that there are as many b's as there are a's, recursively (you can't do that with regular expressions).
-*The #&quot;c&quot; after nanb makes sure these are followed by at least one #&quot;c&quot; (this helps to make sure, that there aren't other #&quot;b&quot;s following).
-*Combined, those rules ensure that there are the same number of a's and b's followed by #&quot;c&quot;s.
+*The #"c" after nanb makes sure these are followed by at least one #"c" (this helps to make sure, that there aren't other #"b"s following).
+*Combined, those rules ensure that there are the same number of a's and b's followed by #"c"s.
 *By using the AND operation we are able to do this check as a look-ahead rule, providing context for the subsequent rules (you can't do that with a context-free grammar).
 *We then skip past the a's and use the nbnc rule to make sure that there are at least as many c's as there are b's.
 *The nanbnc rule ends after nbnc, making sure that there aren't any extra c's.
@@ -471,9 +471,9 @@ Syntax:
 
 Examples:
 
-Parse to the #&quot;a&quot; delimiter, to the #&quot;b&quot; delimiter, or to the end of the input, whichever comes first:
+Parse to the #"a" delimiter, to the #"b" delimiter, or to the end of the input, whichever comes first:
 
-  any [either [#&quot;a&quot; | #&quot;b&quot;] [end skip] skip]
+  any [either [#"a" | #"b"] [end skip] skip]
 
 Editor's Note: The simpler but otherwise equivalent [[#THEN|THEN]] proposal below was accepted instead.
 
@@ -497,13 +497,13 @@ If THEN is reached (any implied rule1 succeeded), then rule2 is matched and the 
 
 Examples: 
 
-Parse to the #&quot;a&quot; delimiter, to the #&quot;b&quot; delimiter, or to the end of the input, whichever comes first:
+Parse to the #"a" delimiter, to the #"b" delimiter, or to the end of the input, whichever comes first:
 
-  any [[#&quot;a&quot; | #&quot;b&quot;] then [end skip] | skip]
+  any [[#"a" | #"b"] then [end skip] | skip]
 
-Note: The word =&gt; has been suggested instead of THEN for this operation, but would require a REBOL syntax exception.
+Note: The word => has been suggested instead of THEN for this operation, but would require a REBOL syntax exception.
 
-Editor's Note: THEN was accepted with that name, not as =&gt;.
+Editor's Note: THEN was accepted with that name, not as =>.
 
 ===FAIL===
 
@@ -521,9 +521,9 @@ idiom used by advanced PARSE programmers available to regular programmers.
 Syntax:
 *FAIL
 
-For a non-useful example matching the string &quot;ab&quot;:
+For a non-useful example matching the string "ab":
 
-  [&quot;a&quot; (print &quot;a&quot;) fail | &quot;ab&quot;]
+  ["a" (print "a") fail | "ab"]
 
 ===TO and THRU multiple===
 
@@ -551,7 +551,7 @@ Example:
 
 TO or THRU fail if there is no point in the subsequent data where their argument rule can succeed. 
 
-A correction to the existing TO or THRU behavior: When string parsing, TO or THRU &quot;&quot; should always succeed and be equivalent to NONE. We might also consider allowing TO or THRU NONE, with the same meaning. The recursive equivalents of TO and THRU succeed in these cases.
+A correction to the existing TO or THRU behavior: When string parsing, TO or THRU "" should always succeed and be equivalent to NONE. We might also consider allowing TO or THRU NONE, with the same meaning. The recursive equivalents of TO and THRU succeed in these cases.
 
 Recursive equivalents:
 
@@ -570,12 +570,12 @@ With [[#NOT|NOT]] (Editor's Note: Peta's suggestion and my favorite), TO NOT and
 Editor's Note: With the same rules that would cause TO NOT to fail, the greediness of ANY will cause it to go into an endless loop, a common error in PARSE usage. That would be a good argument for a non-greedy or at least safe equivalent.
 
 However, TO NOT RULE isn't generally equivalent to ANY RULE, e.g.:
- to [not &quot;ab&quot;]
+ to [not "ab"]
 isn't equivalent to
- any &quot;ab&quot;
+ any "ab"
 , since e.g.
- parse &quot;ababab&quot; [a position: (print [&quot;success&quot; index? position])]
-:the A: [TO [NOT &quot;ab&quot;]] rule would succeed reaching index 2 in the given string, while A: [ANY &quot;ab&quot;] would advance to the tail of the input.
+ parse "ababab" [a position: (print ["success" index? position])]
+:the A: [TO [NOT "ab"]] rule would succeed reaching index 2 in the given string, while A: [ANY "ab"] would advance to the tail of the input.
 
 TO [NOT RULE | END] is equivalent to ANY [AND RULE SKIP].
 
@@ -643,13 +643,13 @@ Recursive definition/equivalent:
 
 Examples:
 
-*a rule advancing past the &quot;abc&quot; substring on success
+*a rule advancing past the "abc" substring on success
 
-  until &quot;abc&quot; [&quot;a&quot; | &quot;b&quot; | &quot;c&quot;]
+  until "abc" ["a" | "b" | "c"]
 
-*a rule advancing to the start of the &quot;abc&quot; substring on success
+*a rule advancing to the start of the "abc" substring on success
 
-  until [and &quot;abc&quot;] [&quot;a&quot; | &quot;b&quot; | &quot;c&quot;]
+  until [and "abc"] ["a" | "b" | "c"]
 
 '''Note:''' In recent releases, UNTIL can be implemented using WHILE:
 
@@ -695,21 +695,21 @@ Examples:
 
 *Removing a series of values.
 
-  a: &quot;12abc34&quot;
+  a: "12abc34"
   parse a [some [to alpha change [some alpha] none]]
-  a = &quot;1234&quot;
+  a = "1234"
 
 *Changing a series of values to another value.
 
-  a: &quot;12abc34&quot;
-  parse a [some [to alpha change [some alpha] &quot;zzzz&quot;]]
-  a = &quot;12zzzz34&quot;
+  a: "12abc34"
+  parse a [some [to alpha change [some alpha] "zzzz"]]
+  a = "12zzzz34"
 
 *Inserting a value after a pattern.
 
-  a: &quot;12abc34&quot;
-  parse a [some [to alpha some alpha change none &quot;zzzz&quot;]]
-  a = &quot;12abczzzz34&quot;
+  a: "12abc34"
+  parse a [some [to alpha some alpha change none "zzzz"]]
+  a = "12abczzzz34"
 
 *Changing a series of values to a calculated block.
 
@@ -717,7 +717,7 @@ Examples:
   parse a [some [to word! change only [some word!] (array/initial 4 'z)]]
   a = [1 2 [z z z z] 3 4]
 
-Note: All modification operations are irreversible, and so will not be undone on backtracking. As noted in the theory section above, it may not be easy to backtrack to a &quot;reasonable&quot; position, but backtracking issues can be controlled with careful use.
+Note: All modification operations are irreversible, and so will not be undone on backtracking. As noted in the theory section above, it may not be easy to backtrack to a "reasonable" position, but backtracking issues can be controlled with careful use.
 
 ===CHANGE 2===
 
@@ -746,27 +746,27 @@ Examples:
 
 *Removing a series of values from a string.
 
-  a: &quot;12abc34&quot;
-  parse a [some [to alpha b: some alpha change b &quot;&quot;]]
-  a = &quot;1234&quot;
+  a: "12abc34"
+  parse a [some [to alpha b: some alpha change b ""]]
+  a = "1234"
 
 *Changing a series of values to another value.
 
-  a: &quot;12abc34&quot;
-  parse a [some [to alpha b: some alpha change b &quot;zzzz&quot;]]
-  a = &quot;12zzzz34&quot;
+  a: "12abc34"
+  parse a [some [to alpha b: some alpha change b "zzzz"]]
+  a = "12zzzz34"
 
 *Inserting a value after a pattern using a series position.
 
-  a: &quot;12abc34&quot;
-  parse a [some [to alpha some alpha b: change b &quot;zzzz&quot;]]
-  a = &quot;12abczzzz34&quot;
+  a: "12abc34"
+  parse a [some [to alpha some alpha b: change b "zzzz"]]
+  a = "12abczzzz34"
 
 *Inserting a value after a pattern using an integer offset.
 
-  a: &quot;12abc34&quot;
-  parse a [some [to alpha some alpha change 0 &quot;zzzz&quot;]]
-  a = &quot;12abczzzz34&quot;
+  a: "12abc34"
+  parse a [some [to alpha some alpha change 0 "zzzz"]]
+  a = "12abczzzz34"
 
 *Changing a series of values to a calculated block.
 
@@ -774,7 +774,7 @@ Examples:
   parse a [some [to word! b: some word! change only b (array/initial 4 'z)]]
   a = [1 2 [z z z z] 3 4]
 
-Note: All modification operations are irreversible, and so will not be undone on backtracking. As noted in the theory section above, it may not be easy to backtrack to a &quot;reasonable&quot; position, but backtracking issues can be controlled with careful use.
+Note: All modification operations are irreversible, and so will not be undone on backtracking. As noted in the theory section above, it may not be easy to backtrack to a "reasonable" position, but backtracking issues can be controlled with careful use.
 
 ===REMOVE 1===
 
@@ -789,9 +789,9 @@ Syntax:
 
 Example:
 
-  a: &quot;12abc34&quot;
+  a: "12abc34"
   parse a [some [to alpha remove [some alpha]]]
-  a = &quot;1234&quot;
+  a = "1234"
 
 Note: See [[#CHANGE_1|CHANGE 1]] for behavior.
 
@@ -799,7 +799,7 @@ Note: See [[#CHANGE_1|CHANGE 1]] for behavior.
 
 Suggested by: Carl (variant of [[#REMOVE_1|REMOVE 1]])
 
-Purpose: Shortcut for [[#CHANGE_2|CHANGE]] pos &quot;&quot;, or [[#CHANGE_2|CHANGE]] pos [] for block parsing.
+Purpose: Shortcut for [[#CHANGE_2|CHANGE]] pos "", or [[#CHANGE_2|CHANGE]] pos [] for block parsing.
 
 Importance: Ease of use.
 
@@ -808,9 +808,9 @@ Syntax:
 
 Example:
 
-  a: &quot;12abc34&quot;
+  a: "12abc34"
   parse a [some [to alpha b: some alpha remove b]]
-  a = &quot;1234&quot;
+  a = "1234"
 
 Note: See [[#CHANGE_2|CHANGE 2]] for behavior.
 
@@ -832,9 +832,9 @@ Examples:
 
 *Inserting a value after a pattern.
 
-  a: &quot;12abc34&quot;
-  parse a [some [to alpha some alpha insert &quot;zzzz&quot;]]
-  a = &quot;12abczzzz34&quot;
+  a: "12abc34"
+  parse a [some [to alpha some alpha insert "zzzz"]]
+  a = "12abczzzz34"
 
 *Changing a series of values to a calculated block.
 
@@ -861,17 +861,17 @@ Examples:
 
   rule: [
       use [a b] [
-          &quot;b&quot; (print 1) |
-          a: &quot;a&quot; rule &quot;a&quot; b: (print subtract index? b index? a)
+          "b" (print 1) |
+          a: "a" rule "a" b: (print subtract index? b index? a)
       ]
   ]
 
-  parse &quot;aba&quot; rule
+  parse "aba" rule
   ; Prints
   1
   3
 
-  parse &quot;aabaa&quot; rule
+  parse "aabaa" rule
   ; Prints
   1
   3
@@ -882,9 +882,9 @@ The [http://www.rebol.org/view-script.r?script=use-rule.r USE-RULE function] def
 Notes: The rule argument to USE would likely need to be have BIND/copy applied, and only nested blocks and parens would be bound, just like with USE in REBOL. It is the initial rebinding that makes this multitasking-safe. We might be able to use the semantics of R3 function! contexts with a little memoization - the overhead should be compared to the BIND/copy overhead to see which is better. However, this would prevent the bound words from being used outside the extent of the USE operation.
 
 In REBOL 2 (and in the public REBOL 3 alpha from January 2008), the PARSE keywords can be used as variables without influencing the PARSE functionality, like here:
- &lt;nowiki&gt;rebol/version ; == 2.99.4.3.1
+ <nowiki>rebol/version ; == 2.99.4.3.1
 parse [] b: [(end: 11) end (print [end same? bind? second b bind? 'end])]
-; 11 true&lt;/nowiki&gt;
+; 11 true</nowiki>
 Similarly, the binding of the PARSE keywords does not change and does not influence the functionality, as can be proven too.
 
 ===IF (condition)===
@@ -902,7 +902,7 @@ The REBOL expression in the paren following the IF keyword is executed like any 
 
 Previously you had to do something like this:
 
-  &lt;nowiki&gt;(cont: unless condition [[end skip]]) cont&lt;/nowiki&gt;
+  <nowiki>(cont: unless condition [[end skip]]) cont</nowiki>
 
 Examples:
 
@@ -981,16 +981,16 @@ Notes: This function would be called from within parens, and would work just lik
 
 Example:
 
-  &gt;&gt; parse &quot;a&quot; [alpha (break/return 1)]
+  >> parse "a" [alpha (break/return 1)]
   == 1
-  &gt;&gt; parse &quot;1&quot; [alpha (break/return 1)]
+  >> parse "1" [alpha (break/return 1)]
   == false
 
 Note: There is a question of whether this change could introduce an unnecessary inconsistency. The goal of the proposal can be easily achieved by putting the parse call into a function body, a loop, or a catch control function, e.g. like this:
 
-  &gt;&gt; loop 1 [parse &quot;a&quot; [alpha (break/return 1)]]
+  >> loop 1 [parse "a" [alpha (break/return 1)]]
   == 1
-  &gt;&gt; loop 1 [parse &quot;1&quot; [alpha (break/return 1)]]
+  >> loop 1 [parse "1" [alpha (break/return 1)]]
   == false
 
 ===RETURN===
@@ -1013,9 +1013,9 @@ Examples:
 
 *Return the first tag in a string.
 
-  &gt;&gt; parse &quot;abc&lt;hello&gt;def&quot; [to &quot;&lt;&quot; return thru &quot;&gt;&quot;]
-  == &quot;&lt;hello&gt;&quot;
-  &gt;&gt; parse &quot;abcdef&quot; [to &quot;&lt;&quot; return thru &quot;&gt;&quot;]
+  >> parse "abc<hello>def" [to "<" return thru ">"]
+  == "<hello>"
+  >> parse "abcdef" [to "<" return thru ">"]
   == false
 
 ===INTO type===
@@ -1039,7 +1039,7 @@ Examples:
 
 *Parsing a string in a block.
 
-parse [1 &quot;abc&quot; 2] [integer! into string! [some alpha] integer!]
+parse [1 "abc" 2] [integer! into string! [some alpha] integer!]
 
 Editor's Note: Rejected in favor of the typeless [[#INTO|INTO]] proposal below.
 
@@ -1066,7 +1066,7 @@ Notes:
 
 Examples:
 *Parsing a string in a block.
-  parse [1 &quot;abc&quot; 2] [integer! and string! into [some alpha] integer!]
+  parse [1 "abc" 2] [integer! and string! into [some alpha] integer!]
 
 ===Set PARSE position to another series===	 
 Suggested by: Peta
@@ -1075,14 +1075,14 @@ Purpose:
 *Allow the PARSE position to be set explicitely to another series
 
 Importance:
-*Citing the editor's note: &quot;For those of you who are fans of REBOL history, it is no longer possible (even in REBOL 2) to set the parse position to another series than the one being parsed already, a previously popular technique used for incremental parsing (and which crashed PARSE if misused).&quot;	 
-*PARSE now detects attempts to explicitly set its position into another series and &quot;forbids them&quot;. Since the INTO operator does just that (it sets the PARSE position into another series), such an operation is provably always possible. Therefore, as an alternative to the current behavior, it is possible for PARSE to do the appropriate bookkeeping to make sure no crash can occur.
+*Citing the editor's note: "For those of you who are fans of REBOL history, it is no longer possible (even in REBOL 2) to set the parse position to another series than the one being parsed already, a previously popular technique used for incremental parsing (and which crashed PARSE if misused)."	 
+*PARSE now detects attempts to explicitly set its position into another series and "forbids them". Since the INTO operator does just that (it sets the PARSE position into another series), such an operation is provably always possible. Therefore, as an alternative to the current behavior, it is possible for PARSE to do the appropriate bookkeeping to make sure no crash can occur.
 
 Issues:	 
 *There is one property, which can be influenced by this: The final check, whether the start rule has finished at the END OF INPUT position. In case this proposal was accepted, the END OF INPUT test can be reasonably defined by testing, whether the final position is at the end of the series parsed as the last one.
 
 Syntax:
-*&lt;nowiki&gt;:position&lt;/nowiki&gt;
+*<nowiki>:position</nowiki>
 
 Editor's Note: INTO works through recursion, not parse position setting. Accepted, but it currently has a problem with backtracking (see [[http://issue.cc/r3/1787|CC 1787]] for details, at least it doesn't crash).
 
@@ -1113,7 +1113,7 @@ Examples (adapted from Gabriele's REP):
 
   parse [1 + 1] [set result do integer!]
 
-Should evaluate the expression &quot;1 + 1&quot; and set the word 'RESULT to the resulting value (2). The PARSE cursor should be advanced after the expression (i.e. to the tail of the block, in this case).
+Should evaluate the expression "1 + 1" and set the word 'RESULT to the resulting value (2). The PARSE cursor should be advanced after the expression (i.e. to the tail of the block, in this case).
 
   circle-rule: [
       'circle 
@@ -1123,7 +1123,7 @@ Should evaluate the expression &quot;1 + 1&quot; and set the word 'RESULT to the
 
   parse [circle as-pair x y d / 2] circle-rule
 
-Should evaluate &quot;as-pair x y&quot; and set 'center to the result, then should evaluate &quot;d / 2&quot; and set 'radius to the result, etc.
+Should evaluate "as-pair x y" and set 'center to the result, then should evaluate "d / 2" and set 'radius to the result, etc.
 
   parse [circle 10 20] circle-rule
 
@@ -1153,7 +1153,7 @@ Syntax:
 Examples:
 
   limit 1000 to newline
-  limit here thru &quot;test&quot;
+  limit here thru "test"
 
 Discussion:
 
@@ -1211,7 +1211,7 @@ Here are some examples of the use of multiple proposals to show how they work to
               any [
                   (ds: d)
                   and [
-                      set f into [to end reverse &quot;/&quot;] (
+                      set f into [to end reverse "/"] (
                           d: join d f
                           f: read d
                       )
@@ -1243,7 +1243,7 @@ Here are some examples of the use of multiple proposals to show how they work to
                       
                       ; Set f to the filename if it is a directory else fail.
                       ; You don't need to check for a file! - that's all READ returns.
-                      set f into [to end reverse &quot;/&quot;] ; string parsing
+                      set f into [to end reverse "/"] ; string parsing
                       
                       ; f is a directory filename, so process it.
                       (

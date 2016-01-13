@@ -14,7 +14,7 @@ These datatypes are in transition, meaning that they are not yet fully implement
 
 ; object : Many details about the specification block still pending. This also relates to all other object-based types: such as module, task, etc. In addition, the action of SELF is not yet online - it is different in a major way.
 
-; percent : Partial implementation. Mainly missing are the various type conversions for mixed datatype expressions. Also, we need a &quot;precision&quot; field for FORMing these.
+; percent : Partial implementation. Mainly missing are the various type conversions for mixed datatype expressions. Also, we need a "precision" field for FORMing these.
 
 ; port : Mostly works. Not backwards-compatible with R2. Any bugs should be reported.
 

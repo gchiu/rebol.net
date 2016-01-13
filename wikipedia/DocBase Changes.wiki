@@ -8,4 +8,4 @@ New News section to collect all news related to all REBOL Technologies related p
 
 == Templates ==
 
-&lt;span class=&quot;plainlinks&quot;&gt;List of available [http://rebol.net/w/index.php?title=Special%3AAllpages&amp;from=&amp;namespace=10 DocBase Templates]&lt;/span&gt;
+<span class="plainlinks">List of available [http://rebol.net/w/index.php?title=Special%3AAllpages&from=&namespace=10 DocBase Templates]</span>

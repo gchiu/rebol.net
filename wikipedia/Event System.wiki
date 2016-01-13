@@ -135,10 +135,10 @@ Various wrapper functions for these types of events can be found in host-event.c
 
 The SYSTEM port scheme defines the AWAKE function as:
 
-&lt;pre&gt;
+<pre>
 awake: func [
-    sport &quot;System port (State block holds events)&quot;
-    ports &quot;Port list (Copy of block passed to WAIT)&quot;
+    sport "System port (State block holds events)"
+    ports "Port list (Copy of block passed to WAIT)"
     /local event port waked
 ][
     waked: sport/data ; The wake list (pending awakes)
@@ -163,20 +163,20 @@ awake: func [
 
     not tail? ports ; anything left to wake-up from WAIT?
 ]
-&lt;/pre&gt;
+</pre>
 
 '''It is important to note that the WAIT function processes all port events even if it is called with a timeout value.''' This is how the port awake handlers are able to run on top of the stack.
 
 ===The wake-up function===
 
-The &lt;tt&gt;wake-up&lt;/tt&gt; function combines the port &lt;tt&gt;update&lt;/tt&gt; action and the port's &lt;tt&gt;awake&lt;/tt&gt; in the following manner:
-#For ports with native actors, it calls the port's &lt;tt&gt;update&lt;/tt&gt; action to make the port object fully consistent with internal native structures (e.g. the actual length of data read).
-#Calls the port's &lt;tt&gt;awake&lt;/tt&gt; function with the event as an argument.
-#Checks if the return from the awake is &lt;tt&gt;'bypass&lt;/tt&gt;. If not, a TRUE value is returned (otherwise FALSE returned).
+The <tt>wake-up</tt> function combines the port <tt>update</tt> action and the port's <tt>awake</tt> in the following manner:
+#For ports with native actors, it calls the port's <tt>update</tt> action to make the port object fully consistent with internal native structures (e.g. the actual length of data read).
+#Calls the port's <tt>awake</tt> function with the event as an argument.
+#Checks if the return from the awake is <tt>'bypass</tt>. If not, a TRUE value is returned (otherwise FALSE returned).
 
 ===Preventing a lockout condition===
 
-It is possible that events enter the system port queue so quickly that the function does not exit for &quot;long&quot; periods. (This happens when port awake functions themselves may be directly causing events, such as when TCP is doing a recv() operation.) When that happens, devices do not get polled, and a high priority event such as user ESCAPE will not be immediately seen.
+It is possible that events enter the system port queue so quickly that the function does not exit for "long" periods. (This happens when port awake functions themselves may be directly causing events, such as when TCP is doing a recv() operation.) When that happens, devices do not get polled, and a high priority event such as user ESCAPE will not be immediately seen.
 
 To avoid help relieve that situation, the system awake function limits the number of events it will process (set to eight, but we will need to determine what is best.)
 

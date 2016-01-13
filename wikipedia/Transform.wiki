@@ -2,39 +2,39 @@
 
 You can apply a transformation such as translation, scaling, and rotation to any DRAW result.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | angle
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | angle
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | center
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | center
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | scale-x
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | scale-x
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | scale-y
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | scale-y
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | translation
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | translation
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;See also:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;http://www.w3.org/TR/SVG/coords.html#TransformAttribute&lt;/li&gt;
-&lt;/ul&gt;
+<br>'''Notes and Examples'''
+<p>See also:</p>
+<ul>
+<li>http://www.w3.org/TR/SVG/coords.html#TransformAttribute</li>
+</ul>

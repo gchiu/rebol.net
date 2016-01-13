@@ -12,16 +12,16 @@ These functions are efficient and work well for most code. But note, the variabl
 
 For example, this case returns a block that contains the variables. If after the function returns, you try to access (in this case DO) the variables, you get into trouble:
 
-   &gt;&gt; add2: func [c d] [[c + d]]
-   &gt;&gt; do add2 1 2
+   >> add2: func [c d] [[c + d]]
+   >> do add2 1 2
    ** Script error: c word is not bound to a context
 
 This happens because the variables are locally bound (locally scoped) to the function. They only have values for the period of time during which the function is evaluating. They have no meaning outside the function.
 
 A '''closure''' function solves this problem. With a closure you can write:
 
-   &gt;&gt; add2: closure [c d] [[c + d]]
-   &gt;&gt; do add2 1 2
+   >> add2: closure [c d] [[c + d]]
+   >> do add2 1 2
    == 3
 
 This works because the variables of a closure remain valid, even outside the closure after it has been called. Such variables have ''indefinite extent''. They are not limited to the lifetime of the function.
@@ -32,15 +32,15 @@ In essence a closure is an object. When you define the closure, it constructs a 
 
 Here is another usage example:
 
-    &gt;&gt; make-adder: closure[x] [func [y] [x + y]]
+    >> make-adder: closure[x] [func [y] [x + y]]
     == closure!
-    &gt;&gt; add-10: make-adder 10
+    >> add-10: make-adder 10
     == function!
-    &gt;&gt; add-2: make-adder 2
+    >> add-2: make-adder 2
     == function!
-    &gt;&gt; add-10 5
+    >> add-10 5
     == 15
-    &gt;&gt; add-2 3
+    >> add-2 3
     == 5
 
 ===Add info...===

@@ -1,13 +1,13 @@
 Here you will find listed REBOL project covering variuous areas of the programming world.
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Project
 ! Description
 |-
 |[[Rebol2:Cheyenne|Cheyenne]]
 |A web server written in REBOL
 |-
-|[http://www.rebol.net/docs/makedoc.html Makedoc&lt;BR&gt;Document Generator]
+|[http://www.rebol.net/docs/makedoc.html Makedoc<BR>Document Generator]
 |MakeDoc is the standard used for all REBOL documentation, including REBOL websites, manuals, notes, blogs, and more.
 |-
 |[http://www.robertmuench.de/projects/mdp/ Makedoc Pro]
@@ -25,11 +25,11 @@ Here you will find listed REBOL project covering variuous areas of the programmi
 ||[http://www.dobeash.com/RebGUI/ RebGUI]
 |An ADVANCED gui system for REBOL. Look at it !
 |-
-|[http://www.robertmuench.de/ RebGUI Fork by&lt;br&gt;Robert Muench]
+|[http://www.robertmuench.de/ RebGUI Fork by<br>Robert Muench]
 |This is a RebGUI with a set of modifications. It is only avalable from author.
 |-
-|[http://www.hmkdesign.dk/rebol/page0/page0.html View and&lt;br&gt;REBOL Addins]
-|Henrik Mikael Kristensen addins to REBOL.&lt;br&gt; LISTVIEW: a complete listview system for REBOL/view&lt;br&gt; TOOLBAR: a Firefox Stile Toolbar for REBOL&lt;br&gt;RELATIONS ENGINE: an engine to maintain relations between entities&lt;br&gt; and some other
+|[http://www.hmkdesign.dk/rebol/page0/page0.html View and<br>REBOL Addins]
+|Henrik Mikael Kristensen addins to REBOL.<br> LISTVIEW: a complete listview system for REBOL/view<br> TOOLBAR: a Firefox Stile Toolbar for REBOL<br>RELATIONS ENGINE: an engine to maintain relations between entities<br> and some other
 |-
 |[http://www.dobeash.com/it/rebdb/ RebDB]
 |Pseudo relational database written in REBOL
@@ -59,7 +59,7 @@ Here you will find listed REBOL project covering variuous areas of the programmi
 |LDAP support for REBOL/Core by implementing the LDAP protocol using REBOL schemes
 |-
 |[http://www.robertmuench.de/projects/data-sync/ Data-Sync Dialect]
-|The data-sync dialect implements a dialect which lets you write xpeers applications that need to handle &amp; sync databases and record.&lt;BR&gt;Ask it directly to the author.
+|The data-sync dialect implements a dialect which lets you write xpeers applications that need to handle & sync databases and record.<BR>Ask it directly to the author.
 |-
 |[http://www.robertmuench.de/projects/commercial/ GIST Register]
 |This application is an xpeers.net platform application that handles special deases information for a web of medical doctors.
@@ -88,7 +88,7 @@ Here you will find listed REBOL project covering variuous areas of the programmi
 |[http://softinnov.org/rebol/acall.shtml ASYNC Call protocol]
 |This is an asynchronous CALL function implementation. That means that it does the same job as the native CALL command, but allows you to retrieve output data without blocking your REBOL session.
 |-
-|[http://softinnov.org/rebol/ntlm.shtml NT Lan Manager&lt;br&gt;scheme]
+|[http://softinnov.org/rebol/ntlm.shtml NT Lan Manager<br>scheme]
 |NTLM (NT Lan Manager) authentication scheme over a Windows LAN
 |-
 |[http://softinnov.org/rebol/nt-services.shtml NT Services]
@@ -119,7 +119,7 @@ Here you will find listed REBOL project covering variuous areas of the programmi
 |R# is a programming language based on REBOL
 |-
 |[http://rebol-unit.sourceforge.net/ RUn (REBOL Unit)]
-|RUn (REBOL Unit) is a programming framework to test &quot;eXtreme Programming&quot;
+|RUn (REBOL Unit) is a programming framework to test "eXtreme Programming"
 |-
 |[http://vvn.net/reboldap/ ReboLDAP]
 |ReboLDAP: LDAP project for REBOL 
@@ -148,7 +148,7 @@ Here you will find listed REBOL project covering variuous areas of the programmi
 
 ====GAMES====
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Game
 ! Description
 |-

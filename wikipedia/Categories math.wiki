@@ -8,7 +8,7 @@
 | [[Words **|**]] 
 | Returns the first number raised to the second number. 
 |- 
-| [[Words &amp;plus;|&amp;plus;]] 
+| [[Words &plus;|&plus;]] 
 | Returns the result of adding two values. 
 |- 
 | [[Words -|-]] 

@@ -2,7 +2,7 @@ Rebol View provides a desktop GUI - the viewtop.  The viewtop provides a vital f
 
 Can a revised viewtop better illustrate the flexibility of Rebol as a language and how Rebol might be used as a platform for distributed computer communication? 
 
-Consider the task of skinning the viewtop as an example of Rebol flexibility.  How many skins have been put forward?  One - titled &quot;Desktop&quot;, the file %active-viewtop.r, entered to the script library 2005-08-31 and authored by &quot;RT &amp; Ingo Hohmann.   As Rebol is indeed an extremely flexible and elegant language, perhaps there are more viewtops. 
+Consider the task of skinning the viewtop as an example of Rebol flexibility.  How many skins have been put forward?  One - titled "Desktop", the file %active-viewtop.r, entered to the script library 2005-08-31 and authored by "RT & Ingo Hohmann.   As Rebol is indeed an extremely flexible and elegant language, perhaps there are more viewtops. 
 
 The source code of the viewtop has been made available (and can also be gained by typing mold ctx-viewtop at the console). 
 
@@ -37,21 +37,21 @@ The script for the illustrated viewtop will be presented here in the near future
 
 
 
-The version of Rebol that includes GUI libraries has been historically called &quot;REBOL/View&quot;.  Included in the distribution is a function called &lt;tt&gt;viewtop&lt;/tt&gt;, which starts a simple browser application that lets you run sample Rebol programs from some trusted network locations.
+The version of Rebol that includes GUI libraries has been historically called "REBOL/View".  Included in the distribution is a function called <tt>viewtop</tt>, which starts a simple browser application that lets you run sample Rebol programs from some trusted network locations.
 
 === Index ===
 
 The viewtop is able to get its index of demos from any file or URL, however the default is:
 
-&lt;pre&gt;
-&gt;&gt; viewtop http://rebol.com/index.r
-&lt;/pre&gt;
+<pre>
+>> viewtop http://rebol.com/index.r
+</pre>
 
 By using an [http://stackoverflow.com/questions/1544974/rebol-and-unset-optional-parameter unset! optional parameter], it is possible to subvert Rebol's usual requirement that a function take a fixed number of parameters and merely type:
 
-&lt;pre&gt;
-&gt;&gt; viewtop
-&lt;/pre&gt;
+<pre>
+>> viewtop
+</pre>
 
 :''Note that this trick can only be used on the last operation in a series of commands, and is intended only for functions designed for usage in interactive mode!''
 

@@ -22,12 +22,12 @@ The list of Cookbooks is avaliable [[Cookbooks|here]].
 == Making a Recipe ==
 
 For a Cookbook recipe, simply create a page with any title in DocBase. Add the template
-  &lt;nowiki&gt;{{Cookbook | title=Short Title | author=Name | level=[1, 2 or 3] | category=Category}}&lt;/nowiki&gt;
+  <nowiki>{{Cookbook | title=Short Title | author=Name | level=[1, 2 or 3] | category=Category}}</nowiki>
 at the top of the document. Then add the document page name in the [[Cookbooks|Cookbook list]] and then link to it from there.
 
 To initiate a new DocBase page, the easiest way is to type your preferred page title into the Search field of the DocBase Navigation section and press Go.
 
-While not totally necessary, cookbooks should start with the &lt;nowiki&gt;{{Cookbook}}&lt;/nowiki&gt; template.  This template accepts 4 parameters.  A '''title''', an '''author''', a difficulty '''level''' and a '''category'''.
+While not totally necessary, cookbooks should start with the <nowiki>{{Cookbook}}</nowiki> template.  This template accepts 4 parameters.  A '''title''', an '''author''', a difficulty '''level''' and a '''category'''.
 
 *title does not need to be the same as the page title.  Use something short and snappy.  If not included a generic '''REBOL Recipe''' will be used.
 *author would be what ever credit you would like.  If not included '''Incognito''' will be used.
@@ -35,17 +35,17 @@ While not totally necessary, cookbooks should start with the &lt;nowiki&gt;{{Coo
 *category should be Tip, Code, Networking, Data Processing etcetera.  Defaults to '''Code'''.
 
 ===Example 1===
-&lt;nowiki&gt;
+<nowiki>
 {{Cookbook|title=Handling Binary Data|level=3|category=Code}}
-&lt;/nowiki&gt;
+</nowiki>
 
 Would produce
 {{Cookbook|title=Handling Binary Data|level=3|category=Code}}
 
 ===Example 2===
-&lt;nowiki&gt;
+<nowiki>
 {{Cookbook|title=Client Server|author=Luke Lakeswimmer|level=2|category=Networking}}
-&lt;/nowiki&gt;
+</nowiki>
 produces
 {{Cookbook|title=Client Server|author=Luke Lakeswimmer|level=2|category=Networking}}
 

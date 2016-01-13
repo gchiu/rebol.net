@@ -2,7 +2,7 @@ A few tests...
 
 == wiki-function-list ==
 
-&lt;code&gt;&gt;&gt; wiki-function-list [now parse load]&lt;/code&gt;
+<code>>> wiki-function-list [now parse load]</code>
 
 Returns:
 
@@ -46,7 +46,7 @@ LOAD is a native value.
 
 == wiki-table ==
 
-&lt;code&gt;&gt;&gt; wiki-table/header [[Luke Skywalker][Darth Vader][Han Solo]] [&quot;First Name&quot; &quot;Last Name&quot;]&lt;/code&gt;
+<code>>> wiki-table/header [[Luke Skywalker][Darth Vader][Han Solo]] ["First Name" "Last Name"]</code>
 
 Returns:
 
@@ -65,7 +65,7 @@ Returns:
 
 == wiki-link-table ==
 
-&lt;code&gt;&gt;&gt; wiki-link-table [[word1 word2 word3 word4 word5][word6 word7 word8 word9 word10]]&lt;/code&gt;
+<code>>> wiki-link-table [[word1 word2 word3 word4 word5][word6 word7 word8 word9 word10]]</code>
 
 Returns:
 
@@ -85,7 +85,7 @@ Returns:
 
 == wiki-dump-obj ==
 
-&lt;code&gt;&gt;&gt; wiki-dump-obj make object! [a: 5 b: 8 c: &quot;stuff&quot;]&lt;/code&gt;
+<code>>> wiki-dump-obj make object! [a: 5 b: 8 c: "stuff"]</code>
 
 Returns:
 
@@ -99,5 +99,5 @@ Returns:
 |8
 |-
 |'''c'''
-|&quot;stuff&quot;
+|"stuff"
 |}

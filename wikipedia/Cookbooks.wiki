@@ -21,7 +21,7 @@ List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http:/
 
 
 ===Data Processing Cookbook===
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+<TABLE WIDTH=100%><TR><TD VALIGN=TOP WIDTH=50%>
 *Convert Text File Formats (Line Terminators)
 *Search a File
 *Replace Text in a File
@@ -30,7 +30,7 @@ List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http:/
 *Creating Text with Form, Mold, Join, etc.
 *Circular Series of Values
 *Reading Delimited Text Files (Like CSV)
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 *Lowercase Clipboard
 *HTML Thumbnail Photo Directory Maker
 *Tiny HTML to Text Converter
@@ -39,19 +39,19 @@ List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http:/
 *DNS and Reverse DNS Lookup
 *Simple TCP Port-Forwarder
 *[[How to feed DECOMPRESS with correctly compressed data]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 
 ===Dates and Times Cookbook===
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+<TABLE WIDTH=100%><TR><TD VALIGN=TOP WIDTH=50%>
 *Time and Date Stamps
 *Computing Time Differences
 *Last Modified Date/Time (Within a REBOL Script)
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 *Calculate the age of a person
 *A Different Time(r)
 *Unix Date Format Converter
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 
 ===Debugging Cookbook===
@@ -82,19 +82,19 @@ List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http:/
 
 
 ===File Management Cookbook===
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+<TABLE WIDTH=100%><TR><TD VALIGN=TOP WIDTH=50%>
 *Get a Directory File List
 *Copy all Files in a Directory
 *Match File Extensions
 *Writing a Program File (Executable)
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 *Retrieve Specific Lines from a File
 *Writing a Log File
 *Search a huge file
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 ===Low- and Mid-Level Networking===
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+<TABLE WIDTH=100%><TR><TD VALIGN=TOP WIDTH=50%>
 *Fetch Web Pages (Web HTTP Files)
 *Write a Protocol
 *[[TCP Port Examples]]
@@ -106,7 +106,7 @@ List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http:/
 *Multiple Web Site Monitor with Email Alerts
 *Fetch All IP Addresses
 *Using HTTP Cookies
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 *Tiny Web Server
 *Send Binary (Image) Using a TCP Socket
 *Raw HTTP Web Requests
@@ -117,7 +117,7 @@ List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http:/
 *Get Dictionary Entry
 *Google Search
 *[[TCP Port Details]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 ===REBOL/Services===
 '''Source''' [http://www.rebol.com/docs/services/source.html]
@@ -126,14 +126,14 @@ List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http:/
 *[[REBOL/Services Benefits]]
 
 ===Rebcode===
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+<TABLE WIDTH=100%><TR><TD VALIGN=TOP WIDTH=50%>
 *[[Rebcode Overview]]
 *REBOL To Rebcode Conversion
 *Using Rebcode To Generate Bitmaps
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 *Optimizing Rebcode
 *Mandelbrot Generator
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 ===Low-Level Graphics Cookbook===
 
@@ -142,21 +142,21 @@ List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http:/
 *Simple Animation with View/Draw
 
 ===VID Cookbook===
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+<TABLE WIDTH=100%><TR><TD VALIGN=TOP WIDTH=50%>
 *Create a dynamic user interface
 *Write a style
 *Simple Text Form Window
 *Open Two Windows
 *Changing Text Font Attributes
 *Get and Set Text Fields
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 *Adding a Scrollbar to Text
 *Getting A Text List Value
 *Scrolling an Image
 *Scrolling a GUI Panel
 *Progress Bar
 *Mouse Move Events - Raw Over and Hover Events
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 ===OpenGL Cookbook===
 
@@ -238,16 +238,16 @@ List of potential REBOL 3 Cookbooks. Most are taken from the R2 cookbook [http:/
 *Creating icons for encapsulated R3 scripts
 
 ===MacOSX Cookbook===
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD VALIGN=TOP WIDTH=50%&gt;
+<TABLE WIDTH=100%><TR><TD VALIGN=TOP WIDTH=50%>
 *Using the menubar in your REBOL apps
 *Using LaunchD to make an R3 script into a daemon
 *Understanding Application Packages
 *Sending files to Trash properly
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 *MacOSX Panther Compatibility
 *MacOSX Tiger Compatibility
 *MacOSX Leopard Compatibility
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 
 ===Linux Cookbook===
 

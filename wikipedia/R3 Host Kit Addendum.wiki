@@ -4,7 +4,7 @@ You can use four ~ to add your name and date to comments (optional).
 
 ==A107 10-September-2010==
 
-* Depending on your toolchain, the makefile in the Linux A107 Host Kit may need a fix for A107 to build, as first noted by Andreas: add &lt;tt&gt;-ldl&lt;/tt&gt; to &lt;tt&gt;LIBS&lt;/tt&gt; in line 16.
+* Depending on your toolchain, the makefile in the Linux A107 Host Kit may need a fix for A107 to build, as first noted by Andreas: add <tt>-ldl</tt> to <tt>LIBS</tt> in line 16.
 
 ==A104 26-August-2010==
 
@@ -20,22 +20,22 @@ You can use four ~ to add your name and date to comments (optional).
 
 ===Building the Host Kit on Win32 using MinGW===
 
-* Download the [http://sourceforge.net/projects/mingw/files/Automated%20MinGW%20Installer/MinGW%205.1.6/MinGW-5.1.6.exe/download MinGW 5.1.6 installer] and install ''as admin'' (preferably to &lt;tt&gt;c:\mingw&lt;/tt&gt;, but see the note below)
-* Add &lt;tt&gt;mingw\bin&lt;/tt&gt; to the windows command path 
+* Download the [http://sourceforge.net/projects/mingw/files/Automated%20MinGW%20Installer/MinGW%205.1.6/MinGW-5.1.6.exe/download MinGW 5.1.6 installer] and install ''as admin'' (preferably to <tt>c:\mingw</tt>, but see the note below)
+* Add <tt>mingw\bin</tt> to the windows command path 
 * Download the R3 A102 Host Kit for Windows and unpack
 * Open a normal Windows command prompt, change to the unpacked host kit directory
-* Copy &lt;tt&gt;mingw32-make.exe&lt;/tt&gt; from &lt;tt&gt;mingw\bin&lt;/tt&gt; to the host kit directory as &lt;tt&gt;make.exe&lt;/tt&gt;
-* Run &lt;tt&gt;make&lt;/tt&gt;
-* Test the &lt;tt&gt;r3.exe&lt;/tt&gt; built by running &lt;tt&gt;r3 go.r&lt;/tt&gt;
+* Copy <tt>mingw32-make.exe</tt> from <tt>mingw\bin</tt> to the host kit directory as <tt>make.exe</tt>
+* Run <tt>make</tt>
+* Test the <tt>r3.exe</tt> built by running <tt>r3 go.r</tt>
 
-''Note'': the default makefile supplied with the hostkit assumes that mingw is installed to &lt;tt&gt;c:\mingw&lt;/tt&gt;. The directory path is at the top of the makefile so you can easily edit it there .. there's only one occurrence.
+''Note'': the default makefile supplied with the hostkit assumes that mingw is installed to <tt>c:\mingw</tt>. The directory path is at the top of the makefile so you can easily edit it there .. there's only one occurrence.
 
 ===Building the Host Kit using Code::Blocks===
 
 * Download the [http://prdownload.berlios.de/codeblocks/codeblocks-10.05mingw-setup.exe Code::Blocks 10.05 MingW installer] and install
 * Download the R3 A102 Host Kit for Windows and unpack
 * Download [http://www.rebol.cz/r3/host-kit/r3.cbp Cyphre's project file] and store it where you unpacked the host kit
-* Start the Code::Blocks IDE and open the &lt;tt&gt;r3.cbp&lt;/tt&gt; file (File &gt; Open Project)
+* Start the Code::Blocks IDE and open the <tt>r3.cbp</tt> file (File > Open Project)
 
 ===Building the Host Kit using Visual Studio 2010 or MSBuild (no IDE, only Windows SDK, required)===
 * Download [http://www.rebol.cz/r3/host-kit/r3-host-kit-make-vc10-a107.zip Visual Studio 2010 solution] and unarchive it where you unpacked the host kit (should be sibling to the older VS build directories. All artifacts of this build will be produced under this directory (except for some generated C files). 
