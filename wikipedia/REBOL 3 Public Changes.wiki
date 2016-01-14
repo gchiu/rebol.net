@@ -1,7 +1,0 @@
-= Alpha 2.99.4 =
-
-The first public release of REBOL 3.0 [[alpha test]] version.
-
-*'''Released 8-Jan-2008'''
-*'''[[REBOL 3 Alpha 2.99.4 Release Notes | Release notes (readme file)]]'''
-*'''[http://www.rebol.net/builds/rebol3/alpha/rebol29904031.zip Download Alpha] (550 K)'''

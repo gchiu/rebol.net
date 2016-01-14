@@ -30,9 +30,9 @@ Examples:
 
 Should a function have access to its input evaluation stream. For example, if F1 is a function, do we allow:
 
-    F1 10 &quot;test&quot;
+    F1 10 "test"
 
-where F1 can access the block from the point of [10 &quot;test&quot;].
+where F1 can access the block from the point of [10 "test"].
 
 It may be possible to redefine the :word function spec meaning (which does almost the same thing as 'word) to allow this.
 

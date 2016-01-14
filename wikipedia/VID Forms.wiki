@@ -120,8 +120,8 @@ An example for the issues below:
 
  window: view [
    vid-form: group 2 [
-     label &quot;Name&quot; name-field: field
-     label &quot;Address&quot; address-field: field
+     label "Name" name-field: field
+     label "Address" address-field: field
    ]
  ]
 
@@ -165,11 +165,11 @@ Every field should have a '''dirty?''' flag and it should be possible to check i
 
 To check if the fields have changed, this could be something like:
 
- if vid-form/dirty? [print &quot;Form has changed!&quot;]
+ if vid-form/dirty? [print "Form has changed!"]
 
 To check only one field, just access the field:
 
- if address-field/dirty? [print &quot;Field has changed!&quot;]
+ if address-field/dirty? [print "Field has changed!"]
 
 == Multi-part Forms ==
 

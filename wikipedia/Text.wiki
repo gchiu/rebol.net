@@ -2,72 +2,72 @@
 
 Draws a string of text.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | offset
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | optional
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | offset
+| bgcolor="white" | [pair!]
+| bgcolor="white" | optional
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | size
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | optional
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | size
+| bgcolor="white" | [pair!]
+| bgcolor="white" | optional
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | render-mode
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | How text will be rendered
-| bgcolor=&quot;white&quot; | '''vectorial''' - Can be transformed with stroke/dashes, filled with fill-pens, etc.
+| bgcolor="white" | render-mode
+| bgcolor="white" | [word!]
+| bgcolor="white" | How text will be rendered
+| bgcolor="white" | '''vectorial''' - Can be transformed with stroke/dashes, filled with fill-pens, etc.
 |- 
-| bgcolor=&quot;white&quot; | rich-text-block
-| bgcolor=&quot;white&quot; | [block!]
-| bgcolor=&quot;white&quot; | block containing valid richtext dialect syntax
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | rich-text-block
+| bgcolor="white" | [block!]
+| bgcolor="white" | block containing valid richtext dialect syntax
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;To run some of these tests, you'll need to define the following
-font objects:&lt;/p&gt;
-&lt;code&gt;
+<br>'''Notes and Examples'''
+<p>To run some of these tests, you'll need to define the following
+font objects:</p>
+<code>
 bold20: make system/standard/font [style: 'bold size: 20 color: white]
 bold36: make system/standard/font [style: 'bold size: 36 color: white]
-&lt;/code&gt;
-&lt;p&gt;Basic text isn't too exciting to look at.&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
-text 10x15 [white &quot;This is a string of raster aliased text&quot;]
-text 10x40 [white anti-alias on &quot;This is a string of raster anti-aliased text&quot;]
+</code>
+<p>Basic text isn't too exciting to look at.</p>
+<code><pre>
+text 10x15 [white "This is a string of raster aliased text"]
+text 10x40 [white anti-alias on "This is a string of raster anti-aliased text"]
 pen off
 fill-pen red
-text vectorial 10x60 [&quot;This is a string of vectorial text&quot;]
+text vectorial 10x60 ["This is a string of vectorial text"]
 
-text 10x90 [anti-alias off font bold20 &quot;Font Size 20 - raster&quot;]
+text 10x90 [anti-alias off font bold20 "Font Size 20 - raster"]
 
-text 10x120 [anti-alias on font bold20 &quot;Font Size 20 - raster AA&quot;]
+text 10x120 [anti-alias on font bold20 "Font Size 20 - raster AA"]
 pen yellow
 fill-pen blue
-text 10x150 vectorial [font bold20 &quot;Font Size 20 - vectorial&quot;]
+text 10x150 vectorial [font bold20 "Font Size 20 - vectorial"]
 
-&lt;/pre&gt;&lt;/code&gt;
-[[image:TEXT-1.png|TEXT example 1]]
+</pre></code>
+[[images/TEXT-1.png|TEXT example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Vectorial text supports the '''pen''', '''fill-pen''', '''line-width''', and
-'''line-pattern''' settings.&lt;/p&gt;
+<br>
+<p>Vectorial text supports the '''pen''', '''fill-pen''', '''line-width''', and
+'''line-pattern''' settings.</p>
 
 Note:  Once a color in richtext dialect block is defined text color is switched under control of the richtext dialect pens.
 
-&lt;code&gt;&lt;pre&gt;
+<code><pre>
 pen yellow
 line-width 2
 grad-pen 50x180 0 450 [255.0.0 255.255.0 0.255.0 0.255.255]
-text 0x15 vectorial [font bold36 &quot;Font Size 36 - vectorial&quot;]
+text 0x15 vectorial [font bold36 "Font Size 36 - vectorial"]
 grad-pen off
 line-pattern red 5 5
-text vectorial 0x60 [font bold36 &quot;Patterned Text&quot;]
-&lt;/pre&gt;&lt;/code&gt;
-[[image:TEXT-2.png|TEXT example 2]]
+text vectorial 0x60 [font bold36 "Patterned Text"]
+</pre></code>
+[[images/TEXT-2.png|TEXT example 2]]
 
-&lt;br&gt;
+<br>

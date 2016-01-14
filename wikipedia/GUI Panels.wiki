@@ -1,1 +1,1 @@
-#REDIRECT [[GUI Panels, Groups &amp; Layouts - An Overview]]
+#REDIRECT [[GUI Panels, Groups & Layouts - An Overview]]

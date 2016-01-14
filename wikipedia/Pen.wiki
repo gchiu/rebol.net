@@ -2,31 +2,31 @@
 
 Sets the color or image for outline rendering.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | stroke-color
-| bgcolor=&quot;white&quot; | [tuple!]
-| bgcolor=&quot;white&quot; | Primary line color
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | stroke-color
+| bgcolor="white" | [tuple!]
+| bgcolor="white" | Primary line color
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | dash-color
-| bgcolor=&quot;white&quot; | [tuple!]
-| bgcolor=&quot;white&quot; | Used for patterned lines
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | dash-color
+| bgcolor="white" | [tuple!]
+| bgcolor="white" | Used for patterned lines
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | image
-| bgcolor=&quot;white&quot; | [image!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | image
+| bgcolor="white" | [image!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;The colors can include an alpha channel value for transparency.&lt;/p&gt;
-&lt;p&gt;Setting '''pen''' to '''off''' will disable the pen color to fully transparent.&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<p>The colors can include an alpha channel value for transparency.</p>
+<p>Setting '''pen''' to '''off''' will disable the pen color to fully transparent.</p>
+<code><pre>
 line-width 3
 pen yellow
 box 20x20 200x200
@@ -36,7 +36,7 @@ box 50x50 250x250
 pen logo.gif
 fill-pen off
 box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
-[[image:PEN-1.png|PEN example 1]]
+</pre></code>
+[[images/PEN-1.png|PEN example 1]]
 
-&lt;br&gt;
+<br>

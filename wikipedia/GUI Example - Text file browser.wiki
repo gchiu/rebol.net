@@ -2,20 +2,20 @@ Here is a very simple text file browser.
 
 ==Script==
 
-&lt;pre&gt;
+<pre>
 files: read %*.r
 
 view/across [
     text-list files do [set-face ca read-string pick files value]
     ca: code-area
 ]
-&lt;/pre&gt;
+</pre>
 
 ==Screenshot==
 
 Note: uses development skin, not the final skin.
 
-[[Image:Filebrowse.png]]
+[[images/Filebrowse.png|No Description]]
 
 Resizing is automatic. If you change the window size, the text-list and code-area will change.
 
@@ -34,4 +34,4 @@ CODE-AREA is a minor variation of the AREA style that displays using a monospace
 ==Notes==
 
 #The READ-STRING function is a temporary function used to read files and convert them from binary (and possibly in Unicode format) into a string datatype.
-#Although the REBOL kernel does support Unicode, the graphics library does not yet handle unicode strings.
+#Although the Rebol kernel does support Unicode, the graphics library does not yet handle unicode strings.

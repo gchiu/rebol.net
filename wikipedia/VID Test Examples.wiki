@@ -1,14 +1,14 @@
 ==Vid Script Examples==
-&lt;TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10&gt;&lt;TR&gt;&lt;TD WIDTH=40% VALIGN=TOP&gt;
-[[image:Gui-test.png]]
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+<TABLE WIDTH=100% CELLPADDING=10 CELLSPACING=10><TR><TD WIDTH=40% VALIGN=TOP>
+[[images/Gui-test.png|No Description]]
+</TD><TD VALIGN=TOP>
 
-Open R3 enter &quot;Demo&quot; and click the &quot;Run Test&quot; button.
+Open R3 enter "Demo" and click the "Run Test" button.
 
-The &quot;Source&quot; button will display the source code of the layouts.
-&lt;/TD&gt;
-&lt;TD WIDTH=30%&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+The "Source" button will display the source code of the layouts.
+</TD>
+<TD WIDTH=30%></TD>
+</TR></TABLE>
 
 
 

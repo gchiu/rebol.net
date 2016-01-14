@@ -2,21 +2,21 @@
 
 Sets the color or image pattern for area filling. The '''fill-pen''' color will remain in effect until it is set again, disabled by '''off''' keyword or overriden by '''grad-pen''' command.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | color
-| bgcolor=&quot;white&quot; | [tuple!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | color
+| bgcolor="white" | [tuple!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | image
-| bgcolor=&quot;white&quot; | [image!]
-| bgcolor=&quot;white&quot; | Fill pattern
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | image
+| bgcolor="white" | [image!]
+| bgcolor="white" | Fill pattern
+| bgcolor="white" | 
 |}
 
 
@@ -24,28 +24,28 @@ Sets the color or image pattern for area filling. The '''fill-pen''' color will 
 
 
 Simple Color Fill
-&lt;TABLE CELLPADDING=1O CELLSPACING=1O WIDTH=100%&gt;&lt;TR&gt;&lt;TD WIDTH=60% VALIGN=TOP&gt;
-&lt;PRE&gt;
+<TABLE CELLPADDING=1O CELLSPACING=1O WIDTH=100%><TR><TD WIDTH=60% VALIGN=TOP>
+<PRE>
    fill-pen blue
    box 100x100 300x300
-&lt;/PRE&gt;
-&lt;/TD&gt;&lt;TD WIDTH=40% VALIGN=MIDDLE ALIGN=CENTER&gt;
-[[image:FILL-PEN-1b.png|FILL-PEN example 1]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</PRE>
+</TD><TD WIDTH=40% VALIGN=MIDDLE ALIGN=CENTER>
+[[images/FILL-PEN-1b.png|FILL-PEN example 1]]
+</TD></TR></TABLE>
 
 
 ----
 
 
 Image Pattern Fill
-&lt;TABLE CELLPADDING=1O CELLSPACING=1O WIDTH=100%&gt;&lt;TR&gt;&lt;TD WIDTH=60% VALIGN=TOP&gt;
-&lt;PRE&gt;
+<TABLE CELLPADDING=1O CELLSPACING=1O WIDTH=100%><TR><TD WIDTH=60% VALIGN=TOP>
+<PRE>
    fill-pen logo.gif
    box 100x100 300x300
-&lt;/PRE&gt;
-&lt;/TD&gt;&lt;TD WIDTH=40% VALIGN=MIDDLE ALIGN=CENTER&gt;
-[[image:FILL-PEN-2b.png|FILL-PEN example 2]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</PRE>
+</TD><TD WIDTH=40% VALIGN=MIDDLE ALIGN=CENTER>
+[[images/FILL-PEN-2b.png|FILL-PEN example 2]]
+</TD></TR></TABLE>
 
 
 ----
@@ -53,26 +53,26 @@ Image Pattern Fill
 
 
 Switching the '''fill-pen''' states
-&lt;TABLE CELLPADDING=1O CELLSPACING=1O WIDTH=100%&gt;&lt;TR&gt;&lt;TD WIDTH=60% VALIGN=TOP&gt;
-&lt;PRE&gt;
+<TABLE CELLPADDING=1O CELLSPACING=1O WIDTH=100%><TR><TD WIDTH=60% VALIGN=TOP>
+<PRE>
    fill-pen blue
    box 100x100 300x300
    fill-pen logo.gif
    box 150x150 250x250
    fill-pen off
    box 50x50 350x350
-&lt;/PRE&gt;
-&lt;/TD&gt;&lt;TD WIDTH=40% VALIGN=MIDDLE ALIGN=CENTER&gt;
-[[image:FILL-PEN-3b.png|FILL-PEN example 3]]
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</PRE>
+</TD><TD WIDTH=40% VALIGN=MIDDLE ALIGN=CENTER>
+[[images/FILL-PEN-3b.png|FILL-PEN example 3]]
+</TD></TR></TABLE>
 
 
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=15%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Draw]]
 *[[Anti-Alias]]
 *[[Arc]]
@@ -84,11 +84,11 @@ Pages
 *[[Ellipse]]
 *[[Fill-Pen]]
 *[[Fill-Rule]]
-*[[Gamma]]&lt;/font&gt;&lt;/TD&gt;
+*[[Gamma]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=15%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Grad-Pen]]
 *[[Invert-Matrix]]
 *[[Image]]
@@ -100,11 +100,11 @@ Pages
 *[[Line-Width]]
 *[[Matrix]]
 *[[Pen]]
-*[[Polygon]]&lt;/font&gt;&lt;/TD&gt;
+*[[Polygon]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=15%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Push]]
 *[[Reset-Matrix]]
 *[[Rotate]]
@@ -116,12 +116,12 @@ Pages
 *[[Transform]]
 *[[Translate]]
 *[[Triangle]]
-*[[Grad-Pen]]&lt;/font&gt;&lt;/TD&gt;
+*[[Grad-Pen]]</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=15%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 
 *[[Invert-Matrix]]
 *[[Image]]
@@ -133,20 +133,20 @@ Pages
 *[[Line-Width]]
 *[[Matrix]]
 *[[Pen]]
-*[[Polygon]]&lt;/font&gt;&lt;/TD&gt;
+*[[Polygon]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP width=30%&gt;
+<TD ALIGN=LEFT VALIGN=TOP width=30%>
 Chapters
-&lt;font size=1&gt;
+<font size=1>
 *[[R3 Introduction]]
 *[[Getting Started With R3]]
 *[[The Graphical User Interface]]
 *[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
 *'''Script Writing With The Draw Dialect'''
-*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+*[[The Graphic Object]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=10%&gt;
-&lt;font size=1&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=10%>
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</font></TD>
+</TR></TABLE>

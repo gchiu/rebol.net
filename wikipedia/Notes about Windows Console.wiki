@@ -7,8 +7,8 @@ In order to '''copy to and paste''' from the clipboard easily in the XP console,
 Here's how:
 
 #Right click the title bar, or left click on the icon at the upper left corner of the window, and select Properties.
-#In the Options panel, turn on &quot;QuickEdit Mode&quot; and &quot;Insert Mode&quot; and click the OK button.
-#If you start the program from a shortcut you can save these settings by selecting &quot;Modify the shortcut that started this window&quot; in the popup window that follows.
+#In the Options panel, turn on "QuickEdit Mode" and "Insert Mode" and click the OK button.
+#If you start the program from a shortcut you can save these settings by selecting "Modify the shortcut that started this window" in the popup window that follows.
 
 Now you can select text by dragging with the left button down. Note that the text is selected in a rectangular block rather than by line.
 
@@ -22,7 +22,7 @@ It appears that the above Quick Edit change also enables the scroll wheel. Of co
 
 ==Echo Mode==
 
-For large output, REBOL provides an echo mode. You can enable it with:
+For large output, Rebol provides an echo mode. You can enable it with:
 
    echo on
 
@@ -36,11 +36,11 @@ Use:
 
    echo off
 
-to close the file. It is also closed when you exit REBOL.
+to close the file. It is also closed when you exit Rebol.
 
 ==Special Commands==
 
-For developers, there are a few special &quot;Unix-like&quot; functions that may be of help.
+For developers, there are a few special "Unix-like" functions that may be of help.
 
 ; ls : to list files.  Also, ls dir works, and you can do ls/l, ls/f, ls/r, and combinations like ls/r/f, etc. HELP ls for info.
 
@@ -64,6 +64,6 @@ you'll also have access to cursor key command recall.  '''rlwrap''' comes with t
 
 === rxvt Problems===
 
-The rxvt console is not great for stdio redirection so fallback to the Windows console for testing  anything not pure REBOL.
+The rxvt console is not great for stdio redirection so fallback to the Windows console for testing  anything not pure Rebol.
 
  Also, bugs should always be verified in the default Windows console before reporting.

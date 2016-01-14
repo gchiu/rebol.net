@@ -2,21 +2,21 @@
 
 Sets the style that will be used when drawing the ends of lines.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | mode
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | Cap style
-| bgcolor=&quot;white&quot; | '''butt
+| bgcolor="white" | mode
+| bgcolor="white" | [word!]
+| bgcolor="white" | Cap style
+| bgcolor="white" | '''butt
 '''square'''
 '''rounded'''
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<code><pre>
 line-cap butt
 pen yellow
 line-width 1
@@ -65,7 +65,7 @@ line-width 9
 line 20x100 150x100
 line-width 11
 line 20x120 150x120
-&lt;/pre&gt;&lt;/code&gt;
-[[image:LINE-CAP-1.png|LINE-CAP example 1]]
+</pre></code>
+[[images/LINE-CAP-1.png|LINE-CAP example 1]]
 
-&lt;br&gt;
+<br>

@@ -59,8 +59,8 @@ Some integers in the parse block above are representing values in the following 
 
   types:     [Bug Wish Issue Note Nuts]
   statuses:  [Submitted Reviewed Problem Waiting Deferred Dismissed Pending Built Tested Complete]
-  projects:  [&quot;AltME&quot; &quot;AltServe&quot; &quot;WNS Server&quot; &quot;User Guide&quot; &quot;Website&quot; &quot;Other Code&quot;]
-  platforms: [&quot;All&quot; &quot;N/A&quot; &quot;Windows&quot; &quot;Mac OSX&quot; &quot;Linux x86 libc6&quot; &quot;FreeBSD x86&quot;]
+  projects:  ["AltME" "AltServe" "WNS Server" "User Guide" "Website" "Other Code"]
+  platforms: ["All" "N/A" "Windows" "Mac OSX" "Linux x86 libc6" "FreeBSD x86"]
 
 You can copy this structure into your own script for easy parsing of a bug report.
 

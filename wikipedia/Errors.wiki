@@ -54,7 +54,7 @@ This backtrace information is also available when you process an error with exce
 
 ==Form Format==
 
-There are times when you want to catch an error and print it using the same &quot;friendly&quot; format used by the console. The FORM function will now do that. In addition, because PRINT uses FORM, you can also use PRINT for nicely formatted errors:
+There are times when you want to catch an error and print it using the same "friendly" format used by the console. The FORM function will now do that. In addition, because PRINT uses FORM, you can also use PRINT for nicely formatted errors:
 
     result: try [divit 1 0]
     if error? result [print result halt]

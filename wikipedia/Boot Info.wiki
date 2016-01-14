@@ -12,6 +12,6 @@ System/options fields:
 
 '''path''' - the directory of the script file. (should it be deleted?)
 
-Note: When you drag and drop a file onto the R3 icon in win32, the home directory is set to the user's &quot;Documents and Settings&quot; folder. That's not very useful, so R3 changes the home to be that of the script's directory.
+Note: When you drag and drop a file onto the R3 icon in win32, the home directory is set to the user's "Documents and Settings" folder. That's not very useful, so R3 changes the home to be that of the script's directory.
 
 The function that implements this boot logic is found in system/intrinsic/begin. Send suggested improvements to Carl.

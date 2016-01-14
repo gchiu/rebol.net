@@ -1,0 +1,120 @@
+Il s'agit de la traduction française de la dernière version.
+
+Traduction réalisée par Jean-François "Jeffrey" Richard
+
+==Qu'est-ce que c'est==
+
+<b>C'est une version alpha de Rebol 3.0</b>
+
+Une version alpha est un prototype non finalisé. Il contient la plupart des caractéristiques de la version finale, mais ce n'est pas cette dernière, et ce n'est pas un produit en tant que tel.
+
+<b> Ce n'est pas une version normale</b>
+
+C'est une version limitée et nous savons cela. Ainsi, s'il vous plaît, ne l'utilisez pas pour contrôler une station spatiale, une centrale électrique, ou une chaîne de montage. Cette sortie est juste pour vous. Cette version n'est pas re-distribuable, n'est pas destinées à être évaluée, n'est pas destinée aux utilisateurs finaux ou aux clients.
+
+===Qu'est-ce que R3?===
+
+R3 a une longue liste d'objectifs, et ci-dessous en sont énumérés quelques uns
+
+*Un modèle d'environnement multi-hôte (avec Rebol-dans-une-DLL)
+*Une implentation ouverte des interfaces et des sous-systèmes
+*Une architecture modulaire (espaces de noms, contextes multi-globaux)
+*Support de l'Unicode (source encodée, chaînes internes)
+*Modèle de plugin d'extension (addition dynamique de fonctions natives)
+*Multitâche (thread isolé, partage au niveau du système)
+*entiers et fonctions 64 bit
+*Précision arbitraire des nombres décimaux (pour le type de donnée money)
+*un nouveau sous-système graphique basé sur SVG (scalar vector graphics core)
+*Nouveau modèle de ports (E/S)
+*Nouveau mécanisme d'évaluation et de gestion de la mémoire
+
+===Licence===
+
+<b> Cette version vous est licencié pour des besoins de tests seulement.</b> Veuillez noter:
+
+*Vous l'utilisez à vos risques et périls. Il n'y a aucune garantie dessus de n'importe quelle sorte.
+*Vous pouvez créer des copies pour votre propre usage, mais vous ne devez pas publier ou distribuer ce logiciel à d'autres utilisateurs.
+*Faite attention au fait que tous les composants et caractéristiques sont susceptibles de changer.
+*Faites toujours la mise à jour vers a dernière version alpha
+*Cette license expire lors de la parution de la nouvelle version
+
+==Utilisation==
+
+===Fichiers===
+
+Cette distribution comprends
+
+:readme.txt (.html) - vous être en train de le lire
+
+:rebhost.exe - L'environnement hôte Rebol (graphiques, périphériques, etc...)
+
+:rebol.dll - Le noyau du moteur d'exécution de Rebol 3.0 (il doit être dans le même répertoire que le rebhost.exe)
+
+:examples/ - scripts provenant des développeurs et testeurs qui ont développés ou testés sur R3 et qui illustrent ou testent différentes fonctionnalités de R3
+
+===Lancement des scripts===
+
+Vous pouvez lancer des scripts de plusieurs façons:
+
+*Glissez-déposez un script sur le fichier rebhost.exe (recommandé)
+*Exécutez rebhost.exe dans une ligne de commande en spécifiant le fichier du script
+*Lancez le script à partir de la console R3 à l'aide de la commande DO
+
+Notes:
+
+#Cette version n'a pas de système de sécurité ou de "sandbox". Ne lancez pas de scripts dans lesquels vous n'avez pas confiance ou que vous ne comprenez pas. Dans le doute, examinez-le.
+#Il manque une partie du mécanisme gérant le changement de répertoires dans cette version, et il est possible qu'elle ne trouve pas tous les fichiers nécessaires pour un script. S'il y a un problème, mettez tous vos fichiers dans le même répertoire.
+
+===Invite de commande===
+
+Actuellement, R3 utilise l'invite de commande de MS Windows. Oui, elle est assez limitée, et MS braintrust a définit des paramètres par défaut qui la rendent encore plus limitée.
+
+Par chance, vous pouvez changer quelques une de ces options.
+
+Voici comment faire:
+
+#Lancer rebhost.exe
+#Fermer la fenêtre d'acceuil
+#Clic droit sur la barre de titre de la fenêtre et sélectionnez le point de menu propriété
+#Dans l'onglet "Options", activez le "Mode d'édition rapide" ainsi que le "Mode insertion"
+#Augmentez la mémoire tampon de l'historique des commandes et le nombre de tampons, comme vous l'entendez
+#Dans l'onglet "Configuration", fixez la largeur et la hauteur de la mémoire tampon décran à quelquechose de raisonnable tel que 100x1000.
+#Mettre la taille de la fenêtre à 100x50 ou semblable
+#Décochez le paramètre "Let system position window" si vous désirez qu'elle reste à la même place à chaque lancement (après l'avoir positionnée)
+#Fermez le panneau de configuration, et cliquez sur "Save properties for future windows" en sortant.
+
+Maintenant votre console est un peu plus utilisable.
+
+===Compatibilité===
+
+R3 est compatible sur de nombreux point avec R2, mais nous avions besoin de la liberté de réaliser d'importants changements (comme l'unicode, de meilleurs graphismes, des ports E/S optimisées). Ainsi ce n'est pas à 100% le même.
+Nous mentionnons ce fait au cas ou vous auriez pensé le contraire, ou si vous avez des projets en relation avec cette version.
+
+Actuellement, nous n'avons pas de liste de la compatibilité des changements concernés. Mais, une fois que nous aurons accomplis nos principaux objectifs de développement nous constituerons une liste complète.
+
+==Support==
+
+Il n'y pas de support pour cette version R3 alpha, mais...
+
+===Documentation===
+
+Nous utilisons un wiki ouvert pour la documentation de R3 : http://www.rebol.net/wiki/
+
+Bien sûr, quelques parties du wiki sont plus completes et finalisées que d'autres. Ce wiki est une version alpha également.
+
+Si vous trouvez vous-même des choses à ajouter sur une partie ou une section entière du wiki, c'est ouvert.
+Vous devez juste créez un compte et vous pouvez commencer.
+Nous décidons d'utiliser le système populaire wikimedia parce qu'il est bien connu et facile a utiliser.
+
+===Retour d'informations et rapports===
+
+Une version alpha comprend typiquement beaucoup de point qui doivent être dégrossis.Nous connaissons la plupart d'entre eux et nous avons une longue liste de chose à faire.
+
+À cette première étape nous serions totalement inondés avec des réactions, des rapports des bogues et des demandes d'améliorations. Nous ne voulons pas passer notre temps à gérer les réponses; nous voulons finir de mettre en oeuvre le plan de développement.
+
+Pour l'instant, la meilleure chose à faire est de consigner pour vous-même les problèmes et bogues.
+La plupart d'entre eux sont sur notre liste et seront corrigés. Et, dans le cas contraire, vous pouvez alors nous contacter ou, encore mieux, nous aider à les résoudres vous-même.
+
+A la fin, nous fournirons un moyen  rapide et simple pour consigner les bugs, contribuer au code source, aider lors des tests, faire de nouvelles versions et plus encore.
+
+Amusez-vous!

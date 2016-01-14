@@ -30,7 +30,7 @@ They are easy to do and get standardized and flexible format
 
 Embedded pages work well - here is how to embed another article content - R3 Releases
 
-&lt;nowiki&gt;{{:R3 Releases}}&lt;/nowiki&gt;
+<nowiki>{{:R3 Releases}}</nowiki>
 
 
 ==Standards Approach on Wiki==

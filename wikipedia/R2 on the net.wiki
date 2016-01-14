@@ -1,79 +1,79 @@
 __NOTOC__
 
-REBOL has many resources on the net and in different languages. Start here to find your preferred place of discussion.
+Rebol has many resources on the net and in different languages. Start here to find your preferred place of discussion.
 
 
 ==AltMe==
 
-AltMe is a decentralized messaging and collaboration program completely written in REBOL.
+AltMe is a decentralized messaging and collaboration program completely written in Rebol.
 Go to http://www.altme.com and download the client.
-Ask for an account to be created for you by posting to the REBOL Mailing list (see below) and then connect to the REBOL3 AltMe world to meet Rebolers. Once you are logged into this world, you can ask for additional accounts to be created for others by posting a request in the '''Accounts''' group.&lt;br&gt;
-A weblog of the public discussions in the REBOL3 (discussions include REBOL 2) world can be found at http://www.rebol.net/altweb/rebol3/
+Ask for an account to be created for you by posting to the Rebol Mailing list (see below) and then connect to the Rebol3 AltMe world to meet Rebolers. Once you are logged into this world, you can ask for additional accounts to be created for others by posting a request in the '''Accounts''' group.<br>
+A weblog of the public discussions in the Rebol3 (discussions include Rebol 2) world can be found at http://www.rebol.net/altweb/rebol3/
 
-==REBOL 2 Forums and Mailing Lists==
+==Rebol 2 Forums and Mailing Lists==
 
 
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Address
 ! Type
 ! Language
 ! Description
 |-
-|[http://www.rebol.com/discussion.html REBOL Mailing List]
+|[http://www.rebol.com/discussion.html Rebol Mailing List]
 |Mailing List
 |EN
-|The  REBOL mailing list is the central place of discussion where users can find or ask for information about REBOL. There, you will find many programmers ready and willing to help you.
+|The  Rebol mailing list is the central place of discussion where users can find or ask for information about Rebol. There, you will find many programmers ready and willing to help you.
 
 To subscribe to the mailing list, send and e-mail to ''rebol-request@rebol.com'' with '''subscribe''' as the subject.
 |-
 |[http://www.reboltalk.com/ Reboltalk] 
 |Forum
 |EN
-|Forum specialized in REBOL
+|Forum specialized in Rebol
 |-
-|[http://groups.yahoo.com/group/Rebol_New Yahoo REBOL]
+|[http://groups.yahoo.com/group/Rebol_New Yahoo Rebol]
 |Mailing List
 |EN
-|Mailing list talking about REBOL
+|Mailing list talking about Rebol
 |-
 |[http://www.digicamsoft.com/cgi-bin/rebelBB.cgi Rebel BB]
 |Forum
 |FR
-|Bullettin Board for french speaking people, it is the core if the french REBOL movement
+|Bullettin Board for french speaking people, it is the core if the french Rebol movement
 |}
 
-===REBOL 2 Blogs===
+===Rebol 2 Blogs===
 
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Name
 ! Description
 |+
 |[http://www.rebol.com/cgi-bin/blog.r Carl's Blog]
-|REBOL Founder Official Blog
+|Rebol Founder Official Blog
 |}
 
-==REBOL EZines==
+==Rebol EZines==
 
-==Various REBOL Sites==
+==Various Rebol Sites==
 
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Site
 ! Description
 |-
 |[http://www.codeconscious.com/rebol Codeconscious]
-|Quote from the site: &quot;The purpose of this site is to share information, programming tips, techniques and scripts I've found useful&quot;&lt;BR&gt;
+|Quote from the site: "The purpose of this site is to share information, programming tips, techniques and scripts I've found useful"<BR>
 Many interesting articles and tutorials can be found here
 |-
 |[http://www.rebdocproj.net/ Rebol Doc. Project]
-|The REBOL Documentation project is a central repository for articles, guides and documentation for the REBOL programming languages. Many articles are in french language.
+|The Rebol Documentation project is a central repository for articles, guides and documentation for the Rebol programming languages. Many articles are in french language.
 It is back online with the great effort of Philippe Legoff and now contains
 the [http://devcon2007.rebdocproj.net/ Devcon 2007 Site] and [http://www.fondation-rebol.net Previous Fondation Forum] all merged in one resource.
 |-
-|[http://www.reboltutorial.com/ REBOL Tutorial]
-|REBOL Tutorial is a new site with very advanced topic inside. A must look for every REBOL lover
+|[http://www.reboltutorial.com/ Rebol Tutorial]
+|Rebol Tutorial is a new site with very advanced topic inside. A must look for every Rebol lover
 |}
 
-==REBOL .r Sites==
+==Rebol .r Sites==

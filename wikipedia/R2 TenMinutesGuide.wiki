@@ -9,22 +9,22 @@ Download Rebol for your platform, install it if required and start the interpret
 
 Now you are in front of the Rebol Console. It should appear something like this:
 
- REBOL/View 2.7.5.3.1 20-Mar-2007
- Copyright 2000-2007 REBOL Technologies.  All rights reserved.
- REBOL is a trademark of REBOL Technologies. WWW.REBOL.COM
- &gt;&gt;
+ Rebol/View 2.7.5.3.1 20-Mar-2007
+ Copyright 2000-2007 Rebol Technologies.  All rights reserved.
+ Rebol is a trademark of Rebol Technologies. WWW.Rebol.COM
+ >>
 
-The '''&gt;&gt;''' is the console prompt. You can start writing your first line of Rebol code after it.
+The '''>>''' is the console prompt. You can start writing your first line of Rebol code after it.
 
 Lets start with the most famous one line of code
 
- Print [&quot;Hello World!&quot;]
+ Print ["Hello World!"]
 
 This is the result as you can see in the console.
 
- &gt;&gt;  Print [&quot;Hello World!&quot;]
+ >>  Print ["Hello World!"]
  '''Hello World!'''
- &gt;&gt;
+ >>
 
 From we will write only code and see the result and not the whole console screen and the prompt.
 
@@ -34,7 +34,7 @@ Rebol reads '''from left to right'''. The first word it finds is ''Print''. The 
 
 After the Print command there is its argument: 
 
- '''[&quot;Hello World!&quot;]''' 
+ '''["Hello World!"]''' 
 
 Inside the block there is a string of characters. In rebol, the strings of characters are surrounded by double apices or by an opening and closing brace. The previous line would be the same if written as:
 
@@ -44,11 +44,11 @@ When the Print command consumes all of the expected arguments its internal funct
 
 Now, don't close Rebol and continue writing.
 
-Lets use word, a &quot;container&quot; of data, as cointainer of a string.
+Lets use word, a "container" of data, as cointainer of a string.
 
- myword: &quot;Hello World!&quot;
+ myword: "Hello World!"
 
-The &quot;:&quot; after the word instruct Rebol to assign to the word the value after it. Now '''myword''' contains the string '''Hello World!'''
+The ":" after the word instruct Rebol to assign to the word the value after it. Now '''myword''' contains the string '''Hello World!'''
 
 With the following line of code we will print the value contained in '''myword'''
 
@@ -73,7 +73,7 @@ Lets do a simple calculation and store it into a word
 
 Now lets print the result
 
- Print [&quot;The result of the calculus is: &quot; myword]
+ Print ["The result of the calculus is: " myword]
 
 You will see 
 
@@ -87,15 +87,15 @@ In Rebol each word could be code (a function, a little subprogram) or data.
 
 Write the following code:
 
-  mycode: [Print [&quot;Hello Word!&quot;!]]
+  mycode: [Print ["Hello Word!"!]]
 
-You have set the content of the word to '''[Print [&quot;Hello World!&quot;]]'''
+You have set the content of the word to '''[Print ["Hello World!"]]'''
 
 Write this other line
 
   do mycode
 
-''Do'' Accepts a block of code to be executed and ''mycode'' contains the block of of code '''[Print [&quot;Hello Word!&quot;!]]'''
+''Do'' Accepts a block of code to be executed and ''mycode'' contains the block of of code '''[Print ["Hello Word!"!]]'''
 
 The result is
 
@@ -121,7 +121,7 @@ A word inside a block is neutral it is considere a a ''literal'' value.
 
 If you write:
 
- myword: &quot;Hello World!&quot;
+ myword: "Hello World!"
  Probe [myword]
 
 The result is:
@@ -144,7 +144,7 @@ Try this:
 
 The result is
 
- '''== [&quot;Hello World!&quot;]'''
+ '''== ["Hello World!"]'''
 
 reduce returns to the cosole the block with MYWORD conveted to its content.
 
@@ -166,4 +166,4 @@ The result is
 
  '''myword'''
 
-The apex instructs the REBOL interpreter to not reduce the word but use it literally !
+The apex instructs the Rebol interpreter to not reduce the word but use it literally !

@@ -2,22 +2,22 @@
 
 Sets the style that will be used where lines are joined.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | mode
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | Join style
-| bgcolor=&quot;white&quot; | '''miter'''
+| bgcolor="white" | mode
+| bgcolor="white" | [word!]
+| bgcolor="white" | Join style
+| bgcolor="white" | '''miter'''
 '''miter-bevel'''
 '''round'''
 '''bevel'''
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<code><pre>
 pen yellow
 line-width 15
 
@@ -37,13 +37,13 @@ polygon 20x20 180x130 10x100
 translate 0x140
 line-join bevel
 polygon 20x20 180x130 10x100
-&lt;/pre&gt;&lt;/code&gt;
-[[image:LINE-JOIN-1.png|LINE-JOIN example 1]]
+</pre></code>
+[[images/LINE-JOIN-1.png|LINE-JOIN example 1]]
 
-&lt;br&gt;
+<br>
 
 '''Additional notes about LINE-CAP and LINE-JOIN'''
-&lt;pre&gt;
+<pre>
 How are lines drawn
 
 LINE - draws single lines (even if multiple line points is specified)
@@ -56,4 +56,4 @@ LINE - shape of 'head' and 'tail' is affected by LINE-CAP mode
 SPLINE - shape of 'line joins' is affected by LINE-JOIN mode
 		 if CLOSED is defined shape of 'head' and 'tail' is affected by LINE-CAP mode
 POLYGON - shape of all 'line joins' is affected by LINE-JOIN mode
-&lt;/pre&gt;
+</pre>

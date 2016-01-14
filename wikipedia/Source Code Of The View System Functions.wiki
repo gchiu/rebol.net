@@ -1,7 +1,7 @@
-&lt;pre&gt;
-REBOL [
-	Title: &quot;REBOL View System Functions&quot;
-	Rights: &quot;Copyright REBOL Technologies 2001-2007&quot;
+<pre>
+Rebol [
+	Title: "Rebol View System Functions"
+	Rights: "Copyright Rebol Technologies 2001-2007"
 ]
 
 ; The View system handles windowing, events, popups, requestors, and modal
@@ -9,7 +9,7 @@ REBOL [
 ; also allowed to build and display their own windows directly.
 
 system/standard/font: context [
-	name: &quot;arial&quot;
+	name: "arial"
 	style: none
 	size: 12
 	color: 0.0.0
@@ -30,9 +30,9 @@ system/standard/para: context [
 ]
 
 view: func [
-	&quot;Displays a window view.&quot;
-	window [gob! block! object!] &quot;Window gob, VID face, or VID layout block&quot;
-	/options opts [block!] &quot;Window options spec block&quot;
+	"Displays a window view."
+	window [gob! block! object!] "Window gob, VID face, or VID layout block"
+	/options opts [block!] "Window options spec block"
 	/local screen tmp xy
 ][
 	if not screen: system/view/screen-gob [return none]
@@ -65,7 +65,7 @@ view: func [
 				name: 'view-default
 				priority: 50
 				handler: func [event] [
-					print [&quot;view-event:&quot; event/type event/offset]
+					print ["view-event:" event/type event/offset]
 					switch event/type [
 						close [quit]
 						key [if event/key = escape [quit]]
@@ -93,7 +93,7 @@ view: func [
 	]
 
 	; Window title:
-	window/text: any [opts/title window/text &quot;REBOL: untitled&quot;]
+	window/text: any [opts/title window/text "Rebol: untitled"]
 
 	;!!! Add later: use script title - once modules provide that
 
@@ -129,8 +129,8 @@ view: func [
 ]
 
 unview: func [
-	&quot;Closes a window view.&quot;
-	window [object! gob! word! none!] &quot;Window face or GOB. 'all for all. none for last&quot;
+	"Closes a window view."
+	window [object! gob! word! none!] "Window face or GOB. 'all for all. none for last"
 	/local screen
 ][
 	screen: system/view/screen-gob
@@ -144,7 +144,7 @@ unview: func [
 ]
 
 handle-events: func [
-	&quot;Adds a handler to the view event system.&quot;
+	"Adds a handler to the view event system."
 	handler [block!]
 	/local sys-hand
 ][
@@ -152,7 +152,7 @@ handle-events: func [
 	sys-hand: system/view/event-port/locals/handlers
 	; Insert by priority:
 	unless foreach [here: hand] sys-hand [
-		if handler/priority &gt; hand/priority [
+		if handler/priority > hand/priority [
 			insert here handler
 			break/return true
 		]
@@ -163,7 +163,7 @@ handle-events: func [
 ]
 
 unhandle-events: func [
-	&quot;Removes a handler from the view event system.&quot;
+	"Removes a handler from the view event system."
 	handler [object!]
 ][
 	remove find system/view/event-port/locals/handlers handler
@@ -171,7 +171,7 @@ unhandle-events: func [
 ]
 
 handled-events?: func [
-	&quot;Returns event handler object matching a given name.&quot;
+	"Returns event handler object matching a given name."
 	name
 ][
 	foreach hand system/view/event-port/locals/handlers [
@@ -181,13 +181,13 @@ handled-events?: func [
 ]
 
 do-events: func [
-	&quot;Waits for window events. Returns when all windows are closed.&quot;
+	"Waits for window events. Returns when all windows are closed."
 ][
 	wait system/view/event-port
 ]
 
 init-view-system: func [
-	&quot;Initialize the View subsystem.&quot;
+	"Initialize the View subsystem."
 	/local ep
 ][
 	; Already initialized?
@@ -213,18 +213,18 @@ init-view-system: func [
 		tail? system/view/screen-gob
 	]
 ]
-&lt;/pre&gt;
+</pre>
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=30%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=30%>
 '''Getting Started With R3'''
 *[[R3 Alpha]]
 *[[R3 GUI]]
 *[[R3 Commands vs. R2 Commands]]
-*[[Datatypes, Functions, Graphic &amp; Special Notes|Datatypes &amp; Functions,]]
-*[[Cookbooks, Dictionary, Glossary &amp; Other Resources|Resources]]
-&lt;/TD&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=30%&gt;
+*[[Datatypes, Functions, Graphic & Special Notes|Datatypes & Functions,]]
+*[[Cookbooks, Dictionary, Glossary & Other Resources|Resources]]
+</TD><TD ALIGN=LEFT VALIGN=TOP WIDTH=30%>
 
-&lt;/TD&gt;&lt;TD&gt;
+</TD><TD>
 '''R3 Gui/ Graphical User Interface Pages:'''
 *[[GUI Faces]]  - The Basic GUI Element
 *[[GUI Basics]] - Introuction To The GUI
@@ -232,4 +232,4 @@ init-view-system: func [
 *[[GUI Events]] - How Events Are Handled
 *[[GUI Reactors]] - Causing Common Actions
 *[[View_System|View System]] - Displaying The GUI
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>

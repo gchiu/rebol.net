@@ -7,7 +7,7 @@ Requestors are small popup windows used to inform the user or request specific t
 
 ===Typical Requestors===
 
-The REBOL GUI supplies the most commonly used requestors, so you don't need to provide them in your own applications. Examples are:
+The Rebol GUI supplies the most commonly used requestors, so you don't need to provide them in your own applications. Examples are:
 
 *'''alerts''' - urgent messages to user
 *'''dialogs''' - informative messages
@@ -37,7 +37,7 @@ General characteristics of requstors are:
 
 There are two general types of requestors: modal and non-modal.
 
-Modal requestors will open a window and will block events that are sent to all windows except the one that has been opened. For example, if you need to ask the user to &quot;Please confirm deletion?&quot; a modal requestor will wait until the user responds, and no other windows can be used. Modal requestors are also convenient to use because their results are returned from the function.
+Modal requestors will open a window and will block events that are sent to all windows except the one that has been opened. For example, if you need to ask the user to "Please confirm deletion?" a modal requestor will wait until the user responds, and no other windows can be used. Modal requestors are also convenient to use because their results are returned from the function.
 
 A non-modal requestor will open a window but will not block events to other windows. The requestor will return immediately, and you must check later (or use a callback function) to determine the result of the request. They are useful in cases where you want the user to make some choices, but those choices are not critical to the application. Color selection is a typical example.
 

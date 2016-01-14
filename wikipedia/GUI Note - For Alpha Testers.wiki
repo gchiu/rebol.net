@@ -4,7 +4,7 @@ These are notes for [[R3 GUI]] alpha testers.
 
 The GUI works. The primary design achieves most of my goals, although it still has some rough edges. 
 
-&lt;blockquote&gt;'''Keep in mind you are using an ''alpha''.'''&lt;/blockquote&gt;
+<blockquote>'''Keep in mind you are using an ''alpha''.'''</blockquote>
 
 This means it will have some problems and will crash at times. Some of these problems we know about, others we don't.
 
@@ -16,9 +16,9 @@ So, my advice in general is, '''not to worry'''. We will fix everything. We are 
 
 Over the years, I've learned that I need to make this clear:
 
-&lt;blockquote&gt;
+<blockquote>
 '''If part of the system does not seem to work right, let us know! Do not assume that it must remain that way.'''
-&lt;/blockquote&gt;
+</blockquote>
 
 For example, we still have some problems with resizing various panels. Part of this is from incorrect default settings for styles. Maybe its min-size or max-size is not correct. Other problems may be from bugs. But, if it looks wrong, assume that it is wrong.
 
@@ -45,16 +45,16 @@ Setup your editor to run view.exe for your script (to save you time).
 
 Start with:
 
-&lt;pre&gt;
-REBOL []
+<pre>
+Rebol []
 
 do %load-gui.r
 
 view [
-    title &quot;It works!&quot;
-    button &quot;Ok&quot; quit
+    title "It works!"
+    button "Ok" quit
 ]
-&lt;/pre&gt;
+</pre>
 
 You can go from there.
 

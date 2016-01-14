@@ -1,4 +1,4 @@
-{| align=&quot;right&quot;
+{| align="right"
 | __TOC__
 |}
 The APPLY function is new in R3.
@@ -7,11 +7,11 @@ The APPLY function is new in R3.
 
 Normally, you evaluate a function by providing the function followed by its arguments. For example:
 
-  insert string &quot;go&quot;
+  insert string "go"
 
 Functions also allow options, provided as a refinement path to the function. For example, to refine the above example:
 
-  insert/part string &quot;go&quot; 2
+  insert/part string "go" 2
 
 This works just fine in most cases. But, what if you don't know in advance the refinements and arguments that are needed? How do you dynamically call a function with any arbitrary set of arguments and refinements?
 
@@ -23,7 +23,7 @@ Note that it is also possible to dynamically construct a block of code for handl
 
 APPLY takes a function value and applies a block of arguments to that function. The above example can be applied as:
 
-    apply :insert [string &quot;go&quot;]
+    apply :insert [string "go"]
 
 Note these points:
 
@@ -48,13 +48,13 @@ Note that unused arguments do not need to be provided and they will be set to NO
 
 To apply a refinement, such as the /part option above:
 
-    apply :insert [string &quot;go&quot; true 123]
+    apply :insert [string "go" true 123]
 
 The true value indicates that the refinement is in use and the 123 will be pasted for the length argument.
 
 If instead, the line was:
 
-    apply :insert [string &quot;go&quot; false 123]
+    apply :insert [string "go" false 123]
 
 Even though the 123 was provided, it would not be passed because the refinement is not true.
 
@@ -64,11 +64,11 @@ It is so common to pass final values to a function that a REDUCE is part of the 
 
 What this means is that you can write:
 
-   apply :insert [string uppercase &quot;go&quot; get-ref n + 123]
+   apply :insert [string uppercase "go" get-ref n + 123]
 
 In those cases where you do not want to reduce, just use the /only refinement:
 
-   apply/only :insert [&quot;there&quot; &quot;go&quot; #[true] 123]
+   apply/only :insert ["there" "go" #[true] 123]
 
 Now the values of the arg block are used directly as-is. Not even variables are evaluated. This is useful if you need to safely control what is being applied.
 
@@ -78,14 +78,14 @@ APPLY comes in handy when pre-processing arguments and refinements before passin
 
 For example, if we want to create a function that is exactly like INSERT but REDUCEs its value argument first and passes all refinements as needed, it could look something like this:
 
-&lt;pre&gt;
+<pre>
 reinsert: func [
-    &quot;Insert a reduced block into series&quot;
+    "Insert a reduced block into series"
     series value /part length /only /dup count
 ][
     apply :insert [series reduce value part length only dup count]
 ]
-&lt;/pre&gt;
+</pre>
 
 Using APPLY here saves you the effort of dynamically building a function path to call the INSERT function with the given refinements and arguments.
 
@@ -99,7 +99,7 @@ To help make it easier to use APPLY, if the argument block includes more values 
 
 If argument values are missing from the block, NONE values are substituted in their place. This can be seen here:
 
-   &gt;&gt; apply :print []
+   >> apply :print []
    none
 
 ''Note: we should examine if we want to use UNSET for this instead.''
@@ -110,7 +110,7 @@ APPLY will effect the error messages that may be produced when evaluating a func
 
 Because the value of the function is passed (not its name), APPLY does not know the name of the function. Therefore, you will see the name APPLIER used to refer to the function that was called. Here is an example:
 
- &gt;&gt; apply :sine [&quot;xyz&quot;]
+ >> apply :sine ["xyz"]
  ** Script error: applier does not allow string! for its value argument
  ** Where: apply
 

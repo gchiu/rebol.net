@@ -1,1 +1,1 @@
-#REDIRECT [[REBOL 2]]
+#REDIRECT [[Rebol 2]]

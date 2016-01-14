@@ -1,4 +1,4 @@
-Face objects are the higher level graphical object use by REBOL. 
+Face objects are the higher level graphical object use by Rebol. 
 
 This page is still under construction.
 

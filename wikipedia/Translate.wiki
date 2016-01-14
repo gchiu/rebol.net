@@ -2,53 +2,53 @@
 
 Sets the origin for drawing commands.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | offset
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | offset
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;Multiple translate commands will have a cumulative effect:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<p>Multiple translate commands will have a cumulative effect:</p>
+<code><pre>
 fill-pen blue box 50x50 150x150
 translate 50x50 fill-pen red box 50x50 150x150
 translate 50x50 fill-pen yellow box 50x50 150x150
-&lt;/pre&gt;&lt;/code&gt;
-[[image:TRANSLATE-1.png|TRANSLATE example 1]]
+</pre></code>
+[[images/TRANSLATE-1.png|TRANSLATE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;You can use RESET-MATRIX to avoid that if you want:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>You can use RESET-MATRIX to avoid that if you want:</p>
+<code><pre>
 fill-pen blue box 50x50 150x150
 translate 50x50 fill-pen red box 50x50 150x150
 reset-matrix
 translate 50x50 fill-pen yellow box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
-[[image:TRANSLATE-2.png|TRANSLATE example 2]]
+</pre></code>
+[[images/TRANSLATE-2.png|TRANSLATE example 2]]
 
-&lt;br&gt;
-&lt;p&gt;Another way to reset the matrix is to use the PUSH command:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Another way to reset the matrix is to use the PUSH command:</p>
+<code><pre>
 fill-pen blue box 50x50 150x150
 push [translate 50x50 fill-pen red box 50x50 150x150]
 translate 50x50 fill-pen yellow box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
-[[image:TRANSLATE-3.png|TRANSLATE example 3]]
+</pre></code>
+[[images/TRANSLATE-3.png|TRANSLATE example 3]]
 
-&lt;br&gt;
-&lt;p&gt;See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace&lt;/p&gt;
+<br>
+<p>See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Draw]]
 *[[Anti-Alias]]
 *[[Arc]]
@@ -58,14 +58,14 @@ Pages
 *[[Clip]]
 *[[Curve]]
 *[[Ellipse]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Fill-Pen]]
 *[[Fill-Rule]]
 *[[Gamma]]
@@ -76,13 +76,13 @@ Pages
 *[[Line]]
 *[[Line-Cap]]
 
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Line-Join]]
 *[[Line-Pattern]]
 *[[Line-Width]]
@@ -92,14 +92,14 @@ Pages
 *[[Push]]
 *[[Reset-Matrix]]
 *[[Rotate]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=14%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=14%>
 
 
 
-&lt;font size=1&gt;
+<font size=1>
 *[[Scale]]
 *[[Shape]]
 *[[Skew]]
@@ -108,20 +108,20 @@ Pages
 *[[Transform]]
 *[[Translate]]
 *[[Triangle]]
-&lt;/font&gt;&lt;/TD&gt;
+</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP width=25%&gt;
+<TD ALIGN=LEFT VALIGN=TOP width=25%>
 Chapters
-&lt;font size=1&gt;
+<font size=1>
 *[[R3 Introduction]]
 *[[Getting Started With R3]]
 *[[The Graphical User Interface]]
 *[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
 *'''Script Writing With Draw'''
-*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+*[[The Graphic Object]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP &gt;
-&lt;font size=1&gt;
+<TD ALIGN=LEFT VALIGN=TOP >
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</font></TD>
+</TR></TABLE>

@@ -2,13 +2,13 @@ To get the source code for a mezzanine-level or user-defined function, you can u
 
 For example:
 
-&lt;pre&gt;
+<pre>
 source probe
-&lt;/pre&gt;
+</pre>
 
 will display
 
-&lt;pre&gt;
+<pre>
 probe: make function! [[
     {Debug print a molded value and returns that same value.}
     value [any-type!]
@@ -16,23 +16,23 @@ probe: make function! [[
     print mold :value
     :value
 ]]
-&lt;/pre&gt;
+</pre>
 
 Another example, to see the source for the SOURCE function:
 
-&lt;pre&gt;
+<pre>
 source source
-&lt;/pre&gt;
+</pre>
 
 displays:
 
-&lt;pre&gt;
+<pre>
 source: make function! [[
-    &quot;Prints the source code for a word.&quot;
+    "Prints the source code for a word."
     'word [word! path!]
 ][
-    if not value? word [print [word &quot;undefined&quot;] exit]
-    print head insert mold get word reduce [word &quot;: &quot;]
+    if not value? word [print [word "undefined"] exit]
+    print head insert mold get word reduce [word ": "]
     exit
 ]]
-&lt;/pre&gt;
+</pre>

@@ -2,25 +2,25 @@
 
 Sets the clockwise rotation, in degrees, for drawing commands.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | angle
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | angle
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;Negative numbers can be used for counter-clockwise rotation.&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<p>Negative numbers can be used for counter-clockwise rotation.</p>
+<code><pre>
 fill-pen blue box 100x100 300x300
 rotate  30 fill-pen red box 100x100 300x300
 rotate -60 fill-pen yellow box 100x100 300x300
-&lt;/pre&gt;&lt;/code&gt;
-[[image:ROTATE-1.png|ROTATE example 1]]
+</pre></code>
+[[images/ROTATE-1.png|ROTATE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace&lt;/p&gt;
+<br>
+<p>See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>

@@ -19,11 +19,11 @@ __NOTOC__
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=30%&gt;
-&lt;font size=1&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=30%>
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;
-&lt;/TD&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=30%&gt;
-&lt;font size=1&gt;
-&lt;/font&gt;
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</font>
+</TD><TD ALIGN=LEFT VALIGN=TOP WIDTH=30%>
+<font size=1>
+</font>
+</TD></TR></TABLE>

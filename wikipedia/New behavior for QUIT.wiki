@@ -4,52 +4,52 @@ This is just a summary of the method. See [[Defining a better QUIT]] for a full 
 
 ==Summary==
 
-The behavior of QUIT has changed to depend on how it is used. QUIT can either quit the entire REBOL system, or just exit the current script being evaluated.
+The behavior of QUIT has changed to depend on how it is used. QUIT can either quit the entire Rebol system, or just exit the current script being evaluated.
 
 ==Example==
 
 It's easiest to show an example.
 
-Take the REBOL script quit.r below:
+Take the Rebol script quit.r below:
 
- REBOL []
- print &quot;hello&quot;
+ Rebol []
+ print "hello"
  quit
- print &quot;end&quot;
+ print "end"
 
-If you start REBOL with that script (on the command line or from an icon), the script will print hello, exit, and REBOL will terminate.
+If you start Rebol with that script (on the command line or from an icon), the script will print hello, exit, and Rebol will terminate.
 
-However, if you start REBOL and type from the console, the script will return to the console when the QUIT is evaluated:
+However, if you start Rebol and type from the console, the script will return to the console when the QUIT is evaluated:
 
- &gt;&gt; do %quit.r
+ >> do %quit.r
  hello
- &gt;&gt;
+ >>
 
-Notice that &quot;end&quot; is not printed.
+Notice that "end" is not printed.
 
 ==QUIT/return==
 
 If you want the script above to return a value:
 
- REBOL []
- print &quot;hello&quot;
- quit/return &quot;done&quot;
+ Rebol []
+ print "hello"
+ quit/return "done"
 
 Now you can see that result:
 
- &gt;&gt; do %quit.r
+ >> do %quit.r
  hello
- == &quot;done&quot;
+ == "done"
 
 ==QUIT/now==
 
-There may be a few places within the code where QUIT must terminate the REBOL system immediately. For example, a looping error situation may want to force such a QUIT after the second recursion.
+There may be a few places within the code where QUIT must terminate the Rebol system immediately. For example, a looping error situation may want to force such a QUIT after the second recursion.
 
 This is done with:
 
   QUIT/now
 
-The REBOL system will terminate immediately.
+The Rebol system will terminate immediately.
 
 ==QUIT in Console==
 

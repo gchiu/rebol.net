@@ -2,20 +2,20 @@
 
 Resets the current transformation matrix to its default values.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | []
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | 
+| bgcolor="white" | []
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;The default transformation matrix is a unit matrix. That is:&lt;/p&gt;
-&lt;p&gt;|1 0 0|&lt;br&gt;
-|0 1 0|&lt;br&gt;
-|0 0 1|&lt;/p&gt;
-&lt;p&gt;If you make changes with '''scale''', '''skew''', or '''rotate''', this is how you would reset them.&lt;/p&gt;
+<br>'''Notes and Examples'''
+<p>The default transformation matrix is a unit matrix. That is:</p>
+<p>|1 0 0|<br>
+|0 1 0|<br>
+|0 0 1|</p>
+<p>If you make changes with '''scale''', '''skew''', or '''rotate''', this is how you would reset them.</p>

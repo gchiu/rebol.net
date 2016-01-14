@@ -2,47 +2,47 @@
 
 ==Overview==
 
-Rebcode is a new REBOL dialect that implements a virtual machine (VM) allowing programmers to create high performance lower-level functions in a manner that is consistent with the design principles of REBOL.
+Rebcode is a new Rebol dialect that implements a virtual machine (VM) allowing programmers to create high performance lower-level functions in a manner that is consistent with the design principles of Rebol.
 
 ===The Problem===
 
-For most types of programs, and especially scripts, REBOL's normal execution methods provide excellent performance and all of the code can be written with higher level functions. However, there are special cases and specific operations, such as looping mathematical computations and large series manipulation (e.g. generating images), that require greater performance. Those cases can benefit from an optimized execution method, even if the code is more difficult to write and maintain than normal REBOL.
+For most types of programs, and especially scripts, Rebol's normal execution methods provide excellent performance and all of the code can be written with higher level functions. However, there are special cases and specific operations, such as looping mathematical computations and large series manipulation (e.g. generating images), that require greater performance. Those cases can benefit from an optimized execution method, even if the code is more difficult to write and maintain than normal Rebol.
 
 ===The Solution===
 
-For cases where high performance computation is necessary, REBOL provides a different method of evaluation based on the idea of a virtual machine (VM). It is called rebcode.
+For cases where high performance computation is necessary, Rebol provides a different method of evaluation based on the idea of a virtual machine (VM). It is called rebcode.
 
-Rebcode is a dialect of REBOL (a block of words and values), using a concept similar to that of bytecode used in languages like Java, and long before that, Pascal and Lisp. The result is that specific functions can be written in an optimized manner to execute ten times faster, on average, and up to thirty times faster in special cases. Cases where rebcode is useful include: special graphics routines, math operations, unique search methods, and more.
+Rebcode is a dialect of Rebol (a block of words and values), using a concept similar to that of bytecode used in languages like Java, and long before that, Pascal and Lisp. The result is that specific functions can be written in an optimized manner to execute ten times faster, on average, and up to thirty times faster in special cases. Cases where rebcode is useful include: special graphics routines, math operations, unique search methods, and more.
 
-The concept of rebcode is consistent with the design principles of REBOL. Rebcode is expressed in block format and is encapsulated by a function interface. Rebcode allows access to normal REBOL variables, including those bound to other contexts, objects, and globals. In addition, rebcode is machine independent and will run identically on all processors.
+The concept of rebcode is consistent with the design principles of Rebol. Rebcode is expressed in block format and is encapsulated by a function interface. Rebcode allows access to normal Rebol variables, including those bound to other contexts, objects, and globals. In addition, rebcode is machine independent and will run identically on all processors.
 
 ===Feature Summary===
 
 *High speed execution, on average ten times faster for specific integer, decimal, logic, series, and looping algorithms.
-*Integrated with REBOL as a new functional datatype (rebcode!).
-*Access to normal REBOL variables with proper scoping (binding as locals, functions, objects, globals).
-*Built from normal REBOL blocks, allowing loading and molding, as well as dynamic construction of rebcode dialect code using parse, compose, reduce, and other techniques.
-*Supports embedded comments and doc-strings, similar to other REBOL functions, compatible with the help function.
+*Integrated with Rebol as a new functional datatype (rebcode!).
+*Access to normal Rebol variables with proper scoping (binding as locals, functions, objects, globals).
+*Built from normal Rebol blocks, allowing loading and molding, as well as dynamic construction of rebcode dialect code using parse, compose, reduce, and other techniques.
+*Supports embedded comments and doc-strings, similar to other Rebol functions, compatible with the help function.
 *Opcodes for executing integer, decimal (floating point), and series (strings, blocks, images, etc.) datatypes.
 *Direct execution of standard math functions such as sine, cosine, tangent, log, and others.
-*Able to evaluate any arbitrary REBOL expression within a block (using the do opcode).
+*Able to evaluate any arbitrary Rebol expression within a block (using the do opcode).
 *Provides block-based control flow for conditional (if, either) and looping (while, until, loop, repeat) functions.
 *Assembler fixup of branch labels and support for special rewriting rules.
 
 ===Special Notes===
 
-*Rebcode is designed for experts; it is not intended for beginners. Compared to normal REBOL, it is easy to make mistakes when writing rebcode.
-*Rebcode was added to REBOL primarily to provide greater performance for algorithms that require such. Because of that, rebcode opcodes are lower-level and they remove most of the type checks and datatype polymorphism found in normal REBOL.
-*Rebcode is much less readable than normal REBOL; programmers should not create rebcode functions until they know for certain that optimization is needed, and that it cannot be done with normal REBOL functions, even with the special use of refinements. For example, if you decide to write a string search or parser using rebcode, you should first exhaust the range of solutions provided by the parse function and its dialect, and possibly find/match.
+*Rebcode is designed for experts; it is not intended for beginners. Compared to normal Rebol, it is easy to make mistakes when writing rebcode.
+*Rebcode was added to Rebol primarily to provide greater performance for algorithms that require such. Because of that, rebcode opcodes are lower-level and they remove most of the type checks and datatype polymorphism found in normal Rebol.
+*Rebcode is much less readable than normal Rebol; programmers should not create rebcode functions until they know for certain that optimization is needed, and that it cannot be done with normal Rebol functions, even with the special use of refinements. For example, if you decide to write a string search or parser using rebcode, you should first exhaust the range of solutions provided by the parse function and its dialect, and possibly find/match.
 *High level code, such as the outer blocks and functions of your program, should never be written in rebcode; doing so provides no advantage. Use rebcode only for optimizing specific, well defined, lower-level functions.
 *In some cases, it is better to generate rebcode using higher level expressions that are compiled. You can use the internal rebcode rewriting assembler or create your own special dialects that are compiled with the parse function.
 
 ===Current Test Versions===
 
-The current test versions of REBOL with Rebcode can be found in the REBOL Test Releases area.
+The current test versions of Rebol with Rebcode can be found in the Rebol Test Releases area.
 
-The current Windows beta release is [http://www.rebol.net/builds/031/rebview1361031.exe rebview1361031.exe&quot;].  
-The current Linux beta release is [http://www.rebol.net/builds/042/rebview1350042.tar.gz rebview1350042.tar.gz&quot;].
+The current Windows beta release is [http://www.rebol.net/builds/031/rebview1361031.exe rebview1361031.exe"].  
+The current Linux beta release is [http://www.rebol.net/builds/042/rebview1350042.tar.gz rebview1350042.tar.gz"].
 
 ===More Information and Examples===
 
@@ -52,9 +52,9 @@ We will be posting links to more information and examples here soon.
 
 ===What is Rebcode?===
 
-Rebcode is a dialect of REBOL. It is a sequence of words and values that is interpreted in an extremely efficient manner, similar to how instructions are executed on an actual processor. (This is the reason why rebcode is said to be processed by a &quot;virtual machine&quot;.)
+Rebcode is a dialect of Rebol. It is a sequence of words and values that is interpreted in an extremely efficient manner, similar to how instructions are executed on an actual processor. (This is the reason why rebcode is said to be processed by a "virtual machine".)
 
-Rebcode is written in a block, just like normal REBOL code. However, unlike REBOL code that gets evaluated as a series of functions, rebcode consists of a sequence of opcodes. Each opcode performs a small, low-level action on a fixed set of arguments. For example, an opcode may do nothing more than add two integers. If you are familiar with the concept of assembly code, rebcode is very similar.
+Rebcode is written in a block, just like normal Rebol code. However, unlike Rebol code that gets evaluated as a series of functions, rebcode consists of a sequence of opcodes. Each opcode performs a small, low-level action on a fixed set of arguments. For example, an opcode may do nothing more than add two integers. If you are familiar with the concept of assembly code, rebcode is very similar.
 
 Here is an example rebcode block:
 
@@ -65,20 +65,20 @@ Here is an example rebcode block:
     div.i val 50
  ]
 
-The words '''div.i''', '''add.i''', and '''mul.i''' are opcodes; they are low level functions that perform integer math operations. Each opcode is followed by two arguments that are used in the operation, and the result is stored back into the first argument (val). Thus, rebcode is implemented in what is known as the &quot;two-address&quot; model of computation. This technique permits optimal performance within the virtual machine.
+The words '''div.i''', '''add.i''', and '''mul.i''' are opcodes; they are low level functions that perform integer math operations. Each opcode is followed by two arguments that are used in the operation, and the result is stored back into the first argument (val). Thus, rebcode is implemented in what is known as the "two-address" model of computation. This technique permits optimal performance within the virtual machine.
 
-Rebcode is a statement-based language, not an expression-based language like REBOL. Opcodes perform actions, but do not return results.
+Rebcode is a statement-based language, not an expression-based language like Rebol. Opcodes perform actions, but do not return results.
 
 There are many different opcodes supported by the rebcode virtual machine. A summary list is provided below, and a complete description of each opcode is provided in the RebCode Reference documentation.
 
 ===Rebcode Functions===
 
-All rebcode must be written within a special type of function, called a rebcode function. These functions are created like REBOL user-defined functions.
+All rebcode must be written within a special type of function, called a rebcode function. These functions are created like Rebol user-defined functions.
 
 Here is a simple example that makes a rebcode function:
 
  md32: rebcode [
-    &quot;Returns two integers multiplied then divided by 32.&quot;
+    "Returns two integers multiplied then divided by 32."
     a [integer!]
     b [integer!]
  ][
@@ -95,7 +95,7 @@ The args block is the interface specification. It can contain embedded comments,
 
 The body block holds opcodes and their arguments. They must be written in specific order as defined by the rebcode dialect. In addition, before the rebcode block can be executed, it must be processed by an assembler that performs actions such as doing relative branch fixups and more. See below for details.
 
-Once defined, a rebcode function can be evaluated like all other REBOL functions. You can evaluate it and set its result to a variable:
+Once defined, a rebcode function can be evaluated like all other Rebol functions. You can evaluate it and set its result to a variable:
 
  result: md32 5 30
 
@@ -121,9 +121,9 @@ A rebcode block contains one or more such opcodes:
  mul.i val 100
  randz val
 
-As with all REBOL dialects, line breaks are not relevant to the meaning of the code.
+As with all Rebol dialects, line breaks are not relevant to the meaning of the code.
 
-Some opcodes may take only one argument, others may require more. Most opcodes require that the first argument be a REBOL variable--it can be a function local, global, or object variable-- and allow the second argument to be a variable or a literal (integer, decimal, string, file, etc.)
+Some opcodes may take only one argument, others may require more. Most opcodes require that the first argument be a Rebol variable--it can be a function local, global, or object variable-- and allow the second argument to be a variable or a literal (integer, decimal, string, file, etc.)
 
 There are three types of opcodes:
 
@@ -166,13 +166,13 @@ Other opcodes can appear between the comparison and the control opcode, as long 
  add.i count 1
  ift   [set.i count 0]
 
-A complete list of rebcode opcodes and their interface specifications can be obtained directly from REBOL with the following line:
+A complete list of rebcode opcodes and their interface specifications can be obtained directly from Rebol with the following line:
 
  print system/internal/rebcodes
 
 ===Variable Usage===
 
-Part of the power of rebcode comes from the fact that normal REBOL variables can be used directly. Variables obey the same binding (scoping) rules as they do throughout REBOL. The variable can be local to the function, part of another function or object, or global. However, because rebcode is highly optimized, there are a few important rules about variables that you should know.
+Part of the power of rebcode comes from the fact that normal Rebol variables can be used directly. Variables obey the same binding (scoping) rules as they do throughout Rebol. The variable can be local to the function, part of another function or object, or global. However, because rebcode is highly optimized, there are a few important rules about variables that you should know.
 
 Rule 1: Always initialize your local variables. When you define a local variable, it is set to none by default. You must set it to the correct datatype before using it.
 
@@ -200,7 +200,7 @@ Rule 3: Beware of opcodes that may modify the datatype of a variable. Some opcod
 
 Here is an example:
 
- block: [123 &quot;name&quot; 1.2]
+ block: [123 "name" 1.2]
  
  code: rebcode [arg series /local sum] [
     set   sum 0
@@ -230,9 +230,9 @@ You may also have noticed that logic opcodes and some math opcodes don't have an
 
 ===Returning Results===
 
-Rebcode functions do not return a result by default. This behavior is different from normal REBOL functions. In rebcode a value can only be returned with the return opcode.
+Rebcode functions do not return a result by default. This behavior is different from normal Rebol functions. In rebcode a value can only be returned with the return opcode.
 
-Here is an example of a normal REBOL function. The result is returned automatically:
+Here is an example of a normal Rebol function. The result is returned automatically:
 
  f1: func [a [integer!] b [integer!]] [
     max a b
@@ -245,7 +245,7 @@ However, written in rebcode, the result must be returned explicitly:
     return a
  ]
 
-To exit a function without returning a result, use the exit opcode. This is the same as normal REBOL functions.
+To exit a function without returning a result, use the exit opcode. This is the same as normal Rebol functions.
 
 ===Nested Rebcode Blocks===
 
@@ -298,7 +298,7 @@ How to remember gett and sett. Read them as:
  SET T flag from a variable
  GET T flag and put it in a variable
 
-These two opcodes will be a source of problems unless this rule is memorized. If you just remember SET T it will be enough. An easy way to remember it is this: SETT is the same as &quot;SET T&quot;.
+These two opcodes will be a source of problems unless this rule is memorized. If you just remember SET T it will be enough. An easy way to remember it is this: SETT is the same as "SET T".
 
 Note that SETT sets false flag also for zero integer!
 
@@ -334,7 +334,7 @@ The brab opcode allows you to branch to an offset selected at runtime by an inde
 Here is an example:
 
  brab  [4 6 8] n
- print &quot;default&quot;
+ print "default"
  bra   done
  print 1
  print 2
@@ -386,7 +386,7 @@ It can be called from rebcode with a line such as:
 
 If a function allows refinements, they can also be specified in the argument block. The position of the refinement arguments is that specified by the function interface. For example, if you ask for help on checksum, you see:
 
- &gt;&gt; ? checksum
+ >> ? checksum
  USAGE:
     CHECKSUM data /tcp /secure /hash size /method word /key key-value
  To invoke the checksum function with the /secure refinement, you would write:
@@ -399,7 +399,7 @@ Note that all unsupplied arguments are set to none. In the examples above, the /
 
 ====Beware refinement order====
 
-In normal REBOL code, you are allowed to change the position of refinements within the interface specification of functions. In normal REBOL, this will have no affect on the functions when they are called.
+In normal Rebol code, you are allowed to change the position of refinements within the interface specification of functions. In normal Rebol, this will have no affect on the functions when they are called.
 
 For instance, this function:
 
@@ -409,24 +409,24 @@ can be changed to:
 
  bub: func [val /only /normal] [...]
 
-Without affecting normal REBOL code. However, it will have an affect on rebcode that calls it, because the order of refinements in rebcode is specified by position, not by name.
+Without affecting normal Rebol code. However, it will have an affect on rebcode that calls it, because the order of refinements in rebcode is specified by position, not by name.
 
 ===The DO Opcode===
 
-The do opcode is used to invoke the normal REBOL interpreter. This allows your rebcode to evaluate any REBOL expression from within your rebcode function. This is a useful &quot;escape&quot; when your code needs to perform more complicated actions or access functions or objects that are not easy to use directly in rebcode.
+The do opcode is used to invoke the normal Rebol interpreter. This allows your rebcode to evaluate any Rebol expression from within your rebcode function. This is a useful "escape" when your code needs to perform more complicated actions or access functions or objects that are not easy to use directly in rebcode.
 
  do plat [reduce [system/version/4 system/version/3]]
 
-Note that do opcode does not bind the contents of its block to the VM context. This allows you to use normal REBOL code within the block.
+Note that do opcode does not bind the contents of its block to the VM context. This allows you to use normal Rebol code within the block.
 
-The do opcode escapes to REBOL, meaning it is much slower than the rebcode VM. If you use do inside a rebcode function, particularly inside a loop, consider whether you need to use rebcode at all. Using do will greatly impact the performance of rebcode.
+The do opcode escapes to Rebol, meaning it is much slower than the rebcode VM. If you use do inside a rebcode function, particularly inside a loop, consider whether you need to use rebcode at all. Using do will greatly impact the performance of rebcode.
 
 ===The Rebcode! Datatype===
 
 As described above, rebcode functions are created with rebcode function such as:
 
  md32: rebcode [
-    &quot;Returns two integers multiplied then divided by 100.&quot;
+    "Returns two integers multiplied then divided by 100."
     a [integer!]
     b [integer!]
  ][
@@ -437,7 +437,7 @@ As described above, rebcode functions are created with rebcode function such as:
 
 The value of variable md32 is of the rebcode! datatype. This is a functional datatype, the same as function!, native!, action!, and others.
 
-REBOL datatype functions apply to rebcode. For example:
+Rebol datatype functions apply to rebcode. For example:
 
  print type? :md32
  rebcode!
@@ -504,11 +504,11 @@ The save/all function also creates a properly formed rebcode literal block.
 
 ===Embedded Comments===
 
-The comment opcode lets you embed comments into your code. They differ from normal &quot;;&quot; comments because they remain within the body of the code and will appear if the code is printed, molded, or saved.
+The comment opcode lets you embed comments into your code. They differ from normal ";" comments because they remain within the body of the code and will appear if the code is printed, molded, or saved.
 
 For example, to add a string comment to your code:
 
- comment &quot;This is a comment&quot;
+ comment "This is a comment"
 
 You can also use a comment to temporarily remove sections of code by putting it within a block:
 
@@ -520,9 +520,9 @@ You can also use a comment to temporarily remove sections of code by putting it 
 
 ===Debugging===
 
-It is more difficult to write rebcode than regular REBOL. Invalid expressions will crash the process; datatype mismatches may produce bad results without crashing.
+It is more difficult to write rebcode than regular Rebol. Invalid expressions will crash the process; datatype mismatches may produce bad results without crashing.
 
-To help you write and test code, a few debugging opcodes have been provided. These opcodes are similar to their related functions in REBOL. You can insert them into your code to view values during debugging.
+To help you write and test code, a few debugging opcodes have been provided. These opcodes are similar to their related functions in Rebol. You can insert them into your code to view values during debugging.
 
 ;?? variable : Print a variable name followed by its value.
 ;probe : Print a molded value or a molded block of values.
@@ -547,17 +547,17 @@ More information about the rebcode assembler will be added in future updates to 
 
 There are three types of errors that can occur in rebcode:
 
-;syntax : These errors occur at load time, the same way they do with all REBOL expressions. They are normally the result of improperly written REBOL values.
+;syntax : These errors occur at load time, the same way they do with all Rebol expressions. They are normally the result of improperly written Rebol values.
 ;assembly : When you create a new rebcode function, it is parsed by the assembler (mentioned above). The opcodes and their datatypes will be verified during this operation; if they are invalid, an error message will be generated.
-;runtime : For performance reasons very little checking is done within opcodes. This is different from most REBOL function code. It is possible for errors to exist in your rebcode that can crash the REBOL process. Such errors are permitted, and must be eliminated by the programmer. It is also possible for errors to have no effect at all, or to produce invalid results.
+;runtime : For performance reasons very little checking is done within opcodes. This is different from most Rebol function code. It is possible for errors to exist in your rebcode that can crash the Rebol process. Such errors are permitted, and must be eliminated by the programmer. It is also possible for errors to have no effect at all, or to produce invalid results.
 
-Programmers must check their work carefully to be sure that no errors exist in their code. When in doubt, check your code again. Unlike normal REBOL code, errors in rebcode can crash the process.
+Programmers must check their work carefully to be sure that no errors exist in their code. When in doubt, check your code again. Unlike normal Rebol code, errors in rebcode can crash the process.
 
 ==Examples==
 
 ===Log-2===
 
-Produces the same result as the REBOL log-2 function.
+Produces the same result as the Rebol log-2 function.
 
  log-2: rebcode [n [decimal!]] [
     log-e  n
@@ -567,7 +567,7 @@ Produces the same result as the REBOL log-2 function.
 
 ===Factorial===
 
-Here is a factorial function written in rebcode as an example. It's about 10 times faster than plain REBOL, but if you really need speed for a function like this, you may be better of with a memoization approach if that can be done.
+Here is a factorial function written in rebcode as an example. It's about 10 times faster than plain Rebol, but if you really need speed for a function like this, you may be better of with a memoization approach if that can be done.
 
  factorial: rebcode [
     n [number!] 
@@ -619,7 +619,7 @@ Here it is written in rebcode:
 
 ===Power (**)===
 
- power: rebcode [val [decimal!] exp [decimal!] &quot;Exponent&quot;] [
+ power: rebcode [val [decimal!] exp [decimal!] "Exponent"] [
     log-e  val
     mul.d  val exp
     exp    val
@@ -628,7 +628,7 @@ Here it is written in rebcode:
 
 ===Root===
 
- root: rebcode [val [decimal!] exp [decimal!] &quot;Exponent&quot;] [
+ root: rebcode [val [decimal!] exp [decimal!] "Exponent"] [
     log-e  val
     div.d  val exp
     exp    val
@@ -685,7 +685,7 @@ Here is a function that will convert separate RGBA components into a single RGBA
 Converts a string of binary digits, zeros or ones, to a signed integer value. The first digit represents the sign bit.
 
  bin-str-to-int: rebcode [
-    s &quot;string of binary digits; up to 32 chars&quot;
+    s "string of binary digits; up to 32 chars"
     /local len res dig bit
  ] [
     tail? s
@@ -701,7 +701,7 @@ Converts a string of binary digits, zeros or ones, to a signed integer value. Th
     until [
         back s
         pick dig s 1
-        eq.i dig 49     ; 49 = #&quot;1&quot;
+        eq.i dig 49     ; 49 = #"1"
         braf not-a-one  ; not a 1, skip bit flipping
         or   res bit    ; it's a 1; flip the bit
  
@@ -722,7 +722,7 @@ Converts a signed integer value to a string of binary digits; zeros or ones; the
     val [integer!]
     /local res tmp bit
  ] [
-    copy res &quot;00000000000000000000000000000000&quot; -1
+    copy res "00000000000000000000000000000000" -1
  
     tail res            ; we'll be walking the string backwards
     set bit 1           ; which bit are we going to flip for 1's
@@ -733,7 +733,7 @@ Converts a signed integer value to a string of binary digits; zeros or ones; the
         and    tmp bit
         neq.i  tmp 0
         braf not-a-one  ; not a 1, skip digit setting
-        poke res 1 49   ; 49 = #&quot;1&quot;
+        poke res 1 49   ; 49 = #"1"
 
     label not-a-one
         lsl   bit 1     ; shift our bit so we flip the next one  
@@ -845,18 +845,18 @@ See Also: Compare Opcodes/Series Comparisons
 
 ====Debugging Functions====
 
- 	??	Works like ?? in REBOL.
+ 	??	Works like ?? in Rebol.
  	escape?	Check if user pressed escape key. If so, halt to console.
- 	print	Works like print in REBOL.
- 	probe	Works like probe in REBOL.
+ 	print	Works like print in Rebol.
+ 	probe	Works like probe in Rebol.
 
 ===Compare Opcodes===
 
 ====Integer Comparisons====
 
  	eq.i	Sets the TRUE flag if the values are equal.
- 	glt.i	Sets the TRUE flag if: value1 &lt; operand &lt; value2.
- 	glte.i	Sets the TRUE flag if: value1 &lt;= operand &lt;= value2.
+ 	glt.i	Sets the TRUE flag if: value1 < operand < value2.
+ 	glte.i	Sets the TRUE flag if: value1 <= operand <= value2.
  	gt.i	Sets the TRUE flag if the first value is greater than the second value.
  	gteq.i	Sets the TRUE flag if the first value is greater than or equal to the second value.
  	lt.i	Sets the TRUE flag if the first value is less than the second value.
@@ -866,8 +866,8 @@ See Also: Compare Opcodes/Series Comparisons
 ====Decimal Comparisons====
 
  	eq.d	Sets the TRUE flag if the values are equal.
- 	glt.d	Sets the TRUE flag if: value1 &lt; operand &lt; value2.
- 	glte.d	Sets the TRUE flag if: value1 &lt;= operand &lt;= value2.
+ 	glt.d	Sets the TRUE flag if: value1 < operand < value2.
+ 	glte.d	Sets the TRUE flag if: value1 <= operand <= value2.
  	gt.d	Sets the TRUE flag if the first value is greater than the second value.
  	gteq.d	Sets the TRUE flag if the first value is greater than or equal to the second value.
  	lt.d	Sets the TRUE flag if the first value is less than the second value.

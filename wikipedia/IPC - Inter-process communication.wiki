@@ -23,7 +23,7 @@ Jabber uses an email format for Jabber IDs. The resource-id identifies specific 
     user@domain.com/resource-id
 
 
-What kind of &quot;processes&quot; are we talking about as endpoints? Is it about communication between R3 tasks (within a single process), about multiple R3 processes on the same machine, R3 processes across a LAN? WAN? Heterogenous processes?
+What kind of "processes" are we talking about as endpoints? Is it about communication between R3 tasks (within a single process), about multiple R3 processes on the same machine, R3 processes across a LAN? WAN? Heterogenous processes?
 
 
 ==Messages==
@@ -32,12 +32,12 @@ What do messages look like? Can it be any simpler than this?
 
     [opt header  body]
 
-For interop purposes, how do you map from native REBOL format to JSON, XML, or other formats?
+For interop purposes, how do you map from native Rebol format to JSON, XML, or other formats?
 
 
 ==Interface/API==
 
-What methods do we need? What kind of state management if any? Synchronus versus asynchronous and the ability to wait for a given message. e.g. the tuplespace model where a worker asks for a tuple matching a given pattern and &quot;blocks&quot; until it is notified when a matching tuple arrives.
+What methods do we need? What kind of state management if any? Synchronus versus asynchronous and the ability to wait for a given message. e.g. the tuplespace model where a worker asks for a tuple matching a given pattern and "blocks" until it is notified when a matching tuple arrives.
 
 What kind of messages do we have?
 
@@ -54,7 +54,7 @@ Do we use the same mechanism for inter-thread messaging?
 
 Is this at all possible?
 
-Is this simply mimicked using a common REBOL API running over two different engines?
+Is this simply mimicked using a common Rebol API running over two different engines?
 
 Advantages:
 *Consistency in API
@@ -66,7 +66,7 @@ Disadvantages:
 
 
 ==Implementation==
-Should this be coded right into the host-kit as a default part of REBOL or as an extension?
+Should this be coded right into the host-kit as a default part of Rebol or as an extension?
 
 If an extension model is used, should it be included by default in the host or loaded at run-time?
 

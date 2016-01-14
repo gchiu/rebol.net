@@ -2,29 +2,29 @@
 
 Specifies type of algorithm used when an image is scaled.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | filter-type
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | Filter algorithm
-| bgcolor=&quot;white&quot; | '''nearest''' - Uses 'nearest neighbour' algorithm to scale image
+| bgcolor="white" | filter-type
+| bgcolor="white" | [word!]
+| bgcolor="white" | Filter algorithm
+| bgcolor="white" | '''nearest''' - Uses 'nearest neighbour' algorithm to scale image
 '''bilinear''' - Uses bilinear filter' for scaling
 '''bicubic''' - Uses bicubic filter for scaling
 '''gaussian''' - Uses gaussian filter for scaling
 |- 
-| bgcolor=&quot;white&quot; | filter-mode
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | Optional. Filter mode used for slower but hi-quality output
-| bgcolor=&quot;white&quot; | '''resample'''
+| bgcolor="white" | filter-mode
+| bgcolor="white" | [word!]
+| bgcolor="white" | Optional. Filter mode used for slower but hi-quality output
+| bgcolor="white" | '''resample'''
 |- 
-| bgcolor=&quot;white&quot; | blur-amount
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | Optional. Used only in '''resample''' mode
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | blur-amount
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | Optional. Used only in '''resample''' mode
+| bgcolor="white" | 
 |}
 
 '''Need a good stock bitmap for these examples.'''

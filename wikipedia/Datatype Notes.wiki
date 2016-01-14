@@ -1,6 +1,6 @@
 
 ==Datatype Notes==
-&lt;TABLE&gt;&lt;TR&gt;&lt;TD VALIGN=TOP&gt;
+<TABLE><TR><TD VALIGN=TOP>
 *[[Bitsets]] - major changes to know about
 *[[Closures]] - a special type of function
 *[[Errors]] - changes in error datatype
@@ -9,13 +9,13 @@
 *[[Module]] - components and namespaces
 *[[Decimals-64]] - binary floating point numbers
 *[[Money]] - high precision numbers
-&lt;/TD&gt;&lt;TD VALIGN=TOP&gt;
+</TD><TD VALIGN=TOP>
 *[[Paths]] - access and refinement paths
 *[[Percent]] - numeric percentage
 *[[Ports]] - completely redesigned
 *[[Unicode]] - unicode (pending)
 *[[Vectors]] - efficient arrays
-&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+</TD></TR></TABLE>
 *Special datatype sections:
 **[[datatypes|List of datatypes]]
 **[[Datatypes in Transition]]

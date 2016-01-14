@@ -1,47 +1,47 @@
 ==Some Commercial Examples==
 
-In this page you will find a ''partial list'' of companies and developers using REBOL.
-Feel free to add yourself into these lists if you are a company or a developer working with REBOL.
+In this page you will find a ''partial list'' of companies and developers using Rebol.
+Feel free to add yourself into these lists if you are a company or a developer working with Rebol.
 
 Please note this is not a full list as it is maintained under a volunteer basis. 
 
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Company and homepage
 ! Project
 |-
 |[http://www.altme.com/ AltMe]
-|AltMe, a messaging and cooperation system written in REBOL
+|AltMe, a messaging and cooperation system written in Rebol
 |-
 |[http://www.qtask.com Qtask]
-|Qtask, collaborative project and task management - backend written in REBOL
+|Qtask, collaborative project and task management - backend written in Rebol
 |-
 |[http://www.digicamsoft.com/ Digicamsoft]
-|Producer of Reviewer, photo manager written in REBOL
+|Producer of Reviewer, photo manager written in Rebol
 |-
 |[http://www.synapsedirect.com/ Synapse EMR]
-|Multi-user Electronic Medical Records system written in REBOL
+|Multi-user Electronic Medical Records system written in Rebol
 |-
 |[http://www.rockfactory.us/ Rockfactory Lesson Studios]
-|Commercial music lesson studio, scheduling system written in REBOL
+|Commercial music lesson studio, scheduling system written in Rebol
 |-
 |[http://www.easybraine.be EasyBraine SA]
-|Custom ERP solutions written in REBOL
+|Custom ERP solutions written in Rebol
 |-
-|[http://www.saphirion.com Saphirion Ltd. &amp; Co. KG]
+|[http://www.saphirion.com Saphirion Ltd. & Co. KG]
 |Producer of myValueDriver, Cost Analisys tool for goods and product to achive knowledge and conduct negotiations.
 |-
 |[http://www.refaktor.si Refaktor Ltd.]
-|Makers of [http://www.site-assistant.com Site Assistant], [https://www.cebelca.biz Cebelca.biz],[http://www.qwikitodo.com QwikiTodo], [http://www.qwikitxt.com QwikiTxt]. All are written in REBOL and Cheyenne
+|Makers of [http://www.site-assistant.com Site Assistant], [https://www.cebelca.biz Cebelca.biz],[http://www.qwikitodo.com QwikiTodo], [http://www.qwikitxt.com QwikiTxt]. All are written in Rebol and Cheyenne
 |-
 |[http://www.softinnov.org Softinnov]
-|[http://cheyenne-server.org Cheyenne Web Server] in REBOL, free database drivers for REBOL ([http://softinnov.org/rebol/mysql.shtml MySQL], [http://softinnov.org/rebol/pgsql.shtml PostgreSQL])
+|[http://cheyenne-server.org Cheyenne Web Server] in Rebol, free database drivers for Rebol ([http://softinnov.org/rebol/mysql.shtml MySQL], [http://softinnov.org/rebol/pgsql.shtml PostgreSQL])
 |-
 |[http://www.neosysta.com NEOSYSTA]
-|Professional services, IT developments and management softwares in REBOL (French Company)
+|Professional services, IT developments and management softwares in Rebol (French Company)
 |}
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! Developer
 ! Projects an Skills
 ! Contact

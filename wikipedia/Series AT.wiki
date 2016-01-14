@@ -12,7 +12,7 @@ AT is an action value.
 Provides a simple way to index into a series. AT returns the series at the new index point. Note that the operation is relative to the current position within the series.
 
 
-&lt;code&gt;&lt;pre&gt;
+<code><pre>
 numbers: [11 22 33]
 print at numbers 2
 
@@ -22,28 +22,28 @@ print first at words 2
 remove at words 2
 insert at words 3 [super]
 probe words
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 
 
 ==== Categories ==== 
 
 
-[[Categories series|series]] � Operations on series, including blocks and strings.&lt;br&gt;
-[[Categories string|string]] � Operations for string series.&lt;br&gt;
+[[Categories series|series]] � Operations on series, including blocks and strings.<br>
+[[Categories string|string]] � Operations for string series.<br>
 
 
 ==== See also ==== 
 
 
-[[Words skip|skip]] � Returns the series forward or backward from the current position.&lt;br&gt;
-[[Words pick|pick]] � Returns the value at the specified position in a series.&lt;br&gt;
-[[Words head|head]] � Returns the series at its head.&lt;br&gt;
-[[Words tail|tail]] � Returns the series at the position after the last value.&lt;br&gt;
+[[Words skip|skip]] � Returns the series forward or backward from the current position.<br>
+[[Words pick|pick]] � Returns the value at the specified position in a series.<br>
+[[Words head|head]] � Returns the series at its head.<br>
+[[Words tail|tail]] � Returns the series at the position after the last value.<br>
 
 
 ==== Comments ==== 
 
 
-&lt;blockquote&gt;
+<blockquote>
 {|
-|}&lt;/blockquote&gt;
+|}</blockquote>

@@ -2,28 +2,28 @@
 
 Determines the algorithm used to determine what area to fill, if a path that intersects itself or one subpath encloses another. For non-intersecting paths, you shouldn't need to use this.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | mode
-| bgcolor=&quot;white&quot; | [word!]
-| bgcolor=&quot;white&quot; | Fill algorithm
-| bgcolor=&quot;white&quot; | '''non-zero''' - This rule determines the &quot;insideness&quot; of a point on the canvas by drawing a ray from that point to infinity in any direction and then examining the places where a segment of the shape crosses the ray. Starting with a count of zero, add one each time a path segment crosses the ray from left to right and subtract one each time a path segment crosses the ray from right to left. After counting the crossings, if the result is zero then the point is outside the path. Otherwise, it is inside.
-'''even-odd''' - This rule determines the &quot;insideness&quot; of a point on the canvas by drawing a ray from that point to infinity in any direction and counting the number of path segments from the given shape that the ray crosses. If this number is odd, the point is inside; if even, the point is outside.
+| bgcolor="white" | mode
+| bgcolor="white" | [word!]
+| bgcolor="white" | Fill algorithm
+| bgcolor="white" | '''non-zero''' - This rule determines the "insideness" of a point on the canvas by drawing a ray from that point to infinity in any direction and then examining the places where a segment of the shape crosses the ray. Starting with a count of zero, add one each time a path segment crosses the ray from left to right and subtract one each time a path segment crosses the ray from right to left. After counting the crossings, if the result is zero then the point is outside the path. Otherwise, it is inside.
+'''even-odd''' - This rule determines the "insideness" of a point on the canvas by drawing a ray from that point to infinity in any direction and counting the number of path segments from the given shape that the ray crosses. If this number is odd, the point is inside; if even, the point is outside.
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;The following page has drawings that drawing illustrates the rules:&lt;/p&gt;
-&lt;p&gt;http://www.w3.org/TR/SVG/painting.html#FillProperties&lt;/p&gt;
+<br>'''Notes and Examples'''
+<p>The following page has drawings that drawing illustrates the rules:</p>
+<p>http://www.w3.org/TR/SVG/painting.html#FillProperties</p>
 
 
 
 ----
-&lt;TABLE WIDTH=100%&gt;&lt;TR&gt;&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+<TABLE WIDTH=100%><TR><TD ALIGN=LEFT VALIGN=TOP WIDTH=15%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Draw]]
 *[[Anti-Alias]]
 *[[Arc]]
@@ -35,11 +35,11 @@ Pages
 *[[Ellipse]]
 *[[Fill-Pen]]
 *[[Fill-Rule]]
-*[[Gamma]]&lt;/font&gt;&lt;/TD&gt;
+*[[Gamma]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=15%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Grad-Pen]]
 *[[Invert-Matrix]]
 *[[Image]]
@@ -51,11 +51,11 @@ Pages
 *[[Line-Width]]
 *[[Matrix]]
 *[[Pen]]
-*[[Polygon]]&lt;/font&gt;&lt;/TD&gt;
+*[[Polygon]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=15%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 *[[Push]]
 *[[Reset-Matrix]]
 *[[Rotate]]
@@ -67,12 +67,12 @@ Pages
 *[[Transform]]
 *[[Translate]]
 *[[Triangle]]
-*[[Grad-Pen]]&lt;/font&gt;&lt;/TD&gt;
+*[[Grad-Pen]]</font></TD>
 
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=15%&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=15%>
 Pages
-&lt;font size=1&gt;
+<font size=1>
 
 *[[Invert-Matrix]]
 *[[Image]]
@@ -84,20 +84,20 @@ Pages
 *[[Line-Width]]
 *[[Matrix]]
 *[[Pen]]
-*[[Polygon]]&lt;/font&gt;&lt;/TD&gt;
+*[[Polygon]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP width=30%&gt;
+<TD ALIGN=LEFT VALIGN=TOP width=30%>
 Chapters
-&lt;font size=1&gt;
+<font size=1>
 *[[R3 Introduction]]
 *[[Getting Started With R3]]
 *[[The Graphical User Interface]]
 *[[Script Writing With The Visual Interface Dialect|Script Writing With The VID Dialect]]
 *'''Script Writing With The Draw Dialect'''
-*[[The Graphic Object]]&lt;/font&gt;&lt;/TD&gt;
+*[[The Graphic Object]]</font></TD>
 
-&lt;TD ALIGN=LEFT VALIGN=TOP WIDTH=10%&gt;
-&lt;font size=1&gt;
+<TD ALIGN=LEFT VALIGN=TOP WIDTH=10%>
+<font size=1>
 *[[Table Of Contents]]
-&lt;/font&gt;&lt;/TD&gt;
-&lt;/TR&gt;&lt;/TABLE&gt;
+</font></TD>
+</TR></TABLE>

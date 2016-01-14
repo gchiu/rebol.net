@@ -1,5 +1,5 @@
 __NOTOC__
-&lt;big&gt;'''Welcome to REBOL Wiki, &quot;DocBase&quot;'''&lt;/big&gt;
+<big>'''Welcome to Rebol Wiki, "DocBase"'''</big>
 
 This wiki provides a community supported server for posting and commenting on design documentation, suggestions, draft concepts, preliminary specifications.
 
@@ -8,7 +8,7 @@ This wiki provides a community supported server for posting and commenting on de
 == Recent Activity ==
 
 *'''[[Index of Japanese Documents]]''' - expanding document base
-*'''[[Advocacy]]''' - community ideas for promoting REBOL
+*'''[[Advocacy]]''' - community ideas for promoting Rebol
 *'''[[Module Design Details]]''' - new ideas, discussions
 *'''[[External Callbacks]]''' - to be provided in extensions
 *'''[[IPC - Inter-process communication]]''' - collecting requirements
@@ -17,9 +17,9 @@ This wiki provides a community supported server for posting and commenting on de
 *Sidebar navigation links updated
 *Added [[DocBase Wiki Content License]]
 
-== REBOL 3 Related==
+== Rebol 3 Related==
 
-If you are interested in REBOL 3.0, we welcome your comments and participation.
+If you are interested in Rebol 3.0, we welcome your comments and participation.
 
 *'''[[Table Of Contents | R3 Table of Contents]]''' - for this wiki
 *'''[http://www.rebol.com/r3/changes.html R3 Releases]''' - change log
@@ -28,11 +28,11 @@ If you are interested in REBOL 3.0, we welcome your comments and participation.
 
 ''Warning: Some of the information in this wiki may be out-of-date.''
 
-== REBOL 2 Related ==
+== Rebol 2 Related ==
 
-Other links of interest about REBOL:
+Other links of interest about Rebol:
 
-*'''[[REBOL 2 | R2 Wiki Directory]]''' - community organized directory (older)
-*'''[http://www.rebol.com/docs.html REBOL Documentation]''' - for all versions/products
+*'''[[Rebol 2 | R2 Wiki Directory]]''' - community organized directory (older)
+*'''[http://www.rebol.com/docs.html Rebol Documentation]''' - for all versions/products
 *'''[[R2 projects]]''' - links to various projects/products
 *'''[[DocBase:Community Portal]]''' - useful links and resources

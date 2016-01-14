@@ -2,10 +2,10 @@
 
 [[#action|action!]] [[#binary|binary!]]
 
-&lt;span id=&quot;action&quot;&gt;&lt;/span&gt;
+<span id="action"></span>
 * action!
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! To !! Notes
 |-
 |action!
@@ -180,10 +180,10 @@
 |word (symbol or variable)
 |}
 
-&lt;span id=&quot;binary&quot;&gt;&lt;/span&gt;
+<span id="binary"></span>
 * binary!
 
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 ! To !! Notes
 |-
 |action!

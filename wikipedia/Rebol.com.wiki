@@ -1,0 +1,179 @@
+'''This is a summary of the Rebol.com website redesign project.'''
+
+By Carl Sassenrath
+
+==Goal==
+
+The goal is to rebuild the main Rebol website, updating both its look and structure.
+
+==Background==
+
+First off, I want to say that we've created many websites over the years, and we know what a good one looks like. Also, '''I assure you that we know that the current Rebol website is outdated'''.
+
+Part of the problem is that Rebol.com is a major website. It may not seem like that on the surface, but it contains more than 10000 files, not even including thousands more on Rebol.net.
+
+I think it is important to note that '''a good website involves more than just nice looking graphics and layout'''. Although the look of a website helps make it more professional, for major websites the content management is the majority of the work. In other words, people visit the site for the content. The look provides only the "feeling" one might get about the site.
+
+The job of organizing, structuring, and writing the content is not something that can be delegated to a website design agency. It's our burden... because we know the content, and more importantly we know the typical visitor to the site.
+
+==Strategy==
+
+The best websites know their viewers. That is, they are tuned to their audience. So a good website must be oriented directly toward their viewers. This is just good marketing.
+
+There are only few main categories of people who visit the website (meaning, their reason for visiting). Then, within those, there are a few subclasses.
+
+===Main visitor categories===
+
+The main category of visitors is determined by their history related to Rebol.
+
+*'''New visitors''' - people new to Rebol before, never heard of it before, but somehow found (or were given) an link to it. They basically want to know what it is and why it matters. Many of these people will make a quick decision if they want to learn more about it. This group is roughly 50% of the traffic to Rebol.com (a few hundred per day.)
+*'''Old visitors''' - people who already know about Rebol and may or may not be using it already. They want to get specific information (such as docs or updates) or just want to see what's new.
+*'''Revived visiters''' - people who know about Rebol from before, but either lost interest for a variety of reasons. They want to see if anything has changed and if their interest might be renewed.
+
+===Visitor subclasses===
+
+The subclasses of visitors are determined by their background and specific potential interest in Rebol. This is very similar to market segmentation.
+
+The segments are:
+
+*'''Students''' - interested in learning Rebol because it's new or different, has academic roots, or is used within a class (e.g. our CGI tutorials are used in a few classes... as we quickly found out when one of the script links went dead.)
+*'''Hobbyists''' - like Rebol for doing small development projects, and also because it's lightweight to install and update. There's also a coolness factor for many of them.
+*'''Programmers''' - looking at Rebol compared to what they already know and use. Rebol presents a difficult challenge to most programmers who are already rooted in classical programming techniques and have limited time or interest in going beyond that. It takes an open minded programmer to learn to use Rebol.
+*'''Engineers/scientists''' - are interested in new technologies that might provide significant future benefits or become a new standard in some domain of their fields. They want to know the theory behind Rebol and what practical benefits that theory provides.
+*'''Managers/executives''' - are seeking solutions to make their organizations operate more efficiently or provide more timely results at lower costs. They are less interested in technology and more interested in the practical reasons for using Rebol. Most of them will be comparing Rebol to existing technology and weighing both the potential advantages and hidden risks in using Rebol.
+
+==Structure==
+
+===The critical home page===
+
+With an understanding of who is visiting and the main motivation for why they are visiting, the importance of a good home page becomes clear. The trick becomes how to satisfy the above visitors with a single home page.
+
+Of course, this problem is nothing new. All major websites have a similar issue. These days, the solution is fairly well understood: you must capture the viewer's segmented interest immediately and vector them off to a subpage that directly satisfies their interest.
+
+That means it's better to provide a minimal home page that's well organized. It must work well for the three primary visitor categories (new, old, revived) as well as the main viewer classifications (student, programmer, engineer, etc.).
+
+With this in mind, the home page can be divided like this:
+
+*'''Main message''' - projects the main marketing persona of Rebol: We rebel against software complexity. That's our statement. A good graphic along with it will help make it stand out.
+*'''New to Rebol''' - gives visitors a way to find out what Rebol is and why they want it. ''However, this is dependent on the visitor's subclass,'' so there are multiple links here: for "students & hobbyists", for "Programmers", for "Engineers" etc. Each link takes the visitor to a page specific to their background.
+*'''What's new''' - has two purposes: first, it shows that something is happening, there is momentum. Second, it's a "news feed" for people who have an interest and are following Rebol more closely. This feed must change every day, or at least a couple times a week.
+*'''Promoted content''' - these are pitches and links for capturing interest. For example a "Download 3.0" button, "Buy the Book", "AMD adopts Rebol", "New SDK released", "Rebol in your Phone!" etc. These links are more permanent than the news feed.
+
+===Head bar===
+
+At the top of the page, the head bar contains the standard elements:
+
+*[[Rebol logo]]
+*Main menu bar
+*Search box
+
+An optional "slogon" can also be part of the head bar, either within its graphical background or as text on top of it.
+
+===Menu bar===
+
+I prefer simple menu bars. Quite frankly, most visitors get confused by too many options or by drop-down choices (website designers and programmers like them, most visitors do not.) Here KISS is best.
+
+The menu bar will include buttons for:
+
+*Downloads
+*Products
+*Documents
+*Community
+*Support
+
+Links like "Contact" can be placed in the tail-bar, not in the main menu.
+
+These menu links may be revised as needed.
+
+===Tail bar===
+
+The tail bar provides rarely used links such as:
+
+*About Us
+*Contact
+*Privacy
+
+And would also include any legalese and the WIP edit link.
+
+===Main banner===
+
+The main banner is a graphic image with the main marketing message. It is positioned in a key location on the home page. In the past it was the Keep IT Simple banner, but it's time to update it.
+
+==Layout==
+
+The layout is accomplished via HTML templates, style sheets, and graphical elements.
+
+Over the last year we've been building our newer content with CSS-based markup. The new Rebol 3.0 doc pages are an example of that. When done properly (few sites do) such methods reduce page size, increase web server efficiency, and improve content-creation productivity.
+
+There are only a few primary layout patterns for Rebol.com:
+
+*'''Home page''' - a special layout, as discussed above
+*'''Text pages''' - normal content pages
+*'''Doc pages''' - special content pages (like [[http://www.rebol.com/r3/docs/index.html R3 Documentation]]
+*'''List pages''' - pages that provide mainly lists of links (for example the downloads page)
+*'''Snapshot pages''' - pages that include screenshots of interesting reblets (perhaps these are simply a minor variation of the text pages above)
+
+==Technology==
+
+The technology is divided into the presentation methods and the authoring methods.
+
+For presentation right now, I don't see anything other than using standard HTML with CSS. In the future, with a new R3 browser plugin, we may provide a few pages of Rebol-based content, as we've done in the past.
+
+For authoring, we will continue to use the WIP Wiki which is highly productive with absolute minimal server impact, overhead, and maintenance.
+
+==Graphics==
+
+We want better graphics. In the past, this has not been a high priority, and unfortunately in our line of work we meet few people who have the degree of skill necessary to satisfy our picky visual needs.
+
+The main elements are:
+
+*'''Graphic images''' - actual graphic art renderings for banners, menus, icons, bullets.
+*'''Screen shots''' - with whatever enhancements (e.g. drops and reflections)
+*'''CSS styles''' - coordinated styles for colors, borders, backdrops, etc.
+
+The graphic image part has been a roadblock. Simply put, we need to find someone who is talented at this, and who has visual outlook compatible with our own. Until we do, it's going to be difficult to make the website really shine.
+
+==Comments==
+
+If you have comments, you can post them here or in the discussion area of this page (see top menu) or post them in 2933 of R3 Chat (Marketing discussion).
+
+=== Comment by pekr ===
+Carl, very good Document. Sometimes ppl have to talk various things for ages, then it emerges like it would be clear in few seconds :-) I have comments to following sections:
+
+* '''Top Menu'''
+
+As for top menu, I would probably add Services. This item is rather typical, and besides that - you are just forming Rebol Services group. OTOH it might overlap with Support, although support migh contain stuff like CureCode, R3 Chat mention, I just don't know, right now. I also suggest NOT to use any JS based pop-up menu.
+
+* '''The critical web page'''
+
+Please look at our company's [http://www.walmark.cz website]. We used principle of visitor segmentation - 4 pillars. Such info is normally available also elsewhere, but you simply just choose what to put directly in front of user's eyes. Now you have basically two options, how to segment it:
+
+# Target visitors - that is what probably fits Rebol best. You basically try to imagine user asking the question - "Who I am?" ... and you can relate - new user, student, programmer, scientist, IT manager
+
+# Target aims - our company choosed this one. You basically try to imagine user asking the question - "What I am getting here?" It felt more natural to us - so we choosed - Products, Health Club, Walmark Quality, Carreer
+
+* '''Subpage'''
+
+If you look at our site typical subpage, we choosed 3 column design. The right columns is so called contextual column. You can also notice, at the top of the right column, we repeat 4 pillars, to allow quick jump to different content area. Then there is content related to what is displayed in the center column. I suggest Rebol to use 3 column design on subpage too, because:
+
+# It allows you to post contextual/related information in the right column
+# It makes center column less wide = more pleasant to read
+# You can place login, advertising, special unrelated notes there
+
+* '''Layout'''
+
+I would like to see us to start with a '''wireframe''' model, so that we can see, how main site is divided:
+
+[[images/Walmark_wireframe.jpg|No Description]]
+
+Note: fixed link Carl reacts to below ...
+
+===Replies to above - from Carl===
+
+;Top Menu: the menu text will be HTML (not image), so changes are easy. Services would be part of Products, and also include a link from Support. The menus are currently JS, but not popups.
+
+;Home Page (critical): Pekr, the link you posted (www.rebol.cz) is redirected to Rebol Week! That's not what you wanted, is it?  Anyway, the plan segs are for target visitors and will be in a "New to Rebol?" column.
+
+;Subpages: The home will be three col, but I've not decided on typical subpage cols. Three seems like too many for most sites. The main content col is all that people really want. Context col might be ok, but anything else is noise -- unless we decide to show ads.
+
+;Layout: I've got a simple wireframe. Didn't I posted it before? It's HTML, I will post it above (later today).

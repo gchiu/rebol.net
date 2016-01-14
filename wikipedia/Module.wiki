@@ -1,4 +1,4 @@
-'''Modules are isolated contexts (name and value spaces) that extend the run-time environment of REBOL in a convenient and modular way.'''
+'''Modules are isolated contexts (name and value spaces) that extend the run-time environment of Rebol in a convenient and modular way.'''
 
 ==Introduction==
 
@@ -10,11 +10,11 @@ A module is allowed to export an API. It can make specific functions, objects, o
 
 ==Keeping It Simple==
 
-In a dynamic language like REBOL the concept of modules can be designed with many special features and &quot;cool properties&quot;.  However, in the normal course of programming, only a small number of features are actually useful.
+In a dynamic language like Rebol the concept of modules can be designed with many special features and "cool properties".  However, in the normal course of programming, only a small number of features are actually useful.
 
 The balance in the design of the system is how do decide which new and interesting concepts have merit and which will rarely, if ever, be used. With that rule as a goal, the module system has been designed to be simple.
 
-&lt;b&gt;We want programmers of all skill levels to be capable of understanding modules and of using them correctly.&lt;/b&gt;
+<b>We want programmers of all skill levels to be capable of understanding modules and of using them correctly.</b>
 
 With this in mind, it is best to avoid adding features that may only appear in 1% of programs. When such cases arise, the program itself can provide for its own needs.
 
@@ -31,15 +31,15 @@ Important notes:
 
 These functions are used for modules:
 
-*&lt;b&gt;make&lt;/b&gt; - low level module creation
-*&lt;b&gt;module&lt;/b&gt; - shortcut for MAKE (like FUNC for functions)
-*&lt;b&gt;load&lt;/b&gt; - loads modules as unbound blocks (no MAKE is done)
-*&lt;b&gt;do&lt;/b&gt; - loads and makes according to module header spec
-*&lt;b&gt;import&lt;/b&gt; - locates, loads, makes, and binds into current context
+*<b>make</b> - low level module creation
+*<b>module</b> - shortcut for MAKE (like FUNC for functions)
+*<b>load</b> - loads modules as unbound blocks (no MAKE is done)
+*<b>do</b> - loads and makes according to module header spec
+*<b>import</b> - locates, loads, makes, and binds into current context
 
 ==Creating a Module==
 
-To create a module, you need to provide a &lt;b&gt;specification&lt;/b&gt; block and a &lt;b&gt;body&lt;/b&gt; block.
+To create a module, you need to provide a <b>specification</b> block and a <b>body</b> block.
 
 The specification (spec) describes the properties of the module. Its format is identical to a standard script header object.
 
@@ -49,9 +49,9 @@ The body is a block of code that is initialized when the module is created. It i
 
 Here is an example that shows a module spec and body:
 
-&lt;pre&gt;REBOL [
+<pre>Rebol [
     Name: stock-trade
-    Title: &quot;Stock Trading Module&quot;
+    Title: "Stock Trading Module"
     Version: 1.2.0
     Type: module
     Export: [buy sell]
@@ -60,7 +60,7 @@ Here is an example that shows a module spec and body:
 buy: func [stock price] [...]
 
 sell: func [stock price] [...]
-&lt;/pre&gt;    
+</pre>    
 
 ===The Spec Block===
 
@@ -68,15 +68,15 @@ The spec block is a standard script header, and its fields are defined in system
 
 When a module is created, the spec block is converted to an object (like it is for scripts). The fields of the object are used to control the behavior of the module. The fields shown above are used in these ways:
 
-*&lt;b&gt;Name&lt;/b&gt; - provides a name for the module. This is word that is useful for identifying the module within the system. This word is also used to identify the module and its default file name for the purposes of locating the module (done by the IMPORT function).
+*<b>Name</b> - provides a name for the module. This is word that is useful for identifying the module within the system. This word is also used to identify the module and its default file name for the purposes of locating the module (done by the IMPORT function).
 
-*&lt;b&gt;Title&lt;/b&gt; - the user friendly title of your module. This field is used for browsing, directories, libraries, user messages, etc.
+*<b>Title</b> - the user friendly title of your module. This field is used for browsing, directories, libraries, user messages, etc.
 
-*&lt;b&gt;Version&lt;/b&gt; - specifies the version of the module. Multiple versions are allowed to be loaded at the same time, and the IMPORT function can be used to request a specific version be used.
+*<b>Version</b> - specifies the version of the module. Multiple versions are allowed to be loaded at the same time, and the IMPORT function can be used to request a specific version be used.
 
-*&lt;b&gt;Type&lt;/b&gt; - indicates that the file is a module. This lets you to load it from disk or from the Internet, and it will be handled as a module. If you to not provide this field, the code will be loaded as a normal script.
+*<b>Type</b> - indicates that the file is a module. This lets you to load it from disk or from the Internet, and it will be handled as a module. If you to not provide this field, the code will be loaded as a normal script.
 
-*&lt;b&gt;Export&lt;/b&gt; - provides a list of words that are exported by the module to the system's standard export list. (Do not confuse export with public/private properties. More below.)
+*<b>Export</b> - provides a list of words that are exported by the module to the system's standard export list. (Do not confuse export with public/private properties. More below.)
 
 Other fields of the spec block can be supplied and some also have special meaning. More details will be shown below.
 
@@ -90,7 +90,7 @@ In the example above, the buy and sell functions are defined and exported.
 
 Before a module can be used, it must be imported.
 
-Sometimes the word &quot;loaded&quot; is used for this action. In REBOL, this term is a misnomer because the module is not only loaded, but also initialized. However, the the term &quot;load&quot; is widely used in the world of languages.
+Sometimes the word "loaded" is used for this action. In Rebol, this term is a misnomer because the module is not only loaded, but also initialized. However, the the term "load" is widely used in the world of languages.
 
 ===The IMPORT Function===
 
@@ -189,13 +189,13 @@ The LOAD function (and also DO because it uses LOAD) contains an implied binding
 
 In other words, if you write:
 
-   data: load &quot;print 10&quot;
+   data: load "print 10"
 
 The PRINT word will have a useful default binding. It comes from the '''current context'''.
 
 The current context is determined by system/contexts/current and it is used as a default binding environment.
 
-Note that simply by evaluating a function within any module, you are not changing the &quot;focus&quot; of the current context. This allows modules to implement functions that preform LOAD and DO operations within the context of the current program, ''not within their own context''.
+Note that simply by evaluating a function within any module, you are not changing the "focus" of the current context. This allows modules to implement functions that preform LOAD and DO operations within the context of the current program, ''not within their own context''.
 
 For example, if a module defines a function called LOAD-DATABASE, and that function loads some data into memory, the default bindings of that data belong to the current context. The bindings of the module are not relevant in this case.
 
@@ -245,14 +245,14 @@ In general, modules do not allow mixing of contexts. For example, if you use the
 
 For example:
 
-&lt;pre&gt;
+<pre>
    x: 10
 
    mod: module [] [show: does [print x]]
 
    mod/show
    ** Script error: x has no value
-&lt;/pre&gt;
+</pre>
 
 This default behavior is intentional to prevent accidental usage of variables and values that are not within the scope of the module. This is a feature, not a bug.
 
@@ -288,9 +288,9 @@ This function is rarely used. Instead, a helper function is provided, similar to
 
 The module file example above could be written as:
 
-&lt;pre&gt;mod: module [
+<pre>mod: module [
     Name: stock-trade
-    Title: &quot;Stock Trading Module&quot;
+    Title: "Stock Trading Module"
     Version: 1.2.0
     Type: module
     Export: [buy sell]
@@ -298,7 +298,7 @@ The module file example above could be written as:
     buy: func [stock price] [...]
     sell: func [stock price] [...]
 ]
-&lt;/pre&gt;
+</pre>
 
 Notes:
 
@@ -313,7 +313,7 @@ In such cases, the MODULE function above can be used multiple times in the same 
 
 ===LOAD Module===
 
-You can LOAD a module in the same way you can load any other REBOL code and data. To LOAD a module does not mean to make or evaluate it, it means to convert it to block format to be handled as normal data. This allows modules to be processed in the same way as all other REBOL scripts and files.
+You can LOAD a module in the same way you can load any other Rebol code and data. To LOAD a module does not mean to make or evaluate it, it means to convert it to block format to be handled as normal data. This allows modules to be processed in the same way as all other Rebol scripts and files.
 
 '''Note, however, that when you LOAD a file that specifies its type as a module, the words of the loaded block are not bound to any context.''' This is done to allow the loader to process the file as a whole, but avoid the binding step, which is not usually performed at load time for modules.
 
@@ -340,4 +340,4 @@ The system code that defines how modules operate can be found in these files:
 *mezz-load.r - the file loader
 *mezz-instrinsics.r - the MAKE-MODULE and DO functions.
 
-The MAKE-MODULE function is a callback function used to implement the MAKE MODULE! action.  This function is written in REBOL code to allow us to expand its capabilities (within the guidelines noted at the top of this document.)
+The MAKE-MODULE function is a callback function used to implement the MAKE MODULE! action.  This function is written in Rebol code to allow us to expand its capabilities (within the guidelines noted at the top of this document.)

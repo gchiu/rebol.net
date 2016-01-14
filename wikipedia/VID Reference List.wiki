@@ -1,6 +1,6 @@
-{| class=&quot;wikitable&quot;
+{| class="wikitable"
 |+ VID Reference Page
-! &lt;big&gt;Class&lt;/big&gt; !! &lt;big&gt;Documents&lt;/big&gt;
+! <big>Class</big> !! <big>Documents</big>
 |-
 ! Usage
 |
@@ -29,13 +29,13 @@
 *[[VID Requirements]]
 *[[VID Implementation Notes]] - ''obsolete''
 *[[Quirks in VID prototype 2]] - ''obsolete''
-*[[VID: Changes|Some notes on VID differences from REBOL 2 to REBOL 3]]  - ''obsolete''
+*[[VID: Changes|Some notes on VID differences from Rebol 2 to Rebol 3]]  - ''obsolete''
 |-
 ! See Also
 |
 *http://www.rebol.com/docs/view-guide.html
 *http://www.rebol.com/docs/easy-vid.html
-*http://en.wikibooks.org/wiki/REBOL_Programming/Language_Features/VID
+*http://en.wikibooks.org/wiki/Rebol_Programming/Language_Features/VID
 *http://www.dobeash.com/RebGUI/user-guide.html
 *http://www.dobeash.com/RebGUI/widgets.html
 *http://www.rebol.it/steel/modules/glayout/in-a-nutshell.html

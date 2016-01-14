@@ -59,8 +59,8 @@ Currently various non-organized notes.
     on-action: func [face event] [
         ; event is a block
         ; [word! ...] event/1 is the type of event
-        ; common types: [hit] [value &lt;x&gt;] [scroll &lt;offset&gt;]
-        ; [scroll-change &lt;offset&gt; &lt;area-size&gt; &lt;visible-size&gt;]
+        ; common types: [hit] [value <x>] [scroll <offset>]
+        ; [scroll-change <offset> <area-size> <visible-size>]
     ]
 
 == LOOK object ==
@@ -147,11 +147,11 @@ The general method would be to specify the commands, styles, and keywords to all
 
 === Argument Spec and Map ===
 
-In addition, it would be good to specify arguments by name and allow access by name. This can be done '''either by mapping argument values to an object or by applying a function'''. The former gives us a single &quot;spec&quot; object that we can save, but the latter gives us a direct access method, eliminating the need to use paths to access the values.
+In addition, it would be good to specify arguments by name and allow access by name. This can be done '''either by mapping argument values to an object or by applying a function'''. The former gives us a single "spec" object that we can save, but the latter gives us a direct access method, eliminating the need to use paths to access the values.
 
 For example a keyword entry (here as a style) for the DELECT dialect would become:
 
-&lt;pre&gt;
+<pre>
 button: context [
     name: string!
     size: pair!
@@ -161,13 +161,13 @@ button: context [
     action: block!
     alt-action: block!
 ]
-&lt;/pre&gt;
+</pre>
 
 After the button style is parsed, the object can be cloned with the argument values mapped as provided.
 
 Or an alternate method would be to use the same syntax as function definitions:
 
-&lt;pre&gt;
+<pre>
 button: [
     name [string!]
     size [pair!]
@@ -177,7 +177,7 @@ button: [
     action [block!]
     alt-action [block!]
 ]
-&lt;/pre&gt;
+</pre>
 
 Then call a function (via APPLY) that would accept those arguments.
 
@@ -203,11 +203,11 @@ And finally, DELECT currently parses the entire dialect and returns a block of b
 
 It can have a gob/pane of gobs, but it is not a block of gobs. [[User:Carl|Carl]] 15:03, 28 June 2007 (EDT)
 
-The reason is, if the &quot;main&quot; gob is completely transparent and is just used to hold the subgobs, would it not be better to NOT adding it to the hierarchy? [[User:Gabriele|Gabriele]] 14:59, 28 June 2007 (EDT)
+The reason is, if the "main" gob is completely transparent and is just used to hold the subgobs, would it not be better to NOT adding it to the hierarchy? [[User:Gabriele|Gabriele]] 14:59, 28 June 2007 (EDT)
 
 Is there such a case of a collection of that type? Do you mean like a text box with scroll bar as an example? Perhaps. For me, the one that comes to mind is a panel or group, but you still want it in the hierarchy so it can be handled as a group. [[User:Carl|Carl]] 16:07, 28 June 2007 (EDT)
 
-A simple example could be even a radio or check button with label (like R2 check-line) - you might have just two gobs (one that renders the button plus one that renders the text) for example (i know this could probably be done with draw on a single gob, but let's pretend that's not the case :), and the &quot;container&quot; gob would then just be a container. Maybe this can always be avoided in practice by having the main gob do something useful, so I don't know, it just seems something to keep in mind. [[User:Gabriele|Gabriele]] 03:11, 29 June 2007 (EDT)
+A simple example could be even a radio or check button with label (like R2 check-line) - you might have just two gobs (one that renders the button plus one that renders the text) for example (i know this could probably be done with draw on a single gob, but let's pretend that's not the case :), and the "container" gob would then just be a container. Maybe this can always be avoided in practice by having the main gob do something useful, so I don't know, it just seems something to keep in mind. [[User:Gabriele|Gabriele]] 03:11, 29 June 2007 (EDT)
 
 Having one main gob that holds sub-gobs for a style make it easier to render 'disabled' or 'selected' state of that style. --[[User:Rebolek|rebolek]] 04:53, 29 June 2007 (EDT)
 
@@ -219,7 +219,7 @@ Except that if the main gob is already is use you can't set an /effect for it, a
 
 === 2) Panel is a style, while group seems more like a dialect command. What do you think? ===
 
-It is quite possible. As you implement it, you will be able to tell if that is true. The advantage of it being a style is that it can be accessed and operated on like a style. For instance: moved, scrolled, disabled, &quot;get-contents&quot;, etc. [[User:Carl|Carl]] 15:04, 28 June 2007 (EDT)
+It is quite possible. As you implement it, you will be able to tell if that is true. The advantage of it being a style is that it can be accessed and operated on like a style. For instance: moved, scrolled, disabled, "get-contents", etc. [[User:Carl|Carl]] 15:04, 28 June 2007 (EDT)
 
 Agreed - I'd say it's a command that generates a style, but the generated style changes with context. I'm still not sure if there are cases where an actual face should not be generated. [[User:Gabriele|Gabriele]] 14:59, 28 June 2007 (EDT)
 
@@ -231,17 +231,17 @@ A good question. It can give an error, or in some cases there may be another use
 
 I think field in radio group would be ok (basically field gets ignored, or more specifically, it would ignore the events coming from the radio buttons). Not sure what should happen if there are other mutually-exclusive styles though. We may need to see what happens in practice... [[User:Gabriele|Gabriele]] 15:15, 28 June 2007 (EDT)
 
-It seems useful to allow it. For example, you can have radio &quot;A&quot; and radio &quot;B&quot; then some text (or even a field or image), then radio &quot;C&quot;.  For example, the text may just be additional comments on the option. [[User:Carl|Carl]] 15:56, 28 June 2007 (EDT)
+It seems useful to allow it. For example, you can have radio "A" and radio "B" then some text (or even a field or image), then radio "C".  For example, the text may just be additional comments on the option. [[User:Carl|Carl]] 15:56, 28 June 2007 (EDT)
 
 ===4) Dynamic resizing of all styles?===
 
 The layout method allows it to be dynamic as well, correct? So if someone resizes a window or inner panel, the styles know what to do? [[User:Carl|Carl]] 15:04, 28 June 2007 (EDT)
 
-Exactly - the same process happens during resize, except all the initialization has been done already so it should be much faster. Basically layout of content is delegated to container, so you can have different kinds of containers that work in different ways. (This is the way MUI etc. work, it is the &quot;traditional&quot; way of doing GUIs ;) [[User:Gabriele|Gabriele]] 15:15, 28 June 2007 (EDT)
+Exactly - the same process happens during resize, except all the initialization has been done already so it should be much faster. Basically layout of content is delegated to container, so you can have different kinds of containers that work in different ways. (This is the way MUI etc. work, it is the "traditional" way of doing GUIs ;) [[User:Gabriele|Gabriele]] 15:15, 28 June 2007 (EDT)
 
-Yes, but it is a bit tricky to determine priorities. For example, I might have a list that says it is 50% wide next to something that has no specified size. Anyway, I assume we can get this all figured out, as did MUI and so many others over the years. (Remember Sun &quot;News&quot; GUI? From Gosling. Now there was a spec. ;) [[User:Carl|Carl]] 15:59, 28 June 2007 (EDT)
+Yes, but it is a bit tricky to determine priorities. For example, I might have a list that says it is 50% wide next to something that has no specified size. Anyway, I assume we can get this all figured out, as did MUI and so many others over the years. (Remember Sun "News" GUI? From Gosling. Now there was a spec. ;) [[User:Carl|Carl]] 15:59, 28 June 2007 (EDT)
 
-Normally, it should be the container to determine the sizes, not the faces; the faces only determine how much they can stretch and shrink. (A model that may be interesting to use, instead of the &quot;traditional&quot; one, would be the one used by TeX of size, shrink and stretch. It is very flexible.) So, the 50% would be a weight not a size - how much does the face shrink or stretch when the container shrinks or stretches. [[User:Gabriele|Gabriele]] 03:16, 29 June 2007 (EDT)
+Normally, it should be the container to determine the sizes, not the faces; the faces only determine how much they can stretch and shrink. (A model that may be interesting to use, instead of the "traditional" one, would be the one used by TeX of size, shrink and stretch. It is very flexible.) So, the 50% would be a weight not a size - how much does the face shrink or stretch when the container shrinks or stretches. [[User:Gabriele|Gabriele]] 03:16, 29 June 2007 (EDT)
 
 === 5) Do we want a face/spec object? ===
 
@@ -284,7 +284,7 @@ So, after some chat on AltME, a possible solution is (also answers previous ques
 
 === 7) Do we want to use the size, shrink, stretch model for resizing? ===
 
-This is an interesting model used by TeX when doing justification. Applied to faces, it would be like this: a face has a &quot;normal&quot; size, that is considered the &quot;best&quot; size for that face. Then, it has an amount of &quot;shrinkability&quot; - how much smaller than that it can get. If size is 100 and shrink is 10, then it can go as low as 90, but not lower. Then, it has an amount of &quot;stretchability&quot; - how fast it can grow in size; the difference with the shrinkability is that stretchability is not limited: if size is 100 and stretch is 10, it can still go to 120. Faces with higher stretch grow faster than faces with lower stretch. TeX also introduce &quot;infinite&quot; stretchability, that is the ability of a face to take over all the space so that the other faces do not stretch at all. TeX has actually four levels of infinity, so that a higher level infinity takes over all the space of lower level infinities. At the same level they share the space. The computation for the resizing would be as follows:
+This is an interesting model used by TeX when doing justification. Applied to faces, it would be like this: a face has a "normal" size, that is considered the "best" size for that face. Then, it has an amount of "shrinkability" - how much smaller than that it can get. If size is 100 and shrink is 10, then it can go as low as 90, but not lower. Then, it has an amount of "stretchability" - how fast it can grow in size; the difference with the shrinkability is that stretchability is not limited: if size is 100 and stretch is 10, it can still go to 120. Faces with higher stretch grow faster than faces with lower stretch. TeX also introduce "infinite" stretchability, that is the ability of a face to take over all the space so that the other faces do not stretch at all. TeX has actually four levels of infinity, so that a higher level infinity takes over all the space of lower level infinities. At the same level they share the space. The computation for the resizing would be as follows:
 
     ; assume face/size, face/shrink, and face/stretch
     ; assume a sum-of function that is basically a foreach that does a sum,
@@ -294,16 +294,16 @@ This is an interesting model used by TeX when doing justification. Applied to fa
     container/shrink: sum-of face container/pane [face/shrink]
     container/stretch: sum-of face container/pane [face/stretch]
     ; note, they don't need to be recomputed at each resize unless they change (update event)
-    either container/size &gt; available-size [
+    either container/size > available-size [
         ; must shrink
         ratio: available-size - container/size / container/shrink
-        ; ratio should never be &lt; -1. we assume available-size has been constrained already
+        ; ratio should never be < -1. we assume available-size has been constrained already
         ; by the container's shrinkability
         foreach face container/pane [face/actual-size: face/shrink * ratio + face/size]
     ] [
         ; must stretch
         ratio: available-size - container/size / container/stretch
-        ; ratio can be &gt; 1
+        ; ratio can be > 1
         foreach face container/pane [face/actual-size: face/stretch * ratio + face/size]
     ]
 
@@ -315,12 +315,12 @@ The metric is: will average web-page authors be able to understand it? They know
 
 After doing proto 1, I think it's probably a good idea to have at least per-face margins. Padding is probably not necessary (any padding can be done by the look object and does not influence the layout process). One big reason is that when you have a scrollable area and a scroller you usually don't want any space between them. What do you think? [[User:Gabriele|Gabriele]] 03:36, 16 July 2007 (EDT)
 
-=== 9) Do we want a &quot;spacer&quot; style that just eats space? ===
+=== 9) Do we want a "spacer" style that just eats space? ===
 
 It probably does not need to be accessible as a face by users (although there may be uses for it...), mainly a way for the container to remember when resizing something like PAD command has been used in the dialect. But we can also make it a real style, then PAD command (etc) is not necessary anymore. [[User:Gabriele|Gabriele]] 04:14, 29 June 2007 (EDT)
 
 That may be fine, especially if faces are efficient and minimized for such cases. [[User:Carl|Carl]] 14:22, 9 July 2007 (EDT)
 
-=== 10) How to call &quot;spacer&quot; styles? ===
+=== 10) How to call "spacer" styles? ===
 
 In the current implementation, we have three different spacer styles: skip, space and filler. skip just skips the current cell, and it does not take space. space takes a small space and. filler is greedy and takes as much space as possible (not too much in the current implementation - we can change that), normally used to push things to the left or to the right and so on. [[User:Gabriele|Gabriele]] 14:28, 14 July 2007 (EDT)

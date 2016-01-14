@@ -60,7 +60,7 @@ The /part refinement tells '''read''' to only read 32000 bytes at a time.
 Building on the above example, here's a function that shows how to copy a large file without using a lot of memory:
 
     copy-file: func [
-        &quot;Copy a large file&quot;
+        "Copy a large file"
         from-file to-file
         /local file1 file2 data
     ] [
@@ -129,29 +129,29 @@ There is also a handy shortcut for this common action:
 
 For files, the port '''query''' function returns an object that provides information about the file. It can be used a file name:
 
-&lt;pre&gt;
-&gt;&gt; probe query %core.exe
+<pre>
+>> probe query %core.exe
 make object! [
     name: %core.exe
     size: 220720
     date: 24-Apr-2008/22:03:14.29
     type: 'file
 ]
-&lt;/pre&gt;
+</pre>
 
 or with an open file port:
 
-&lt;pre&gt;
-&gt;&gt; port: open %core.exe
-&gt;&gt; probe query port
+<pre>
+>> port: open %core.exe
+>> probe query port
 make object! [
     name: %core.exe
     size: 220720
     date: 24-Apr-2008/22:03:14.29
     type: 'file
 ]
-&gt;&gt; close port
-&lt;/pre&gt;
+>> close port
+</pre>
 
 === Delete a file ===
 
@@ -179,19 +179,19 @@ Note that this example reads the page at a low level, just for the purpose of sh
 
 The example shows how to use asynchronous TCP to perform the transfer.
 
-&lt;pre&gt;
-REBOL [Title: &quot;Simple Async HTTP&quot;]
+<pre>
+Rebol [Title: "Simple Async HTTP"]
 
 send-http-request: func [port] [
     write port to-binary ajoin [
-        &quot;GET &quot; port/spec/path &quot; HTTP/1.0&quot; crlf
-        &quot;Host: &quot; port/spec/host crlf
+        "GET " port/spec/path " HTTP/1.0" crlf
+        "Host: " port/spec/host crlf
         crlf
     ]
 ]
 
 read-http: func [
-    &quot;Async HTTP reader&quot;
+    "Async HTTP reader"
     url [url!]
     /local spec port
 ][
@@ -200,18 +200,18 @@ read-http: func [
     port: open spec
 
     port/awake: func [event] [
-        ;print [&quot;Awake-event:&quot; event/type]
+        ;print ["Awake-event:" event/type]
         switch/default event/type [
             lookup [open event/port]
             connect [send-http-request event/port]
             wrote [read event/port]
             read  [
-                print [&quot;Read&quot; length? event/port/data &quot;bytes&quot;]
+                print ["Read" length? event/port/data "bytes"]
                 read event/port
             ]
             close [return true]
         ] [
-            print [&quot;Unexpected event:&quot; event/type]
+            print ["Unexpected event:" event/type]
             close event/port
             return true
         ]
@@ -220,7 +220,7 @@ read-http: func [
     port
 ]
 
-print &quot;reading...&quot;
+print "reading..."
 rp: read-http http://www.rebol.net/
 wait [rp 10]
 close rp
@@ -230,7 +230,7 @@ data: copy/part find/tail rp/data #{0d0a0d0a} tail rp/data
 
 write %rebol-net.html data
 browse %rebol-net.html
-&lt;/pre&gt;
+</pre>
 
 The web page will be read, then it will be written to a local file and opened in the web browser.
 
@@ -247,8 +247,8 @@ Here is an example of a server and a client that send a small message back and f
 
 Here is the TCP server. It accepts connections and waits for a ping packet. Then, it responds with a pong packet.
 
-&lt;pre&gt;
-print &quot;Ping pong server&quot;
+<pre>
+print "Ping pong server"
 
 server: open tcp://:8080
 
@@ -259,12 +259,12 @@ server/awake: func [event /local port] [
             ;probe event/type
             switch event/type [
                 read [
-                    print [&quot;Client said:&quot; to-string event/port/data]
+                    print ["Client said:" to-string event/port/data]
                     clear event/port/data
-                    write event/port to-binary &quot;pong!&quot;
+                    write event/port to-binary "pong!"
                 ]
                 wrote [
-                    print &quot;Server sent pong to client&quot;
+                    print "Server sent pong to client"
                     read event/port
                 ]
                 close [
@@ -281,7 +281,7 @@ server/awake: func [event /local port] [
 
 wait [server 30]
 close server
-&lt;/pre&gt;
+</pre>
 
 ==== Ping Client ====
 
@@ -289,8 +289,8 @@ Here is the client. It sends a ping to the server, then waits to get a pong repl
 
 Here, it pings 50 times, but feel free to try larger numbers. One person verified he actually let it go to 100 million pings. Be sure to change the timeout if you use a large number!
 
-&lt;pre&gt;
-print &quot;Ping pong client&quot;
+<pre>
+print "Ping pong client"
 
 ping-count: 0
 
@@ -300,16 +300,16 @@ client/awake: func [event] [
     ;probe event/type
     switch event/type [
         lookup [open event/port]
-        connect [write event/port to-binary &quot;ping!&quot;]
+        connect [write event/port to-binary "ping!"]
         wrote [
-            print &quot;Client sent ping to server&quot;
+            print "Client sent ping to server"
             read event/port
         ]
         read [
-            print [&quot;Server said:&quot; to-string event/port/data]
-            if (++ ping-count) &gt; 50 [return true]
+            print ["Server said:" to-string event/port/data]
+            if (++ ping-count) > 50 [return true]
             clear event/port/data
-            write event/port to-binary &quot;ping!&quot;
+            write event/port to-binary "ping!"
         ]
     ]
     false
@@ -318,7 +318,7 @@ client/awake: func [event] [
 wait [client 10] ; timeout after 10 seconds
 close client
 wait 2
-&lt;/pre&gt;
+</pre>
 
 To try the example, run the server first. Then run the client to see the ping-pongs fly!
 
@@ -332,10 +332,10 @@ We will also add a little command dialect to transfer the file name and the file
 
 ==== Server ====
 
-The server waits for the client to send a REBOL block that provides the file name and size. It then responds with either a 'go or a 'no to tell the client what to do.
+The server waits for the client to send a Rebol block that provides the file name and size. It then responds with either a 'go or a 'no to tell the client what to do.
 
-&lt;pre&gt;
-REBOL []
+<pre>
+Rebol []
 
 dir: %temp/
 make-dir dir
@@ -367,12 +367,12 @@ transfer: func [port] [
                     locs/total: locs/total + len
                     write locs/file port/data
                     clear port/data
-                    print [&quot;len:&quot; len &quot;total:&quot; locs/total &quot;of&quot; locs/size]
+                    print ["len:" len "total:" locs/total "of" locs/size]
                     read port
                 ][
                     ; Otherwise, process the startup command:
                     either do-command port [
-                        write port to-binary &quot;go&quot;
+                        write port to-binary "go"
                     ][
                         read port ; get rest of start command
                     ]
@@ -400,7 +400,7 @@ server/awake: func [event /local port] [
 ]
 wait [server 10] ; Note: increase the timeout for large files
 close server
-&lt;/pre&gt;
+</pre>
 
 We've left in some of the debugging information so you can see what's going on. Note that the ''read'' event can occur even when the data is less than what we expect. That's ok, we just keep reading until the client closes the port. This is similar to HTTP 1.0.
 
@@ -412,8 +412,8 @@ Also, if for some reason we fail to get the startup command from the client (a b
 
 The client gets the file name and file size, and sends it to the server. It then waits for a 'go to begin. If it gets a 'no, it closes the connection.
 
-&lt;pre&gt;
-REBOL []
+<pre>
+Rebol []
 
 file-name: %data.dat
 
@@ -426,7 +426,7 @@ client: open tcp://127.0.0.1:8080
 send-chunk: func [port file /local data] [
     data: read/part file 20000
     if empty? data [return false]
-    print [&quot;send:&quot; length? data &quot;bytes&quot;]
+    print ["send:" length? data "bytes"]
     write port data
     true
 ]
@@ -439,7 +439,7 @@ client/awake: func [event /local port result] [
             ; What did the server tell us?
             result: load port/data
             clear port/data
-            print [&quot;Server says:&quot; result]
+            print ["Server says:" result]
             either result = 'go [
                 file: open file-name
                 send-chunk port file
@@ -475,6 +475,6 @@ client/awake: func [event /local port result] [
 wait [client 10] ; timeout after 10 seconds
 if file [close file] ; to be sure
 close client
-&lt;/pre&gt;
+</pre>
 
 The client sends chunks of the file to the server without waiting for any kind of reply. After it has sent all of the data, it closes the port to indicate it has finished sending.

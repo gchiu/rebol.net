@@ -1,11 +1,11 @@
-{| align=&quot;right&quot;
+{| align="right"
 | __TOC__
 |}
 '''Ports are used to access external series such as files, networks, consoles, events, databases, and more.'''
 
 == Introduction ==
 
-'''Ports are essential to all REBOL programs.''' A port is used to transfer data to and from files, to communicate over networks, to output and input to the console, to detect events, such as mouse clicks on a user interface, to access databases, and more.
+'''Ports are essential to all Rebol programs.''' A port is used to transfer data to and from files, to communicate over networks, to output and input to the console, to detect events, such as mouse clicks on a user interface, to access databases, and more.
 
 This document will describe the basic concepts of ports and how they are used. A range of working examples can be found in [[Port Examples]]. And, more advanced concepts related to ports are covered in a separate document, [[Port Implementation]]. It describes how to construct your own special types of ports.
 
@@ -13,19 +13,19 @@ Most ports are implemented at the OS layer using [[Devices]] and are not necessa
 
 === Motivation ===
 
-You may be asking yourself, &quot;Why do I need to know this?&quot; The answer is as simple as asking yourself, is a program useful without I/O (input and output)? In REBOL, it is through ports that all I/O happens.
+You may be asking yourself, "Why do I need to know this?" The answer is as simple as asking yourself, is a program useful without I/O (input and output)? In Rebol, it is through ports that all I/O happens.
 
 Yes, often the usage of a port will be hidden behind some other function. For example, when you use the '''load''' function to obtain code, such as a script, or data, such as a JPEG image, a port is being used at a lower level.
 
-So, although you may not need a deep knowledge of ports, at least some understanding of what's going on will be helpful in using REBOL.
+So, although you may not need a deep knowledge of ports, at least some understanding of what's going on will be helpful in using Rebol.
 
-=== Changes from REBOL 2 ===
+=== Changes from Rebol 2 ===
 
-The REBOL 3 port system uses many of the same basic concepts as REBOL 2, ''but its design is completely different''.
+The Rebol 3 port system uses many of the same basic concepts as Rebol 2, ''but its design is completely different''.
 
 Ports have been completely redesigned to make them simpler, faster, and easier to use. Substantial effort has been made to remove the complex and error prone mechanisms of R2, and replace them with a smarter, streamlined system.
 
-REBOL 2 ports were first introduced in the ''REBOL/Core Users Guide'', [http://www.rebol.com/docs/core23/rebolcore-14.html Chapter 14 - Ports]. A lot of these basic concepts still apply to REBOL 3. For example, the port functions such as open, close, read, and write still apply.  However, many details have changed.
+Rebol 2 ports were first introduced in the ''Rebol/Core Users Guide'', [http://www.rebol.com/docs/core23/rebolcore-14.html Chapter 14 - Ports]. A lot of these basic concepts still apply to Rebol 3. For example, the port functions such as open, close, read, and write still apply.  However, many details have changed.
 
 The big changes are:
 
@@ -35,7 +35,7 @@ The big changes are:
 *Many of the port action refinements have been removed, because they are no longer useful.
 *Asynchronous I/O works differently.
 
-What does this mean? In general, code written for ports that runs in REBOL 2 will not work in REBOL 3. You will need to rewrite your code, at least at the level of the port interfaces. If you need your code to work in REBOL 2 and 3, we suggest that you cleanly isolate your port functions within higher level functions. For well written code, you will find that the difference only amounts to a few lines of code, perhaps two or three pages maximum, for sophisticated applications.
+What does this mean? In general, code written for ports that runs in Rebol 2 will not work in Rebol 3. You will need to rewrite your code, at least at the level of the port interfaces. If you need your code to work in Rebol 2 and 3, we suggest that you cleanly isolate your port functions within higher level functions. For well written code, you will find that the difference only amounts to a few lines of code, perhaps two or three pages maximum, for sophisticated applications.
 
 == Basic Concepts ==
 
@@ -61,19 +61,19 @@ But, a port can also be used for other types of functions:
 
 === Related to Series ===
 
-As you know, REBOL is built on the concept of a [http://www.rebol.com/docs/core23/rebolcore-6.html - Series].
+As you know, Rebol is built on the concept of a [http://www.rebol.com/docs/core23/rebolcore-6.html - Series].
 
 '''A series is a set of values arranged in a specific order. It is a sequence.'''
 
 A port is a special type of series. Not only is it a sequence, but it can also hold ''state information'' like an object, and access [[devices | external devices]] for I/O or other high-speed operations, such as image conversion or encryption.
 
-In REBOL 2, ports were built on a pure series model. However, we found this approach to be problematic because ports are not pure series. They also embody state (information).
+In Rebol 2, ports were built on a pure series model. However, we found this approach to be problematic because ports are not pure series. They also embody state (information).
 
 For example, a file can be thought of as a stream of bytes. But, a file also has other important attributes such a file name, a location within a directory, creation and modification dates, permissions like read-only or allow execution, and ownership information. These attributes fall outside of a pure series model.
 
 === New Definition ===
 
-REBOL 3 moves away from the pure series model of REBOL 2 and more toward an I/O stream model. Now it is closer to the concept found in other programming environments and languages.
+Rebol 3 moves away from the pure series model of Rebol 2 and more toward an I/O stream model. Now it is closer to the concept found in other programming environments and languages.
 
 So, a port can be defined as:
 
@@ -123,7 +123,7 @@ The object holds information such as:
 *date and time info
 *structures used by external devices
 
-This object is of a specific REBOL ''datatype'', called a ''PORT!''
+This object is of a specific Rebol ''datatype'', called a ''PORT!''
 
 Specific ''action functions'' can be applied to a port. Some common actions are:
 
@@ -135,7 +135,7 @@ Specific ''action functions'' can be applied to a port. Some common actions are:
 *'''query''' - get other information from port
 *'''update''' - detect external changes to the port
 
-But, there are many other actions as well, as generally defined by REBOL datatypes.
+But, there are many other actions as well, as generally defined by Rebol datatypes.
 
 == Using Ports ==
 
@@ -161,7 +161,7 @@ then you are using '''explicit''' ports. Here you specify each action separately
 
 === Fast and Easy ===
 
-Implicit ports are the fast and easy way to perform various I/O actions in REBOL.
+Implicit ports are the fast and easy way to perform various I/O actions in Rebol.
 
 A few examples are:
 
@@ -183,7 +183,7 @@ is equally valid. Think of the file datatype as an abbreviation for that. Both m
 
 Other schemes do not support implicit usage. For example:
 
-    &gt;&gt; data: read tcp://www.rebol.com
+    >> data: read tcp://www.rebol.com
     ** Access error: Port is not open: tcp://www.rebol.com
     ** Where: read
     ** Near: read tcp://www.rebol.com
@@ -223,9 +223,9 @@ This section describes some of the important concepts you need to know about por
 
 === Port Datatype ===
 
-A port is a REBOL datatype. If you use explicit ports, you will need to use the port datatype as ''a type of handle'' to access the port. If you've used handles before in other languages, that concept is probably familiar to you already.
+A port is a Rebol datatype. If you use explicit ports, you will need to use the port datatype as ''a type of handle'' to access the port. If you've used handles before in other languages, that concept is probably familiar to you already.
 
-In REBOL a port is very similar to an object because it stores information in named fields. We often call these fields ''the state'' of the port. When various actions are performed, the state will change, depending on the action. A port differs from an object in that it responds in a special way to specific datatype actions such as '''open''', '''read''', '''write''', and several others.
+In Rebol a port is very similar to an object because it stores information in named fields. We often call these fields ''the state'' of the port. When various actions are performed, the state will change, depending on the action. A port differs from an object in that it responds in a special way to specific datatype actions such as '''open''', '''read''', '''write''', and several others.
 
 === Port Schemes ===
 
@@ -237,7 +237,7 @@ For example, when you access a local file, you are using the '''file''' scheme. 
 
 Each scheme has a unique name that is used to identify it. For example, '''file''', '''http''', and '''tcp''' are the scheme names shown above. A scheme name can be used as part of a URL, or separately, depending on requirements.
 
-The REBOL system manages a list of available schemes. These schemes can be built-in, can be loaded separately, or can even be user defined within a script.
+The Rebol system manages a list of available schemes. These schemes can be built-in, can be loaded separately, or can even be user defined within a script.
 
 A lot more about schemes can be found in the [[Port Implementation]] section.
 
@@ -249,7 +249,7 @@ All of these can be used as port specs:
 
     %file.txt  ; a file name
     tcp://www.rebol.com ; a URL
-    [scheme: 'tcp host: &quot;www.rebol.net&quot;] ; a block
+    [scheme: 'tcp host: "www.rebol.net"] ; a block
     'tcp  ; just the port's scheme name
     object ; an object that specifies the port
     port ; a existing port
@@ -266,7 +266,7 @@ Here are some examples:
 
     port1: make port! %file.txt
     port2: make port! tcp://www.rebol.net
-    port3: make port! [scheme: 'tcp host: &quot;www.rebol.net&quot;]
+    port3: make port! [scheme: 'tcp host: "www.rebol.net"]
 
 These examples will create a port object and initialize its various fields.
 
@@ -286,7 +286,7 @@ More precisely, port actions are ''polymorphic datatype actions'' similar to tho
 
 The actions defined for ports are:
 
-&lt;blockquote&gt;
+<blockquote>
 ;make: make a new port object
 ;to: special (convert an object to a port)
 ;open: initialize external operations
@@ -298,21 +298,21 @@ The actions defined for ports are:
 ;create: create an external object of port type
 ;delete: delete an external object of port type
 ;rename: rename an external object of port type
-&lt;/blockquote&gt;
+</blockquote>
 
 Note that not all port actions can be used on all port schemes. For example, the '''rename''' action has no purpose when used on a ''sound'' port scheme.
 
 Ports also allow basic equality comparisons:
 
-&lt;blockquote&gt;
+<blockquote>
 ;equal?: ports are the same object
 ;not-equal?: ports are not the same object
-&lt;/blockquote&gt;
+</blockquote>
 
-For the exact usage of each action use REBOL's built-in help function. (In this way the action information is always accurate.)
+For the exact usage of each action use Rebol's built-in help function. (In this way the action information is always accurate.)
 
-&lt;pre&gt;
-&gt;&gt; ? open
+<pre>
+>> ? open
 USAGE:
         OPEN spec /new /read /write /seek /allow access
 
@@ -330,7 +330,7 @@ REFINEMENTS:
         /seek -- Optimize for random access
         /allow -- Specifies protection attributes
                 access (block!)
-&lt;/pre&gt;
+</pre>
 
 All of the port actions are provided with the port (or spec in the case of implicit port usage) as their first argument.
 
@@ -353,13 +353,13 @@ Whether an action happens asynchronously depends on a few things. Here are the b
 *Explicit port usage is asynchronous, but only if the port scheme supports it and an awake handler has been provided.
 *Some actions are synchronous, even when applied to an asynchronous port.
 
-Note that it is possible to operate an asynchronous port in a synchronous manner, when so desired. But, it is not possible to operate a synchronous port in an asynchronous manner. (To do so, you must use a REBOL task as an asynchronous thread.)
+Note that it is possible to operate an asynchronous port in a synchronous manner, when so desired. But, it is not possible to operate a synchronous port in an asynchronous manner. (To do so, you must use a Rebol task as an asynchronous thread.)
 
 See the [[Port Examples]] page for examples of both modes of operation.
 
 == Error Handling ==
 
-In general, port actions can generate errors in the same way as other REBOL functions, and you can catch and process these ''error exceptions'' in the same way.
+In general, port actions can generate errors in the same way as other Rebol functions, and you can catch and process these ''error exceptions'' in the same way.
 
 For example, if you want to handle an error during an '''open''' action, you can wrap the code with an error handling function such as '''try''':
 
@@ -372,7 +372,7 @@ A shorthand method is to use '''attempt''':
     either port: attempt [open spec] [
         perform-io...
     ][
-        print [&quot;Cannot open&quot; spec]
+        print ["Cannot open" spec]
     ]
 
 So, you can wrap each separate port action in an error handler, or you can wrap all of your port actions together in a single error handler:
@@ -386,7 +386,7 @@ So, you can wrap each separate port action in an error handler, or you can wrap 
     close file
 
     if error? err [
-        print [&quot;Port error:&quot; form err]
+        print ["Port error:" form err]
     ]
 
 For asynchronous port operation, error handling can be a bit more complicated. ''(And more work is needed here.)''

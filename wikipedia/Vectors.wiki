@@ -1,9 +1,9 @@
 {{underconstruction}}
-The vector! datatype is new in REBOL 3. The implementation described below takes effect in Alpha V22. Prior versions will not work.
+The vector! datatype is new in Rebol 3. The implementation described below takes effect in Alpha V22. Prior versions will not work.
 
 ==Definition==
 
-&lt;b&gt;The vector datatype provides greater efficiency for numeric arrays.&lt;/b&gt;
+<b>The vector datatype provides greater efficiency for numeric arrays.</b>
 
 A vector is a multidimensional array of a single numeric datatype (homogeneous). Vectors can be either integers of 8, 16, 32, or 64 bits, or decimals of 32 or 64 bits.
 

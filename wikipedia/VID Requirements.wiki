@@ -7,7 +7,7 @@ learned not only the strengths of the dialect approach to describing
 graphical user interfaces, but also some of the weaknesses when there
 is perhaps too much freedom for new users.
 
-'''This project is to design a new VID for REBOL 3.''' Yes, we have
+'''This project is to design a new VID for Rebol 3.''' Yes, we have
 limited time to build it, but I think we have a good idea what we want,
 and how best to construct it. That is the advantage of 6 years of
 experience.
@@ -31,7 +31,7 @@ of each one.
 VID 3 must be:
 
 *'''Powerful''' - to create most types of GUIs used in modern applications.
-*'''Clean''' - less cluttered and &quot;more regular&quot; dialect format.
+*'''Clean''' - less cluttered and "more regular" dialect format.
 *'''Simpler''' - less complex implementation method.
 *'''Fast''' - very fast at layout, display, and update.
 *'''Small''' - no program bloat and a smaller memory footprint (than R2).
@@ -76,7 +76,7 @@ A attribute is a datatype that specifies a modification to a style.
 
 In this example:
 
-    text &quot;This is a line&quot;
+    text "This is a line"
 
 the quoted string is an attribute of the type STRING!, and the TEXT style
 understands its meaning.
@@ -85,11 +85,11 @@ This form is similar to that of functions, so it is quite natural for users. Whe
 
 You are free to write:
 
-    text &quot;This is a line&quot; bold
+    text "This is a line" bold
 
 or
 
-    text bold &quot;This is a line&quot;
+    text bold "This is a line"
 
 The datatypes allowed for attributes are:
 
@@ -114,11 +114,11 @@ An option is a special keyword followed by a specification block.
 
 For example:
 
-&lt;pre&gt;
+<pre>
     image effect [colorize blue]
 
     text-list data list-values
-&lt;/pre&gt;
+</pre>
 
 EFFECT and DATA are the option keywords, followed by their data.
 
@@ -239,7 +239,7 @@ Note that any list can be made modal with DROP keyword. For example, a text drop
 
 Most of the above styles can be made hot (react on an action) by specifying an action block.
 
-    text &quot;Click Me&quot; [click-me]
+    text "Click Me" [click-me]
 
 In this case, the text is allowed to change its appearance to indicate that it is hot.
 
@@ -253,15 +253,15 @@ explanation.
 A panel is a collection of styles. It allows you to create a sub-layout within a layout, and then to use the panel as a container.
 
     panel [
-        label &quot;Name&quot; field
-        label &quot;Email&quot; field
-        button &quot;Submit&quot;
+        label "Name" field
+        label "Email" field
+        button "Submit"
     ]
 
 If you provide a name, by default, you will get a border box with title (like HTML fieldset). You can also specify a scroll bar to easily create a scrolling pane of styles.
 
-    panel &quot;Properties&quot; scroll [
-        button &quot;Faster&quot;
+    panel "Properties" scroll [
+        button "Faster"
         ...
     ]
 
@@ -276,10 +276,10 @@ the faces within it.
 For example:
 
     group [
-        radio &quot;Stereo&quot;
-        radio &quot;Mono&quot;
-        radio &quot;Surround&quot;
-        radio &quot;Muted&quot;
+        radio "Stereo"
+        radio "Mono"
+        radio "Surround"
+        radio "Muted"
     ]
 
 will layout the radio buttons, but also make them mutually exclusive
@@ -289,9 +289,9 @@ Groups can also be used to specify automatic return for repeating
 patterns:
 
     i-form: group 2 [
-        label &quot;Name:&quot; field
-        label &quot;Email:&quot; field
-        label &quot;Age:&quot; field
+        label "Name:" field
+        label "Email:" field
+        label "Age:" field
     ]
 
 Groups also provide another implied features. The values of faces
@@ -306,7 +306,7 @@ can be obtained or set by referring to the i-form variable:
 
 Here, the i-date contains only the field values, not the label values.
 This is an internal attribute of the FIELD style that specifies that its
-values can be &quot;groupable&quot;.
+values can be "groupable".
 
 ===Tabbed Panel===
 
@@ -314,14 +314,14 @@ A tab panel is created by grouping a set of panels. You use the group
 style with a set of panels. For example:
 
     group tabbed [
-        panel &quot;Properties&quot; [
-            button &quot;Faster&quot;
+        panel "Properties" [
+            button "Faster"
             ...
         ]
-        panel &quot;Networking&quot; [
+        panel "Networking" [
             ...
         ]
-        panel &quot;Sound&quot; [
+        panel "Sound" [
             ...
         ]
     ]
@@ -357,7 +357,7 @@ some suggested names for each:
 
 :'''Action''' - based on the behavior of the button, it initiates an action that may apply at the GUI level alone (such as scroll a list), or any other function. In R2, this is the level most applications used to interact with application code, but in many cases the action is to simply store the current state of a GUI object into an application variable. In those cases, the next level is more suitable.
 
-:'''Transaction''' - an action can collect and validate an entire &quot;form&quot; then submit the form to the application as an atomic transaction unit. This is the web model that has been proven to satisfy a large number of uses. The state of the display is relatively independent of the state of the application. For such displays, the individual actions for the GUI are not relevant to the application, and can be handled at the GUI level alone.  Upon a key GUI event, such as clicking a submit button, the application is sent a submit event along with the necessary data. If in addition to layout information, the GUI is also provided with field validation information, even those details can be handled by the GUI and not the application itself.
+:'''Transaction''' - an action can collect and validate an entire "form" then submit the form to the application as an atomic transaction unit. This is the web model that has been proven to satisfy a large number of uses. The state of the display is relatively independent of the state of the application. For such displays, the individual actions for the GUI are not relevant to the application, and can be handled at the GUI level alone.  Upon a key GUI event, such as clicking a submit button, the application is sent a submit event along with the necessary data. If in addition to layout information, the GUI is also provided with field validation information, even those details can be handled by the GUI and not the application itself.
 
 ==References==
 

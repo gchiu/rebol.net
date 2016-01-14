@@ -12,34 +12,34 @@ SKIP is an action value.
 For example, SKIP series 1 is the same as NEXT. If skip attempts to move beyond the head or tail it will be stopped at the head or tail.
 
 
-&lt;code&gt;&lt;pre&gt;
-str: &quot;REBOL&quot;
+<code><pre>
+str: "Rebol"
 print skip str 3
 
 blk: [11 22 33 44 55]
 print skip blk 3
-&lt;/pre&gt;&lt;/code&gt;
+</pre></code>
 
 
 ==== Categories ==== 
 
 
-[[Categories series|series]] � Operations on series, including blocks and strings.&lt;br&gt;
-[[Categories string|string]] � Operations for string series.&lt;br&gt;
+[[Categories series|series]] � Operations on series, including blocks and strings.<br>
+[[Categories string|string]] � Operations for string series.<br>
 
 
 ==== See also ==== 
 
 
-[[Words at|at]] � Returns the series at the specified index.&lt;br&gt;
-[[Words index?|index?]] � Returns the index number of the current position in the series.&lt;br&gt;
-[[Words next|next]] � Returns the series at its next position.&lt;br&gt;
-[[Words back|back]] � Returns the series at its previous position.&lt;br&gt;
+[[Words at|at]] � Returns the series at the specified index.<br>
+[[Words index?|index?]] � Returns the index number of the current position in the series.<br>
+[[Words next|next]] � Returns the series at its next position.<br>
+[[Words back|back]] � Returns the series at its previous position.<br>
 
 
 ==== Comments ==== 
 
 
-&lt;blockquote&gt;
+<blockquote>
 {|
-|}&lt;/blockquote&gt;
+|}</blockquote>

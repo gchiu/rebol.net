@@ -1,1 +1,1 @@
-Removed. See [http://www.rebol.com/r3/docs/gui/styles.html &quot;R3 GUI Styles&quot;]
+Removed. See [http://www.rebol.com/r3/docs/gui/styles.html "R3 GUI Styles"]

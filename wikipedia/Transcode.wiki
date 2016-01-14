@@ -1,4 +1,4 @@
-The TRANSCODE function translates strings to values one &quot;token&quot; at a time.
+The TRANSCODE function translates strings to values one "token" at a time.
 
 ==Purpose==
 
@@ -8,7 +8,7 @@ Note that normal translation of source code is performed in LOAD by TO BLOCK!, n
 
 ==Usage==
 
-&lt;pre&gt;
+<pre>
 USAGE:
         TRANSCODE source
 
@@ -18,12 +18,12 @@ DESCRIPTION:
 
 ARGUMENTS:
          source -- (Type: string!)
-&lt;/pre&gt;
+</pre>
 
 For example:
 
- &gt;&gt; transcode &quot;1 2 3&quot;
- == [1 &quot; 2 3&quot;]
+ >> transcode "1 2 3"
+ == [1 " 2 3"]
 
 Notice that TRANSCODE returns a block of the form:
 
@@ -35,14 +35,14 @@ Also note that TRANSCODE does not throw syntax errors, it will return them in th
 
 For example:
 
- &gt;&gt; probe transcode &quot;1/2 print now&quot;
+ >> probe transcode "1/2 print now"
  [make error! [
         code: 200
         type: 'Syntax
         id: 'invalid
-        arg1: &quot;date&quot;
-        arg2: &quot;1/2&quot;
+        arg1: "date"
+        arg2: "1/2"
         arg3: none
-        near: &quot;(line 1) print 1/2 print now&quot;
+        near: "(line 1) print 1/2 print now"
         where: [transcode]
-    ] &quot;/2 print now&quot;]
+    ] "/2 print now"]

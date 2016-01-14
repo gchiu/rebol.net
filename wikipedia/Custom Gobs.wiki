@@ -9,7 +9,7 @@ We aim to expand the gob API. As some ideas get implemented or revised, this doc
 ====Why?====
 Its not because we use an alternate graphic engine that we want to relinquish the use of View's easy to use graphic engine.
 
-This is even more true when we want to use a *REBOL* GUI package and just embed some other graphic system into the same window.
+This is even more true when we want to use a *Rebol* GUI package and just embed some other graphic system into the same window.
 
 ====A quick note about the R3 rendering pipeline====
 The R3 view has basically 3 levels of graphic management, only one which is directly accessible from within the interpreter.
@@ -53,11 +53,11 @@ The list is short but covers a wide range of requirements
 This is done via the host-kit/extension API requiring you to bind external C/C++ rendering code to the custom GOB API.
 
 Basically, in the Compiled Extension code you:
-#Define a struct (referred in this document as '''''custom_gob_data''''') which will hold renderer data for each gob instances.  You must store this struct within the '''rebol_gob-&gt;custom''' member. 
+#Define a struct (referred in this document as '''''custom_gob_data''''') which will hold renderer data for each gob instances.  You must store this struct within the '''rebol_gob->custom''' member. 
 #Create and setup a '''gob_renderer''' struct so it holds callbacks for your external renderer, allowing the internal engine to execute your own code. it has the following hooks:
 #*'''on_custom()/on_internal()''' allows you to build or destroy your ''custom_gob_data'' struct, and link it to the R3 allocated '''''rebol_gob'''''.  This is also where you handle any rendering engine needs.
 #*'''on_append()/on_remove()''' Called when a gob is about to be added/removed to another gob.  
-#*'''on_data()''' given user data in Rebol Extension format, this will usually result in setting up native (Binary) data within '''''rebol_gob-&gt;custom'''''.  The information is actually stored in usual gob fashion, within '''''rebol_gob-&gt;data'''''.
+#*'''on_data()''' given user data in Rebol Extension format, this will usually result in setting up native (Binary) data within '''''rebol_gob->custom'''''.  The information is actually stored in usual gob fashion, within '''''rebol_gob->data'''''.
 #*'''on_render()''' (re)generate the custom's gob image.  You are given an RGBA buffer and rectangle area information.  If your gob would be clipped from the display, it is not even called for rendering. A member within the '''''rebol_gob''''' struct already indicates if your renderer should blend itself using alpha channel masks to optimize rendering when its not required.
 #'''RegisterGobRenderer()''' supplying your gob_renderer_hooks struct and a string that will be usable as a word within Rebol.
 
@@ -118,7 +118,7 @@ Additionally, we could even support this for AGG rendering, allowing nice tricks
 ==reb_gob.h==
 *Add '''''custom''''' member to '''''rebol_gob struct'''''
 *add a new entry in the '''''GOB_TYPES''''' enum:  '''''GOBT_CUSTOM'''''
-*define IS_GOB_CUSTOM(g)   (GOB_CONTENT(g) &amp;&amp; GOB_TYPE(g) == GOBT_CUSTOM)
+*define IS_GOB_CUSTOM(g)   (GOB_CONTENT(g) && GOB_TYPE(g) == GOBT_CUSTOM)
 *define the '''''gob_renderer''''' struct something like (its changing daily and is not up to date):
     struct gob_renderer {
         //*************** 
@@ -132,27 +132,27 @@ Additionally, we could even support this for AGG rendering, allowing nice tricks
         //*************** 
         
         // when the gob is given fresh data by assigning to its '''gob/custom:''' field
-        REBINT (* &lt;u&gt;&lt;i&gt;on_data&lt;/i&gt;&lt;/u&gt;)(REBGOB *gob);
+        REBINT (* <u><i>on_data</i></u>)(REBGOB *gob);
         
         // when the gob is converted to a custom type (custom: [... data ...])
         // note: also called when its created as a custom gob directly
-        REBINT (* &lt;u&gt;&lt;i&gt;on_custom&lt;/i&gt;&lt;/u&gt;)(REBGOB *gob);
+        REBINT (* <u><i>on_custom</i></u>)(REBGOB *gob);
         
         // when the gob leaves custom state.  This happens when you assign
         // user data to the gob other than custom: data (ex:  my_custom_gob/draw: [line 0x0 100x100])
-        REBINT (* &lt;u&gt;&lt;i&gt;on_internal&lt;/i&gt;&lt;/u&gt;)(REBGOB *gob);
+        REBINT (* <u><i>on_internal</i></u>)(REBGOB *gob);
         
         // when gob is appended to a gob (pane) 
         // note: converting to custom when its already appended, should also call this immediately after on_internal().
-        REBINT (* &lt;u&gt;&lt;i&gt;on_append&lt;/i&gt;&lt;/u&gt;)(REBGOB *gob, REBGOB *parent);  
+        REBINT (* <u><i>on_append</i></u>)(REBGOB *gob, REBGOB *parent);  
         
         // when removed from a gob (pane)
         // note: when an gob is switched from one pane to another, it should call 
-        REBINT (* &lt;u&gt;&lt;i&gt;on_remove&lt;/i&gt;&lt;/u&gt;)(REBGOB *gob, REBGOB *parent);  on_append() immediately.
+        REBINT (* <u><i>on_remove</i></u>)(REBGOB *gob, REBGOB *parent);  on_append() immediately.
         
         // when rendering is required by compositor and GOBT_EXTERNAL is set. 
-        // a function which receives an RGB (bgr) &amp; alpha image buffer array (not image type), and x,y,w,h, specs.
-        REBINT (* &lt;u&gt;&lt;i&gt;on_render&lt;/i&gt;&lt;/u&gt;)(REBGOB *gob); 
+        // a function which receives an RGB (bgr) & alpha image buffer array (not image type), and x,y,w,h, specs.
+        REBINT (* <u><i>on_render</i></u>)(REBGOB *gob); 
     };
 
 ==host_window.c==
@@ -191,7 +191,7 @@ Its possible the HW isn't ready to render for example, the application timer mig
 
 '''''A:''''' Event processing is not the task of the renderer, BUT determining what lies under a rectangle offset can only be done quickly by the renderer.  So we could add a hook to let renderers tell us if they see something at given coordinates (like the mouse pointer).
 
-In GLASS the rendering engine creates a &quot;backplane&quot; layer which is a color bitmask used to detect what object is concerned with a specific region of the display.
+In GLASS the rendering engine creates a "backplane" layer which is a color bitmask used to detect what object is concerned with a specific region of the display.
 
 This is rendered by the objects themselves, so transparency and non-rectangular regions are supported by default. It is only re-rendered when some object needs to, so unless the shape or sizing changes, its never actually redrawn (saving a lot of processing).
 
@@ -231,7 +231,7 @@ For OpenGL support, I will be starting with the container method since its what 
 we tell The renderer Where to render, but it does not actually integrate within the view/AGG gfx pipeline.
 
 =====Pros:=====
-*We use gobs to allocate &amp; integrate the renderer within our view (placement, sizing, user data, refresh calls, etc).
+*We use gobs to allocate & integrate the renderer within our view (placement, sizing, user data, refresh calls, etc).
 *Rendering can be performed in HW with no interference from view, so its Optimally fast.
 *gob children could be used by the custom renderer instead (ex, an image gob could be used as a texture).
 
@@ -265,7 +265,7 @@ we tell The renderer Where to render, but it does not actually integrate within 
 
 ===BITMAP(a subset of COMPOSITE)===
 ----
-100% integration within the gob gfx pipeline, rendered &quot;off-screen&quot;.
+100% integration within the gob gfx pipeline, rendered "off-screen".
 
 =====Pros:=====
 *similar to composite mode, but doesn't expect any performance, since this is meant to generate images.

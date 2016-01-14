@@ -7,7 +7,7 @@
 *[[Parse Project]] - proposals for extensions to PARSE
 *[[DLL Interface]] - proposals and single point of information for R3 DLL interface
 *[[Replacement]] - proposals for composition via replacement/substitution
-*[[Inclusion Methods]] - discussion about use of PREBOL, INCLUDE, DO, IMPORT, etc.
+*[[Inclusion Methods]] - discussion about use of PRebol, INCLUDE, DO, IMPORT, etc.
 *[[GUI Face Sizing]] - finalizing the algorithm
 *[[Comparisons]] - how comparisons should work
 *[[Copy Semantics]] - defining what copy does
@@ -15,7 +15,7 @@
 *[[Exceptions]] - RETURN, EXIT, CATCH, THROW, QUIT, BREAK, CONTINUE, triggered errors
 *[[Exception proposals]] - dynamic or definitional?
 *[[R3 GUI terminology]] - terminology unification
-*[[Mathematical model of REBOL series | Indexing]] - discussion of indexing in R2 vs. indexing in R3, vs. other possible alternatives
+*[[Mathematical model of Rebol series | Indexing]] - discussion of indexing in R2 vs. indexing in R3, vs. other possible alternatives
 
 ----
 {{Template:Community_TOC}}

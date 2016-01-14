@@ -1,1 +1,1 @@
-'''Documentation about reactors can now be found here: [http://www.rebol.com/r3/docs/gui/reactors.html &quot;R3 GUI Reactors&quot;]'''
+'''Documentation about reactors can now be found here: [http://www.rebol.com/r3/docs/gui/reactors.html "R3 GUI Reactors"]'''

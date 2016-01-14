@@ -2,42 +2,42 @@
 
 Sets the scale for drawing commands.
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | scale-x
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | scale-x
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | scale-y
-| bgcolor=&quot;white&quot; | [decimal!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | scale-y
+| bgcolor="white" | [decimal!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;p&gt;The values given are multipliers; use values greater than one
+<br>'''Notes and Examples'''
+<p>The values given are multipliers; use values greater than one
 to increase the scale; use values less than one to decrease it.
-Negative values&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+Negative values</p>
+<code><pre>
 fill-pen blue box 100x100 200x200
 scale 2  .5  fill-pen red box 100x100 200x200
 reset-matrix  ; Reset the scale.
 scale .5 1.5 fill-pen yellow box 100x100 200x200
-&lt;/pre&gt;&lt;/code&gt;
-[[image:SCALE-1.png|SCALE example 1]]
+</pre></code>
+[[images/SCALE-1.png|SCALE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;Another way to reset the scale is to use the PUSH command:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Another way to reset the scale is to use the PUSH command:</p>
+<code><pre>
 fill-pen blue box 100x100 200x200
 push [scale 2  .5  fill-pen red box 100x100 200x200]
 scale .5 1.5 fill-pen yellow box 100x100 200x200
-&lt;/pre&gt;&lt;/code&gt;
-[[image:SCALE-2.png|SCALE example 2]]
+</pre></code>
+[[images/SCALE-2.png|SCALE example 2]]
 
-&lt;br&gt;
-&lt;p&gt;See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace&lt;/p&gt;
+<br>
+<p>See also: http://www.w3.org/TR/SVG/coords.html#EstablishingANewUserSpace</p>

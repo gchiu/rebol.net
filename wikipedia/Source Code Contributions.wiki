@@ -8,11 +8,11 @@ We will make it easy for developers to obtain source code online and to upload n
 
 All code contributions will be freely published and distributed. Everyone can use this codebase for their projects and products, without restriction.
 
-As a developer, your submission must agree to this condition. And, like other languages, we will be creating a &quot;legal entity&quot; to protect the source code base.
+As a developer, your submission must agree to this condition. And, like other languages, we will be creating a "legal entity" to protect the source code base.
 
 ==Standard Releases==
 
-For source code that is part of REBOL 3 itself, there will be a '''standard version''' that is integrated. This is the official source that will be supported.
+For source code that is part of Rebol 3 itself, there will be a '''standard version''' that is integrated. This is the official source that will be supported.
 
 '''Not everything that is contributed will be part of the standard'''. But, that's ok. You can always download other code yourself, and even include it within your own applications. That's for you to decide.
 
@@ -36,6 +36,6 @@ What can be done about these problems? I think a lot of this is '''related to ed
 
 I think all of this can be summarized by this simple statement:
 
-&lt;blockquote&gt;
+<blockquote>
 '''We will not accept code that we believe to be unsupportable.'''
-&lt;/blockquote&gt;
+</blockquote>

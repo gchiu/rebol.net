@@ -2,57 +2,57 @@
 
 The line command draws a line between two points using the current pen, line-width, and line-pattern (if it is set).
 
-{| cellspacing=&quot;1&quot; cellpadding=&quot;4&quot; border=&quot;0&quot; style=&quot;background: black; color: black&quot;
-! bgcolor=&quot;silver&quot; | Arg 
-! bgcolor=&quot;silver&quot; | Type 
-! bgcolor=&quot;silver&quot; | Description
-! bgcolor=&quot;silver&quot; | Values
+{| cellspacing="1" cellpadding="4" border="0" style="background: black; color: black"
+! bgcolor="silver" | Arg 
+! bgcolor="silver" | Type 
+! bgcolor="silver" | Description
+! bgcolor="silver" | Values
 |- 
-| bgcolor=&quot;white&quot; | point1
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point1
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point2
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point2
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | point3
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | point3
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |- 
-| bgcolor=&quot;white&quot; | ...
-| bgcolor=&quot;white&quot; | [pair!]
-| bgcolor=&quot;white&quot; | 
-| bgcolor=&quot;white&quot; | 
+| bgcolor="white" | ...
+| bgcolor="white" | [pair!]
+| bgcolor="white" | 
+| bgcolor="white" | 
 |}
-&lt;br&gt;'''Notes and Examples'''
-&lt;code&gt;&lt;pre&gt;
+<br>'''Notes and Examples'''
+<code><pre>
 line 10x10 100x50
-&lt;/pre&gt;&lt;/code&gt;
-[[image:LINE-1.png|LINE example 1]]
+</pre></code>
+[[images/LINE-1.png|LINE example 1]]
 
-&lt;br&gt;
-&lt;p&gt;If more than two points are given multiple lines are drawn in a
-connected fashion:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>If more than two points are given multiple lines are drawn in a
+connected fashion:</p>
+<code><pre>
 line 10x10 20x50 30x0 4x40
-&lt;/pre&gt;&lt;/code&gt;
-[[image:LINE-2.png|LINE example 2]]
+</pre></code>
+[[images/LINE-2.png|LINE example 2]]
 
-&lt;br&gt;
-&lt;p&gt;Note that the end point is not connected to the first point. To
-do that, see the polygon command.&lt;/p&gt;
-&lt;p&gt;An example using pens and line attributes:&lt;/p&gt;
-&lt;code&gt;&lt;pre&gt;
+<br>
+<p>Note that the end point is not connected to the first point. To
+do that, see the polygon command.</p>
+<p>An example using pens and line attributes:</p>
+<code><pre>
 pen yellow line-width 8 line-pattern red 5 5
 line 10x10 20x50 30x0 4x40
 
 pen yellow  line-width 5  line-cap round
 line 100x100 100x200 200X100 200X200
-&lt;/pre&gt;&lt;/code&gt;
-[[image:LINE-3.png|LINE example 3]]
+</pre></code>
+[[images/LINE-3.png|LINE example 3]]
 
-&lt;br&gt;
+<br>

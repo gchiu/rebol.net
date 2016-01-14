@@ -8,9 +8,9 @@ We now try to remove spaces that would sometimes appear before a newline. In the
 
 Also, for /all keep in mind that just like in R2:
 
-   mold/all none =&gt; #[none]
-   mold/all true =&gt; #[true]
-   mold/all false =&gt; #[false]
+   mold/all none => #[none]
+   mold/all true => #[true]
+   mold/all false => #[false]
 
 These are common shortcut cases. We make them easier because for these specific cases, programmers may actually type them into their code.
 

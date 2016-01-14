@@ -1,45 +1,45 @@
-{{Caution|Alpha Testers '''PLEASE NOTE:''' This document is ''out of date and inaccurate''.&lt;br&gt;We are working on new and totally revised documentation.}}
-&amp;nbsp;
+{{Caution|Alpha Testers '''PLEASE NOTE:''' This document is ''out of date and inaccurate''.<br>We are working on new and totally revised documentation.}}
+&nbsp;
 {{banner}}
-{| id=&quot;VIDGuide&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;width:100%; margin-top: 1em; border:2px #A3B1BF solid;&quot;
+{| id="VIDGuide" cellspacing="0" cellpadding="0" style="width:100%; margin-top: 1em; border:2px #A3B1BF solid;"
 |-
-| colspan=&quot;2&quot; style=&quot;background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid;&quot; |
-&lt;h2 style=&quot;margin-top:.1em; border-bottom:0; font-weight:bold;&quot;&gt;
-REBOL Visual Interface Dialect User Guide
-&lt;/h2&gt; &lt;!-- 3 line spacing of h2 is important for subsection edit links to work correctly, PLEASE DO NOT FIX --&gt;
-Copyright 2007 REBOL Technologies
+| colspan="2" style="background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid;" |
+<h2 style="margin-top:.1em; border-bottom:0; font-weight:bold;">
+Rebol Visual Interface Dialect User Guide
+</h2> <!-- 3 line spacing of h2 is important for subsection edit links to work correctly, PLEASE DO NOT FIX -->
+Copyright 2007 Rebol Technologies
 |-
-| style=&quot;width:60%; background:#F5FAFF; padding:1.2em;&quot; valign=&quot;top&quot; |
-&lt;!-- LEFT COLUMN --&gt;
+| style="width:60%; background:#F5FAFF; padding:1.2em;" valign="top" |
+<!-- LEFT COLUMN -->
 
 ==Welcome==
 
-{{dropcap|W}}elcome to the REBOL VID User Guide.
+{{dropcap|W}}elcome to the Rebol VID User Guide.
 
-This manual introduces the Visual Interface Dialect, or VID. As a dialect, VID represents the '''application writer's layer''' of a multi-layered graphics system. VID is used to write the Graphical User Interface, the GUI, in REBOL.   
+This manual introduces the Visual Interface Dialect, or VID. As a dialect, VID represents the '''application writer's layer''' of a multi-layered graphics system. VID is used to write the Graphical User Interface, the GUI, in Rebol.   
 
 ===Getting Started===
 
-First, you will need a REBOL executable for your computer and Operating System.  REBOL is compiled on many different platforms, and the good people at REBOL Technologies have made it easy to download the correct version for your system.
+First, you will need a Rebol executable for your computer and Operating System.  Rebol is compiled on many different platforms, and the good people at Rebol Technologies have made it easy to download the correct version for your system.
 
 This all starts at '''http://www.rebol.com'''.
 
-Point your web browser to rebol.com and from there follow the Download link, click the downloader for your operating system and then install REBOL. Detailed instructions for installing can be found on the download web pages of rebol.com.
+Point your web browser to rebol.com and from there follow the Download link, click the downloader for your operating system and then install Rebol. Detailed instructions for installing can be found on the download web pages of rebol.com.
 {{Need|Need to update this when the actual page is ready.  And add any DocBase info for installation.}}
 
-===Hello REBOL===
+===Hello Rebol===
 
-Starting small; from the REBOL console, try typing
+Starting small; from the Rebol console, try typing
 
- view [text &quot;Hello World&quot;]
+ view [text "Hello World"]
 
-and you will have a graphical window of REBOL VID announcing itself to the world.
+and you will have a graphical window of Rebol VID announcing itself to the world.
 
-You'll have to close the window using the system menu that comes with your windowing system, usually an &amp;times; in the very top left or top right corner.  So let's fix that, and add our own close button.
+You'll have to close the window using the system menu that comes with your windowing system, usually an &times; in the very top left or top right corner.  So let's fix that, and add our own close button.
 
  view [
-     text &quot;Hello World&quot;
-     button &quot;Goodbye&quot; [unview none]
+     text "Hello World"
+     button "Goodbye" [unview none]
  ]
 
 Press the goodbye button and the window will go away.
@@ -48,16 +48,16 @@ Press the goodbye button and the window will go away.
 
 So what is going on?
 
-*'''view''' is a REBOL function for building and displaying windows
+*'''view''' is a Rebol function for building and displaying windows
 
-*VID is a REBOL dialect for building windows.  The VID input is the ''block!'' that follows the '''view''' function and will be used as the argument for '''view'''.
+*VID is a Rebol dialect for building windows.  The VID input is the ''block!'' that follows the '''view''' function and will be used as the argument for '''view'''.
 {{hilight|'''view''' is data smart.  It determines if the argument is a window object, a predefined VID face or a block of VID input that needs to be processed and acts accordingly.  More on all these a little bit later but for Hello World we are using a block of VID input.|justify}}
 
 * VID input block.  
 **As VID processes the dialect input it matches a '''style''' called '''text''' and will then match against arguments allowed for '''text''' styles.  The dialect scanner matches a ''string!''. That is accepted by the text style and the  VID engine fills in a graphical face with a type of '''text''' and our string salutation.
 **Next the VID parser detects another '''style''' called '''button''' and will then match against arguments acceptable for buttons.  In this case there is a ''string!'' which the VID parser will use to label the button.  It also matches a ''block!'' which the button style matches as a code block that can be used for the button action.  The VID parser fills in another face with a type of '''button'''. The button has a string label and an action block of '''unview none'''. The action block will be evaluated when somebody clicks the Goodbye button.
 
-*'''unview''' is a REBOL function for removing windows from the screen.  An argument of '''none''' is a special argument meaning 'the last window you viewed', in this case; Hello World.
+*'''unview''' is a Rebol function for removing windows from the screen.  An argument of '''none''' is a special argument meaning 'the last window you viewed', in this case; Hello World.
 
 === Customization ===
 
@@ -73,7 +73,7 @@ And yet, it still needs a close button.
 
  view [
      progress slider attach
-     button &quot;Goodbye&quot; [unview none]
+     button "Goodbye" [unview none]
  ]
 
 The Goodbye button is fairly easy code to type, somewhat easy to remember, but there may be a better way. VID allows for certain customizations that enable consistent look and feel within and across applications.
@@ -93,7 +93,7 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
          [
              on-init: override :on-init [
                  super face spec
-                 spec/text: copy &quot;Goodbye&quot;
+                 spec/text: copy "Goodbye"
                  spec/action: [unview none]
              ]
          ]
@@ -101,18 +101,18 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
      ]
  ]
 
-| style=&quot;width:40%; background:#F8FFF8; border-left:1px solid #A3B1BF; padding:1.2em;&quot; valign=&quot;top&quot; |
-&lt;!-- RIGHT COLUMN --&gt;
+| style="width:40%; background:#F8FFF8; border-left:1px solid #A3B1BF; padding:1.2em;" valign="top" |
+<!-- RIGHT COLUMN -->
 
 ==Style Quick Reference==
 
 {{Alphabetic index}}
 
-{| class=&quot;wikitable&quot; width=100%
+{| class="wikitable" width=100%
 |-
 !Style !! elements
 |-
-&lt;span id=&quot;A&quot;&gt;&lt;/span&gt;
+<span id="A"></span>
 !area
 |
 * action: ''block!''
@@ -121,7 +121,7 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 * text: ''string!''
 * text-mask: ''string!''
 |-
-&lt;span id=&quot;B&quot;&gt;&lt;/span&gt;
+<span id="B"></span>
 !blank
 |
 * color: ''tuple!''
@@ -134,21 +134,21 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 |-
 !btn
 |
-&amp;nbsp; Based on '''button'''
+&nbsp; Based on '''button'''
 |-
 !button
 |
 * text: ''string!''
 * action: ''block!''
 |-
-&lt;span id=&quot;C&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;D&quot;&gt;&lt;/span&gt;
+<span id="C"></span>
+<span id="D"></span>
 !draw
 |
-&amp;nbsp; Based on '''blank'''
+&nbsp; Based on '''blank'''
 |-
-&lt;span id=&quot;E&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;F&quot;&gt;&lt;/span&gt;
+<span id="E"></span>
+<span id="F"></span>
 !field
 |
 * text: ''string!''
@@ -157,9 +157,9 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 |-
 !filler
 |
-&amp;nbsp; Based on '''blank'''
+&nbsp; Based on '''blank'''
 |-
-&lt;span id=&quot;G&quot;&gt;&lt;/span&gt;
+<span id="G"></span>
 !group
 |
 * columns: ''integer!''
@@ -169,16 +169,16 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 * background-draw: ''block!''
 * padding: ''pair!''
 |-
-&lt;span id=&quot;H&quot;&gt;&lt;/span&gt;
+<span id="H"></span>
 !h1
 |
-&amp;nbsp; Based on '''text'''
+&nbsp; Based on '''text'''
 |-
 !h2
 |
-&amp;nbsp; Based on '''text'''
+&nbsp; Based on '''text'''
 |-
-&lt;span id=&quot;I&quot;&gt;&lt;/span&gt;
+<span id="I"></span>
 !icon-list
 |
 * size: ''pair!''
@@ -190,36 +190,36 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 |-
 !image
 |
-&amp;nbsp; Based on '''blank'''
+&nbsp; Based on '''blank'''
 |-
-&lt;span id=&quot;J&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;K&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;L&quot;&gt;&lt;/span&gt;
+<span id="J"></span>
+<span id="K"></span>
+<span id="L"></span>
 !label
 |
-&amp;nbsp; Based on '''text'''
+&nbsp; Based on '''text'''
 |-
 !led
 |
 * state: ''logic!''
 * color: ''tuple!''
 |-
-&lt;span id=&quot;M&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;N&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;O&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;P&quot;&gt;&lt;/span&gt;
+<span id="M"></span>
+<span id="N"></span>
+<span id="O"></span>
+<span id="P"></span>
 !pad
 |
-&amp;nbsp; Based on '''blank'''
+&nbsp; Based on '''blank'''
 |-
 !progress
 |
 * size: ''pair!''
 * value: ''percent!''
 |-
-&lt;span id=&quot;Q&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;R&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;S&quot;&gt;&lt;/span&gt;
+<span id="Q"></span>
+<span id="R"></span>
+<span id="S"></span>
 !scroll-panel
 |
 * columns: ''integer!''
@@ -231,7 +231,7 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 |-
 !scroller
 |
-&amp;nbsp; Based on '''slider'''
+&nbsp; Based on '''slider'''
 |-
 !slider
 |
@@ -239,7 +239,7 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 * value: ''percent!''
 * size: ''pair!''
 |-
-&lt;span id=&quot;T&quot;&gt;&lt;/span&gt;
+<span id="T"></span>
 !text
 |
 * text: ''string!''
@@ -254,25 +254,25 @@ There is a whole section of this document on [[VID User Guide Stylize|STYLIZE]] 
 * background: ''tuple!''
 * background-draw: ''block!''
 |}
-&lt;!-- Tip of the Day --&gt;
+<!-- Tip of the Day -->
 {{Tip of the day - community portal}}
 |-
-| colspan=&quot;2&quot; style=&quot;background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid; border-top:1px #A3B1BF solid;&quot; |
-&lt;h2 style=&quot;margin-top:.1em; border-bottom:0; font-weight:bold;&quot;&gt;
+| colspan="2" style="background:#CEE0F2; text-align:center; border-bottom:1px #A3B1BF solid; border-top:1px #A3B1BF solid;" |
+<h2 style="margin-top:.1em; border-bottom:0; font-weight:bold;">
 Style Options
-&lt;/h2&gt; &lt;!-- 3 line spacing of h2 is important for subsection edit links to work correctly, PLEASE DO NOT FIX --&gt;
+</h2> <!-- 3 line spacing of h2 is important for subsection edit links to work correctly, PLEASE DO NOT FIX -->
 |-
-| colspan=&quot;2&quot; style=&quot;background:#F5FAFF; padding:1.2em;&quot; valign=&quot;top&quot; |
-&lt;!-- Style Option table spans the whole page --&gt;
+| colspan="2" style="background:#F5FAFF; padding:1.2em;" valign="top" |
+<!-- Style Option table spans the whole page -->
 == Style Option Reference ==
 VID offers a lot.  There are many styles and each have a variety of options.  Options are applied to styles using the '''options''' keyword and a block! holding the option specification.  For example
 
-  button &quot;Quit&quot; options [rounding: 10  material: 'sand]
+  button "Quit" options [rounding: 10  material: 'sand]
 
 Would build a button in the layout with more rounded corners than the default, and a white beach sand look.
 
 === button options ===
-{|class=&quot;wikitable&quot; width=&quot;100%&quot;
+{|class="wikitable" width="100%"
 !Option
 !Accepts
 !Default
@@ -304,43 +304,43 @@ Would build a button in the layout with more rounded corners than the default, a
 |The amount of stretch in the button
 |}
 
-{|class=&quot;wikitable&quot; width=&quot;75%&quot;
+{|class="wikitable" width="75%"
 |+Some Examples
 !Example
 !Look
 |-
-|button &quot;Rounding 10&quot; options [rounding: 10]
-|[[Image:vid-options-button-rounding10.png]]
+|button "Rounding 10" options [rounding: 10]
+|[[images/vid-options-button-rounding10.png|No Description (Not Found)]]
 |-
-|button &quot;Rounding 0&quot; options [rounding: 0]
-|[[Image:vid-options-button-rounding0.png]]
+|button "Rounding 0" options [rounding: 0]
+|[[images/vid-options-button-rounding0.png|No Description (Not Found)]]
 |-
-|button &quot;50x20&quot; options [size: 50x20 rounding: 10]
-|[[Image:vid-options-button-size50x20.png]]
+|button "50x20" options [size: 50x20 rounding: 10]
+|[[images/vid-options-button-size50x20.png|No Description (Not Found)]]
 |}
 
 === material gradients ===
-{|class=&quot;wikitable&quot; width=&quot;75%&quot;
+{|class="wikitable" width="75%"
 !Material
 !Example
 |-
 !aluminum
-|[[Image:vid-button-aluminum.png]]
+|[[images/vid-button-aluminum.png|No Description (Not Found)]]
 |-
 !blue-aluminum
-|[[Image:vid-button-blue-aluminum.png]]
+|[[images/vid-button-blue-aluminum.png|No Description (Not Found)]]
 |-
 !dark-aluminum
-|[[Image:vid-button-dark-aluminum.png]]
+|[[images/vid-button-dark-aluminum.png|No Description (Not Found)]]
 |-
 !gloss
-|[[Image:vid-button-gloss.png]]
+|[[images/vid-button-gloss.png|No Description (Not Found)]]
 |-
 !sand
-|[[Image:vid-button-sand.png]]
+|[[images/vid-button-sand.png|No Description (Not Found)]]
 |}
 
-&lt;!-- End of two-column page --&gt;
+<!-- End of two-column page -->
 |}
 
 {{Links|
@@ -367,7 +367,7 @@ Would build a button in the layout with more rounded corners than the default, a
 
 {{:VID: Skin creation guide}}
 
-{{:VID: Changes|Notes on REBOL 2 and REBOL 3}}
+{{:VID: Changes|Notes on Rebol 2 and Rebol 3}}
 
 {{:VID: Internals}}
 

@@ -1,10 +1,10 @@
-'''A place to make suggestions regarding the [http://www.rebol.com/docs/reference.html REBOL Reference Card.]'''
+'''A place to make suggestions regarding the [http://www.rebol.com/docs/reference.html Rebol Reference Card.]'''
 
 ==A few notes from Carl==
 
 *'''The purpose of this card is to help beginners (not experts.)'''
 
-*The card is designed to list the commonly used REBOL functions, not all REBOL functions. For some parts, like comparison, we list the useful set of functions.
+*The card is designed to list the commonly used Rebol functions, not all Rebol functions. For some parts, like comparison, we list the useful set of functions.
 
 *All links appear to be fixed now. ([[User:Carl|Carl]] 14:21, 6 August 2010 (EDT))
 
@@ -31,7 +31,7 @@ And these:
 *until (with while)
 --[[User:Meijeru|Meijeru]] 08:11, 13 August 2010 (EDT)
 
-''Meijeru:'' I did not include those because they're not commonly used (by beginners) and they are linked in the &quot;see also&quot; sections of the related functions. -[[User:Carl|Carl]] 14:54, 13 August 2010 (EDT)
+''Meijeru:'' I did not include those because they're not commonly used (by beginners) and they are linked in the "see also" sections of the related functions. -[[User:Carl|Carl]] 14:54, 13 August 2010 (EDT)
 
 Also:
 
@@ -42,4 +42,4 @@ Incidentally, the choice of system components resp. schemes is somewhat arbitrar
 
 --[[User:Meijeru|Meijeru]] 14:50, 13 August 2010 (EDT)
 
-''Meijeru:'' The plan is to add a system object section to the docs, but it does not yet exist, so the refcard can only provide a brief hint of various fields. For R3, the same is true about schemes. The choices for what appears in the refcard for system and schemes is determined by what is most common, not to include all possibilities. We may want an &quot;advanced user reference card&quot; and some later time. -[[User:Carl|Carl]] 15:00, 13 August 2010 (EDT)
+''Meijeru:'' The plan is to add a system object section to the docs, but it does not yet exist, so the refcard can only provide a brief hint of various fields. For R3, the same is true about schemes. The choices for what appears in the refcard for system and schemes is determined by what is most common, not to include all possibilities. We may want an "advanced user reference card" and some later time. -[[User:Carl|Carl]] 15:00, 13 August 2010 (EDT)

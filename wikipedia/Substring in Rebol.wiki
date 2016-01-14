@@ -1,6 +1,6 @@
-The '''substring''' function&amp;mdash;defined by most languages&amp;mdash;is not part of Rebol's default set of definitions.
+The '''substring''' function&mdash;defined by most languages&mdash;is not part of Rebol's default set of definitions.
 
-A reason is that Rebolers do not see why you would want to use a routine that explicitly prohibited working on other series types.  Putting &quot;string&quot; in the name and constraining the parameters to ''only'' strings seems &quot;wasteful&quot;.
+A reason is that Rebolers do not see why you would want to use a routine that explicitly prohibited working on other series types.  Putting "string" in the name and constraining the parameters to ''only'' strings seems "wasteful".
 
 It is certainly possible to implement such a function if you truly feel you want it, but there is more flexibility offered by embracing Rebol's idiom.
 
@@ -8,15 +8,15 @@ It is certainly possible to implement such a function if you truly feel you want
 
 The following function implements substring functionality in Rebol:
 
-&lt;pre&gt;
+<pre>
 substring: func [string [string!] offset [integer!] length [integer!]] [
     copy/part at string offset length
 ]
-&lt;/pre&gt;
+</pre>
 
-How it works is better shown with an intermediate local variable and, for those new to Rebol's idea of &quot;a function returns its last value&quot;...a return:
+How it works is better shown with an intermediate local variable and, for those new to Rebol's idea of "a function returns its last value"...a return:
 
-&lt;pre&gt;
+<pre>
 substring: func [string [string!] offset [integer!] length [integer!] /local startPosition] [
 
     ; use AT to translate from the offset into a series position 
@@ -30,56 +30,56 @@ substring: func [string [string!] offset [integer!] length [integer!] /local sta
 
     return (copy/part startPosition length)
 ]
-&lt;/pre&gt;
+</pre>
 
 == Definition Flexibility ==
 
-&lt;tt&gt;copy/part at string offset length&lt;/tt&gt; is the same number of characters as &lt;tt&gt;substring(string, offset, length)&lt;/tt&gt;.  Yet Rebol's idiom is more modular, and captures &quot;copy a part of a string starting at a certain offset&quot; with pieces that can be swapped in and out.  Here are some examples.
+<tt>copy/part at string offset length</tt> is the same number of characters as <tt>substring(string, offset, length)</tt>.  Yet Rebol's idiom is more modular, and captures "copy a part of a string starting at a certain offset" with pieces that can be swapped in and out.  Here are some examples.
 
 === Copying to the end ===
 
-If you want to copy to the end of the series instead of limiting the copy to a certain length, you omit the /PART refinement and then drop the &lt;tt&gt;length&lt;/tt&gt; parameter.
+If you want to copy to the end of the series instead of limiting the copy to a certain length, you omit the /PART refinement and then drop the <tt>length</tt> parameter.
 
-&lt;pre&gt;
-&gt;&gt; copy at &quot;Rebol&quot; 3
-== &quot;bol&quot;
+<pre>
+>> copy at "Rebol" 3
+== "bol"
 
-&gt;&gt; copy at [foo baz bar mumble frotz] 3
+>> copy at [foo baz bar mumble frotz] 3
 == [bar mumble frotz]
-&lt;/pre&gt;
+</pre>
 
 === Copying from the beginning ===
 
 If you are happy starting with the beginning and just want to limit how many things you copy, you keep the /PART but drop the AT
 
-&lt;pre&gt;
-&gt;&gt; copy/part &quot;Rebol&quot; 2
-== &quot;Re&quot;
+<pre>
+>> copy/part "Rebol" 2
+== "Re"
 
-&gt;&gt; copy/part [foo baz bar mumble frotz] 2
+>> copy/part [foo baz bar mumble frotz] 2
 == [foo baz]
-&lt;/pre&gt;
+</pre>
 
 === Using positions instead of integer offsets ===
 
 Also, you are not limited in using indexes with COPY.  You can use series positions, and those can come from things like FIND.  They are not integer offsets, though you can convert them using OFFSET?.
 
-Here we can see copying out of a string from the position before the first occurrence of &quot;e&quot; to the position right after the first occurrence of &quot;o&quot;
+Here we can see copying out of a string from the position before the first occurrence of "e" to the position right after the first occurrence of "o"
 
-&lt;pre&gt;
-&gt;&gt; str: &quot;Rebol&quot;
-== &quot;Rebol&quot;
+<pre>
+>> str: "Rebol"
+== "Rebol"
 
-&gt;&gt; copy/part str (find str &quot;e&quot;) (find/tail str &quot;o&quot;)
-== &quot;ebo&quot;
-&lt;/pre&gt;
+>> copy/part str (find str "e") (find/tail str "o")
+== "ebo"
+</pre>
 
-Once again, the same methods work on any series, even a block of Rebol symbols.  We can copy out of &lt;tt&gt;list&lt;/tt&gt; from the position before the first occurrence of &lt;tt&gt;baz&lt;/tt&gt; to the position after the first occurrence of &lt;tt&gt;mumble&lt;/tt&gt;.
+Once again, the same methods work on any series, even a block of Rebol symbols.  We can copy out of <tt>list</tt> from the position before the first occurrence of <tt>baz</tt> to the position after the first occurrence of <tt>mumble</tt>.
 
-&lt;pre&gt;
-&gt;&gt; list: [foo baz bar mumble frotz]
+<pre>
+>> list: [foo baz bar mumble frotz]
 == [foo baz bar mumble frotz]
 
-&gt;&gt; copy/part list (find list 'baz) (find/tail list 'mumble)
+>> copy/part list (find list 'baz) (find/tail list 'mumble)
 == [baz bar mumble]
-&lt;/pre&gt;
+</pre>

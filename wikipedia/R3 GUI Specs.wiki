@@ -246,7 +246,7 @@ Most accessors are managed through actors, such as ON-SET and ON-GET, which are 
 # A window face generally only has one ENTER face, but only the first one set in layout counts.
 # A window face can't have STATE, FIELD, AUTO-TAB, FIELD, INTERNAL, COMPOUND, PART, DEFAULT tags set.
 # A window generally behaves like a PANEL, except it keeps a TAB-FACE.
-# A window face to be closed, must run one of several standard actions or actors: CLOSE, CANCEL, SELECT, APPROVE. See &quot;on window close&quot; rule 2.
+# A window face to be closed, must run one of several standard actions or actors: CLOSE, CANCEL, SELECT, APPROVE. See "on window close" rule 2.
 # A window face usually pairs certain actions: CLOSE and SELECT. CLOSE and SELECT can operate separately. CANCEL and APPROVE to avoid traps.
 # A window face is any face that doesn't have a parent face.
 
@@ -254,7 +254,7 @@ Most accessors are managed through actors, such as ON-SET and ON-GET, which are 
 # If a window face has one or more faces with the DEFAULT tag, the first one is automatically tabbed to.
 # If a window face doesn't have faces with a DEFAULT tag, it focuses the first TAB face.
 # If a window face doesn't have faces with TAB tag, no attempt at tabbing can be done, in adherence with rule 012.
-# When opened, initial validation setup is made: All REQUIRED faces are indicated. See &quot;validation rules&quot; 002.
+# When opened, initial validation setup is made: All REQUIRED faces are indicated. See "validation rules" 002.
 
 === On window close ===
 # If a window face has a focused face or tabbed face, both are set to NONE.
@@ -393,7 +393,7 @@ Under most desktop OSes, there is a possibility to use fast way to navigate to p
 
 * the same as above, but underlined letters (as well as menu) are displayed after the press of an Alt key (this concept is used by IE8 for e.g.)
 
-* after the press of Alt key, small &quot;balloon&quot; boxes representing accelerator keys are displayed upon particular UI elements. If VID3.4 gets layers concept, we might consider this aproach, although it is not common and above mentioned ones are preferrable
+* after the press of Alt key, small "balloon" boxes representing accelerator keys are displayed upon particular UI elements. If VID3.4 gets layers concept, we might consider this aproach, although it is not common and above mentioned ones are preferrable
 
 === Window Navigation ===
 
@@ -627,7 +627,7 @@ This is suitable for labelling fields for forms. Labels don't have TAB.
 # ON-EMIT is both centric around:
 ## face (store one field) by do-style face 'on-emit none on itself
 ## around group/panel (store entire record). This is done by applying traverse-face content [do-style face 'on-emit none].
-# ON-EMIT is run by the user, using a &quot;Save Record&quot; type button.
+# ON-EMIT is run by the user, using a "Save Record" type button.
 # Function run with ON-EMIT that retrieves:
 ## face data using GET-FACE
 ## record
@@ -648,15 +648,15 @@ This is suitable for labelling fields for forms. Labels don't have TAB.
 Example:
 
   name-panel: group 2 [
-    label &quot;ID&quot;
+    label "ID"
     id: field record [skip]
-    label &quot;Name&quot;
+    label "Name"
     name: field record []
-    label &quot;Address&quot;
+    label "Address"
     address: field record [data]
-    label &quot;Post Code&quot;
+    label "Post Code"
     postcode: field record [data]
-    label &quot;Comment&quot;
+    label "Comment"
     comment: area record [data]
   ] record [name-table]
 
@@ -709,7 +709,7 @@ Scoping example:
 
 ==== Colors ====
 
-# Use the standard REBOL color options available in R3.
+# Use the standard Rebol color options available in R3.
 
 ==== Materials ====
 
@@ -733,7 +733,7 @@ Scoping example:
 # Standard unicode support for various languages in the GUI must be supported through View.
 # Localization can freely happen by:
 ## Preprocessing of script using token strings or token rich text blocks, before runtime.
-## Runtime referral to list of strings or rich text blocks. This means the layout dialect should be able to set face/text based on path notation or a word. See &quot;layout&quot; for more.
+## Runtime referral to list of strings or rich text blocks. This means the layout dialect should be able to set face/text based on path notation or a word. See "layout" for more.
 
 ==== Editing ====
 
@@ -781,7 +781,7 @@ Dialogs build upon eachother.
 ===== Alert =====
 
 # Displays text or image.
-# Presents an &quot;OK&quot; or &quot;Close&quot; button for closure.
+# Presents an "OK" or "Close" button for closure.
 
 ==== Requesters ====
 
@@ -799,7 +799,7 @@ Dialogs build upon eachother.
 
 ==== Viewers ====
 
-# Viewers are about displaying REBOL datatypes visually, possibly for debugging or simply visualization.
+# Viewers are about displaying Rebol datatypes visually, possibly for debugging or simply visualization.
 # Viewers could be an optional module.
 # Viewers would be used as a guideline for which types of advanced styles to develop, i.e. tables, tree-views.
 # Viewers should largely use one style for representing the datatype.

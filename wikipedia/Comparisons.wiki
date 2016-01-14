@@ -8,17 +8,17 @@ EQUAL?, EQUIV?, STRICT-EQUAL?, and SAME? (proposed by BrianH as his list #2).
 
 To be comparable, all equality operators shall have the same domain, which means, that every test of the form:
 
-&lt;pre&gt;equal? error? try [equal? :a :b] error? try [compare :a :b]&lt;/pre&gt;
+<pre>equal? error? try [equal? :a :b] error? try [compare :a :b]</pre>
 
 has to succeed (= yield TRUE).
 
-One of the simplest alternatives is, that the domain of every equality operator will consist of all REBOL values except for #[unset!]. In that case every test of the form:
+One of the simplest alternatives is, that the domain of every equality operator will consist of all Rebol values except for #[unset!]. In that case every test of the form:
 
-&lt;pre&gt;not all [
+<pre>not all [
     value? 'a
     value? 'b
     error? try [compare :a :b]
-]&lt;/pre&gt;
+]</pre>
 
 has to succeed.
 
@@ -26,32 +26,32 @@ has to succeed.
 
 The equality operators are relational operators, i.e. they should yield a LOGIC! type value whenever the argument values are in the domain of the respective operator (i.e. whenever the operator evaluation doesn't cause error). This means, that every test of the form:
 
-&lt;pre&gt;any [
+<pre>any [
     error? try [compare :a :b]
     logic? compare :a :b
-]&lt;/pre&gt;
+]</pre>
 
-has to succeed (= yield TRUE) either because the arguments are &quot;out of the domain&quot;, or because the result is of the LOGIC! type.
+has to succeed (= yield TRUE) either because the arguments are "out of the domain", or because the result is of the LOGIC! type.
 
 ===Reflexivity===
 
 Every equality operator shall be reflexive. That means, that every test of the form:
 
-&lt;pre&gt;any [
+<pre>any [
     error? try [compare :a :a]
     compare :a :a
-]&lt;/pre&gt;
+]</pre>
 
-has to succeed (= yield TRUE), either because A is &quot;out of the domain&quot;, or because the comparison operator shall be reflexive in its domain.
+has to succeed (= yield TRUE), either because A is "out of the domain", or because the comparison operator shall be reflexive in its domain.
 
 ===Symmetry===
 
 Every equality operator shall be symmetric. That means, that every test of the form:
 
-&lt;pre&gt;any [
+<pre>any [
     error? try [compare :a :b]
     equal? compare :a :b compare :b :a
-]&lt;/pre&gt;
+]</pre>
 
 has to succeed.
 
@@ -59,13 +59,13 @@ has to succeed.
 
 Except for the EQUAL? operator, which is expected to test for approximate equality of decimal, percent and date values, every equality operator shall be transitive. That means, that every test of the form:
 
-&lt;pre&gt;any [
+<pre>any [
     error? try [compare :a :b]
     not compare :a :b
     error? try [compare :b :c]
     not compare :b :c
     compare :a :c
-]&lt;/pre&gt;
+]</pre>
 
 has to succeed.
 
@@ -75,26 +75,26 @@ The equality operators are ordered by their fineness, the order is: EQUAL?, EQUI
 
 The hierarchy requirement can be expressed as the requirement, that every test having one of the forms:
 
-&lt;pre&gt;; EQUIV? is finer than EQUAL?
+<pre>; EQUIV? is finer than EQUAL?
 any [
     error? try [equal? :a :b]
     not equiv? :a :b
     equal? :a :b
-]&lt;/pre&gt;
+]</pre>
 
-&lt;pre&gt;; STRICT-EQUAL? is finer than EQUIV?
+<pre>; STRICT-EQUAL? is finer than EQUIV?
 any [
     error? try [equal? :a :b]
     not strict-equal? :a :b
     equiv? :a :b
-]&lt;/pre&gt;
+]</pre>
 
-&lt;pre&gt;; SAME? is finer than STRICT-EQUAL?
+<pre>; SAME? is finer than STRICT-EQUAL?
 any [
     error? try [equal? :a :b]
     not same? :a :b
     strict-equal? :a :b
-]&lt;/pre&gt;
+]</pre>
 
 shall succeed.
 

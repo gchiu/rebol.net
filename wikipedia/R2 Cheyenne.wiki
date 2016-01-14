@@ -1,11 +1,11 @@
 '''The Cheyenne Web Server from SoftInnov'''
 
-Cheyenne is a full-featured, high-performance, Apache-class web server built entirely in REBOL. It is fast, powerful, and amazingly small.
+Cheyenne is a full-featured, high-performance, Apache-class web server built entirely in Rebol. It is fast, powerful, and amazingly small.
 
-&quot;Cheyenne is built on top of our UniServe async network framework, so it inherits the gains of asynchronous I/O and mono-process lightweight design,&quot; states Nenad Rakocevic (DocKimbel), the architect of Cheyenne.
+"Cheyenne is built on top of our UniServe async network framework, so it inherits the gains of asynchronous I/O and mono-process lightweight design," states Nenad Rakocevic (DocKimbel), the architect of Cheyenne.
 
-The Cheyenne web server supports HTTP/1.0 and 1.1 protocols, persistent connections (Keep-Alive), advanced browser cache management, virtual hosts, Apache-like modular architecture, smart configuration file with expandable and dedicated dialect, and best of all, direct REBOL CGI support with persistent processes (optimal performance).
+The Cheyenne web server supports HTTP/1.0 and 1.1 protocols, persistent connections (Keep-Alive), advanced browser cache management, virtual hosts, Apache-like modular architecture, smart configuration file with expandable and dedicated dialect, and best of all, direct Rebol CGI support with persistent processes (optimal performance).
 
-Cheyenne also supports a range of built-in modules, such as aliases and redirection, server-side includes, background process user and group rights, REBOL server pages, CGI, chunk-encoding, byte-ranges requests, URL transformations (including direct REBOL function mapping), SSL, and an advanced remote management tool.
+Cheyenne also supports a range of built-in modules, such as aliases and redirection, server-side includes, background process user and group rights, Rebol server pages, CGI, chunk-encoding, byte-ranges requests, URL transformations (including direct Rebol function mapping), SSL, and an advanced remote management tool.
 
 You can find more information about Cheyenne from Cheyenne at http://cheyenne-server.org

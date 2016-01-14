@@ -1,41 +1,41 @@
-This page is a placeholder page for links related to topics as marketing, strategy, REBOL websites, etc.
+This page is a placeholder page for links related to topics as marketing, strategy, Rebol websites, etc.
 
 You can freely create your own topic and express your opinions, or comment at the end of particular/existing articles ...
 
 ==What makes a good beta release?==
 
-Last year of development of R3 has shown us we are moving forward in a steadily pace. Even if R3 seems to be much more precisely defined, and contains strategic architecture changes and some nice new features, the community is not giving R3 much of an attention. A &quot;wait and see&quot; strategy? Or does R3 still lacks anything fundamental for devs to switch to the next generation of REBOL? Let's find out ... what defines a good beta ...
+Last year of development of R3 has shown us we are moving forward in a steadily pace. Even if R3 seems to be much more precisely defined, and contains strategic architecture changes and some nice new features, the community is not giving R3 much of an attention. A "wait and see" strategy? Or does R3 still lacks anything fundamental for devs to switch to the next generation of Rebol? Let's find out ... what defines a good beta ...
 
 *[[What_makes_a_good_beta|What makes a good beta release?]]
 
-==How to improve REBOL adoption?==
+==How to improve Rebol adoption?==
 
-While even R2 was found being a cool language, REBOL never attracted enough of developers, nor broader public attention. There were some past marketing/strategic mistakes in the past. Let's find out, where we are today, how to &quot;reboot&quot; our points of view, and how to get under the radar once again ...
+While even R2 was found being a cool language, Rebol never attracted enough of developers, nor broader public attention. There were some past marketing/strategic mistakes in the past. Let's find out, where we are today, how to "reboot" our points of view, and how to get under the radar once again ...
 
-*[[REBOL_adoption|How to improve REBOL adoption?]]
+*[[Rebol_adoption|How to improve Rebol adoption?]]
 
-==REBOL.com redesign==
+==Rebol.com redesign==
 
-REBOL.com  &quot;represents&quot; official product/company/marketing homepage. Does it? Doesn't it look like some 1998 MS Word bad attempt at a website? Should we contract its design to professional agency? This is rather big &amp; deep topic, so let's start more generally, and cover topics like:
+Rebol.com  "represents" official product/company/marketing homepage. Does it? Doesn't it look like some 1998 MS Word bad attempt at a website? Should we contract its design to professional agency? This is rather big & deep topic, so let's start more generally, and cover topics like:
 
 *website structure and navigational logic
 *let's identify the target groups (segmentation)
-*what is our &quot;product&quot;?
+*what is our "product"?
 *what services and support we offer?
 *let's be sure we don't create a hype or promisses without ability to fullfill what we propagate
 *let's make the attempt at page redo an professional attempt - from definition to design ...
 
 --
-*[[REBOL.com|REBOL.com redesign]]
+*[[Rebol.com|Rebol.com redesign]]
 
 == Marketing slogans==
 
-&quot;Vive la REBOLution&quot; isn't in the same league as &quot;Write once, run everywhere&quot; or &quot;Batteries included&quot;.  Yet Rebol fits those slogans better than the languages that adopted them (Java and Python respectively).  Could a more careful try at sloganeering help paint a picture of Rebol's strengths that will help people understand it?  Which rallying cries and memorable mantras should be repeated?  Is it time to shift the limelight away from the size of the binary to the non-embedded market?
+"Vive la Rebolution" isn't in the same league as "Write once, run everywhere" or "Batteries included".  Yet Rebol fits those slogans better than the languages that adopted them (Java and Python respectively).  Could a more careful try at sloganeering help paint a picture of Rebol's strengths that will help people understand it?  Which rallying cries and memorable mantras should be repeated?  Is it time to shift the limelight away from the size of the binary to the non-embedded market?
 
 *[[Marketing slogans]]
 
-== REBOL logo ==
+== Rebol logo ==
 
-Some ideas about how future REBOL logo concept could be built.
+Some ideas about how future Rebol logo concept could be built.
 
-*[http://www.rebol.net/wiki/REBOL_logo REBOL logo]
+*[http://www.rebol.net/wiki/Rebol_logo Rebol logo]

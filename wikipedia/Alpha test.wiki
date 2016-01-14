@@ -1,4 +1,4 @@
-This page explains what we mean by an &quot;alpha test&quot;.
+This page explains what we mean by an "alpha test".
 
 ==What's an Alpha?==
 

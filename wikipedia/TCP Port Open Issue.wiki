@@ -5,9 +5,9 @@ The purpose of this technical note is to describe how OPEN works for TCP ports (
 As a quick review, recall these facts:
 
 *TCP connections are made with IP addresses, not with host names.
-*REBOL TCP port specifications (e.g. URLs) allow host names, as well as IP addresses.
+*Rebol TCP port specifications (e.g. URLs) allow host names, as well as IP addresses.
 
-'''What this means is that in REBOL the TCP OPEN action does an extra step.''' It does a DNS lookup if a host is given.
+'''What this means is that in Rebol the TCP OPEN action does an extra step.''' It does a DNS lookup if a host is given.
 
 In R3, '''that is a small problem because the state machine has been cleaned up and simplified compared to R2'''.
 
@@ -32,7 +32,7 @@ So, here is how the sequence for OPEN now works in R3.
 
 ;Additional Note: The benefit of receiving the LOOKUP event in the awake handler should be stated. First, it allows you to easily apply IP filters (such as deny or redirect) within a TCP handler. Second, it keeps the state machine simple, because there is no hidden state that you cannot detect in your code.
 
-;Device Changes: Because the LOOKUP is &quot;out of band&quot; with regard to the normal read/write activities of the TCP device, a special command, LOOKUP, has been added to the device driver interface. (This is similar to the CREATE, DELETE, and RENAME special commands needed for things like directory IO.) This command may also be of use in other devices, but ''it should not be confused'' with the usage of READ such as that done for the file directory device -- where the READ specifies the directory path (and file name pattern) of the file list to return.
+;Device Changes: Because the LOOKUP is "out of band" with regard to the normal read/write activities of the TCP device, a special command, LOOKUP, has been added to the device driver interface. (This is similar to the CREATE, DELETE, and RENAME special commands needed for things like directory IO.) This command may also be of use in other devices, but ''it should not be confused'' with the usage of READ such as that done for the file directory device -- where the READ specifies the directory path (and file name pattern) of the file list to return.
 
 ==Example==
 
@@ -40,7 +40,7 @@ Here is an example of a minimal raw TCP case that makes an HTTP request (without
 
 The AWAKE handler code shows the lookup and other states. Note that the handler itself requests the next state. The state machine is not built into the port or device C code, so you can manage the state at the lowest levels.
 
-&lt;pre&gt;
+<pre>
 http-request: {GET / HTTP/1.1
 Host: www.rebol.net
 
@@ -50,9 +50,9 @@ wp: make port! tcp://www.rebol.net
 
 wp/awake: func [event /local port] [
     port: event/port
-    print [&quot;==TCP-event:&quot; event/type]
+    print ["==TCP-event:" event/type]
     switch/default event/type [
-        read [print [&quot;^\read:&quot; length? port/data] read port]
+        read [print ["^\read:" length? port/data] read port]
         wrote [read port]
         lookup [print query port open port]
         connect [write port http-request]
@@ -63,7 +63,7 @@ open wp
 wait [wp 3]
 print wp/data
 close wp
-&lt;/pre&gt;
+</pre>
 
 Here, the event handler actions in the switch are listed according to frequency (although it won't make much difference in speed -- just a habit.)
 

@@ -17,9 +17,9 @@ However, what happens when a function called within the GUI must wait? For examp
 Let's take this example:
 
    view [
-       button &quot;Read&quot; do [set-face sf read http://www.rebol.com]
+       button "Read" do [set-face sf read http://www.rebol.com]
        sf: area
-       button &quot;Quit&quot; quit
+       button "Quit" quit
    ]
 
 This code is somewhat problematic. The reason is:
@@ -36,13 +36,13 @@ Of course, we have this problem within the GUI itself, but use a simple method t
 Consider this code:
 
     view [
-        button &quot;Ask&quot; do [alert &quot;You have been asked.&quot;]
-        button &quot;Quit&quot; quit
+        button "Ask" do [alert "You have been asked."]
+        button "Quit" quit
     ]
 
 When the Ask button is clicked, the alert window will open, but ''it is a modal window and events to other GUI windows will be ignored''.
 
-The problem is solved by &quot;going modal&quot; for the duration of the alert window. Events to the main window cannot occur.
+The problem is solved by "going modal" for the duration of the alert window. Events to the main window cannot occur.
 
 ==The Problem with READ==
 
@@ -61,7 +61,7 @@ We can represent it this way:
 
 The second WAIT is occurring during the first WAIT.
 
-But, depending on the network and servers, the WAIT in HTTP can take a few seconds. If the user clicks on the &quot;Read&quot; button a few times for HTTP finishes, this will happen:
+But, depending on the network and servers, the WAIT in HTTP can take a few seconds. If the user clicks on the "Read" button a few times for HTTP finishes, this will happen:
 
     WAIT for GUI
        [awake on button]
