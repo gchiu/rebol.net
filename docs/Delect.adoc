@@ -90,21 +90,30 @@ Example Usage
 
 Here is an example of using DELECT to handle a very simple dialect.
 
- dialect: context [ default: [tuple!] single: [string!] double:
-[integer! string!] ]
+[source,rebol]
+----
+dialect: context [
+ default: [tuple!]
+ single: [string!]
+ double: [integer! string!]
+]
 
-inp: [1.2.3 single "test" double "test" 123] out: make block! 4 ; (any
-initial size works)
+inp: [1.2.3 single "test" double "test" 123]
+out: make block! 4 ; (any initial size works)
 
 while [inp: delect dialect inp out] [ ?? out ?? inp ] 
+----
 
 The results will be:
 
- out: [default 1.2.3] inp: [single "test" double "test" 123]
+[source,rebol]
+----
+out: [default 1.2.3] inp: [single "test" double "test" 123]
 
 out: [single "test"] inp: [double "test" 123]
 
 out: [double 123 "test"] inp: [] 
+----
 
 Of course, this is a very trivial case, but it gives you the idea.
 
