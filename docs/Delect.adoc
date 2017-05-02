@@ -124,11 +124,25 @@ Dialect Definition
 A DELECT dialect is defined as an object. Here is an example that shows
 various cases:
 
-dil: context [ default: [pair! binary!] empty: [] single:
-[integer!] double: [integer! string!] multi: [* pair!] multa: [tuple! *
-pair!] types: [series!] types2: reduce [series! block!] word: [word!]
-refine: [integer! ref pair!] refine2: [integer! ref pair! integer! str
-string!] keyword: none ref: none str: none ] 
+[source,rebol]
+----
+dil: context [
+ default: [pair! binary!]
+ empty: []
+ single: [integer!]
+ double: [integer! string!]
+ multi: [* pair!]
+ multa: [tuple! * pair!]
+ types: [series!]
+ types2: reduce [series! block!]
+ word: [word!]
+ refine: [integer! ref pair!]
+ refine2: [integer! ref pair! integer! str string!]
+ keyword: none
+ ref: none
+ str: none
+] 
+----
 
 The words of the object define the keywords of the grammar. Words
 defined as blocks are commands. Words set to NONE are special keywords
